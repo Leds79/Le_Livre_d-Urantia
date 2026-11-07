@@ -1903,7 +1903,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const n = Math.max(0, Math.round(uCur));
     let t = coupe ? COUPE : INFO[n], key = coupe ? 'coupe' : 's' + n;
     if (free && !coupe) {
-      const nb = nearBody(focusPhys), p = nb ? null : placeAt(focusPhys, V);
+      const nb0 = nearBody(focusPhys), nb = nb0 && V < 400 * nb0.rly ? nb0 : null;   // l’astre seulement tant qu’on en est proche
+      const p = nb ? null : placeAt(focusPhys, V);
       if (nb) { t = { h: CARDS[nb.key].n, p: HUDB(nb.key) }; key = 'b' + nb.key; }
       else if (p) { t = p.info; key = 'p' + PLACES.indexOf(p); }
       else { t = { h: 'Exploration libre', p: 'Rien de particulier n’est décrit à cet endroit. Éloigne-toi, déplace-toi ou clique sur «&nbsp;Recentrer&nbsp;» pour revenir à Urantia.' }; key = 'vide'; }
