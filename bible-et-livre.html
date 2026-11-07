@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Vingt parallèles entre la Bible (Crampon 1923) et le Livre d’Urantia, des origines à la Pentecôte : ce qui concorde, ce qui diffère, et ce que le livre en dit.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/bible-et-livre.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="La Bible et le Livre d’Urantia — Le Livre d’Urantia en images">
+<meta property="og:description" content="Vingt parallèles entre la Bible (Crampon 1923) et le Livre d’Urantia, des origines à la Pentecôte : ce qui concorde, ce qui diffère, et ce que le livre en dit.">
+<meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/bible-et-livre.html">
+<meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>La Bible et le Livre d’Urantia — Le Livre d’Urantia en images</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : vingt cartes de parallèles, la Bible à gauche, le Livre d’Urantia à droite, regroupées par thèmes
+   filtrables ; puis un relevé des citations bibliques du livre, les trois registres de lecture et les silences du texte. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des fiches */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  /* Les deux colonnes des cartes : la Bible (brique sur parchemin), le Livre d’Urantia (bleu) */
+  --b-ink: #8C3A28; --b-bg: #F8F1E7; --b-rule: #E3D3BE;
+  --u-ink: #2F5F9E; --u-bg: #EAF0F9; --u-rule: #C9D6EA;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+    --b-ink: #F0A48C; --b-bg: #1F1A20; --b-rule: #3A2E33;
+    --u-ink: #8DB6F0; --u-bg: #15203A; --u-rule: #2A3A5C;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+  --b-ink: #F0A48C; --b-bg: #1F1A20; --b-rule: #3A2E33;
+  --u-ink: #8DB6F0; --u-bg: #15203A; --u-rule: #2A3A5C;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+.bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 48ch; }
+.links { display: flex; flex-wrap: wrap; gap: 0 22px; font-size: .98rem; }
+.links a { display: inline-flex; align-items: center; min-height: 44px; }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { padding-block: 6px; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.codebox .sample { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.codebox .sample .nm { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .9rem; }
+.codebox dt { font: 500 .8rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.code { font: 500 .74rem/1.2 var(--font-mono); color: var(--muted); border: 1px solid var(--rule); border-radius: 5px; padding: 2px 6px; white-space: nowrap; }
+.code.b { color: var(--b-ink); border-color: var(--b-rule); background: var(--b-bg); }
+.code.u { color: var(--u-ink); border-color: var(--u-rule); background: var(--u-bg); }
+
+/* Sections */
+.sec-head { display: grid; gap: 12px; max-width: 70ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+
+/* Filtres et sommaire */
+.tools { margin-top: 24px; display: grid; gap: 12px; }
+.ctl-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { appearance: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 15px; border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .95rem/1.2 var(--font-body); cursor: pointer; }
+.chips button:hover { border-color: var(--muted); }
+.chips button[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.chips .cnt { font: 500 .74rem/1 var(--font-mono); opacity: .8; }
+.f-status { font-size: .92rem; color: var(--muted); min-height: 1.5em; }
+.btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 44px; padding: 8px 15px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .95rem/1.2 var(--font-body); cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.chev { width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg) translateY(-2px); transition: transform .15s ease; flex: none; }
+.btn[aria-expanded="true"] .chev { transform: rotate(-135deg) translateX(-2px); }
+.toc { display: grid; gap: 10px; justify-items: start; }
+.toc-list { list-style: none; margin: 0; padding: 0; width: 100%; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr)); gap: 6px; }
+.toc-list a { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); align-items: center; gap: 8px; min-height: 44px; padding: 6px 10px;
+  border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); text-decoration: none; line-height: 1.25; font-size: .95rem; }
+.toc-list a:hover { border-color: var(--muted); }
+.toc-list .n { font: 500 .78rem/1 var(--font-mono); color: var(--muted); }
+
+/* Thèmes et cartes */
+.themes { margin-top: 36px; display: grid; gap: 56px; }
+.theme { display: grid; gap: 18px; min-width: 0; scroll-margin-top: 12px; }
+.theme-head { display: grid; gap: 8px; max-width: 72ch; padding-bottom: 12px; border-bottom: 1px solid var(--rule); }
+.theme-head h3 { font-size: clamp(1.5rem, 3vw, 1.95rem); }
+.theme-head p { color: var(--muted); font-size: .97rem; }
+.cards { display: grid; gap: 18px; }
+.pcard { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 16px; min-width: 0; scroll-margin-top: 12px; }
+.pc-head { display: flex; align-items: baseline; gap: 12px; }
+.pc-num { flex: none; width: 2rem; height: 2rem; border-radius: 6px; background: var(--tint); color: var(--muted); font: 600 .85rem/2rem var(--font-mono); text-align: center; }
+.pcard h4 { font-size: 1.55rem; line-height: 1.15; }
+.duo { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.side { border-radius: 10px; padding: 14px 16px 16px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.side.bible { background: var(--b-bg); border: 1px solid var(--b-rule); }
+.side.ub { background: var(--u-bg); border: 1px solid var(--u-rule); }
+.side-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; }
+.side.bible .side-lbl { color: var(--b-ink); }
+.side.ub .side-lbl { color: var(--u-ink); }
+.side-lbl span { letter-spacing: .04em; text-transform: none; color: var(--muted); }
+.side.bible blockquote.cite { border-left-color: var(--b-ink); }
+.side.ub blockquote.cite { border-left-color: var(--u-ink); }
+.side blockquote.cite p { font-size: 1.12rem; }
+.cmp { margin: 0; display: grid; gap: 10px; font-size: .95rem; }
+.cmp > div { display: grid; grid-template-columns: 11.75rem minmax(0, 1fr); gap: 2px 14px; }
+.cmp dt { font: 500 .72rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.cmp dd { margin: 0; min-width: 0; overflow-wrap: break-word; }
+.cmp .dit dt { color: var(--gold-ink); }
+.cmp .ref, .cmp .bref, .theme-head .ref, .callout .ref, .unk .ref { margin-inline: .12em; }   /* références juxtaposées : un peu d’air autour du point-virgule */
+
+/* Relevé des citations */
+.xref { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; }
+.xref li { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 16px; display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 4px 16px; align-items: baseline; }
+.x-ub .ref { font-size: .86rem; color: var(--u-ink); }
+.x-v { font: 500 .72rem/1 var(--font-mono); letter-spacing: .06em; color: var(--muted); }
+.x-body { display: grid; gap: 4px; min-width: 0; }
+.x-q { font-family: var(--font-display); font-style: italic; font-size: 1.08rem; line-height: 1.4; }
+.x-q .bref { font-family: var(--font-mono); font-style: normal; color: var(--b-ink); margin-right: 6px; }
+.x-note { font-size: .92rem; color: var(--muted); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 80ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.callout li, .unk li { max-width: 74ch; }
+.callout blockquote.cite { margin-top: 8px; }
+details.unk { max-width: 80ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+details.unk summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; min-height: 44px; display: flex; align-items: center; gap: 12px; }
+details.unk summary::-webkit-details-marker { display: none; }
+details.unk summary::before { content: ""; width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform .15s ease; flex: none; }
+details.unk[open] summary::before { transform: rotate(45deg); }
+details.unk[open] summary { margin-bottom: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 760px) {
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .cmp > div { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .pcard { padding: 16px 14px 18px; }
+  .side { padding: 12px 13px 14px; }
+  .pcard h4 { font-size: 1.4rem; }
+  .xref li { grid-template-columns: minmax(0, 1fr); }
+  .callout { padding: 18px 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chev, details.unk summary::before { transition: none; }
+}
+</style><style>/* barre commune et parcours de l’atlas (construire_site.py) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}.atlas-nav li{margin:0;flex:none}.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}@media (max-width:880px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline;padding:0;min-height:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}a.ref-lien{padding-block:5px}</style>
+</head>
+<body>
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Pages de l’atlas"><ul><li><a href="index.html">Accueil</a></li><li><a href="nebadon-dans-orvonton.html" title="Nébadon dans Orvonton">Nébadon</a></li><li><a href="atlas-3d.html" title="D’Urantia au Paradis (3D)">La 3D</a></li><li><a href="familles-de-personnalites.html" title="Familles de personnalités">Familles</a></li><li><a href="concepts-en-schemas.html" title="Concepts en schémas">Concepts</a></li><li><a href="dieu-et-deite.html">Dieu et la Déité</a></li><li><a href="histoire-d-urantia.html" title="L’histoire d’Urantia">Histoire d’Urantia</a></li><li><a href="rebellion-de-lucifer.html" title="La rébellion de Lucifer">La rébellion</a></li><li><a href="vie-de-jesus.html" title="La vie de Jésus">Vie de Jésus</a></li><li><a href="bible-et-livre.html" title="La Bible et le Livre d’Urantia" aria-current="page">La Bible</a></li><li class="livre"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" title="Lire le livre (urantia.org), nouvel onglet">Lire le livre&nbsp;↗</a></li></ul></nav>
+<script>(function(){var u=document.querySelector(".atlas-nav ul"),c=u&&u.querySelector("[aria-current]");if(c&&u.scrollWidth>u.clientWidth){var li=c.parentNode;u.scrollLeft=li.offsetLeft-(u.clientWidth-li.offsetWidth)/2;}})();</script>
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape>Étape 12 sur 12 · </span>Le Livre d’Urantia · parallèles bibliques</p>
+      <h1>La Bible et le Livre d’Urantia</h1>
+      <p class="lede">Le Livre d’Urantia reprend de nombreux récits de la Bible&nbsp;: il les cite, les commente, et souvent les raconte autrement. Voici vingt parallèles, de la chute de Lucifer à la Pentecôte, placés côte à côte, sans trancher entre les deux textes.</p>
+      <p class="ctx-link">Les grandes époques dans le temps&nbsp;: <a href="atlas-3d.html#frise">La frise du temps</a>, dans la vue 3D</p>
+    </div>
+    <aside class="codebox" aria-label="Lire une carte">
+      <span class="label">Lire une carte</span>
+      <div class="sample"><span class="code b">Genèse 3, 6</span><span class="nm">face à</span><span class="code u">75:4.5</span></div>
+      <dl>
+        <dt>à gauche</dt><dd>La Bible, traduction Crampon de 1923&nbsp;: livre, chapitre, verset.</dd>
+        <dt>à droite</dt><dd>Le Livre d’Urantia&nbsp;: fascicule, section, paragraphe. Ces références mènent au passage sur urantia.org.</dd>
+        <dt>dessous</dt><dd>Ce qui concorde, ce qui diffère et, quand le livre commente lui-même le récit biblique, ce qu’il en dit.</dd>
+        <dt>[…]</dt><dd>Coupure dans une citation.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <section aria-labelledby="h-par">
+    <div class="sec-head">
+      <h2 id="h-par">Vingt récits, deux versions</h2>
+      <p>Chaque carte place un passage de la Bible à côté du passage correspondant du Livre d’Urantia. Les citations sont exactes et courtes ; le reste est résumé, avec ses références. Choisis un thème pour n’afficher que ses cartes.</p>
+    </div>
+
+    <div class="tools">
+      <span class="ctl-lbl" id="f-lbl">Thème</span>
+      <div class="chips" id="filtres" role="group" aria-labelledby="f-lbl">
+        <button type="button" data-f="tous" aria-pressed="true">Tous <span class="cnt">20</span></button>
+        <button type="button" data-f="origines" aria-pressed="false">Origines et rébellion <span class="cnt">2</span></button>
+        <button type="button" data-f="adam" aria-pressed="false">Adam et Ève <span class="cnt">3</span></button>
+        <button type="button" data-f="premiers" aria-pressed="false">Premiers temps <span class="cnt">3</span></button>
+        <button type="button" data-f="patriarches" aria-pressed="false">Patriarches <span class="cnt">3</span></button>
+        <button type="button" data-f="jesus" aria-pressed="false">Jésus <span class="cnt">9</span></button>
+      </div>
+      <p class="f-status" id="f-status" aria-live="polite">Les 20 parallèles sont affichés.</p>
+      <div class="toc">
+        <button type="button" class="btn" id="toc-btn" aria-expanded="false" aria-controls="toc-list">Sommaire des cartes <span class="chev" aria-hidden="true"></span></button>
+        <ol class="toc-list" id="toc-list" hidden>
+          <li data-theme="origines"><a href="#lucifer"><span class="n">1</span>Lucifer, l’astre déchu</a></li>
+          <li data-theme="origines"><a href="#guerre"><span class="n">2</span>La guerre dans le ciel</a></li>
+          <li data-theme="adam"><a href="#jardin"><span class="n">3</span>Le jardin d’Éden</a></li>
+          <li data-theme="adam"><a href="#eve"><span class="n">4</span>Ève, le serpent et Cano</a></li>
+          <li data-theme="adam"><a href="#sortie"><span class="n">5</span>La sortie du jardin</a></li>
+          <li data-theme="premiers"><a href="#cain"><span class="n">6</span>Caïn et Abel</a></li>
+          <li data-theme="premiers"><a href="#deluge"><span class="n">7</span>Le déluge</a></li>
+          <li data-theme="premiers"><a href="#babel"><span class="n">8</span>La tour de Babel</a></li>
+          <li data-theme="patriarches"><a href="#melchisedech"><span class="n">9</span>Melchisédech, roi de Salem</a></li>
+          <li data-theme="patriarches"><a href="#abraham"><span class="n">10</span>Abraham et l’alliance</a></li>
+          <li data-theme="patriarches"><a href="#moise"><span class="n">11</span>Moïse au Sinaï</a></li>
+          <li data-theme="jesus"><a href="#annonce"><span class="n">12</span>L’annonce à Marie</a></li>
+          <li data-theme="jesus"><a href="#naissance"><span class="n">13</span>La naissance et l’étoile</a></li>
+          <li data-theme="jesus"><a href="#bapteme"><span class="n">14</span>Le baptême au Jourdain</a></li>
+          <li data-theme="jesus"><a href="#tentation"><span class="n">15</span>La tentation au désert</a></li>
+          <li data-theme="jesus"><a href="#notre-pere"><span class="n">16</span>Le Notre Père</a></li>
+          <li data-theme="jesus"><a href="#lazare"><span class="n">17</span>La résurrection de Lazare</a></li>
+          <li data-theme="jesus"><a href="#paques"><span class="n">18</span>La Cène, la croix, le tombeau vide</a></li>
+          <li data-theme="jesus"><a href="#ascension"><span class="n">19</span>L’ascension</a></li>
+          <li data-theme="jesus"><a href="#pentecote"><span class="n">20</span>La Pentecôte</a></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="themes">
+
+      <!-- ===================== Les origines et la rébellion ===================== -->
+      <section class="theme" id="th-origines" data-theme="origines" aria-labelledby="h-origines">
+        <div class="theme-head">
+          <h3 id="h-origines">Les origines et la rébellion</h3>
+          <p>Le livre consacre deux fascicules à la rébellion de Lucifer, Souverain du système de Satania, qu’il situe il y a environ 200 000 ans (fascicules 53 et 54 ; <span class="ref">61:7.8</span>). Il y lit des passages bibliques sur un être déchu et sur un combat céleste.</p>
+        </div>
+        <div class="cards">
+
+          <article class="pcard" id="lucifer" data-theme="origines" aria-labelledby="t-lucifer">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">1</span><h4 id="t-lucifer">Lucifer, l’astre déchu</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Tu fus parfait dans tes voies depuis le jour où tu fus créé, jusqu’à ce que l’iniquité se trouva en toi.&nbsp;»</p><span class="bref">Ézéchiel 28, 15</span></blockquote>
+                <blockquote class="cite"><p>«&nbsp;Comment es-tu tombé du ciel, astre brillant, fils de l’aurore ?&nbsp;»</p><span class="bref">Isaïe 14, 12</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Lucifer n’était pas un ascendeur, mais un Fils créé de l’univers local, et l’on a dit de lui&nbsp;: “Tu étais parfait dans toutes tes voies depuis le jour où tu fus créé jusqu’au jour où l’injustice fut trouvée en toi.”&nbsp;»</p><span class="ref">53:1.1</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Le livre applique ces deux oracles au même personnage&nbsp;: il cite Ézéchiel ici, puis Ézéchiel 28, 17 et Isaïe 14, 12 quelques lignes plus loin (<span class="ref">53:1.3</span>). Une lecture chrétienne ancienne les rapportait déjà à la chute de Satan.</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Dans la Bible, le premier oracle vise le roi de Tyr (<span class="bref">Ézéchiel 28, 12</span>), le second le roi de Babylone (<span class="bref">Isaïe 14, 4</span>). Pour le livre, Lucifer est un Fils Lanonandek, Souverain déchu du système de Satania (<span class="ref">53:0.1</span> ; <span class="ref">53:1.3</span>), distinct de Satan, son lieutenant (<span class="ref">53:1.4</span>). La Crampon traduit «&nbsp;astre brillant&nbsp;» là où le livre écrit «&nbsp;Lucifer&nbsp;».</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Il présente Isaïe 14, 12 comme la vision qu’un ancien prophète eut de la triste condition de Lucifer (<span class="ref">53:1.3</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="guerre" data-theme="origines" aria-labelledby="t-guerre">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">2</span><h4 id="t-guerre">La guerre dans le ciel</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et il y eut un combat dans le ciel&nbsp;: Michel et ses anges combattaient contre le dragon ; et le dragon et ses anges combattaient ; mais ils ne purent vaincre, et leur place même ne se trouva plus dans le ciel.&nbsp;»</p><span class="bref">Apocalypse 12, 7-8</span></blockquote>
+                <blockquote class="cite"><p>«&nbsp;[…] le grand dragon, le serpent ancien, celui qui est appelé le diable et Satan, le séducteur de toute la terre […]&nbsp;»</p><span class="bref">Apocalypse 12, 9</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;“Il y eut guerre dans le ciel ; le lieutenant de Micaël et ses anges combattirent contre le dragon (Lucifer, Satan et les princes apostats) ; et le dragon et ses anges rebelles combattirent, mais ne prévalurent pas.” Cette “guerre dans le ciel” ne fut pas une bataille physique, un conflit comme on les conçoit sur Urantia.&nbsp;»</p><span class="ref">53:5.6</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Le livre cite le passage presque mot pour mot&nbsp;: des anges fidèles combattent le dragon et ses anges, qui ont le dessous.</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre remplace Michel par le chef des armées fidèles, Gabriel (<span class="ref">53:5.4</span>) ; Micaël est pour lui le Fils Créateur de l’univers local, qui choisit de ne pas intervenir (<span class="ref">53:5.1–3</span>). Il décrit le combat comme une lutte d’idées, menée par des discours (<span class="ref">53:5.6</span>). Là où l’Apocalypse fait du dragon «&nbsp;le diable et Satan&nbsp;», le livre distingue trois personnages&nbsp;: Lucifer, Satan, et Caligastia, ancien Prince Planétaire d’Urantia, qu’il identifie au diable (<span class="ref">53:1.4</span>) ; le dragon devient le symbole des trois (<span class="ref">53:1.6</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>On aurait peu entendu parler de Lucifer sur Urantia parce qu’il y délégua Satan pour plaider sa cause (<span class="ref">53:1.4</span>). Au triomphe de Micaël, c’est Gabriel qui lie le dragon, c’est-à-dire tous les chefs rebelles, en des termes proches d’<span class="bref">Apocalypse 20, 2</span> (<span class="ref">53:1.6</span>).</dd></div>
+            </dl>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ===================== Adam et Ève ===================== -->
+      <section class="theme" id="th-adam" data-theme="adam" aria-labelledby="h-adam">
+        <div class="theme-head">
+          <h3 id="h-adam">Adam et Ève</h3>
+          <p>Pour le livre, Adam et Ève sont un Fils et une Fille Matériels venus de Jérusem, arrivés sur Urantia 37 848 ans avant l’an 1934 (<span class="ref">74:0.1</span> ; <span class="ref">74:2.6</span>). Les fascicules 73 à 75 racontent leur mission et leur échec ; le narrateur, le séraphin Solonia, dit avoir été la voix entendue dans le Jardin (<span class="ref">51:3.5</span> ; <span class="ref">75:4.2</span>).</p>
+        </div>
+        <div class="cards">
+
+          <article class="pcard" id="jardin" data-theme="adam" aria-labelledby="t-jardin">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">3</span><h4 id="t-jardin">Le jardin d’Éden</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Puis Yahweh Dieu planta un jardin en Eden du côté de l’Orient, et il y mit l’homme qu’il avait formé. […] l’arbre de la vie au milieu du jardin, et l’arbre de la connaissance du bien et du mal.&nbsp;»</p><span class="bref">Genèse 2, 8-9</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Il est possible que “l’arbre de la connaissance du bien et du mal” soit une figure de rhétorique, une désignation symbolique couvrant une multitude d’expériences humaines, mais “l’arbre de vie” n’était pas un mythe ; il était réel et fut longtemps présent sur Urantia.&nbsp;»</p><span class="ref">73:6.3</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Un jardin nommé Éden, préparé pour le premier couple ; un arbre de vie dont le fruit entretient la vie (<span class="ref">73:6.4</span> ; <span class="bref">Genèse 3, 22</span>). Plus tard, un second jardin s’établit entre le Tigre et l’Euphrate, deux des fleuves de <span class="bref">Genèse 2, 14</span> (<span class="ref">76:0.1</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Dans le livre, le jardin n’est pas planté par Dieu&nbsp;: plus de trois mille volontaires réunis par Van et Amadon le préparent (<span class="ref">73:2.3</span>), sur une longue péninsule de la côte orientale de la Méditerranée (<span class="ref">73:3.1</span>), engloutie plus tard (<span class="ref">73:7.1</span>). Adam et Ève ne sont pas façonnés sur place&nbsp;: ils arrivent de Jérusem (<span class="ref">74:0.1</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>La création en six jours viendrait des six jours qu’Adam et Ève passèrent à inspecter le Jardin (<span class="ref">74:8.1–2</span>) ; Ève tirée d’une côte d’Adam serait un souvenir confus de son arrivée, mêlé à celui d’une opération céleste bien plus ancienne (<span class="ref">74:8.3</span>). Le récit biblique de la création daterait de longtemps après Moïse ; des prêtres juifs l’auraient achevé avant leur retour d’exil (<span class="ref">74:8.7</span> ; <span class="ref">74:8.11</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="eve" data-theme="adam" aria-labelledby="t-eve">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">4</span><h4 id="t-eve">Ève, le serpent et Cano</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Le serpent dit à la femme&nbsp;: “Non, vous ne mourrez point ; […]” La femme vit que le fruit de l’arbre était bon à manger, agréable à la vue […] ; elle prit de son fruit et en mangea […].&nbsp;»</p><span class="bref">Genèse 3, 4-6</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;[…] Cano, ne connaissant ni l’importance ni le sens de ces remontrances, l’avait assurée que des hommes et des femmes ayant de bons mobiles et des intentions sincères ne pouvaient faire de mal, que surement elle ne mourrait pas […].&nbsp;»</p><span class="ref">75:4.5</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Un avertissement&nbsp;: le jour de la faute, ce sera la mort (<span class="bref">Genèse 2, 17</span> ; <span class="ref">75:4.4</span>). Un séducteur affirme le contraire. Ève trouve agréable à regarder ce qui la tente (<span class="ref">75:4.7</span>). Puis une voix dans le jardin leur demande où ils sont (<span class="bref">Genèse 3, 9</span> ; <span class="ref">75:4.8</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre ne parle ni de serpent ni de fruit défendu&nbsp;: pour lui, la faute est l’union d’Ève avec Cano, un chef nodite, dans un projet de Sérapatatia pour hâter l’élévation des peuples (<span class="ref">75:3.5–9</span>), projet dont Caligastia se servait à l’insu de Sérapatatia (<span class="ref">75:3.3</span> ; <span class="ref">75:3.6</span>). Mêler le bien et le mal désigne, pour lui, cet écart par rapport au plan divin (<span class="ref">75:4.3–6</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>La voix qui appelle Adam et Ève serait celle du narrateur, venu leur reprocher leur désobéissance ; les générations suivantes attribuaient aux Dieux tout ce qui sortait de l’ordinaire (<span class="ref">75:4.2</span> ; <span class="ref">75:4.8</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="sortie" data-theme="adam" aria-labelledby="t-sortie">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">5</span><h4 id="t-sortie">La sortie du jardin</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et Yahweh Dieu le fit sortir du jardin d’Eden, pour qu’il cultivât la terre d’où il avait été pris. Et il chassa l’homme, et il mit à l’orient du jardin d’Eden les Chérubins et la flamme de l’épée tournoyante, pour garder le chemin de l’arbre de vie.&nbsp;»</p><span class="bref">Genèse 3, 23-24</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Le lendemain à midi, ces pèlerins s’en allèrent d’Éden à la recherche de nouvelles demeures. Adam n’aimait pas la guerre et choisit, en conséquence, d’abandonner sans opposition le premier jardin aux Nodites.&nbsp;»</p><span class="ref">75:6.2</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Adam et Ève quittent le jardin et perdent l’accès à l’arbre de vie (<span class="ref">75:7.6</span>). Une longue hostilité suit, que le livre décrit avec les mots de <span class="bref">Genèse 3, 15</span> (<span class="ref">75:5.9</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Selon le livre, personne ne les chasse&nbsp;: ils partent devant l’armée nodite qui marche sur le Jardin, avec douze cents fidèles (<span class="ref">75:5.9</span> ; <span class="ref">75:6.2</span>). Au troisième jour, les trois quarts de leurs enfants partent pour Édentia (<span class="ref">75:6.3–4</span>). Après près d’un an de marche, ils atteignent l’Euphrate et y fondent un second jardin (<span class="ref">76:1.1</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Il n’y a pas eu, selon lui, de chute de l’homme&nbsp;: Adam et Ève furent abaissés au rang de mortels, mais leur apport éleva la race humaine (<span class="ref">75:8.1–3</span>). Il juge décourageante la théorie de la chute, fondée sur une croyance à la régression (<span class="ref">74:8.13</span>).</dd></div>
+            </dl>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ===================== Les premiers temps ===================== -->
+      <section class="theme" id="th-premiers" data-theme="premiers" aria-labelledby="h-premiers">
+        <div class="theme-head">
+          <h3 id="h-premiers">Les premiers temps</h3>
+          <p>Les fascicules 76 à 78 suivent les descendants d’Adam en Mésopotamie et leurs voisins nodites. Le livre y retrouve des figures et des épisodes de la Genèse, racontés comme des évènements humains.</p>
+        </div>
+        <div class="cards">
+
+          <article class="pcard" id="cain" data-theme="premiers" aria-labelledby="t-cain">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">6</span><h4 id="t-cain">Caïn et Abel</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Caïn dit à Abel, son frère&nbsp;: “Allons aux champs.” Et, comme ils étaient dans les champs, Caïn s’éleva contre Abel, son frère, et le tua.&nbsp;»</p><span class="bref">Genèse 4, 8</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Un jour, les sarcasmes d’Abel mirent son frère combattif dans une telle fureur que Caïn, dans sa colère, se précipita sur lui et le tua.&nbsp;»</p><span class="ref">76:2.5</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Abel est pâtre, Caïn agriculteur ; ils font des offrandes, et celles d’Abel sont préférées ; Caïn tue son frère, part pour le pays de Nod, à l’est, et y a un fils, Hénoch, que le livre écrit Énoch (<span class="bref">Genèse 4, 2-17</span> ; <span class="ref">76:2.1–2</span> ; <span class="ref">76:2.9</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Pour le livre, le père de Caïn est Cano, et non Adam (<span class="ref">75:5.3</span> ; <span class="ref">76:2.4</span>). Les offrandes vont aux prêtres, et la préférence est la leur (<span class="ref">76:2.2–3</span>). Au lieu du signe de <span class="bref">Genèse 4, 15</span>, Caïn, qui ne porte pas de marque tribale, se repent ; un Ajusteur vient l’habiter et lui donne une supériorité qui le range avec la tribu d’Adam, fort crainte (<span class="ref">76:2.8</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Les éditeurs de la Genèse, voulant effacer toute trace d’humains antérieurs à Adam, auraient oublié de supprimer l’émigration de Caïn au pays de Nod, où il prit femme (<span class="ref">74:8.8</span> ; <span class="bref">Genèse 4, 16-17</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="deluge" data-theme="premiers" aria-labelledby="t-deluge">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">7</span><h4 id="t-deluge">Le déluge</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Les eaux, ayant grossi de plus en plus, couvrirent toutes les hautes montagnes qui sont sous le ciel tout entier.&nbsp;»</p><span class="bref">Genèse 7, 19</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;L’histoire biblique de Noé, de l’arche et du déluge est une invention de la prêtrise hébraïque durant sa captivité à Babylone. Il n’y a jamais eu de déluge universel depuis que la vie fut établie sur Urantia.&nbsp;»</p><span class="ref">78:7.4</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Dans les deux textes, Noé cultive la vigne (<span class="bref">Genèse 9, 20</span> ; <span class="ref">78:7.5</span>), une inondation emporte tout autour de lui, et il est sauvé avec les siens dans une construction flottante ; le livre affirme qu’il a réellement vécu (<span class="ref">78:7.5</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre décrit une crue de l’Euphrate, grossie par de fortes pluies, et non un déluge universel (<span class="ref">78:7.4–5</span>). Elle s’inscrit dans des inondations printanières qui, à partir de 5 000 av. J.-C. environ, vident les villes de la vallée pendant près de mille ans (<span class="ref">78:7.2</span>). Noé est un viticulteur d’Aram, près d’Érech, qui annonçait chaque année les crues (<span class="ref">78:7.5</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Pendant l’exil à Babylone, des prêtres hébreux, cherchant à faire remonter le peuple juif jusqu’à Adam, auraient englouti le monde dans le déluge pour faire descendre Abraham d’un des fils de Noé (<span class="ref">78:7.3</span>). Le livre note que des récits d’inondation universelle existent chez de nombreux peuples (<span class="ref">78:7.4</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="babel" data-theme="premiers" aria-labelledby="t-babel">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">8</span><h4 id="t-babel">La tour de Babel</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Allons, bâtissons-nous une ville et une tour dont le sommet soit dans le ciel, et faisons-nous un monument, de peur que nous ne soyons dispersés sur la face de toute la terre.&nbsp;»</p><span class="bref">Genèse 11, 4</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;La nouvelle ville devait porter le nom de <i>Bablot</i>, architecte et bâtisseur de la tour. Le site porta plus tard le nom de Bablod, et finalement celui de Babel.&nbsp;»</p><span class="ref">77:3.3</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Une ville et une tour conçues comme un monument (<span class="bref">Genèse 11, 4</span> ; <span class="ref">77:3.2</span>) ; le chantier s’arrête et les bâtisseurs se dispersent (<span class="bref">Genèse 11, 8</span> ; <span class="ref">77:4.1</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le récit du livre ne comporte ni intervention divine ni confusion des langues&nbsp;: les Nodites se divisent sur le but de la tour, en viennent aux armes, et les survivants se dispersent (<span class="ref">77:3.4–8</span> ; <span class="ref">77:4.1</span>). Le livre place l’entreprise environ cinquante mille ans après la mort de Nod (<span class="ref">77:3.1</span>) et signale une seconde tentative il y a environ douze mille ans (<span class="ref">77:3.9</span>). Le nom vient de l’architecte, alors que <span class="bref">Genèse 11, 9</span> le rattache à la confusion du langage.</dd></div>
+            </dl>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ===================== Les patriarches ===================== -->
+      <section class="theme" id="th-patriarches" data-theme="patriarches" aria-labelledby="h-patriarches">
+        <div class="theme-head">
+          <h3 id="h-patriarches">Les patriarches</h3>
+          <p>Le fascicule 93 fait de Melchisédech, que le livre écrit Melchizédek, un être céleste venu vivre parmi les hommes ; le fascicule 96 suit Moïse et l’évolution du Dieu des Hébreux.</p>
+        </div>
+        <div class="cards">
+
+          <article class="pcard" id="melchisedech" data-theme="patriarches" aria-labelledby="t-melchisedech">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">9</span><h4 id="t-melchisedech">Melchisédech, roi de Salem</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Melchisédech, roi de Salem, apporta du pain et du vin ; il était prêtre du Dieu Très-Haut.&nbsp;»</p><span class="bref">Genèse 14, 18</span></blockquote>
+                <blockquote class="cite"><p>«&nbsp;[…] sans père, sans mère, sans généalogie, qui n’a ni commencement de jours, ni fin de vie […]&nbsp;»</p><span class="bref">Hébreux 7, 3</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;[…] il avait sagement offert à ces gens de substituer un sacrement de pain et de vin à l’ancien sacrifice de chair et de sang.&nbsp;»</p><span class="ref">93:4.14</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Un prêtre d’El Elyon, le Très-Haut, établi à Salem, que des tribus appelaient roi de Salem (<span class="ref">93:2.3–4</span>) ; Salem deviendra Jérusalem (<span class="ref">93:2.4</span>). Il bénit Abraham, qui lui paie la dime (<span class="bref">Genèse 14, 19-20</span> ; <span class="ref">93:5.14</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Pour le livre, Machiventa Melchizédek est l’un des douze administrateurs provisoires de la planète, qui prend forme humaine 1 973 ans avant la naissance de Jésus et vit quatre-vingt-quatorze ans parmi les hommes (<span class="ref">93:1.3</span> ; <span class="ref">93:2.1–2</span>). Le pain et le vin remplacent les sacrifices sanglants (<span class="ref">93:4.14</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Les scribes hébreux auraient détruit les archives de cette époque, sauf le récit de la rencontre après la bataille de Siddim, qui honorait Abraham (<span class="ref">93:9.9</span>). Le livre cite <span class="bref">Genèse 14, 18</span> (<span class="ref">93:4.14</span>) et <span class="bref">Hébreux 7, 3</span>, dont l’auteur aurait compris la mission de Melchizédek, même si sa comparaison avec Jésus n’est pas très heureuse (<span class="ref">93:9.11</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="abraham" data-theme="patriarches" aria-labelledby="t-abraham">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">10</span><h4 id="t-abraham">Abraham et l’alliance</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et, l’ayant conduit dehors, il dit&nbsp;: “Lève ton regard vers le ciel et compte les étoiles, si tu peux les compter.” Et il lui dit&nbsp;: “Telle sera ta postérité.” Abram eut foi à Yahweh, et Yahweh le lui imputa à justice.&nbsp;»</p><span class="bref">Genèse 15, 5-6</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Melchizédek conclut alors avec lui une alliance formelle à Salem. Il dit à Abraham&nbsp;: “Regarde maintenant les cieux et compte les étoiles si tu peux ; ta semence sera aussi nombreuse qu’elles.” Et Abraham crut Melchizédek, “et cela lui fut imputé à justice”.&nbsp;»</p><span class="ref">93:6.3</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>La famille de Térach, le Tharé de la Crampon, quitte Ur et s’arrête à Haran (<span class="bref">Genèse 11, 31</span> ; <span class="ref">93:5.4</span>) ; Lot accompagne Abraham (<span class="ref">93:5.6</span>) ; la promesse d’une descendance nombreuse comme les étoiles, et une foi comptée comme justice.</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Dans le livre, ce n’est pas Yahweh qui parle, mais Melchizédek, et l’alliance est conclue à Salem (<span class="ref">93:6.3</span>). Abraham vient à Salem sur l’invitation d’un disciple de Melchizédek, Jaram le Hittite (<span class="ref">93:5.5</span>), quand <span class="bref">Genèse 12, 1</span> rapporte un appel de Yahweh. Le livre voit dans cette alliance le salut par la foi, et non par les sacrifices (<span class="ref">93:6.4</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Après l’exil, les Juifs auraient remanié leurs documents pour élever Abraham au-dessus de tous, Melchizédek compris (<span class="ref">93:9.9</span>). S’il est erroné, selon lui, de parler d’un peuple élu, Abraham peut être appelé un élu (<span class="ref">93:5.1</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="moise" data-theme="patriarches" aria-labelledby="t-moise">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">11</span><h4 id="t-moise">Moïse au Sinaï</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;La montagne de Sinaï était toute fumante, parce que Yahweh y était descendu au milieu du feu, et la fumée s’élevait comme la fumée d’une fournaise, et toute la montagne tremblait fortement.&nbsp;»</p><span class="bref">Exode 19, 18</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Il ne semble pas que Moïse aurait jamais réussi à établir son cérémonial cultuel quelque peu évolué, ni à retenir intact le groupe de ses fidèles pendant un quart de siècle, sans la violente éruption du mont Horeb qui se produisit durant la troisième semaine de leur séjour d’adoration à sa base.&nbsp;»</p><span class="ref">96:4.5</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Moïse conduit les Hébreux hors d’Égypte (<span class="ref">96:3.1</span>) ; au Sinaï, il promulgue les Dix Commandements au nom de Yahweh (<span class="ref">96:4.4</span>) ; le feu, la fumée et la montagne qui tremble (<span class="ref">96:4.5</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre y voit une éruption&nbsp;: le Sinaï, ou Horeb, était selon lui un volcan, encore actif au temps du séjour des Israélites (<span class="ref">96:1.11</span>). Yahweh aurait d’abord été le dieu de ce volcan, que Moïse adopta par compromis avant de chercher à l’élever au rang de Déité suprême (<span class="ref">96:1.3</span> ; <span class="ref">96:4.3</span> ; <span class="ref">96:4.7</span>). Il donne à Moïse une mère de la famille royale d’Égypte et un père sémite (<span class="ref">96:3.1</span>), quand <span class="bref">Exode 2, 1-10</span> le fait naitre de parents lévites, puis adopter par la fille de Pharaon.</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Il cite lui-même ce verset de l’Exode, dans sa propre formulation, à l’appui de l’éruption (<span class="ref">96:4.5</span>).</dd></div>
+            </dl>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- ===================== Jésus ===================== -->
+      <section class="theme" id="th-jesus" data-theme="jesus" aria-labelledby="h-jesus">
+        <div class="theme-head">
+          <h3 id="h-jesus">Jésus</h3>
+          <p>La quatrième partie raconte la vie de Jésus en détail (fascicules 120 à 196). Le livre donne sa propre version de l’origine des Évangiles&nbsp;: Marc d’après les souvenirs de Pierre, Matthieu rédigé par Isador, un disciple de l’apôtre, Luc d’après Paul et des témoins, Jean inspiré par l’apôtre mais écrit par Nathan ; il les juge honnêtes, mais imparfaits (<span class="ref">121:8.3–11</span>).</p>
+        </div>
+        <div class="cards">
+
+          <article class="pcard" id="annonce" data-theme="jesus" aria-labelledby="t-annonce">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">12</span><h4 id="t-annonce">L’annonce à Marie</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;L’ange lui dit&nbsp;: “Ne craignez point, Marie, car vous avez trouvé grâce devant Dieu. Voici que vous concevrez en votre sein, et vous enfanterez un fils, et vous lui donnerez le nom de Jésus. […]”&nbsp;»</p><span class="bref">Luc 1, 30-31</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;L’annonce de Gabriel à Marie fut faite le jour qui suivit la conception de Jésus, et ce fut le seul évènement surnaturel lié à l’entière expérience de Marie consistant à porter et à mettre au monde l’enfant de la promesse.&nbsp;»</p><span class="ref">122:3.4</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Gabriel apparait à Marie, lui annonce un fils qu’elle nommera Joshua, c’est-à-dire Jésus, et lui parle de l’enfant qu’attend Élisabeth, sa parente (<span class="bref">Luc 1, 26-36</span> ; <span class="ref">122:3.1</span> ; <span class="ref">122:8.2</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Dans le livre, l’annonce suit la conception au lieu de la précéder (<span class="ref">122:3.4</span>). Le livre ne décrit pas de conception miraculeuse&nbsp;: l’annonce est le seul évènement surnaturel de la grossesse et de la naissance, et Joseph et Marie concluent qu’ils ont été choisis pour devenir les parents du Messie (<span class="ref">122:3.2</span> ; <span class="ref">122:3.4</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Beaucoup de prophéties de l’Ancien Testament auraient été appliquées à Jésus après coup ; dans celle que reprend <span class="bref">Matthieu 1, 23</span>, le mot <i>vierge</i> aurait remplacé <i>jeune fille</i> (<span class="ref">122:4.4</span> ; <span class="bref">Isaïe 7, 14</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="naissance" data-theme="jesus" aria-labelledby="t-naissance">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">13</span><h4 id="t-naissance">La naissance et l’étoile</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et elle mit au monde son fils premier-né, l’enveloppa de langes et le coucha dans une crèche, parce qu’il n’y avait pas de place pour eux dans l’hôtellerie.&nbsp;»</p><span class="bref">Luc 2, 7</span></blockquote>
+                <blockquote class="cite"><p>«&nbsp;Et voilà que l’étoile qu’ils avaient vue en Orient allait devant eux, jusqu’à ce que, venant au-dessus du lieu où était l’Enfant, elle s’arrêta.&nbsp;»</p><span class="bref">Matthieu 2, 9</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Ces hommes sages ne virent pas d’étoile pour les guider vers Bethléem.&nbsp;»</p><span class="ref">122:8.7</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Jésus nait à Bethléem pendant un recensement et il est couché dans une crèche (<span class="bref">Luc 2, 1-7</span> ; <span class="ref">122:8.1</span> ; <span class="ref">122:8.3</span>). Des sages venus d’Orient, des prêtres d’Ur selon le livre, apportent des présents (<span class="bref">Matthieu 2, 1-11</span> ; <span class="ref">122:8.6</span>). Hérode fait massacrer les enfants de Bethléem (<span class="bref">Matthieu 2, 16</span> ; <span class="ref">122:10.3–4</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre date la naissance du 21 aout de l’an 7 av. J.-C., à midi (<span class="ref">122:8.1</span>). Selon lui, aucun berger ne vient&nbsp;: des séraphins chantent, mais aucune oreille humaine ne les entend (<span class="ref">122:8.5</span> ; <span class="bref">Luc 2, 8-14</span>). Il rattache l’étoile à trois conjonctions de Jupiter et de Saturne survenues en l’an 7 av. J.-C. (<span class="ref">122:8.7</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Des zélateurs des générations suivantes auraient bâti sur ces conjonctions la légende de l’étoile qui guide les Mages (<span class="ref">122:8.7</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="bapteme" data-theme="jesus" aria-labelledby="t-bapteme">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">14</span><h4 id="t-bapteme">Le baptême au Jourdain</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et, comme il sortait de l’eau, il vit les cieux s’ouvrir et l’Esprit-Saint descendre sur lui comme une colombe. Et du ciel une voix se fit entendre&nbsp;: “Tu es mon Fils bien-aimé, en toi j’ai mis mes complaisances.”&nbsp;»</p><span class="bref">Marc 1, 10-11</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;[…] il entendit alors ce même esprit originaire du Paradis prendre la parole et dire&nbsp;: “Celui-ci est mon Fils bienaimé en qui j’ai trouvé mon plaisir.”&nbsp;»</p><span class="ref">136:2.3</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Jean baptise Jésus dans le Jourdain ; les cieux s’ouvrent (<span class="ref">136:2.4</span>) ; une voix déclare Jésus Fils bien-aimé.</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Pour le livre, la voix est celle de l’Ajusteur de Jésus, revenu sous une forme personnalisée, qui parle au nom du Père (<span class="ref">136:2.3</span> ; <span class="ref">136:2.5</span>). Seuls Jean et deux frères de Jésus l’entendent (<span class="ref">136:2.3</span>). Le récit du livre ne mentionne pas de colombe. Il précise que Jésus ne confessa aucun péché&nbsp;: ce fut un baptême de consécration (<span class="ref">136:2.6</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Il discute la date de Luc, la quinzième année du règne de Tibère (<span class="bref">Luc 3, 1</span>), et la ramène à l’an 26 en comptant la corégence de Tibère avec Auguste ; Jésus avait alors près de trente-et-un ans et demi (<span class="ref">136:2.8</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="tentation" data-theme="jesus" aria-labelledby="t-tentation">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">15</span><h4 id="t-tentation">La tentation au désert</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Alors Jésus fut conduit par l’Esprit dans le désert pour y être tenté par le diable. Après avoir jeûné pendant quarante jours et quarante nuits, il eut faim. Et le tentateur, s’approchant, lui dit&nbsp;: “Si vous êtes le Fils de Dieu, commandez que ces pierres deviennent des pains.”&nbsp;»</p><span class="bref">Matthieu 4, 1-3</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Les quarante jours dans la solitude de la montagne ne furent pas une période de grandes tentations, mais plutôt la période des <i>grandes décisions</i> du Maitre.&nbsp;»</p><span class="ref">136:4.10</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Après le baptême, quarante jours de retraite solitaire (<span class="ref">136:2.6</span> ; <span class="ref">136:3.2</span>) ; la faim, et la question d’user de ses pouvoirs pour se nourrir (<span class="ref">136:6.1</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre place la rencontre avec Satan et Caligastia plus tôt, sur le mont Hermon, avant le baptême (<span class="ref">134:8.6</span> ; <span class="ref">136:3.1</span>), et dit que pendant les quarante jours, Jésus ne jeune pas et n’est tenté par aucun esprit mauvais (<span class="ref">136:4.3</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>La tradition d’une grande tentation aurait été rattachée à cette retraite par confusion avec les luttes du mont Hermon, et parce qu’on attendait des grands prophètes qu’ils commencent par un jeûne (<span class="ref">136:4.10</span>). Sa décision au sujet de la nourriture aurait été présentée comme un défi lancé par des ennemis imaginaires (<span class="ref">136:6.1</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="notre-pere" data-theme="jesus" aria-labelledby="t-notre-pere">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">16</span><h4 id="t-notre-pere">Le Notre Père</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Vous prierez donc ainsi&nbsp;: Notre Père qui êtes aux cieux, que votre nom soit sanctifié. Que votre règne arrive ; que votre volonté soit faite sur la terre comme au ciel. Donnez-nous aujourd’hui le pain nécessaire à notre subsistance.&nbsp;»</p><span class="bref">Matthieu 6, 9-11</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Donne-nous aujourd’hui notre pain pour demain ;<br>Rafraichis nos âmes avec l’eau de la vie.&nbsp;»</p><span class="ref">144:3.7–8</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Le même ordre et les mêmes demandes&nbsp;: le nom sanctifié, le règne, la volonté, le pain, le pardon, la tentation, le mal (<span class="bref">Matthieu 6, 9-13</span> ; <span class="ref">144:3.3–11</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>La version du livre ajoute deux demandes, l’une sur l’eau de la vie, l’autre sur la perfection (<span class="ref">144:3.8</span> ; <span class="ref">144:3.12</span>), et demande d’être sauvé dans la tentation plutôt que de n’y être pas induit (<span class="ref">144:3.11</span>). Le livre la présente comme la prière que Jésus avait apprise à ses frères et sœurs à Nazareth, donnée à la demande de Jacques Zébédée (<span class="ref">144:3.1–2</span>) ; chez Luc, un disciple demande à Jésus de leur apprendre à prier (<span class="bref">Luc 11, 1</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Deux lignes se seraient perdues dans les copies, et une finale sur le royaume, le pouvoir et la gloire aurait été ajoutée plus tard (<span class="ref">144:3.15</span>). La Crampon s’arrête à «&nbsp;délivrez-nous du mal&nbsp;» (<span class="bref">Matthieu 6, 13</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="lazare" data-theme="jesus" aria-labelledby="t-lazare">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">17</span><h4 id="t-lazare">La résurrection de Lazare</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Ayant parlé ainsi, il cria d’une voix forte&nbsp;: “Lazare, sors !” Et le mort sortit, les pieds et les mains liés de bandelettes, et le visage enveloppé d’un suaire. Jésus leur dit&nbsp;: “Déliez-le, et laissez-le aller.”&nbsp;»</p><span class="bref">Jean 11, 43-44</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;[…] Gabriel […] fit enregistrer le premier — et le dernier — cas, sur Urantia, de résurrection d’une créature mortelle dans la similitude de son corps physique mortel.&nbsp;»</p><span class="ref">168:2.8</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Lazare, au tombeau depuis quatre jours (<span class="bref">Jean 11, 39</span> ; <span class="ref">168:2.9</span>), sort à l’appel de Jésus, lié de bandelettes, le visage couvert, et Jésus demande qu’on le délie et qu’on le laisse aller (<span class="ref">168:2.2–3</span>). Le sanhédrin se réunit aussitôt après (<span class="bref">Jean 11, 47</span> ; <span class="ref">168:2.10</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre décrit la scène invisible&nbsp;: une armée céleste aux ordres de Gabriel (<span class="ref">168:2.1</span>), l’Ajusteur de Lazare qui revient l’habiter (<span class="ref">168:2.6</span>). Lazare, dit-il, n’a gardé aucun souvenir de ses quatre jours dans la tombe (<span class="ref">168:2.9</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="paques" data-theme="jesus" aria-labelledby="t-paques">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">18</span><h4 id="t-paques">La Cène, la croix, le tombeau vide</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Ceci est mon corps, qui est donné pour vous&nbsp;: faites ceci en mémoire de moi.&nbsp;»</p><span class="bref">Luc 22, 19</span></blockquote>
+                <blockquote class="cite"><p>«&nbsp;Elles virent que la pierre avait été roulée loin du sépulcre ; et, étant entrées, elles ne trouvèrent pas le corps du Seigneur Jésus.&nbsp;»</p><span class="bref">Luc 24, 2-3</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Le tombeau de Joseph était vide, non parce que le corps de Jésus avait été ranimé ou ressuscité, mais parce que les armées célestes avaient reçu l’autorisation demandée de lui faire subir une dissolution spéciale et exceptionnelle […].&nbsp;»</p><span class="ref">189:2.7</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Au dernier repas, le pain et la coupe deviennent un mémorial, le souper du souvenir (<span class="ref">179:5.1–3</span>) ; comme chez Luc, une coupe précède le pain (<span class="bref">Luc 22, 17-19</span>). Sur la croix, Jésus remet son esprit au Père (<span class="bref">Luc 23, 46</span> ; <span class="ref">187:5.5</span>). Le tombeau est trouvé vide (<span class="ref">189:2.6</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Dans le livre, la coupe est l’emblème de l’Esprit de Vérité, le pain celui de la parole du Père, sans mention du corps ni du sang (<span class="ref">179:5.1</span> ; <span class="ref">179:5.3</span>). Pour lui, la mort sur la croix n’est pas un sacrifice offert pour apaiser Dieu ni pour payer une dette (<span class="ref">188:4.1</span> ; <span class="ref">188:4.3</span>), et Jésus ressuscite sous une forme morontielle, tandis que son corps de chair reste dans le tombeau (<span class="ref">189:1.1–2</span>).</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>La croyance chrétienne s’est fondée sur le tombeau vide&nbsp;: un fait, dit-il, mais non la vérité de la résurrection, qui a conduit à croire à tort que le corps matériel avait été ressuscité (<span class="ref">189:2.6</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="ascension" data-theme="jesus" aria-labelledby="t-ascension">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">19</span><h4 id="t-ascension">L’ascension</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Après qu’il eut ainsi parlé, il fut élevé en leur présence, et une nuée le déroba à leurs yeux.&nbsp;»</p><span class="bref">Actes 1, 9</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;Après avoir ainsi parlé, le Maitre morontiel disparut de leur vue. Ce qu’on appelle l’ascension de Jésus ne différa en rien de ses autres disparitions de la vision humaine durant les quarante jours de sa carrière morontielle sur Urantia.&nbsp;»</p><span class="ref">193:5.3</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Au mont des Oliviers (<span class="bref">Actes 1, 12</span> ; <span class="ref">193:5.1</span>), au terme de quarante jours d’apparitions (<span class="bref">Actes 1, 3</span>), Jésus demande aux apôtres de rester à Jérusalem jusqu’à ce qu’un pouvoir d’en haut leur soit donné (<span class="bref">Actes 1, 4</span> ; <span class="ref">193:5.2</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Le livre ne parle ni d’élévation, ni de nuée, ni d’hommes vêtus de blanc&nbsp;: Jésus disparait comme lors de ses autres apparitions (<span class="ref">193:5.3</span>). Il donne le jour et l’heure&nbsp;: le jeudi 18 mai, vers sept heures quarante-cinq du matin (<span class="ref">193:5.1</span> ; <span class="ref">193:5.5</span>) ; il suit ensuite Jésus par Jérusem et Édentia jusqu’à Salvington (<span class="ref">193:5.4</span>).</dd></div>
+            </dl>
+          </article>
+
+          <article class="pcard" id="pentecote" data-theme="jesus" aria-labelledby="t-pentecote">
+            <div class="pc-head"><span class="pc-num" aria-hidden="true">20</span><h4 id="t-pentecote">La Pentecôte</h4></div>
+            <div class="duo">
+              <div class="side bible">
+                <p class="side-lbl">La Bible <span>· Crampon, 1923</span></p>
+                <blockquote class="cite"><p>«&nbsp;Et ils virent paraître comme des langues de feu qui se partagèrent et se posèrent sur chacun d’eux. Ils furent tous remplis du Saint-Esprit, et ils se mirent à parler d’autres langues, selon que l’Esprit-Saint leur donnait de s’exprimer.&nbsp;»</p><span class="bref">Actes 2, 3-4</span></blockquote>
+              </div>
+              <div class="side ub">
+                <p class="side-lbl">Le Livre d’Urantia</p>
+                <blockquote class="cite"><p>«&nbsp;[…] tandis que les cent-vingt croyants étaient en prière, ils se rendirent tous compte d’une étrange présence dans la salle.&nbsp;»</p><span class="ref">194:0.1</span></blockquote>
+              </div>
+            </div>
+            <dl class="cmp">
+              <div><dt>Ce qui concorde</dt><dd>Environ cent vingt disciples réunis (<span class="bref">Actes 1, 15</span> ; <span class="ref">194:0.1</span>) ; le jour de la fête, l’Esprit vient sur eux, Pierre prend la parole devant les pèlerins, et beaucoup se joignent à eux (<span class="bref">Actes 2, 14-41</span> ; <span class="ref">194:1.1–2</span>).</dd></div>
+              <div><dt>Ce qui diffère</dt><dd>Ni vent ni langues de feu dans le récit du livre. Les apôtres y parlent grec, hébreu et araméen, et prononcent quelques mots d’autres langues qu’ils connaissaient un peu (<span class="ref">194:1.2</span>), là où <span class="bref">Actes 2, 4-11</span> décrit des auditeurs qui les entendent chacun dans sa langue. Près de deux mille personnes sont gagnées (<span class="ref">194:1.2</span>), contre environ trois mille selon <span class="bref">Actes 2, 41</span>.</dd></div>
+              <div class="dit"><dt>Ce que le livre en dit</dt><dd>Beaucoup d’enseignements étranges se seraient attachés aux premiers récits de la Pentecôte (<span class="ref">194:3.1</span>).</dd></div>
+            </dl>
+          </article>
+
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <section aria-labelledby="h-cit">
+    <div class="sec-head">
+      <h2 id="h-cit">Quand le Livre d’Urantia cite la Bible</h2>
+      <p>Le livre cite souvent la Bible, parfois mot pour mot, parfois en l’adaptant, et le plus souvent sans indiquer le chapitre ni le verset. Voici quelques-unes de ces citations, avec le verset retrouvé dans la Crampon.</p>
+    </div>
+    <ul class="xref">
+      <li><div class="x-ub"><span class="ref">53:1.1</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Ézéchiel 28, 14-15</span>«&nbsp;[…] je t’avais placé sur la sainte montagne de Dieu […]. Tu fus parfait dans tes voies […]&nbsp;»</p><p class="x-note">Les deux versets sont appliqués à Lucifer, qui régnait sur le mont administratif de Jérusem.</p></div></li>
+      <li><div class="x-ub"><span class="ref">53:1.2</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Jude 9</span>«&nbsp;L’archange Michel lui-même, lorsqu’il contestait avec le diable et lui disputait le corps de Moïse […]&nbsp;»</p><p class="x-note">Le livre parle de l’archange de Micaël, au temps de la résurrection de Moïse.</p></div></li>
+      <li><div class="x-ub"><span class="ref">53:1.3</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Isaïe 14, 12</span>«&nbsp;Comment es-tu tombé du ciel, astre brillant, fils de l’aurore ?&nbsp;»</p><p class="x-note">Le livre nomme ici Lucifer, comme la Vulgate latine ; la Crampon traduit l’hébreu.</p></div></li>
+      <li><div class="x-ub"><span class="ref">53:1.6</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Jude 6</span>«&nbsp;[…] les anges qui n’ont pas conservé leur principauté, mais qui ont abandonné leur propre demeure.&nbsp;»</p><p class="x-note">Appliqué aux séraphins rebelles de Jérusem.</p></div></li>
+      <li><div class="x-ub"><span class="ref">47:10.3</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Hébreux 12, 22-23</span>«&nbsp;Mais vous vous êtes approchés de la montagne de Sion, de la cité du Dieu vivant qui est la Jérusalem céleste […]&nbsp;»</p><p class="x-note">Une vision, par Paul, des citoyens ascendants de Jérusem ; le livre nomme Micaël là où la Crampon parle de l’assemblée des premiers nés.</p></div></li>
+      <li><div class="x-ub"><span class="ref">75:5.9</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Genèse 3, 15</span>«&nbsp;Et je mettrai une inimitié entre toi et la femme, entre ta postérité et sa postérité […]&nbsp;»</p><p class="x-note">Appliqué à la longue guerre entre Adamites et Nodites.</p></div></li>
+      <li><div class="x-ub"><span class="ref">1:0.3</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Matthieu 5, 48</span>«&nbsp;Vous donc, soyez parfaits comme votre Père céleste est parfait.&nbsp;»</p><p class="x-note">Le livre en fait le commandement suprême du Père Universel lui-même.</p></div></li>
+      <li><div class="x-ub"><span class="ref">1:3.1</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Jean 4, 24</span>«&nbsp;Dieu est esprit […]&nbsp;»</p><p class="x-note">Première phrase de la section <i>Dieu est un esprit universel</i>.</p></div></li>
+      <li><div class="x-ub"><span class="ref">7:6.1</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Job 38, 7</span>«&nbsp;quand les astres du matin chantaient en chœur, et que tous les fils de Dieu poussaient des cris d’allégresse ?&nbsp;»</p><p class="x-note">Le livre y lit le compte rendu d’un conclave de Fils de Dieu, et ses Étoiles du Matin sont un ordre d’êtres célestes.</p></div></li>
+      <li><div class="x-ub"><span class="ref">43:3.4</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Daniel 4, 14</span>«&nbsp;[…] le Très-Haut domine sur la royauté humaine, qu’il la donne à qui il veut […]&nbsp;»</p><p class="x-note">Rapporté à Daniel et appliqué aux Très Hauts, qui gouvernent la constellation de Norlatiadek. Ce verset est Daniel 4, 17 dans d’autres bibles.</p></div></li>
+      <li><div class="x-ub"><span class="ref">180:3.4</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Jean 14, 2</span>«&nbsp;Il y a beaucoup de demeures dans la maison de mon Père […]&nbsp;»</p><p class="x-note">Jésus y parle des stations de l’univers du Père, des mondes de lumière où les apôtres accèderont un jour.</p></div></li>
+      <li><div class="x-ub"><span class="ref">95:4.5</span> <span class="x-v">cite</span></div><div class="x-body"><p class="x-q"><span class="bref">Proverbes 22, 17</span>«&nbsp;Prête l’oreille et écoute les paroles des sages, applique ton cœur à mon enseignement.&nbsp;»</p><p class="x-note">Une exception&nbsp;: le livre donne lui-même chapitres et versets, pour dire que ce passage, jusqu’à 24, 22, vient presque mot pour mot de la Sagesse égyptienne d’Aménémopé.</p></div></li>
+    </ul>
+  </section>
+
+  <aside class="callout" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces parallèles</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les citations et les références de cette page sont celles des deux livres, vérifiées une à une. Le Livre d’Urantia se présente comme la plus récente des révélations d’époque qu’il recense (<span class="ref">92:4.9</span>). Il cite la Bible, la commente et souvent la corrige&nbsp;: il donne sa version de l’origine du récit de la création (<span class="ref">74:8.7–12</span>) et des Évangiles (<span class="ref">121:8.3–11</span>), et dit que des prêtres hébreux ont remanié leurs récits pendant et après l’exil (<span class="ref">78:7.3</span> ; <span class="ref">93:9.9</span>).</li>
+      <li><b>Lecture courante.</b> Beaucoup de lecteurs du Livre d’Urantia y voient un complément ou une clarification des récits bibliques. Pour les Églises chrétiennes, plusieurs de ces relectures, sur la conception de Jésus, le sens de la croix ou la résurrection du corps, s’écartent de points centraux de leur foi ; juifs et chrétiens lisent ces textes dans leurs propres traditions, que cette page ne résume pas. La Fondation Urantia ne propose aucune interprétation officielle du livre.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Il reconnait s’appuyer sur des concepts humains&nbsp;: plus de mille pour présenter Dieu (<span class="ref">0:12.12</span>) et, pour la vie de Jésus, les idées de plus de deux mille personnes (<span class="ref">121:8.12–14</span>) ; il reprend de même des traditions bibliques, qu’il réinterprète. Sur Isaïe 14, 12, il suit la tradition latine et anglaise qui nomme Lucifer (Vulgate, bible anglaise dite du roi Jacques), là où la Crampon, traduite de l’hébreu, écrit «&nbsp;astre brillant&nbsp;». Plusieurs de ses jugements rejoignent des hypothèses de la critique biblique formulées avant sa parution&nbsp;: des récits de la Genèse mis par écrit par des prêtres pendant l’exil à Babylone (<span class="ref">74:8.11</span> ; <span class="ref">78:7.4</span>), deux auteurs pour le livre d’Isaïe (<span class="ref">96:4.9</span>), une source égyptienne pour une partie des Proverbes (<span class="ref">95:4.5</span>).</li>
+    </ul>
+  </aside>
+
+  <details class="unk">
+    <summary>Ce que le texte ne précise pas</summary>
+    <ul>
+      <li><b>Le serpent de la Genèse.</b> Le livre ne le mentionne jamais, ni dans les fascicules 73 à 76 ni ailleurs à propos d’Éden ; il ne dit donc pas ce que cette figure représente.</li>
+      <li><b>Les destinataires des oracles.</b> En appliquant Ézéchiel 28 et Isaïe 14 à Lucifer (<span class="ref">53:1.1</span> ; <span class="ref">53:1.3</span>), le livre ne signale pas que la Bible les adresse au roi de Tyr et au roi de Babylone.</li>
+      <li><b>Le chef des anges fidèles.</b> La citation de l’Apocalypse en <span class="ref">53:5.6</span> ne le nomme pas ; c’est <span class="ref">53:5.4</span> qui dit que Gabriel prit le commandement des armées loyales.</li>
+      <li><b>La colombe du baptême, la nuée de l’ascension, le vent et les langues de feu de la Pentecôte.</b> Ils sont absents des récits du livre (<span class="ref">136:2</span> ; <span class="ref">193:5</span> ; <span class="ref">194:0–1</span>), qui ne dit pas d’où viendraient ces détails.</li>
+      <li><b>La confusion des langues.</b> Le récit de la tour (<span class="ref">77:3</span>) n’en parle pas.</li>
+      <li><b>La bible citée.</b> Le livre n’indique pas de quelle traduction de la Bible il tire ses citations ; dans l’édition française, elles sont traduites de l’anglais et s’écartent souvent de la Crampon.</li>
+    </ul>
+  </details>
+
+  <nav class="atlas-suite" aria-label="Parcours de découverte"><a class="prec" href="vie-de-jesus.html"><span class="s-lbl">← Étape précédente</span><span class="s-nom">La vie de Jésus</span></a><div class="etape"><p>Parcours de découverte · Étape 12 sur 12</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div><a class="suiv" href="index.html"><span class="s-lbl">Fin du parcours →</span><span class="s-nom">Accueil</span></a></nav>
+<footer class="foot">
+    <p>Sources&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, entre guillemets, une par carte ; le reste est résumé, avec ses références (fascicule:section.paragraphe).</p>
+    <p><i>La Sainte Bible</i>, traduction de l’abbé A. Crampon, édition révisée de 1923 (domaine public), d’après l’édition numérique de Jean-Marie Weber pour mission-web.com (licence Creative Commons BY-NC-SA 3.0). Orthographe d’origine ; guillemets et apostrophes harmonisés. Les numéros de chapitres et de versets sont ceux de la Crampon, qui diffèrent parfois d’autres bibles.</p>
+    <p>Cette page compare deux textes ; elle ne dit pas lequel a raison.</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // Filtres par thème (boutons à bascule exclusifs), sommaire repliable, ancres vers une carte masquée.
+  var NOMS = { origines: "Origines et rébellion", adam: "Adam et Ève", premiers: "Premiers temps", patriarches: "Patriarches", jesus: "Jésus" };
+  var buttons = Array.prototype.slice.call(document.querySelectorAll("#filtres button"));
+  var groups = Array.prototype.slice.call(document.querySelectorAll(".theme"));
+  var tocItems = Array.prototype.slice.call(document.querySelectorAll("#toc-list li"));
+  var status = document.getElementById("f-status");
+  var tocBtn = document.getElementById("toc-btn");
+  var toc = document.getElementById("toc-list");
+
+  function count(f) {
+    return document.querySelectorAll(f === "tous" ? ".pcard" : ".pcard[data-theme=\"" + f + "\"]").length;
+  }
+  function apply(f, announce) {
+    buttons.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-f") === f)); });
+    groups.forEach(function (g) { g.hidden = !(f === "tous" || g.getAttribute("data-theme") === f); });
+    tocItems.forEach(function (li) { li.hidden = !(f === "tous" || li.getAttribute("data-theme") === f); });
+    if (!announce) return;
+    var n = count(f);
+    status.textContent = f === "tous" ? "Les " + n + " parallèles sont affichés."
+      : NOMS[f] + " : " + n + (n > 1 ? " parallèles affichés." : " parallèle affiché.");
+  }
+  buttons.forEach(function (b) {
+    b.addEventListener("click", function () { apply(b.getAttribute("data-f"), true); });
+  });
+
+  tocBtn.addEventListener("click", function () {
+    var open = tocBtn.getAttribute("aria-expanded") === "true";
+    tocBtn.setAttribute("aria-expanded", String(!open));
+    toc.hidden = open;
+  });
+
+  // Une ancre (#lazare, lien partagé, sommaire) vers une carte d’un thème masqué : on réaffiche tout.
+  function reveal() {
+    var id;
+    try { id = decodeURIComponent((location.hash || "").slice(1)); } catch (e) { return; }
+    if (!id) return;
+    var el = document.getElementById(id);
+    if (!el || !el.closest) return;
+    var g = el.closest(".theme");
+    if (g && g.hidden) {
+      apply("tous", true);
+      el.scrollIntoView();
+    }
+  }
+  window.addEventListener("hashchange", reveal);
+  reveal();
+})();
+</script>
+
+<script src="assets/refs-urantia.js" defer></script>
+</body>
+</html>

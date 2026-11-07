@@ -4,29 +4,39 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Vue 3D : d’Urantia au Paradis, les sept superunivers, Havona, la frise du temps de Satania et d’Urantia, la carrière ascendante.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/atlas-3d.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="D’Urantia au Paradis">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="D’Urantia au Paradis (3D) — Le Livre d’Urantia en images">
 <meta property="og:description" content="Vue 3D : d’Urantia au Paradis, les sept superunivers, Havona, la frise du temps de Satania et d’Urantia, la carrière ascendante.">
 <meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/atlas-3d.html">
 <meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>D’Urantia au Paradis</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>D’Urantia au Paradis (3D) — Le Livre d’Urantia en images</title>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-/* Mise en page : une fenêtre sur l’espace. La scène 3D occupe l’écran ; titre en haut à gauche,
-   options en haut à droite, texte du niveau et commandes de zoom en bas, sur des panneaux translucides. */
+/* Mise en page : une fenêtre sur l’espace. La scène 3D occupe l’écran ; titre et pages de l’atlas en haut à gauche,
+   modes en haut à droite, texte du niveau, échelle des niveaux et zoom en bas, sur des panneaux semi-transparents.
+   Téléphone et écrans bas : une ligne de titre avec un menu ☰ ; en bas, le niveau en une ligne, l’échelle et le zoom ;
+   les panneaux s’ouvrent en tiroirs, un seul à la fois. */
 :root {
   --space: #03050C;
   --space-hi: #0B1230;
   --ink: #E8EBF5;
   --muted: #A4ADC8;
-  --panel: rgba(9, 13, 28, 0.6);
-  --panel-hi: rgba(9, 13, 28, 0.86);
-  --panel-solid: rgba(13, 18, 36, 0.93);
+  --panel: rgba(9, 13, 28, 0.7);        /* fiche, frise, carrière, gouvernement, Absolus */
+  --panel-info: rgba(9, 13, 28, 0.6);   /* panneau du niveau */
+  --panel-hi: rgba(9, 13, 28, 0.88);    /* au survol ou au clavier */
+  --panel-touch: rgba(9, 13, 28, 0.84); /* écran tactile : pas de survol */
+  --panel-solid: #0d1224;
   --panel-line: rgba(160, 175, 220, 0.24);
   --gold: #F0B33C;
   --gold-ink: #F6C766;
@@ -37,18 +47,27 @@
   --frame-b: rgba(185, 166, 255, 0.3);
   --abs: #7FD3C4;
   --reb: #FF8A7A;
+  --small: max(.72rem, 11px);           /* petits intitulés : plancher de lisibilité */
+  --gut-l: max(16px, env(safe-area-inset-left, 0px));
+  --gut-r: max(16px, env(safe-area-inset-right, 0px));
   --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
   color-scheme: dark;
 }
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
 html, body { height: 100%; }
 body { margin: 0; background: var(--space); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.5; overflow: hidden; }
 .app { position: relative; width: 100%; height: 100%; overflow: hidden; background: radial-gradient(ellipse at 50% 40%, var(--space-hi) 0%, var(--space) 70%); }
 #c { position: absolute; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; outline: none; }
 .frame { position: absolute; inset: 0; pointer-events: none; opacity: 0; box-shadow: inset 0 0 0 2px var(--frame-a), inset 0 0 70px 8px var(--frame-b); }
-.labels { position: absolute; inset: 0; pointer-events: none; overflow: hidden; -webkit-user-select: none; user-select: none; }
-.l3 { position: absolute; left: 0; top: 0; white-space: nowrap; font: 500 12px/1.2 var(--font-mono); color: var(--muted); text-shadow: 0 0 3px var(--space), 0 0 8px var(--space), 0 0 14px var(--space); padding-bottom: 11px; will-change: transform; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* Étiquettes de la scène : sous l’interface ; les noms cliquables sont des boutons, utilisables au clavier */
+.labels { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; -webkit-user-select: none; user-select: none; }
+.l3 { position: absolute; left: 0; top: 0; white-space: nowrap; font: 500 12px/1.2 var(--font-mono); color: var(--muted); text-shadow: 0 0 3px var(--space), 0 0 8px var(--space), 0 0 14px var(--space); padding: 0 0 11px; will-change: transform; }
+button.l3 { appearance: none; margin: 0; border: 0; border-radius: 4px; background: none; text-align: center; }
 .l3::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 1px; height: 8px; background: currentColor; opacity: .5; }
 .l3.below { padding-bottom: 0; padding-top: 11px; }
 .l3.below::after { bottom: auto; top: 0; }
@@ -58,70 +77,96 @@ body { margin: 0; background: var(--space); color: var(--ink); font-family: var(
 .l3.violet { color: var(--violet); }
 .l3.small { font-size: 11px; }
 .l3.star { color: var(--ink); font-size: 11px; }
-
-.ui {
-  position: absolute; inset: 0; pointer-events: none;
-  display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
-  padding-left: max(16px, env(safe-area-inset-left, 0px));
-  padding-right: max(16px, env(safe-area-inset-right, 0px));
-  padding-block: 14px;
-}
-.top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; -webkit-user-select: none; user-select: none; }
-.title { max-width: 30rem; min-width: 0; }
-.eyebrow { margin: 0; font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-display); text-wrap: balance; }
-.sub { margin: 0; color: var(--muted); max-width: 38ch; font-size: .95rem; }
-.read { margin: 6px 0 0; font-size: .85rem; }
-.abs { position: absolute; z-index: 2; top: 118px; left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); display: grid; gap: 8px; background: var(--panel); border: 1.5px solid var(--frame-a); border-radius: 16px; padding: 12px 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.abs p { margin: 0; }
-.abs-t { font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); text-align: center; }
-.abs-s, .abs-f { font-size: .82rem; color: var(--muted); text-align: center; }
-.abs-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
-.abs-b { display: grid; gap: 5px; padding: 10px 12px; border-radius: 12px; font-size: .84rem; }
-.abs-d { border: 1px solid var(--gold); background: rgba(240, 179, 60, .08); }
-.abs-u { border: 1px solid var(--violet); background: rgba(201, 174, 245, .08); }
-.abs-n { font: 700 1.08rem/1.15 var(--font-display); }
-.abs-d .abs-n { color: var(--gold-ink); }
-.abs-u .abs-n { color: var(--violet); }
-.abs-m { display: grid; justify-items: center; gap: 2px; font: 500 .72rem/1.2 var(--font-mono); color: var(--muted); }
-.abs-m svg { width: 48px; height: 14px; }
-@media (max-width: 640px) { .abs { top: 96px; max-height: 46vh; overflow: auto; } .abs-row { grid-template-columns: minmax(0, 1fr); } .abs-m { grid-auto-flow: column; align-items: center; } }
-.go-btn { appearance: none; cursor: pointer; pointer-events: auto; background: transparent; color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 999px; padding: 1px 9px; font: 500 .84rem/1.4 var(--font-body); }
-.go-btn:hover { background: var(--gold); color: var(--on-gold); }
-.read a { pointer-events: auto; color: var(--gold-ink); }
 .l3.go { pointer-events: auto; cursor: pointer; }
-.l3.go:hover { color: var(--gold-ink); }
-.toggles { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; max-width: 26rem; }
+.l3.go:hover, .l3.go:focus-visible { color: var(--gold-ink); }
+
+/* Interface au-dessus de la scène */
+.ui {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  display: flex; flex-direction: column; justify-content: space-between; gap: 12px;
+  padding: 14px var(--gut-r) 14px var(--gut-l);
+}
+.top { position: relative; z-index: 1; flex: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; -webkit-user-select: none; user-select: none; }
+/* voile dégradé : ni la scène ni ses étiquettes ne gênent la lecture de l’en-tête */
+.top::before { content: ""; position: absolute; z-index: -1; top: -14px; bottom: -40px; left: calc(-1 * var(--gut-l)); right: calc(-1 * var(--gut-r)); background: linear-gradient(rgba(3, 5, 12, .82), rgba(3, 5, 12, .52) 58%, rgba(3, 5, 12, 0)); pointer-events: none; }
+.title { max-width: 30rem; min-width: 0; }
+.eyebrow { margin: 0; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-display); text-wrap: balance; }
+.sub { margin: 0; color: var(--muted); max-width: 38ch; font-size: .95rem; }
+
+/* Menu : les pages de l’atlas ; sur téléphone, un tiroir qui porte aussi les modes et les réglages */
+.menu { position: relative; width: fit-content; margin-top: 8px; pointer-events: auto; }
+.menu > summary { list-style: none; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; padding: 6px 13px; border: 1px solid var(--panel-line); border-radius: 999px; background: var(--panel); color: var(--gold-ink); font: 500 .86rem/1.2 var(--font-body); -webkit-user-select: none; user-select: none; }
+.menu > summary::-webkit-details-marker { display: none; }
+.menu > summary::marker { content: ""; }
+.menu > summary:hover, .menu[open] > summary { border-color: var(--gold); }
+.mi { display: none; width: 18px; height: 13px; background: linear-gradient(currentColor, currentColor) 0 0 / 100% 2px no-repeat, linear-gradient(currentColor, currentColor) 0 50% / 100% 2px no-repeat, linear-gradient(currentColor, currentColor) 0 100% / 100% 2px no-repeat; }
+.ml::after { content: " ▾"; font-size: .8em; }
+.menu-panel { position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; width: min(22rem, calc(100vw - 32px)); max-height: min(72vh, 36rem); overflow: auto; overscroll-behavior: contain; padding: 10px 12px 12px; background: var(--panel-solid); border: 1px solid var(--panel-line); border-radius: 12px; box-shadow: 0 12px 36px rgba(0, 0, 0, .42); }
+.menu-panel h3 { margin: 12px 0 4px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.menu-panel h3:first-child { margin-top: 0; }
+.menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.menu-panel a { display: block; padding: 7px 9px; border-radius: 8px; color: var(--ink); text-decoration: none; font-size: .95rem; }
+.menu-panel a:hover, .menu-panel a:focus-visible { background: rgba(160, 175, 220, .12); color: var(--gold-ink); }
+.menu-modes { display: none; }
+.menu-modes .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Modes (en haut à droite) et boutons */
+.toggles { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; max-width: min(46rem, 62vw); }
 .chip, .ladder button, .round {
   pointer-events: auto; appearance: none; cursor: pointer; color: var(--ink);
   background: var(--panel); border: 1px solid var(--panel-line); border-radius: 999px;
   font: 500 .86rem/1 var(--font-body); padding: 9px 13px;
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
-.chip[aria-pressed="true"] { border-color: var(--gold); color: var(--gold-ink); }
-.bottom { display: grid; gap: 10px; justify-items: start; min-width: 0; }
-.info { pointer-events: auto; max-width: 37rem; max-height: 30vh; overflow: auto; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 11px 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.meta { margin: 0 0 2px; font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.chip[aria-pressed="true"], .chip.on { border-color: var(--gold); color: var(--gold-ink); }
+.go-btn { appearance: none; cursor: pointer; pointer-events: auto; background: transparent; color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 999px; padding: 1px 9px; font: 500 .84rem/1.4 var(--font-body); }
+.go-btn:hover { background: var(--gold); color: var(--on-gold); }
+.bc-x { appearance: none; cursor: pointer; pointer-events: auto; flex: none; width: 36px; height: 36px; padding: 0; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--ink); font: 400 1.3rem/1 var(--font-body); }
+.bc-x:hover { border-color: var(--gold); color: var(--gold-ink); }
+
+/* Bas de l’écran : le niveau, l’échelle des niveaux, le zoom ; seul le panneau de texte rétrécit si la place manque */
+.bottom { flex: 0 1 auto; min-height: 0; min-width: 0; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+.info { position: relative; flex: 0 1 auto; min-height: 0; pointer-events: auto; max-width: 37rem; max-height: 30vh; overflow: auto; overscroll-behavior: contain; background: var(--panel-info); border: 1px solid var(--panel-line); border-radius: 12px; padding: 11px 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.info-head { display: flex; align-items: flex-start; gap: 10px; }
+.info-titles { flex: 1 1 auto; min-width: 0; }
+.meta { margin: 0 0 2px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .info h2 { margin: 0 0 4px; font: 700 1.35rem/1.1 var(--font-display); color: var(--gold-ink); }
-.info p { margin: 0; font-size: .95rem; }
+.info-min { appearance: none; cursor: pointer; flex: none; width: 30px; height: 30px; margin: -4px -6px 0 0; padding: 0; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 600 .95rem/1 var(--font-body); }
+.info-min:hover { color: var(--gold-ink); border-color: var(--gold); }
+.info-more, .info-x { display: none; }
+.info.min .info-body, .ui.card-on .info .info-body { display: none; }
+.info.min h2, .ui.card-on .info h2 { margin-bottom: 0; }
+.info-body p { margin: 0; font-size: .95rem; }
 .info .deity { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--panel-line); }
 .info .deity b { color: var(--violet); font-weight: 700; }
-.info .scale { margin-top: 8px; font: .7rem/1.45 var(--font-mono); color: var(--muted); }
+.info .scale { margin-top: 8px; font: var(--small)/1.45 var(--font-mono); color: var(--muted); }
+.info .scale summary { cursor: pointer; width: fit-content; }
+.info .scale summary:hover { color: var(--gold-ink); }
+.info .scale p { margin: 4px 0 0; font: inherit; }
+.astres { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 8px; }
 .ref { font-family: var(--font-mono); font-size: .78em; color: var(--muted); white-space: nowrap; }
-.ladder { display: flex; gap: 6px; max-width: 100%; overflow-x: auto; pointer-events: auto; padding: 2px; scrollbar-width: thin; }
+.ladder { flex: none; display: flex; gap: 6px; max-width: 100%; overflow-x: auto; pointer-events: auto; padding: 2px; scrollbar-width: thin; }
 .ladder button { flex: none; font-size: .88rem; padding: 9px 12px; }
 .ladder button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
-.zoombar { display: flex; align-items: center; gap: 10px; pointer-events: auto; width: 100%; max-width: 44rem; }
-.zoombar input[type="range"] { flex: 1; min-width: 0; accent-color: var(--gold); }
-.zoombar .end { font: 500 .74rem/1 var(--font-mono); color: var(--muted); white-space: nowrap; }
+.zoombar { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; pointer-events: auto; width: 100%; max-width: 62rem; }
+.zoombar input[type="range"] { flex: 1 1 160px; min-width: 0; accent-color: var(--gold); }
+.zoombar .end { font: 500 var(--small)/1 var(--font-mono); color: var(--muted); white-space: nowrap; }
 .round { width: 38px; height: 38px; padding: 0; display: grid; place-items: center; font: 600 1.2rem/1 var(--font-body); flex: none; }
-.hint { margin: 0; font-size: .8rem; color: var(--muted); pointer-events: auto; }
-.hint a { color: var(--gold-ink); }
-.fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding-block: 24px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-.fallback p { max-width: 36ch; }
+.viewbtns { display: flex; gap: 6px; flex: none; margin-left: 4px; }
+.viewbtns .chip { padding: 8px 11px; font-size: .8rem; }
+.hint { flex: none; margin: 0; font-size: .8rem; color: var(--muted); pointer-events: auto; }
+
+/* Sans WebGL ou sans JavaScript : l’en-tête et le menu restent, avec des liens vers les autres pages */
+.fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px var(--gut-r) 24px var(--gut-l); }
+.fallback p { max-width: 42ch; }
 .fallback a { color: var(--gold-ink); }
-.gov { position: absolute; z-index: 2; top: 118px; right: max(16px, env(safe-area-inset-right, 0px)); width: min(390px, calc(100% - 32px)); max-height: calc(100% - 340px); min-height: 160px; overflow: auto; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 12px 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.gov h2 { margin: 0 0 4px; font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); }
+.ui.no3d .toggles, .ui.no3d .bottom, .ui.no3d .menu-modes { display: none !important; }
+
+/* Qui gouverne quoi */
+.gov { position: absolute; z-index: 2; top: var(--top-r, 118px); right: var(--gut-r); width: min(390px, calc(100% - 32px)); max-height: calc(100% - var(--top-r, 118px) - 150px); min-height: 160px; overflow: auto; overscroll-behavior: contain; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 0 14px 12px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.panel-head { position: sticky; top: 0; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin: 0 -14px 8px; padding: 10px 12px 9px 14px; background: var(--panel-solid); border-bottom: 1px solid var(--panel-line); }
+.gov h2 { margin: 0; font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); }
 .gov .lead { margin: 0 0 10px; font-size: .88rem; color: var(--muted); }
 .gov .legend { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 0 0 10px; font-size: .76rem; color: var(--muted); }
 .gov .legend span { display: inline-flex; align-items: center; gap: 5px; }
@@ -132,12 +177,13 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .gov .gv[aria-current="true"] { border-color: var(--gold); }
 .gov .gv-go { appearance: none; background: none; border: 0; padding: 0; color: inherit; font: inherit; text-align: left; cursor: pointer; display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .gov .gv-n { font: 700 1.05rem/1.15 var(--font-display); }
-.gov .gv-s { font: .7rem/1.3 var(--font-mono); color: var(--muted); }
+.gov .gv-s { font: var(--small)/1.3 var(--font-mono); color: var(--muted); }
 .gov .ru { margin: 0; display: grid; grid-template-columns: 12px minmax(0, 1fr); gap: 6px; align-items: start; font-size: .85rem; }
 .gov .ru .sw { margin-top: 5px; }
 .gov .note { margin: 0; font-size: .78rem; color: var(--muted); }
 .gov details summary { cursor: pointer; font-size: .8rem; color: var(--gold-ink); }
 .gov details svg { width: 100%; height: auto; display: block; margin: 6px 0 4px; }
+.gov .now { margin: 2px 0 0; padding: 6px 8px; border-radius: 8px; border: 1px dashed var(--gold); font-size: .82rem; }
 .dg-center { fill: var(--gold-ink); }
 .dg-gold { fill: var(--gold); }
 .dg-white { fill: var(--ink); fill-opacity: .85; }
@@ -145,20 +191,40 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .dg-violet { fill: var(--violet); }
 .dg-ring { fill: none; stroke: var(--muted); stroke-opacity: .55; stroke-width: 1; }
 .dg-t { font: 500 11px var(--font-mono); fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--space); stroke-width: 3px; }
-.tl { pointer-events: auto; width: min(100%, 54rem); max-height: 50vh; overflow: auto; display: grid; gap: 8px; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 11px 14px 10px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.tl-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; }
-.tl-top .meta { margin: 0; }
+
+/* Schéma des trois Absolus (Déité, au-delà du maitre univers) */
+.abs { position: absolute; z-index: 2; top: var(--top-c, 118px); left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); max-height: calc(100% - var(--top-c, 118px) - 150px); overflow: auto; overscroll-behavior: contain; display: grid; gap: 8px; background: var(--panel); border: 1.5px solid var(--frame-a); border-radius: 16px; padding: 12px 46px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.abs-x { position: absolute; top: 8px; right: 8px; }
+.abs p { margin: 0; }
+.abs-t { font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); text-align: center; }
+.abs-s, .abs-f { font-size: .82rem; color: var(--muted); text-align: center; }
+.abs-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.abs-b { display: grid; gap: 5px; padding: 10px 12px; border-radius: 12px; font-size: .84rem; }
+.abs-d { border: 1px solid var(--gold); background: rgba(240, 179, 60, .08); }
+.abs-u { border: 1px solid var(--violet); background: rgba(201, 174, 245, .08); }
+.abs-n { font: 700 1.08rem/1.15 var(--font-display); }
+.abs-d .abs-n { color: var(--gold-ink); }
+.abs-u .abs-n { color: var(--violet); }
+.abs-m { display: grid; justify-items: center; gap: 2px; font: 500 var(--small)/1.2 var(--font-mono); color: var(--muted); }
+.abs-m svg { width: 48px; height: 14px; }
+
+/* Frise du temps et carrière ascendante */
+.tl { pointer-events: auto; width: min(100%, 54rem); max-height: 50vh; overflow: auto; overscroll-behavior: contain; display: grid; gap: 8px; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 11px 14px 0; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.tl-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2px 12px; }
+.tl-top .meta { margin: 0; flex: 1 1 auto; }
 .tl h2 { margin: 0; font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); }
 .tl-date { margin: 0; font: 500 .8rem/1.35 var(--font-mono); }
+.tl-x { width: 32px; height: 32px; font-size: 1.15rem; }
 .tl-body { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 14px; }
 .tl-card p { margin: 0 0 6px; font-size: .92rem; }
-.tl-q { padding-left: 10px; border-left: 2px solid var(--gold); font-style: italic; }
+.tl-q { padding-left: 10px; border-left: 2px solid var(--gold); font: italic 500 1.04rem/1.36 var(--font-display); }
+.tl-q .ref { font-style: normal; }
 .tl-who { display: flex; flex-wrap: wrap; gap: 4px 6px; margin: 0; padding: 0; list-style: none; }
 .tl-who li { font-size: .74rem; line-height: 1.2; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--panel-line); }
 .tl-who .reb { color: var(--reb); border-color: var(--reb); }
 .tl-who .tri { color: var(--gold-ink); border-color: var(--gold); }
 .tl-who .neu { color: var(--muted); }
-.tl-hold h3 { margin: 0 0 2px; font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tl-hold h3 { margin: 0 0 2px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .tl-hold dl { margin: 0; display: grid; gap: 1px; }
 .tl-hold dt { margin-top: 4px; font: 700 .8rem/1.3 var(--font-body); color: var(--core); }
 .tl-hold dd { margin: 0; font-size: .82rem; }
@@ -166,74 +232,123 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .tl-strip { cursor: pointer; color: var(--ink); }
 .tl-strip svg { display: block; width: 100%; height: auto; }
 .ts-lab { font: 500 9px var(--font-mono); fill: var(--muted); }
-.tl-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+/* commandes collées en bas du panneau : toujours visibles, même quand le texte défile */
+.tl-ctrl { position: sticky; bottom: 0; z-index: 1; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 -14px; padding: 8px 14px 10px; background: var(--panel-solid); border-top: 1px solid var(--panel-line); }
 .tl-ctrl input[type="range"] { flex: 1; min-width: 140px; accent-color: var(--gold); }
 .tl-ctrl label { display: inline-flex; align-items: center; gap: 6px; font-size: .8rem; color: var(--muted); cursor: pointer; }
 .tl-note { margin: 0; font-size: .74rem; color: var(--muted); }
 .ui.tl-on .hint { display: none; }
 .asc-dl { margin: 6px 0 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 3px 10px; font-size: .84rem; }
-.asc-dl dt { font: 500 .68rem/1.7 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.asc-dl dt { font: 500 var(--small)/1.7 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .asc-dl dd { margin: 0; min-width: 0; }
 .asc-diag { min-width: 0; }
 .asc-diag svg { width: 100%; max-width: 230px; height: auto; display: block; margin: 0 auto; }
 .asc-diag .cap { margin: 4px 0 0; font-size: .76rem; color: var(--muted); text-align: center; }
 .asc-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
-.asc-steps button { appearance: none; cursor: pointer; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 500 .74rem/1 var(--font-mono); }
+.asc-steps button { appearance: none; cursor: pointer; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 500 var(--small)/1 var(--font-mono); }
 .asc-steps button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
-.gov .now { margin: 2px 0 0; padding: 6px 8px; border-radius: 8px; border: 1px dashed var(--gold); font-size: .82rem; }
-/* Fiche d’un astre (clic sur une planète, le Soleil, la Lune…) */
-.bcard { position: absolute; z-index: 3; top: 118px; right: max(16px, env(safe-area-inset-right, 0px)); width: min(380px, calc(100% - 32px)); max-height: calc(100% - 290px); min-height: 200px; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 34px rgba(0, 0, 0, .28); }
-.bcard[hidden] { display: none; }
+
+/* Fiche d’un astre (clic sur une planète, le Soleil, la Lune…) : en-tête et navigation opaques */
+.bcard { position: absolute; z-index: 3; top: var(--top-r, 118px); right: var(--gut-r); width: min(380px, calc(100% - 32px)); max-height: calc(100% - var(--top-r, 118px) - 150px); min-height: 200px; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 34px rgba(0, 0, 0, .28); }
 .bc-head { position: sticky; top: 0; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; align-items: start; padding: 13px 14px 10px; background: var(--panel-solid); border-bottom: 1px solid var(--panel-line); }
 .bc-head .eyebrow { grid-column: 1; }
 .bc-head h2 { grid-column: 1; margin: 0; font: 700 1.6rem/1.04 var(--font-display); color: var(--gold-ink); }
-.bc-x { grid-column: 2; grid-row: 1 / span 2; appearance: none; cursor: pointer; width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--ink); font: 400 1.3rem/1 var(--font-body); }
-.bc-x:hover { border-color: var(--gold); color: var(--gold-ink); }
-.bc-body { padding: 4px 14px 12px; display: grid; gap: 9px; font-size: .9rem; line-height: 1.45; }
-.bc-body h3 { margin: 8px 0 0; font: 500 .66rem/1.3 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+.bc-head .bc-x { grid-column: 2; grid-row: 1 / span 2; }
+.bc-body { padding: 4px 14px 12px; display: grid; gap: 9px; font-size: max(.92rem, 13.5px); line-height: 1.45; }
+.bc-body h3 { display: flex; align-items: center; gap: 7px; margin: 8px 0 0; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+.bc-body h3::before { content: ""; flex: none; width: 8px; height: 8px; background: var(--gold); }
+.bc-body h3.bc-astro::before { background: var(--muted); }
 .bc-body p { margin: 0; }
 .bc-q { padding-left: 11px; border-left: 2px solid var(--gold); font: italic 500 1.04rem/1.36 var(--font-display); }
 .bc-q .ref { font-style: normal; }
 .bc-none { color: var(--muted); }
 .bc-facts { margin: 2px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 12px; padding: 9px 11px; border: 1px solid var(--panel-line); border-radius: 10px; }
 .bc-facts div { min-width: 0; }
-.bc-facts dt { font: 500 .62rem/1.35 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.bc-facts dt { font: 500 var(--small)/1.35 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
 .bc-facts dd { margin: 0; font: 600 .88rem/1.3 var(--font-body); font-variant-numeric: tabular-nums; }
 .bc-nav { position: sticky; bottom: 0; margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 6px; padding: 10px 14px 12px; background: var(--panel-solid); border-top: 1px solid var(--panel-line); }
 .bc-nav button { appearance: none; cursor: pointer; min-width: 0; border: 1px solid var(--panel-line); background: transparent; color: var(--ink); border-radius: 999px; padding: 8px 10px; font: 500 .8rem/1.1 var(--font-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .bc-nav button:hover { border-color: var(--gold); }
 .bc-nav .bc-go { border-color: var(--gold); color: var(--gold-ink); }
 .bc-nav button:last-child { text-align: right; }
-.astres { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
-@media (max-width: 640px) {
-  .bcard { top: auto; bottom: max(8px, env(safe-area-inset-bottom, 0px)); left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: 54vh; min-height: 0; }
-  .bc-head h2 { font-size: 1.35rem; }
-}
+
+/* Bulle d’aide de la première visite */
+.coach { position: absolute; z-index: 4; left: 50%; top: 30%; transform: translateX(-50%); width: min(30rem, calc(100% - 32px)); margin: 0; padding: 12px 16px; border: 1px solid var(--gold); border-radius: 14px; background: var(--panel-hi); color: var(--ink); text-align: center; font-size: .95rem; line-height: 1.45; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); pointer-events: auto; }
+.coach .go-btn { margin-left: 6px; }
+
 /* Panneaux semi-transparents : la scène reste visible ; ils s’opacifient au survol ou au clavier pour la lecture */
 .info, .tl, .gov, .bcard, .abs { transition: background-color .25s ease; text-shadow: 0 1px 2px rgba(3, 5, 12, .55); }
-.info:hover, .info:focus-within, .tl:hover, .tl:focus-within, .gov:hover, .gov:focus-within, .bcard:hover, .bcard:focus-within, .abs:hover { background: var(--panel-hi); }
-/* Écrans de bureau peu hauts (fenêtre d’environ 900 px sur un écran 1080p) : tout est un peu plus compact */
+.info:hover, .info:focus-within, .tl:hover, .tl:focus-within, .gov:hover, .gov:focus-within, .bcard:hover, .bcard:focus-within, .abs:hover, .abs:focus-within { background: var(--panel-hi); }
+@media (hover: none) { .info, .tl, .gov, .bcard, .abs { background: var(--panel-touch); } }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+
+/* Écrans de bureau peu hauts (fenêtre d’environ 900 px sur un écran 1080p) : un peu plus compact */
 @media (min-width: 900px) and (max-height: 1000px) {
-  html { font-size: 14px; }
+  html { font-size: 15px; }
   .tl { width: min(100%, 50rem); max-height: 42vh; }
   .info { max-width: 34rem; max-height: 27vh; }
-  .gov { top: 106px; width: min(340px, calc(100% - 32px)); max-height: calc(100% - 300px); }
-  .bcard { top: 106px; width: min(340px, calc(100% - 32px)); max-height: calc(100% - 260px); }
-  .abs { top: 106px; width: min(580px, calc(100% - 32px)); }
+  .gov, .bcard { width: min(340px, calc(100% - 32px)); }
+  .abs { width: min(580px, calc(100% - 32px)); }
 }
-:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
-@media (max-width: 640px) {
-  .tl { max-height: 54vh; }
+
+/* Téléphone (et écrans bas) : une ligne de titre et le menu ☰ ; en bas, le niveau en une ligne, l’échelle, le zoom */
+@media (max-width: 640px), (max-height: 500px) {
+  .ui { gap: 8px; padding-block: 8px 10px; }
+  .top { align-items: center; }
+  .top::before { top: -8px; bottom: -24px; }
+  .title { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; max-width: none; }
+  .title .eyebrow, .sub, .toggles, .hint, .viewbtns, .zoombar .end, .info-min, .ts-lab { display: none; }
+  h1 { flex: 0 1 auto; min-width: 0; margin: 0; font-size: 1.3rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .menu { flex: none; margin: 0; }
+  .menu > summary { min-width: 44px; min-height: 44px; justify-content: center; padding: 0 13px; }
+  .mi { display: block; }
+  .ml { display: none; }
+  .menu-panel { position: fixed; top: 60px; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: calc(100% - 72px); padding: 12px 14px 14px; }
+  .menu-panel a { padding: 11px 10px; font-size: 1rem; }
+  .menu-modes { display: block; }
+  .menu-modes .chip { min-height: 44px; padding: 0 15px; font-size: .92rem; }
+  .bottom { align-items: stretch; gap: 8px; }
+  .info { max-width: none; max-height: none; overflow: visible; padding: 4px 5px 4px 14px; border-radius: 999px; }
+  .info-head { align-items: center; }
+  .info .meta, .info-body { display: none; }
+  .info h2 { margin: 0; font-size: 1.12rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .info-more { display: inline-flex; align-items: center; flex: none; min-height: 44px; padding: 0 15px; border-radius: 999px; border: 1px solid var(--gold); background: transparent; color: var(--gold-ink); font: 500 .92rem/1 var(--font-body); cursor: pointer; }
+  .ladder { padding: 0 0 2px; }
+  .ladder button { min-height: 44px; padding: 0 15px; font-size: .92rem; }
+  .round { width: 46px; height: 46px; }
+  .bc-x { width: 44px; height: 44px; }
+  .go-btn { min-height: 44px; padding: 0 14px; margin: 2px 0; display: inline-flex; align-items: center; }
+  .chip, .bc-nav button, .tl-ctrl .chip { min-height: 44px; }
+  .asc-steps button { min-width: 44px; height: 44px; }
+  .zoombar { flex-wrap: nowrap; max-width: none; gap: 12px; }
+  /* tiroirs : depuis le bas, avec un bouton × ; un seul à la fois (script) */
+  .info.open, .tl, .gov, .bcard, .abs { position: fixed; z-index: 6; top: auto; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); bottom: max(8px, env(safe-area-inset-bottom, 0px)); width: auto; min-height: 0; max-height: 55vh; transform: none; overflow: auto; overscroll-behavior: contain; border-radius: 16px; box-shadow: 0 -10px 34px rgba(0, 0, 0, .4); }
+  .info.open { max-height: 50vh; padding: 0 14px 12px; border-radius: 16px; }
+  .info.open .info-head { position: sticky; top: 0; z-index: 1; margin: 0 -14px 8px; padding: 6px 6px 6px 14px; background: var(--panel-solid); border-bottom: 1px solid var(--panel-line); }
+  .info.open .meta { display: block; }
+  .info.open .info-body { display: block; }
+  .info.open h2 { white-space: normal; }
+  .info.open .info-more { display: none; }
+  .info.open .info-x { display: inline-grid; place-items: center; }
+  .tl-top { position: sticky; top: 0; z-index: 1; margin: 0 -14px; padding: 6px 6px 6px 14px; background: var(--panel-solid); }
+  .tl { padding-top: 0; }
+  .tl-x { width: 44px; height: 44px; }
   .tl-body { grid-template-columns: minmax(0, 1fr); }
-  .ui.tl-on .ladder { display: none; }
-  .ts-lab { display: none; }
-  .gov { top: 104px; max-height: 42vh; }
-  .sub { display: none; }
-  .info { max-height: 24vh; }
-  .info p { font-size: .88rem; }
-  .chip { padding: 8px 10px; font-size: .78rem; }
-  .zoombar .end { display: none; }
-  .hint { display: none; }
+  .abs { padding: 12px 54px 12px 14px; }
+  .abs-row { grid-template-columns: minmax(0, 1fr); }
+  .abs-m { grid-auto-flow: column; align-items: center; }
+  .bc-head h2 { font-size: 1.35rem; }
+  .coach { top: 24%; }
+}
+/* Téléphone à l’horizontale : niveau et zoom côte à côte, tiroirs à droite pour garder la scène visible à gauche */
+@media (max-height: 500px) {
+  .bottom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); grid-template-areas: "ladder ladder" "info zoom"; align-items: center; gap: 6px 12px; }
+  .info { grid-area: info; }
+  .ladder { grid-area: ladder; }
+  .zoombar { grid-area: zoom; }
+  .info.open, .tl, .gov, .bcard, .abs { left: auto; top: 60px; width: min(54%, 27rem); max-height: none; }   /* sous l’en-tête : le menu reste accessible */
+  .menu-panel { width: min(26rem, calc(100% - 16px)); right: auto; }
+  .coach { top: 26%; }
 }
 </style>
 </head>
@@ -241,9 +356,9 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 <div class="app" lang="fr">
   <canvas id="c" role="img" aria-label="Vue 3D : zoom depuis la planète Urantia jusqu’au maitre univers, avec les vraies étoiles voisines, Orvonton, Havona et l’Ile du Paradis."></canvas>
   <div class="frame" id="frame" aria-hidden="true"></div>
-  <div class="labels" id="labels" aria-hidden="true"></div>
   <aside class="gov" id="gov" aria-label="Qui gouverne quoi" hidden></aside>
   <aside class="abs" id="abs" aria-label="Les trois Absolus" hidden>
+    <button type="button" class="bc-x abs-x" id="abs-x" aria-label="Masquer le schéma des Absolus (désactive Déité)" title="Masquer le schéma (désactive Déité)">×</button>
     <p class="abs-t">L’Absolu Universel</p>
     <p class="abs-s">Il unifie le déifié et le non déifié <span class="ref">105:3.8</span>&nbsp;: «&nbsp;Les deux Absolus — Qualifié et Non Qualifié — sont coordonnés et unifiés par l’Absolu Universel et en lui.&nbsp;» <span class="ref">0:3.18</span></p>
     <div class="abs-row">
@@ -263,40 +378,81 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
     <p class="abs-f">Image symbolique&nbsp;: aucun des trois n’est un lieu. La tension entre le déifié et le non déifié est résolue par l’Absolu Universel <span class="ref">0:4.5</span>. Au centre de la vue, le maitre univers baigne dans l’espace que l’Absolu Non Qualifié pénètre.</p>
   </aside>
   <aside class="bcard" id="bcard" aria-labelledby="bc-title" hidden></aside>
+  <p class="coach" id="coach" role="status" hidden></p>
   <div class="ui" id="ui">
     <header class="top">
       <div class="title">
         <p class="eyebrow">Le Livre d’Urantia · atlas en 3D et frise du temps</p>
         <h1>D’Urantia au Paradis</h1>
         <p class="sub">Pars de notre planète, éloigne-toi niveau par niveau, ou déplace-toi librement pour explorer l’univers central et les ceintures de l’espace extérieur.</p>
-        <p class="read"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le Livre d’Urantia en ligne · urantia.org</a></p>
-        <p class="read">Atlas&nbsp;: <a href="index.html">accueil</a> · <a href="familles-de-personnalites.html">familles de personnalités</a> · <a href="concepts-en-schemas.html">concepts en schémas</a> · <a href="nebadon-dans-orvonton.html">schéma 2D</a></p>
+        <details class="menu" id="menu">
+          <summary aria-label="Menu : pages de l’atlas, modes et réglages"><span class="mi" aria-hidden="true"></span><span class="ml">Pages de l’atlas</span></summary>
+          <div class="menu-panel">
+            <h3>Pages de l’atlas</h3>
+            <ul>
+              <li><a href="index.html">Accueil</a></li>
+              <li><a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a></li>
+              <li><a href="familles-de-personnalites.html">Familles de personnalités</a></li>
+              <li><a href="concepts-en-schemas.html">Concepts en schémas</a></li>
+              <li><a href="dieu-et-deite.html">Dieu et la Déité</a></li>
+              <li><a href="histoire-d-urantia.html">L’histoire d’Urantia</a></li>
+              <li><a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a></li>
+              <li><a href="vie-de-jesus.html">La vie de Jésus</a></li>
+              <li><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a></li>
+              <li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre (urantia.org)</a></li>
+            </ul>
+            <div class="menu-modes">
+              <h3>Modes</h3>
+              <div class="chips">
+                <button type="button" class="chip" data-proxy="t-time" aria-pressed="false">La frise du temps</button>
+                <button type="button" class="chip" data-proxy="t-asc" aria-pressed="false">La carrière ascendante</button>
+                <button type="button" class="chip" data-proxy="t-gov" aria-pressed="false">Qui gouverne quoi</button>
+                <button type="button" class="chip" data-proxy="t-coupe" aria-pressed="false">Vue en coupe</button>
+                <button type="button" class="chip" data-proxy="t-deite" aria-pressed="false">Déité</button>
+              </div>
+              <h3>Réglages</h3>
+              <div class="chips">
+                <button type="button" class="chip" data-proxy="t-center">Recentrer</button>
+                <button type="button" class="chip" data-proxy="t-rot" aria-pressed="true">Rotation</button>
+                <button type="button" class="chip" data-proxy="t-lbl" aria-pressed="true">Étiquettes</button>
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
       <div class="toggles">
-        <button type="button" class="chip" id="t-time" aria-pressed="false">Frise du temps</button>
-        <button type="button" class="chip" id="t-asc" aria-pressed="false">Carrière ascendante</button>
-        <button type="button" class="chip" id="t-gov" aria-pressed="false">Gouvernement</button>
-        <button type="button" class="chip" id="t-coupe" aria-pressed="false">Vue en coupe</button>
-        <button type="button" class="chip" id="t-deite" aria-pressed="false">Déité</button>
-        <button type="button" class="chip" id="t-center">Recentrer</button>
-        <button type="button" class="chip" id="t-rot" aria-pressed="true">Rotation</button>
-        <button type="button" class="chip" id="t-lbl" aria-pressed="true">Étiquettes</button>
+        <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps : de la nébuleuse d’Andronover jusqu’aux années 1934 ; la vue 3D suit chaque évènement">La frise du temps</button>
+        <button type="button" class="chip" id="t-asc" aria-pressed="false" title="La carrière ascendante : les étapes après la mort selon le livre, d’Urantia au Paradis">La carrière ascendante</button>
+        <button type="button" class="chip" id="t-gov" aria-pressed="false" title="Qui gouverne quoi : de la planète au maitre univers">Qui gouverne quoi</button>
+        <button type="button" class="chip" id="t-coupe" aria-pressed="false" title="Vue en coupe : section verticale de l’espace, en forme de croix de Malte">Vue en coupe</button>
+        <button type="button" class="chip" id="t-deite" aria-pressed="false" title="Déité : où le texte situe le Suprême, l’Ultime et les trois Absolus">Déité</button>
       </div>
     </header>
     <div class="bottom">
-      <section class="info" aria-live="polite">
-        <p class="meta" id="info-meta">Planète</p>
-        <h2 id="info-h">Urantia</h2>
-        <p id="info-p"></p>
-        <p class="deity" id="info-d" hidden></p>
-        <p class="scale">Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines&nbsp;; pour Orvonton, un rayon déduit des distances de 32:2.11 (le texte ne donne pas sa taille) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Terre et Lune&nbsp;: images de la NASA (domaine public)&nbsp;; continents&nbsp;: Natural Earth (domaine public)&nbsp;; nuages&nbsp;: image générée.</p>
+      <section class="info" id="info" aria-label="Le niveau affiché">
+        <div class="info-head">
+          <div class="info-titles">
+            <p class="meta" id="info-meta">Planète</p>
+            <h2 id="info-h" tabindex="-1">Urantia</h2>
+          </div>
+          <button type="button" class="info-more" id="info-more" aria-expanded="false" aria-controls="info">En savoir plus</button>
+          <button type="button" class="info-min" id="info-min" aria-expanded="true" aria-label="Replier le texte" title="Replier le texte">▾</button>
+          <button type="button" class="bc-x info-x" id="info-x" aria-label="Fermer le texte du niveau">×</button>
+        </div>
+        <div class="info-body" id="info-body">
+          <p id="info-p"></p>
+          <p class="deity" id="info-d" hidden></p>
+          <details class="scale"><summary>Échelle et sources</summary><p>Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines ; pour Orvonton, un rayon déduit des distances de 32:2.11 (le texte ne donne pas sa taille) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Terre et Lune&nbsp;: images de la NASA (domaine public) ; continents&nbsp;: Natural Earth (domaine public) ; nuages&nbsp;: image générée.</p></details>
+        </div>
       </section>
       <section class="tl" id="tl" aria-label="Frise du temps : Nébadon, Norlatiadek, Satania et Urantia" hidden>
         <div class="tl-top">
-          <p class="meta" id="tl-era">Frise du temps</p>
+          <p class="meta" id="tl-era">La frise du temps</p>
           <p class="tl-date" id="tl-d"></p>
+          <button type="button" class="bc-x tl-x" data-close="tl" aria-label="Fermer la frise du temps" title="Fermer">×</button>
         </div>
         <h2 id="tl-t">Frise du temps</h2>
+        <div class="tl-strip" id="tl-strip"></div>
         <div class="tl-body" aria-live="polite">
           <div class="tl-card">
             <p id="tl-p"></p>
@@ -308,7 +464,7 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
             <dl id="tl-h"></dl>
           </div>
         </div>
-        <div class="tl-strip" id="tl-strip"></div>
+        <p class="tl-note">Dates telles qu’écrites&nbsp;: le texte compte «&nbsp;il y a N ans&nbsp;» depuis les premières décennies du XX<sup>e</sup> siècle (57:0.2) ; ses dates exactes sont comptées avant 1934 (62:5.1, 74:0.1). Les conversions en années av. J.-C. sont indiquées à part, et «&nbsp;déduit&nbsp;» signale un calcul. Les mondes rebelles et les lieux sur le globe sont placés de façon schématique ou approximative.</p>
         <div class="tl-ctrl">
           <button type="button" class="chip" id="tl-prev" aria-label="Évènement précédent">◀</button>
           <button type="button" class="chip" id="tl-play" aria-pressed="false">Lecture</button>
@@ -316,12 +472,12 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
           <input type="range" id="tl-r" min="0" max="40" step="1" value="0" aria-label="Évènement de la frise">
           <label><input type="checkbox" id="tl-follow" checked> Suivre en 3D</label>
         </div>
-        <p class="tl-note">Dates telles qu’écrites&nbsp;: le texte compte «&nbsp;il y a N ans&nbsp;» depuis les premières décennies du XX<sup>e</sup> siècle (57:0.2)&nbsp;; ses dates exactes sont comptées avant 1934 (62:5.1, 74:0.1). Les conversions en années av. J.-C. sont indiquées à part, et «&nbsp;déduit&nbsp;» signale un calcul. Les mondes rebelles et les lieux sur le globe sont placés de façon schématique ou approximative.</p>
       </section>
       <section class="tl" id="asc" aria-label="La carrière ascendante, de la mort au Corps de la Finalité" hidden>
         <div class="tl-top">
-          <p class="meta" id="asc-meta">Carrière ascendante</p>
+          <p class="meta" id="asc-meta">La carrière ascendante</p>
           <p class="tl-date" id="asc-lieu"></p>
+          <button type="button" class="bc-x tl-x" data-close="asc" aria-label="Fermer la carrière ascendante" title="Fermer">×</button>
         </div>
         <h2 id="asc-t">Carrière ascendante</h2>
         <div class="tl-body" aria-live="polite">
@@ -332,13 +488,13 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
           <div class="asc-diag" id="asc-diag"></div>
         </div>
         <ol class="asc-steps" id="asc-steps" aria-label="Étapes de la carrière ascendante"></ol>
+        <p class="tl-note">D’après les fascicules 14, 26, 30, 31, 47 et 112 surtout. Le texte ne donne presque aucune durée ni distance, et ne dit pas comment l’on va de Jérusem à Édentia, ni d’Édentia à Salvington. Les sièges d’Édentia, d’Uminor et d’Umajor sont placés de façon schématique ; le trait doré relie les étapes, il ne figure pas une trajectoire.</p>
         <div class="tl-ctrl">
           <button type="button" class="chip" id="asc-prev" aria-label="Étape précédente">◀</button>
           <button type="button" class="chip" id="asc-play" aria-pressed="false">Lecture</button>
           <button type="button" class="chip" id="asc-next" aria-label="Étape suivante">▶</button>
           <label><input type="checkbox" id="asc-follow" checked> Suivre en 3D</label>
         </div>
-        <p class="tl-note">D’après les fascicules 14, 26, 30, 31, 47 et 112 surtout. Le texte ne donne presque aucune durée ni distance, et ne dit pas comment l’on va de Jérusem à Édentia, ni d’Édentia à Salvington. Les sièges d’Édentia, d’Uminor et d’Umajor sont placés de façon schématique&nbsp;; le trait doré relie les étapes, il ne figure pas une trajectoire.</p>
       </section>
       <nav class="ladder" id="ladder" aria-label="Niveaux">
         <button type="button" data-u="0">Urantia</button>
@@ -355,18 +511,29 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         <button type="button" data-u="11">Au-delà</button>
       </nav>
       <div class="zoombar">
-        <button type="button" class="round" id="z-in" aria-label="Se rapprocher">+</button>
+        <button type="button" class="round" id="z-in" aria-label="Se rapprocher" title="Se rapprocher">+</button>
         <span class="end">Urantia</span>
         <input type="range" id="zoom" min="-1" max="11" step="0.01" value="0" aria-label="Zoom, d’Urantia jusqu’au-delà du maitre univers">
         <span class="end">Au-delà</span>
-        <button type="button" class="round" id="z-out" aria-label="S’éloigner">−</button>
+        <button type="button" class="round" id="z-out" aria-label="S’éloigner" title="S’éloigner">−</button>
+        <span class="viewbtns">
+          <button type="button" class="chip" id="t-center" title="Revenir au parcours guidé, Urantia au centre">Recentrer</button>
+          <button type="button" class="chip" id="t-rot" aria-pressed="true" title="Rotation automatique de la vue">Rotation</button>
+          <button type="button" class="chip" id="t-lbl" aria-pressed="true" title="Afficher ou masquer les noms dans la scène">Étiquettes</button>
+        </span>
       </div>
-      <p class="hint">Glisser&nbsp;: tourner · clic droit, Maj + glisser ou deux doigts&nbsp;: se déplacer · clic sur un point ou un nom, double-clic ailleurs&nbsp;: s’en approcher · molette, pincement ou curseur&nbsp;: zoomer · <a href="nebadon-dans-orvonton.html">schéma 2D</a></p>
+      <p class="hint">Glisser&nbsp;: tourner · Maj + glisser ou clic droit&nbsp;: se déplacer · molette ou curseur&nbsp;: zoomer · clic sur un nom, un point ou un astre&nbsp;: s’en approcher · double-clic&nbsp;: plonger vers ce point</p>
     </div>
   </div>
+  <div class="labels" id="labels"></div>
+  <p class="sr-only" id="sr-live" aria-live="polite"></p>
   <div class="fallback" id="fallback" hidden>
-    <p>La vue 3D a besoin de WebGL, que ce navigateur n’active pas ici. <a href="nebadon-dans-orvonton.html">Le schéma 2D</a> reste disponible.</p>
+    <p>La vue 3D a besoin de WebGL, que ce navigateur n’active pas ici. Les autres pages de l’atlas restent disponibles&nbsp;: <a href="index.html">l’accueil</a>, <a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, <a href="histoire-d-urantia.html">l’histoire d’Urantia</a> et <a href="vie-de-jesus.html">la vie de Jésus</a>.</p>
   </div>
+  <noscript>
+    <style>.toggles, .bottom, .labels, #c { display: none !important; }</style>
+    <div class="fallback"><p>La vue 3D a besoin de JavaScript. Les autres pages de l’atlas restent disponibles&nbsp;: <a href="index.html">l’accueil</a>, <a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, <a href="histoire-d-urantia.html">l’histoire d’Urantia</a> et <a href="vie-de-jesus.html">la vie de Jésus</a>.</p></div>
+  </noscript>
 </div>
 
 <script src="assets/lib/three.min.js"></script>
@@ -380,7 +547,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const fallback = document.getElementById('fallback');
   const ui = document.getElementById('ui');
   const canvas = document.getElementById('c');
-  const fail = () => { fallback.hidden = false; ui.hidden = true; };
+  const fail = () => { fallback.hidden = false; ui.classList.add('no3d'); };   // sans WebGL : l’en-tête et le menu des pages restent
   if (!window.THREE || !THREE.OrbitControls) { fail(); return; }
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
@@ -391,6 +558,9 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const reduced = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const small = Math.min(window.innerWidth, window.innerHeight) < 600;
   const F = small ? 0.6 : 1;
+  const touch = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+  const mqMobile = window.matchMedia ? window.matchMedia('(max-width: 640px), (max-height: 500px)') : null;
+  const isMobile = () => !!(mqMobile && mqMobile.matches);   // téléphone ou écran bas : en-tête d’une ligne, panneaux en tiroirs
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
   renderer.localClippingEnabled = true;
@@ -404,7 +574,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   controls.enableZoom = false;
   controls.enablePan = true;
   controls.screenSpacePanning = true;
-  controls.enableDamping = true;
+  controls.enableDamping = !reduced;                       // inertie, sauf si l’on préfère moins d’animations
   controls.dampingFactor = 0.08;
   controls.rotateSpeed = 0.55;
   controls.panSpeed = 0.9;
@@ -665,6 +835,9 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const POLE = eqToScene(0, 0, 1).normalize();        // pôle Nord céleste
   const ECLN = eclToScene(0, 0, 1).normalize();       // pôle Nord de l’écliptique
   sunLight.position.copy(EARTH).negate().normalize(); // la lumière vient du vrai Soleil
+  // Départ : le côté jour face à nous (au moins 81 % du disque éclairé, terminateur visible), quelle que soit la date
+  camera.position.copy(sunLight.position).applyAxisAngle(YAX, 0.9).setLength(D);
+  const DIR0 = camera.position.clone().normalize();
 
   /* ---------- Niveaux ---------- */
   const LV = [];
@@ -756,6 +929,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
   planet.rotation.y = earthAngle(Date.now());
   const MOON_PHYS = new V3();
+  let moonMesh = null;                            // le globe de la Lune, cliquable comme celui d’Urantia
   // La Lune à sa position du jour (formules simplifiées) ; elle présente toujours la même face (57:6.2)
   {
     const d = Date.now() / 86400000 + 2440587.5 - 2451545.0;
@@ -766,6 +940,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const moonMat = fadeMat(L0, new THREE.MeshPhongMaterial({ color: 0xbdbab3, shininess: 4 }), 1, 'planets');
     moonMat.depthWrite = true;
     const moon = new THREE.Mesh(new THREE.SphereGeometry(0.273, 48, 32), moonMat);
+    moonMesh = moon;
     moon.position.copy(mp);
     moon.quaternion.setFromUnitVectors(new V3(1, 0, 0), mp.clone().negate().normalize());   // face visible tournée vers la Terre
     L0.group.add(moon);
@@ -1063,7 +1238,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     STARS.locNames.forEach((n) => {
       if (CURATED.indexOf(n[1]) === -1) return;
       const i = n[0] * 5, d = n[2];
-      lab(LOC, n[1] + ' · ' + nf(d) + ' a.-l.' + (n[1] === 'Antarès' ? ' · 450 fois le diamètre du Soleil (41:3.2)' : ''), new V3(s[i] / 500, s[i + 1] / 500, s[i + 2] / 500), 'star', { vmin: d * 0.5, vmax: Math.min(d * 30, 2600) });
+      lab(LOC, n[1] + ' · ' + nf(d) + ' a.-l.' + (n[1] === 'Antarès' ? ' · 450 fois le diamètre du Soleil (41:3.2)' : ''), new V3(s[i] / 500, s[i + 1] / 500, s[i + 2] / 500), 'star', { vmin: d * 0.5, vmax: Math.min(d * 30, 400) });
     });
   }
 
@@ -1577,9 +1752,9 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
 
   /* ---------- Interface : textes ---------- */
   const INFO = [
-    { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour, à sa vraie distance (environ 384&#8239;000 km, soixante rayons terrestres)&nbsp;: éloigne-toi un peu, ou <button type="button" class="go-btn" data-go="lune">va la voir de près</button>. Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
-    { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley. Les points ont une taille indicative, mais chaque astre existe aussi en vrai volume&nbsp;: clique sur un point, un nom ou un bouton pour t’en approcher et lire ce qu’en dit le livre.<span class="astres">' +
-      ['soleil', 'mercure', 'venus', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton'].map((k) => '<button type="button" class="go-btn" data-go="b:' + k + '">' + BODY[k].n + '</button>').join('') + '</span>' },
+    { h: 'Urantia', p: 'Notre planète, point de départ du zoom&nbsp;: éloigne-toi niveau par niveau avec les boutons du bas, ou <button type="button" class="go-btn" data-go="lune">va voir la Lune de près</button>. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour, à sa vraie distance (environ 384&#8239;000 km, soixante rayons terrestres). Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
+    { h: 'Monmatia', p: (touch ? 'Touche' : 'Clique') + ' un astre pour t’en approcher et lire ce qu’en dit le livre&nbsp;:<span class="astres">' +
+      ['soleil', 'mercure', 'venus', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton'].map((k) => '<button type="button" class="go-btn" data-go="b:' + k + '">' + BODY[k].n + '</button>').join('') + '</span>Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley. Les points ont une taille indicative&nbsp;; chaque astre existe aussi en vrai volume, et son point ou son nom mène jusqu’à lui.' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
     { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#8239;840&#8239;101 planètes habitées' + REF('32:2.9') + '.' },
@@ -1589,7 +1764,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     { h: 'Le grand univers', p: 'Les sept superunivers «&nbsp;parcourent une grande ellipse&nbsp;»' + REF('15:1.2') + ' autour de Havona, l’univers central d’«&nbsp;un milliard de sphères&nbsp;», entouré des corps de gravité obscurs. Au centre se trouve l’Ile du Paradis' + REF('12:1.10') + '. Selon l’orientation d’Urantia, Orvonton a pris «&nbsp;le tournant sud-est du niveau d’espace des superunivers&nbsp;», entre les numéros un et six' + REF('15:1.4–5') + '. Les sept rayons de la roue sont les radiations des Sept Maitres Esprits' + REF('15:0.1') + '. Notre univers local est «&nbsp;près de cette frontière extérieure&nbsp;»' + REF('12:1.13') + '. Les superunivers sont dessinés comme des galaxies spirales&nbsp;: c’est une image, car le texte dit seulement qu’ils sont «&nbsp;à peu près équivalents&nbsp;» en univers locaux et en espace' + REF('12:1.12') + '. Clique sur Havona pour l’explorer de près.' },
     { h: 'Le premier niveau d’espace extérieur', p: 'Autour des sept superunivers s’étend une zone de calme relatif, large en moyenne de 400&#8239;000 années-lumière. À environ un demi-million d’années-lumière au-delà du grand univers commence «&nbsp;une ceinture continue d’activité cosmique&nbsp;», qui s’étend sur plus de 25 millions d’années-lumière' + REF('12:1.14') + '. D’innombrables univers y sont «&nbsp;en cours de formation&nbsp;»' + REF('11:7.7') + '. Cette ceinture tourne dans le sens des aiguilles d’une montre, à l’inverse des superunivers' + REF('12:4.15') + '.' },
     { h: 'Le maitre univers', p: 'Le maitre univers forme «&nbsp;six ellipses concentriques&nbsp;» autour de l’Ile centrale&nbsp;: Havona, les sept superunivers et quatre niveaux d’espace extérieur' + REF('12:1.3–9') + '. Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent le deuxième' + REF('12:1.15') + ', qui semble tourner en sens inverse, comme les superunivers. Une «&nbsp;troisième ceinture d’espace immensément lointaine&nbsp;» paraît s’orienter dans le sens des aiguilles d’une montre' + REF('12:4.15') + '. Le texte ne donne pas la distance des deux derniers niveaux.' },
-    { h: 'Au-delà du maitre univers', p: 'L’espace pénétré s’étend au-delà de la périphérie du maitre univers, «&nbsp;mais de combien au-delà, nous ne le savons pas&nbsp;»' + REF('11:7.4') + '. Active le bouton Déité pour voir comment le texte situe le Suprême, l’Ultime et les trois Absolus.' }
+    { h: 'Au-delà du maitre univers', p: 'L’espace pénétré s’étend au-delà de la périphérie du maitre univers, «&nbsp;mais de combien au-delà, nous ne le savons pas&nbsp;»' + REF('11:7.4') + '. Le bouton Déité montre comment le texte situe le Suprême, l’Ultime et les trois Absolus.' }
   ];
   const COUPE = { h: 'Vue en coupe', p: '«&nbsp;Le Paradis est non spatial&nbsp;»' + REF('11:2.11') + '&nbsp;: l’espace ne le touche pas, seules les zones d’espace médian l’atteignent' + REF('11:7.1') + '. En coupe verticale, l’espace total «&nbsp;ressemblerait un peu à une croix de Malte&nbsp;»' + REF('11:7.3') + '. Les bras horizontaux sont l’espace pénétré, où se trouvent les univers&nbsp;; les bras verticaux, l’espace non pénétré, le réservoir. L’espace pénétré s’épaissit à mesure qu’on s’éloigne du Paradis' + REF('11:7.6') + ' et s’étend au-delà du quatrième niveau d’espace extérieur' + REF('11:7.4') + '.' };
   const SCHEM = ['', '', 'p', 's', 's', 's', 's', '', 's', 'p', 'p', 's'];
@@ -1602,16 +1777,19 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
 
   const PLACES = [
-    { info: T.paradis, c: PAR, r: 0.04 * R8, vmax: 3e5 },
+    { info: INFO[0], c: new V3(), r: 3 * L0.R, vmax: 20 * L0.R },                         // Urantia, même après un léger déplacement
+    { info: { h: 'La Lune', get p() { return HUDB('lune'); } }, c: MOON_PHYS, r: 1.5 * L0.R, vmax: 8 * L0.R },
+    { info: T.paradis, c: PAR, r: 0.04 * R8, vmax: 1.2e5 },
     { info: T.satellites, ring: [PAR, 0.04 * R8, 0.064 * R8], vmax: 5e5 },
     { info: T.havona, ring: [PAR, 0.064 * R8, 0.225 * R8], vmax: 1.4e6 },
     { info: T.gravite, ring: [PAR, 0.235 * R8, 0.32 * R8], vmax: 1.4e6 },
+    { info: T.havona, c: PAR, r: 0.32 * R8, vmax: 7e5 },                                    // vue d’ensemble de Havona (#havona)
     { info: T.uversa, c: L7.P.clone().negate(), r: 30000, vmax: 1.6e5 },
     { info: T.salvington, c: L4.P.clone().negate(), r: 700, vmax: 7000 },
     { info: INFO[1], c: L1.P.clone().negate(), r: 40 * AU, vmax: 1e-3 },
-    { info: INFO[2], c: L2.P.clone().negate(), r: L2.R, vmax: 300 },
+    { info: INFO[2], c: L2.P.clone().negate(), r: 1.6 * L2.R, vmax: 300 },
     { info: INFO[5], c: L5.P.clone().negate(), r: 0.2 * L5.R, vmax: 3e4 },
-    { info: INFO[4], c: L4.P.clone().negate(), r: L4.R, vmax: 2e4 }
+    { info: INFO[4], c: L4.P.clone().negate(), r: L4.R, vmin: 600, vmax: 2e4 }
   ].concat(SUPC.filter((s) => s.k !== 7).map((s) => ({ info: T.sup(s.k), c: at8(s.c), r: 0.25 * R8, vmax: 3e6 }))).concat([
     { info: INFO[7], c: L7.P.clone().negate(), r: L7.R, vmax: 3e6 },
     { info: INFO[8], c: PAR, r: R8, vmax: 1e7 },
@@ -1622,7 +1800,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   function placeAt(f, V) {
     for (let i = 0; i < PLACES.length; i++) {
       const p = PLACES[i];
-      if (V > p.vmax) continue;
+      if (V > p.vmax || V < (p.vmin || 0)) continue;     // chaque description vaut pour une plage de champ
       if (p.ring) {
         const d = f.clone().sub(p.ring[0]).applyAxisAngle(YAX, -PHI);
         const rr = Math.hypot(d.x, d.z / 1.15);
@@ -1734,7 +1912,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   let govOn = false, govCards = [], shownGovN = -1;
   function renderGov() {
     const col = { trinite: 'var(--gold)', esprit: 'var(--violet)', createur: 'var(--core)', obs: 'var(--gold)', deite: 'var(--ink)', absonite: 'var(--abs)', autre: 'var(--muted)' };
-    let h = '<h2>Qui gouverne quoi</h2><p class="lead">Deux lignées d’autorité. Les superunivers relèvent de la Trinité du Paradis. «&nbsp;L’administration par des personnes d’origine trinitaire prend fin avec les gouvernements des superunivers.&nbsp;»' + REF('33:5.1') + ' Les univers locaux sont sous «&nbsp;la souveraineté conjointe des Fils Créateurs et des Esprits Créatifs&nbsp;»' + REF('15:0.1') + '&nbsp;: le Fils Créateur en est le père, la Divine Ministre la mère' + REF('33:5.1') + '. Des observateurs de la Trinité y siègent comme conseillers, jusqu’aux constellations' + REF('18:6.1 · 18:7.5') + '.</p>';
+    let h = '<div class="panel-head"><h2 id="gov-title">Qui gouverne quoi</h2><button type="button" class="bc-x gov-x" aria-label="Fermer « Qui gouverne quoi »" title="Fermer">×</button></div><p class="lead">Deux lignées d’autorité. Les superunivers relèvent de la Trinité du Paradis. «&nbsp;L’administration par des personnes d’origine trinitaire prend fin avec les gouvernements des superunivers.&nbsp;»' + REF('33:5.1') + ' Les univers locaux sont sous «&nbsp;la souveraineté conjointe des Fils Créateurs et des Esprits Créatifs&nbsp;»' + REF('15:0.1') + '&nbsp;: le Fils Créateur en est le père, la Divine Ministre la mère' + REF('33:5.1') + '. Des observateurs de la Trinité y siègent comme conseillers, jusqu’aux constellations' + REF('18:6.1 · 18:7.5') + '.</p>';
     h += '<p class="legend"><span><i class="sw" style="--c:var(--gold)"></i>Trinité</span><span><i class="sw" style="--c:var(--violet)"></i>Esprit Infini</span><span><i class="sw" style="--c:var(--core)"></i>Fils Créateur et Esprit-Mère</span><span><i class="sw obs"></i>observateurs de la Trinité</span><span><i class="sw" style="--c:var(--ink)"></i>Déités en évolution</span><span><i class="sw" style="--c:var(--abs)"></i>êtres absonites</span><span><i class="sw" style="--c:var(--muted)"></i>autres origines</span></p><ol>';
     GOV.forEach((g, i) => {
       h += '<li class="gv"><button type="button" class="gv-go" data-i="' + i + '"><span class="gv-n">' + g.lvl + '</span><span class="gv-s">' + (g.seat || '') + '</span></button>';
@@ -1744,8 +1922,10 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       if (g.diag) h += '<details><summary>Voir le siège et ses sphères</summary>' + svgDiag(g.diag) + '<p class="note">' + CAP[g.diag][1] + '</p></details>';
       h += '</li>';
     });
-    h += '</ol><p class="note" style="margin-top:10px">Clique sur le nom d’un niveau pour t’y rendre. Active la «&nbsp;Frise du temps&nbsp;» pour voir les titulaires successifs&nbsp;: Lucifer puis Lanaforge&nbsp;; Caligastia, Adam et Ève, Micaël, puis Machiventa Melchizédek, son vice-gérant.</p>';
+    h += '</ol><p class="note" style="margin-top:10px">Clique sur le nom d’un niveau pour t’y rendre. Active «&nbsp;La frise du temps&nbsp;» pour voir les titulaires successifs&nbsp;: Lucifer puis Lanaforge&nbsp;; Caligastia, Adam et Ève, Micaël, puis Machiventa Melchizédek, son vice-gérant.</p>';
     govEl.innerHTML = h;
+    const gx = govEl.querySelector('.gov-x');
+    if (gx) gx.addEventListener('click', () => { if (govOn) tGov.click(); });
     govCards = Array.prototype.slice.call(govEl.querySelectorAll('.gv'));
     Array.prototype.forEach.call(govEl.querySelectorAll('.gv-go'), (b) => b.addEventListener('click', () => goGov(GOV[Number(b.dataset.i)])));
   }
@@ -1758,12 +1938,18 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const labelsEl = document.getElementById('labels');
   const ALL = [];
   function mkLabel(l) {
-    l.el = document.createElement('div');
+    // un nom de lieu est cliquable, au clavier aussi (bouton) : on s’en approche
+    // (pas les titres de niveau, ni les repères de la frise, ni les étiquettes de la vue en coupe)
+    const go = !!(l.L && l.L !== SKY && !l.tl && !l.pin && l.mode !== 'coupe' && l.cls.indexOf('core') < 0);
+    l.el = document.createElement(go ? 'button' : 'div');
     l.el.className = 'l3 ' + l.cls + (l.below ? ' below' : '');
     l.el.textContent = l.text;
     l.el.style.display = 'none';
-    // un nom de lieu est cliquable : on s’en approche (pas les titres de niveau ni les repères de la frise)
-    if (l.L && l.L !== SKY && !l.tl && !l.pin && l.cls.indexOf('core') < 0) {
+    // priorité au désencombrement : repères, titres de niveau, lieux en or, autres lieux, étoiles
+    if (l.prio == null) l.prio = l.cls.indexOf('core') >= 0 ? 1 : l.cls.indexOf('gold') >= 0 ? 2 : l.cls.indexOf('star') >= 0 ? 4 : 3;
+    if (!go) l.el.setAttribute('aria-hidden', 'true');
+    else {
+      l.el.type = 'button';
       l.el.classList.add('go');
       l.el.title = 'S’en approcher';
       l.el.addEventListener('click', () => {
@@ -1775,14 +1961,17 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     labelsEl.appendChild(l.el);
   }
   ALLLV.forEach((L) => L.labels.forEach((l) => { l.L = L; l.i = LV.indexOf(L); mkLabel(l); ALL.push(l); }));
-  const hereLabel = { text: 'Urantia · tu es ici', cls: 'gold small', dy: -12 };
+  const hereLabel = { text: 'Urantia · tu es ici', cls: 'gold small', dy: -12, prio: 0 };
   mkLabel(hereLabel);
   const tmp = new V3(), tmp2 = new V3(), pc2 = new V3(), pv = new V3(), pv2 = new V3();
   function place(l, p, w, h) {
     tmp2.copy(p).project(camera);
     if (tmp2.z > 1) return false;
-    const x = (tmp2.x * 0.5 + 0.5) * w, y = (-tmp2.y * 0.5 + 0.5) * h + (l.dy || 0);
+    let x = (tmp2.x * 0.5 + 0.5) * w;
+    const y = (-tmp2.y * 0.5 + 0.5) * h + (l.dy || 0);
     if (x < -80 || x > w + 80 || y < -30 || y > h + 30) return false;
+    if (l.w && x >= 0 && x <= w) x = clamp(x, l.w / 2 + 4, w - l.w / 2 - 4);   // ancre à l’écran : l’étiquette n’en déborde pas
+    l.px = x; l.py = y;
     l.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,' + (l.below ? '0' : '-100%') + ')';
     return true;
   }
@@ -1872,11 +2061,17 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     return f;
   }
   function goFree() { if (!free) { free = true; freeFocus.copy(focusPhys); fly = null; } }
-  function recenter() { if (free) { free = false; fly = null; blendFrom.copy(focusPhys); blendT = 1; } }
+  // revenir au parcours guidé ; quitter un astre referme sa fiche
+  function recenter() { closeCard(); if (free) { free = false; fly = null; blendFrom.copy(focusPhys); blendT = 1; } }
+  // vol vers un point : sa hauteur (arc) et sa durée sont fixées à la première image (frame)
   function flyTo(p) { goFree(); fly = { from: freeFocus.clone(), to: p.clone(), t0: performance.now() }; }
 
-  function killDamping() { controls.enableDamping = false; controls.update(); controls.enableDamping = true; }
-  function startCam(dir) { killDamping(); camAnim = { t0: performance.now(), from: camera.position.clone().sub(controls.target).normalize(), to: dir.clone().normalize() }; controls.enabled = false; }
+  function killDamping() { controls.enableDamping = false; controls.update(); controls.enableDamping = !reduced; }
+  function startCam(dir) {
+    killDamping();
+    if (reduced) { camera.position.copy(controls.target).add(dir.clone().normalize().multiplyScalar(D)); camera.lookAt(controls.target); controls.update(); return; }
+    camAnim = { t0: performance.now(), from: camera.position.clone().sub(controls.target).normalize(), to: dir.clone().normalize() }; controls.enabled = false;
+  }
   function stepCam(now) {
     const k = Math.min(1, (now - camAnim.t0) / 1400);
     const e = k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
@@ -1898,8 +2093,30 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (au < 5000) return '≈ ' + nf(au) + ' UA';
     return '≈ ' + nf(ly) + ' a.-l.';
   }
-  let shownKey = '', shownMeta = '', shownDeity = '', absShown = false;
-  const absEl = document.getElementById('abs');
+  let shownKey = '', shownMeta = '', shownDeity = '', absShown = false, centerOn = false;
+  const absEl = document.getElementById('abs'), tCenter = document.getElementById('t-center');
+  // annonce pour les lecteurs d’écran : le seul titre du niveau, après 700 ms de stabilité
+  const srLive = document.getElementById('sr-live');
+  let srTimer = null, srLast = '';
+  function announce(s) { clearTimeout(srTimer); srTimer = setTimeout(() => { if (s !== srLast) { srLast = s; srLive.textContent = s; } }, 700); }
+  // échelle des niveaux : faire défiler jusqu’au niveau courant (téléphone, fenêtre étroite)
+  function scrollLadder(b) {
+    const L = b.parentNode;
+    if (!L || !L.scrollBy || !b.getBoundingClientRect) return;
+    const br = b.getBoundingClientRect(), lr = L.getBoundingClientRect(), dx = br.left - lr.left - (lr.width - br.width) / 2;
+    if (Math.abs(dx) > 4) L.scrollBy({ left: dx, behavior: reduced ? 'auto' : 'smooth' });
+  }
+  // téléphone : un seul tiroir ouvert à la fois (fiche, gouvernement, frise, carrière, texte du niveau, menu)
+  function onlyDrawer(which) {
+    if (!isMobile()) return;
+    if (which !== 'card' && !bcard.hidden) closeCard();
+    if (which !== 'gov' && govOn) { govOn = false; govEl.hidden = true; tGov.setAttribute('aria-pressed', 'false'); }
+    if (which !== 'tl' && tlOn) setTimeline(false);
+    if (which !== 'asc' && ascOn) setAsc(false);
+    if (which !== 'info') closeInfo();
+    if (which !== 'menu' && menuEl.open) menuEl.open = false;
+  }
+  const drawerOpen = () => isMobile() && (!bcard.hidden || govOn || tlOn || ascOn || infoOpen || menuEl.open);
   function updateHUD(V) {
     const n = Math.max(0, Math.round(uCur));
     let t = coupe ? COUPE : INFO[n], key = coupe ? 'coupe' : 's' + n;
@@ -1914,8 +2131,15 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       shownKey = key;
       infoH.textContent = t.h;
       infoP.innerHTML = t.p;
+      announce(t.h);
     }
-    ladderBtns.forEach((b, i) => { if (i === n && !free) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    ladderBtns.forEach((b, i) => {
+      const cur = i === n && !free;
+      if (cur === (b.getAttribute('aria-current') === 'step')) return;
+      if (cur) { b.setAttribute('aria-current', 'step'); scrollLadder(b); } else b.removeAttribute('aria-current');
+    });
+    if ((free || coupe) !== centerOn) { centerOn = free || coupe; tCenter.classList.toggle('on', centerOn); }   // le chemin du retour se signale
+    syncProxies();
     if (n !== shownGovN) { shownGovN = n; govCards.forEach((c, i) => c.setAttribute('aria-current', String(GOV[i].u === n))); }
     const sc = SCHEM[n];
     const meta = coupe ? 'Section verticale de l’espace · schéma'
@@ -1924,9 +2148,11 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (meta !== shownMeta) { shownMeta = meta; infoMeta.textContent = meta; }
     const dt = deity ? deityText(V) : '';
     if (dt !== shownDeity) { shownDeity = dt; infoD.hidden = !deity; infoD.innerHTML = dt; }
-    const sa = deity && !coupe && V >= 1e9;     // schéma des trois Absolus, au-delà du maitre univers
+    // schéma des trois Absolus, au-delà du maitre univers ; jamais par-dessus « Qui gouverne quoi » ni un autre tiroir
+    const sa = deity && !coupe && !govOn && !drawerOpen() && V >= 1e9;
     if (sa !== absShown) { absShown = sa; absEl.hidden = !sa; }
-    if (!bcard.hidden && !fly && (coupe || V > 4e-3)) closeCard();   // bien au-delà du système solaire, la fiche se referme
+    // bien au-delà du système solaire, la fiche se referme (pas pendant la descente vers l’astre)
+    if (!bcard.hidden && !fly && (coupe || Math.min(V, uToV(uTarget)) > 4e-3)) closeCard();
     if (!sliderActive) slider.value = uCur.toFixed(2);
   }
 
@@ -1944,15 +2170,17 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   ladderBtns.forEach((b) => b.addEventListener('click', () => { recenter(); setU(Number(b.dataset.u)); }));
   document.getElementById('z-in').addEventListener('click', () => setU(Math.ceil(uTarget - 0.01) - 1));
   document.getElementById('z-out').addEventListener('click', () => setU(Math.floor(uTarget + 0.01) + 1));
-  document.getElementById('t-center').addEventListener('click', () => { recenter(); if (coupe) setCoupe(false); });
+  // Recentrer : retour au parcours guidé, et à l’angle de vue de départ
+  tCenter.addEventListener('click', () => { recenter(); if (coupe) setCoupe(false); startCam(uTarget < 1 ? DIR0 : new V3(0, 0.3, 0.95)); });
   slider.addEventListener('input', () => setU(Number(slider.value)));
   slider.addEventListener('pointerdown', () => { sliderActive = true; });
   window.addEventListener('pointerup', () => { sliderActive = false; });
   tCoupe.addEventListener('click', () => setCoupe(!coupe));
-  tDeite.addEventListener('click', () => { deity = !deity; tDeite.setAttribute('aria-pressed', String(deity)); });
+  // Déité : ses halos n’apparaissent qu’à l’échelle du grand univers ; on s’y rend (comme la vue en coupe et #deite)
+  tDeite.addEventListener('click', () => { deity = !deity; tDeite.setAttribute('aria-pressed', String(deity)); if (deity && uTarget < 7.5) { recenter(); setU(8); } });
   const tGov = document.getElementById('t-gov');
   renderGov();
-  tGov.addEventListener('click', () => { govOn = !govOn; govEl.hidden = !govOn; tGov.setAttribute('aria-pressed', String(govOn)); if (govOn) closeCard(); });
+  tGov.addEventListener('click', () => { govOn = !govOn; govEl.hidden = !govOn; tGov.setAttribute('aria-pressed', String(govOn)); if (govOn) { closeCard(); onlyDrawer('gov'); } });
   tRot.addEventListener('click', () => setRotate(!controls.autoRotate));
   tLbl.addEventListener('click', () => { labelsOn = !labelsOn; tLbl.setAttribute('aria-pressed', String(labelsOn)); });
 
@@ -2166,20 +2394,27 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     dynS.text = hs.s ? 'souverain : ' + hs.s : '';
     dynU.el.textContent = dynU.text;
     dynS.el.textContent = dynS.text;
+    dynU.w = dynS.w = 0;                      // à remesurer pour le désencombrement
     setTimeFactors(e.y);
     tlPin = tlOn ? (e.pin || null) : null;
     tsCur.setAttribute('transform', 'translate(' + tsX(tlI).toFixed(1) + ',0)');
     tsLog.setAttribute('transform', 'translate(' + tsL(e.y).toFixed(1) + ',0)');
     if (follow && tlOn && tlFollow.checked) followEvent(e);
   }
+  // lecture automatique au rythme du texte affiché (≈ 210 mots par minute), entre 8 et 25 secondes
+  const readMs = (el) => clamp(2500 + 280 * String((el && el.textContent) || '').split(/\s+/).length, 8000, 25000);
   function setPlay(on) {
-    if (tlTimer) { clearInterval(tlTimer); tlTimer = null; }
-    if (on) tlTimer = setInterval(() => { if (tlI >= EV.length - 1) setPlay(false); else setEvent(tlI + 1, true); }, 7000);
+    if (tlTimer) { clearTimeout(tlTimer); tlTimer = null; }
+    if (on) {
+      const card = tlEl.querySelector('.tl-card');
+      const next = () => { if (tlI >= EV.length - 1) { setPlay(false); return; } setEvent(tlI + 1, true); tlTimer = setTimeout(next, readMs(card)); };
+      tlTimer = setTimeout(next, readMs(card));
+    }
     tlPlayB.setAttribute('aria-pressed', String(on));
     tlPlayB.textContent = on ? 'Pause' : 'Lecture';
   }
   function setTimeline(on) {
-    if (on && ascOn) setAsc(false);
+    if (on) { closeCard(); if (ascOn) setAsc(false); onlyDrawer('tl'); }
     tlOn = on;
     tTime.setAttribute('aria-pressed', String(on));
     tlEl.hidden = !on;
@@ -2291,7 +2526,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const ascMark = new THREE.Sprite(new THREE.SpriteMaterial({ map: ring2Tex, color: 0xF6C766, sizeAttenuation: false, depthTest: false, depthWrite: false, transparent: true }));
   ascMark.renderOrder = 22; ascMark.visible = false;
   scene.add(ascMark);
-  const ascLabel = { text: '', cls: 'gold', dy: -18 };
+  const ascLabel = { text: '', cls: 'gold', dy: -18, prio: 0 };
   mkLabel(ascLabel);
   let ascOn = false, ascI = 0, ascTimer = null;
   ascStepsEl.innerHTML = ASC.map((s, i) => '<li><button type="button" data-i="' + i + '" title="' + plainTxt(s.t) + '" aria-label="Étape ' + (i + 1) + ' : ' + plainTxt(s.t) + '">' + (i + 1) + '</button></li>').join('');
@@ -2307,7 +2542,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   function setAscStep(i, follow) {
     ascI = clamp(Math.round(i), 0, ASC.length - 1);
     const s = ASC[ascI];
-    ascMetaEl.textContent = 'Carrière ascendante · étape ' + (ascI + 1) + '/' + ASC.length;
+    ascMetaEl.textContent = 'La carrière ascendante · étape ' + (ascI + 1) + '/' + ASC.length;
     ascLieuEl.textContent = s.l || '';
     ascTEl.textContent = s.t;
     ascPEl.innerHTML = s.p;
@@ -2318,16 +2553,21 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     ascBtns.forEach((b, k) => { if (k === ascI) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
     ascLabel.text = s.seat ? s.t : '';
     ascLabel.el.textContent = ascLabel.text;
+    ascLabel.w = 0;
     if (follow && ascOn && ascFollow.checked && s.cam) ascGo(s);
   }
   function setAscPlay(on) {
-    if (ascTimer) { clearInterval(ascTimer); ascTimer = null; }
-    if (on) ascTimer = setInterval(() => { if (ascI >= ASC.length - 1) setAscPlay(false); else setAscStep(ascI + 1, true); }, 9000);
+    if (ascTimer) { clearTimeout(ascTimer); ascTimer = null; }
+    if (on) {
+      const card = ascEl.querySelector('.tl-card');
+      const next = () => { if (ascI >= ASC.length - 1) { setAscPlay(false); return; } setAscStep(ascI + 1, true); ascTimer = setTimeout(next, readMs(card)); };
+      ascTimer = setTimeout(next, readMs(card));
+    }
     ascPlayB.setAttribute('aria-pressed', String(on));
     ascPlayB.textContent = on ? 'Pause' : 'Lecture';
   }
   function setAsc(on) {
-    if (on && tlOn) setTimeline(false);
+    if (on) { closeCard(); if (tlOn) setTimeline(false); onlyDrawer('asc'); }
     ascOn = on;
     tAsc.setAttribute('aria-pressed', String(on));
     ascEl.hidden = !on;
@@ -2344,13 +2584,18 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   ascPlayB.addEventListener('click', () => { const on = !ascTimer; if (on && ascI >= ASC.length - 1) setAscStep(0, true); setAscPlay(on); });
   setAscStep(0, false);
   controls.addEventListener('start', () => { if (controls.autoRotate) setRotate(false); });
-  canvas.addEventListener('wheel', (e) => { e.preventDefault(); setU(uTarget + e.deltaY * (e.deltaMode === 1 ? 0.02 : 0.0012)); }, { passive: false });
+  // molette : sur la scène et aussi au-dessus d’une étiquette (sinon la molette n’y ferait rien)
+  const onWheel = (e) => { e.preventDefault(); setU(uTarget + e.deltaY * (e.deltaMode === 1 ? 0.02 : 0.0012)); };
+  canvas.addEventListener('wheel', onWheel, { passive: false });
+  labelsEl.addEventListener('wheel', onWheel, { passive: false });
   let pinch = null, lastTap = 0, lastTapX = 0, lastTapY = 0, tapMoved = false, clickTimer = null;
   const tdist = (t) => Math.hypot(t[0].clientX - t[1].clientX, t[0].clientY - t[1].clientY);
-  canvas.addEventListener('touchstart', (e) => { tapMoved = false; if (e.touches.length === 2) pinch = tdist(e.touches); }, { passive: true });
+  // deux doigts : sur le parcours guidé, ils zooment sans déplacer le point visé ; en exploration libre, ils déplacent aussi
+  canvas.addEventListener('touchstart', (e) => { tapMoved = false; if (e.touches.length === 2) { pinch = tdist(e.touches); controls.enablePan = free; } }, { passive: true });
+  canvas.addEventListener('touchcancel', () => { pinch = null; controls.enablePan = true; }, { passive: true });
   canvas.addEventListener('touchmove', (e) => { tapMoved = true; if (e.touches.length === 2 && pinch) { const d = tdist(e.touches); setU(uTarget - Math.log2(d / pinch) * 0.9); pinch = d; } }, { passive: true });
   canvas.addEventListener('touchend', (e) => {
-    if (e.touches.length < 2) pinch = null;
+    if (e.touches.length < 2) { pinch = null; controls.enablePan = true; }
     if (e.changedTouches.length === 1 && e.touches.length === 0 && !tapMoved) {
       const t = e.changedTouches[0], now = performance.now();
       if (now - lastTap < 320 && Math.hypot(t.clientX - lastTapX, t.clientY - lastTapY) < 30) { clearTimeout(clickTimer); clickTimer = null; diveAt(t.clientX, t.clientY); lastTap = 0; }
@@ -2377,7 +2622,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   // Clic sur un point (étoile, système, amas, univers) : on vole vers lui et on s’en approche
   const pm4 = new THREE.Matrix4(), vp4 = new THREE.Matrix4(), pickV = new V3(), camV = new V3();
   const rayc = new THREE.Raycaster(), rayNdc = new THREE.Vector2(), rsph = new THREE.Sphere();
-  function goMoon() { if (coupe) setCoupe(false); flyTo(MOON_PHYS); setU(vToU(0.75 * L0.R)); }
+  function goMoon() { setRotate(false); if (coupe) setCoupe(false); flyTo(MOON_PHYS); setU(vToU(0.75 * L0.R)); }
 
   /* ---------- Fiches des astres : ce que dit le livre (citations exactes), puis l’astronomie actuelle ---------- */
   const Q = (t, r) => '<p class="bc-q">«&nbsp;' + t + '&nbsp;»' + REF(r) + '</p>';
@@ -2461,26 +2706,45 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       f: [['Période', '≈ 76 ans'], ['Distance au Soleil', '0,6 à 35 UA']] }
   };
   const CARD_ORDER = ['soleil', 'mercure', 'venus', 'urantia', 'lune', 'mars', 'asteroides', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton', 'halley'];
-  const HUDB = (k) => 'Vue à l’échelle réelle. <button type="button" class="go-btn" data-go="f:' + k + '">Ouvrir la fiche</button> Fais glisser pour tourner autour&nbsp;; molette ou bouton −&nbsp;pour t’éloigner.';
+  const HUDB = (k) => 'Vue à l’échelle réelle. <button type="button" class="go-btn" data-go="f:' + k + '">Ouvrir la fiche</button> Fais glisser pour tourner autour&nbsp;; ' + (touch ? 'pince' : 'molette') + ' ou bouton −&nbsp;pour t’éloigner.';
   const bcard = document.getElementById('bcard');
-  let cardKey = '';
+  let cardKey = '', cardReturn = null;
   function openCard(key) {
     const C = CARDS[key];
     if (!C) return;
+    const wasOpen = !bcard.hidden;
     cardKey = key;
     const i = CARD_ORDER.indexOf(key), N = CARD_ORDER.length, pk = CARD_ORDER[(i + N - 1) % N], nk = CARD_ORDER[(i + 1) % N];
     const facts = C.f ? '<dl class="bc-facts">' + C.f.map((x) => '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('') + '</dl>' : '';
-    bcard.innerHTML = '<div class="bc-head"><p class="eyebrow">' + C.e + '</p><h2 id="bc-title">' + C.n + '</h2>' +
+    // chiffres clés d’abord ; repère doré pour le livre, gris pour l’astronomie actuelle
+    bcard.innerHTML = '<div class="bc-head"><p class="eyebrow">' + C.e + '</p><h2 id="bc-title" tabindex="-1">' + C.n + '</h2>' +
       '<button type="button" class="bc-x" data-nav="x" aria-label="Fermer la fiche">×</button></div>' +
-      '<div class="bc-body"><h3>Ce que dit le livre</h3>' + C.b + '<h3>Astronomie actuelle</h3>' + C.s + facts + '</div>' +
+      '<div class="bc-body">' + facts + '<h3 class="bc-livre">Ce que dit le livre</h3>' + C.b + '<h3 class="bc-astro">Astronomie actuelle</h3>' + C.s + '</div>' +
       '<div class="bc-nav"><button type="button" data-nav="' + pk + '" title="Astre précédent : ' + CARDS[pk].k + '">‹ ' + CARDS[pk].k + '</button>' +
       '<button type="button" class="bc-go" data-nav="go">Voir de près</button>' +
       '<button type="button" data-nav="' + nk + '" title="Astre suivant : ' + CARDS[nk].k + '">' + CARDS[nk].k + ' ›</button></div>';
     bcard.hidden = false;
     bcard.scrollTop = 0;
+    ui.classList.add('card-on');                     // le texte du niveau se replie : la fiche le remplace
     if (govOn) tGov.click();                         // une seule fiche à droite à la fois
+    onlyDrawer('card');
+    // le focus va au titre (clavier, lecteurs d’écran) ; il reviendra à l’élément d’origine à la fermeture
+    const a = document.activeElement;
+    if (!wasOpen) cardReturn = a && a !== document.body && !bcard.contains(a) ? a : null;
+    const tt = document.getElementById('bc-title');
+    if (tt && tt.focus) tt.focus({ preventScroll: true });
   }
-  function closeCard() { bcard.hidden = true; cardKey = ''; }
+  function closeCard() {
+    if (bcard.hidden) return;
+    const inside = !!(bcard.contains && bcard.contains(document.activeElement));
+    bcard.hidden = true; cardKey = '';
+    ui.classList.remove('card-on');
+    if (inside) {                                   // focus rendu à l’élément d’origine, ou au titre du niveau s’il n’est plus visible
+      const back = cardReturn && cardReturn.isConnected && cardReturn.getClientRects && cardReturn.getClientRects().length ? cardReturn : infoH;
+      if (back && back.focus) back.focus({ preventScroll: true });
+    }
+    cardReturn = null;
+  }
   function camDir(B) {   // vue choisie : côté éclairé, 20° au-dessus de l’équateur (anneaux ouverts), pôle vers le haut de l’écran si possible
     const q = B.tilt.quaternion, p = new V3(0, 1, 0).applyQuaternion(q), ex = new V3(1, 0, 0).applyQuaternion(q), ey = p.clone().cross(ex), Y = new V3(0, 1, 0);
     let best = null, bs = -1e9;
@@ -2494,6 +2758,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     return best;
   }
   function goBody(key) {                            // voler jusqu’à l’astre, s’en approcher, ouvrir sa fiche
+    setRotate(false);                               // le côté éclairé choisi reste face à nous pendant la lecture
     if (coupe) setCoupe(false);
     const B = BODY_BY[key];
     if (B) {
@@ -2529,6 +2794,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   function pickAt(cx, cy) {
     if (coupe) return false;
     const r = canvas.getBoundingClientRect(), w = r.width, h = r.height, mx = cx - r.left, my = cy - r.top;
+    // Urantia et la Lune : un clic sur le globe ouvre leur fiche (vers la Lune, on vole)
+    rayNdc.set(mx / w * 2 - 1, 1 - my / h * 2);
+    rayc.setFromCamera(rayNdc, camera);
+    if (L0.group.visible && L0.a > 0.5 && FACT.planets > 0.5) {
+      planet.getWorldPosition(camV);
+      if (rayc.ray.intersectsSphere(rsph.set(camV, L0.group.scale.x))) { openCard('urantia'); return true; }
+      if (moonMesh) { moonMesh.getWorldPosition(camV); if (rayc.ray.intersectsSphere(rsph.set(camV, 0.273 * L0.group.scale.x))) { goBody('lune'); return true; } }
+    }
     // un globe assez grand à l’écran : un clic dessus ouvre sa fiche, sans changer le cadrage
     if (PLN.group.visible) {
       rayNdc.set(mx / w * 2 - 1, 1 - my / h * 2);
@@ -2591,8 +2864,22 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   });
   canvas.addEventListener('dblclick', (e) => { e.preventDefault(); clearTimeout(clickTimer); clickTimer = null; diveAt(e.clientX, e.clientY); });
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !bcard.hidden) { closeCard(); return; }
-    if (e.target === slider || e.target === tlR) return;
+    if (e.key === 'Escape') {                         // Échap : ferme ce qui est au-dessus
+      if (!coach.hidden) coach.hidden = true;
+      else if (menuEl.open) { menuEl.open = false; if (menuSum.focus) menuSum.focus(); }
+      else if (!bcard.hidden) closeCard();
+      else if (infoOpen) closeInfo(true);
+      else if (govOn) tGov.click();
+      else if (absShown) tDeite.click();
+      else if (ascOn) setAsc(false);
+      else if (tlOn) setTimeline(false);
+      else if (coupe) setCoupe(false);
+      return;
+    }
+    const tg = e.target;
+    if (tg === slider || tg === tlR || (tg && tg.tagName === 'INPUT')) return;
+    // dans un panneau de texte, le menu ou l’échelle, les flèches servent à lire ou à naviguer, pas à déplacer la vue
+    if (e.key.indexOf('Arrow') === 0 && tg && tg.closest && tg.closest('.info, .bcard, .tl, .gov, .abs, #ladder, .menu')) return;
     const V = uToV(uCur);
     if (e.key === '+' || e.key === '=') setU(uTarget - 0.25);
     else if (e.key === '-' || e.key === '_') setU(uTarget + 0.25);
@@ -2608,15 +2895,60 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   function resize() {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));   // densité d’écran : zoom du navigateur, autre écran
     renderer.setSize(w, h, false);
     camera.aspect = w / h;
     camera.updateProjectionMatrix();
     allPts.forEach((p) => { p.material.uniforms.uPR.value = renderer.getPixelRatio(); });
+    measureTop();
+  }
+  // les panneaux de droite se placent sous les boutons des modes, quelle que soit leur hauteur (polices, largeur)
+  function measureTop() {
+    const de = document.documentElement, tg = document.querySelector('.toggles'), ti = document.querySelector('.title');
+    if (!de || !de.style || !de.style.setProperty || !tg || !ti || !tg.getBoundingClientRect) return;
+    const a = tg.getBoundingClientRect(), b = ti.getBoundingClientRect();
+    if (!a.height) return;                           // téléphone : les modes sont dans le menu, les panneaux en tiroirs
+    de.style.setProperty('--top-r', Math.round(a.top + a.height + 10) + 'px');
+    de.style.setProperty('--top-c', Math.round(Math.max(a.top + a.height, b.top + b.height) + 10) + 'px');
   }
   resize();
   if (window.ResizeObserver) new ResizeObserver(resize).observe(canvas); else window.addEventListener('resize', resize);
 
+  // Zones d’interface où aucune étiquette ne doit passer (lues au début de l’image, avant toute écriture de style)
+  const UI_ZONES = ['.title', '.menu-panel', '.toggles', '.info', '#tl', '#asc', '.ladder', '.zoombar', '.hint', '#bcard', '#gov', '#abs', '#coach']
+    .map((s) => document.querySelector(s)).filter(Boolean);
+  function uiBoxes(cr) {
+    const out = [];
+    UI_ZONES.forEach((e) => {
+      if (e.hidden || !e.getClientRects || !e.getClientRects().length) return;
+      const r = e.getBoundingClientRect();
+      if (r.width > 0 && r.height > 0) out.push([r.left - cr.left - 4, r.top - cr.top - 4, r.left + r.width - cr.left + 4, r.top + r.height - cr.top + 4]);
+    });
+    return out;
+  }
+  // Désencombrement : les plus importantes d’abord (repères, titres de niveau, lieux en or, autres lieux, étoiles), à rang égal
+  // celles déjà affichées puis les plus proches du centre ; une étiquette qui en chevauche une autre, ou l’interface, est masquée.
+  // Téléphone : marges plus larges, pas de noms d’étoiles, sept étiquettes au plus.
+  function declutter(cand, occ, w, h, mob) {
+    const fresh = cand.filter((l) => !l.w);
+    fresh.forEach((l) => { l.el.style.display = ''; });
+    fresh.forEach((l) => { l.w = l.el.offsetWidth || 7 * String(l.text || '').length + 8; l.hh = l.el.offsetHeight || 26; });
+    const pad = mob ? 6 : 2, max = mob ? 7 : 1e9;
+    const rank = (l) => l.prio * 1e9 + (l.was ? 0 : 4e8) + (l.px - w / 2) * (l.px - w / 2) + (l.py - h / 2) * (l.py - h / 2);
+    cand.sort((a, b) => rank(a) - rank(b));
+    let n = 0;
+    cand.forEach((l) => {
+      const x0 = l.px - l.w / 2 - pad, x1 = l.px + l.w / 2 + pad, y0 = (l.below ? l.py : l.py - l.hh) - pad, y1 = (l.below ? l.py + l.hh : l.py) + pad;
+      let hit = n >= max;
+      for (let i = 0; !hit && i < occ.length; i++) { const k = occ[i]; hit = x0 < k[2] && k[0] < x1 && y0 < k[3] && k[1] < y1; }
+      l.was = !hit;
+      l.el.style.display = hit ? 'none' : '';
+      if (!hit) { occ.push([x0, y0, x1, y1]); n++; }
+    });
+  }
   function updateLabels(w, h, V) {
+    const cr = canvas.getBoundingClientRect(), occ = uiBoxes(cr), cand = [], mob = isMobile();
+    const nearPar = PAR.distanceTo(focusPhys) < 1.2 * V;     // regarde-t-on l’univers central ?
     ALL.forEach((l) => {
       const L = l.L;
       let show = labelsOn && L.group.visible && L.a > 0.55;
@@ -2632,28 +2964,60 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
         const B = BODY_BY[l.body];
         show = V >= 25 * B.rly && B.phys.distanceTo(focusPhys) < 2500 * V;
       }
+      if (show && l.body === 'lune') show = V >= 8 * L0.R;                       // la Lune : son nom tant que son globe est petit
+      if (show && L === L8 && l.vmax <= 1.4e6 && l.mode === 'normal') show = nearPar;   // Havona et le Paradis vus de près seulement
+      if (show && mob && l.prio >= 4) show = false;                              // téléphone : pas de noms d’étoiles
       if (show) {
         if (l.obj) {                                   // lieu sur le globe : caché quand il passe derrière la planète
           l.obj.getWorldPosition(tmp);
           planet.getWorldPosition(pc2);
           show = pv.copy(tmp).sub(pc2).dot(pv2.copy(camera.position).sub(tmp)) > 0;
-        } else if (L === SKY) tmp.copy(l.local);
+        } else if (L === SKY) tmp.copy(l.local).add(SKY.group.position);         // le ciel suit la caméra
         else tmp.copy(l.local).applyQuaternion(L.group.quaternion).multiplyScalar(L.group.scale.x).add(L.group.position);
         if (show) show = place(l, tmp, w, h);
         if (show) (l.wp || (l.wp = new V3())).copy(tmp);
       }
-      l.el.style.display = show ? '' : 'none';
+      if (show) cand.push(l); else l.el.style.display = 'none';
     });
-    let hs = labelsOn && L0.a < 0.4 && V < 1.5e7;
+    let hs = labelsOn && L0.a < 0.4 && V < 1.5e7 && FACT.planets > 0.5;   // « tu es ici » : pas avant la formation d’Urantia
     if (hs) hs = place(hereLabel, tmp.set(0, 0, 0), w, h);
-    hereLabel.el.style.display = hs ? '' : 'none';
+    if (hs) cand.push(hereLabel); else hereLabel.el.style.display = 'none';
     let as = labelsOn && ascOn && !!ascLabel.text && ascMark.visible;
     if (as) as = place(ascLabel, ascMark.position, w, h);
-    ascLabel.el.style.display = as ? '' : 'none';
+    if (as) cand.push(ascLabel); else ascLabel.el.style.display = 'none';
+    declutter(cand, occ, w, h, mob);
+  }
+  // Décalage de la vue : le point visé se place au centre de la zone que les panneaux laissent libre
+  const topEl = document.querySelector('.top'), bottomEl = document.querySelector('.bottom');
+  const viewOff = { x: 0, y: 0, on: false };
+  function freeArea(dt) {
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    if (!w || !h) return;
+    const cr = canvas.getBoundingClientRect(), mob = isMobile();
+    const box = (e) => { const r = e.getBoundingClientRect(); return { l: r.left - cr.left, t: r.top - cr.top, b: r.top + r.height - cr.top }; };
+    let tx = 0, ty = 0, bottom = h;
+    const top = Math.max(0, box(topEl).b);
+    if (mob) bottom = box(bottomEl).t;                         // téléphone : au-dessus du niveau, de l’échelle et du zoom
+    [tlEl, ascEl, bcard, govEl, absEl, infoOpen ? infoEl : null].forEach((p) => {
+      if (!p || p.hidden || (p === absEl && !mob)) return;
+      const b = box(p);
+      if (b.l > w * 0.4) { if (p === bcard || mob) tx = Math.max(tx, Math.min(w * 0.25, (w - b.l) / 2)); }   // fiche à droite : la scène glisse à gauche
+      else if (b.t > top) bottom = Math.min(bottom, b.t);                         // panneau en bas : la scène remonte
+    });
+    if (bottom < h - 2 && bottom - top > 40) ty = clamp(h / 2 - (top + bottom) / 2, 0, h * 0.32);
+    if (!Number.isFinite(tx) || !Number.isFinite(ty)) return;
+    const a = reduced ? 1 : Math.min(1, dt * 6);
+    viewOff.x += (tx - viewOff.x) * a; viewOff.y += (ty - viewOff.y) * a;
+    if (Math.abs(viewOff.x) + Math.abs(viewOff.y) > 0.5) { camera.setViewOffset(w, h, viewOff.x, viewOff.y, w, h); viewOff.on = true; }
+    else if (viewOff.on) { camera.clearViewOffset(); viewOff.on = false; }
   }
 
   function frame(now) {
     requestAnimationFrame(frame);
+    // au repos (rien ne bouge, aucune action depuis 20 s) : 4 images par seconde, pour le processeur graphique et la batterie
+    const busy = fly || camAnim || blendT > 0 || controls.autoRotate || tlTimer || ascTimer || Math.abs(uTarget - uCur) > 1e-4;
+    if (!busy && now - lastInput > 20000 && now - lastDraw < 250) return;
+    lastDraw = now;
     const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
     last = now;
     // en exploration libre, on ne descend pas sous le plancher de la région visitée
@@ -2668,11 +3032,20 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     }
     uCur = reduced ? uTarget : uCur + (uTarget - uCur) * Math.min(1, dt * 4.5);
     if (Math.abs(uTarget - uCur) < 1e-4) uCur = uTarget;
-    const V = uToV(uCur), kv = K / V;
+    let V = uToV(uCur);
+    if (free && fly) {                               // vol lointain : on prend de la hauteur à mi-parcours, départ et arrivée visibles
+      if (fly.arc === undefined) {
+        const span = fly.from.distanceTo(fly.to), ends = Math.max(V, uToV(uTarget));
+        fly.arc = !reduced && span > 6 * ends ? 0.55 * span : 0;
+        fly.dur = reduced ? 1 : fly.arc ? 1800 : 900;      // préférence « moins d’animations » : arrivée immédiate
+      }
+      if (fly.arc) V = Math.max(V, fly.arc * Math.sin(Math.PI * Math.min(1, (now - fly.t0) / fly.dur)));
+    }
+    const kv = K / V;
     // point visé, en années-lumière depuis Urantia
     if (free) {
       if (fly) {
-        const k = Math.min(1, (now - fly.t0) / 900), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        const k = Math.min(1, (now - fly.t0) / (fly.dur || 900)), e = k < 0.5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
         freeFocus.lerpVectors(fly.from, fly.to, e);
         if (k >= 1) fly = null;
       }
@@ -2695,6 +3068,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const moved = controls.target.clone().sub(expected);
     if (moved.lengthSq() > 1e-12) { goFree(); freeFocus.add(moved.divideScalar(kv)); }
     field.position.copy(camera.position);
+    SKY.group.position.copy(camera.position);       // le ciel étoilé suit la caméra : il reste à l’infini, près d’un astre aussi
     const pz = -L8.P.z * kv;
     clipPlane.constant = coupe ? pz + 1e-5 : 1e9;
     allPts.forEach((p) => { p.material.uniforms.uClip.value = coupe ? 1 : 0; p.material.uniforms.uClipZ.value = pz; });
@@ -2744,7 +3118,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     }
     const ha = 1 - L0.a;
     hereMat.opacity = ha; hereDotMat.opacity = ha;
-    here.visible = hereDot.visible = ha > 0.01;
+    here.visible = hereDot.visible = ha > 0.01 && FACT.planets > 0.5;   // pas de « tu es ici » avant la formation d’Urantia
+    freeArea(dt);
     renderer.render(scene, camera);
     updateLabels(canvas.clientWidth, canvas.clientHeight, V);
     updateHUD(V);
@@ -2753,7 +3128,9 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   // Ancres d’adresse (liens depuis l’accueil) : #nebadon, #havona, #frise, #carriere, #gouvernement…
   const HASH_LV = ['urantia', 'monmatia', 'satania', 'norlatiadek', 'nebadon', 'ensa', 'splandon', 'orvonton', 'grand-univers', 'espace-exterieur', 'maitre-univers', 'au-dela'];
   function applyHash() {
-    const h = (location.hash || '').slice(1).toLowerCase();
+    let h = (location.hash || '').slice(1);
+    try { h = decodeURIComponent(h); } catch (e) { /* ancre mal formée : on la garde telle quelle */ }
+    h = h.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/\s+/g, '-');   // #vénus, #Au-delà…
     if (!h) return;
     const i = HASH_LV.indexOf(h);
     if (i >= 0) { if (coupe) setCoupe(false); recenter(); setU(i); return; }
@@ -2766,75 +3143,92 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     else if (h === 'coupe') { if (!coupe) setCoupe(true); }
     else if (h === 'deite') { if (!deity) tDeite.click(); setU(10); }
   }
+
+  /* ---------- Menu, tiroirs, bulle d’aide, repos ---------- */
+  const menuEl = document.getElementById('menu'), menuSum = menuEl.querySelector('summary');
+  // téléphone : les modes et réglages du menu commandent les vrais boutons, et en reflètent l’état
+  const proxies = Array.prototype.slice.call(menuEl.querySelectorAll('[data-proxy]'));
+  function syncProxies() {
+    proxies.forEach((p) => {
+      const v = document.getElementById(p.dataset.proxy).getAttribute('aria-pressed');
+      if (v !== null && v !== undefined && v !== p.getAttribute('aria-pressed')) p.setAttribute('aria-pressed', v);
+    });
+  }
+  proxies.forEach((p) => p.addEventListener('click', () => { menuEl.open = false; document.getElementById(p.dataset.proxy).click(); }));
+  menuEl.addEventListener('toggle', () => { if (menuEl.open) onlyDrawer('menu'); });
+  document.addEventListener('click', (e) => {
+    const tg = e.target;
+    // un lien du menu, ou un clic hors du menu, le referme
+    if (menuEl.open && tg && tg.closest && (!tg.closest('#menu') || tg.closest('.menu-panel a'))) menuEl.open = false;
+    // la même ancre, cliquée de nouveau, rejoue la vue
+    const a = tg && tg.closest && tg.closest('a[href^="#"]');
+    if (a && a.getAttribute('href') === location.hash) { e.preventDefault(); applyHash(); }
+  });
+  // texte du niveau : sur téléphone, replié en une ligne, il s’ouvre en tiroir ; sur bureau, il se replie d’un clic
+  let infoOpen = false;
+  const infoMore = document.getElementById('info-more'), infoMin = document.getElementById('info-min'), infoX = document.getElementById('info-x');
+  function openInfo() {
+    onlyDrawer('info');
+    infoOpen = true;
+    infoEl.classList.add('open');
+    infoMore.setAttribute('aria-expanded', 'true');
+    infoEl.scrollTop = 0;
+    if (infoX.focus) infoX.focus({ preventScroll: true });
+  }
+  function closeInfo(back) {
+    if (!infoOpen) return;
+    infoOpen = false;
+    infoEl.classList.remove('open');
+    infoMore.setAttribute('aria-expanded', 'false');
+    if (back && infoMore.focus) infoMore.focus({ preventScroll: true });
+  }
+  infoMore.addEventListener('click', openInfo);
+  infoX.addEventListener('click', () => closeInfo(true));
+  infoMin.addEventListener('click', () => {
+    const m = !infoEl.classList.contains('min');
+    infoEl.classList.toggle('min', m);
+    infoMin.textContent = m ? '▸' : '▾';
+    infoMin.title = m ? 'Déplier le texte' : 'Replier le texte';
+    infoMin.setAttribute('aria-label', infoMin.title);
+    infoMin.setAttribute('aria-expanded', String(!m));
+  });
+  // boutons × de la frise, de la carrière et du schéma des Absolus
+  Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), (b) => b.addEventListener('click', () => { if (b.dataset.close === 'tl') setTimeline(false); else setAsc(false); }));
+  document.getElementById('abs-x').addEventListener('click', () => { if (deity) tDeite.click(); });
+  // bulle d’aide de la première visite, adaptée au toucher ou à la souris ; elle disparait au premier geste
+  const coach = document.getElementById('coach');
+  {
+    let seen = false;
+    try { seen = window.localStorage.getItem('ub3d-aide') === '1'; } catch (e) { /* stockage indisponible : on montre l’aide */ }
+    if (!seen && !(location.hash || '').slice(1)) {
+      coach.innerHTML = (touch ? 'Un doigt pour tourner, deux doigts pour zoomer, touche un nom pour t’en approcher'
+        : 'Fais glisser pour tourner, molette pour zoomer, clique sur un nom ou un point pour t’en approcher')
+        + '&nbsp;; ou choisis un niveau en bas. <button type="button" class="go-btn" id="coach-ok">Compris</button>';
+      coach.hidden = false;
+      const done = () => { coach.hidden = true; try { window.localStorage.setItem('ub3d-aide', '1'); } catch (e) { /* aide revue à la prochaine visite */ } };
+      document.getElementById('coach-ok').addEventListener('click', done);
+      canvas.addEventListener('pointerdown', done, { once: true });
+      setTimeout(() => { coach.hidden = true; }, 16000);
+    }
+  }
+  // repos : sans action depuis 20 s et sans mouvement, la scène n’est redessinée que 4 fois par seconde (voir frame)
+  let lastInput = performance.now(), lastDraw = 0;
+  ['pointerdown', 'pointermove', 'wheel', 'keydown', 'touchstart'].forEach((t) => window.addEventListener(t, () => { lastInput = performance.now(); }, { passive: true }));
+  // densité d’écran qui change (zoom du navigateur, fenêtre passée sur un autre écran) ; polices chargées : on remesure
+  (function watchDpr() {
+    if (!window.matchMedia) return;
+    const mq = window.matchMedia('(resolution: ' + (window.devicePixelRatio || 1) + 'dppx)');
+    const f = () => { resize(); watchDpr(); };
+    if (mq.addEventListener) mq.addEventListener('change', f, { once: true }); else if (mq.addListener) mq.addListener(f);
+  })();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureTop, () => {});
+
   window.addEventListener('hashchange', applyHash);
   applyHash();
   requestAnimationFrame(frame);
 })();
 </script>
 
-<script id="refs-urantia">
-(function () {
-  'use strict';
-  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
-  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
-  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
-  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
-  function link(el) {
-    var t = el.textContent;
-    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
-    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
-    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
-    RX.lastIndex = 0;
-    while ((m = RX.exec(t))) {
-      var p = +m[1];
-      if (!S[p]) continue;
-      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
-      var a = document.createElement('a');
-      a.className = 'ref-lien';
-      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.title = 'Lire ' + m[0] + ' sur urantia.org';
-      a.textContent = m[0];
-      frag.appendChild(a);
-      last = m.index + m[0].length;
-      n++;
-    }
-    if (!n) return;
-    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
-    el.textContent = '';
-    el.appendChild(frag);
-    el.setAttribute('data-lk', el.textContent);
-  }
-  function scan(node) {
-    if (!node || node.nodeType !== 1) return;
-    if (node.classList.contains('ref')) link(node);
-    var l = node.querySelectorAll('.ref');
-    for (var i = 0; i < l.length; i++) link(l[i]);
-  }
-  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
-  function start() {
-    try {
-      var st = document.createElement('style');
-      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
-        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
-      document.head.appendChild(st);
-      scan(document.body);
-      if (!window.MutationObserver) return;
-      new MutationObserver(function (list) {
-        for (var i = 0; i < list.length; i++) {
-          var mu = list[i];
-          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
-          for (var j = 0; j < mu.addedNodes.length; j++) {
-            var nd = mu.addedNodes[j];
-            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
-          }
-        }
-      }).observe(document.body, { childList: true, subtree: true, characterData: true });
-    } catch (e) { /* les références restent en texte simple */ }
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-})();
-</script>
+<script src="assets/refs-urantia.js" defer></script>
 </body>
 </html>

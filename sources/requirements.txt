@@ -1,0 +1,4 @@
+# Paquets Python des scripts de sources/ (Python 3.11 ou plus récent ; essayé avec Python 3.13, NumPy 2.1.3, Pillow 12.3.0).
+# Seul textures.py en a besoin ; les autres scripts n'utilisent que la bibliothèque standard.
+numpy>=2.0
+Pillow>=10.0

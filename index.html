@@ -4,21 +4,27 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="Atlas visuel du Livre d’Urantia : notre adresse dans l’univers, la vue 3D d’Urantia au Paradis, la frise du temps, la carrière ascendante, les êtres de l’univers et les concepts, avec les références du texte.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
 <meta property="og:title" content="Le Livre d’Urantia en images">
 <meta property="og:description" content="Atlas visuel du Livre d’Urantia : notre adresse dans l’univers, la vue 3D d’Urantia au Paradis, la frise du temps, la carrière ascendante, les êtres de l’univers et les concepts, avec les références du texte.">
 <meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/">
 <meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Le Livre d’Urantia en images</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-/* Mise en page : la page d’entrée d’un atlas céleste. L’adresse d’Urantia en frise,
-   puis un parcours numéroté, le plan du livre et la manière de lire. Jusqu’à 1100 px. */
+/* Mise en page : la page d’entrée d’un atlas céleste. Le titre et une fenêtre sur l’espace, le parcours en dix étapes,
+   l’adresse d’Urantia en frise, les cartes du parcours, le plan du livre et la manière de lire. Jusqu’à 1100 px. */
 :root {
   --paper: #EEF1F6;    /* fond : papier de carte bleuté */
   --sheet: #FFFFFF;    /* surfaces */
@@ -30,6 +36,10 @@
   --gold-ink: #8A5A00; /* accent, en texte */
   --on-gold: #1B1405;  /* texte posé sur l’or */
   --core: #5F78CF;     /* lecture courante, lueurs */
+  --lift: 0 16px 32px -24px rgba(24, 33, 59, .55);   /* ombre des cartes au survol */
+  /* Fenêtre sur l’espace : les teintes de la vue 3D, identiques dans les deux thèmes */
+  --space: #03050C; --space-hi: #0E1636; --space-ink: #E8EBF5; --space-muted: #A4ADC8;
+  --space-core: #9DB0F0; --space-gold: #F0B33C; --space-gold-ink: #F6C766; --space-line: rgba(160, 175, 220, .26);
   --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -38,12 +48,14 @@
   :root:not([data-theme="light"]) {
     --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
     --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE;
+    --lift: 0 16px 32px -22px rgba(0, 0, 0, .7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
   --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE;
+  --lift: 0 16px 32px -22px rgba(0, 0, 0, .7);
   color-scheme: dark;
 }
 
@@ -67,25 +79,60 @@ p { margin: 0; }
 a { color: var(--gold-ink); text-underline-offset: 3px; }
 
 /* En-tête */
-.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 44px; align-items: center; }
 .hero-text { display: grid; gap: 20px; min-width: 0; }
 .sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.35; max-width: 36ch; }
 .disc { font-size: .98rem; color: var(--muted); max-width: 58ch; }
-.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 4px; }
-.btn-main { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; background: var(--gold); color: var(--on-gold); font: 500 1.02rem/1.2 var(--font-body); text-decoration: none; }
-.btn-main:hover { filter: brightness(1.05); }
-.btn-main svg { width: 18px; height: 18px; flex: none; }
-.orrery { width: 100%; max-width: 440px; justify-self: center; color: var(--ink); }
-.orrery svg { display: block; width: 100%; height: auto; }
-.o-line { fill: none; stroke: currentColor; stroke-opacity: .55; stroke-width: 1.1; }
-.o-faint { fill: none; stroke: currentColor; stroke-opacity: .28; stroke-width: 1; stroke-dasharray: 3 4; }
-.o-core { fill: var(--core); fill-opacity: .18; stroke: var(--core); stroke-opacity: .6; stroke-width: 1.2; }
-.o-gold { fill: var(--gold); }
-.o-ring { fill: none; stroke: var(--gold); stroke-width: 1.6; }
-.o-dot { fill: currentColor; fill-opacity: .55; }
-.o-lbl { font: 500 11px var(--font-mono); fill: var(--muted); letter-spacing: .06em; }
-.o-lbl-g { font: 600 15px var(--font-display); fill: var(--gold-ink); }
-.halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 4px; }
+.btn-main, .btn-alt { display: inline-flex; align-items: center; gap: 10px; padding: 11px 19px; border-radius: 999px; border: 1.5px solid; font: 500 1.02rem/1.2 var(--font-body); text-decoration: none; }
+.btn-main { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.btn-main:hover { filter: brightness(1.06); }
+.btn-alt { border-color: var(--gold-ink); color: var(--gold-ink); }
+.btn-alt:hover { background: var(--tint); }
+.btn-main svg, .btn-alt svg { width: 18px; height: 18px; flex: none; }
+.actions .lire { font-size: .96rem; }
+
+/* Fenêtre sur l’espace : l’orrery sur le ciel de la vue 3D ; toute la fenêtre ouvre la vue 3D */
+.window { position: relative; display: block; width: 100%; max-width: 460px; justify-self: center; border-radius: 18px; overflow: hidden; isolation: isolate;
+  color: var(--space-ink); text-decoration: none;
+  background: radial-gradient(ellipse 72% 66% at 50% 50%, var(--space-hi) 0%, var(--space) 80%);
+  box-shadow: 0 24px 46px -30px rgba(12, 17, 32, .75), inset 0 0 0 1px var(--space-line); }
+.window:hover { box-shadow: 0 24px 46px -30px rgba(12, 17, 32, .75), inset 0 0 0 1px var(--space-gold); }
+.window:focus-visible { border-radius: 18px; }
+.window svg { display: block; width: 100%; height: auto; }
+.window .cap { position: absolute; left: 14px; bottom: 12px; display: inline-flex; align-items: center; gap: 8px; padding: 6px 13px; border-radius: 999px;
+  border: 1px solid var(--space-line); background: rgba(9, 13, 28, .8); color: var(--space-gold-ink); font: 500 .92rem/1.2 var(--font-body); }
+.window:hover .cap, .window:focus-visible .cap { border-color: var(--space-gold); }
+.window .cap span { display: inline-block; transition: transform .15s ease; }
+.window:hover .cap span { transform: translateX(3px); }
+.o-line { fill: none; stroke: var(--space-core); stroke-opacity: .55; stroke-width: 1.1; }
+.o-faint { fill: none; stroke: var(--space-core); stroke-opacity: .32; stroke-width: 1; stroke-dasharray: 3 4; }
+.o-hav { stroke: var(--space-gold-ink); stroke-opacity: .5; }
+.o-core { fill: var(--space-gold-ink); fill-opacity: .22; stroke: var(--space-gold-ink); stroke-opacity: .75; stroke-width: 1.2; }
+.o-gold { fill: var(--space-gold-ink); }
+.o-ring { fill: none; stroke: var(--space-gold); stroke-width: 1.6; }
+.o-dot { fill: var(--space-ink); fill-opacity: .75; }
+.o-star { fill: var(--space-ink); }
+.o-lbl { font: 500 12px var(--font-mono); fill: var(--space-muted); letter-spacing: .06em; }
+.o-lbl-g { font: 600 15px var(--font-display); fill: var(--space-gold-ink); }
+.halo { paint-order: stroke; stroke: rgba(8, 12, 32, .7); stroke-width: 2.5px; stroke-linejoin: round; }
+
+/* Le parcours d’un coup d’œil : une pastille par étape, liée à sa page */
+.route { display: grid; gap: 12px; margin-top: -46px; }
+.route-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.route-head h2 { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.route-head a { font-size: .92rem; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px 8px; }
+.steps:has(> li:nth-child(11)) { grid-template-columns: repeat(6, minmax(0, 1fr)); }   /* onze ou douze étapes : deux rangées de six */
+.steps a { position: relative; display: flex; align-items: center; gap: 10px; height: 100%; padding: 9px 11px 9px 10px; border: 1px solid var(--rule); border-radius: 12px;
+  background: var(--sheet); color: var(--ink); text-decoration: none; transition: border-color .15s ease; }
+.steps a:hover { border-color: var(--gold); }
+.steps a:hover .num { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.steps a:focus-visible { border-radius: 12px; }
+.steps .num { width: 28px; height: 28px; font-size: .82rem; }
+.steps .nm { min-width: 0; font: 600 1.04rem/1.15 var(--font-display); }
+.tag { flex: none; margin-left: auto; padding: 3px 6px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); font: 500 .68rem/1 var(--font-mono); letter-spacing: .08em; color: var(--muted); }
+.steps .tag { position: absolute; top: -9px; right: 10px; margin: 0; }   /* pastille posée sur le bord : le nom garde toute la largeur */
 
 /* Sections */
 .sec-head { display: grid; gap: 12px; max-width: 70ch; }
@@ -115,22 +162,35 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .stop .go { font-size: .8rem; color: var(--gold-ink); margin-top: 4px; }
 .addr-note { margin-top: 12px; font-size: .88rem; color: var(--muted); max-width: 72ch; }
 
-/* Parcours */
+/* Parcours : cartes entièrement cliquables, illustration en tête (même hauteur dans toutes les cartes) */
 .cards { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
-.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.card .top { display: flex; align-items: center; gap: 10px; }
-.num { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--gold); color: var(--gold-ink); display: grid; place-items: center; font: 500 .9rem/1 var(--font-mono); flex: none; }
-.card .ill { color: var(--ink); background: var(--paper); border-radius: 8px; padding: 6px; }
+.card { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0;
+  transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+.card:hover { border-color: var(--gold); box-shadow: var(--lift); transform: translateY(-2px); }
+.card:has(.go:focus-visible) { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
+.card .ill { color: var(--ink); background: var(--paper); border-radius: 10px; padding: 6px; margin: 0 -4px 4px; }
 .card .ill svg { display: block; width: 100%; height: auto; }
-.card h3 { font-size: 1.28rem; }
+.card .top { display: flex; align-items: flex-start; gap: 10px; }
+.num { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--gold-ink); color: var(--gold-ink); display: grid; place-items: center; font: 500 .9rem/1 var(--font-mono); flex: none; transition: background-color .15s ease, color .15s ease; }
+.card h3 { font-size: 1.28rem; padding-top: 3px; min-width: 0; }
+.card .top .tag { margin-top: 7px; }
 .card p { font-size: .95rem; }
 .card .see { font-size: .9rem; color: var(--muted); }
 .card .see b { color: var(--ink); font-weight: 500; }
-.card .go { margin-top: auto; font-weight: 500; font-size: .96rem; }
+.card .go { margin-top: auto; font-weight: 500; font-size: .96rem; text-decoration: none; }
+.card .go::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; }   /* toute la carte ouvre la page */
+.card:hover .go { text-decoration: underline; }
+.card .go:focus-visible { outline: none; }
+.card .arr { position: relative; left: 0; transition: left .15s ease; }   /* en ligne : l’insécable la garde avec le dernier mot */
+.card:hover .arr { left: 3px; }
+.card .ref { position: relative; z-index: 2; }   /* les références restent cliquables, par-dessus le lien de la carte */
 .card.alt { background: transparent; border-style: dashed; }
+/* « Et le texte lui-même » termine la dernière rangée : il prend les colonnes restantes, ou toute la largeur */
+.cards > .card.alt { grid-column: 1 / -1; }
 .s { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .s-th { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-opacity: .55; stroke-linecap: round; stroke-linejoin: round; }
 .s-g { fill: none; stroke: var(--gold); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.s-c { fill: none; stroke: var(--core); stroke-width: 1.6; }
 .f-ink { fill: currentColor; }
 .f-mut { fill: currentColor; fill-opacity: .45; }
 .f-g { fill: var(--gold); }
@@ -167,17 +227,35 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 
 .foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
 
+@media (min-width: 1001px) {
+  .cards > .card.alt:nth-child(4n+2) { grid-column: span 3; }
+  .cards > .card.alt:nth-child(4n+3) { grid-column: span 2; }
+  .cards > .card.alt:nth-child(4n+4) { grid-column: span 1; }
+}
+@media (min-width: 641px) {
+  /* carte « Et le texte » en largeur : l’illustration à gauche, le texte à droite */
+  .card.alt { display: grid; grid-template-columns: minmax(0, 12rem) minmax(0, 1fr); column-gap: 22px; row-gap: 10px; align-content: center; align-items: start; }
+  .card.alt > * { grid-column: 2; }
+  .card.alt > .ill { grid-column: 1; grid-row: 1 / span 4; margin: 0; }
+  .card.alt .go { margin-top: 2px; }
+}
+@media (min-width: 1001px) { .cards > .card.alt:nth-child(4n+4) { display: flex; } }
 @media (max-width: 1000px) {
   .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .regs { grid-template-columns: minmax(0, 1fr); gap: 24px; }
 }
+@media (min-width: 641px) and (max-width: 1000px) {
+  .cards > .card.alt:nth-child(2n) { grid-column: span 1; display: flex; }
+}
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
-  .orrery { max-width: 380px; }
+  .window { max-width: 420px; }
+  .steps, .steps:has(> li:nth-child(11)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .part { grid-template-columns: minmax(0, 1fr); gap: 6px; }
 }
 @media (max-width: 640px) {
   body { font-size: 16px; }
+  .route { margin-top: -44px; }
   .addr-scroll { overflow-x: visible; }
   .addr-line { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 2px; }
   .addr-line::before { display: block; left: 22px; right: auto; top: 26px; bottom: 26px; width: 2px; height: auto; }
@@ -185,14 +263,25 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   .stop { grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; padding: 10px 8px; }
   .stop .pin { grid-column: 1; grid-row: 1 / span 6; margin: 4px 0 0 7px; }
   .stop > :not(.pin) { grid-column: 2; }
+  .stop .more { display: none; }
+  .o-lbl { font-size: 14px; }
   .cards { grid-template-columns: minmax(0, 1fr); }
+  .card .ill svg { width: auto; height: 96px; max-width: 100%; margin: 0 auto; }
   .rules li { grid-template-columns: minmax(0, 1fr); }
 }
-@media (prefers-reduced-motion: reduce) { .btn-main:hover { filter: none; } }
-</style>
+@media (prefers-reduced-motion: reduce) {
+  .btn-main:hover { filter: none; }
+  .card, .card .arr, .num, .steps a, .window .cap span { transition: none; }
+  .card:hover, .window:hover .cap span { transform: none; }
+  .card:hover .arr { left: 0; }
+}
+</style><style>/* barre commune et parcours de l’atlas (construire_site.py) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}.atlas-nav li{margin:0;flex:none}.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}@media (max-width:880px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline;padding:0;min-height:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}a.ref-lien{padding-block:5px}</style>
 </head>
 <body>
-<div class="wrap" lang="fr">
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Pages de l’atlas"><ul><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="nebadon-dans-orvonton.html" title="Nébadon dans Orvonton">Nébadon</a></li><li><a href="atlas-3d.html" title="D’Urantia au Paradis (3D)">La 3D</a></li><li><a href="familles-de-personnalites.html" title="Familles de personnalités">Familles</a></li><li><a href="concepts-en-schemas.html" title="Concepts en schémas">Concepts</a></li><li><a href="dieu-et-deite.html">Dieu et la Déité</a></li><li><a href="histoire-d-urantia.html" title="L’histoire d’Urantia">Histoire d’Urantia</a></li><li><a href="rebellion-de-lucifer.html" title="La rébellion de Lucifer">La rébellion</a></li><li><a href="vie-de-jesus.html" title="La vie de Jésus">Vie de Jésus</a></li><li><a href="bible-et-livre.html" title="La Bible et le Livre d’Urantia">La Bible</a></li><li class="livre"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" title="Lire le livre (urantia.org), nouvel onglet">Lire le livre&nbsp;↗</a></li></ul></nav>
+<script>(function(){var u=document.querySelector(".atlas-nav ul"),c=u&&u.querySelector("[aria-current]");if(c&&u.scrollWidth>u.clientWidth){var li=c.parentNode;u.scrollLeft=li.offsetLeft-(u.clientWidth-li.offsetWidth)/2;}})();</script>
+<main id="contenu" class="wrap" lang="fr">
 
   <header class="hero">
     <div class="hero-text">
@@ -201,18 +290,37 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
       <p class="sub">L’origine et l’organisation de l’univers selon le Livre d’Urantia, en cartes, en 3D et en schémas</p>
       <p class="disc">Ces pages sont une aide à l’étude indépendante. Elles n’ont aucun lien officiel avec la Fondation Urantia, éditrice du texte. Les citations sont tirées de sa traduction française, édition 2024.</p>
       <div class="actions">
-        <a class="btn-main" href="atlas-3d.html"><svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="9" cy="9" rx="7.5" ry="3.2"/><circle cx="9" cy="9" r="1.6" fill="currentColor"/><path d="M15.2 4.6 16.5 3.3"/></svg>Commencer le voyage en 3D</a>
-        <a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a>
+        <a class="btn-main" href="nebadon-dans-orvonton.html">Commencer le parcours<svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9h11M10 4.5 14.5 9 10 13.5"/></svg></a>
+        <a class="btn-alt" href="atlas-3d.html"><svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="9" cy="9" rx="7.5" ry="3.2"/><circle cx="9" cy="9" r="1.6" fill="currentColor"/><path d="M15.2 4.6 16.5 3.3"/></svg>Ouvrir la vue 3D</a>
+        <a class="lire" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a>
       </div>
     </div>
-    <figure class="orrery" role="img" aria-label="Schéma : le Paradis au centre, entouré de Havona, puis des superunivers ; Urantia se trouve loin du centre">
-      <svg viewBox="0 0 440 300">
+    <a class="window" href="atlas-3d.html" aria-label="Voir en 3D. Schéma : le Paradis au centre, entouré de Havona, puis des superunivers ; Urantia se trouve loin du centre.">
+      <svg viewBox="0 0 440 300" aria-hidden="true">
+        <defs>
+          <radialGradient id="ac-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#FFE7B0" stop-opacity=".5"/>
+            <stop offset=".45" stop-color="#F6C766" stop-opacity=".15"/>
+            <stop offset="1" stop-color="#F6C766" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g class="o-star">
+          <circle cx="18" cy="22" r=".9" opacity=".6"/><circle cx="46" cy="64" r=".6" opacity=".45"/><circle cx="64" cy="18" r="1.1" opacity=".8"/><circle cx="92" cy="40" r=".7" opacity=".5"/>
+          <circle cx="118" cy="14" r=".8" opacity=".6"/><circle cx="150" cy="30" r=".6" opacity=".4"/><circle cx="300" cy="20" r=".9" opacity=".7"/><circle cx="332" cy="44" r=".6" opacity=".45"/>
+          <circle cx="402" cy="26" r="1" opacity=".8"/><circle cx="424" cy="58" r=".7" opacity=".5"/><circle cx="430" cy="110" r=".6" opacity=".45"/><circle cx="412" cy="150" r=".9" opacity=".6"/>
+          <circle cx="428" cy="196" r=".7" opacity=".5"/><circle cx="404" cy="246" r="1.1" opacity=".8"/><circle cx="380" cy="284" r=".7" opacity=".5"/><circle cx="330" cy="292" r=".6" opacity=".4"/>
+          <circle cx="276" cy="286" r=".9" opacity=".6"/><circle cx="150" cy="290" r=".7" opacity=".5"/><circle cx="96" cy="282" r="1" opacity=".7"/><circle cx="54" cy="262" r=".6" opacity=".45"/>
+          <circle cx="22" cy="232" r=".8" opacity=".6"/><circle cx="12" cy="176" r=".6" opacity=".4"/><circle cx="30" cy="128" r=".9" opacity=".65"/><circle cx="10" cy="92" r=".7" opacity=".5"/>
+          <circle cx="126" cy="232" r=".5" opacity=".4"/><circle cx="312" cy="226" r=".5" opacity=".4"/><circle cx="276" cy="72" r=".5" opacity=".35"/><circle cx="160" cy="80" r=".5" opacity=".35"/>
+          <circle cx="100" cy="170" r=".6" opacity=".45"/><circle cx="346" cy="160" r=".6" opacity=".45"/><circle cx="250" cy="258" r=".5" opacity=".35"/><circle cx="186" cy="262" r=".5" opacity=".4"/>
+        </g>
+        <ellipse cx="220" cy="150" rx="96" ry="52" fill="url(#ac-glow)"/>
         <ellipse class="o-faint" cx="220" cy="150" rx="210" ry="128"/>
         <ellipse class="o-line" cx="220" cy="150" rx="168" ry="100"/>
         <ellipse class="o-faint" cx="220" cy="150" rx="128" ry="76"/>
-        <ellipse class="o-line" cx="220" cy="150" rx="74" ry="44"/>
-        <ellipse class="o-line" cx="220" cy="150" rx="58" ry="34"/>
-        <ellipse class="o-line" cx="220" cy="150" rx="42" ry="25"/>
+        <ellipse class="o-line o-hav" cx="220" cy="150" rx="74" ry="44"/>
+        <ellipse class="o-line o-hav" cx="220" cy="150" rx="58" ry="34"/>
+        <ellipse class="o-line o-hav" cx="220" cy="150" rx="42" ry="25"/>
         <ellipse class="o-core" cx="220" cy="150" rx="20" ry="9"/>
         <circle class="o-dot" cx="301" cy="98" r="2.2"/><circle class="o-dot" cx="128" cy="210" r="2"/>
         <circle class="o-dot" cx="76" cy="132" r="1.6"/><circle class="o-dot" cx="358" cy="196" r="1.8"/>
@@ -224,8 +332,30 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
         <text class="o-lbl halo" x="220" y="114" text-anchor="middle">HAVONA</text>
         <text class="o-lbl halo" x="220" y="40" text-anchor="middle">SUPERUNIVERS</text>
       </svg>
-    </figure>
+      <span class="cap">Voir en 3D <span aria-hidden="true">→</span></span>
+    </a>
   </header>
+
+  <nav class="route" aria-labelledby="h-route">
+    <div class="route-head">
+      <h2 id="h-route">Le parcours en 12 étapes</h2>
+      <a href="#h-path">Le détail de chaque étape</a>
+    </div>
+    <ol class="steps">
+      <li><a href="nebadon-dans-orvonton.html"><span class="num" aria-hidden="true">1</span><span class="nm">Nébadon dans Orvonton</span></a></li>
+      <li><a href="atlas-3d.html"><span class="num" aria-hidden="true">2</span><span class="nm">D’Urantia au Paradis</span><span class="tag">3D</span></a></li>
+      <li><a href="atlas-3d.html#gouvernement"><span class="num" aria-hidden="true">3</span><span class="nm">Qui gouverne quoi</span><span class="tag">3D</span></a></li>
+      <li><a href="atlas-3d.html#frise"><span class="num" aria-hidden="true">4</span><span class="nm">La frise du temps</span><span class="tag">3D</span></a></li>
+      <li><a href="atlas-3d.html#carriere"><span class="num" aria-hidden="true">5</span><span class="nm">La carrière ascendante</span><span class="tag">3D</span></a></li>
+      <li><a href="familles-de-personnalites.html"><span class="num" aria-hidden="true">6</span><span class="nm">Familles de personnalités</span></a></li>
+      <li><a href="concepts-en-schemas.html"><span class="num" aria-hidden="true">7</span><span class="nm">Concepts en schémas</span></a></li>
+      <li><a href="dieu-et-deite.html"><span class="num" aria-hidden="true">8</span><span class="nm">Dieu et la Déité</span></a></li>
+      <li><a href="histoire-d-urantia.html"><span class="num" aria-hidden="true">9</span><span class="nm">L’histoire d’Urantia</span></a></li>
+      <li><a href="rebellion-de-lucifer.html"><span class="num" aria-hidden="true">10</span><span class="nm">La rébellion de Lucifer</span></a></li>
+      <li><a href="vie-de-jesus.html"><span class="num" aria-hidden="true">11</span><span class="nm">La vie de Jésus</span></a></li>
+      <li><a href="bible-et-livre.html"><span class="num" aria-hidden="true">12</span><span class="nm">La Bible et le Livre d’Urantia</span></a></li>
+    </ol>
+  </nav>
 
   <section aria-labelledby="h-addr">
     <div class="sec-head">
@@ -250,13 +380,13 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
         <li><a class="stop" href="atlas-3d.html#paradis"><span class="pin" aria-hidden="true"></span><span class="lvl">Centre</span><span class="nm">Paradis</span><span class="fig">entouré du <b>milliard</b> de mondes de Havona</span><span class="more">«&nbsp;Le Paradis est le centre géographique de l’infinité.&nbsp;» <span class="ref">11:9.2</span></span><span class="ref">14:0.1</span><span class="go">Voir en 3D</span></a></li>
       </ol>
     </div>
-    <p class="addr-note">Les numéros d’ordre (606, 24, 70, 84, 3, 5, 7) viennent tous de 15:14.5–7. Dans la vue 3D, les positions sont schématiques : le livre ne donne pas la carte exacte de ces régions.</p>
+    <p class="addr-note">Les numéros d’ordre (606, 24, 70, 84, 3, 5, 7) viennent tous de 15:14.5–7. Dans la vue 3D, les positions sont schématiques&nbsp;: le livre ne donne pas la carte exacte de ces régions.</p>
   </section>
 
   <section aria-labelledby="h-path">
     <div class="sec-head">
       <h2 id="h-path">Parcours de découverte</h2>
-      <p>Dix étapes, dans l’ordre conseillé. Chacune ouvre une page de l’atlas ; tu peux aussi les visiter dans le désordre.</p>
+      <p>Douze étapes, dans l’ordre conseillé. Chacune ouvre une page de l’atlas ; tu peux aussi les visiter dans le désordre.</p>
       <figure class="pull">
         <p>«&nbsp;Sur votre monde, il est naturel de parler du Paradis comme situé <em>vers le haut,</em> mais il serait plus exact de mentionner le but divin de l’ascension comme situé <em>vers l’intérieur.</em>&nbsp;»</p>
         <figcaption class="ref">18:2.4</figcaption>
@@ -264,7 +394,6 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
     </div>
     <ol class="cards">
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">1</span><h3>Où sommes-nous ?</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <rect class="s-th" x="10" y="8" width="74" height="74" rx="4"/>
           <rect class="s-th" x="26" y="24" width="42" height="42" rx="3"/>
@@ -275,12 +404,12 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="s" d="M141 58 152 70"/>
           <circle class="f-g" cx="128" cy="45" r="4"/>
         </svg></div>
-        <p>Avant le voyage, une carte plane pour situer notre planète. Six zooms vont d’Orvonton jusqu’à Urantia : Orvonton compte dix secteurs majeurs, et chaque niveau suivant en contient cent <span class="ref">15:2.3–8</span>.</p>
+        <div class="top"><span class="num" aria-hidden="true">1</span><h3>Nébadon dans Orvonton</h3></div>
+        <p>Avant le voyage, une carte plane pour situer notre planète. Six zooms vont d’Orvonton jusqu’à Urantia&nbsp;: Orvonton compte dix secteurs majeurs, et chaque niveau suivant en contient cent <span class="ref">15:2.3–8</span>.</p>
         <p class="see"><b>Tu y verras</b> la place de Nébadon dans Orvonton, celle de la Voie lactée, et la différence entre ce que dit le texte et les lectures courantes.</p>
-        <a class="go" href="nebadon-dans-orvonton.html">Ouvrir « Nébadon dans Orvonton »</a>
+        <a class="go" href="nebadon-dans-orvonton.html">Ouvrir «&nbsp;Nébadon dans Orvonton&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">2</span><h3>Le voyage en 3D</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <ellipse class="s-th" cx="80" cy="46" rx="72" ry="34"/>
           <ellipse class="s-th" cx="80" cy="46" rx="48" ry="22"/>
@@ -290,12 +419,12 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="s-g" d="M134 31C118 38 104 42 94 44" stroke-dasharray="3 4"/>
           <circle class="f-mut" cx="22" cy="20" r="1.4"/><circle class="f-mut" cx="40" cy="78" r="1.4"/><circle class="f-mut" cx="120" cy="80" r="1.2"/><circle class="f-mut" cx="60" cy="12" r="1.1"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">2</span><h3>D’Urantia au Paradis</h3><span class="tag">3D</span></div>
         <p>Une scène en trois dimensions qu’on fait tourner, de la Terre jusqu’au Paradis. Chaque niveau s’accompagne de ses chiffres et de ses références.</p>
         <p class="see"><b>Tu y verras</b> Satania, Nébadon, Orvonton, les sept superunivers, Havona et l’Ile du Paradis, avec une vue en coupe.</p>
-        <a class="go" href="atlas-3d.html">Ouvrir la vue 3D</a>
+        <a class="go" href="atlas-3d.html">Ouvrir la vue 3D&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">3</span><h3>Qui gouverne quoi</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <path class="s" d="M80 10 92 30H68Z"/>
           <path class="s-th" d="M80 30V40M80 40H40M80 40H120M40 40V52M120 40V52"/>
@@ -305,12 +434,12 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <circle class="f-ink" cx="28" cy="81" r="2.6"/><circle class="f-ink" cx="52" cy="81" r="2.6"/><circle class="f-ink" cx="108" cy="81" r="2.6"/>
           <circle class="f-g" cx="132" cy="81" r="3.2"/>
         </svg></div>
-        <p>Deux lignées d’autorité se partagent l’univers. Des personnalités issues de la Trinité administrent les superunivers ; chaque univers local a pour père un Fils Créateur et pour mère un Esprit Créatif <span class="ref">33:5.1</span>.</p>
+        <div class="top"><span class="num" aria-hidden="true">3</span><h3>Qui gouverne quoi</h3><span class="tag">3D</span></div>
+        <p>Deux lignées d’autorité se partagent l’univers. Des personnalités issues de la Trinité administrent les superunivers ; chaque univers local a pour père un Fils Créateur et pour mère un Esprit Créatif <span class="ref">33:5.1</span>.</p>
         <p class="see"><b>Tu y verras</b> la chaine qui va du Paradis jusqu’à notre monde, échelon par échelon.</p>
-        <a class="go" href="atlas-3d.html#gouvernement">Ouvrir « Qui gouverne quoi »</a>
+        <a class="go" href="atlas-3d.html#gouvernement">Ouvrir «&nbsp;Qui gouverne quoi&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">4</span><h3>L’histoire dans le temps : Satania et Urantia</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <path class="s" d="M10 62H150"/>
           <path class="s-th" d="M30 56V68M58 56V68M86 56V68M114 56V68M142 56V68"/>
@@ -320,12 +449,12 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="f-g" d="M86 50l5 7h-10z"/>
           <circle class="f-g" cx="142" cy="62" r="3.4"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">4</span><h3>La frise du temps</h3><span class="tag">3D</span></div>
         <p>Une frise relie les grands évènements de notre système et de notre planète. On la parcourt d’un repère à l’autre.</p>
         <p class="see"><b>Tu y verras</b> la nébuleuse d’Andronover <span class="ref">15:3.6</span>, la rébellion de Lucifer suivie par trente-sept Princes Planétaires <span class="ref">53:7.1</span>, et la quarantaine de Satania <span class="ref">46:8.2</span>.</p>
-        <a class="go" href="atlas-3d.html#frise">Ouvrir la frise du temps</a>
+        <a class="go" href="atlas-3d.html#frise">Ouvrir «&nbsp;La frise du temps&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">5</span><h3>Le voyage de l’ascendeur, de la mort au Paradis</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <path class="s-th" d="M14 80C40 78 54 66 66 56S96 34 118 30" stroke-dasharray="2 5"/>
           <circle class="f-g" cx="14" cy="80" r="3.4"/>
@@ -335,24 +464,30 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <ellipse class="s-th" cx="136" cy="24" rx="12" ry="6.5"/>
           <ellipse class="f-core" cx="136" cy="24" rx="5" ry="2.4"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">5</span><h3>La carrière ascendante</h3><span class="tag">3D</span></div>
         <p>Après la mort, le livre décrit une longue montée de monde en monde. La page suit cette carrière étape par étape, avec les guides de chaque étape.</p>
         <p class="see"><b>Tu y verras</b> les sept mondes des maisons, Jérusem, Édentia, Salvington, Uversa, puis les sept circuits de Havona.</p>
-        <a class="go" href="atlas-3d.html#carriere">Ouvrir le voyage de l’ascendeur</a>
+        <a class="go" href="atlas-3d.html#carriere">Ouvrir «&nbsp;La carrière ascendante&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">6</span><h3>Les êtres de l’univers</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
-          <path class="s-th" d="M14 18H146M14 46H146M14 74H146"/>
-          <rect class="f-ink" x="14" y="12" width="46" height="10" rx="2"/><rect class="f-mut" x="62" y="12" width="30" height="10" rx="2"/>
-          <rect class="f-mut" x="14" y="40" width="22" height="10" rx="2"/><rect class="f-ink" x="38" y="40" width="70" height="10" rx="2"/><rect class="f-g" x="110" y="40" width="20" height="10" rx="2"/>
-          <rect class="f-ink" x="14" y="68" width="34" height="10" rx="2"/><rect class="f-mut" x="50" y="68" width="52" height="10" rx="2"/>
+          <ellipse class="s-th" cx="34" cy="46" rx="24" ry="32" stroke-dasharray="3 3"/>
+          <ellipse class="s-th" cx="82" cy="46" rx="25" ry="32" stroke-dasharray="3 3"/>
+          <ellipse class="s-th" cx="129" cy="46" rx="22" ry="32" stroke-dasharray="3 3"/>
+          <circle class="f-ink" cx="34" cy="35" r="4.4"/><circle class="f-ink" cx="26" cy="55" r="4.4"/><circle class="f-ink" cx="42" cy="55" r="4.4"/>
+          <circle class="f-ink" cx="82" cy="46" r="2.8"/><circle class="f-ink" cx="94" cy="46" r="2.8"/><circle class="f-mut" cx="88" cy="56.4" r="2.8"/><circle class="f-ink" cx="76" cy="56.4" r="2.8"/>
+          <circle class="f-mut" cx="70" cy="46" r="2.8"/><circle class="f-ink" cx="76" cy="35.6" r="2.8"/><circle class="f-mut" cx="88" cy="35.6" r="2.8"/>
+          <circle class="f-mut" cx="121" cy="30" r="1.7"/><circle class="f-mut" cx="129" cy="30" r="1.7"/><circle class="f-mut" cx="137" cy="30" r="1.7"/>
+          <circle class="f-mut" cx="121" cy="40" r="1.7"/><circle class="f-ink" cx="129" cy="40" r="1.7"/><circle class="f-mut" cx="137" cy="40" r="1.7"/>
+          <circle class="f-ink" cx="121" cy="50" r="1.7"/><circle class="f-g" cx="129" cy="50" r="3.2"/><circle class="f-mut" cx="137" cy="50" r="1.7"/>
+          <circle class="f-mut" cx="121" cy="60" r="1.7"/><circle class="f-mut" cx="129" cy="60" r="1.7"/><circle class="f-ink" cx="137" cy="60" r="1.7"/>
         </svg></div>
-        <p>Le livre range les êtres de l’univers de deux façons : par fonction et par origine. Un arbre interactif présente plus d’une centaine d’ordres, des Maitres Esprits aux médians.</p>
+        <div class="top"><span class="num" aria-hidden="true">6</span><h3>Familles de personnalités</h3></div>
+        <p>Le livre range les êtres de l’univers de deux façons&nbsp;: par fonction et par origine. Un arbre interactif présente plus d’une centaine d’ordres, des Maitres Esprits aux médians.</p>
         <p class="see"><b>Tu y verras</b> les deux classifications côte à côte, une fiche par ordre et la liste de ce que le texte ne précise pas.</p>
-        <a class="go" href="familles-de-personnalites.html">Ouvrir « Familles de personnalités »</a>
+        <a class="go" href="familles-de-personnalites.html">Ouvrir «&nbsp;Familles de personnalités&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">7</span><h3>L’être humain en schémas</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <circle class="s-th" cx="62" cy="45" r="36"/>
           <circle class="s-th" cx="62" cy="45" r="24"/>
@@ -361,12 +496,12 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="s" d="M104 30H146M104 45H140M104 60H134"/>
           <path class="s-th" d="M98 45h-6"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">7</span><h3>Concepts en schémas</h3></div>
         <p>Sept schémas montrent ce qui compose la personne humaine selon le livre et ce qui l’influence. Chaque flèche porte le verbe du texte, avec sa référence.</p>
         <p class="see"><b>Tu y verras</b> la constitution de l’être humain, l’échelle des sept adjuvats, les sept cercles psychiques et la morontia.</p>
-        <a class="go" href="concepts-en-schemas.html">Ouvrir « Concepts en schémas »</a>
+        <a class="go" href="concepts-en-schemas.html">Ouvrir «&nbsp;Concepts en schémas&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">8</span><h3>Dieu et la Déité</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <circle class="s" cx="66" cy="36" r="20"/>
           <circle class="s" cx="94" cy="36" r="20"/>
@@ -374,40 +509,76 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <circle class="f-g" cx="80" cy="44" r="4.5"/>
           <path class="s-th" d="M14 82H146"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">8</span><h3>Dieu et la Déité</h3></div>
         <p>Six schémas présentent les mots du livre pour parler de Dieu&nbsp;: la Trinité du Paradis, les niveaux de la Déité, les sept Absolus et l’Absolu Universel qui unifie le déifié et le non déifié.</p>
         <p class="see"><b>Tu y verras</b> chaque notion avec ses références, et ce que le texte ne précise pas.</p>
-        <a class="go" href="dieu-et-deite.html">Ouvrir « Dieu et la Déité »</a>
+        <a class="go" href="dieu-et-deite.html">Ouvrir «&nbsp;Dieu et la Déité&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">9</span><h3>L’histoire d’Urantia</h3></div>
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
-          <rect class="f-mut" x="14" y="12" width="40" height="9" rx="2"/><rect class="f-ink" x="56" y="12" width="34" height="9" rx="2"/><rect class="f-g" x="92" y="12" width="54" height="9" rx="2"/>
-          <path class="s-th" d="M14 32H146"/>
-          <path class="s" d="M22 70c12-16 24-20 36-13s22 5 32-6 26-9 38 2"/>
-          <path class="s-th" d="M96 50l20 14"/>
-          <circle class="f-g" cx="96" cy="50" r="4.5"/><circle class="f-ink" cx="116" cy="64" r="3"/>
+          <rect class="f-mut" x="14" y="10" width="46" height="6" rx="2"/><rect class="f-ink" x="62" y="10" width="38" height="6" rx="2"/><rect class="f-g" x="102" y="10" width="44" height="6" rx="2"/>
+          <path class="s-th" d="M14 26H146"/>
+          <path class="s-th" d="M58 60Q40 46 26 43M58 60Q44 74 30 79M58 60Q90 42 116 38M58 60Q96 72 130 74" stroke-dasharray="3 3"/>
+          <circle class="s-th" cx="58" cy="60" r="9"/>
+          <circle class="f-g" cx="58" cy="60" r="4.5"/>
+          <circle class="f-ink" cx="26" cy="43" r="2.6"/><circle class="f-ink" cx="30" cy="79" r="2.6"/><circle class="f-ink" cx="116" cy="38" r="2.6"/><circle class="f-ink" cx="130" cy="74" r="2.6"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">9</span><h3>L’histoire d’Urantia</h3></div>
         <p>Une frise suit la Terre de la nébuleuse d’Andronover à la fin des glaces. Puis une carte du monde montre, épisode par épisode, l’apparition des humains et leurs migrations.</p>
         <p class="see"><b>Tu y verras</b> Andon et Fonta, la famille Sangik, Dalamatia, le Jardin d’Éden et les Andites, avec les dates telles que le livre les écrit.</p>
-        <a class="go" href="histoire-d-urantia.html">Ouvrir « L’histoire d’Urantia »</a>
+        <a class="go" href="histoire-d-urantia.html">Ouvrir «&nbsp;L’histoire d’Urantia&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card">
-        <div class="top"><span class="num" aria-hidden="true">10</span><h3>La vie de Jésus</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s" d="M26 10V82M98 10V82"/>
+          <path class="s-th" d="M26 14H74V54H26M98 14H146V54H98"/>
+          <circle class="s-c" cx="50" cy="34" r="13"/><circle class="s-c" cx="50" cy="34" r="8.5"/><circle class="s-c" cx="50" cy="34" r="4"/>
+          <circle class="s" cx="122" cy="34" r="12"/><circle class="f-ink" cx="122" cy="34" r="5.5"/>
+          <circle class="s-th" cx="130" cy="71" r="7.5" stroke-dasharray="2 2.5"/><circle class="f-g" cx="130" cy="71" r="3.2"/>
+          <path class="s-th" d="M12 82H150"/>
+        </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">10</span><h3>La rébellion de Lucifer</h3></div>
+        <p>Il y a environ 200&#8239;000 ans, Lucifer, souverain du système, se rebelle ; Caligastia, Prince Planétaire d’Urantia, le suit <span class="ref">53:4.1</span>. Un schéma en trois échelles (Jérusem, Dalamatia, le Jardin) montre qui a suivi qui, et pourquoi notre planète est isolée.</p>
+        <p class="see"><b>Tu y verras</b> le manifeste de Lucifer, les loyaux et les rebelles, l’isolement d’Urantia, la défaillance d’Ève, et où en sont les rebelles aujourd’hui.</p>
+        <a class="go" href="rebellion-de-lucifer.html">Ouvrir «&nbsp;La rébellion de Lucifer&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card">
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <ellipse class="s" cx="112" cy="24" rx="10" ry="14"/>
           <path class="s-th" d="M112 38V72"/>
           <path class="s" d="M36 20l28 20 18 26 26 6"/>
           <circle class="f-g" cx="36" cy="20" r="4.5"/><circle class="f-ink" cx="64" cy="40" r="3"/><circle class="f-ink" cx="82" cy="66" r="3"/><circle class="f-g" cx="108" cy="72" r="4.5"/>
         </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">11</span><h3>La vie de Jésus</h3></div>
         <p>Une frise de 92 étapes, de l’annonce à Marie à la Pentecôte, guide une carte de Palestine et du monde méditerranéen&nbsp;: à chaque étape, le lieu, le trajet et le passage du livre.</p>
         <p class="see"><b>Tu y verras</b> l’enfance à Nazareth, les grands voyages, le ministère public, la dernière semaine à Jérusalem et les apparitions.</p>
-        <a class="go" href="vie-de-jesus.html">Ouvrir « La vie de Jésus »</a>
+        <a class="go" href="vie-de-jesus.html">Ouvrir «&nbsp;La vie de Jésus&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card">
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <rect class="s" x="12" y="10" width="58" height="70" rx="4"/>
+          <rect class="s" x="90" y="10" width="58" height="70" rx="4"/>
+          <path class="s-th" d="M21 22H61M21 32H57M21 42H61M21 52H53M21 62H59M21 71H49M99 22H139M99 32H133M99 42H139M99 52H135M99 62H129M99 71H137"/>
+          <path class="s-th" d="M70 22H90M70 62C80 62 80 71 90 71" stroke-dasharray="2 3"/>
+          <path class="s-g" d="M70 42C80 42 80 52 90 52" stroke-dasharray="3 3"/>
+          <circle class="f-g" cx="70" cy="42" r="2.6"/><circle class="f-g" cx="90" cy="52" r="2.6"/>
+        </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">12</span><h3>La Bible et le Livre d’Urantia</h3></div>
+        <p>Vingt parallèles, des origines à la Pentecôte, mettent côte à côte la Bible (traduction Crampon, 1923) et le Livre d’Urantia&nbsp;: ce qui concorde, ce qui diffère, et ce que le livre dit lui-même du récit biblique.</p>
+        <p class="see"><b>Tu y verras</b> Lucifer et la guerre dans le ciel, Adam et Ève, le déluge, Melchisédech, la naissance de Jésus, le Notre Père, la Pentecôte, et les versets que le Livre d’Urantia cite lui-même.</p>
+        <a class="go" href="bible-et-livre.html">Ouvrir «&nbsp;La Bible et le Livre d’Urantia&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card alt">
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s" d="M80 22C64 15 40 15 22 21V73C40 67 64 67 80 74ZM80 22C96 15 120 15 138 21V73C120 67 96 67 80 74Z"/>
+          <path class="s-th" d="M32 32H70M32 41H70M32 50H66M32 59H62M90 32H128M90 41H128M90 50H124"/>
+          <circle class="f-g" cx="100" cy="59" r="3.4"/>
+          <path class="s-g" d="M106 59H128"/>
+        </svg></div>
         <div class="top"><span class="num" aria-hidden="true">+</span><h3>Et le texte lui-même</h3></div>
         <p>L’atlas ne remplace pas la lecture. Chaque page donne ses références, pour retrouver le passage exact dans le livre.</p>
         <p class="see"><b>Tu y trouveras</b> les 197 fascicules en ligne, sur le site de la Fondation Urantia.</p>
-        <a class="go" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a>
+        <a class="go" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne&nbsp;<span class="arr" aria-hidden="true">↗</span></a>
       </li>
     </ol>
   </section>
@@ -415,7 +586,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   <section aria-labelledby="h-book">
     <div class="sec-head">
       <h2 id="h-book">Le livre en bref</h2>
-      <p>Une introduction et quatre parties, soit 197 fascicules. Voici ce que l’atlas en montre déjà, et ce qui viendra.</p>
+      <p>Une introduction et quatre parties, soit 197 fascicules. Voici ce que l’atlas en montre.</p>
     </div>
     <ol class="parts">
       <li class="part">
@@ -442,7 +613,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <ul>
             <li><a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, en 2D</li>
             <li>Nébadon et Satania <a href="atlas-3d.html#nebadon">en 3D</a></li>
-            <li><a href="atlas-3d.html#carriere">Le voyage de l’ascendeur</a></li>
+            <li><a href="atlas-3d.html#carriere">La carrière ascendante</a></li>
+            <li><a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a>, fascicules 53 et 54</li>
           </ul>
         </div>
       </li>
@@ -453,6 +625,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <ul>
             <li><a href="atlas-3d.html#frise">La frise du temps</a>, de la nébuleuse d’Andronover à aujourd’hui</li>
             <li><a href="histoire-d-urantia.html">L’histoire d’Urantia</a>, frise des époques et carte des migrations</li>
+            <li><a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a> sur Urantia, fascicules 66–67 et 73–76</li>
             <li><a href="concepts-en-schemas.html">Les concepts en schémas</a>, en partie</li>
           </ul>
         </div>
@@ -465,6 +638,11 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
             <li><a href="vie-de-jesus.html">La vie de Jésus</a>, frise et cartes des voyages</li>
           </ul>
         </div>
+      </li>
+      <li class="part">
+        <p class="rng"><b>À travers le livre</b>de l’Introduction à la partie IV</p>
+        <div><h3>Le livre et la Bible</h3><p class="spons">Vingt parallèles avec le récit biblique, des origines à la Pentecôte.</p></div>
+        <div class="atlas"><ul><li><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a>, ce qui concorde et ce qui diffère</li></ul></div>
       </li>
     </ol>
   </section>
@@ -485,89 +663,26 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
       </div>
       <div class="reg r-hist">
         <p class="label">Regard historique</p>
-        <p>Les origines du livre, son contexte et ses sources humaines, que le texte reconnait lui-même <span class="ref">0:12.12 ; 121:8.12–14</span>.</p>
+        <p>Les origines du livre, son contexte et ses sources humaines, que le texte reconnait lui-même <span class="ref">0:12.12 ; 121:8.12–14</span>.</p>
         <blockquote><p>«&nbsp;Autant que possible, j’ai tiré mes informations de sources purement humaines.&nbsp;»</p><span class="ref">121:8.12</span></blockquote>
       </div>
     </div>
     <ul class="rules">
       <li><span class="k">Références</span><p>Elles s’écrivent fascicule:section.paragraphe. Ainsi <span class="ex">15:14.5</span> désigne le fascicule 15, section 14, paragraphe 5. La section 0 est l’introduction d’un fascicule.</p></li>
-      <li><span class="k">Orthographe</span><p>La traduction française applique l’orthographe rectifiée de 1990 : <i>connaitre, maitre, ile, évènement</i>. Les citations la conservent telle quelle.</p></li>
+      <li><span class="k">Orthographe</span><p>La traduction française applique l’orthographe rectifiée de 1990&nbsp;: <i>connaitre, maitre, ile, évènement</i>. Les citations la conservent telle quelle.</p></li>
       <li><span class="k">Schémas</span><p>En 3D, les positions et les formes sont souvent schématiques, car le livre ne donne ni carte ni distances pour la plupart des régions. Chaque page le signale.</p></li>
       <li><span class="k">Chiffres</span><p>Dans le texte, un billion vaut mille milliards. Les nombres sont donnés tels quels, avec leur référence.</p></li>
     </ul>
   </section>
 
   <footer class="foot">
-    <p>Données : étoiles du catalogue HYG v4.1 (licence CC BY-SA 4.0) ; éléments planétaires du JPL ; continents de Natural Earth (domaine public).</p>
-    <p>Texte : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Citations courtes ; le reste est paraphrasé, avec ses références.</p>
-    <p>Mise à jour : 2026-11-07.</p>
+    <p>Données&nbsp;: étoiles du catalogue HYG v4.1 (licence CC BY-SA 4.0) ; éléments planétaires du JPL ; continents de Natural Earth (domaine public).</p>
+    <p>Texte&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Citations courtes ; le reste est paraphrasé, avec ses références.</p>
+    <p>Mise à jour&nbsp;: 2026-11-07.</p>
   </footer>
 
-</div>
+</main>
 
-<script id="refs-urantia">
-(function () {
-  'use strict';
-  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
-  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
-  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
-  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
-  function link(el) {
-    var t = el.textContent;
-    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
-    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
-    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
-    RX.lastIndex = 0;
-    while ((m = RX.exec(t))) {
-      var p = +m[1];
-      if (!S[p]) continue;
-      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
-      var a = document.createElement('a');
-      a.className = 'ref-lien';
-      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.title = 'Lire ' + m[0] + ' sur urantia.org';
-      a.textContent = m[0];
-      frag.appendChild(a);
-      last = m.index + m[0].length;
-      n++;
-    }
-    if (!n) return;
-    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
-    el.textContent = '';
-    el.appendChild(frag);
-    el.setAttribute('data-lk', el.textContent);
-  }
-  function scan(node) {
-    if (!node || node.nodeType !== 1) return;
-    if (node.classList.contains('ref')) link(node);
-    var l = node.querySelectorAll('.ref');
-    for (var i = 0; i < l.length; i++) link(l[i]);
-  }
-  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
-  function start() {
-    try {
-      var st = document.createElement('style');
-      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
-        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
-      document.head.appendChild(st);
-      scan(document.body);
-      if (!window.MutationObserver) return;
-      new MutationObserver(function (list) {
-        for (var i = 0; i < list.length; i++) {
-          var mu = list[i];
-          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
-          for (var j = 0; j < mu.addedNodes.length; j++) {
-            var nd = mu.addedNodes[j];
-            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
-          }
-        }
-      }).observe(document.body, { childList: true, subtree: true, characterData: true });
-    } catch (e) { /* les références restent en texte simple */ }
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-})();
-</script>
+<script src="assets/refs-urantia.js" defer></script>
 </body>
 </html>

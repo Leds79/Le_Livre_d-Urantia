@@ -4,17 +4,23 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="description" content="L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/histoire-d-urantia.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:title" content="L’histoire d’Urantia">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="L’histoire d’Urantia — Le Livre d’Urantia en images">
 <meta property="og:description" content="L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.">
 <meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/histoire-d-urantia.html">
 <meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>L’histoire d’Urantia</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>L’histoire d’Urantia — Le Livre d’Urantia en images</title>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
 /* Mise en page : un atlas historique annoté. Frise des époques en bandes (échelle logarithmique),
@@ -28,6 +34,8 @@
   --rule: #CBD2E0;     /* filets */
   --gold: #C98A12;     /* accent : sélection */
   --gold-ink: #8A5A00; /* accent, en texte */
+  --gold-ui: #9E6B00;  /* or des repères d’interface (traits, contours) : 3:1 au moins */
+  --rule-ctl: #7D88A3; /* bordure des commandes */
   --on-gold: #1B1405;  /* texte posé sur l’or */
   /* Carte */
   --water: #D5E1EE; --land: #F6F1E6; --coast: #A99F88; --river: #7FA3C6; --grid: rgba(24, 33, 59, .09); --halo: #F6F1E6;
@@ -36,7 +44,7 @@
   --g-bleu: #2F6FB0; --g-indigo: #4A3FA0; --g-nodite: #1E7C83; --g-adam: #8A3FAE; --g-andite: #B8487A;
   /* Époques de la frise */
   --e-c1: #3F4C7E; --e-c2: #555C96; --e-c3: #6B67A3; --e-c4: #85689A;
-  --e-1: #857A6A; --e-2: #2A8584; --e-3: #2F6FB0; --e-4: #4E8B3C; --e-5: #BF5E2A; --on-band: #FFFFFF;
+  --e-1: #776C5D; --e-2: #237573; --e-3: #2F6FB0; --e-4: #437A33; --e-5: #A9521F; --on-band: #FFFFFF;
   --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -44,7 +52,7 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
-    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
     --water: #0B1628; --land: #1C253D; --coast: #3B4767; --river: #36618E; --grid: rgba(230, 233, 242, .07); --halo: #1C253D;
     --g-prim: #9AA3BA; --g-andon: #D9A55E; --g-rouge: #F0806F; --g-orange: #F3A45C; --g-jaune: #E3C24E; --g-vert: #74CC8F;
     --g-bleu: #6FA6E8; --g-indigo: #A39AF0; --g-nodite: #57C3C9; --g-adam: #C99AE6; --g-andite: #E486B0;
@@ -55,7 +63,7 @@
 }
 :root[data-theme="dark"] {
   --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
-  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
   --water: #0B1628; --land: #1C253D; --coast: #3B4767; --river: #36618E; --grid: rgba(230, 233, 242, .07); --halo: #1C253D;
   --g-prim: #9AA3BA; --g-andon: #D9A55E; --g-rouge: #F0806F; --g-orange: #F3A45C; --g-jaune: #E3C24E; --g-vert: #74CC8F;
   --g-bleu: #6FA6E8; --g-indigo: #A39AF0; --g-nodite: #57C3C9; --g-adam: #C99AE6; --g-andite: #E486B0;
@@ -101,7 +109,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 /* Sections */
 .sec-head { display: grid; gap: 12px; max-width: 70ch; }
 .hint { color: var(--muted); font-size: .96rem; }
-blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold); display: grid; gap: 4px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold-ui); display: grid; gap: 4px; }
 blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
 
 /* Frise */
@@ -122,9 +130,9 @@ blockquote.cite p { font-family: var(--font-display); font-style: italic; font-s
 .tk.last { transform: translateX(-100%); } .tk.last::before { left: auto; right: 0; }
 .marks { position: relative; height: 22px; }
 .mk { position: absolute; top: 0; transform: translateX(-50%); font: 500 .74rem/1.2 var(--font-body); color: var(--gold-ink); white-space: nowrap; }
-.mk::before { content: ""; display: block; width: 0; height: 0; margin: 0 auto 2px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--gold); }
+.mk::before { content: ""; display: block; width: 0; height: 0; margin: 0 auto 2px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--gold-ui); }
 .mk.end { transform: translateX(-85%); }
-.frise-cap { font-size: .84rem; color: var(--muted); margin-top: 6px; }
+.frise-cap { font-size: .84rem; color: var(--muted); margin-top: 6px; max-width: 68ch; }
 .bands { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 6px; }
 .band { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; min-width: 0; }
 .band-row { appearance: none; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 12px; color: inherit; font: inherit; cursor: pointer;
@@ -185,7 +193,7 @@ blockquote.cite p { font-family: var(--font-display); font-style: italic; font-s
 .t-field { display: grid; gap: 2px; min-width: 0; }
 .t-field label { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
 input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold); }
-.btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); cursor: pointer; }
+.btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--rule-ctl); background: var(--sheet); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); cursor: pointer; }
 .btn:hover { border-color: var(--muted); }
 .btn.arrow { font-size: 1.15rem; padding: 5px 13px; }
 .btn[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
@@ -194,7 +202,7 @@ input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold);
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 .chk { display: inline-flex; align-items: center; gap: 8px; font-size: .92rem; color: var(--muted); cursor: pointer; }
 .chk input { accent-color: var(--gold); width: 1rem; height: 1rem; margin: 0; }
-.map-note { font-size: .86rem; color: var(--muted); max-width: 75ch; }
+.map-note { font-size: .86rem; color: var(--muted); max-width: 68ch; }
 .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .84rem; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .sw { width: 11px; height: 11px; border-radius: 50%; background: var(--c); flex: none; }
@@ -209,7 +217,7 @@ input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold);
 .f-dl dd { margin: 0; min-width: 0; overflow-wrap: break-word; }
 .f-date { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.1rem; }
 .f-note { font-size: .88rem; color: var(--muted); }
-.approx { font: 500 .7rem/1.2 var(--font-mono); color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.approx { font: 500 .7rem/1.2 var(--font-mono); color: var(--gold-ink); border: 1px solid var(--gold-ui); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
 .f-txt { line-height: 1.58; }
 .see { font-size: .92rem; color: var(--muted); }
 .ep-index { margin-top: 24px; display: grid; gap: 10px; }
@@ -217,7 +225,7 @@ input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold);
 .ep-list button { appearance: none; width: 100%; height: 100%; text-align: left; display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: 0 8px; align-items: baseline;
   padding: 8px 10px; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); font: inherit; cursor: pointer; }
 .ep-list button:hover { border-color: var(--muted); }
-.ep-list button[aria-current="step"] { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); background: var(--tint); }
+.ep-list button[aria-current="step"] { border-color: var(--gold-ui); box-shadow: inset 0 0 0 1px var(--gold-ui); background: var(--tint); }
 .ep-n { font: 500 .78rem/1.4 var(--font-mono); color: var(--muted); grid-row: span 2; }
 .ep-t { font-weight: 500; font-size: .95rem; line-height: 1.25; }
 .ep-d { font: 400 .74rem/1.4 var(--font-mono); color: var(--muted); }
@@ -231,10 +239,14 @@ input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold);
 details.unk { max-width: 80ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
 details.unk summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
 details.unk[open] summary { margin-bottom: 14px; }
-.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 68ch; display: grid; gap: 6px; }
 
 @media (max-width: 960px) {
   .atlas { grid-template-columns: minmax(0, 1fr); }
+  .map-col { display: contents; }
+  .atlas > .fiche { order: 1; }
+  .atlas .chk, .atlas .map-note, .atlas .legend { order: 2; }
+  .cap { display: none; }
 }
 @media (max-width: 860px) {
   .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
@@ -250,6 +262,7 @@ details.unk[open] summary { margin-bottom: 14px; }
   .map-frame { aspect-ratio: 4 / 3; }
   .slider-row { grid-template-columns: auto minmax(0, 1fr) auto; }
   #t-play { grid-column: 1 / -1; justify-self: start; }
+  .seg-ctl { border-radius: 16px; }
 }
 @media (max-width: 560px) {
   body { font-size: 16px; }
@@ -262,33 +275,28 @@ details.unk[open] summary { margin-bottom: 14px; }
 @media (prefers-reduced-motion: reduce) {
   .chev { transition: none; }
 }
-</style>
+@media (pointer: coarse) { .btn, .seg-ctl button { min-height: 44px; } .btn.arrow { min-width: 44px; } }
+</style><style>/* barre commune et parcours de l’atlas (construire_site.py) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}.atlas-nav li{margin:0;flex:none}.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}@media (max-width:880px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline;padding:0;min-height:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}a.ref-lien{padding-block:5px}</style>
 </head>
 <body>
-<div class="wrap" lang="fr">
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Pages de l’atlas"><ul><li><a href="index.html">Accueil</a></li><li><a href="nebadon-dans-orvonton.html" title="Nébadon dans Orvonton">Nébadon</a></li><li><a href="atlas-3d.html" title="D’Urantia au Paradis (3D)">La 3D</a></li><li><a href="familles-de-personnalites.html" title="Familles de personnalités">Familles</a></li><li><a href="concepts-en-schemas.html" title="Concepts en schémas">Concepts</a></li><li><a href="dieu-et-deite.html">Dieu et la Déité</a></li><li><a href="histoire-d-urantia.html" title="L’histoire d’Urantia" aria-current="page">Histoire d’Urantia</a></li><li><a href="rebellion-de-lucifer.html" title="La rébellion de Lucifer">La rébellion</a></li><li><a href="vie-de-jesus.html" title="La vie de Jésus">Vie de Jésus</a></li><li><a href="bible-et-livre.html" title="La Bible et le Livre d’Urantia">La Bible</a></li><li class="livre"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" title="Lire le livre (urantia.org), nouvel onglet">Lire le livre&nbsp;↗</a></li></ul></nav>
+<script>(function(){var u=document.querySelector(".atlas-nav ul"),c=u&&u.querySelector("[aria-current]");if(c&&u.scrollWidth>u.clientWidth){var li=c.parentNode;u.scrollLeft=li.offsetLeft-(u.clientWidth-li.offsetWidth)/2;}})();</script>
+<main class="wrap" id="contenu" lang="fr">
 
   <header class="hero">
     <div class="hero-text">
-      <p class="eyebrow">Le Livre d’Urantia · partie III · fascicules 57 à 64 et 73 à 80</p>
+      <p class="eyebrow"><span data-etape>Étape 9 sur 12 · </span>Le Livre d’Urantia · partie III · fascicules 57 à 64 et 73 à 80</p>
       <h1>L’histoire d’Urantia</h1>
-      <p class="lede">Le livre raconte la Terre depuis la nébuleuse d’où naquit le Soleil jusqu’aux premiers temps historiques. Cette page en suit deux fils : les grandes époques physiques et biologiques, puis l’apparition des humains et leurs migrations, sur une carte du monde.</p>
-      <p class="links">
-        <a href="index.html">Accueil de l’atlas</a>
-        <a href="atlas-3d.html">Atlas 3D, d’Urantia au Paradis</a>
-        <a href="atlas-3d.html#frise">Frise du gouvernement planétaire</a>
-        <a href="familles-de-personnalites.html">Familles de personnalités</a>
-        <a href="concepts-en-schemas.html">Concepts en schémas</a>
-        <a href="vie-de-jesus.html">La vie de Jésus</a>
-        <a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne · urantia.org</a>
-      </p>
+      <p class="lede">Le livre raconte la Terre depuis la nébuleuse d’où naquit le Soleil jusqu’aux premiers temps historiques. Cette page en suit deux fils : les grandes époques physiques et biologiques, puis l’apparition des humains et leurs migrations, sur une carte du monde.</p>
     </div>
     <aside class="codebox" aria-label="Lire une date">
       <span class="label">Lire une date</span>
       <div class="sample"><span class="nm">Il y a 950 000 ans</span><span class="code">64:1.6</span></div>
       <dl>
         <dt>il y a N ans</dt><dd>Le texte compte en remontant le temps depuis les premières décennies du XX<sup>e</sup> siècle, et arrondit ses nombres <span class="ref">57:0.1–2</span>. Ses dates exactes sont comptées avant l’année 1934 <span class="ref">62:5.1</span>.</dd>
-        <dt>l’an N av. J.-C.</dt><dd>Dès les fascicules 77 et 78, le récit date aussi selon le calendrier usuel <span class="ref">77:4.13 ; 78:2.5</span>.</dd>
-        <dt>≈</dt><dd>Lieu que le texte situe seulement par rapport à des repères : sa place sur la carte est une estimation.</dd>
+        <dt>l’an N av. J.-C.</dt><dd>Dès les fascicules 77 et 78, le récit date aussi selon le calendrier usuel <span class="ref">77:4.13 ; 78:2.5</span>.</dd>
+        <dt>≈</dt><dd>Lieu que le texte situe seulement par rapport à des repères : sa place sur la carte est une estimation.</dd>
       </dl>
     </aside>
   </header>
@@ -296,14 +304,14 @@ details.unk[open] summary { margin-bottom: 14px; }
   <section aria-labelledby="h-frise">
     <div class="sec-head">
       <h2 id="h-frise">De la nébuleuse à la fin des glaces</h2>
-      <p>Les fascicules 57 à 61, présentés ou parrainés par des Porteurs de Vie <span class="ref">57:8.27 ; 61:7.20</span>, retracent la formation du système solaire puis les cinq ères de l’histoire d’Urantia <span class="ref">59:0.1–6</span>. Choisis une bande, sur la frise ou dans la liste, pour lire ce que dit le texte.</p>
+      <p>Les fascicules 57 à 61, présentés ou parrainés par des Porteurs de Vie <span class="ref">57:8.27 ; 61:7.20</span>, retracent la formation du système solaire puis les cinq ères de l’histoire d’Urantia <span class="ref">59:0.1–6</span>. Choisis une bande, sur la frise ou dans la liste, pour lire ce que dit le texte.</p>
     </div>
     <div class="frise">
       <div class="strip-head" id="strip-head"></div>
       <div class="strip" id="strip"></div>
       <div class="axis" id="axis"></div>
       <div class="marks" id="marks"></div>
-      <p class="frise-cap">Échelle logarithmique, en années avant le présent du texte : chaque graduation divise le temps par dix (Md : milliards, M : millions). Les bandes suivent les dates du texte ; quand il ne donne qu’un début, la bande s’arrête au début de la suivante.</p>
+      <p class="frise-cap">Échelle logarithmique, en années avant le présent du texte : chaque graduation divise le temps par dix (Md : milliards, M : millions). Les bandes suivent les dates du texte ; quand il ne donne qu’un début, la bande s’arrête au début de la suivante.</p>
     </div>
     <ol class="bands" id="bands" aria-label="Les époques, de la plus ancienne à la plus récente"></ol>
   </section>
@@ -311,12 +319,12 @@ details.unk[open] summary { margin-bottom: 14px; }
   <section aria-labelledby="h-carte">
     <div class="sec-head">
       <h2 id="h-carte">Les humains se dispersent</h2>
-      <p>Fais glisser le curseur : les lieux et les migrations apparaissent dans l’ordre du récit, de la péninsule où naquirent Andon et Fonta jusqu’au retour des Andonites (fascicules 62 à 64, puis 73 à 80). Le gouvernement de la planète (Caligastia, la rébellion, la mission d’Adam et Ève, Machiventa Melchizédek) a sa propre frise dans l’<a href="atlas-3d.html#frise">atlas 3D</a> ; elle n’est pas reprise ici.</p>
+      <p>Fais glisser le curseur : les lieux et les migrations apparaissent dans l’ordre du récit, de la péninsule où naquirent Andon et Fonta jusqu’au retour des Andonites (fascicules 62 à 64, puis 73 à 80). Le gouvernement de la planète (Caligastia, la rébellion, la mission d’Adam et Ève, Machiventa Melchizédek) a sa propre frise, <a href="atlas-3d.html#frise">La frise du temps</a>, dans la vue 3D ; elle n’est pas reprise ici.</p>
     </div>
     <div class="atlas" id="atlas">
       <div class="map-col">
         <div class="ctl-row">
-          <span class="ctl-lbl" id="lbl-vue">Cadrage</span>
+          <span class="ctl-lbl" id="lbl-vue">Vue de la carte</span>
           <div class="seg-ctl" id="views" role="group" aria-labelledby="lbl-vue">
             <button type="button" data-v="auto" aria-pressed="true">Suivre l’épisode</button>
             <button type="button" data-v="monde" aria-pressed="false">Monde</button>
@@ -351,8 +359,8 @@ details.unk[open] summary { margin-bottom: 14px; }
         <p class="cap" id="t-cap"></p>
         <p class="sr-only" id="t-status" aria-live="polite"></p>
         <label class="chk"><input type="checkbox" id="keep" checked> Garder les épisodes précédents, en pâle</label>
-        <p class="map-note">Les côtes dessinées sont celles d’aujourd’hui. Le texte décrit d’autres géographies : une Méditerranée bien plus vaste, des ponts terrestres à Béring, en Sicile et à Gibraltar, une péninsule mésopotamienne aujourd’hui immergée, la péninsule d’Éden engloutie <span class="ref">73:3 ; 73:7</span>. Les cercles en pointillé marquent les lieux que le texte ne situe que vaguement ; les flèches en pointillé, des itinéraires schématiques.</p>
-        <div class="legend" id="legend" aria-label="Légende de la carte"></div>
+        <p class="map-note">Les côtes dessinées sont celles d’aujourd’hui. Le texte décrit d’autres géographies : une Méditerranée bien plus vaste, des ponts terrestres à Béring, en Sicile et à Gibraltar, une péninsule mésopotamienne aujourd’hui immergée, la péninsule d’Éden engloutie <span class="ref">73:3 ; 73:7</span>. Les cercles en pointillé marquent les lieux que le texte ne situe que vaguement ; les flèches en pointillé, des itinéraires schématiques.</p>
+        <div class="legend" id="legend" role="group" aria-label="Légende de la carte"></div>
       </div>
       <article class="fiche" id="fiche" aria-labelledby="f-title"></article>
     </div>
@@ -365,10 +373,10 @@ details.unk[open] summary { margin-bottom: 14px; }
   <aside class="callout" aria-labelledby="h-reg">
     <h2 id="h-reg">Trois manières de lire ces récits</h2>
     <ul>
-      <li><b>Le texte dit.</b> Les dates et les lieux de cette page sont ceux du livre, références à l’appui. Il prévient qu’il arrondit ses nombres <span class="ref">57:0.1</span>. Il distingue ses faits historiques, qu’il dit durables, de ses affirmations sur les sciences physiques, dont il annonce qu’elles devront être revues <span class="ref">101:4.2</span> :
-        <blockquote class="cite" data-ref="101:4.2"><p>« La cosmologie révélée ici n’est pas inspirée. »</p><span class="ref">101:4.2</span></blockquote></li>
-      <li><b>Lecture courante.</b> Certains lecteurs prennent ces chapitres pour une histoire au sens propre ; d’autres y voient un récit révélé dont la part scientifique reflète les connaissances des années 1930 à 1950, en s’appuyant sur 101:4.2. Les passages qui hiérarchisent les races (par exemple <span class="ref">64:1.8 ; 64:6.25 ; 79:2.7–8</span>) sont parmi les plus discutés : des critiques, comme Martin Gardner dans <i>Urantia: The Great Cult Mystery</i> (1995), y voient l’empreinte des théories raciales et eugénistes du début du XX<sup>e</sup> siècle ; d’autres lecteurs demandent qu’on les lise dans leur contexte. Cette page rapporte ce que dit le texte sans reprendre ces jugements à son compte.</li>
-      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Son récit des origines emploie des noms de découvertes connues à l’époque : homme de Java, race de Heidelberg, Néandertal, Cro-Magnon <span class="ref">64:1.6 ; 64:2.3 ; 64:4 ; 80:3</span>. La paléoanthropologie actuelle propose d’autres chronologies et d’autres scénarios ; cette page n’en donne pas le détail. L’Introduction dit que les fascicules présentant Dieu et ses associés reposent sur «&nbsp;plus de mille concepts humains&nbsp;» <span class="ref">0:12.12</span>&nbsp;; pour la cosmologie, les auteurs se disent limités par «&nbsp;l’autorisation que nous avons de coordonner et de trier les connaissances d’aujourd’hui&nbsp;» <span class="ref">101:4.2</span>.</li>
+      <li><b>Le texte dit.</b> Les dates et les lieux de cette page sont ceux du livre, références à l’appui. Il prévient qu’il arrondit ses nombres <span class="ref">57:0.1</span>. Il distingue ses faits historiques, qu’il dit durables, de ses affirmations sur les sciences physiques, dont il annonce qu’elles devront être revues <span class="ref">101:4.2</span> :
+        <blockquote class="cite" data-ref="101:4.2"><p>« La cosmologie révélée ici n’est pas inspirée. »</p><span class="ref">101:4.2</span></blockquote></li>
+      <li><b>Lecture courante.</b> Certains lecteurs prennent ces chapitres pour une histoire au sens propre ; d’autres y voient un récit révélé dont la part scientifique reflète les connaissances des années 1930 à 1950, en s’appuyant sur 101:4.2. Les passages qui hiérarchisent les races (par exemple <span class="ref">64:1.8 ; 64:6.25 ; 79:2.7–8</span>) sont parmi les plus discutés : des critiques, comme Martin Gardner dans <i>Urantia: The Great Cult Mystery</i> (1995), y voient l’empreinte des théories raciales et eugénistes du début du XX<sup>e</sup> siècle ; d’autres lecteurs demandent qu’on les lise dans leur contexte. Cette page rapporte ce que dit le texte sans reprendre ces jugements à son compte.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Son récit des origines emploie des noms de découvertes connues à l’époque : homme de Java, race de Heidelberg, Néandertal, Cro-Magnon <span class="ref">64:1.6 ; 64:2.3 ; 64:4 ; 80:3</span>. La paléoanthropologie actuelle propose d’autres chronologies et d’autres scénarios ; cette page n’en donne pas le détail. L’Introduction dit que les fascicules présentant Dieu et ses associés reposent sur «&nbsp;plus de mille concepts humains&nbsp;» <span class="ref">0:12.12</span> ; pour la cosmologie, les auteurs se disent limités par «&nbsp;l’autorisation que nous avons de coordonner et de trier les connaissances d’aujourd’hui&nbsp;» <span class="ref">101:4.2</span>.</li>
     </ul>
   </aside>
 
@@ -376,22 +384,23 @@ details.unk[open] summary { margin-bottom: 14px; }
     <summary>Ce que le texte ne précise pas</summary>
     <ul>
       <li><b>Les positions exactes.</b> Le berceau de l’humanité, Oban, Dalamatia, Dilmun, Bablot, Éden ou le centre d’Adamson sont situés par rapport à des repères (ouest de l’Inde, mer Caspienne, golfe Persique, côte orientale de la Méditerranée, monts Kopet), sans plus. Leur place sur la carte est une estimation.</li>
-      <li><b>Les itinéraires.</b> Le texte donne surtout des directions : vers le nord, vers le nord-est, le long de la côte de Palestine. Les flèches sont des schémas. Il ne dit pas d’où part la tribu andite qui s’installe en Crète <span class="ref">80:7.2</span>, ni par où les Andonites gagnent la Tasmanie <span class="ref">64:1.6</span>.</li>
-      <li><b>Plusieurs dates absolues.</b> Certains épisodes ne sont datés que les uns par rapport aux autres : Dalamatia engloutie 162 ans après la rébellion <span class="ref">67:5.4</span> ; Babel environ 50 000 ans après la mort de Nod, qui n’est pas datée <span class="ref">77:3.1</span> ; Éden englouti près de 4 000 ans après l’invasion nodite <span class="ref">73:7.1</span>. La traversée du Pacifique n’est pas datée <span class="ref">78:5.7</span>.</li>
-      <li><b>Deux calendriers.</b> <i>Il y a N ans</i> part des premières décennies du XX<sup>e</sup> siècle <span class="ref">57:0.2</span> ; <i>l’an N av. J.-C.</i> suit le calendrier usuel. L’écart, d’environ 1 934 ans, se perd dans l’arrondi des grandes dates, pas dans celui des plus récentes : le début des premières migrations adamites est donné à la fois il y a environ 25 000 ans <span class="ref">78:3.3</span> et en l’an 25 000 av. J.-C. <span class="ref">78:3.9</span>.</li>
-      <li><b>Les migrations Sangik.</b> Les dates du départ des bleus vers l’Europe et des indigo vers l’Afrique ne sont pas données. Armageddon, quartier général des orangés, n’est pas situé <span class="ref">64:6.12</span> ; il ne figure donc pas sur la carte.</li>
+      <li><b>Les itinéraires.</b> Le texte donne surtout des directions : vers le nord, vers le nord-est, le long de la côte de Palestine. Les flèches sont des schémas. Il ne dit pas d’où part la tribu andite qui s’installe en Crète <span class="ref">80:7.2</span>, ni par où les Andonites gagnent la Tasmanie <span class="ref">64:1.6</span>.</li>
+      <li><b>Plusieurs dates absolues.</b> Certains épisodes ne sont datés que les uns par rapport aux autres : Dalamatia engloutie 162 ans après la rébellion <span class="ref">67:5.4</span> ; Babel environ 50 000 ans après la mort de Nod, qui n’est pas datée <span class="ref">77:3.1</span> ; Éden englouti près de 4 000 ans après l’invasion nodite <span class="ref">73:7.1</span>. La traversée du Pacifique n’est pas datée <span class="ref">78:5.7</span>.</li>
+      <li><b>Deux calendriers.</b> <i>Il y a N ans</i> part des premières décennies du XX<sup>e</sup> siècle <span class="ref">57:0.2</span> ; <i>l’an N av. J.-C.</i> suit le calendrier usuel. L’écart, d’environ 1 934 ans, se perd dans l’arrondi des grandes dates, pas dans celui des plus récentes : le début des premières migrations adamites est donné à la fois il y a environ 25 000 ans <span class="ref">78:3.3</span> et en l’an 25 000 av. J.-C. <span class="ref">78:3.9</span>.</li>
+      <li><b>Les migrations Sangik.</b> Les dates du départ des bleus vers l’Europe et des indigo vers l’Afrique ne sont pas données. Armageddon, quartier général des orangés, n’est pas situé <span class="ref">64:6.12</span> ; il ne figure donc pas sur la carte.</li>
       <li><b>Les géographies anciennes.</b> Le texte évoque une Méditerranée qui s’étendait à l’est jusqu’à l’océan Indien <span class="ref">64:1.1</span>, une mer Noire très étendue <span class="ref">64:4.10</span>, une Caspienne plus vaste <span class="ref">80:2.5</span>, des iles du Pacifique plus nombreuses et plus grandes <span class="ref">78:5.7</span>, sans en donner le tracé.</li>
-      <li><b>Les effectifs.</b> Quelques nombres seulement : dix-neuf enfants Sangik <span class="ref">64:5.3</span>, un peu plus de sept mille hommes rouges <span class="ref">64:7.5</span>, douze cents partisans d’Adam <span class="ref">75:6.2</span>, 4 500 000 Adamites vers l’an 19 000 av. J.-C. <span class="ref">78:2.5</span>, cent trente-deux navigateurs <span class="ref">78:5.7</span>, trois cent soixante-quinze ancêtres des Grecs <span class="ref">80:7.4</span>.</li>
+      <li><b>Les effectifs.</b> Quelques nombres seulement : dix-neuf enfants Sangik <span class="ref">64:5.3</span>, un peu plus de sept mille hommes rouges <span class="ref">64:7.5</span>, douze cents partisans d’Adam <span class="ref">75:6.2</span>, 4 500 000 Adamites vers l’an 19 000 av. J.-C. <span class="ref">78:2.5</span>, cent trente-deux navigateurs <span class="ref">78:5.7</span>, trois cent soixante-quinze ancêtres des Grecs <span class="ref">80:7.4</span>.</li>
     </ul>
   </details>
 
-  <footer class="foot">
-    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites.</p>
-    <p>Fond de carte : Natural Earth (domaine public), côtes, lacs et fleuves actuels, projection équirectangulaire. Les lieux marqués ≈ et les flèches en pointillé sont des estimations.</p>
-    <p>Les couleurs des peuples reprennent les noms que le texte leur donne (rouge, orangé, jaune, vert, bleu, indigo, violet) ; les autres couleurs sont un choix de présentation.</p>
+  <nav class="atlas-suite" aria-label="Parcours de découverte"><a class="prec" href="dieu-et-deite.html"><span class="s-lbl">← Étape précédente</span><span class="s-nom">Dieu et la Déité</span></a><div class="etape"><p>Parcours de découverte · Étape 9 sur 12</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div><a class="suiv" href="rebellion-de-lucifer.html"><span class="s-lbl">Étape suivante →</span><span class="s-nom">La rébellion de Lucifer</span></a></nav>
+<footer class="foot">
+    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites.</p>
+    <p>Fond de carte : Natural Earth (domaine public), côtes, lacs et fleuves actuels, projection équirectangulaire. Les lieux marqués ≈ et les flèches en pointillé sont des estimations.</p>
+    <p>Les couleurs des peuples reprennent les noms que le texte leur donne (rouge, orangé, jaune, vert, bleu, indigo, violet) ; les autres couleurs sont un choix de présentation.</p>
   </footer>
 
-</div>
+</main>
 
 <script>
 (function () {
@@ -399,10 +408,10 @@ details.unk[open] summary { margin-bottom: 14px; }
 
   var NS = "http://www.w3.org/2000/svg";
   var F3D = "atlas-3d.html#frise";
-  function see(what) { return what + " : voir la <a href=\"" + F3D + "\" target=\"_blank\" rel=\"noopener\">frise de l’atlas 3D</a>"; }
+  function see(what) { return what + " : voir <a href=\"" + F3D + "\">La frise du temps</a>, dans la vue 3D"; }
   function R(s) { return String(s).replace(/\{([^}]+)\}/g, "<span class=\"ref\">$1</span>"); }
   function reduceMotion() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
-  function quote(c) { return "<blockquote class=\"cite\"><p>« " + c.cite + " »</p><span class=\"ref\">" + c.ref + "</span></blockquote>"; }
+  function quote(c) { return "<blockquote class=\"cite\"><p>« " + c.cite + " »</p><span class=\"ref\">" + c.ref + "</span></blockquote>"; }
 
   /* ====================== 1. La frise des époques ====================== */
   /* a, b : début et fin en années avant le présent du texte ; ev : [date telle qu’écrite, repère, référence] */
@@ -414,24 +423,24 @@ details.unk[open] summary { margin-bottom: 14px; }
         ["Il y a 875 milliards d’années", "la formation de la nébuleuse commence", "57:1.6"],
         ["Il y a 600 milliards d’années", "elle atteint sa masse maximale", "57:2.4"],
         ["Il y a 500 milliards d’années", "son premier soleil nait", "57:3.6"],
-        ["Il y a 300 milliards d’années", "l’état-major de Micaël arrive sur Salvington ; Uversa reconnait l’existence physique de Nébadon", "57:3.9"],
+        ["Il y a 300 milliards d’années", "l’état-major de Micaël arrive sur Salvington ; Uversa reconnait l’existence physique de Nébadon", "57:3.9"],
         ["Il y a 50 milliards d’années", "876 926 systèmes solaires sont nés", "57:4.3"],
-        ["il y a 6 milliards d’années", "naissance du Soleil, cinquante-sixième avant-dernier de la deuxième famille solaire ; la nébuleuse a produit en tout 1 013 628 soleils et systèmes", "57:4.8"]] },
+        ["il y a 6 milliards d’années", "naissance du Soleil, cinquante-sixième avant-dernier de la deuxième famille solaire ; la nébuleuse a produit en tout 1 013 628 soleils et systèmes", "57:4.8"]] },
     { id: "monmatia", c: "e-c2", n: "Le Soleil et l’origine de Monmatia", alt: "fasc. 57", a: 6e9, b: 4.5e9, ds: "il y a 6 à 4,5 milliards d’années",
       x: "Le jeune Soleil, encore étoile variable, vit d’abord isolé {57:5.1–2}. Puis le système d’Angona, centré sur un géant obscur, s’en approche : au plus près, le Soleil se disloque et une immense colonne de gaz s’en détache, d’où naitront les douze planètes de Monmatia, le système solaire {57:5.4–7}. Selon le texte, moins d’un pour cent des systèmes planétaires d’Orvonton ont une telle origine {57:5.3}.",
       ev: [["Il y a 5 milliards d’années", "le Soleil est un globe incandescent relativement isolé", "57:5.1"],
         ["Il y a 4 milliards et demi d’années", "le système d’Angona commence à s’approcher du Soleil", "57:5.4"],
-        ["pendant environ cinq-cent-mille ans", "les épanchements solaires croissent jusqu’à la dislocation ; la colonne de gaz détachée formera les planètes", "57:5.6–7"]] },
+        ["pendant environ cinq-cent-mille ans", "les épanchements solaires croissent jusqu’à la dislocation ; la colonne de gaz détachée formera les planètes", "57:5.6–7"]] },
     { id: "planetes", c: "e-c3", n: "La formation des planètes", alt: "fasc. 57", a: 4.5e9, b: 2e9, ds: "il y a 4,5 à 2 milliards d’années",
       x: "Les noyaux de gaz se condensent, puis grossissent en captant des météores : les planètes ont ainsi une double origine {57:5.11}. Jupiter et Saturne, nés du centre de la colonne, brillent un temps comme des soleils secondaires {57:5.10}. Urantia grossit surtout par absorption de météorites {57:6.10}.",
       ev: [["Il y a 4 milliards d’années", "les systèmes de Jupiter et de Saturne prennent une forme proche de l’actuelle", "57:6.6"],
-        ["Il y a 3 milliards et demi d’années", "les noyaux des dix autres planètes sont bien formés : c’est l’ère de l’assemblage planétaire", "57:6.7"],
+        ["Il y a 3 milliards et demi d’années", "les noyaux des dix autres planètes sont bien formés : c’est l’ère de l’assemblage planétaire", "57:6.7"],
         ["Il y a 3 milliards d’années", "le système solaire fonctionne à peu près comme aujourd’hui", "57:6.8"],
         ["Il y a 2 milliards et demi d’années", "Urantia a environ un dixième de sa masse actuelle", "57:6.10"]] },
     { id: "meteorique", c: "e-c4", n: "L’ère météorique, l’âge volcanique", alt: "fasc. 57", a: 2e9, b: 1e9, ds: "il y a 2 à 1 milliard d’années",
       x: "Faute d’atmosphère protectrice, les météorites frappent sans cesse la surface {57:7.1}. La Terre devient assez grosse pour retenir une atmosphère primitive ; les volcans dominent, mais une croute surtout granitique commence à se former {57:7.2 ; 57:7.5}.",
-      ev: [["Il y a 2 milliards d’années", "la Terre gagne nettement sur la Lune ; à un cinquième de sa taille actuelle, elle retient l’atmosphère primitive", "57:7.2"],
-        ["Il y a un milliard et demi d’années", "elle atteint les deux tiers de sa taille actuelle ; la Lune approche de sa masse présente", "57:7.4"]] },
+      ev: [["Il y a 2 milliards d’années", "la Terre gagne nettement sur la Lune ; à un cinquième de sa taille actuelle, elle retient l’atmosphère primitive", "57:7.2"],
+        ["Il y a un milliard et demi d’années", "elle atteint les deux tiers de sa taille actuelle ; la Lune approche de sa masse présente", "57:7.4"]] },
     { id: "previe", c: "e-1", n: "L’ère de la prévie", alt: "archéozoïque", a: 1e9, b: 550e6, ds: "il y a 1 milliard à 550 millions d’années",
       x: "Le texte divise l’histoire d’Urantia en cinq grandes ères {59:0.1–6} ; la première dure 450 millions d’années, jusqu’à l’établissement de la vie {59:0.2}. Un seul continent, entouré de l’océan Pacifique, se fissure peu à peu ; la croute se stabilise, et les mers prennent la salinité nécessaire à la vie {57:8.5 ; 57:8.16 ; 57:8.23–25}.",
       q: { cite: "La date du commencement effectif de l’histoire d’Urantia se situe il y a un milliard d’années.", ref: "57:8.1" },
@@ -445,24 +454,24 @@ details.unk[open] summary { margin-bottom: 14px; }
     { id: "aurore", c: "e-2", n: "L’ère de l’aurore de la vie", alt: "protérozoïque", a: 550e6, b: 400e6, ds: "il y a 550 à 400 millions d’années",
       x: "Les Porteurs de Vie implantent la vie marine en trois points à la fois, dans des baies tropicales abritées, pour que chaque masse continentale l’emporte en dérivant {58:4.2–4}. La vie n’est pas apportée d’ailleurs : elle est élaborée sur place, sur un monde modificateur de vie {58:4.1}. La vie végétale des mers s’établit, puis la vie animale en sort {58:4.3 ; 58:6.1}.",
       q: { cite: "Il y a 550 millions d’années, le corps des Porteurs de Vie revint sur Urantia.", ref: "58:4.2" },
-      ev: [["Il y a 550 millions d’années", "trois implantations simultanées : centrale (eurasienne-africaine), orientale (australasienne) et occidentale (Groenland et Amériques)", "58:4.2"],
-        ["Il y a 500 millions d’années", "la vie végétale marine est bien établie ; les Amériques et le Groenland dérivent lentement vers l’ouest", "58:4.3"],
+      ev: [["Il y a 550 millions d’années", "trois implantations simultanées : centrale (eurasienne-africaine), orientale (australasienne) et occidentale (Groenland et Amériques)", "58:4.2"],
+        ["Il y a 500 millions d’années", "la vie végétale marine est bien établie ; les Amériques et le Groenland dérivent lentement vers l’ouest", "58:4.3"],
         ["Il y a 450 millions d’années", "transition de la vie végétale à la vie animale, dans des baies et des lagunes tropicales", "58:6.1"]] },
     { id: "marine", c: "e-3", n: "L’ère de la vie marine", alt: "paléozoïque", a: 400e6, b: 150e6, ds: "il y a 400 à 150 millions d’années",
       x: "Environ un quart de l’histoire de la planète, en six longues périodes {59:0.7}. Les continents sont tour à tour inondés et émergés ; trilobites, coraux et brachiopodes, puis poissons dominent les mers, tandis que fougères et forêts du charbon gagnent les terres. L’ère s’achève sur une crise : de plus de cent mille espèces, moins de cinq cents survivent {59:6.2}.",
-      per: [["Les trilobites", 400e6, 350e6, "400 → 360 millions", "59:1"], ["Première inondation des continents : les invertébrés", 350e6, 300e6, "350 → 310 millions", "59:2"],
-        ["Deuxième grande inondation : corail et brachiopodes", 300e6, 270e6, "300 → 280 millions", "59:3"], ["Grande émergence des terres : plantes terrestres et poissons", 270e6, 220e6, "270 → 230 millions", "59:4"],
-        ["Forêts de fougères du carbonifère : l’âge des grenouilles", 220e6, 170e6, "220 → 180 millions", "59:5"], ["Transition climatique : plantes à graines, tribulations biologiques", 170e6, 150e6, "170 → 160 millions", "59:6"]],
-      q: { cite: "Il y a 250 millions d’années se situe l’une des étapes les plus importantes de l’évolution préhumaine : l’apparition de la famille des poissons, des vertébrés.", ref: "59:4.9" },
+      per: [["Les trilobites", 400e6, 350e6, "400 → 360 millions", "59:1"], ["Première inondation des continents : les invertébrés", 350e6, 300e6, "350 → 310 millions", "59:2"],
+        ["Deuxième grande inondation : corail et brachiopodes", 300e6, 270e6, "300 → 280 millions", "59:3"], ["Grande émergence des terres : plantes terrestres et poissons", 270e6, 220e6, "270 → 230 millions", "59:4"],
+        ["Forêts de fougères du carbonifère : l’âge des grenouilles", 220e6, 170e6, "220 → 180 millions", "59:5"], ["Transition climatique : plantes à graines, tribulations biologiques", 170e6, 150e6, "170 → 160 millions", "59:6"]],
+      q: { cite: "Il y a 250 millions d’années se situe l’une des étapes les plus importantes de l’évolution préhumaine : l’apparition de la famille des poissons, des vertébrés.", ref: "59:4.9" },
       ev: [["Il y a 400 millions d’années", "la vie marine, végétale et animale, est répandue sur tout le globe", "59:1.2"],
-        ["Il y a 230 millions d’années", "volcans dans la région du Saint-Laurent : le mont Royal, à Montréal, est le vestige de l’un d’eux", "59:4.16"],
+        ["Il y a 230 millions d’années", "volcans dans la région du Saint-Laurent : le mont Royal, à Montréal, est le vestige de l’un d’eux", "59:4.16"],
         ["Il y a 220 millions d’années", "véritable âge des fougères", "59:5.2"],
-        ["il y a 180 millions d’années", "fin de la période carbonifère : le charbon s’est formé dans le monde entier", "59:5.20"],
-        ["Il y a 160 millions d’années", "fin des épreuves biologiques ; l’atmosphère convient désormais à la respiration animale", "59:6.10"]] },
+        ["il y a 180 millions d’années", "fin de la période carbonifère : le charbon s’est formé dans le monde entier", "59:5.20"],
+        ["Il y a 160 millions d’années", "fin des épreuves biologiques ; l’atmosphère convient désormais à la respiration animale", "59:6.10"]] },
     { id: "terrestre", c: "e-4", n: "L’ère de la vie terrestre primitive", alt: "mésozoïque", a: 150e6, b: 50e6, ds: "il y a 150 à 50 millions d’années",
       x: "Les reptiles apparaissent soudainement ; les dinosaures atteignent les plus grandes tailles de la vie terrestre, puis disparaissent presque entièrement {60:1.9 ; 60:2.1}. La dérive des continents s’achève et les chaines côtières du Pacifique se dressent {60:3.12}. Les plantes à fleurs couvrent les continents, et le premier véritable oiseau apparait {60:3.7 ; 60:3.22}.",
-      per: [["L’âge primitif des reptiles", 150e6, 120e6, "150 → 130 millions", "60:1"], ["La nouvelle phase : essor et déclin des dinosaures", 120e6, 100e6, "120 → 100 millions", "60:2"],
-        ["Le crétacé : plantes à fleurs et oiseaux", 100e6, 50e6, "100 → 55 millions", "60:3–4"]],
+      per: [["L’âge primitif des reptiles", 150e6, 120e6, "150 → 130 millions", "60:1"], ["La nouvelle phase : essor et déclin des dinosaures", 120e6, 100e6, "120 → 100 millions", "60:2"],
+        ["Le crétacé : plantes à fleurs et oiseaux", 100e6, 50e6, "100 → 55 millions", "60:3–4"]],
       ev: [["Il y a 140 millions d’années", "les reptiles apparaissent soudain, avec tous leurs attributs", "60:1.9"],
         ["Il y a cent-millions d’années", "l’âge des reptiles tire à sa fin", "60:2.14"],
         ["Il y a 90 millions d’années", "les angiospermes envahissent les continents", "60:3.7"],
@@ -475,11 +484,11 @@ details.unk[open] summary { margin-bottom: 14px; }
         ["L’âge glaciaire", 2e6, 35e3, "2 millions → 35 000 ans", "61:5–7"]],
       q: { cite: "Il y a 35 000 ans s’acheva ce grand âge glaciaire, sauf pour les régions polaires de la planète.", ref: "61:7.18" },
       ev: [["Il y a 35 millions d’années", "début de la domination mondiale des mammifères placentaires", "61:2.3"],
-        ["Il y a 20 millions d’années", "âge d’or des mammifères ; par l’isthme de Béring, des animaux passent d’Asie en Amérique du Nord", "61:3.4"],
+        ["Il y a 20 millions d’années", "âge d’or des mammifères ; par l’isthme de Béring, des animaux passent d’Asie en Amérique du Nord", "61:3.4"],
         ["Il y a 5 millions d’années", "le cheval atteint son état actuel et se répand dans le monde depuis l’Amérique du Nord", "61:4.5"],
         ["Il y a 2 millions d’années", "le premier glacier d’Amérique du Nord descend vers le sud", "61:5.5"],
-        ["Il y a un million d’années", "Urantia est enregistrée comme monde habité : deux premiers êtres humains naissent d’une mutation des primates", "61:6.2"],
-        ["Il y a 500 000 ans", "apparition des six races de couleur ; arrivée du Prince Planétaire", "61:7.4"],
+        ["Il y a un million d’années", "Urantia est enregistrée comme monde habité : deux premiers êtres humains naissent d’une mutation des primates", "61:6.2"],
+        ["Il y a 500 000 ans", "apparition des six races de couleur ; arrivée du Prince Planétaire", "61:7.4"],
         ["Il y a 200 000 ans", "rébellion de Lucifer", "61:7.8"]] }
   ];
   var MARKS = [[5.5e8, "la vie"], [1e6, "l’homme"], [3.5e4, "fin des glaces", "end"]];
@@ -666,14 +675,14 @@ details.unk[open] summary { margin-bottom: 14px; }
       q: [{ cite: "La naissance des deux premiers êtres humains se situe exactement 993 419 ans avant l’année 1934 de l’ère chrétienne.", ref: "62:5.1" }],
       p: ["berceau|Péninsule natale d’Andon et de Fonta"],
       m: [{ g: "andon", s: 1, w: [[56.5, 27.5], [55.6, 31], [54.6, 34.2]] }] },
-    { id: "onagar", t: "Les clans andoniques et Onagar", dp: "Naissance d’Onagar :", d: "983 323 ans avant l’an 1934 de l’ère chrétienne", r: "63:6.8", ds: "983 323 ans avant 1934",
-      l: "Vers le nord, puis l’Europe jusqu’à la mer du Nord ; Oban, sur le rivage nord de la Méditerranée ancienne, dans la région de l’actuelle mer Caspienne", ax: 1, f: "fascicule 63", v: "ouest",
+    { id: "onagar", t: "Les clans andoniques et Onagar", dp: "Naissance d’Onagar :", d: "983 323 ans avant l’an 1934 de l’ère chrétienne", r: "63:6.8", ds: "983 323 ans avant 1934",
+      l: "Vers le nord, puis l’Europe jusqu’à la mer du Nord ; Oban, sur le rivage nord de la Méditerranée ancienne, dans la région de l’actuelle mer Caspienne", ax: 1, f: "fascicule 63", v: "ouest",
       x: "La famille d’Andon reste unie jusqu’à la vingtième génération, puis se disperse {63:3.6}. Les Andonites remontent toujours plus au nord, jusqu’à ce que le troisième glacier les arrête ; ils gagnent alors l’ouest à travers l’Europe et fondent plus de mille établissements le long des fleuves qui mènent à la mer du Nord, dont la Somme {63:5.1–3}. Après près de dix mille ans de recul, Onagar ramène la paix depuis Oban, envoie les premiers missionnaires du monde et enseigne une Déité unique, le Souffle de Vie {63:6.1 ; 63:6.7}. Avec lui, Ajusteurs et anges gardiens viennent en grand nombre : c’est l’âge d’or de l’homme primitif {63:6.9}.",
       q: [{ cite: "Ô Souffle de Vie, donne-nous aujourd’hui notre nourriture quotidienne, délivre-nous de la malédiction de la glace […]", ref: "63:6.6" }],
       p: ["oban|Oban, centre d’Onagar", "manche|Établissements le long des fleuves de la mer du Nord", "somme"],
       m: [{ g: "andon", s: 1, w: [[55, 30], [52.5, 34.5], [49.5, 39], [45.5, 42.3], [40, 45.3], [32, 47.3], [22, 49.2], [12, 50.6], [4.5, 51.5]] }] },
     { id: "est-ouest", t: "Jusqu’à l’Angleterre et à Java", d: "Il y a 950 000 ans", r: "64:1.6", ds: "il y a 950 000 ans",
-      l: "La France et l’Angleterre à l’ouest ; Java, puis la Tasmanie, à l’est", ax: 0, f: "fascicule 64", v: "ancien",
+      l: "La France et l’Angleterre à l’ouest ; Java, puis la Tasmanie, à l’est", ax: 0, f: "fascicule 64", v: "ancien",
       x: "Les Andonites sont enfermés : glaces au nord, hautes terres du Tibet à l’est, Méditerranée étendue jusqu’à l’océan Indien au sud et à l’ouest ; les plus intelligents refusent de redescendre vers leurs cousins des forêts {64:1.1–2}. Une voie terrestre continue relie alors l’Angleterre à Java {64:1.5}. Le texte leur attribue les ossements de l’homme de Java ; plus tard, ils atteignent la Tasmanie, sans que l’itinéraire soit décrit {64:1.6}. Les groupes de l’ouest restent plus purs ; ceux de l’est se mêlent aux tribus attardées, et le culte du Donneur de Souffle recule {64:1.7}.",
       q: [{ cite: "Il y a 950 000 ans, les descendants d’Andon et de Fonta avaient émigré très loin vers l’est et vers l’ouest.", ref: "64:1.6" }],
       p: ["france", "angleterre", "java", "tasmanie"],
@@ -681,12 +690,12 @@ details.unk[open] summary { margin-bottom: 14px; }
         { g: "andon", s: 1, w: [[60, 30], [68, 28], [77, 26.5], [86, 24.5], [95, 20], [100.5, 12], [103.5, 3], [106.5, -3], [109.5, -6.8]] },
         { g: "andon", s: 1, w: [[112, -8.8], [122, -13], [132, -21], [140, -31], [145.8, -41]] }] },
     { id: "foxhall", t: "Foxhall et Badonan", d: "Il y a 900 000 ans", r: "64:2.1", ds: "il y a 900 000 ans",
-      l: "L’Angleterre (peuples de Foxhall) ; les contreforts des hautes terres du Nord-Ouest de l’Inde (tribus de Badonan)", ax: 1, f: "fascicule 64", v: "ouest",
+      l: "L’Angleterre (peuples de Foxhall) ; les contreforts des hautes terres du Nord-Ouest de l’Inde (tribus de Badonan)", ax: 1, f: "fascicule 64", v: "ouest",
       x: "La culture d’Andon et d’Onagar est au plus bas {64:2.1}. Des tribus très mêlées venues du sud de la France passent en Angleterre ; un peuple plus prolifique, la race de Heidelberg, se répand ensuite dans toute l’Europe {64:2.2–3}. Deux foyers gardent des traditions andoniques : à l’ouest, les peuples de Foxhall, dont les descendants deviendront les Esquimaux ; à l’est, les tribus de Badonan, un arrière-arrière-petit-fils d’Andon, seuls descendants d’Andon à n’avoir jamais pratiqué de sacrifices humains {64:2.4–7 ; 64:3.1}.",
       p: ["foxhall", "badonan"],
       m: [{ g: "andon", s: 1, w: [[1.5, 44.5], [0.6, 47.8], [-0.4, 51]] }] },
     { id: "neandertal", t: "Les Néandertaliens", d: "Il y a 850 000 ans", r: "64:3.5", ds: "il y a 850 000 ans",
-      l: "Depuis les hautes terres du Nord-Ouest de l’Inde : jusqu’en Chine à l’est, jusqu’en France à l’ouest, et en Afrique du Nord", ax: 0, f: "fascicule 64", v: "ancien",
+      l: "Depuis les hautes terres du Nord-Ouest de l’Inde : jusqu’en Chine à l’est, jusqu’en France à l’ouest, et en Afrique du Nord", ax: 0, f: "fascicule 64", v: "ancien",
       x: "Les tribus supérieures de Badonan mènent une guerre d’extermination contre leurs voisins à tendances animales ; leurs descendants mêlés forment un peuple apparemment nouveau, la race du Néandertal {64:3.5}. Grands voyageurs et grands chasseurs, les Néandertaliens dominent le monde pendant près d’un demi-million d’années {64:4.1–2}. Le texte suit leurs mouvements au rythme des glaciers, de la quatrième avance à la cinquième, et décrit une religion de la peur qui aboutit aux sacrifices humains {64:4.4–13}.",
       p: ["badonan|Hautes terres du Nord-Ouest de l’Inde", "chine", "france", "afnord"],
       m: [{ g: "andon", s: 1, w: [[73.5, 35.2], [82, 37.5], [92, 37.2], [102, 35.6], [109, 35]] },
@@ -698,8 +707,8 @@ details.unk[open] summary { margin-bottom: 14px; }
       q: [{ cite: "Ce fut la famille Sangik, ancêtre des six races colorées d’Urantia.", ref: "64:5.2" }],
       see: see("Le Prince Planétaire et son état-major"),
       p: ["badonan|Tribus badonites", "sangik"], m: [] },
-    { id: "dispersion", t: "Les six races se dispersent", dp: "Fantad :", d: "il y a environ trois-cent-cinquante-mille ans", r: "64:6.17",
-      dp2: "Les jaunes entrent en Chine :", d2: "Il y a plus de trois-cent-mille ans", r2: "79:5.3", ds: "vers 350 000 à 300 000 ans",
+    { id: "dispersion", t: "Les six races se dispersent", dp: "Fantad :", d: "il y a environ trois-cent-cinquante-mille ans", r: "64:6.17",
+      dp2: "Les jaunes entrent en Chine :", d2: "Il y a plus de trois-cent-mille ans", r2: "79:5.3", ds: "vers 350 000 à 300 000 ans",
       l: "Depuis les hautes terres du Nord-Ouest de l’Inde, dans toutes les directions", ax: 0, f: "fascicules 64 et 79", v: "ancien",
       x: "Pendant près de cent mille ans, les peuples Sangik restent autour de leurs montagnes : le cinquième glacier ferme l’Asie orientale et la Méditerranée barre l’Afrique {64:7.1–2}. Puis les rouges partent vers le nord-est, suivis de près par les jaunes, dont la masse principale entre en Chine par le sud, en longeant la côte ; les bleus gagnent l’Europe par le nord-ouest, sur les anciennes pistes andoniques {64:7.3–8 ; 79:5.3}. Les orangés longent la Méditerranée vers l’Afrique ; les verts se divisent en trois branches ; les indigo partent les derniers, le long de la côte de Palestine, vers l’Égypte puis le sud de l’Afrique {64:6.11 ; 64:6.18 ; 64:7.14–15}. Chaque race a ses éducateurs : Fantad pour les verts, Porshunta pour les orangés, Singlangton pour les jaunes, Orlandof pour les bleus, Orvonon pour les indigo {64:6}. Armageddon, quartier général des orangés, n’est pas situé {64:6.12}.",
       p: ["sangik", "nilbas", "chine|Chine|jaune"],
@@ -712,22 +721,22 @@ details.unk[open] summary { margin-bottom: 14px; }
         { g: "vert", s: 1, w: [[72, 32.2], [61, 29.4], [51, 28.4], [42, 28.6], [35.5, 28.8], [32.2, 27.6]] },
         { g: "indigo", s: 1, w: [[72, 33.2], [61, 32], [50, 32.8], [41, 33.6], [35.6, 33.2], [34.4, 31.2], [32.6, 29.6], [31.9, 26], [32.4, 18], [29.5, 8], [24, 0]] }] },
     { id: "nodites", t: "Dalamatia engloutie, les Nodites", dp: "", d: "Cent-soixante-deux ans après la rébellion", r: "67:5.4",
-      dp2: "Rébellion de Lucifer :", d2: "Il y a 200 000 ans", r2: "61:7.8", ds: "après la rébellion, il y a 200 000 ans",
-      l: "Dalamatia, dans la région du golfe Persique d’alors ; puis le fond du golfe, les hauts plateaux d’Élam, la côte de Syrie et Dilmun", ax: 1, f: "fascicules 66, 67, 73 et 77", v: "proche",
+      dp2: "Rébellion de Lucifer :", d2: "Il y a 200 000 ans", r2: "61:7.8", ds: "après la rébellion, il y a 200 000 ans",
+      l: "Dalamatia, dans la région du golfe Persique d’alors ; puis le fond du golfe, les hauts plateaux d’Élam, la côte de Syrie et Dilmun", ax: 1, f: "fascicules 66, 67, 73 et 77", v: "proche",
       x: "Le quartier général du Prince, Dalamatia, se trouvait dans la région du golfe Persique {66:3.1}. Un raz de marée l’engloutit ; ses vestiges gisent sous les eaux du golfe {67:5.4 ; 78:7.7}. Les descendants des membres rebelles de l’état-major forment les Nodites, la huitième race {73:1.3 ; 77:2.8}. Ils se divisent en trois groupes : au fond du golfe Persique, sur les hauts plateaux d’Élam, sur la côte nord-est de la Méditerranée, en Syrie {73:1.5}. Puis ils fondent Dilmun, leur nouveau centre {77:3.1}. Les fidèles de Van et d’Amadon, les Amadonites, vivent au nord de la Mésopotamie, près du lac Van {73:1.3 ; 73:1.6}.",
       see: see("La rébellion et le gouvernement de Caligastia"),
-      p: ["dalamatia|Dalamatia, engloutie", "golfe|Nodites du centre", "elam|Élam, Nodites de l’est", "syrie|Syrie, Nodites de l’ouest", "dilmun", "lacvan|Lac Van : Van et Amadon"],
+      p: ["dalamatia|Dalamatia, engloutie", "golfe|Nodites du centre", "elam|Élam, Nodites de l’est", "syrie|Syrie, Nodites de l’ouest", "dilmun", "lacvan|Lac Van : Van et Amadon"],
       m: [{ g: "nodite", s: 1, w: [[49.3, 29.4], [49.6, 30.6], [49.3, 31.8]] }, { g: "nodite", s: 1, w: [[48.2, 29.6], [45, 31.6], [41, 34], [37.2, 35.4]] },
         { g: "nodite", s: 1, w: [[49.2, 28.9], [50.6, 29.7]] }] },
     { id: "babel", t: "La tour de Babel", d: "Environ cinquante-mille ans après la mort de Nod", r: "77:3.1", ds: "50 000 ans après la mort de Nod",
       dn: "La date de la mort de Nod n’est pas donnée.",
-      l: "Au centre du territoire nodite, en Mésopotamie ; puis les centres nodites de Syrie, d’Élam et de l’embouchure des fleuves", ax: 1, f: "fascicule 77", v: "proche",
+      l: "Au centre du territoire nodite, en Mésopotamie ; puis les centres nodites de Syrie, d’Élam et de l’embouchure des fleuves", ax: 1, f: "fascicule 77", v: "proche",
       x: "Trop nombreux autour de Dilmun, les Nodites adoptent le plan de Bablot, un descendant de Nod : un temple surmonté d’une tour sans équivalent, bâti loin des dangers de la mer {77:3.1–2}. Après quatre ans et demi de travaux, la dispute sur le but de la tour tourne à la guerre {77:3.4–8}. La ville devait porter le nom de Bablot ; elle devint Bablod, puis Babel {77:3.3}. Les survivants fondent les centres nodites : à l’ouest, vers le nord-ouest de la Mésopotamie ; à l’est, en Élam ; au centre, à l’embouchure du Tigre et de l’Euphrate, ancêtres des Sumériens ; au nord vivent déjà les Vanites, autour du lac Van et du mont Ararat {77:4}. Une seconde tentative échoue il y a environ douze mille ans {77:3.9}.",
-      p: ["babel", "syrnod", "elam|Élam, Nodites de l’est", "embouchure|Nodites présumériens", "lacvan|Lac Van : Vanites|nodite", "ararat"],
+      p: ["babel", "syrnod", "elam|Élam, Nodites de l’est", "embouchure|Nodites présumériens", "lacvan|Lac Van : Vanites|nodite", "ararat"],
       m: [{ g: "nodite", s: 1, w: [[44, 33.2], [42, 35], [39.9, 36.3]] }, { g: "nodite", s: 1, w: [[45, 32.4], [47, 32.2], [48.6, 32.3]] },
         { g: "nodite", s: 1, w: [[45, 32], [46.5, 31.2], [47.6, 30.7]] }] },
     { id: "rouges", t: "Les hommes rouges passent en Amérique", d: "Il y a environ 85 000 ans", r: "64:6.5", ds: "il y a environ 85 000 ans",
-      l: "L’Asie du Nord-Est, l’isthme de Béring, l’Amérique du Nord ; plus tard le Mexique, l’Amérique centrale et l’Amérique du Sud", ax: 0, f: "fascicules 64 et 79", v: "pacif",
+      l: "L’Asie du Nord-Est, l’isthme de Béring, l’Amérique du Nord ; plus tard le Mexique, l’Amérique centrale et l’Amérique du Sud", ax: 0, f: "fascicules 64 et 79", v: "pacif",
       x: "Après plus de deux cent mille ans de guerre contre les jaunes, les dernières tribus rouges, onze tribus d’un peu plus de sept mille personnes, quittent l’Asie par l’isthme de Béring, qui s’effondre peu après {79:5.5–6 ; 64:7.5 ; 64:6.5}. Trois petits groupes mêlés descendent vers le Mexique et l’Amérique centrale ; leurs descendants fondent les civilisations du Mexique, de l’Amérique centrale et de l’Amérique du Sud {64:7.5}. Il y a un peu plus de quatre-vingt mille ans, des descendants andoniques du Groenland passent dans le nord-est de l’Amérique : ce sont les Esquimaux. Plus tôt, à l’arrivée du sixième glacier, des Andonites du sud de l’Angleterre avaient pris la mer ; quelques-uns atteignirent l’Islande et le Groenland {64:7.17–18}. Il y a environ soixante-cinq mille ans, Onamonalonton ramène chez les rouges une paix temporaire, depuis les séquoias de Californie {64:6.7}.",
       q: [{ cite: "Il y a environ 85 000 ans, les survivants relativement purs de la race rouge passèrent en masse en Amérique du Nord.", ref: "64:6.5" }],
       p: ["beringie", "californie", "mexique", "amcentr", "amsud", "islande", "groenland", "nordest"],
@@ -742,11 +751,11 @@ details.unk[open] summary { margin-bottom: 14px; }
       q: [{ cite: "[…] une longue péninsule étroite — presque une ile — qui faisait saillie vers l’ouest sur la côte orientale de la Méditerranée.", ref: "73:3.1" },
         { cite: "[…] arrivèrent sur Urantia 37 848 ans avant l’an 1934 de l’ère chrétienne, au milieu de la belle saison […]", ref: "74:0.1" }],
       see: see("La mission d’Adam et Ève et leur faute"),
-      p: ["eden", "ilegolfe|Site écarté : une ile du golfe Persique", "jardin2|Site écarté : le futur second jardin", "lacvan|Hautes terres de Van et d’Amadon"],
+      p: ["eden", "ilegolfe|Site écarté : une ile du golfe Persique", "jardin2|Site écarté : le futur second jardin", "lacvan|Hautes terres de Van et d’Amadon"],
       m: [{ g: "andon", s: 1, w: [[43, 38.2], [40.2, 36.6], [37.6, 35.2], [36, 34.2]] }] },
-    { id: "second-jardin", t: "Le second jardin", dp: "Séjour dans le premier jardin :", d: "pendant cent-dix-sept ans", r: "74:8.14",
-      dp2: "Centre d’Adamson :", d2: "Environ 35 000 ans av. J.-C.", r2: "77:4.13", ds: "117 ans après l’arrivée d’Adam",
-      l: "Entre le Tigre et l’Euphrate ; plus tard le centre d’Adamson, près des monts Kopet, au sud-est de la mer Caspienne", ax: 1, f: "fascicules 74 à 78", v: "proche",
+    { id: "second-jardin", t: "Le second jardin", dp: "Séjour dans le premier jardin :", d: "pendant cent-dix-sept ans", r: "74:8.14",
+      dp2: "Centre d’Adamson :", d2: "Environ 35 000 ans av. J.-C.", r2: "77:4.13", ds: "117 ans après l’arrivée d’Adam",
+      l: "Entre le Tigre et l’Euphrate ; plus tard le centre d’Adamson, près des monts Kopet, au sud-est de la mer Caspienne", ax: 1, f: "fascicules 74 à 78", v: "proche",
       x: "Quand les Nodites marchent sur Éden, Adam choisit de partir sans combattre, avec douze cents partisans {75:6.2}. Le troisième jour, les deux tiers des enfants en âge de choisir, et tous les plus jeunes, partent pour Édentia {75:6.3}. La caravane trouve l’Euphrate en crue, puis s’installe entre les deux fleuves, protégée au nord par un mur de quatre-vingt-dix kilomètres {76:1.1–3}. Adamson, le fils ainé, part vers le nord avec vingt-sept compagnons, épouse Ratta, dernière descendante de sang pur de l’état-major du Prince, et fonde un centre de la race violette {77:5.2–6 ; 78:1.3}. Adam vit 530 ans {76:5.5}.",
       q: [{ cite: "Il fallut presque une année entière à la caravane d’Adam pour atteindre l’Euphrate.", ref: "76:1.1" }],
       p: ["eden|Éden, abandonné", "jardin2", "adamson"],
@@ -756,21 +765,21 @@ details.unk[open] summary { margin-bottom: 14px; }
       l: "Le monde entier", ax: 0, f: "fascicule 78", v: "monde",
       x: "Le texte dresse un tableau des peuples au temps d’Adam {78:1.3–11} : la race violette dans le second jardin et chez les Adamsonites ; des Nodites présumériens à l’embouchure des fleuves ; des Andonites au nord de l’Eurasie, en Islande et au Groenland ; les rouges dans les Amériques ; les jaunes en Asie orientale, les plus avancés au nord-ouest de la Chine, près du Tibet ; les bleus dans toute l’Europe ; une Inde prédravidienne très mêlée ; une civilisation indigo dans l’actuel Sahara ; un Bassin méditerranéen très mélangé. La plus grande partie du monde vit encore à l’état sauvage {78:1.2}.",
       p: ["zviolet", "zadamson", "zpresum", "zandon", "zandon2", "zrouge", "zjaune", "zbleu", "zinde", "zsahara", "zmedit"], m: [] },
-    { id: "eden-englouti", t: "Éden englouti", dp: "Après l’invasion nodite :", d: "près de quatre-mille ans", r: "73:7.1", ds: "4 000 ans après l’invasion nodite",
+    { id: "eden-englouti", t: "Éden englouti", dp: "Après l’invasion nodite :", d: "près de quatre-mille ans", r: "73:7.1", ds: "4 000 ans après l’invasion nodite",
       l: "L’extrémité orientale de la Méditerranée", ax: 1, f: "fascicules 73, 78 et 80", v: "medit",
       x: "Après le départ d’Adam, le premier jardin est occupé par des Nodites, des Cutites et des Suntites, puis par les Nodites du nord {73:7.1}. Près de quatre mille ans plus tard, le fond oriental de la Méditerranée s’enfonce, avec une violente activité volcanique et la submersion de l’isthme qui reliait la Sicile à l’Afrique, tandis que la côte orientale se relève ; l’engloutissement prend plusieurs siècles {73:7.1}. Le texte y voit un évènement naturel, dont la date semble fixée pour coïncider avec le moment où la race violette serait assez nombreuse {73:7.2}. Par recoupement avec 80:2.4, c’est aussi l’époque où l’isthme de Gibraltar puis le pont de Sicile s’effondrent : la Méditerranée devient une seule mer reliée à l’Atlantique.",
       q: [{ cite: "[…] le fond oriental de la mer Méditerranée s’enfonça, entrainant sous les eaux la péninsule édénique tout entière.", ref: "73:7.1" }],
       p: ["eden|Éden, englouti", "sicile", "gibraltar"], m: [] },
-    { id: "adamites", t: "Les premières expansions adamites", d: "Il y a environ 25 000 ans", r: "78:3.3", dp2: "Durée :", d2: "entre l’an 25 000 et l’an 15 000 av. J.-C.", r2: "78:3.9", ds: "il y a environ 25 000 ans",
-      l: "Vers le nord, puis vers l’ouest autour de la mer Caspienne jusqu’en Europe ; le Turkestan ; quelques groupes vers le Nil et vers l’Asie", ax: 0, f: "fascicule 78", v: "ouest",
+    { id: "adamites", t: "Les premières expansions adamites", d: "Il y a environ 25 000 ans", r: "78:3.3", dp2: "Durée :", d2: "entre l’an 25 000 et l’an 15 000 av. J.-C.", r2: "78:3.9", ds: "il y a environ 25 000 ans",
+      l: "Vers le nord, puis vers l’ouest autour de la mer Caspienne jusqu’en Europe ; le Turkestan ; quelques groupes vers le Nil et vers l’Asie", ax: 0, f: "fascicule 78", v: "ouest",
       x: "Fidèles aux traditions pacifiques d’Éden, les Adamites envoient leur excédent de population comme éducateurs plutôt que de conquérir {78:3.1}. Vers l’an 19 000 av. J.-C., ils forment une nation de 4 500 000 habitants {78:2.5}. La plupart des émigrants vont vers le nord, puis tournent vers l’ouest autour de la Caspienne ; en chemin, ils se mêlent aux autres peuples, surtout aux Nodites, et deviennent de moins en moins adamiques {78:3.2–3}. À la périphérie du second jardin, le mélange d’Adamites et de Nodites donne naissance aux Andites, il y a plus de vingt-cinq mille ans {78:4.2}. Vers l’an 15 000 av. J.-C., l’Europe et l’Asie centrale comptent plus de descendants d’Adam que la Mésopotamie {78:3.5}.",
       p: ["zandites", "jardin2", "turkestan"],
       m: [{ g: "adam", s: 1, w: [[45, 33.6], [46.6, 37], [46.4, 40.6], [44.8, 43.2], [41.5, 45.6], [36.5, 47.6], [28, 49.2], [18, 50.2]] },
         { g: "adam", s: 1, w: [[45.6, 33.5], [50, 35.6], [55, 37.6], [60.5, 39.6]] },
         { g: "adam", s: 1, w: [[44.4, 32.4], [40, 30.9], [35.6, 30.5], [32.2, 30.2]] },
         { g: "adam", s: 1, w: [[46, 32.4], [52, 30.8], [58.5, 29.8]] }] },
-    { id: "inde-chine", t: "Les Andites en Inde et en Chine", dp: "En Inde :", d: "Vers l’an 15 000 av. J.-C.", r: "79:2.4", dp2: "En Chine :", d2: "Il y a environ quinze-mille ans", r2: "79:7.1", ds: "vers l’an 15 000 av. J.-C.",
-      l: "De l’Iran et du Turkestan vers l’Inde, par le Béloutchistan et le Pendjab ; du bassin du Tarim vers le fleuve Jaune, par le col de Ti Tao", ax: 1, f: "fascicule 79", v: "asie",
+    { id: "inde-chine", t: "Les Andites en Inde et en Chine", dp: "En Inde :", d: "Vers l’an 15 000 av. J.-C.", r: "79:2.4", dp2: "En Chine :", d2: "Il y a environ quinze-mille ans", r2: "79:7.1", ds: "vers l’an 15 000 av. J.-C.",
+      l: "De l’Iran et du Turkestan vers l’Inde, par le Béloutchistan et le Pendjab ; du bassin du Tarim vers le fleuve Jaune, par le col de Ti Tao", ax: 1, f: "fascicule 79", v: "asie",
       x: "Sous la pression de la population, les Andites entrent en Inde par les hautes terres du Béloutchistan pendant plus de quinze siècles, puis gagnent les vallées de l’Indus et du Gange et le Deccan {79:2.4}. Leur mélange avec les peuples déjà présents produit les Dravidiens, qui bâtissent des villes et commercent par mer jusqu’aux villes sumériennes {79:3.1 ; 79:3.7}. Vers l’an 10 000 av. J.-C., les Andites de l’Inde sont absorbés {79:2.6}. À l’est, des centres andites durent près de quinze mille ans dans le bassin du Tarim et sur les plateaux du Tibet {79:1.2}. Des Andites franchissent le col de Ti Tao et rejoignent les colonies chinoises du fleuve Jaune, au Kansou puis au Honan {79:7.1}.",
       q: [{ cite: "Il y a environ quinze-mille ans, les Andites franchissaient en nombre considérable le col de Ti Tao […]", ref: "79:7.1" }],
       p: ["balouch", "indus", "gange", "deccan", "pendjab", "tarim", "titao", "honan"],
@@ -779,13 +788,13 @@ details.unk[open] summary { margin-bottom: 14px; }
         { g: "andite", s: 1, w: [[64, 39], [68.6, 36.4], [71.6, 33.4], [73.8, 31.3]] },
         { g: "andite", s: 1, w: [[83, 40.6], [92, 39.6], [99, 37.6], [103.6, 35.7], [109, 34.7], [113, 34.3]] }] },
     { id: "crete", t: "Crète et Grèce", d: "Vers l’an 12 000 av. J.-C.", r: "80:7.2", ds: "vers l’an 12 000 av. J.-C.",
-      l: "La Crète ; la Grèce, atteinte par les iles du nord", ax: 0, f: "fascicules 78 et 80", v: "egee",
+      l: "La Crète ; la Grèce, atteinte par les iles du nord", ax: 0, f: "fascicules 78 et 80", v: "egee",
       x: "Une tribu d’Andites de petite taille, mêlés de Nodites vanites et chassés du continent, s’installe en Crète : tissage, métaux, poterie, plomberie, construction en pierre, écriture {80:7.2}. Le texte ne dit pas d’où elle part. Près de deux mille ans plus tard, trois cent soixante-quinze descendants d’Adamson, conduits par Sato depuis les hautes terres du nord de la Mésopotamie, gagnent la Grèce par les iles du nord {80:7.3–4}. La Grèce et les iles de la mer Égée succèdent ensuite à la Mésopotamie et à l’Égypte comme centre occidental du commerce et de l’art {80:7.5}. Vers la même date, les trois quarts des Andites du monde vivent dans le nord et l’est de l’Europe {78:5.4}.",
       q: [{ cite: "Vers l’an 12 000 av. J.-C., une brillante tribu d’Andites émigra en Crète.", ref: "80:7.2" }],
       p: ["crete", "grece"],
       m: [{ g: "adam", s: 1, w: [[42, 37.3], [37, 38.1], [31, 39.2], [27, 39.7], [24.4, 39.4], [22.8, 39.2]] }] },
     { id: "pacifique", t: "À travers le Pacifique", dp: "Non datée ; pendant les migrations andites {78:5}", d: "", r: "", ds: "non datée",
-      l: "Du Japon à l’Amérique du Sud, d’ile en ile ; l’ile de Pâques", ax: 0, f: "fascicule 78", v: "pacsud",
+      l: "Du Japon à l’Amérique du Sud, d’ile en ile ; l’ile de Pâques", ax: 0, f: "fascicule 78", v: "pacsud",
       x: "Cent trente-deux Andites partis du Japon traversent le Pacifique par petites étapes, en s’arrêtant dans les iles, alors plus nombreuses et plus grandes qu’aujourd’hui {78:5.7}. Arrivés dans les Andes, ils s’unissent aux natifs : selon le texte, ils sont les ancêtres des chefs incas. De nombreux centres de civilisation se développent sur des terres aujourd’hui submergées ; l’ile de Pâques est longtemps le centre religieux et administratif de l’un de ces groupes disparus {78:5.7}. D’autres petits groupes andites atteignent le Japon, Formose et les Indes orientales {78:5.6}.",
       q: [{ cite: "Cent-trente-deux membres de cette race s’embarquèrent au Japon sur une flottille de petits bateaux et finirent par atteindre l’Amérique du Sud.", ref: "78:5.7" }],
       p: ["japon", "paques", "andes"],
@@ -801,12 +810,12 @@ details.unk[open] summary { margin-bottom: 14px; }
         { g: "andite", s: 1, w: [[45, 31.4], [41.5, 29.6], [37.5, 29.6], [34, 29.9], [31.6, 29.6]] },
         { g: "andite", s: 1, w: [[9.4, 55.4], [7, 53.2], [4.2, 51.2], [2.4, 50.1]] }] },
     { id: "inondations", t: "Les inondations et les Sumériens", d: "vers l’an 5 000 av. J.-C.", r: "78:7.2", ds: "vers l’an 5 000 av. J.-C.",
-      l: "La vallée de l’Euphrate ; Aram, près d’Érech ; Ur, Suse et l’embouchure des fleuves", ax: 0, f: "fascicule 78", v: "meso",
+      l: "La vallée de l’Euphrate ; Aram, près d’Érech ; Ur, Suse et l’embouchure des fleuves", ax: 0, f: "fascicule 78", v: "meso",
       x: "L’exhaussement des montagnes et l’abondance des neiges provoquent chaque printemps des crues sans précédent ; pendant près de mille ans, des dizaines de villes sont abandonnées {78:7.2}. Noé, viticulteur d’Aram, près d’Érech, avertissait ses voisins de la date des crues ; seuls Noé et sa proche famille sont sauvés par leur maison flottante {78:7.5}. Le texte présente le déluge universel comme une invention de la prêtrise hébraïque pendant la captivité à Babylone {78:7.4}. Les Sumériens, derniers Andites de Mésopotamie, tiennent l’embouchure des fleuves ; il y a sept mille ans, Ur se trouvait sur le golfe Persique {78:8.1–2}. Vers 2 500 av. J.-C., ils subissent de graves défaites, puis se fondent parmi les Sémites du nord {78:8.10}.",
       q: [{ cite: "Il n’y a jamais eu de déluge universel depuis que la vie fut établie sur Urantia.", ref: "78:7.4" }],
       p: ["erech", "aram", "ur", "suse", "embouchure|Sumériens"], m: [] },
-    { id: "andonites-retour", t: "Le retour des Andonites", d: "Vers l’an 3 000 av. J.-C.", r: "80:9.6", dp2: "Arrivée en Europe :", d2: "Vers l’an 2 500 av. J.-C.", r2: "80:9.7", ds: "3 000 à 2 500 av. J.-C.",
-      l: "Du nord de l’Asie centrale vers le Turkestan, puis vers l’Europe par l’Ukraine et les Balkans ; les Aryens vers l’Inde", ax: 0, f: "fascicules 79 et 80", v: "ouest",
+    { id: "andonites-retour", t: "Le retour des Andonites", d: "Vers l’an 3 000 av. J.-C.", r: "80:9.6", dp2: "Arrivée en Europe :", d2: "Vers l’an 2 500 av. J.-C.", r2: "80:9.7", ds: "3 000 à 2 500 av. J.-C.",
+      l: "Du nord de l’Asie centrale vers le Turkestan, puis vers l’Europe par l’Ukraine et les Balkans ; les Aryens vers l’Inde", ax: 0, f: "fascicules 79 et 80", v: "ouest",
       x: "Pendant près de vingt mille ans, les Andites avaient repoussé les Andonites toujours plus au nord ; l’aridité les ramène vers le Turkestan {80:9.6}. Leur poussée vers le sud dure plus de mille ans, se divise autour de la Caspienne et de la mer Noire et pénètre en Europe par les Balkans et par l’Ukraine {80:9.6–7}. Le texte y voit le plus grave et le plus durable recul de la culture enregistré jusque-là {80:9.7}. Au milieu du troisième millénaire avant le Christ, l’invasion aryenne de l’Inde marque l’exode final des Andites hors du Turkestan {79:4.1}.",
       p: ["nordasie", "turkestan|Turkestan|andon", "ukraine", "balkans", "pendjab"],
       m: [{ g: "andon", s: 1, w: [[72, 51.5], [66.5, 45.5], [62.5, 41.2]] },
@@ -1021,17 +1030,19 @@ details.unk[open] summary { margin-bottom: 14px; }
     tCap.innerHTML = "<b>" + ep.t + "</b> <span class=\"ep-d\">" + ep.ds + "</span>";
     renderFiche();
     Array.prototype.forEach.call(epBtns, function (b, j) { if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
-    svg.setAttribute("aria-label", "Carte du monde aux côtes actuelles. " + txt + ". Lieux : " +
+    svg.setAttribute("aria-label", "Carte du monde aux côtes actuelles. " + txt + ". Lieux : " +
       ep.p.map(function (s) { var q = s.split("|"); return q[1] || PL[q[0]][0]; }).join(", ") + ". Le détail figure dans la fiche de l’épisode.");
     goView(true);
   }
   function stopPlay() {
     if (state.timer) clearInterval(state.timer);
     state.timer = 0; playBtn.setAttribute("aria-pressed", "false");
+    playBtn.textContent = "Lecture automatique";
   }
   function startPlay() {
     if (state.step >= EPS.length - 1) setStep(0, true);
     playBtn.setAttribute("aria-pressed", "true");
+    playBtn.textContent = "Pause";
     state.timer = setInterval(function () {
       if (state.step >= EPS.length - 1) { stopPlay(); return; }
       setStep(state.step + 1, true);
@@ -1077,69 +1088,6 @@ details.unk[open] summary { margin-bottom: 14px; }
 })();
 </script>
 
-<script id="refs-urantia">
-(function () {
-  'use strict';
-  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
-  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
-  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
-  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
-  function link(el) {
-    var t = el.textContent;
-    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
-    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
-    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
-    RX.lastIndex = 0;
-    while ((m = RX.exec(t))) {
-      var p = +m[1];
-      if (!S[p]) continue;
-      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
-      var a = document.createElement('a');
-      a.className = 'ref-lien';
-      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.title = 'Lire ' + m[0] + ' sur urantia.org';
-      a.textContent = m[0];
-      frag.appendChild(a);
-      last = m.index + m[0].length;
-      n++;
-    }
-    if (!n) return;
-    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
-    el.textContent = '';
-    el.appendChild(frag);
-    el.setAttribute('data-lk', el.textContent);
-  }
-  function scan(node) {
-    if (!node || node.nodeType !== 1) return;
-    if (node.classList.contains('ref')) link(node);
-    var l = node.querySelectorAll('.ref');
-    for (var i = 0; i < l.length; i++) link(l[i]);
-  }
-  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
-  function start() {
-    try {
-      var st = document.createElement('style');
-      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
-        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
-      document.head.appendChild(st);
-      scan(document.body);
-      if (!window.MutationObserver) return;
-      new MutationObserver(function (list) {
-        for (var i = 0; i < list.length; i++) {
-          var mu = list[i];
-          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
-          for (var j = 0; j < mu.addedNodes.length; j++) {
-            var nd = mu.addedNodes[j];
-            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
-          }
-        }
-      }).observe(document.body, { childList: true, subtree: true, characterData: true });
-    } catch (e) { /* les références restent en texte simple */ }
-  }
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
-})();
-</script>
+<script src="assets/refs-urantia.js" defer></script>
 </body>
 </html>

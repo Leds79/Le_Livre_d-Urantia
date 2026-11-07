@@ -5,6 +5,7 @@ const vm = require('vm');
 const [page, threePath, orbitPath] = process.argv.slice(2);
 const html = fs.readFileSync(page, 'utf8');
 const inline = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
+const refs = (html.match(/<script id="refs-urantia">([\s\S]*?)<\/script>/) || [])[1];   // références cliquables (urantia.org)
 const errors = [];
 
 const grad = { addColorStop() {} };
@@ -41,7 +42,9 @@ const document = {
   querySelector(s) { return ids['q:' + s] || (ids['q:' + s] = mk('div')); },
   querySelectorAll() { return []; },
   addEventListener(t, f) { (document._l[t] = document._l[t] || []).push(f); }, _l: {},
-  removeEventListener() {}
+  removeEventListener() {},
+  head: mk('head'), body: mk('body'), readyState: 'complete',
+  createDocumentFragment() { return mk('fragment'); }, createTextNode(t) { return { nodeType: 3, textContent: t }; }
 };
 Object.values(ids).forEach(() => {});
 const rafs = [];
@@ -66,6 +69,8 @@ vm.runInContext(fs.readFileSync(orbitPath, 'utf8'), ctx, { filename: 'OrbitContr
 const canvas = document.getElementById('c');
 canvas.ownerDocument = document;
 try { vm.runInContext(inline[inline.length - 1], ctx, { filename: 'page.js' }); } catch (e) { errors.push('init: ' + (e.stack || e)); }
+if (refs) { try { vm.runInContext(refs, ctx, { filename: 'refs-urantia.js' }); } catch (e) { errors.push('refs: ' + (e.stack || e)); } }
+console.log('bloc refs-urantia :', refs ? 'exécuté' : 'absent');
 
 let t = Date.now();
 function frames(n) { for (let i = 0; i < n; i++) { const f = rafs.shift(); if (!f) return; t += 16; try { f(t); } catch (e) { errors.push('frame: ' + (e.stack || e)); return; } } }
