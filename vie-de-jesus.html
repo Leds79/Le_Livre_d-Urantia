@@ -159,6 +159,10 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .field { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .9rem; min-width: 0; max-width: 100%; }
 .field select { flex: 1 1 12rem; min-width: 0; max-width: 100%; font: 400 .92rem/1.3 var(--font-body); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; }
 .kbd { font-size: .82rem; color: var(--muted); }
+.fr-help { margin: 0; font-size: .95rem; color: var(--muted); max-width: 74ch; }
+.fr-now { margin: 0; font-size: 1rem; line-height: 1.4; min-height: 2.8em; }
+.fr-now .fr-n { font: 500 .78rem/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.fr-now b { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; }
 
 /* Notes */
 .notes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
@@ -205,6 +209,26 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     </p>
   </header>
 
+  <section class="frise" aria-labelledby="h-frise">
+    <div class="fr-head">
+      <h2 id="h-frise">Frise du temps</h2>
+      <label class="field" for="per">Aller à
+        <select id="per"></select>
+      </label>
+    </div>
+    <p class="fr-help">Chaque trait est une étape de la vie de Jésus, dans l’ordre du récit. Clique sur un trait, ou sur «&nbsp;Suivant&nbsp;»&nbsp;: la carte et la fiche, juste en dessous, suivent l’étape choisie.</p>
+    <p class="fr-now" id="fr-now"></p>
+    <div class="track" id="track" aria-hidden="true"></div>
+    <div class="fr-ctl">
+      <button type="button" class="btn" id="prev" aria-label="Entrée précédente"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.5 4.5 7 9 11.5"/></svg>Précédent</button>
+      <button type="button" class="btn" id="play" aria-pressed="false"><svg viewBox="0 0 14 14" aria-hidden="true" fill="currentColor"><path id="play-ico" d="M4 2.5v9l7.5-4.5z"/></svg><span id="play-t">Lecture</span></button>
+      <button type="button" class="btn" id="next" aria-label="Entrée suivante">Suivant<svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5 9.5 7 5 11.5"/></svg></button>
+      <input type="range" id="tl" min="0" max="1" step="1" value="0" aria-label="Entrée de la frise">
+    </div>
+    <p class="fr-per" id="fr-per"></p>
+    <p class="kbd">Les repères sont espacés régulièrement, pas à l’échelle du temps. Au clavier : flèches gauche et droite, Début et Fin.</p>
+  </section>
+
   <section class="atelier" aria-label="Carte et fiche de l’entrée courante">
     <div class="mapcol">
       <div class="viewsel" role="group" aria-label="Choix de la carte">
@@ -241,23 +265,6 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     </article>
   </section>
 
-  <section class="frise" aria-labelledby="h-frise">
-    <div class="fr-head">
-      <h2 id="h-frise">Frise du temps</h2>
-      <label class="field" for="per">Aller à
-        <select id="per"></select>
-      </label>
-    </div>
-    <div class="track" id="track" aria-hidden="true"></div>
-    <div class="fr-ctl">
-      <button type="button" class="btn" id="prev" aria-label="Entrée précédente"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.5 4.5 7 9 11.5"/></svg>Précédent</button>
-      <button type="button" class="btn" id="play" aria-pressed="false"><svg viewBox="0 0 14 14" aria-hidden="true" fill="currentColor"><path id="play-ico" d="M4 2.5v9l7.5-4.5z"/></svg><span id="play-t">Lecture</span></button>
-      <button type="button" class="btn" id="next" aria-label="Entrée suivante">Suivant<svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5 9.5 7 5 11.5"/></svg></button>
-      <input type="range" id="tl" min="0" max="1" step="1" value="0" aria-label="Entrée de la frise">
-    </div>
-    <p class="fr-per" id="fr-per"></p>
-    <p class="kbd">Les repères sont espacés régulièrement, pas à l’échelle du temps. Au clavier : flèches gauche et droite, Début et Fin.</p>
-  </section>
 
   <section class="notes" aria-label="Comment lire cette page">
     <div class="regs">
@@ -789,6 +796,7 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     document.getElementById("f-sw").style.setProperty("--sw", "var(--p" + e.p + ")");
     document.getElementById("f-per").textContent = per.n;
     document.getElementById("f-count").textContent = (cur + 1) + " / " + E.length;
+    document.getElementById("fr-now").innerHTML = '<span class="fr-n">Étape ' + (cur + 1) + ' sur ' + E.length + '</span> · <b>' + esc(e.d) + '</b> · ' + esc(e.s);
     document.getElementById("f-date").textContent = e.d;
     document.getElementById("f-ded").hidden = !e.x;
     document.getElementById("f-sum").textContent = e.s;
