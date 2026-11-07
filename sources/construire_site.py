@@ -30,10 +30,10 @@ PAGES = [
      'Sept schémas : personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité et morontia.'),
     ('dieu-et-deite.html', 'https://claude.ai/artifact/Dw332DFEqbZTfoqrwLk3at', 'dieu-et-deite.html',
      'Dieu et la Déité selon le Livre d’Urantia : le JE SUIS, les sept Absolus, la Trinité, les Maitres Esprits, les Déités expérientielles.'),
-    ('histoire-d-urantia.html', None, 'histoire-d-urantia.html',
+    ('histoire-d-urantia.html', 'https://claude.ai/artifact/URhwMaWUmndS1dMn8GeVgm', 'histoire-d-urantia.html',
      'L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.'),
-    ('vie-de-jesus.html', None, 'vie-de-jesus.html',
-     'La vie de Jésus selon la quatrième partie du livre : carte de la Palestine et frise des épisodes.'),
+    ('vie-de-jesus.html', 'https://claude.ai/artifact/Ekdw5SMkFyodpBiEc7i7UE', 'vie-de-jesus.html',
+     'La vie de Jésus selon la quatrième partie du livre : une frise de 92 étapes, de l’annonce à Marie à la Pentecôte, et les cartes de ses voyages.'),
 ]
 CDN = {
     'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js': 'assets/lib/three.min.js',

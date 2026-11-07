@@ -12,6 +12,7 @@
   --ink: #E8EBF5;
   --muted: #A4ADC8;
   --panel: rgba(9, 13, 28, 0.78);
+  --panel-solid: #0d1224;
   --panel-line: rgba(160, 175, 220, 0.24);
   --gold: #F0B33C;
   --gold-ink: #F6C766;
@@ -166,6 +167,34 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .asc-steps button { appearance: none; cursor: pointer; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 500 .74rem/1 var(--font-mono); }
 .asc-steps button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
 .gov .now { margin: 2px 0 0; padding: 6px 8px; border-radius: 8px; border: 1px dashed var(--gold); font-size: .82rem; }
+/* Fiche d’un astre (clic sur une planète, le Soleil, la Lune…) */
+.bcard { position: absolute; z-index: 3; top: 118px; right: max(16px, env(safe-area-inset-right, 0px)); width: min(380px, calc(100% - 32px)); max-height: calc(100% - 290px); min-height: 200px; overflow: auto; overscroll-behavior: contain; display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 14px; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); box-shadow: 0 10px 34px rgba(0, 0, 0, .28); }
+.bcard[hidden] { display: none; }
+.bc-head { position: sticky; top: 0; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; align-items: start; padding: 13px 14px 10px; background: var(--panel-solid); border-bottom: 1px solid var(--panel-line); }
+.bc-head .eyebrow { grid-column: 1; }
+.bc-head h2 { grid-column: 1; margin: 0; font: 700 1.6rem/1.04 var(--font-display); color: var(--gold-ink); }
+.bc-x { grid-column: 2; grid-row: 1 / span 2; appearance: none; cursor: pointer; width: 34px; height: 34px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--ink); font: 400 1.3rem/1 var(--font-body); }
+.bc-x:hover { border-color: var(--gold); color: var(--gold-ink); }
+.bc-body { padding: 4px 14px 12px; display: grid; gap: 9px; font-size: .9rem; line-height: 1.45; }
+.bc-body h3 { margin: 8px 0 0; font: 500 .66rem/1.3 var(--font-mono); letter-spacing: .11em; text-transform: uppercase; color: var(--muted); }
+.bc-body p { margin: 0; }
+.bc-q { padding-left: 11px; border-left: 2px solid var(--gold); font: italic 500 1.04rem/1.36 var(--font-display); }
+.bc-q .ref { font-style: normal; }
+.bc-none { color: var(--muted); }
+.bc-facts { margin: 2px 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 12px; padding: 9px 11px; border: 1px solid var(--panel-line); border-radius: 10px; }
+.bc-facts div { min-width: 0; }
+.bc-facts dt { font: 500 .62rem/1.35 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; color: var(--muted); }
+.bc-facts dd { margin: 0; font: 600 .88rem/1.3 var(--font-body); font-variant-numeric: tabular-nums; }
+.bc-nav { position: sticky; bottom: 0; margin-top: auto; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 6px; padding: 10px 14px 12px; background: var(--panel-solid); border-top: 1px solid var(--panel-line); }
+.bc-nav button { appearance: none; cursor: pointer; min-width: 0; border: 1px solid var(--panel-line); background: transparent; color: var(--ink); border-radius: 999px; padding: 8px 10px; font: 500 .8rem/1.1 var(--font-body); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bc-nav button:hover { border-color: var(--gold); }
+.bc-nav .bc-go { border-color: var(--gold); color: var(--gold-ink); }
+.bc-nav button:last-child { text-align: right; }
+.astres { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 7px; }
+@media (max-width: 640px) {
+  .bcard { top: auto; bottom: max(8px, env(safe-area-inset-bottom, 0px)); left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: 54vh; min-height: 0; }
+  .bc-head h2 { font-size: 1.35rem; }
+}
 :focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
 @media (max-width: 640px) {
   .tl { max-height: 54vh; }
@@ -206,6 +235,7 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
     </div>
     <p class="abs-f">Image symbolique&nbsp;: aucun des trois n’est un lieu. La tension entre le déifié et le non déifié est résolue par l’Absolu Universel <span class="ref">0:4.5</span>. Au centre de la vue, le maitre univers baigne dans l’espace que l’Absolu Non Qualifié pénètre.</p>
   </aside>
+  <aside class="bcard" id="bcard" aria-labelledby="bc-title" hidden></aside>
   <div class="ui" id="ui">
     <header class="top">
       <div class="title">
@@ -689,7 +719,7 @@ const TEX = /*__TEX__*/null;
   const halo = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: haloTex, blending: THREE.AdditiveBlending }), 0.35, 'planets'));
   halo.scale.set(2.52, 2.52, 1);
   L0.group.add(halo);
-  lab(L0, 'Urantia · n° 606 de Satania', new V3(0, 1.2, 0), 'gold', { cf: 'planets' });
+  lab(L0, 'Urantia · n° 606 de Satania', new V3(0, 1.2, 0), 'gold', { cf: 'planets', body: 'urantia', zoomV: 2.6 * L0.R });
   // Rotation réelle : le méridien de Greenwich suit le temps sidéral de Greenwich (GMST)
   const pivotInv = pivot.quaternion.clone().invert();
   function earthAngle(ms) {
@@ -713,7 +743,7 @@ const TEX = /*__TEX__*/null;
     moon.quaternion.setFromUnitVectors(new V3(1, 0, 0), mp.clone().negate().normalize());   // face visible tournée vers la Terre
     L0.group.add(moon);
     // repère cliquable quand la Lune n’occupe qu’un pixel ; un clic amène tout près (zoomV : hauteur du champ visée)
-    fixedSprite(L0, mp, 0xe9e5da, 0.01, null, null, 'moondot').userData.zoomV = 0.75 * L0.R;
+    { const md = fixedSprite(L0, mp, 0xe9e5da, 0.01, null, null, 'moondot'); md.userData.zoomV = 0.75 * L0.R; md.userData.body = 'lune'; }
     MOON_PHYS.copy(mp).multiplyScalar(L0.R);       // Urantia est l’origine du repère physique
     // Textures réelles (NASA) : la Terre de jour, ses lumières de nuit, la Lune ; nuages générés
     if (TEX) {
@@ -727,7 +757,7 @@ const TEX = /*__TEX__*/null;
     const mo = [];
     for (let k = 0; k <= 160; k++) { const a = (k / 160) * Math.PI * 2; mo.push(eclToScene(Math.cos(a), Math.sin(a), 0).multiplyScalar(60.3)); }
     L0.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(mo), lineMat(L0, 0x7d8dc0, 0.3, false, 0, 0, 'planets')));
-    lab(L0, 'la Lune · toujours la même face (57:6.2)', mp, 'small', { cf: 'planets', zoomV: 0.75 * L0.R });
+    lab(L0, 'la Lune · toujours la même face (57:6.2)', mp, 'small', { cf: 'planets', zoomV: 0.75 * L0.R, body: 'lune' });
   }
   // Frise du temps : repères sur Urantia (isolement, effusion, gouvernement à la date choisie, lieux)
   const isoRing = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: dashTex, color: 0xff7a6b, blending: THREE.AdditiveBlending, depthTest: false }), 0.95, 'isol'));
@@ -766,10 +796,9 @@ const TEX = /*__TEX__*/null;
   const AU = 1.5813e-5;
   const L1 = addLevel({ name: 'Monmatia', R: 40 * AU, stop: 1.15, win: [-1.7, -1.1, 0.75, 1.3], floor: -1.7 });
   L1.local.copy(EARTH).divideScalar(40);
-  fixedSprite(L1, new V3(0, 0, 0), 0xffd59a, 0.05, null, null, 'sun');
+  const sunCore = fixedSprite(L1, new V3(0, 0, 0), 0xffd59a, 0.05, null, null, 'sun');
   fixedSprite(L1, new V3(0, 0, 0), 0xffb860, 0.13, glowTex, null, 'sun');
-  // couleurs et tailles d’affichage indicatives ; distance moyenne au Soleil en unités astronomiques
-  const PSTYLE = { Mercure: [0xb9ab9c, 0.010], 'Vénus': [0xf3dcae, 0.013], Mars: [0xe8875c, 0.011], Jupiter: [0xe9cba0, 0.024], Saturne: [0xeedca8, 0.020], Uranus: [0xa6e6ea, 0.016], Neptune: [0x7795f2, 0.016] };
+  // distance moyenne au Soleil en unités astronomiques ; les points, noms et globes des planètes sont dans le niveau des astres (plus bas)
   const saturnTex = canvasTex(128, (g) => { g.strokeStyle = '#fff'; g.lineWidth = 7; g.beginPath(); g.ellipse(64, 64, 58, 17, -0.35, 0, Math.PI * 2); g.stroke(); });
   const ua = (a) => a.toLocaleString('fr-CA', { maximumFractionDigits: a < 2 ? 2 : 1 }) + ' UA';
   PLANETS.forEach((pl, i) => {
@@ -777,24 +806,17 @@ const TEX = /*__TEX__*/null;
     for (let k = 0; k <= 180; k++) orbit.push(keplerPos(pl.o, k * 2).divideScalar(40));
     const ours = i === 2;
     L1.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, ours ? 0xF0B33C : 0x7d8dc0, ours ? 0.9 : 0.35, false, 0, 0, 'planets')));
-    if (ours) fixedSprite(L1, pl.pos.clone().divideScalar(40), 0x8fb8ff, 0.012, null, null, 'planets').userData.zoomV = 2.6 * L0.R;   // un clic ramène sur Urantia
-    if (!ours) {
-      const p = pl.pos.clone().divideScalar(40), st = PSTYLE[pl.name] || [0xcfd6ee, 0.012];
-      fixedSprite(L1, p, st[0], st[1], null, null, 'planets');
-      if (pl.name === 'Saturne') fixedSprite(L1, p, st[0], st[1] * 2.4, saturnTex, null, 'planets');
-      lab(L1, pl.name + ' · ' + ua(pl.o.a), p, 'small', { cf: 'planets' });
-    }
+    if (ours) { const s = fixedSprite(L1, pl.pos.clone().divideScalar(40), 0x8fb8ff, 0.012, null, null, 'planets'); s.userData.zoomV = 2.6 * L0.R; s.userData.body = 'urantia'; }   // un clic ramène sur Urantia
   });
-  { // Pluton, planète naine (astronomie moderne) : éléments képlériens classiques du JPL, position du jour
-    const po = orbitOf(['Pluton', 39.48211675, 0.24882730, 17.14001206, 238.92903833, 224.06891629, 110.30393684, -0.00031596, 0.00005170, 0.00004818, 145.20780515, -0.04062942, -0.01183482]);
+  // Pluton, planète naine (astronomie moderne) : éléments képlériens classiques du JPL, position du jour
+  const PLUTO_O = orbitOf(['Pluton', 39.48211675, 0.24882730, 17.14001206, 238.92903833, 224.06891629, 110.30393684, -0.00031596, 0.00005170, 0.00004818, 145.20780515, -0.04062942, -0.01183482]);
+  {
+    const po = PLUTO_O;
     const orbit = [];
     for (let k = 0; k <= 240; k++) orbit.push(keplerPos(po, k * 1.5).divideScalar(40));
     const pl = new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, 0x8e86a8, 0.35, true, 0.012, 0.01, 'planets'));
     pl.computeLineDistances();
     L1.group.add(pl);
-    const pp = keplerPos(po, eccAnomaly(po)).divideScalar(40);
-    fixedSprite(L1, pp, 0xd8c3a8, 0.009, null, null, 'planets');
-    lab(L1, 'Pluton · planète naine · 39,5 UA', pp, 'small', { cf: 'planets' });
   }
   { // ceinture de Kuiper : petits corps glacés au-delà de Neptune (astronomie moderne)
     const b = buf(), rk = mulberry32(1992);
@@ -812,9 +834,8 @@ const TEX = /*__TEX__*/null;
     const hl = new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, 0x9fd0e8, 0.4, true, 0.01, 0.008, 'planets'));
     hl.computeLineDistances();
     L1.group.add(hl);
-    lab(L1, 'comète de Halley · orbite, environ 76 ans', keplerPos(ho, 180).divideScalar(40), 'small', { cf: 'planets' });
+    lab(L1, 'comète de Halley · orbite, environ 76 ans', keplerPos(ho, 180).divideScalar(40), 'small', { cf: 'planets', body: 'halley' });
   }
-  lab(L1, 'Soleil', new V3(0, 0, 0), '', { below: true, dy: 6, cf: 'sun' });
   { // frise : avant la naissance du Soleil, la matière de la nébuleuse d’Andronover (image)
     const neb = new THREE.Sprite(fadeMat(L1, new THREE.SpriteMaterial({ map: glowTex, color: 0xffb27a, blending: THREE.AdditiveBlending, depthTest: false }), 0.75, 'neb'));
     neb.scale.set(3.2, 3.2, 1);
@@ -831,7 +852,159 @@ const TEX = /*__TEX__*/null;
       put(b, p.x, p.y, p.z, tc.set(0xb8aa96), 0.35 + rnd() * 0.3, 1.0 + rnd() * 0.6);
     }
     addPts(L1, b).userData.f = 'planets';
-    lab(L1, 'astéroïdes · l’ancienne cinquième planète', keplerPos({ a: 2.8, e: 0, I: 0, om: 0, O: 0 }, 140).divideScalar(40), 'small', { cf: 'planets' });
+    lab(L1, 'astéroïdes · l’ancienne cinquième planète', keplerPos({ a: 2.8, e: 0, I: 0, om: 0, O: 0 }, 140).divideScalar(40), 'small', { cf: 'planets', body: 'asteroides' });
+  }
+
+  /* ---------- Les astres en vrai volume ---------- */
+  // Rayons réels, pôles orientés (UAI), rotation réelle ; cartes de la NASA (Jupiter, Mars, Mercure, Pluton) ou images générées
+  // d’après les photographies (Soleil, Vénus, Saturne, Uranus, Neptune, anneaux). Un clic sur un point, un nom ou un globe
+  // ouvre la fiche de l’astre. L’origine du repère reste Urantia ; unité du niveau : l’unité astronomique.
+  const KM = 1 / 1.495978707e8;
+  const PLN = level({ name: 'astres', R: AU });
+  // km : rayon équatorial ; f : aplatissement ; ra, de : pôle nord (degrés, équatorial) ; rot : rotation en heures (négative : sens inverse)
+  const BODY = {
+    soleil: { n: 'Soleil', km: 695700, f: 0, ra: 286.13, de: 63.87, rot: 609.12, tex: 'soleil', c: 0xffd59a },
+    mercure: { n: 'Mercure', km: 2440.5, f: 0, ra: 281.01, de: 61.42, rot: 1407.6, tex: 'mercure', c: 0xb9ab9c, sz: 0.010 },
+    venus: { n: 'Vénus', km: 6051.8, f: 0, ra: 272.76, de: 67.16, rot: -5832.5, tex: 'venus', c: 0xf3dcae, sz: 0.013, atm: [1.0, 0.9, 0.72, 0.5] },
+    mars: { n: 'Mars', km: 3396.2, f: 0.0059, ra: 317.68, de: 52.89, rot: 24.623, tex: 'mars', c: 0xe8875c, sz: 0.011, atm: [1.0, 0.66, 0.5, 0.3] },
+    jupiter: { n: 'Jupiter', km: 71492, f: 0.0649, ra: 268.06, de: 64.50, rot: 9.925, tex: 'jupiter', c: 0xe9cba0, sz: 0.024, limb: 1 },
+    saturne: { n: 'Saturne', km: 60268, f: 0.098, ra: 40.59, de: 83.54, rot: 10.56, tex: 'saturne', c: 0xeedca8, sz: 0.020, limb: 1, ring: ['anneaux', 1.11, 2.34] },
+    uranus: { n: 'Uranus', km: 25559, f: 0.0229, ra: 257.31, de: -15.18, rot: -17.24, tex: 'uranus', c: 0xa6e6ea, sz: 0.016, limb: 0.6, atm: [0.65, 0.88, 1.0, 0.35], ring: ['anneauxU', 1.60, 2.03] },
+    neptune: { n: 'Neptune', km: 24764, f: 0.0171, ra: 299.36, de: 43.46, rot: 16.11, tex: 'neptune', c: 0x7795f2, sz: 0.016, limb: 0.7, atm: [0.55, 0.75, 1.0, 0.35] },
+    pluton: { n: 'Pluton', km: 1188.3, f: 0, ra: 132.99, de: -6.16, rot: -153.29, tex: 'pluton', c: 0xd8c3a8, sz: 0.009 }
+  };
+  const PV = [
+    'uniform float uFlat;',
+    'varying vec2 vUv; varying vec3 vN; varying vec3 vV; varying vec3 vL;',
+    'void main() {',
+    '  vUv = uv; vL = position * vec3(1.0, uFlat, 1.0);',
+    '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
+    '  vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz);',
+    '  gl_Position = projectionMatrix * mv;',
+    '}'].join('\n');
+  // planète : diffusion, bord assombri (géantes gazeuses), ombre des anneaux sur le globe, liseré d’atmosphère
+  const PF = [
+    'uniform sampler2D map; uniform sampler2D uRing; uniform vec3 uSun; uniform vec3 uSunL; uniform vec3 uAtm; uniform vec2 uRingR;',
+    'uniform float uLimb; uniform float uAtmK; uniform float uRingOn;',
+    'varying vec2 vUv; varying vec3 vN; varying vec3 vV; varying vec3 vL;',
+    'void main() {',
+    '  vec3 n = normalize(vN);',
+    '  float d = dot(n, uSun), mu = max(dot(n, normalize(vV)), 0.0);',
+    '  vec3 c = texture2D(map, vUv).rgb * mix(1.0, 0.5 + 0.5 * sqrt(mu), uLimb);',
+    '  float diff = mix(max(d, 0.0), smoothstep(-0.12, 0.45, d) * 0.92, 0.35 * uLimb);',
+    '  float sh = 1.0;',
+    '  if (uRingOn > 0.5 && abs(uSunL.y) > 0.0001) {',
+    '    float t = -vL.y / uSunL.y;',
+    '    if (t > 0.0) {',
+    '      float u = (length(vL.xz + t * uSunL.xz) - uRingR.x) / (uRingR.y - uRingR.x);',
+    '      if (u > 0.0 && u < 1.0) sh = 1.0 - 0.8 * texture2D(uRing, vec2(u, 0.5)).a;',
+    '    }',
+    '  }',
+    '  float rim = pow(1.0 - mu, 3.0) * uAtmK * smoothstep(-0.3, 0.4, d);',
+    '  gl_FragColor = vec4(c * (0.025 + 1.05 * diff * sh) + uAtm * rim, 1.0);',
+    '}'].join('\n');
+  // Soleil : lumière propre, bord assombri et rougi
+  const SF = [
+    'uniform sampler2D map;',
+    'varying vec2 vUv; varying vec3 vN; varying vec3 vV; varying vec3 vL;',
+    'void main() {',
+    '  float mu = max(dot(normalize(vN), normalize(vV)), 0.0);',
+    '  vec3 c = texture2D(map, vUv).rgb * (0.4 + 0.6 * pow(mu, 0.55));',
+    '  c *= mix(vec3(1.0, 0.62, 0.32), vec3(1.0), pow(mu, 0.35));',
+    '  gl_FragColor = vec4(min(c * 1.15, vec3(1.0)), 1.0);',
+    '}'].join('\n');
+  // anneaux : profil radial (couleur, opacité), face éclairée ou lumière transmise, ombre de la planète
+  const RV = [
+    'varying vec3 vL; varying vec3 vN; varying vec3 vV;',
+    'void main() {',
+    '  vL = position;',
+    '  vec4 mv = modelViewMatrix * vec4(position, 1.0);',
+    '  vN = normalize(normalMatrix * vec3(0.0, 1.0, 0.0)); vV = normalize(-mv.xyz);',
+    '  gl_Position = projectionMatrix * mv;',
+    '}'].join('\n');
+  const RF = [
+    'uniform sampler2D uRing; uniform vec2 uRingR; uniform vec3 uSunL; uniform vec3 uSun; uniform float uOp; uniform float uFlat;',
+    'varying vec3 vL; varying vec3 vN; varying vec3 vV;',
+    'void main() {',
+    '  float u = (length(vL.xz) - uRingR.x) / (uRingR.y - uRingR.x);',
+    '  if (u < 0.0 || u > 1.0) discard;',
+    '  vec4 t = texture2D(uRing, vec2(u, 0.5));',
+    '  float k = dot(vL, uSunL), shade = 1.0;',
+    '  if (k < 0.0) { vec3 q = vL - k * uSunL; q.y /= uFlat; if (dot(q, q) < 1.0) shade = 0.05; }',
+    '  vec3 n = normalize(vN);',
+    '  float ls = dot(n, uSun), lv = dot(n, normalize(vV));',
+    '  float lit = ls * lv > 0.0 ? 1.0 : 0.22 + 0.55 * (1.0 - t.a);',
+    '  gl_FragColor = vec4(t.rgb * lit * (0.3 + 0.7 * sqrt(abs(ls))) * shade, t.a * uOp);',
+    '}'].join('\n');
+  const BODIES = [], BODY_BY = {};
+  const sphereGeo = new THREE.SphereGeometry(1, 96, 64);
+  const tLoad = TEX ? new THREE.TextureLoader() : null, aniso = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+  const loadTex = (k, fn) => { if (!tLoad || !TEX[k]) return; try { tLoad.load(TEX[k], (t) => { t.anisotropy = aniso; fn(t); }); } catch (e) { /* on garde la couleur unie */ } };
+  const plain = (css) => canvasTex(4, (g) => { g.fillStyle = css; g.fillRect(0, 0, 4, 4); });
+  Object.keys(BODY).forEach((key) => {
+    const B = BODY[key], pl = PLANETS.find((p) => p.name === B.n);
+    B.key = key;
+    const helio = key === 'soleil' ? new V3() : key === 'pluton' ? keplerPos(PLUTO_O, eccAnomaly(PLUTO_O)) : pl.pos.clone();
+    B.au = key === 'pluton' ? PLUTO_O.a : pl ? pl.o.a : 0;
+    B.local = helio.clone().sub(EARTH);                       // UA, depuis Urantia
+    B.phys = B.local.clone().multiplyScalar(AU);              // années-lumière, depuis Urantia
+    B.rau = B.km * KM; B.rly = B.rau * AU;
+    B.zoomV = (B.ring ? 3.3 : 2.2) * B.rly;                   // hauteur du champ visée par un clic
+    B.floorV = 1.25 * B.rly;                                  // plus près, la caméra entrerait dans l’astre
+    B.region = (key === 'soleil' ? 50 : 600) * B.rly;
+    const cd = Math.cos(B.de * DEG);
+    const pole = eqToScene(cd * Math.cos(B.ra * DEG), cd * Math.sin(B.ra * DEG), Math.sin(B.de * DEG)).normalize();
+    const tilt = new THREE.Group();
+    tilt.position.copy(B.local);
+    tilt.quaternion.setFromUnitVectors(new V3(0, 1, 0), pole);
+    tilt.scale.setScalar(B.rau);
+    PLN.group.add(tilt);
+    B.tilt = tilt;
+    B.sunDir = key === 'soleil' ? new V3(0, 1, 0) : helio.clone().negate().normalize();   // direction du Soleil, vue de l’astre
+    const uni = {
+      map: { value: plain('#' + new THREE.Color(B.c).getHexString()) }, uSun: { value: new V3(0, 0, 1) },
+      uSunL: { value: B.sunDir.clone().applyQuaternion(tilt.quaternion.clone().invert()) }, uFlat: { value: 1 - B.f },
+      uLimb: { value: B.limb || 0 }, uAtm: { value: new V3().fromArray(B.atm || [0, 0, 0]) }, uAtmK: { value: B.atm ? B.atm[3] : 0 },
+      uRing: { value: plain('rgba(0,0,0,0)') }, uRingOn: { value: B.ring ? 1 : 0 }, uRingR: { value: new THREE.Vector2(B.ring ? B.ring[1] : 1, B.ring ? B.ring[2] : 2) }
+    };
+    B.mat = new THREE.ShaderMaterial({ uniforms: uni, vertexShader: PV, fragmentShader: key === 'soleil' ? SF : PF });
+    B.mesh = new THREE.Mesh(sphereGeo, B.mat);
+    B.mesh.scale.set(1, 1 - B.f, 1);
+    tilt.add(B.mesh);
+    loadTex(B.tex, (t) => { uni.map.value = t; });
+    if (B.ring) {
+      const rg = new THREE.RingGeometry(B.ring[1], B.ring[2], 256, 1);
+      rg.rotateX(-Math.PI / 2);                              // plan de l’équateur de la planète
+      B.ringMat = new THREE.ShaderMaterial({ uniforms: { uRing: uni.uRing, uRingR: uni.uRingR, uSunL: uni.uSunL, uSun: uni.uSun, uFlat: uni.uFlat, uOp: { value: 1 } },
+        vertexShader: RV, fragmentShader: RF, transparent: true, depthWrite: false, side: THREE.DoubleSide });
+      const rm = new THREE.Mesh(rg, B.ringMat);
+      rm.renderOrder = 2;
+      tilt.add(rm);
+      loadTex(B.ring[0], (t) => { t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping; uni.uRing.value = t; });
+    }
+    if (key === 'soleil') {                                    // couronne : halo autour du disque
+      const g = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowTex, color: 0xffc070, blending: THREE.AdditiveBlending, depthWrite: false, transparent: true }));
+      g.scale.set(3.4, 3.4, 1);
+      tilt.add(g);
+    } else {                                                   // point cliquable tant que le globe ne fait que quelques pixels
+      const d = fixedSprite(PLN, B.local, B.c, B.sz, null, null, 'd_' + key);
+      d.userData.zoomV = B.zoomV; d.userData.body = key;
+      if (key === 'saturne') fixedSprite(PLN, B.local, B.c, B.sz * 2.4, saturnTex, null, 'd_' + key);
+    }
+    lab(PLN, key === 'soleil' ? 'Soleil' : B.n + ' · ' + ua(B.au), B.local, key === 'soleil' ? '' : 'small',
+      { body: key, zoomV: B.zoomV, cf: key === 'soleil' ? 'sun' : 'planets', below: key === 'soleil', dy: key === 'soleil' ? 6 : 0 });
+    BODIES.push(B); BODY_BY[key] = B;
+  });
+  sunCore.userData.zoomV = BODY.soleil.zoomV; sunCore.userData.body = 'soleil';
+  // fiches sans globe : la ceinture d’astéroïdes et la comète de Halley (on vole vers leur étiquette)
+  const CARD_AT = {
+    asteroides: [keplerPos({ a: 2.8, e: 0, I: 0, om: 0, O: 0 }, 140).sub(EARTH).multiplyScalar(AU), 1.6 * AU],
+    halley: [keplerPos({ a: 17.834, e: 0.96714, I: 162.26, om: 111.33, O: 58.42 }, 180).sub(EARTH).multiplyScalar(AU), 8 * AU]
+  };
+  function nearBody(f) {                                      // l’astre dont la région contient le point visé
+    let best = null, bd = 1;
+    BODIES.forEach((B) => { const d = f.distanceTo(B.phys) / B.region; if (d < bd) { bd = d; best = B; } });
+    return best;
   }
 
   // Ciel réel visible à l’œil nu (directions du catalogue HYG), pour les petites échelles
@@ -1349,7 +1522,7 @@ const TEX = /*__TEX__*/null;
     L7.group.add(cone);
     lab(L7, 'vers Havona et le Paradis', a1, '', { dy: -8 });
   }
-  const DECOR = [SKY, LOC];
+  const DECOR = [SKY, LOC, PLN];
   const ALLLV = LV.concat(DECOR);
 
   // Repère permanent : Urantia
@@ -1378,7 +1551,8 @@ const TEX = /*__TEX__*/null;
   /* ---------- Interface : textes ---------- */
   const INFO = [
     { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour, à sa vraie distance (environ 384&#8239;000 km, soixante rayons terrestres)&nbsp;: éloigne-toi un peu, ou <button type="button" class="go-btn" data-go="lune">va la voir de près</button>. Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
-    { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley&nbsp;; les couleurs et les tailles des planètes sont indicatives.' },
+    { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley. Les points ont une taille indicative, mais chaque astre existe aussi en vrai volume&nbsp;: clique sur un point, un nom ou un bouton pour t’en approcher et lire ce qu’en dit le livre.<span class="astres">' +
+      ['soleil', 'mercure', 'venus', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton'].map((k) => '<button type="button" class="go-btn" data-go="b:' + k + '">' + BODY[k].n + '</button>').join('') + '</span>' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
     { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#8239;840&#8239;101 planètes habitées' + REF('32:2.9') + '.' },
@@ -1564,7 +1738,11 @@ const TEX = /*__TEX__*/null;
     if (l.L && l.L !== SKY && !l.tl && !l.pin && l.cls.indexOf('core') < 0) {
       l.el.classList.add('go');
       l.el.title = 'S’en approcher';
-      l.el.addEventListener('click', () => { if (l.wp && !coupe) goWorld(l.wp, l.zoomV); });
+      l.el.addEventListener('click', () => {
+        if (!l.wp || coupe) return;
+        if (l.body && (BODY_BY[l.body] || CARD_AT[l.body] || l.body === 'lune')) goBody(l.body);   // un astre : on vole jusqu’à lui et sa fiche s’ouvre
+        else { goWorld(l.wp, l.zoomV); if (l.body) openCard(l.body); }
+      });
     }
     labelsEl.appendChild(l.el);
   }
@@ -1600,6 +1778,7 @@ const TEX = /*__TEX__*/null;
   let free = false, fly = null, blendT = 0;
   const freeFocus = new V3(), blendFrom = new V3(), focusPhys = new V3();
   const FACT = { c8: 1, c9: 0, sup: 0, ult: 0, abs: 0, frame: 0, sun: 1, planets: 1, noplanet: 0, neb: 0, reb: 0, isol: 0, inc: 0, asc: 0, moondot: 1 };
+  BODIES.forEach((B) => { FACT['d_' + B.key] = 1; });   // point de chaque astre : s’efface quand son globe grandit
 
   const centerOf = (L) => L.P.clone().negate();
   function deepest(f) {
@@ -1633,6 +1812,8 @@ const TEX = /*__TEX__*/null;
     // décors : ciel réel et étoiles voisines
     SKY.a = 1 - smooth((lv - Math.log10(0.3)) / 0.8);
     { const x = Math.log10(V / LOC.R), w = LOC.win; let a = 1; if (x < w[1]) a = x <= w[0] ? 0 : smooth((x - w[0]) / (w[1] - w[0])); if (x > w[2]) a = Math.min(a, x >= w[3] ? 0 : 1 - smooth((x - w[2]) / (w[3] - w[2]))); if (f.distanceTo(LOC.P.clone().negate()) > 6000) a = 0; LOC.a = a; }
+    // astres en vrai volume : visibles du plus près jusqu’à la vue d’ensemble du système solaire
+    { const x = Math.log10(V / L1.R); let a = x > 0.75 ? 1 - smooth((x - 0.75) / 0.55) : 1; if (f.distanceTo(centerOf(L1)) - L1.R > 1.5 * V) a = 0; PLN.a = a; }
     ALLLV.forEach((L, i) => {
       L.group.visible = L.a > 0.003;
       if (!L.group.visible) return;
@@ -1695,8 +1876,9 @@ const TEX = /*__TEX__*/null;
     const n = Math.max(0, Math.round(uCur));
     let t = coupe ? COUPE : INFO[n], key = coupe ? 'coupe' : 's' + n;
     if (free && !coupe) {
-      const p = placeAt(focusPhys, V);
-      if (p) { t = p.info; key = 'p' + PLACES.indexOf(p); }
+      const nb = nearBody(focusPhys), p = nb ? null : placeAt(focusPhys, V);
+      if (nb) { t = { h: CARDS[nb.key].n, p: HUDB(nb.key) }; key = 'b' + nb.key; }
+      else if (p) { t = p.info; key = 'p' + PLACES.indexOf(p); }
       else { t = { h: 'Exploration libre', p: 'Rien de particulier n’est décrit à cet endroit. Éloigne-toi, déplace-toi ou clique sur «&nbsp;Recentrer&nbsp;» pour revenir à Urantia.' }; key = 'vide'; }
     }
     if (key !== shownKey) {
@@ -1715,6 +1897,7 @@ const TEX = /*__TEX__*/null;
     if (dt !== shownDeity) { shownDeity = dt; infoD.hidden = !deity; infoD.innerHTML = dt; }
     const sa = deity && !coupe && V >= 1e9;     // schéma des trois Absolus, au-delà du maitre univers
     if (sa !== absShown) { absShown = sa; absEl.hidden = !sa; }
+    if (!bcard.hidden && !fly && (coupe || V > 4e-3)) closeCard();   // bien au-delà du système solaire, la fiche se referme
     if (!sliderActive) slider.value = uCur.toFixed(2);
   }
 
@@ -1740,7 +1923,7 @@ const TEX = /*__TEX__*/null;
   tDeite.addEventListener('click', () => { deity = !deity; tDeite.setAttribute('aria-pressed', String(deity)); });
   const tGov = document.getElementById('t-gov');
   renderGov();
-  tGov.addEventListener('click', () => { govOn = !govOn; govEl.hidden = !govOn; tGov.setAttribute('aria-pressed', String(govOn)); });
+  tGov.addEventListener('click', () => { govOn = !govOn; govEl.hidden = !govOn; tGov.setAttribute('aria-pressed', String(govOn)); if (govOn) closeCard(); });
   tRot.addEventListener('click', () => setRotate(!controls.autoRotate));
   tLbl.addEventListener('click', () => { labelsOn = !labelsOn; tLbl.setAttribute('aria-pressed', String(labelsOn)); });
 
@@ -2164,8 +2347,151 @@ const TEX = /*__TEX__*/null;
   }
   // Clic sur un point (étoile, système, amas, univers) : on vole vers lui et on s’en approche
   const pm4 = new THREE.Matrix4(), vp4 = new THREE.Matrix4(), pickV = new V3(), camV = new V3();
+  const rayc = new THREE.Raycaster(), rayNdc = new THREE.Vector2(), rsph = new THREE.Sphere();
   function goMoon() { if (coupe) setCoupe(false); flyTo(MOON_PHYS); setU(vToU(0.75 * L0.R)); }
-  infoP.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-go]'); if (b && b.dataset.go === 'lune') goMoon(); });
+
+  /* ---------- Fiches des astres : ce que dit le livre (citations exactes), puis l’astronomie actuelle ---------- */
+  const Q = (t, r) => '<p class="bc-q">«&nbsp;' + t + '&nbsp;»' + REF(r) + '</p>';
+  const BR = (s) => '<p>' + s.replace(/\{([^}]+)\}/g, (m, r) => REF(r)) + '</p>';
+  const NB = '&#8239;';
+  const CARDS = {
+    soleil: { n: 'Le Soleil', k: 'Soleil', e: 'L’étoile de Monmatia',
+      b: BR('Il naquit il y a 6 milliards d’années, l’un des derniers soleils de la nébuleuse d’Andronover {57:4.8}.') +
+        Q("Le soleil de votre système solaire porte le numéro 1&#8239;013&#8239;572.", "57:4.8") +
+        BR('Étoile variable dans sa jeunesse, il pulsait fortement quand le système d’Angona passa près de lui&nbsp;: une vaste masse de matière fut arrachée, d’où naquirent les douze planètes {41:10.1 ; 57:5.7}. Le cycle des taches solaires garde la trace de cette jeunesse {57:5.2}.') +
+        Q("Il brillera avec sa présente efficacité pendant plus de vingt-cinq-milliards d’années.", "41:9.5"),
+      s: '<p>Une étoile naine jaune, 109 fois plus large que la Terre. Sa lumière met environ 8&nbsp;minutes 20&nbsp;secondes pour nous atteindre.</p>',
+      f: [['Diamètre', '1,39 million de km'], ['Distance à Urantia', '1 UA'], ['Rotation', '≈ 25 jours à l’équateur'], ['Cycle des taches', '≈ 11 ans']] },
+    mercure: { n: 'Mercure', k: 'Mercure', e: 'La planète la plus proche du Soleil',
+      b: BR('Selon le livre, les frictions de marée ralentissent la rotation des planètes proches du Soleil, jusqu’à l’arrêter {57:6.2}&nbsp;:') +
+        Q("Cela laisse un hémisphère de la planète constamment tourné du côté du soleil ou du corps le plus grand, comme le montrent les exemples de la planète Mercure et de la Lune […]", "57:6.2") +
+        BR('Le livre compare aussi l’atome au système solaire&nbsp;: la distance entre le noyau et le premier circuit d’électrons serait, à l’échelle, celle du Soleil à Mercure {42:7.2}.'),
+      s: '<p>Depuis des mesures radar faites en 1965, on sait que Mercure tourne lentement sur lui-même&nbsp;: trois rotations pour deux tours du Soleil. Le livre prévient que beaucoup de ses affirmations sur les sciences physiques auront besoin d’être revues' + REF('101:4.2') + '.</p>',
+      f: [['Diamètre', '4' + NB + '879 km'], ['Distance au Soleil', '0,39 UA'], ['Année', '88 jours'], ['Rotation', '58,6 jours']] },
+    venus: { n: 'Vénus', k: 'Vénus', e: 'Notre plus proche voisine',
+      b: BR('Le livre la cite pour son atmosphère, en classant les êtres des mondes habités selon l’air qu’ils respirent&nbsp;:') +
+        Q("Si des créatures intelligentes existaient sur une planète ayant une atmosphère semblable à celle de Vénus, votre plus proche voisine, elles appartiendraient au groupe superrespirateur […]", "49:2.13") +
+        BR('Comme les autres planètes intérieures, elle se forma «&nbsp;en miniature&nbsp;» à une extrémité de la colonne de gaz arrachée au Soleil {57:5.9}.'),
+      s: '<p>Son atmosphère de gaz carbonique est environ 90 fois plus dense que celle de la Terre. On n’en voit que le sommet des nuages, ici en image générée d’après les photographies.</p>',
+      f: [['Diamètre', '12' + NB + '104 km'], ['Distance au Soleil', '0,72 UA'], ['Année', '225 jours'], ['Rotation', '243 jours, à rebours']] },
+    urantia: { n: 'Urantia', k: 'Urantia', e: 'Notre monde, la Terre',
+      b: BR('C’est le nom que le livre donne à la Terre&nbsp;: le monde n°&nbsp;606 du système de Satania {15:14.5}.') +
+        Q("La date du commencement effectif de l’histoire d’Urantia se situe il y a un milliard d’années.", "57:8.1") +
+        BR('Auparavant, elle avait grossi surtout en captant des météorites {57:6.10}.'),
+      s: '<p>Elle est montrée avec les images de la NASA&nbsp;: le jour, les lumières des villes la nuit, et sa rotation réelle.</p>',
+      f: [['Diamètre', '12' + NB + '742 km'], ['Distance au Soleil', '1 UA'], ['Année', '365,25 jours'], ['Rotation', '23 h 56 min']] },
+    lune: { n: 'La Lune', k: 'Lune', e: 'Le satellite d’Urantia',
+      b: Q("[…] la Lune, cette dernière présentant toujours la même face à Urantia.", "57:6.2") +
+        BR('Il y a un milliard et demi d’années, elle approchait déjà de sa masse présente&nbsp;; la Terre, qui grossissait plus vite, lui déroba le peu d’atmosphère qu’elle avait {57:7.4}.') +
+        BR('Le livre décrit aussi son avenir lointain&nbsp;: rapprochée à environ dix-huit-mille kilomètres de la Terre, elle serait disloquée par les marées, et ses fragments pourraient former des anneaux semblables à ceux de Saturne ou tomber peu à peu en météores {57:6.3}.'),
+      s: '<p>Elle s’éloigne aujourd’hui de la Terre d’environ 3,8 cm par an, selon les mesures au laser.</p>',
+      f: [['Diamètre', '3' + NB + '474 km'], ['Distance', '≈ 384' + NB + '400 km'], ['Révolution', '27,3 jours'], ['Rotation', 'égale à la révolution']] },
+    mars: { n: 'Mars', k: 'Mars', e: 'Notre voisin extérieur',
+      b: Q("[…] les habitants d’une planète ayant une atmosphère aussi raréfiée que celle de Mars, votre voisin extérieur, seraient appelés sous-respirateurs.", "49:2.13") +
+        BR('Avec Vénus, Mars sert d’exemple pour les trois types respiratoires des mondes habités&nbsp;: superrespirateurs, respirateurs moyens comme les humains, sous-respirateurs {49:2.13}.'),
+      s: '<p>La pression de son atmosphère, au sol, est inférieure à 1&nbsp;% de celle de la Terre. La carte est la mosaïque en couleurs des sondes Viking.</p>',
+      f: [['Diamètre', '6' + NB + '779 km'], ['Distance au Soleil', '1,52 UA'], ['Année', '687 jours'], ['Rotation', '24 h 37 min']] },
+    asteroides: { n: 'La ceinture d’astéroïdes', k: 'Astéroïdes', e: 'Entre Mars et Jupiter',
+      b: Q("Il y a longtemps, très longtemps, la cinquième planète de votre système solaire parcourait une orbite irrégulière, s’approchant périodiquement de plus en plus de Jupiter […]", "57:6.5") +
+        Q("Elle fut alors rapidement fragmentée et devint l’amas actuel des astéroïdes.", "57:6.5"),
+      s: '<p>La masse totale de la ceinture ne fait qu’environ 3&nbsp;% de celle de la Lune&nbsp;; les astronomes y voient surtout des matériaux qui ne se sont jamais assemblés en planète.</p>',
+      f: [['Distance au Soleil', '2,2 à 3,3 UA'], ['Plus gros corps', 'Cérès, 940 km']] },
+    jupiter: { n: 'Jupiter', k: 'Jupiter', e: 'La plus grosse planète',
+      b: BR('Jupiter et Saturne naquirent du centre même de la colonne de gaz arrachée au Soleil, si chauds qu’ils brillèrent d’abord de leur propre lumière&nbsp;:') +
+        Q("[…] ils furent en réalité des soleils secondaires durant une brève période qui suivit leur formation en tant que corps spatiaux distincts.", "57:5.10") +
+        BR('L’une de ses lunes s’approche dangereusement de la zone où les marées la disloqueraient&nbsp;: d’ici quelques millions d’années, elle sera captée par la planète ou désintégrée. Le texte ne dit pas laquelle {57:6.5}.') +
+        Q("Or, le 29 mai du même an 7, il y avait eu une extraordinaire conjonction de Jupiter et de Saturne dans la constellation des Poissons.", "122:8.7") +
+        BR('Selon le livre, cette conjonction de l’an 7 av. J.-C., année de la naissance de Jésus, est à l’origine de la légende de l’étoile de Bethléem {122:8.7}.'),
+      s: '<p>Onze fois plus large que la Terre, Jupiter porte la Grande Tache rouge, une tempête plus vaste que notre planète. La carte vient de la sonde Cassini (décembre 2000).</p>',
+      f: [['Diamètre', '142' + NB + '984 km'], ['Distance au Soleil', '5,20 UA'], ['Année', '11,9 ans'], ['Rotation', '9 h 56 min']] },
+    saturne: { n: 'Saturne', k: 'Saturne', e: 'La planète aux anneaux',
+      b: Q("Les anneaux de Saturne sont les fragments d’un satellite désintégré.", "57:6.5") +
+        BR('Comme Jupiter, Saturne fut un temps un soleil secondaire&nbsp;; les deux planètes sont «&nbsp;restées largement gazeuses jusqu’à ce jour&nbsp;» {57:5.10}.') +
+        BR('Le livre annonce un sort semblable, dans un lointain futur, pour notre Lune&nbsp;: disloquée par la Terre, elle pourrait former des anneaux comme ceux de Saturne {57:6.3}. Saturne figure aussi dans la conjonction de l’an 7 av. J.-C. (voir Jupiter) {122:8.7}.'),
+      s: '<p>Ses anneaux principaux s’étendent sur près de 280' + NB + '000 km, pour une épaisseur souvent inférieure à un kilomètre. On voit ici les anneaux C, B et A, la division de Cassini et l’ombre de la planète sur les anneaux.</p>',
+      f: [['Diamètre', '120' + NB + '536 km'], ['Distance au Soleil', '9,54 UA'], ['Année', '29,4 ans'], ['Rotation', '10 h 34 min']] },
+    uranus: { n: 'Uranus', k: 'Uranus', e: 'Une planète extérieure',
+      b: BR('Le livre ne nomme pas Uranus. Il décrit douze planètes nées de la colonne de gaz arrachée au Soleil {57:5.7}&nbsp;: Jupiter et Saturne au centre, cinq planètes intérieures et cinq extérieures formées «&nbsp;en miniature&nbsp;» {57:5.9}.') +
+        '<p class="bc-none">Par déduction, Uranus, au-delà de Saturne, serait l’une de ces cinq planètes extérieures&nbsp;; le texte ne le précise pas.</p>',
+      s: '<p>Découverte en 1781 par William Herschel. Son axe est presque couché sur le plan de son orbite (98°)&nbsp;; ses anneaux, étroits et sombres, ont été découverts en 1977.</p>',
+      f: [['Diamètre', '51' + NB + '118 km'], ['Distance au Soleil', '19,2 UA'], ['Année', '84 ans'], ['Rotation', '17 h 14 min, à rebours']] },
+    neptune: { n: 'Neptune', k: 'Neptune', e: 'Une planète extérieure',
+      b: BR('Le livre ne nomme pas Neptune. Il décrit douze planètes nées de la colonne de gaz arrachée au Soleil {57:5.7}, dont cinq planètes extérieures formées «&nbsp;en miniature&nbsp;» {57:5.9}.') +
+        '<p class="bc-none">Par déduction, Neptune serait l’une de ces planètes extérieures&nbsp;; le texte ne le précise pas.</p>',
+      s: '<p>Découverte en 1846 grâce aux calculs d’Urbain Le Verrier. Ses vents, les plus rapides du système solaire, dépassent 2' + NB + '000 km/h. Bandes, nuages et tache sombre sont ici illustratifs.</p>',
+      f: [['Diamètre', '49' + NB + '528 km'], ['Distance au Soleil', '30,1 UA'], ['Année', '165 ans'], ['Rotation', '16 h 7 min']] },
+    pluton: { n: 'Pluton', k: 'Pluton', e: 'Planète naine depuis 2006',
+      b: BR('Le livre ne nomme pas Pluton, découverte en 1930. Il compte douze planètes dans le système solaire {57:5.7}, sans dire lesquelles se trouvent au-delà de Saturne.'),
+      s: '<p>Classée planète naine par l’Union astronomique internationale en 2006, elle a été survolée par la sonde New Horizons en 2015. La carte vient de cette sonde&nbsp;; la région du pôle sud, alors dans la nuit, est complétée par un ton neutre.</p>',
+      f: [['Diamètre', '2' + NB + '377 km'], ['Distance au Soleil', '39,5 UA'], ['Année', '248 ans'], ['Rotation', '6,4 jours, à rebours']] },
+    halley: { n: 'La comète de Halley', k: 'Halley', e: 'Une comète périodique',
+      b: BR('Le livre ne nomme pas cette comète&nbsp;; il parle des comètes en général&nbsp;:') +
+        Q("Beaucoup de comètes sont les rejetons sauvages et non stabilisés des roues mères solaires, et sont progressivement ramenées sous le contrôle du soleil central qui les gouverne.", "15:6.13") +
+        BR('Leur queue se tourne à l’opposé du Soleil, notamment sous la pression de sa lumière, ce qui démontre, selon le texte, que «&nbsp;la lumière a du poids&nbsp;» {15:6.13}.'),
+      s: '<p>Elle revient tous les 76 ans environ&nbsp;: dernier passage en 1986, prochain en 2061.</p>',
+      f: [['Période', '≈ 76 ans'], ['Distance au Soleil', '0,6 à 35 UA']] }
+  };
+  const CARD_ORDER = ['soleil', 'mercure', 'venus', 'urantia', 'lune', 'mars', 'asteroides', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton', 'halley'];
+  const HUDB = (k) => 'Vue à l’échelle réelle. <button type="button" class="go-btn" data-go="f:' + k + '">Ouvrir la fiche</button> Fais glisser pour tourner autour&nbsp;; molette ou bouton −&nbsp;pour t’éloigner.';
+  const bcard = document.getElementById('bcard');
+  let cardKey = '';
+  function openCard(key) {
+    const C = CARDS[key];
+    if (!C) return;
+    cardKey = key;
+    const i = CARD_ORDER.indexOf(key), N = CARD_ORDER.length, pk = CARD_ORDER[(i + N - 1) % N], nk = CARD_ORDER[(i + 1) % N];
+    const facts = C.f ? '<dl class="bc-facts">' + C.f.map((x) => '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('') + '</dl>' : '';
+    bcard.innerHTML = '<div class="bc-head"><p class="eyebrow">' + C.e + '</p><h2 id="bc-title">' + C.n + '</h2>' +
+      '<button type="button" class="bc-x" data-nav="x" aria-label="Fermer la fiche">×</button></div>' +
+      '<div class="bc-body"><h3>Ce que dit le livre</h3>' + C.b + '<h3>Astronomie actuelle</h3>' + C.s + facts + '</div>' +
+      '<div class="bc-nav"><button type="button" data-nav="' + pk + '" title="Astre précédent : ' + CARDS[pk].k + '">‹ ' + CARDS[pk].k + '</button>' +
+      '<button type="button" class="bc-go" data-nav="go">Voir de près</button>' +
+      '<button type="button" data-nav="' + nk + '" title="Astre suivant : ' + CARDS[nk].k + '">' + CARDS[nk].k + ' ›</button></div>';
+    bcard.hidden = false;
+    bcard.scrollTop = 0;
+    if (govOn) tGov.click();                         // une seule fiche à droite à la fois
+  }
+  function closeCard() { bcard.hidden = true; cardKey = ''; }
+  function camDir(B) {   // vue choisie : côté éclairé, 20° au-dessus de l’équateur (anneaux ouverts), pôle vers le haut de l’écran si possible
+    const q = B.tilt.quaternion, p = new V3(0, 1, 0).applyQuaternion(q), ex = new V3(1, 0, 0).applyQuaternion(q), ey = p.clone().cross(ex), Y = new V3(0, 1, 0);
+    let best = null, bs = -1e9;
+    for (let a = 0; a < 360; a += 10) {
+      const t = a * DEG, d = ex.clone().multiplyScalar(Math.cos(t)).addScaledVector(ey, Math.sin(t)).multiplyScalar(Math.cos(0.35)).addScaledVector(p, Math.sin(0.35)).normalize();
+      const il = d.dot(B.sunDir), pp = p.clone().addScaledVector(d, -p.dot(d)), yy = Y.clone().addScaledVector(d, -Y.dot(d));
+      const vert = pp.lengthSq() > 1e-6 && yy.lengthSq() > 1e-6 ? pp.normalize().dot(yy.normalize()) : 1;
+      const sc = vert + 1.6 * Math.min(il, 0.75) - (il < 0.25 ? 3 : 0);
+      if (sc > bs) { bs = sc; best = d; }
+    }
+    return best;
+  }
+  function goBody(key) {                            // voler jusqu’à l’astre, s’en approcher, ouvrir sa fiche
+    if (coupe) setCoupe(false);
+    const B = BODY_BY[key];
+    if (B) {
+      flyTo(B.phys);
+      const asp = canvas.clientWidth / Math.max(1, canvas.clientHeight);   // écran en hauteur : on recule pour garder les anneaux
+      setU(vToU(B.zoomV * (asp < 1 ? Math.min(2.2, 1 / asp) : 1)));
+      if (key !== 'soleil') startCam(camDir(B));
+    }
+    else if (key === 'lune') goMoon();
+    else if (key === 'urantia') { recenter(); setU(0); }
+    else if (CARD_AT[key]) { flyTo(CARD_AT[key][0]); setU(vToU(CARD_AT[key][1])); }
+    openCard(key);
+  }
+  bcard.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-nav]');
+    if (!b) return;
+    const k = b.dataset.nav;
+    if (k === 'x') closeCard(); else if (k === 'go') goBody(cardKey); else goBody(k);
+  });
+  infoP.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('[data-go]');
+    if (!b) return;
+    const g = b.dataset.go;
+    if (g === 'lune') goBody('lune');
+    else if (g.indexOf('b:') === 0) goBody(g.slice(2));
+    else if (g.indexOf('f:') === 0) openCard(g.slice(2));
+  });
   function goWorld(wp, v) {                        // v : hauteur de champ visée (la Lune, Urantia), sinon on s’approche d’un cran
     const kv = K / uToV(uCur);
     flyTo(wp.clone().divideScalar(kv));
@@ -2174,6 +2500,18 @@ const TEX = /*__TEX__*/null;
   function pickAt(cx, cy) {
     if (coupe) return false;
     const r = canvas.getBoundingClientRect(), w = r.width, h = r.height, mx = cx - r.left, my = cy - r.top;
+    // un globe assez grand à l’écran : un clic dessus ouvre sa fiche, sans changer le cadrage
+    if (PLN.group.visible) {
+      rayNdc.set(mx / w * 2 - 1, 1 - my / h * 2);
+      rayc.setFromCamera(rayNdc, camera);
+      for (const B of BODIES) {
+        if (!B.tilt.visible) continue;
+        B.tilt.getWorldPosition(camV);
+        const rad = B.rau * PLN.group.scale.x, dist = camV.distanceTo(camera.position);
+        if (rad / dist * h / (2 * Math.tan(25 * DEG)) < 5) continue;     // moins de 5 px : le point cliquable s’en charge
+        if (rayc.ray.intersectsSphere(rsph.set(camV, rad * (B.ring ? B.ring[2] : 1)))) { openCard(B.key); return true; }
+      }
+    }
     let bd = small ? 400 : 196, hp = null, hi = -1;
     vp4.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse);
     const shown = (o) => { for (; o; o = o.parent) if (!o.visible) return false; return true; };
@@ -2202,7 +2540,12 @@ const TEX = /*__TEX__*/null;
         if (d < bd) { bd = d; hs = fx.s; }
       });
     });
-    if (hs) { hs.getWorldPosition(pickV); goWorld(pickV, hs.userData.zoomV); return true; }
+    if (hs) {
+      const bk = hs.userData.body;
+      if (bk) goBody(bk);
+      else { hs.getWorldPosition(pickV); goWorld(pickV, hs.userData.zoomV); }
+      return true;
+    }
     if (!hp) return false;
     pickV.fromArray(hp.geometry.attributes.position.array, hi).applyMatrix4(hp.matrixWorld);
     goWorld(pickV);
@@ -2219,6 +2562,7 @@ const TEX = /*__TEX__*/null;
   });
   canvas.addEventListener('dblclick', (e) => { e.preventDefault(); clearTimeout(clickTimer); clickTimer = null; diveAt(e.clientX, e.clientY); });
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !bcard.hidden) { closeCard(); return; }
     if (e.target === slider || e.target === tlR) return;
     const V = uToV(uCur);
     if (e.key === '+' || e.key === '=') setU(uTarget - 0.25);
@@ -2255,6 +2599,10 @@ const TEX = /*__TEX__*/null;
       if (show && l.gov) show = govOn;
       if (show && l.tl) show = tlOn && !!l.text;
       if (show && l.pin) show = tlPin === l.pin && FACT.planets > 0.5;
+      if (show && l.body && BODY_BY[l.body]) {         // nom d’un astre : quand son globe est petit et qu’il est dans la scène
+        const B = BODY_BY[l.body];
+        show = V >= 25 * B.rly && B.phys.distanceTo(focusPhys) < 2500 * V;
+      }
       if (show) {
         if (l.obj) {                                   // lieu sur le globe : caché quand il passe derrière la planète
           l.obj.getWorldPosition(tmp);
@@ -2280,9 +2628,14 @@ const TEX = /*__TEX__*/null;
     const dt = Math.max(0, Math.min(0.05, (now - last) / 1000));
     last = now;
     // en exploration libre, on ne descend pas sous le plancher de la région visitée
+    // (pendant un vol, c’est la destination qui compte : près d’un astre, on peut descendre jusqu’à sa surface)
     if (free) {
-      const dp = deepest(freeFocus);
-      if (dp > 0) { const minU = vToU(LV[dp].R * Math.pow(10, LV[dp].floor)); if (uTarget < minU) uTarget = minU; }
+      const ff = fly ? fly.to : freeFocus, nb = nearBody(ff);
+      if (nb) { const minU = vToU(nb.floorV); if (uTarget < minU) uTarget = minU; }
+      else {
+        const dp = deepest(ff);
+        if (dp > 0) { const minU = vToU(LV[dp].R * Math.pow(10, LV[dp].floor)); if (uTarget < minU) uTarget = minU; }
+      }
     }
     uCur = reduced ? uTarget : uCur + (uTarget - uCur) * Math.min(1, dt * 4.5);
     if (Math.abs(uTarget - uCur) < 1e-4) uCur = uTarget;
@@ -2301,6 +2654,10 @@ const TEX = /*__TEX__*/null;
     }
     for (const k in TF) FACT[k] = reduced ? TF[k] : FACT[k] + (TF[k] - FACT[k]) * Math.min(1, dt * 5);
     FACT.moondot = FACT.planets * clamp((V / L0.R - 4) / 6, 0, 1);   // le repère s’efface quand la Lune devient grande
+    BODIES.forEach((B) => {                          // de même pour le point de chaque astre, quand on s’en approche
+      const near = B.phys.distanceTo(focusPhys) < 30 * V;
+      FACT['d_' + B.key] = FACT[B.key === 'soleil' ? 'sun' : 'planets'] * (near ? clamp((V / B.rly - 18) / 40, 0, 1) : 1);
+    });
     updateLevels(V, focusPhys);
     const expected = focusPhys.clone().multiplyScalar(kv);
     camera.position.add(expected.clone().sub(controls.target));
@@ -2319,6 +2676,17 @@ const TEX = /*__TEX__*/null;
     if (!reduced) cloudLayer.rotation.y += dt * 0.003;   // les nuages dérivent un peu
     atmoMat.uniforms.uOp.value = L0.a * FACT.planets;
     sunView.value.copy(sunLight.position).normalize().transformDirection(camera.matrixWorldInverse);
+    if (PLN.group.visible) {                         // astres : éclairage par le vrai Soleil, rotation réelle
+      const hours = Date.now() / 3.6e6;
+      BODIES.forEach((B) => {
+        const on = FACT[B.key === 'soleil' ? 'sun' : 'planets'] > 0.02;
+        B.tilt.visible = on;
+        if (!on) return;
+        B.mat.uniforms.uSun.value.copy(B.sunDir).transformDirection(camera.matrixWorldInverse);
+        B.mesh.rotation.y = (hours % Math.abs(B.rot)) / B.rot * Math.PI * 2;
+        if (B.ringMat) B.ringMat.uniforms.uOp.value = FACT.planets;
+      });
+    }
     if (ascOn && ASC[ascI].seat) {                 // repère de l’étape en cours de la carrière ascendante
       const s = SEATS[ASC[ascI].seat], SL = s.L;
       ascMark.visible = SL.group.visible && SL.a > 0.3;
@@ -2360,7 +2728,7 @@ const TEX = /*__TEX__*/null;
     if (!h) return;
     const i = HASH_LV.indexOf(h);
     if (i >= 0) { if (coupe) setCoupe(false); recenter(); setU(i); return; }
-    if (h === 'lune') goMoon();
+    if (h === 'lune' || BODY_BY[h] || CARD_AT[h]) goBody(h);   // #lune, #jupiter, #saturne, #soleil, #asteroides, #halley…
     else if (h === 'havona') { flyTo(PAR); setU(vToU(2.5e5)); }
     else if (h === 'paradis') { flyTo(PAR); setU(vToU(6e4)); }
     else if (h === 'gouvernement') { if (!govOn) tGov.click(); }

@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="L’histoire d’Urantia">
+<meta property="og:description" content="L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.">
+<meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/histoire-d-urantia.html">
+<meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>L’histoire d’Urantia</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : un atlas historique annoté. Frise des époques en bandes (échelle logarithmique),
+   puis carte du monde pilotée par un curseur d’épisodes, la fiche de l’épisode en regard. Jusqu’à 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des fiches */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  /* Carte */
+  --water: #D5E1EE; --land: #F6F1E6; --coast: #A99F88; --river: #7FA3C6; --grid: rgba(24, 33, 59, .09); --halo: #F6F1E6;
+  /* Peuples : les six couleurs et le violet sont celles que le texte nomme */
+  --g-prim: #6F7891; --g-andon: #96621F; --g-rouge: #C0392B; --g-orange: #C9600E; --g-jaune: #9A7400; --g-vert: #2E8A4C;
+  --g-bleu: #2F6FB0; --g-indigo: #4A3FA0; --g-nodite: #1E7C83; --g-adam: #8A3FAE; --g-andite: #B8487A;
+  /* Époques de la frise */
+  --e-c1: #3F4C7E; --e-c2: #555C96; --e-c3: #6B67A3; --e-c4: #85689A;
+  --e-1: #857A6A; --e-2: #2A8584; --e-3: #2F6FB0; --e-4: #4E8B3C; --e-5: #BF5E2A; --on-band: #FFFFFF;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+    --water: #0B1628; --land: #1C253D; --coast: #3B4767; --river: #36618E; --grid: rgba(230, 233, 242, .07); --halo: #1C253D;
+    --g-prim: #9AA3BA; --g-andon: #D9A55E; --g-rouge: #F0806F; --g-orange: #F3A45C; --g-jaune: #E3C24E; --g-vert: #74CC8F;
+    --g-bleu: #6FA6E8; --g-indigo: #A39AF0; --g-nodite: #57C3C9; --g-adam: #C99AE6; --g-andite: #E486B0;
+    --e-c1: #7F8CC4; --e-c2: #959CD6; --e-c3: #ACA8E0; --e-c4: #C3A6D6;
+    --e-1: #C2B5A2; --e-2: #5CC5C2; --e-3: #6FA6E8; --e-4: #86C36F; --e-5: #EE9A63; --on-band: #0C1120;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+  --water: #0B1628; --land: #1C253D; --coast: #3B4767; --river: #36618E; --grid: rgba(230, 233, 242, .07); --halo: #1C253D;
+  --g-prim: #9AA3BA; --g-andon: #D9A55E; --g-rouge: #F0806F; --g-orange: #F3A45C; --g-jaune: #E3C24E; --g-vert: #74CC8F;
+  --g-bleu: #6FA6E8; --g-indigo: #A39AF0; --g-nodite: #57C3C9; --g-adam: #C99AE6; --g-andite: #E486B0;
+  --e-c1: #7F8CC4; --e-c2: #959CD6; --e-c3: #ACA8E0; --e-c4: #C3A6D6;
+  --e-1: #C2B5A2; --e-2: #5CC5C2; --e-3: #6FA6E8; --e-4: #86C36F; --e-5: #EE9A63; --on-band: #0C1120;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 48ch; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .98rem; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.codebox .sample { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.codebox .sample .nm { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .9rem; }
+.codebox dt { font: 500 .8rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.code { font: 500 .74rem/1.2 var(--font-mono); color: var(--muted); border: 1px solid var(--rule); border-radius: 5px; padding: 2px 6px; white-space: nowrap; }
+
+/* Sections */
+.sec-head { display: grid; gap: 12px; max-width: 70ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+
+/* Frise */
+.frise { margin-top: 24px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 16px 12px; display: grid; gap: 4px; min-width: 0; overflow: hidden; }
+.strip-head { position: relative; height: 24px; }
+.strip-head span { position: absolute; top: 0; height: 100%; padding: 4px 6px 0; border: 1px solid var(--rule); border-bottom: 0; border-radius: 5px 5px 0 0;
+  font: 500 .68rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.strip { position: relative; height: 46px; }
+.sb { position: absolute; top: 0; bottom: 0; margin: 0; padding: 0; border: 0; appearance: none; cursor: pointer; background: var(--c); color: var(--on-band);
+  font: 600 .8rem/1 var(--font-mono); display: flex; align-items: center; justify-content: center; overflow: hidden; box-shadow: inset -1px 0 0 var(--sheet); }
+.sb:hover { filter: brightness(1.1); }
+.sb.on { box-shadow: inset 0 0 0 2px var(--ink); }
+.sb.tight span { display: none; }
+.axis { position: relative; height: 26px; border-top: 1px solid var(--rule); margin-top: 4px; }
+.tk { position: absolute; top: 0; padding-top: 6px; transform: translateX(-50%); font: 400 .72rem/1.2 var(--font-mono); color: var(--muted); white-space: nowrap; }
+.tk::before { content: ""; position: absolute; top: 0; left: 50%; width: 1px; height: 5px; background: var(--muted); }
+.tk.first { transform: none; } .tk.first::before { left: 0; }
+.tk.last { transform: translateX(-100%); } .tk.last::before { left: auto; right: 0; }
+.marks { position: relative; height: 22px; }
+.mk { position: absolute; top: 0; transform: translateX(-50%); font: 500 .74rem/1.2 var(--font-body); color: var(--gold-ink); white-space: nowrap; }
+.mk::before { content: ""; display: block; width: 0; height: 0; margin: 0 auto 2px; border-left: 4px solid transparent; border-right: 4px solid transparent; border-bottom: 6px solid var(--gold); }
+.mk.end { transform: translateX(-85%); }
+.frise-cap { font-size: .84rem; color: var(--muted); margin-top: 6px; }
+.bands { list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 6px; }
+.band { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; min-width: 0; }
+.band-row { appearance: none; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 12px; color: inherit; font: inherit; cursor: pointer;
+  display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto 14px; align-items: center; gap: 2px 14px; padding: 10px 14px; }
+.band-row:hover { background: var(--tint); }
+.b-num { width: 2rem; height: 2rem; border-radius: 6px; background: var(--c); color: var(--on-band); font: 600 .85rem/2rem var(--font-mono); text-align: center; }
+.b-main { min-width: 0; }
+.b-name { font-family: var(--font-display); font-weight: 600; font-size: 1.22rem; line-height: 1.15; }
+.b-alt { font: 500 .74rem/1.2 var(--font-mono); color: var(--muted); letter-spacing: .04em; white-space: nowrap; }
+.b-dates { font: 400 .84rem/1.3 var(--font-mono); color: var(--muted); text-align: right; }
+.chev { width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform .15s ease; justify-self: center; }
+.band-row[aria-expanded="true"] .chev { transform: rotate(45deg); }
+.band-card { padding: 2px 18px 18px; display: grid; gap: 12px; max-width: 80ch; }
+.per { display: flex; height: 26px; border-radius: 6px; overflow: hidden; }
+.per span { flex: 1 1 0px; min-width: 4px; background: var(--c); color: var(--on-band); font: 600 .74rem/26px var(--font-mono); text-align: center; overflow: hidden; box-shadow: inset -1px 0 0 var(--sheet); }
+.per-list { margin: 0; padding-left: 22px; display: grid; gap: 4px; font-size: .95rem; }
+.per-d { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); }
+.ev { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: .95rem; }
+.ev li { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 2px 14px; }
+.ev-d { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.04rem; line-height: 1.45; color: var(--gold-ink); }
+
+/* Carte */
+.atlas { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 22px; align-items: start; margin-top: 24px; scroll-margin-top: 12px; }
+.map-col { display: grid; gap: 12px; min-width: 0; }
+.ctl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.ctl-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.seg-ctl { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--sheet); max-width: 100%; }
+.seg-ctl button { appearance: none; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 500 .9rem/1.2 var(--font-body); padding: 7px 12px; cursor: pointer; }
+.seg-ctl button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+.map-frame { position: relative; aspect-ratio: 2 / 1; background: var(--water); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+#map { display: block; width: 100%; height: 100%; }
+.sea { fill: var(--water); }
+.grat { fill: none; stroke: var(--grid); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.land { fill: var(--land); fill-rule: evenodd; stroke: var(--coast); stroke-width: .6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.lakes { fill: var(--water); stroke: var(--coast); stroke-width: .5; vector-effect: non-scaling-stroke; }
+.rivers { fill: none; stroke: var(--river); stroke-width: .9; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.sea-lbl { fill: var(--muted); font-family: var(--font-display); font-style: italic; opacity: .9; }
+.g-prim { --c: var(--g-prim); } .g-andon { --c: var(--g-andon); } .g-rouge { --c: var(--g-rouge); } .g-orange { --c: var(--g-orange); }
+.g-jaune { --c: var(--g-jaune); } .g-vert { --c: var(--g-vert); } .g-bleu { --c: var(--g-bleu); } .g-indigo { --c: var(--g-indigo); }
+.g-nodite { --c: var(--g-nodite); } .g-adam { --c: var(--g-adam); } .g-andite { --c: var(--g-andite); }
+.rt-line { fill: none; stroke: var(--c); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.rt.sch .rt-line { stroke-dasharray: 7 5; }
+.rt-head { fill: var(--c); }
+.rt.past .rt-line { stroke-width: 1.4; opacity: .24; }
+.rt.past .rt-head { display: none; }
+.ax { fill: var(--c); fill-opacity: .12; stroke: var(--c); stroke-width: 1.4; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.pl.past .ax { fill-opacity: .03; stroke-opacity: .25; }
+.dot { fill: var(--c); stroke: var(--halo); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.pl.past .dot { opacity: .45; }
+.zn { fill: var(--c); fill-opacity: .2; }
+.pl.past .zn { fill-opacity: .05; }
+.eden { fill: var(--c); fill-opacity: .3; stroke: var(--c); stroke-width: 1.5; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.eden.sunk { fill-opacity: .08; }
+.pl.past .eden { stroke-opacity: .45; }
+.lbl { fill: var(--ink); stroke: var(--halo); stroke-linejoin: round; paint-order: stroke; font-family: var(--font-body); font-weight: 700; }
+.lbl.zl { font-style: italic; font-weight: 500; }
+.slider-row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto; gap: 10px; align-items: end; }
+.t-field { display: grid; gap: 2px; min-width: 0; }
+.t-field label { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold); }
+.btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.btn.arrow { font-size: 1.15rem; padding: 5px 13px; }
+.btn[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.cap { font-size: .95rem; line-height: 1.4; }
+.cap .ep-d { margin-left: 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.chk { display: inline-flex; align-items: center; gap: 8px; font-size: .92rem; color: var(--muted); cursor: pointer; }
+.chk input { accent-color: var(--gold); width: 1rem; height: 1rem; margin: 0; }
+.map-note { font-size: .86rem; color: var(--muted); max-width: 75ch; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .84rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 11px; height: 11px; border-radius: 50%; background: var(--c); flex: none; }
+.sw-ax { width: 14px; height: 14px; border-radius: 50%; border: 1.5px dashed var(--muted); flex: none; }
+.sw-ln { position: relative; width: 24px; height: 0; border-top: 2.6px solid var(--muted); flex: none; margin-right: 4px; }
+.sw-ln::after { content: ""; position: absolute; right: -5px; top: -6px; border-top: 4.5px solid transparent; border-bottom: 4.5px solid transparent; border-left: 7px solid var(--muted); }
+.sw-ln.dash { border-top-style: dashed; }
+.fiche { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 12px; min-width: 0; }
+.fiche h3 { font-size: 1.62rem; }
+.f-dl { margin: 0; display: grid; grid-template-columns: 3.6rem minmax(0, 1fr); gap: 8px 12px; font-size: .95rem; }
+.f-dl dt { font: 500 .72rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.f-dl dd { margin: 0; min-width: 0; overflow-wrap: break-word; }
+.f-date { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.1rem; }
+.f-note { font-size: .88rem; color: var(--muted); }
+.approx { font: 500 .7rem/1.2 var(--font-mono); color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+.f-txt { line-height: 1.58; }
+.see { font-size: .92rem; color: var(--muted); }
+.ep-index { margin-top: 24px; display: grid; gap: 10px; }
+.ep-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 6px; }
+.ep-list button { appearance: none; width: 100%; height: 100%; text-align: left; display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: 0 8px; align-items: baseline;
+  padding: 8px 10px; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); font: inherit; cursor: pointer; }
+.ep-list button:hover { border-color: var(--muted); }
+.ep-list button[aria-current="step"] { border-color: var(--gold); box-shadow: inset 0 0 0 1px var(--gold); background: var(--tint); }
+.ep-n { font: 500 .78rem/1.4 var(--font-mono); color: var(--muted); grid-row: span 2; }
+.ep-t { font-weight: 500; font-size: .95rem; line-height: 1.25; }
+.ep-d { font: 400 .74rem/1.4 var(--font-mono); color: var(--muted); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 80ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+.callout li, .unk li { max-width: 74ch; }
+.callout blockquote.cite { margin-top: 8px; }
+details.unk { max-width: 80ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+details.unk summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+details.unk[open] summary { margin-bottom: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+
+@media (max-width: 960px) {
+  .atlas { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+}
+@media (max-width: 640px) {
+  .tk.minor { display: none; }
+  .marks { height: 40px; }
+  .mk.end { top: 17px; }
+  .strip-head span { font-size: .62rem; letter-spacing: .02em; padding: 4px 4px 0; }
+  .band-row { grid-template-columns: 2rem minmax(0, 1fr) 14px; }
+  .b-dates { grid-column: 2; grid-row: 2; text-align: left; }
+  .band-row .chev { grid-column: 3; grid-row: 1 / span 2; }
+  .map-frame { aspect-ratio: 4 / 3; }
+  .slider-row { grid-template-columns: auto minmax(0, 1fr) auto; }
+  #t-play { grid-column: 1 / -1; justify-self: start; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .band-card { padding: 2px 14px 16px; }
+  .ev li { grid-template-columns: minmax(0, 1fr); }
+  .f-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .f-dl dd { margin-bottom: 6px; }
+  .fiche { padding: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chev { transition: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Le Livre d’Urantia · partie III · fascicules 57 à 64 et 73 à 80</p>
+      <h1>L’histoire d’Urantia</h1>
+      <p class="lede">Le livre raconte la Terre depuis la nébuleuse d’où naquit le Soleil jusqu’aux premiers temps historiques. Cette page en suit deux fils : les grandes époques physiques et biologiques, puis l’apparition des humains et leurs migrations, sur une carte du monde.</p>
+      <p class="links">
+        <a href="index.html">Accueil de l’atlas</a>
+        <a href="atlas-3d.html">Atlas 3D, d’Urantia au Paradis</a>
+        <a href="atlas-3d.html#frise">Frise du gouvernement planétaire</a>
+        <a href="familles-de-personnalites.html">Familles de personnalités</a>
+        <a href="concepts-en-schemas.html">Concepts en schémas</a>
+        <a href="vie-de-jesus.html">La vie de Jésus</a>
+        <a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne · urantia.org</a>
+      </p>
+    </div>
+    <aside class="codebox" aria-label="Lire une date">
+      <span class="label">Lire une date</span>
+      <div class="sample"><span class="nm">Il y a 950 000 ans</span><span class="code">64:1.6</span></div>
+      <dl>
+        <dt>il y a N ans</dt><dd>Le texte compte en remontant le temps depuis les premières décennies du XX<sup>e</sup> siècle, et arrondit ses nombres <span class="ref">57:0.1–2</span>. Ses dates exactes sont comptées avant l’année 1934 <span class="ref">62:5.1</span>.</dd>
+        <dt>l’an N av. J.-C.</dt><dd>Dès les fascicules 77 et 78, le récit date aussi selon le calendrier usuel <span class="ref">77:4.13 ; 78:2.5</span>.</dd>
+        <dt>≈</dt><dd>Lieu que le texte situe seulement par rapport à des repères : sa place sur la carte est une estimation.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <section aria-labelledby="h-frise">
+    <div class="sec-head">
+      <h2 id="h-frise">De la nébuleuse à la fin des glaces</h2>
+      <p>Les fascicules 57 à 61, présentés ou parrainés par des Porteurs de Vie <span class="ref">57:8.27 ; 61:7.20</span>, retracent la formation du système solaire puis les cinq ères de l’histoire d’Urantia <span class="ref">59:0.1–6</span>. Choisis une bande, sur la frise ou dans la liste, pour lire ce que dit le texte.</p>
+    </div>
+    <div class="frise">
+      <div class="strip-head" id="strip-head"></div>
+      <div class="strip" id="strip"></div>
+      <div class="axis" id="axis"></div>
+      <div class="marks" id="marks"></div>
+      <p class="frise-cap">Échelle logarithmique, en années avant le présent du texte : chaque graduation divise le temps par dix (Md : milliards, M : millions). Les bandes suivent les dates du texte ; quand il ne donne qu’un début, la bande s’arrête au début de la suivante.</p>
+    </div>
+    <ol class="bands" id="bands" aria-label="Les époques, de la plus ancienne à la plus récente"></ol>
+  </section>
+
+  <section aria-labelledby="h-carte">
+    <div class="sec-head">
+      <h2 id="h-carte">Les humains se dispersent</h2>
+      <p>Fais glisser le curseur : les lieux et les migrations apparaissent dans l’ordre du récit, de la péninsule où naquirent Andon et Fonta jusqu’au retour des Andonites (fascicules 62 à 64, puis 73 à 80). Le gouvernement de la planète (Caligastia, la rébellion, la mission d’Adam et Ève, Machiventa Melchizédek) a sa propre frise dans l’<a href="atlas-3d.html#frise">atlas 3D</a> ; elle n’est pas reprise ici.</p>
+    </div>
+    <div class="atlas" id="atlas">
+      <div class="map-col">
+        <div class="ctl-row">
+          <span class="ctl-lbl" id="lbl-vue">Cadrage</span>
+          <div class="seg-ctl" id="views" role="group" aria-labelledby="lbl-vue">
+            <button type="button" data-v="auto" aria-pressed="true">Suivre l’épisode</button>
+            <button type="button" data-v="monde" aria-pressed="false">Monde</button>
+            <button type="button" data-v="ancien" aria-pressed="false">Ancien Monde</button>
+            <button type="button" data-v="proche" aria-pressed="false">Proche-Orient</button>
+          </div>
+        </div>
+        <div class="map-frame">
+          <svg id="map" viewBox="-1800 -900 3600 1800" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Carte du monde aux côtes actuelles, en projection équirectangulaire, montrant les lieux et les migrations de l’épisode choisi. Le détail figure dans la fiche de l’épisode.">
+            <rect class="sea" x="-5400" y="-1200" width="10800" height="2400"/>
+            <path class="grat" id="grat" d=""/>
+            <g id="geo">
+              <path class="land" d="M1800 162l-4 4 0 1 3-2 0 2-5 1-2-1-5 3-2-2 1-2 10-4zM1432 120l-1 3 3 3 2 8-1 3 3 6 2 2 5-3 1 3 7 4 0 6 2 6-1 3 5 5 2 7-1 7 3 3 1 4 7 4 3 0 3 4 11 5 1 2-2 0 0 1 8 10 2 8 3 2-1-3 1-1 5 4 1-2 2 2 0 9 10 6 3 5 4 2 4 6 0 3 3 3-1 12 5 10 0 7-3 4 0 6-3 7-1 8-4 10-4 3 1 1-4 1-5 7 0 3-2 1 1 0-3 5-1 5-6 8-3 17-4 3-16 1-10 8-7 0 1 2 2-1 0 3-3-2-3 0-1-2-4-2 1-3-2 0-3 3-3-2 2 0 2-2-2-2-5 2 3 1-12 6-10-4-8-1-3 1-4-3-6-2-7-8 2-4-4-7-5-4 2-1 1 1 0-2-11 2 3-8-4-6-4 9-8 1 1-3 4 0 1-7 4-6 1-5-2-5 0 2-6 8-8 4-5 7 1 3-4-1-3-3-2 0 1-1 2 1-2-6-5-7-4-1-2-5 1 0 0-2-5-3-15-2-11-5-22 2-16 6-14 0-11 6-6 1-3 6-4 3-13 1-8-2-15 2-3 1-1 3-6 1-10 6-14-1-5-2-4-4-6-1 0-8 4 1 3-4-1-5 1-10-6-11-2-15-7-10-2-8-8-11 2-1 2 5 2-1 1-2-3-2-2-4 1-1 2 2 0 3 2-1 1 3 1 1 1-1 0-4-8-15 1-5 3-5-1-8 4-8 0 7 3-2 3-5 8-3 5-5 7-3 7 0 14-4 3-3 5 0 14-4 8-11 5-4-2-6 2-4 7-7 6 11 0-5 2 1 1-2-4-4 1-3 3 2 1-1 8 1-4-1 0-2 2 0 0-3-1 2-1-5 2 0 1-2 4 1 0-1-3-1 2-2 4 1-2-2 0-2 4-2 0-2 3 3 2-6 2 2 1-2 2 2 3-5 6 3 7 8-1 5 1-1 1 1-1-3 4-2 5 1 1 3 1-3 2 0 1 2 0-2 2-1-4-4 3-4 1-4 5-3-2-2 5-5 0-2 3 2 1-4 3-1 1 2 9-1 1 1 1-2 2 0-1-1 1-4-6-1-3-2 2-1 2 1 1-1 4 3 3-1 2 3 7 1 5 3 3-1 5 2 7-4-2 4 3 0 1 2 2 0 0-3 2-1 4 2-4 6 1 2-1 2-2-1-4 2 1 6-1 3-5 6 8 6 1 2 4 1 1 2 9 3 5 5 8 2 2 4 8 4 5-1 3-2 6-13 2-10-1-6 1-3-1-4 1-9 3-2-2-3 2-4 1 1 2-12 4-2 0 2 2 2 1 7zM1783 174l3 3 1 4-7 2-7-2 2-6 7-2zM1642 202l10 6 5 5 12 8 1 2-2 1-3-1-16-10-9-11zM1277-8l2 0 3-4 0-2 5-2 0 5-4 2 0 2 6 5-9-3-1 2 1 5 4 7-4-2-3-5 0-5-2-3 1-2-2-3 2-7 4-4-1 4 1 5-3 3zM692 491l4-1-2 2 1 1 8-2 3 1-2 2-2-1-4 1 2 2 2-1 1 1-2 1-9-2-2 2-2 0 1-3-1-3 2-4 1 4zM634-807l-9-1 6-2 10 0 2-2 11 1 0 2zM580-801l-7-1-3-3 15 0 8 2-9 0zM-254-709l-1 1 2 1-9 2-4-1-14 1 3-2 0-2 19-1zM1598 93l6 1 4 5-10-1-2-3 0-2zM1173-84l-1 0 1-3 8-6 11-12 1-5 3-3-1 3 2 5-9 6-4 6zM1225-116l3 0 1 2 3-1-4 5 0 2-8 4 1-12-2-3zM1231-91l-7-7 1-2 4-1-1-4 2-4 3-1 3 2-5 12 2 3zM1246-113l3-1 1 6 3 5-2 1-1-2 0 4-2-2-1-8-3 1-1-6zM1252-125l3 3 0 6 2 6-5-1-3-5 1-2-6-4-1-4zM1207-135l5 1 3 3 0 5-1 3-2 1-3-3-2-7-4-2zM1560 67l-3 2-4-2-1-4-4-4-1-5 4 2zM1530 48l-3-2 0-5-4-5-12-8-4-1 1-1 12 7 10 8 1 3zM1385 83l-8 1 6-10 5 0 2 3-2 4zM1298 29l8 2 3 5-1 3-10-6-3 0 0 2-6-3-4 2-4-2-2 3 0-3 3-3 8-1zM1269 31l3 3 0 2-5 2-5-2-1-5zM1228 86l-11 3-3-1-1 1-7-1-7 1-1-2 1-3 7-2 8 4 6-1 3 1 6-3-1-1 1-1 1 2zM1200 94l6 3 2 4-4 2-8-5-5-1-1-2 9-2zM1182 83l5 1 2-1 2 4-4 0 1 1-3 1-1-2-13 4-3-1 0-5 8-1 2 3 2 0 2-1-4-3 0-2 3 0zM1166 86l-1 2 1 1-7-1 2-1 0-3 3-2 3 1zM1154 82l3 2-6 4 0-2-5-2-1-2 7-1zM1060 17l4 8 4 1-2 3 1 2-7-3-2-6-7-2 5-5 1 2 0-2 2 0zM226-586l7 1-6 3-3 0-4 3 2-3-3-1 1-1-1-1zM216-786l4 0 3 4 7-1 5 2-4 1 18 2-8 1-13 4-4 0 3-3-18 1 0-1 3 0 5-3-15-6zM622-808l-1 2-10 2-8-1-7 1-3-2 4-2zM474-809l10 1 3 1 0 1-10-2-4 2-12 2-1-2-11 0zM503-809l14 2-7 2-21 1-2 1 3 0 0 1-6 1-8 0 4-1-14-1 13-2 12 0 1-3zM503-692l-1 2-1-1-12 4-5-1-1-2 1-3 6-2zM605-699l-1 2-7 0-2-2-5 0-5-4 5-2zM707-731l-8 0 1-3 4-1 6 0 6 3zM927-797l-5 0-11-3 27 1zM1134-744l-6 3-13-3 6-1zM239-355l3-1-1 1 3 1 13 1 1 2 5-2-1 3-14 1-3-3-9-1 1-4zM234-390l1 2 6 2 2 4 3 1 0 1-2 0-4-4-3 0-4-4-4-1zM345-356l-6 3 2 3-4 0-7 4-6-1-1-4 6-1 0-2 7 0zM191-578l-3 1 1 3-8 5 2-2-2-2 0-3 8-3zM126-558l-4 3 2 2-3 1 0 4-2 0-2-4-4 0-3-5 6-3 1 3 1 0 1-3 3-1 4 0zM106-556l2 5-8-1-1-2 0-1zM31-398l4 1-4 4-7-3 4-3 4-1zM-1206 738l3 2-7 2 0 1-13 1-6-1-1-1 2 0-1-1 3-1-7-2 3-1zM-1263 733l6 1 4 3-6 1 14-1 5 2-2 0 4 3-13 0-15-5-6 0-2-3 1-1zM-662 801l-16-6 18 1 4 2 1 2zM-578 641l3-1 3 1 0 1-2 1 1 1-4-1-2 1 0-1-4 0 3-1-1-1-3 0 1-2 4-1zM-632 645l-1 1 5 0-9 2-6-1 8-4 3 0zM-737 706l1 1-12 3-15 1-2-1 14-2 1-2 4 2 2-2zM-750 697l6 2-4 3-10-2zM-981 719l-1 2 3 0 1-2 2 0 1 1-1 1 3 1 4-3 5-1 3 1-9 3 3 1 10-2 2 1-1 2-5 1 0 1-21 0-41-5 21-3 4 2 12-2zM-744 731l-3 2 3 2-2 1-15-4 8-1-4-2 3-1 11 1 1 1zM-680 675l-8 3-3-3 8-7 6-2-3 4 3 1-5 3zM-1789-716l14 4-17 3-8-1 0-5zM-589 513l5 0-1 2 2 1 0-2 3 0 2 1-2 1 2 0-9 3 0 2-5-1 1 2-3 1-2-2 0-2 5-2 0-2zM-371 541l4 0 1 2 3 0 5 5-3 1-8-6-7-1-1-1 1-1-4 0zM-738 433l-3 1-3-2 2-3 2-11 5 1 1 3-1 3-3 1 4 3zM-603 515l10-1-6 6-3 0-2 2-6-1 8-3-4-1 4-1-4-2zM-745 491l-1 9-2 0-1-3 2-3-3 1-1 4-4-1 0-2 2 0-2-2 4-1-1-2 3-1-1-2 1-1 4 1zM-618-491l-12-1-15-7 16 2 11 4 1 2zM-611-459l2-1-2 3 4-1 2-2-2 0 4-3 4 1 0 2 1 0-9 4-6 0-1-1-1-2 1-3 5-6 4-2 2 2-2 5zM-1715-636l11-1 8 3 9 1-7 1-3 2-8-4-5-1-5 2-3-1 1-3zM-1661-604l4 1 1 4-5 1-10-2-3-2 6 0 3-2zM-1635-550l1 2 3 1-10 1-5 2-3-1 4-4zM-773-185l10 3 1 3-7-1 0 2-2-1-1 2-6-2-2-3-3-1 4-2zM-661-184l5 0 0 2-4 2-12 0-1-4 1-1zM-1529-578l5 0-1 1 3 1-8 1 2 0 1 2-10 2 1 1-4 2 2-2-6-1 2 1-1 1-4-4 2-3 4-1 4 4-1-3 1-1-2-1 1-1 3 2 3-1 0-2 3 1zM-1524-584l3 0 1 2-3-1 0 2-3-1-3 2-5-1 6-2 0-1zM-1310-555l-2 3-2-2-4 2 2-6 3-2 3 3zM-1336-563l4 0 1 2 5 2 4 4-3-1-1 1 2 0 2 3 2 0 0 5-6-4-2 1-3-3 1-3-3 0-4-2 5-1-5-1 2-1zM-1334-570l4 1 0 3-3-2 1 3-4 0-1-3-3-2 1-1zM-1350-574l4 7-1 5-3-3 1-2-4-1 1-2-3-2-3 2 0-3 4-2zM-1347-582l5 1 4 5-5-4 4 4 0 2-5 3-2 0 1-4-2-1-2-8zM-1357-582l1 1-1 1 4-1 3 1 0 2-3 0 3 1 1 2-7-2-1 3-2 0-2-3-5-3 3-2 2 1 0-1zM-1286-529l1 4-2 2 0-5-2 1-3-3 2-3 4 2zM-1327-541l5 1 0 2-3 1 3 0 1-3 4-1-3 8-5 1-2-1 3 0-7-5 1-4zM-1318-532l2 3-4 0 5 2-1 1 3 3 2 0-1 1-10-6-1-1 2-1-4-1zM-638-465l1-1 6 2 9-1 2 1-5 2 0 2-5-1 1 0-2-1 1-1-6 1-2-2-3 0 0-2-3-1 4-4-1 3zM-725-410l-1 1 7-2-13 4-8 1 4-3 10-1 3-2zM1519 43l2-1 3 1 0 5-4 3 1 4-6 1-10 7-8 0-14-6 1-2 10 1 4-1 2-1 1-4 1 5 7-1 4-4 4-1-1-7zM1273 84l-8 5-11 4-10 8-8 2 1-7 12-6 3-4 14-1 4-2zM1450 408l3 0 10 4 4-1 1 1 2-2 5 0 1-2 7 1 0 14-1-3-2 3-1 4 1 5-2 0-2-2 2-1-2-1-1 2-2-2-1 4-2 0 1 1-2 3-9-1 2-2-3 0-4-4-3-7 3 3 0-1-2-3-1 1 0-2-6-10 1-3zM965-811l14 4-8 1-1 1 4 2-2 1-33 2-17-2-7-2 13-2 5-2-7 0 8-2 24-3zM977-802l3 2-4 1 1 1 7-1 2-2 15 3-3 2-1 3-7 0 9 3-5 2-18 0-8-2-20-1-6-3-11-1 19-6 3 1 2-1zM1029-793l-5 5 6-3 8 0 8 3 5 0 2 3-6 2-35 1-19 2 7-3 4-5 6 0-1-1 7-5zM1400-758l8 2 2-4 5-1 12 2 10 0 17 4-7 1 2 1-9 3-8-1-4-2-1-2 3-1-1-1-8 0 1 3 4 3 5 1-6 2-5-2-17 2-6-2-4 3-2 0-10-1-12-5 4 0-1-3 5-2-2-1 1-1 6-1 7-1zM1422-739l13 4 0 3-28-3-10 1 7-1 7-4zM1468-754l17 0 1 2 19 1 3-1-2 3-25 1-20-4 3-4 4 1zM1733 349l1-1 7 3 0 2 2-1 3 6-2 0 4 5-1 5 6 2 2 2 0-5-1-1 1-1 3 2 3 9 12 4 7-4 5 1-2 9-3 1-1 5-1-1-7 1-2 4 2 1-3 5-8 10-7 4-1-2-3 0 0-2-3 1 6-7 1-3-1-2-13-6-1-2 0-2 6-1 2-2 3-10-3-7 1 1 2-1-1-2-3 0-3-4 2 1 0-4-4-1-1-2 3 4-1 1-7-9 2-2-2 2-3-3 1-2-5-5 3-1zM1731 413l8-4-1 4 2-3 3 0-3 2 4-1-3 3 1 2-1 1 2 0-8 8-3 5-6 3 1 1-2 1 2-1 4 4-6 0 1 0-1-1-2 2-3-2 2 2-10 4 1 0-2 6-1 0 1 1-4 7 1 2-5 1-6 6-13 0-2-2-4 0-3-3-1 1-6 0-1-1 2-1-2 1-1-1 1-1-2 1 0-2 5-1-2-1 2-1-3 0 2-2 3 1-2-3 3 0-1-1 2-2 1 2 0-2 3-2 1 1 0-2 5-4 8-2 0-1 10-6 2 0-1-1 2-1 1 1-1-1 2 0 3-3 0 2 0-2 3-2 2-7 4-3 7-10 3 0-2 0 0 2 3 1zM1260-93l2 0 1 3-2 4 3 1 1 3-1 4 2 1 0 5-4 3 0 6-4-10-1 0-3 6 2 2 1 5-4 4-1-5-3 2-7-3-2-8 2-4-2-3-5-1-1 4-3-3-1 2-2 0 0-2-2-1-5 9-1-1-1-2 3-7 7-3 5-5 3 1 1 6 4-2 2-4 3 0 2-4 2 1 4-1-1-7 1-1zM1211-186l7 3 5-2-1 8 3 6-4 9-5 3-2 6 3 6-1 1 3 6 3 1 1-1-1-1 4-2 3 1 2 4 2 0 0-3 5 3 0 1-3 1 3 3 0 2 3 1 0 4-2-1 0-2-6-1-1-4-6-5-1 0 2 5-1 2-2-3-6-4-5 3-5-3-2 1 0-4 3-4-3-3 0 4-2 0-1-3-2-1-3-14 4 3 2-1-1-5 3-19zM1335 7l5 0 1 1 2 6-2 3 1 6 3 5 1-3 1 4 4 4 4 0 9-10 7-2 1-1-1-2 8-3 19 8 8 1 1 2 5 0 13 6 10 2 6 4 4 0 13 10-1 6 17 6 4 3 0 4-7 0-1 2 3 6 8 6 1 5 3 1 1 4 6-1 1 5 7 2-2 1 1 2 5 2 4 0-4 1 2 2-3 2-5-3-20-3-8-7-1-2 1-1-4-1-6-9-10-3-1-2-4 0-4 2-4-3 2 4-4 1 1 2-11 1-3-1 3 2 3-1 6 5 0 2-8 3-15-1-11-10 1-3-2 2-5 1-2-2-3 3 2-7-4-3 5-1-4-1-2-2 3 0-5-6-1-4 1-1-2 0 1-1-2 0 0-2-8-6-1 1-12-5-8 0-5-4 2-2-9-1-3-3 1-4-1 0 0 3-2 0-1 5-2 2-2 0-2-4 1-1-1-3-8-5 2-1 5 1 5-4 5 2 2-2-1-1 1-2-9 2-7-1-3-2-1-4-9-2 3-5 11-5 5 0zM1249-10l-5 5-6 2-5 0-3-2-20 1-4-1-4 2-2 5 1 4 1 3 3 1 2 4 4-1 5-5 4 1 9-1-1-1 6-1 0 4-5-1-6 7-4 1-2 2-3 0 2 3 2 0 5 7 1 3-1 4 5 5 1 3-2-1 0 1-6 1-1 3-4 0-1-2 1-5-7-6 2-3 0-4-2-2-6 3 1 8-1 14 1 5-7 1-3-4 2-8-1-10-5 0-1-1-1-7 3-2 4-16 2-2 1 2-1-8 2-1-1-2 5-8 1 2 5-5 2 0 17 5 11-1 6-3 4-5 2 0 1 2zM1074 60l3 2 6 1 4 5 17 1 4-5 2 0 2 3 3-1 6 3 4 0 1 3 2 1 0 3 2 1 11-1 3 2 0 6 2 4-13-5-6 1-12-1-22-6-8 1-20-4-1-2 1-1-3-2-9-1 1-1 1 1 3-3 1-4 2-2 7 2 2-2zM965-52l10 0 7 8 1 3 14 9 8 10 4 3-1-3 2-1 5 6 5 3 4 6 6 2 0 2-4 2 7-3 4 2 1 3-4 2 1 3-1 1 3 3 7 1 1 8 3 3-2 3 1 2 3-2 4 0 2 1 4 6-2 5 1 2-1 4 1 8-2 8-4-3-2 2-5-2 1 4-1 0-8-8-13-9-4-6-5-4-7-10 0-3-6-11-6-8-5-4-6-15-9-5-1-4-6-8-6-2-12-15 0-3 4 0zM1168-67l3-3 6 6-2 5 5-2 1 2-2 1 1 1 4-1 2 2 7 2-2 3-8 1-1 2 4 3-1 1-8 1-2 2 3 4-7 1 5 5 0 2 1 0-1 1 5 5-3 3 12 10-5 2-6-3 1 2-3 2-2 5 1 10-7 4-2-2 1 3-5 5 1 0 0 3-1 0 2 1 0 3-2 1-1 4 1 1-3 5-13 6-2-8-1 1-1-3-1 2-1-1-4 2-1-3-3 0-3-3 0 3-4 2-3-1-4 3-2-7-8 2-1-1 1-1-6 1-3-11 0-6-3-4-4-1 1-2-3-2 2-4-4-4 2-11 5-5 3 2 13 4-2-2 3-5-1-3 2 0 1-3 15-5 9-10 1-4 10-4 0 1 4-1 2-2-2-2 2-2 1 1 2-1 2-5 7-9zM678-762l-64 9-11 3 2 1-8 2 0 1-5-1-2 2-5 0 2 2-1 1-8 2 1 1-1 1-5 0 2 1-9 4-16-2-7 1-5-4 8-2 7-4 8-1-5-1 9-4-5 0-2-1 2-1 6 1 3-1-1-2 8 1 5-4 22-4 8 0-1-1 2-1 18 1 28-4 5-2 12-2 10 1 4 2 0 1zM553-733l11 1-3 4-4 0-3 3 1 3-2 3 12 8 11 4-5 1-10-1-3 1-1-1-20-1-3-1 2 0 0-2 6 0-8-2-1-1 1-1-15 0-5-3 2-3 7 0 3-2 3-4-3-1 8-1-2-1 1-2 15-2zM1428-544l2 3-1 3 4 8-1 11 1 3 2 1 3 12 5 11 4 3 0 3-2-3-5-3-3-1-6 1-5 11 0 4 6 9 3 0 1 4-2 4-1-6-7-1-2 1-3 7-3-6 2-6 0-5 2-4-3-8 2-8 1-16-5-5 1-1-1-5 2-5-1-5 3-2 4 1 1-1-1-1 2-1 0-2-4-4zM1438-441l9 2 7-4-3 4 0 2 2 4 5-1-9 4-9 1-6 5-2 4-13-6-9 3-3-3-2 0-2 3 9 5-2 1-3-1-4 3-3 0 1-4-3-4 1-3 6-4-1-3 7 1 3-1 0-3 4-9-2-7 1-2 2-1zM1412-414l3 0-1 7 4 4 2 5 0 4-1 3-4 3 0 4-4 1-1 2 0 10-3 4-1 5 3 5-4 2-1 3-6 3 0-4 3-3-3-1-2 3 1 3-2-2-3 0-1 5-3 2 0-4 1 0-2-1-5 5-7-1-4 1 2-2-4 1-1-4-3 4 4 4-6 1-4 6-2 1-6-5 0-3 3-3-4 0-3-2-5 1-2 2-13 3-4-1-2 5-4-3-8 1 1-4 4 0 15-11 11 0 12-2 1 0-1 1 1 1 6-1 2-2-1-2 7-7 1-7 5-1-4 4 1 3 13-4 6-6 5-3 1-4 3-4 3-7-1-3-3 0 2-1 1-7 3-1 1-4 2 0 1 4 4-1 1-3-4 1 0-2 1-2zM1344-343l2 1 1 4-3 2-2 4-2-2-4-1-3 1-3 6-4 0 1-1-2 0-1-5-4 1 6-4 3-4 3 2 4-1 0-2zM1312-336l5 0-2 3 4 0-1 2 2 2-3 4-4 11-2 0-4 4 1-3-1-3 1-1-3 3 1 2-5-2 2-1-1-6 2-1 2-4-4-6-1 1 2 2 0 2-2-1-3 2-1-5 3 2-4-4 8-3 3-3 3 0zM1210-226l-2 7-1-1-1-4-3-1-2-6 0-6 9-13 6-3 3 3-1 5-4 13zM1109-200l1 3-4 4-1 6-4 3-6 2-8-3 0-8 6-6 9-2zM800-98l3 0 4 4 5 9 2 1 0 3 5 8 0 4-3 5-9 4-4 0-2-2-2-6-2-15 1 3 3-16 3 1-4-1zM495 124l4 7 3 9 0 7 2 4 0 5-2 4-3-5-2 0 1 13-4 4 1 7-1 4-15 42-3 14-4 9-17 8-4-1-11-5-3-7-1-6 1-2-4-11 0-5 2-5 3-2 6-13 0-5-2-3 0-4-2-4 0-9 4-7 1-5 11-2 1-2 5-1 2 2-1-2 6-5 1 3 5-8 0 3 3-4 2 1-2-2 2-5-1-3 1-1 3 1 5-4 1-5-1-3 4-4zM-1591 798l-28-1-24-5 2-2 8-3 9 1 27 6 6 3zM-703 797l-12-1-3-2 3-3 40-7 8 0-26 8-4 2 1 1-1 1zM-452 788l16 0 6 7 0 3-3 2-5 0 3 1 0 1-57 4-6 2-44 1-2-1 1-2 9-5 3 1 8-1 19-6 1-1-1-1-3 0 2-2 0-2 3-1-2 0 2-2 11-6 16-2 12 0 17 2 8 3-1 3-12 1-3 1zM-597 803l-1 4-8 2-23-1-2-2-12 1-25-4 4-1 4 2 48-1-4-1-1-2 4 0 0-1 7-2 9 2-1 2 5 1zM-701 692l0 1 4 0 14 16 1 9-3 4-7 3-13 2-19 0-7-3 4-1 18 1 7-2-15 0-2-1 11-2-10-1-5-2-6 3-9-1 3 2-5 2-8-1-6-3 1-2 9 0 2-2 7 2 1-1-2-1 14-1-9-2 14 0 13-2 5 2 0-2-13-2 1-2 15-1-7-2-14-1-2-2 2-5-4-1 0-2 2-2 15-1 3 2zM-692 527l4-1 2 1 4 4-2 0-1 2 3 0 2 3 7 4 11 5 10 2-3 2-10 1-17-2-13 1-2-2-8 1-14-2 1-2 2 1 8-2 1 0 0 2 4 0-6-4 0-2 3-1-1-1 2-1 1 4-2 0 4 3 5 0 3 1 1 2 3-2-10-3-2-2 1-2 7-2 0-1-8 0-3-2 1-2 3-1-3-1 5 0 4-3zM-818-232l11 1 3 2 6 0-1 1 6 4 6 0 11 6 1-1 4 3-3 0 1 1 2-1 3 2-1 1 12 2 1 1-1 3 8 0 7 4 0 1-9 3-1-1-1 1-9-1-15 1 1-2 5-3-1-2-9-2-4-3-2-5-7 0-11-5-5 0-2-2-1 2-5-1-3-2 4-1-1-2-9 0-7 5-5 0-1 3-5 1 0-1-4 0 6-2-1-3 11-6zM209-802l6 0 8 2 2-4 5-1 3 1-2 2 13-2 14 2 11 0 3 3-16 5-27 2-2-1 2-1-20 0-12-2 11-1-25-2 6-1-10-1 9-1 5 1 2-1-3-1 6 1-2-3zM168-799l12 2-3 3 7-2 4 2-1 1 4 1 17 1-3 1 9 3-17 1-5 2-2 3-6 1 0 3-2 2-6 1-6 6 1 1-4 1-23-6-4-3 4-1 3 1 2-2 21-1-1-1-28 1-4-2 35-4-8-1 4-2-14 2-1-1 1-2-4 2-5-1-1 2 2 1-14 2-14-5 1-1-5-2 10 0-4 0-1-2 2-1-5 0 0 1-4 1-5-4 1-1-1-2 16 1-1-1 15-1 2 1-13 2 7 0 7 3 1-1-1-2 8-2 15 8-5-7 3-3zM96-409l2 4-2 2 1 3-1 8-5 0-1 2-4 1-2-3 1-11-3-4 0-2 4 0 6-4zM95-428l1 7-4 7-4-2 1-1-3-2 1-2-1-3 2-2 5-1 1-3 1 0zM156-382l-5 7 2 4-2 4-6-1-2-2-5-1-9-5-3 0-2-2 1-3 2-1 2 2 4-2 5 2 17-3zM-527-699l7 1 1 2-19 3-4-1 5-1-12-2 1-2 5 0-5-2 1-2 14 1zM-1272-506l17 3 7 8 8 3 7 7-3 2-14-4-1-1 3-2 0-2-1 2-6 0-3-1 2-1-4 0 1-2-6 0 0-2 4-1-10-2-1-2-3-1-4 1 1-2-2 0 5-1 0-2-6 1-2-2 1-1 3-1zM-720-197l3 0 1-2 6 0 8 3 2-1 3 4 5 0-4 1 0 1 9 2 3 2 0 2-3 3-2-2-9 0-7 2-5-1-4 7-3-4-4-2-16 0-2 2-6-4 3-3 14 3 5-3-5-4 1-3-7-3 1-2zM-496 2l12 1-4 11-2 1-2-1 0 2-3-1-3 3-3-1-4 1-3-6 2-1-2-2 2-6 4-2zM-31-585l-1 2-8 3 1 2-2 2 20-1 3 2-8 9-7 2 6 1-7 3-4-1 17 2 4 3 5 9 11 6-1 1 3 4-8-1 4 0 7 5-4 3 3 1 3-2 5 0 6 2-1 7-4 1 1 2-9 3 10 1 0 2-4 3-8 1-16-1 1 1-7 1 0 1-10-1-4 1-3 4-5-2-5 1-4 3-6-1 8-4 7-7 11 0 7-5-9 3-9-2 1-1-8 1-3-1-1-2 11-4 2-2-1-4-6 1 4-3 5-2 7 0-1-1 5 1-4-2 2-2-1-2 2-2-4 0-4-5 1-2 5-2-10 2-8 0-1 1-3-3 5-5-2-2 0-2 3 0-2-3-4 3 0-2 2-1-4 2-3 7 0-3 2-2-1 0 0-3 4-7-5 3-4-2 4-2-2 0 3-2-2-4 2 0-1-2 1-2 4 0-2-2 4-2-1-1 1-2 6 1 13-1zM-72-551l11-1 4 4-2 2 3-1 1 2 0 1-2-1 1 2-7 3 2 4 1 7-2 4-3 2 2 1-12 1-6 3-3-1 1 1-1 1-9 2-5 0 2-2-5 1 5-3-7 1-1-1 5-2-5 0 0-1 6-1-1-1 11-3-2-1-2 2-7 0 4-2 2-3 4-1-6 0-4-1 1-1-3 0 0-1 4-1-2-1 3-1 0-1-3 0 0-2-2-2 16 1-1-1 5-3-7-1 4-2 1-2 6-2 1 2-1 1 2 0 0-2 2-2 3 2zM-1798-689l9 1 4 2-3-1 1 2 6 1 0 1 3 0-6-3 9 3-1 1 23 5 1 3-2 0 6 1-1 7 4 1 1 2 3-2 0 3 3-2-4-2 2-2-6-3 14 0-1 3 1-2 7 0-5-1 12 2 13 6-1 1 3-1 6 2-8 2-2 3-8-2 4 3-8 0-5-2-4 0 4 3 2-1-1 2-4 1 4 0 1 2-9 2 3 0-1 2 5 2-5-1 0 1-3 1-2-1 1-1-4 1-22-6-2-5-10-1-13 1-5-5 2 0 2-4-4 2-2 0 0-2-2 2-4 0-1 3 4 4-3 3-3 1 0-39zM-155-662l9-2-5 3 4 1-1 2 4 0 1 1-2 1 9 1-2 1 2 1-2 1 2 1-3 1-1 3-4 0 0 2-2 1-32 7-1 2-8 1-15-2-3-1 1-1-3 1-4-2-16 1 0-3 5 1 7-4-6 1 2-1-1-1 4-1-5 1-2-1 1-1-3-1-13 1-2-2 21-1 1-2-7 0 7-2-11-2-10 2-6-1 3-1 3 1-2-3 5 1 3-1-5 0 3-1-3-1 4 0-2-1 1-1 11 3 0-2-5-1 4-1-6 0 2-1 5 0 10 4-1 0 2 1-1 2-3 0 3 1 3 3 3-3 3 0 1-4 2-1 7 3 1-3 6-1 7 5-2-5 7 2 4-2 4 1 3-1 1-1-1-1 3-1zM1671 773l23 2-9 2-11-1-7 3-5-4 4-1-2-1 1-1 5 0zM-1620 831l-10 0-8-3 22 2zM-1605 816l-35-2 15-1zM-25 708l4 0-7 4 0-2-8-3zM-311 798l3 0 0-2 12 3-8 1-14-2-2-1 3-1zM-339 793l-27 0 0-1 11-1zM-206 739l0 3 2 1-1 2-3 0-4-4-8 0 9-2 4-3 2 1zM-912 732l-3 0 1-3-3-3 4-1 5 1-1 2 1 2zM571-804l-1 3-13 0 3-1 0-1zM-697 549l13 1-2 2 3 1 3 3-9-1 0-3-4 0-1 1 2 2-8-4 1-2zM538-126l4-1 3 1-8 3-4-2 2-2zM1667 148l1 4 3-3 1 5-1 2-3 0-2-2 0-8zM1599 85l-10-5-4-5 9 5zM-746 486l-3 0-3-6 4-1 2 4zM-729 535l0 1 4 0 3 2-2 2-5 1-1 0 2-2-2-1-2 2-1-3-5-2 1-1zM-671 552l-7 1-5-3 11 0zM-714 540l4 1-1 3-4-2-4 1-3-3 2-1zM-737 444l-3 1 2 3 0 5-3 0-5-7 5-2 1-3zM1138 71l-7 1-4-1 2-2 11 0 1 1zM1607 83l3 3-1 2 3 2 2 6-6-6-2-6zM1306 114l7-2 2 2 0 2-5 3-5-3-1-4zM1376 357l3 0 2 2-4 0-3 2-9-2 1-2 7-1 3 0zM1234-94l0-6 6-13 0 9-3 3zM1246-98l-5 2-2 0-1-2 5-4 3 2zM1237-123l3 3 0 2-5-4-3 3 0-7zM1308 0l5 1 0 2-3 1-4-3 3 2-3 1-4-2zM1347 57l0 6-3 0-2-2 1-1-1-3 4-3zM1232 46l-2 5 2 2-4 4-2 0 3-11 2-2zM1082 30l-1 2-2-1-3 1 1-6 1-1 4 2 1 1zM975-15l4 5-1 4-4-3-3-5zM992 18l-4-2-2-4 1-2 2 0 4 6zM578-815l8 1-7 0 1 1-5 2-20-2zM547-811l30 3-18 2-18-2-1-1 4 0zM586-810l3 2-10 0-7-2 8-1zM776-723l-7 0 7-3 8 1zM1692-696l-14-2 6-2 10 1zM1636-586l-2 1 4-5 8-2 0 3zM1486-453l-9 3-8 6 3-5 7-3 0-2 4 1 5-2zM927-115l-2-4 3-3-1-3 2-9 2-1 0 3-2 3 1 4zM-1556-190l-3-1-1-6 2-3-1-2 1-1 6 3 4 5zM-1666-539l2-1 2 1-3 2 2 0-15 4 7-2 1-2 2 1 1-1-4-1 0-1 4-1zM-62-584l-1 2-3 1 2 1-7 2 2-1-2-1 1-2 3 0-1-1 6-2zM-777-247l0 2-3 2-1-2-3-1 2-1-1-1 1-4zM-610-101l-9 0 4-2 0-3-2-1 8-1-1 1zM-1340-568l3 1-2 1 0 5-3 0 1-4-3-3 3-1zM-518 14l1-5 4-4 1 2-1 3zM-913 0l5 8-3 2-4-1 4-3-3-3 0-3-2 0 2-1zM-866-710l10-2 5 0 1 2 2 0 1-6-6-1-6-3 6-2 10 2-5-3 2-1-7 0-3-2 0-3 3-1 10 2-12-3 11-4 6 1-1-1 12-2 11 0 3 1 1 3 6 2 0 2 3 1-9 5 6-2-3 3 2 1-2 0 0 2 7-3 3 0-2-1 3-1 8 1 0 3 4 1-3-2 2-3 12 2-8-2-2-1 1-1 15-1 16 2 2 3-8 5 8-4 8 1 1 1-1 1-9 1 5 0-3 5 5-4 6-2 2 1-5 3 5-2 5 3-1-2 4-2 13 2 4 2-3 2-4 0-7 3 3 0 3-2 13-1 1 2-13 5 5-2 1 1-1 4 4-5 9-2 8 0 9 3-10 2-7 3 13-2 1 1-3 1 3 1 5-2-1-1 4-1 7 5-8 0-13 3 8-1 11 1 7 2-1 1-22 1 6-1 6 2-1 2-14-1 11 2 3 2 12 1-3 1 3 3 1-2 4-1-1 3-2 1 1 1 5-3-1 1 1 1 4-1 1 3 0-2 6-1-2 2 11 2-2 1 1 2-7-1 1 1 10-1 6 2-7 4 16-2 8 4-6-1-2 1 5 2-3 1-7-1 2 1-1 1 5 2-6 0 2 2-3 2-5-1-3-2 1 2-3 0 4 1-3 7-3-2-3 0-1-3-3 3-8-7 10-5-14 3-1-1 2-1-4 1-9-5 0 1-3-1 1 3-7-2 7 5-2 1-13-3 5 1 0 2 3 1 0 2 8 2-2 1 5 2 1 3 1-2 4 1-1 1 1 1 3-2 5 2 1 1-2 1 4 1-5 1 3 1 1 2 5 0-1 1 2 0 2 2-2 0 1 4-2 1-2-4-3-2 2 5-1 0 4 4-5 0 2 2-1 1-11-5 0 1-2 0-3-3 0 2-3-2-3 0-6-4 2 3-8-3-4 0 29 15-1 3-2 0-11-3-17-2-5-4-15-2 2-1-4 0-7-3 4 0 2-2-9-1 1-2-3 1-10-6 2-2-6 0-2 2 0-2-4 0-2-2-2 0 3 2-1 1-10 0-12 3-13-4 1-4 7-2-1-2 2-1 18 4-1 2 1 1 1-2-4-3 22-2-1-3-6-2-1-2 14-5 2-3 6-3-11-11-3 1-3-1 1-2-1-1-2 0 1 2-9-3 2-1-3-1 3 0-2-1-3 2-3-1-11 3 0-3 6 0 4-2-9-3 0-1 3-1-9 1 2-2-7 0-2-4-5 0-8-4-3 2 6 2 0 2-3 1-26-2 7 2 2 1-1 1-7-2-7 1-8-2-23-1-4 1-5-1-2-3 1-1-15 2-9-2-7-6 17 2 7-1-26-4-3-5 3-3-2 0 1-3 6-6 5-3 10-3 27-1 0 1-11 4-6 5 4 3 1 6 12 5zM-695-830l31 1-21 2 36-2 14 1-1 1 5 1-1 1 15 0 5 2-10 3-22 3-22 1-21 3 39-2-48 11-11-1 5 2-1 1-18 1 15 0-8 2 3 1-13 1-20-2-3 1 12 0 3 2-3 1-20 1-14-1 13 3 11 0 0 1-41 0 7 2 16-1 19 3-5 2-15 0 12 2-8 3-20 1-1 4-4 1-21 1-11-2 4 1-8 1 3 1 7-1 9 2 9-1 1 3 9-1 3 1-3 3-12 3-13 1-2 0 2-2-2-1-7 0-8-2 3 2-17 0-3-2-1 3-10 1-8-1-4-2-2 2-7 0-1-2 0 2-9 0-1-4-1 1 1 3-11-1 1-3 9-3 18-1-9-2-4-3 1-1 12-1 12 4 20 1 7-3 3-3-12 5-11 0-4-1 0-2-2-1 9-3 4 0-7 0 1-3-2 2-6 2-6 0 3-2-10 2-7-1 1-2 7-4 18-1 17 1 15-2-6 1-20-1-2-1 10 0-17-6-11-1-2-3 1-2 28 1 20 5 12 1 4-1-9 0-20-6 61-6-18-1 4-2 14-2-23 3-6 3-31 2 7-2-20 3-9 0-15-1 3-2 11-2 19-1-25 1-19 3-16-2 28-1 16-3-47 3-4-1 8-2-5 0 3-1 18-1-9-1-21 2 8-2-19 0 8-2 28-3 31 1-16-2 17-2 23 3 3 0-4-1 2 0 31 3-30-5 7-1-4-1 13 0-4-1 2-1 23 1-15-2 27 0 15 4 4-1-15-4 27 0 17 3-7-2 6-2 19 2-5-1 14-1zM-943-718l5 0 0 2 8 3 1 2-1 2 10 6 4 1-3 1-4-1-2 1 5 1-9 3 6 0 4 2 7-1-2 1 10 0-8 2 5 2 2 2-1 4 4 2 3-2 2-5 4-3 13 5 2 5-5 0 0 3 1 2 7 4 1 2 8-3 6-6 3-6 8-1-2 0 2-3-5-1-1-6 31 2-4 1 5 1 1 2 8 0 1 1-7 2 6 0 1 2-13 3 4 3 2-1-1 3 8 4-2 4-4 1-4 3-13 3-9-6-3 0-3 1 4 0 5 2 4 4-1 1-4-1-3 1-10-4-11 1 0 1 7 3-11 7-4 1-5 0-7-4-10-2-17 0 15 1 9 5 20 1-3 4-8 6-7 2-4-1 1 1-5 0-2-2-2 1 1 1-3 0 2 2-8 2-29-5 1 1-1 1 15 2-3 1 7-1 11 4-1 3-6 2-10 0 5 2-9 2 3 2-7-2 3 2-4 3-3 0 3 1-6 3 0 2-2 0 0 2-4 5-3 1 2 1-2 4 0 7-2 2 7 4 0 4 2-4 9 0 8 14-4 4 22-3 18 4 7 3 6 5 18 4 5 3-2 2 3-2 12 0 15 2 2 3-2 6 3 4-2 8 7 6-2 2 3 0 8 4 3 4-5 3 4-2 4 0 8 5-4-3 0-2 2-3 2 0 3 1 1 3 2-3-3-3 6-5-3-4 0-2-2-1-2-7 2-1-2-1 1-1-2-1 1-1-3-1-3-4 19-6 10-7 3-5-1-7-3-6-16-8 1-3 6-5-1-1 2-2 4 1-2-1 2-1-1-1 1-1-3-1 1 0-2-3 2-1-3-1 2-2-6 0 7-8-5-2-1-5 7-3 16 4 5-1 7 2 0-1 9-3 10 4 1 1-2 2 3-1 5 2-2 1 3-1 3 1-3 2 3 0-1 1 14 2 3 2 5-1 1 2-4 3 2 3-1 1-10 1 10 1 1 2-1 4 4 0-3 5-2-2-4 2 4 1 5-2 6 0 5 4-2 3-6 3 6-2 4-4 1 2-2 2 3-3 1 4 1-2 9-3 3-3 3 1 1 3 1-2-1-2 6-3-3-1 2-2 1 1-1-2 5 1-4-1-1-1 1-2 4 0-2-1 4-4 3 0 1 1-4 2 5-1 1 4 1-1 3 3-1 1 1 1 4 1-6 1 8 0-1 2 2 0 2 2-6 4 3-2 6 0-2 3-5 2 8-2 2 2 4 1-1 3-5 1 7 1-2 2 7 2-1 3-11-1 8 3-3 0 1 1 5 0-3 2 3 0 1 2-1 0 7 1 1 2 3-1-1 2 2 1-4 4 8-2 4 1-4 4 5-4 3 1 2 3 8-1 2 2 4 1-10 4-2 2-12 2-3 2-3-1 3 2-2 2 16-7 8-1-4 0 0-1 9 0 3 4-4 2 2 1 8-3 5 3 2 3-1 2 1 4-5 1 6 0-3 1 3 2-13 7-15 2-16 10-16 2-10-2-5 1-21-1-12 1-4 2-5 7-9 1 1 1-7 3-8 6-13-3 12 4-2 4-13 9-9 2-8 4-5 5-8 2 3 1 0 1-7 3 11-4 4-6 11-6 16-4 10-10 7-4 22-7 11-2 13 4 0 1-3 0 3 1-1 3-10 4-6-2-8 2 3-1 6 2 2 2 6-1 3 1-6 6 5 0-1 2 4 7 6 0 1 1-3 1 14 3-1 1 3 0 5-3 2 2 3 0 2 3-2 0 5 1-23 7-3-1 1 2-8-1 0 3-12 8-4-3-1 1-1-1-1-3 3-5-2 2 0-1 17-8 1 0-1 2 3 1-1-1 1-1 7-2-15 0 6-4-3-1-2 3-11 4-2-1 1-1-2 1 1 1-3 1-7-1 1 4-8 2-3 2-4-1 0 2-3 0 1-1-1-2-4 6-3 1-2-1-1 2-2 0 0-1-2 1-1 1 1 1-5 5-1 3 2 2-2 0-2 3 3 1 0 2 3 2 4 0-2-3 1 0 2 4-8 2 0-2-5 2 1-2-3-1-1 4-14 1-11 5 1-3-1-1 1 3-4 4 3 1-1 6 0-2-3 6-5 5 0-2-6-4 1-3 3-2-4 2-1 3 5 7-1 2 2 2-9 12-1-2 3-6-2 0 1-1-1-3-2 1-2-1 0-2 3 0-2-2-1 1 1-2-1-1 2-1-1-1 3-3-2-1 0 2-2 1 0-1-1 2-2-1 2 2-1 1-1-1 2 7-2 0-1-2 0 1 4 4-6-3 0 1-3-1 2-5-3 5 3 0 1 2 6 3 0 2-2 0-6-5 8 6-1 1 1 1-2 1-3-2 5 4-1 1-2-2-7-1 6 1 2 3 5 0 5 11-4-9-1 2 2 4-3-2-1 2-1-1 1 1-4 1-1-2 0 2 6 0 0 3 2-3 1 2 0 2-4 2-8-1 5 2-3 3-3-2 1 2 3 1 2-1 1 2-9 2-1-1 0 2-4 2-1 4-1-3 0 3-4 0-4 2-4 5 0-2-1 3-6 3 0 1-7 2 1 1-1 1-2-1 1 2-2 3-2 0-2 4 1 0-2 1 1 1-2 2 3 13 7 13-1 2 1 4-1-6-1 2 0-3 6 18 0 10-4 6-6 1 0-2 2 0-8-7-3-5 2-2-2 1 0-4-2 2-5-7 3-3-2-2-1 3-1-1 1-11-13-12-3 0-1 2-9 2-4-4 1-2-2 1-7-2 4 0-2-1-9 2 2-1 0-2-3 3-2 0 1-1-6 2 2-1-2-4-1 3-8 0-7 2-5-2-2 1-1 2 2 1 5-2-1 2 2 1 2-1 0 2-3 2 7 4-2 2 0-1-2 1 0-2-8-3 1 4-4-2-3 2-5-2 1 0 0-3-3 0-4-2-2 2-11-2-6 1-1-1 1-2-1 3-9 3 3-1-3 0 1-3-3 1 1 3-10 8-3 1 2-1-6-1 2 2-3 2-1-1 0 2-4 1 2 0-4 3 1 1-1 4-4-2 3 3-1 2 5 10-6 16 0 15-2 3 1 5 5 5-1 3 0-3-4-4 6 13 7 8 2 6 4 5 7 1 7 5 21-5 4 0 1 2 4 0 2-1 0-3-2 1 8-6 0-3 2-2 1-11 6-3 9-1 4-2 5 0 7 2 1-1-2-1 4 0 2 2 0 4-6 8 0 3-3 3 3 0-3 2 0 1 2 0-4 10-2-2 1-3-2 1-1 3 2 0 0 2-2 6 1 1-1 9-6 7 4 1-1-2 5 3 4-2 2 1 11 0 4-2 5 1 5-1 4 2 2 0-1-1 2 1 5 4-2-1-1 1 2 0 1 2 3 0-1-2 4 4-2 2 2 5-4 10 1 9-1-3-2 2 1 9-2 3 6 10 11 11 1 3 3-1-1-1 4 3 4 0 10-4 5-4 11 2 7 3 10 12-1-7 6-4 3-4 4-1-1-2 2-5-2 1 5-7 4-3 5 1-2 1 1 1 3-5 8 0 10-6 2-3 5-2 3 1 2 3-9 4 4 6-1 0 1 3-5 9 5 8 5-3 0-4-4-8 0-5 14-5 3 0 0-2-4 1-1-3 3-3 4 7 4 0 8 3 1 5 2 2 19-1 3 3 10 2 7-4 5 0-5 0-1-1 24-1-5 2-5 0 2 2 0 2 1-1 3 4 2-2 4 4-1-2 2-1 3 3 3 0 2 2-2 2-2 6-4 0 3 2 5-2 6 0 10 5 7 8-2 9 3-5 4 1 5 5 3 1 0 7 2-5 8 1 3 1 0 1 1-3 10 0 7 2-1 4 4-4 9 4 6 6 1-1 2 5 2-2 1 5 2-2 3 2 5 20 1 0 1 3 5 1 1 5-9 10-5 3-7 13-7 2 8 0 10-7 2 9 3 2 4-2 3 1 4-2-3 10 4-8 5-4 2 1 2-1-2-1 4-7 7 1 0-2 6 2 2 2 4 0 6 3 3 4 2-2 4 2-1 1 1-1 2 4-3 2 1 1 3-2-3 10 5-7 1 0-1 3 8-4 12 4 3-1 4 2 10-1 5 1 15 8 13 12 6 2 11 1 3 4 4 14 0 10-5 12-6 5-5 8-4 2-6 6-3 8-5 7-3 2 0-2-2-2-2 2 1 1-3 7 1 0 0 5 1-1-2 7 2 12-3 13 0 5-5 6-1 13-2 1-4 9-6 6 0 8-7 3-3 3 1 2-1 1-10 1-2-3 0 3-8 1 3-1-2-1-7 2-1 1 1 1-9 5-5 0-9 4-11 8 1 2-3 2 0-1-5 1 0 1 3 1-1 2-2 0 1 1-1 4 1 18-2 5-5 3-4 5-12 19-11 8-1-3 2 1 6-4 1-4 2 0 3-4 1-4-4 1-3-4 1 4-1 4-1-1-1 4-5 3-2 5 1 3-6 9-7 7-4 6-4 3-7 2-8-1-5 1-10-4-6 0-6-6 0-7 3-2-1-5 0 5-2 1-1 6 1 5-1 1 2 4 8 3 3 4-2 5 3 4 4 1 0 6-7 7-1 4-7 3-29 6-7 0-5-2 2 10-2 1-1 3 0 3 2 2-2 2-12 3-13-4 0-1-2 1-1 3 2 10 5 2-1 1 5 0-1-2 4-1 2 2 0 4-4 2-5-4-5 2 0 1 7 2-5 2-5 4 0 7-3 4 0 3-6 0-7 3-7 8 1 3 7 6 11 3-1 3-4 2 4 1-17 11-2 2-2 8-4 1-4-3 0 1-3 1 4 0 2 2-5 2-3 5-2 1 2 0 1 5-4 1 5 1 6 6-8-1-4 3-12 3-2 10-3 1-9-3-2-2 5-2 1 2-1 1 1 0 1-3 4-2 1-2-11 3-2 2 0 2-6-3 4-4 6-2 6 0-12-1-4 6-2 0-3-3 4-1 1-2-5 2-4-1 0-2-2 0-1-3 10 1 5-3 2 3-1 2 2-1-1-3 1-3-7-2 6 2 0 1-8 3-4-3-4-1 3-1 0-3-9-2-3-4 4 0-1-2 2-1 8 5 2-2-1-2-3 3-2-2 0-1 2 0-6-3 3-2 3 0-3-2 0-2 5 0-3-2 2-4-1 0-2 5-2-1 1-8 3-1-5 0-1-5 7 0 4 2 1-1-2-1-1-3-5 3-5-3 2-1 3 1 1-1-4-2 3-2-1-4-2 0 0 1-5-2 0-2-5 2 1 2-2 0-1-2 8-5-2-3 9-1 2-4 2 0-3 5 1 2-4 1 4 0 1-4 2 0 0 3-2 4 1 1 2-7-2-2 1-2 4-2 4 2-5-3 0-2 7-3 0-3-6-2 3-6-1-3 3-3 0-5 2 0-2-2 2-1 2 2-1-4-3-1 1-2 4-2-2 2-5-2-2 3-4 0-1-1 1-1-2-1-2-4 3-11 3-2 2-6-3-7 0-5-2-3 0-4 5-1 4-12 6-9 2-9 3-5 0-6 3-7-3-21 3-2 1-5-2-7 3-5 6-21-1-5 2-5-1-7 2-10-2-5 3-3 2-13-1-8 1-9-3-14-9-7-2-4-36-19-8-8-5-7 2-5-6-11-4-2 0-4-4-4-1-5-5-7-6-15-12-18-11-7-1-2 3-1-4-11 1-5 4-5 8-5 3-6-1-5-1 4-1 1 0-2-3 3-7-5 2-1-1-10 4-5 2 0-2-2 5-6-1-6 12-4-1-4 2-2 2 0 0-6 5-1 3-2 7-12-2 0 0-2-1 2 0-3-1 0 2-5-2-8 3-3-3-4 1-4-8-9-2-6 3-3 3 3-3-4-1 1-2-1 0 1-1-2-5-3-4-1-3 1-1 3-7 4 5 7-8 3-3-7-2 3-2-1-2-4-5-1 0-1-5 0-2 2-4-6-2 0 2 3-3-1-1-1 1-2-1-4-9-4-1-3-5-3 3 4-2 2-5-3-2-4 1-4-2-2 2-2-8-6-12-12 1-1 3 1-2-5-3 0-2 2-7-1 2 1-20-7-9-1-9-6-16-15-5-2 4 3-7-2 1-1-3-1-1 1 2 1-3 0-14 5-13-3-10-5-9-2-11-5-11-8-15-3-5-5-10-5-6-7-2-4 4-2 0-2-2 0 3-3 0-4-2-1-4-10-11-13-9-6 3 1 0-1-5-1-3-5 2 0-7-4-2 0-1-1 2-1-3 1-2-1 0-3 3-3-4-4-3 0-1-4-6-2-1-4 1-2-6-1-11-10 0-3-2 0-7-14 1-5-6-1-2-3-3 1-8-4 1 3-1 4 2 4 1 8 8 6 3 5 3 1 1 3 2 1 2 6 7 7 1 4 2 1-1-3 2 2 3 9 3 3 3 6 0 6 3 2 1-2 9 8-1 3-5 3-4-7-13-10-1 1-3-3 0-8-3-6-6-4-2-3-4 2-2-3-6-2-1-2-5-3 0-1 7-1 2 2-2-2 3-5-9-10-8-4-1-5-2-1-3-8-4-4 1-3-5-4-2-8-8-6-3 0-1-3-6-1-5-3-10-2-1-5-2-1 0-2-10-9 1-6-4-1-3-5 0-3 4 3-3-5 9-1-10 0 0 3-4-3-1 1 0-2 1 1 0-1-8-7-1-9-6-6 3-6 0-5-4-13 4-9 2-19-1-6 8 0-9-1 1-3 1 2 0-3-2-2 3-1-3 0-3-7-3-3 0-4 7 2 12 1 1 2-4 3 0 2 2 0-2-1 6-4-2 3 1 3-2 1 0-1-2 2 4 0 2-3 0-4 2-2-2-2-1 1 1-2-3-1 2-1 0-3-7-3 0-2 3 0 0-1-4 1 1-4-3 3-4-1-2-2 3 1 2-1-3 0 1-4-1-1-2 4-3 0-3-2-4-4 2-2 0-3-2 4-4 0 0-1-1 1-5 0-3-1 5-1-6 0 1-1-1-3-1 2-5 0-6-3 3-4 7-1-6 0-4 2-2-2 2-3-2 0 1-2 4-2 7 3-5-4 2-3-8 5-3 5-3-4 4-1-1-2 2 0-4 1 2-5-3 1-1-3-7-4 3-2 4 3 6 1-3-2-5-1-1-1 3-2-5 1-3 4-3 1-3-3-4-1 3-4 4-1-5 0-3-2 0-3 8-8-1 1-1-2 0 3-2 2-1-6 1-2-1 2 1 4-2 2 0 2-3 2-3-1-2-4 3-1-2-1 0-3-2-3 1-1-8 2-1 3-2 0-1-2 4-4 2 0-3 0-6-4 0-2-3-1 0-2-7-1 1-1-2-4 5 1-4-2 3-1-5 1-3-3 1-4-3 3-5-2-4-4-3-6-1 1 1 1-1 0 4 10-8-2-1-4 2-1-4-1 1 2-9-2 1 1-2 0 5 1 2 1-1 1 4 1 0 1-5 2-19-10-13-3 3-2-1-1 1-2 2 1 0 3 1-2 2 0-4-2-10 3-10-2 1-1-1-1 0 1-15-1-12 1-1-2-7-1 2-4-5 3-7-1 2-2-9 0 2-1-2-1 0-2 3 0-17 2 2-3-5 1-1 1 2 0-4 2 3 1 0 1-3 1 5-1 1 1-2 1 0 2-2 2-9 0-1-1-2 3-1-1-5 3-4 0-3 4-3-1 0 1-5 0-2-1 1-1 4-1 4-3-5 1-4-1 5-5 1-4 9-3 13 1-10-3 8-3-3 0-4 2-6 0-10 3-7 6-7 1 3 3-5 2 2 0-1 1-3 0-7 3-1 2 8 2 1 1-1 1-9 5 1 1-8 2-14 6 0 2-2 2-8 2-2 2-5 0 2 1-7 2 3 1-2 1-1-1-11 6 0-2-8 3-7 1-3 0 3-1-3-1-6 5-5-1-1 2-4-1 0 2-2 1 0-3 4-1 12-7 8-1-1 1 2 1 1-1 4 1-2-2 2-3 14-6 2 1 0-2 4-3 8-2-2-2 1-4 4-1-3-1 0-1 5-3 2-4-3 2-11 3-3-3 4-1-3-1-3 2-1-1-1 3 1 3-2 0-7-5-2 1-5-3-10 4-7 1 4-2-1-2 2-1-4 0 2-5-4-6-2-1 5-4-2 0-6 4 2 1-1 2-13 2-8-5-4-1 1-1-4 0 6-4 5 1-1 2 4-2 3 2 3-2-5-1 3 0-1-1-14 1-1-1 3-1-4-1 0-1-1 2-2 0-1-2-2 0 1-2-3 0-1-2 4 0-3-1 5-1-1-2 5-4 4 0 2-2-2 1 0-3 4-1-1-1 1-1 5 0 3 1-1 1 2-1 2 1 10-5 8 0 6-2 1-1-2-5-5-1 7-3-3-2-7 1-9 4-5-3-1 1 2 2-6-2-13 1-11-1-4-1 1-2-5-3 7-1-12-1-7-3 17-4 8 0-2-2 13-3 9 0-3 0 1 1-2 3 3 1 18 1 4-3 5 1-9-2-3-3-3 0-1-2 6 1-1 1 5 2 14 1-2-2-5-1-5 1-5-1 3-3-19-1-6-5-27-8 4 0 2-5 19 0 8-3 3-2 2-4 11-5-2 1 11-1 9-3 1 0-1 3 2 0 1-2 4 0-7-1 4-2 5-1-1 2 14-2 14-5-1 1 10 2-5 2 1 1 8-3 10 3 10-1 10 1-3 1 7 1-1 1 26 0 16 3 19 0 12 2 14-1 18 4 22 2 13 4 26 4-6-2 0-1 3 0-3-1 2-2 4 0 2-2 6 0 1-2 5 2-3 2 10-1 4-3 17-2 4-2 10-1 2 1-33 9-6 4 2 1-1-1 6 0 2-1-2 0 0-2 9-3 7-1 1 3 5-4 16-4-3 2 1 1 14-6-5-1 2-2 8 3 6 6 9 3 5 0-1-3 7-5 2 1 0 3 3 1-4 3 10 0 3-1 2-3 13 0 45 9 11 1-1-2 8 1 8 2 6 3-1 1-7 0-6 4 3 1 26 1 15-1 9-2 5 3 6 0 1 3 3-2 6 3 1 1-1 1-5 0 12 7-4-3 0-3 5 1-4-4 0-2-4-3 2-2 14-2 0-1 5-1 1-2-19 3 0 1-10-1 4-3 21-3 5 1 3 4 7 2 0 1 12 0 12 4 21-1 12 1 6-1-3-2 1-1 10 5 4-1 0-2-3-1-7 1-5-5 14-1 3 2 6 0-3 3 7-2-4 7 3 2 4 0-1 1 4 0 0 2-10-1 6 5 1-1-3-2 6 0 1-4-4-4 2-3 8-1 13-5-2 0-1-3-2-1-2 2-5 0 0-1 5-2-2-2 7-1-2 1 1 1 3-2-27-4-4-3 0-2 3-2 3 0-1-1 1-1-5 0-1-4 1-2 3-1 5 1 2-2-5-1 7-3 6-1zM-807-527l-13-3 2-2 7 0zM-736-678l-9 0-2-2 3-1 10 1 0 2zM-820-630l-1 3-9 5-7 0-2-2 5-5zM-795-624l2 2-4 6-6-2 0-3 3-2zM-1046-771l-6-1-9-5 5 0 11 4zM-955-778l24 1-4 2-25 0-3-1zM-988-800l-1 3-6-2-5 0-1-2 11 0zM-898-773l-4 1-8-1-2-3 4-1 6 1 5 2zM-935-750l-1 3-9 1-21-4 6-4 11-2 10 2zM-1098-787l3 1 1 2-39 1 24-4zM-1183-756l-5 1-6-1 8-3 11-2zM-1053-729l-16-6 3-2 11-1 9 2 0 3zM-1000-739l8 2 15-2 6 1 1 1-6 2 3 1-11 4 8 0 5 2 0 2 6-1 0 3-3 1 2 1-2 2 2 0 0 2-10 2-6-1-1-2-2 1 3 4-5 1-5-1-5-4-9-4-11-1-10-5 1-2 4-1 3 0 6 4 8-1 1-2 3 1-1-2-3-1 2-1 5 1-6-2-5 1-6-2 5-1 5 2-5-4 11 0-3-1zM-849-653l4-2 4 3 21 6 3 4-2 2 11-1 2 2-1 0 4 1-7 3-14-2-1-2-5-1-1-2-5 1-1 3-6 2-3 3-8 2-1 0-3-6-14 1 3-3 6-2-1-5 3-9 3-3 2-1 4 1 1 2-1 1zM-757-683l6 1 0 6-1 1-15 3-3-1-3-4 1-2 5-3zM-795-737l12 0 11 2 11 6-3 1-19-1-12 1-4-1-3-3-6-1 1-2-2-2 1-1zM-977-765l0 2 2 2-1 2-3 1 5 1 1 3-4-1-2 1 2 2-4 0 1 2-22 0-3-2 4 0-6-1 15-4-33 2-3-1 7-3 11 1-3 0-2-1 1-1-5-1 3-1-5-1 3-2 19 6 2-1-4-1 6 0-9-1 4-1-9-2 8-1 12 1-1-1 3-1zM-1034-793l5 1 3 3 9-2 7 2-1 1 7 0 8 2-2 3 8 3-10 2-6-1-5-3-15 0-2-1 1-1-18 1-5-2 14 0 1-1-5 0 6-1-8-1 3-1-3-1-7 2-1-1 3-1-8 0-1-1 2-2zM-919-811l13 5 14 1 1 1-1 1 3 1 7 1-4-3 9 0 1 2-3 1 9 2-3 3 13 1 4-1 6 3-20 3-6 3-4-2 2-1-2 0-3 3 3 1 0 1-7-1 1 2-2 2-3 0-9-4-1 1 6 3-10-1-2 0 4 1-11 0-14-3 9 0-14-1-3-2 4 0-10-2 29-4-38 1-6-1 0-1 13-2-15 0-6-1-3-3 22 1 0-1 3-1-11 1-10-2 9-1-7-2 1-1 22 1-16-2 2-2 21-1-10-1 0-1 12 0zM-943-769l11 1-3 4 5-2 17-1 8 2-9 0 21 2 1 1-22 0 11 1 10 3 1 1-4 1 7 1 1 0-1-1 3-1 4 2 9-1 14 2-2-1 22-3 26 0 3 2 9 0-2 1 8 2-9 3 10 1-5 1-4-1 2 1-2 2-16 1-10-1-2-2-4-1 2 1-2 2-9 1-7-1 0 1-3-1-4 1-26 0-2-1 3-2-6 1 0-1-3 1 0 1-14 0-4-1 1-1-2 2-9-2-2-3 1 0-3-2 3-4-10-7-22 1-7-2 3-1-12-2 5 0-4-1 0-1 10-1zM-962-785l13 1-4 2 4 1-21 3 0-1-7-2 8-1-11-1-3-2 2-1-2-2 18 1zM-1105-781l9 0-13 3 7 0 1 2-1 1-18 2-12-2 1-1-2-2 10-2zM-1156-774l1 1-8 2 5 2-5 0 4 2-11 2-2 2-8-1 2-4-1 0-4 1-2 2-3 0 2 1-4 3-6-2-1 2 2 1-9 2-4-4-2 2-14 1-2-1 1-1-1-1-3 1 5-3 8-1 25-8 23 0 1-1-3-1zM-1083-761l6 1-3 2 8-1 3 2 0-1 2 0-2-1 2-1 11 1 1 2-6 6-11 2-6-1-7 1-3-2-21 5-16 2-10 0-9-3 16-3 11 0 7-2-28 1-1-2 4-1-5 0-2 2-3-1 1 1-1 1-12 1-19-3 3-2 12 0 10-2-21 1 4-2 18-1-17-1 5-2 14 0-10-1 8-2 8 0 4 3 11 0 8 3-2 1 6 0 4 3 20 0 2-1 0-1-10-2 5-2-9-3 10-4 8 1-1 1 5 4zM-932-742l10 2 18 1-17 11-21 0 6 2 1 2-6 4-11 0-1-5-3-4 0-8 2-1 7 1-4-3zM-974-696l2-1 9 4 5 4 5 1-13 3-9 0-8-3-13-2 11-3-1-2 2 0-1-1 5 1-3-2 2-1 4 0 3 1zM-1145-726l9-1 5-3 18 3-6 3 2 1 4-2 0 1 2 0 9-3 0-1-5-1 0-1 7 0 12 4 6 9 4 1 5-3-4-2-5-10 3-1-2-1 16 1 11 4 5 8 5 4-2 5 10 5 6 1 0-2 10 4 3 0 1 2 5 0 2 3-4 1-2-2-1 2-6-1-4 1 1 1-9-1 4 2-1 3 7-3 2 0 4 3-1 2-10 2-22-1-1-1 2-1-13-1-1-2-3 0-7 4-21 3-35 2-6-3-1-4-28-2-6-4-1-3 26-2 20 1 10-1-22-4-38 1-8-4 6-2 19-2-1-1 7 0-26 1-3-1 5-2-9 1-4-2 1-2 7-3-3-1 1-1 18-6 20-3 4 1 1 2 0 2zM-1197-741l5-1 1 2 6-2 10 0 19 5 2 2-36 8-5 4-7 1-2 6-2 1-11 1-11 3-5-1-7-5-13-3-5 0 2-3 6-3 0-2 4-1-2-2 10-7-4-1-5-4 32-2 19 3zM-789-563l-3 4-1 0 2-2-1-1-3 3-3 1 3-3-5 2 5-4 0-2 0 3 2-4zM-1022-760l2 1-13 1 3-1-10 0 2-1-6-1 18-2 1 2zM-1040-766l10 2-14 1-2-3zM-1138-778l-8 0-4-2 7-1 7 3zM-1041-750l-8-1 6-3 4 0 3 2zM-555-515l-5 2 0 1 2 0 0 2-9 10-1 4 6-5 0 2 7-1-6 5 7 0 1 1 1-1-2 4 9-4 1 2 1-1 7 1 0 2-6 3 5 1-1 2-3 1 11-2-1 2-8 4 3 0-3 2 2 2 4-4 4-1-3 4 0 2 3-1 1-2 1 3-4 8-5 1 0-5-4 3-2-1 4-5-2-4-2-1-3 5-1 0 1-1-4 1-4 5-6 0 0-1 11-7-6 0 0 2-7 0 2-1 0-2-9 2-15-1-10 1 0-3 10-6-9-1 4-1 1 1 3-5 4 1-1-1 1-1-2-2 4-1-1-2 5-8 2-1-1-1 6-6 7-3zM175-696l5 1 1 1-2 1 1 1-5 0-4 2-3-1 2 0 0-3 4 0-2-1zM193-701l3 1-8 4-7 0 2-2 4 0 0-1 4-1 0-2zM158-686l5-3 2 2-5 3-17 2 3-2 5 0 3-2 2-3-2 0 5-4 2 0-3 3 1 3zM-449-821l-19-2-6-3 10-1 15 2 2 1zM-176-798l-11 1-4-2 16-1 1 1zM-180-754l1 2 4 0 1 2-13 0-2-1 0-2zM-300-836l42 3-62 2 0 1 69-2 6 3 20 1 10 2-16 3-65 1-3 1 4 2 44-1 5 1 3 2 8-1 3-2 19-1 2 2 0 2-4 3-17 6 36-8 21 2 14-4 19 0 18 1 10 2-17 4-14 1 3 1-3 1-23 2 9 2-22 2-13-1-8 3 1 2 8 1-1 4 4 1-7 1-4 3-10 1 1 1-7 9 8-2 14 2 2 1-9-1-5 1 14 4 9-1 1 4-3 1-19-1-11 2-7-1-3 1 7 1 1 2 3 1 16 2-1 1 5 2 1 3-1 3-10-1-11 3-6-1 5 1 7-1 2 3-2 1 1 1 3-1 2-3 4 0 7 5 0 2-10 0 1 1-9 1-9-1 2-3-2-1 0 2-3 1 1 1-1 1 19 3-1 3-18 2-9-1-10-4-5 2-8-3 7 4-13 2-12-1 8 2-11 1 25-3 10 0 21 5-1 5-2 1 0 2-18-4-5-5-21 3 19-2 2 3-6 2 6 0 26 7-5 2 0 1 1 2 1-2 5-1 3 10-9 0 0-4-3 5-13-2-6-6-13-4-13 0 1 1 13 0 1 2-3 2-24 1 4 2-1 1-10 3 24-1 2 1-8 2-3 2 6-2 15-2 18 3 15 0-2 1-15 3 2 1-6 0 1 1-1 1-9 1 1 1-14 5-37 5-5-1 1 2-17-3 1 1-2 1 2 2-9 3-10 10-5 3-6 1-7-1 3 3-8 3 0-2-3 2-4-1-7 3-2-1 2-3 5-3-9-1 4 1-3 4-4-1 3 3-20 1 6 3-7 3-8-1 1 2 3 0 5 4-6 3-8-1 10 2-1 2 1 2-8 6-8-1 6 2-3 3-10 0 7 1-1 4 2 3-5 2 3 0-4 9-3 3-9-1 7 2 1 3-2 2-7-1 3 1-2 1-6-2 3-3-4 3-8-2 0-2 4-1 2-2-6 3-6-2-1-2 2-4-10 4-13 0 0-1 4-1-6 0 0-2-5-1-1-2-3-1 1-1-2-2 6-2-8 1-1-2 1 0-7-3 0-2 5-3-6 2-11-8 0-4 12-2-2 0 1-1-11 2-2-1 5-4 8-1 4 3-1-3-4-1-5-4 3 4-5 2 1-2-2 0-6 6-2-2-2-8-2-1 14-5-15 3-6-1 1-4-3 0 22-9-18 7-6 0 0-2 2-2 10-3-13-1-2-1 1-3 13-4 19 3-6-2 3-1-9 1-5-1-14 3 1-3 4-4 16 1 4-3-10 2-12-1 4-3 4-1 10 2 5-1 3-2-4 1 1-4 8-1-8 0 3-5 5-1-2-1 2-1-20-1-17-3-5-3 3-1 14 0 13 4 8 0-6-2 0-3-5-1 8 0-20-2-1-1 13-4-17 1 4-2-2 0-5-5 1-1-2 1 4 4-5 2 1 2-14 1-4-3 9-7-8 2 0-1 3-1-3-1 7-1 2-1 0-2-10-1 4-3-1-2-3 1-4-2 1-2 2 0-4-3-10 0 5-1 1-1-1-1 4-1-23-9 4-1-3-2-27-5-21-2-5 2-5-1-11 2-17-1 4 2-16-1-12-3 14-3-18-1 2-2-9 2-6-3 22-1 9-2 17 1-1-1 2-1-5-2-9 2-9-1-8 1-12-2 5-1-12 0-15-4 3-3 67-7 5-2 5-6 6-1-16 1-10-1-4-2 27-7 8-1 6 2-1-2 2-1 16 1 3-3-1-3 8-2 11 0 27 5-27-6 48-4 8 2 1 5 6-2 1-1-2-1 1-2 21 4 14 0-12-3-3-3 10 0 55 7-1-3 1-2 3-1-1-1-13-2 37 0 5-1-47-1-4-1 3-1 8 1 24-3 17 2 9-2 22 3 3-2-8-2zM-570 634l2 2-7-1-8 3-5 4-2 0 2 1-1 1 1 1-7-2-1 3-4-2-11 6-6 0 1 2-5 1 3 3-5 2 3 3 11-2 3 1-4 1 1 1-1 1-4-2-3 1-1 2-3-2-6 0-1 1 3 4-8-4-5 0 1 1-4 3 3 1 0 1-9-1-2 2 1 1-2 1 2 1-7 1 1 3-2 2 1 1-1 1 8 0-7 2 5 1-2 2 11 2-1-2 13-2-9 2 5 2-2 2 9 5 6 6 0 2-2-1-2 2 9 1-2 2-3 0 0 2 7 0 3 3-10 5 8-1 3 1-1 1-13 2 16 1 0 3-6 1 0 1 8 1 1 3 4-1-1 4-5-1-5 1-9-2 4 4 5 0 3 2-1 2-3 1-5-1-1 1 8 1-8 2 10-1 1 1-3 2-12-1 3 4-5 2-3-3-5 0 1 1-1 1-7 1 6 0 1 2-11 1 10 1-1 1-59 9-9 3-16 1-54-2-1 1 11 6 8 2 25 1 0 1-11 4-14 1-62-4 42 6-1 2-4 1-24 1-23-4-12-4 6 4-6 1 5 3 16 3 8 4 4 0 0-2 43 1 2 2-6 3-31 1 15 2 18-1 7 3 6 5 12-1 9 1 23-3 9 4 12 0 30 5 34 1-34 1 14 1 1 1-20 1 3 0-1 2 2 1 8 1 44-2-22 3 8 5 7 0-4 3 2 1 19 1 37-10 5 0 13-3 56-3 10 1 11-1 3 3-4 1-1 2 7 0 21-2 23-10 26-4 16 2 19-4 40-2 3-2 74-3 2-1-65-3-3-1-1-3-27 0-32-4-1-2 8-6 14-6 15-3 5 1 32-8 46-6 29-1 9-2 22-1-4-2 5-2 8-6 10-1 7 1 11-5-17 0 4-1-6-2 1-2 14-4 7 1 3-1-3-3 11 1 17-4 5-6-11-2-3-2 5-1 11 3 3-3 5-2-3-1 0-1 11 3 6 5 9-2 1-3-3-3 1-1 19-1 2 0 1 2-5 4 35 0 6 1 11-1 1 3 3 1 10-4 14-3 58-6 8 1 6-3 26 6 12-6-3-1 5 0 7 2 20 0 6-2 3 3 14 1 3-2 6-1 2 1-2 4 3 2 18-1 2-3 4-2 7 2 0 1-2 0 1 1 7 1 10-4 4 1 0 2 4 2 17 1 35-7 26-3 4-4-4-5 0-2 5-2 11 0-4 4 8 0 8 6 12-1 5 2 7-1 11 5 0-2 8-6 2-4 3-2 22-4 6-3 14-1 8-3 12-1-1-2 3-1 8 1-3 2 11 1 2 3 2-2 0-3 6-3-5 0-2-2 7-1 8 3 6 0-1-4-2 0-1-2 1-2 16-4 18-1 16 1 11 4 5 0 3 2-4 1-7-1 4 3-7 3 4 1 14-3 11 2 6 3 12-1 22 2 10-1 46 4 13-1 1 1-1 1 4 5-5 2 1 5-7 2 3 3-1 2-9-1-9 5 6 1 11-1 3 1-1 3-3 3-9 4-6 6-5 9-4 2 8 2 7-2 0-3 4-3 12-1 10-6 7-2 5-8 10-4 0-3 5-3 6-1 7 2 10-1 5-3 17-4 12-9 30-5 13-1 2-2 10-3 12 1 23-4 17 0 24-3 20 2 7-2 7 1 28-1 6 2 20-3 5-4 13-1 45 6 6 2 4-1 2 2 11 1 11-4 0-2 3-2 22-3 6 1 6 5 10 2 3 2-3 2-13 2-1 2 28-4 20 2 17-2-15 3 2 1 24-3 25-5 8 1 6-3 13 1 2 3 6 3 9 0 8-1 5-5 9-3 28-1 8 2 2 2 10-4 12 3 7-1 10 3 37 2 7 2 12-1 0 2 7-1-7 8 1 1 11-3 9 0 8 4 1 1-1 2 3 1 14 1 26-1 0 4 14-1 6 2 6-2 1-4 1 0 16 7 10 2 10 1 4-1 19 3 3 2 1 3 5 1 7 7 8 2 1 0-3-4 0-2 7-1 6 3 11-1 32 3 6 4 20 4 2-2 5 5-2 1-5-1-2 2 0 3 3 0-1 2-18-2 4 2 10 1-3 4-5 1-18-1-7-2 3 3 9 2-18 2 2 1-8 2-2-5-3 0-1 2 3 3-2 1 6 6-17 0-3-2-2 2-6 2-1 4-16 1 13 2 0 1 6 2-4 4 3 0 1 3-1 1 1 1-3 3 6 0 5 4 0 2 9 4-5 2 6 1 8-3 3 3 5 2 9 0-1 2-24-1-20 3-9-4-2 2 5 3-11 0-4 2 1 2-6 2 3 1-4 1 0 1 7 0 0 1-20 3 0 1 20 0-1 2 3 1-5 1 4 1 0 3-2 1 32 9-25 2 1 1 34-1 24 4 2 2 13 1-9 2 4 1 29 0 9 2 75 6 6 2 0 56-3600 0 0-56 16-1 25 2 42 0 42 3 110 4-10-3 10 0-1-1-86-4 14-1-9-1 7-2-10-2-28 0-14-4-49-5-1-1 11 1 13-1 34 4 28 0 12 3 13-2 9 2 28 0 20-2 4-1-7-1 22-1 25-6-17-5 7-2-30-4 89-4 1-1-26-4 4-2 19-1-1-2 3 0-1-1-28-3-11-3 0-1-24-1-20-4 22-3-30-1-10-2-2-2 3-3 0-3 2-1 9 1 23-1 9 1 4 2 18 0 20 4 15-3-6-2 0-2 19 2 5 2 8 0-2-2 3-1-5-1 4-1-2-3-15-3-13 1-11-1 14-3 29 3-10-3 4-2 37-4 14 2-3-2 21-3 15-1 10 1 4-4 8-1 16 2 18-1 22 1 28-2 55 1 18-1 14-3 31 1 6-6 11 2-3 3 5 1-6 1-2 4 25-2-2-2 1-1-1-2 2-1 14 3-1 2-12 4 1 1 48 1 17-2 32 0 7 3 22-1 2-1-19-3 5-2-2-2-11 0-4-5-11-1-1-1 1-2 21 2 18-2-15-2-25-1-5-5 3-1 8 1-2 2 43 0 18 3 12-1 43 1 5-1 1-2 10-1 2-2 3 0 6 1-4 3 2 1 10 0 6 2 10-2 8 3 28 4 9-2 1-5 9 2-3-3 2-2 9 2 7 4 19 0 1 1-3 2 18-2 13 1 11-3 36-2 16-4 4-2 5-5-7-6 0-4-2-4-7-7-1-4-2-2 6-1 7 1 4-2 0-2-4-1 3-1 3-6-3-2 4-4-8-1 0-4 5-2 1 4 3-1 1 1 0-6 7-1 1-2-1-1 2-2 11-1-2-1 1-2 1 1 1-2 6-1-3-1 3-4 7 1 0-2 15-3 7-5 35-9zM1789-708l-3-2 1-1 13-4 0 5zM180-593l5-1 1 1-2 0-1 2-13 4-8 1 6 0 1 1-2 1 1 2-2 4 1 3-2 2 0 2-5 9-2 1-11 0 1 1-6 2 1 3-1 1-13 0 1-3-5-6 3 0-1-1 2-2-5-3-5-8-2 0 0-3-3-1 0-2-2-1-1-6 3-1-6-1-2-2 0-4 0 2-2 1-2 5-6-1 1 1-4 1 1 1-12 7-12 1-1-2-3 1 1-2-11-3-1-2 1-2 5 1 3-1-5-1 1-2 4-2-12 3 0-4 10-2-5-1 6-5 3 0-1 2 5-3-8 2-11 7 1-5 5 0-4-1-2-2 5-3-5 1-1-4 18-1 2 1 0-1 6-1-3-1 1-1-1 2-7-1-2 2-11 0-3-2 0-1 3-1-3-1-1-2 1-1 10 1 7-1-14 0-2-1 0-2 3 0 3-2 10-1-6 1 3-2 12 1 1-1-2-1 6 0-14 0 2-2 7-2 5 0 5 3-4-4 4-1-2-2 2-1 5 0 0 1 6-1 3 2 8-1-1-1 7-2-2-1 3-1-2 0-12 5-5-2 10-7 10-4-3 0 2-2 7-2 3 1 4-2-5 1-3-1 2-3 7-4-2-1 12-2-9 1 1-4 4-2 4 0-3-1 4-2 13-1-10-1 6-3 6 3 1-2-5-1 1-2-5 1 0-1 3-2 5 1-3-1 7-2 3 3 1-2-2-2 14-1-11-1 9-3 3-3 4-1 2-3 6 2-3-2 11-3-1 4 4-4 3-1 0 3-3 2 1 1 6-2-2-2 1-2 8-1 6 2-2-3-4-1 13-2 3 3 4 1-1-1 1-1 14-8 5 2 1-1 4 1-5 2-3 5 4-1 11-7 2 0-1 5 4-1 3-3 2 0-3-1 1-1 3-1 8 1 0 1-5 2 4 0-1 5 4-6 2-1 9 3 4-1 1 2 4 0 4 2-7 2-15 0 8 1 1 3 4 0 1-2 2 2 3-1 8 1 5-1 0-2 10 3-1 1-8 0 14 2-4 3 3 0 3-2 22 1 25 8 12 3 2 0-1-1 1 0 6 4 6 1 1 4 3 1-2 4-11 5-14 2-32-3-11-2 1-1-13-1-4-2 1-1-10-1 6 2 4 3 3 0 0 2 5 1-3 1 13 3 1 2-4 4 4 4 0 2 2 0-1 1 1 3 6 0 8 4 10 2 6-1 1-2-1-2-8-1-6-4-1-1 3-1 1-2 29 6 3-2 3 0-6-5 0-3 9-4 8-1 7-4 15 2-2 2 6 1 0-2 4-5-2-4-5-2 4-7 0-3-9-4 7 2 11-1 8 1 8 5 0 2-12 0-6 4 7 2 3 3 6 1 12-2 2-6 10-1-2-2 5 0 28-6 4 1 3-1-4-1 15-4 7 0-7 1 2 1-2 2 1 2-6 1 16 1 0-2 5-2 17 0 20-4 3 3-3 1 0 2 6 0 2-1 0-2 6 0 4-3-7-6 7-2 25 1 15 4 0 1 21 3 7 4 8 2 6-7-6 0-4-2-1-3-9-2-2 1-1-1 1-3 3-1-1-1 2-5-6-1 1-3-2 0 3-2 14-4 7-10 4-3 3 0-1 1 20 0 12 2-2 7-7 5 7 3 1 2 0 5-2 2 1 13 10 5-5 3 1 2-1 2-5 2-8 6-4 0 1 3-8 2-3-1 3-1-17-1 2 2 8 2 23 1 1-3 14-4 3-4 7-4-1-3-3-3 2-4 5-1 14-1 7 5 0 7 6 2 11 0-13-2-1-2 5-3-3-6-17-3-12 1-10-1 1-2-3-4 2-4 5-4-7-6-5-2 6-4 13-3 1-4-3-3 6 0 2 2 1 3-5 5 3 1 0 2-2 2 16 2 7-1 7 3 8-1-6 0-3-3-7 0-11-3-4-3 9-1 7 2 6-1-2-2-6 0 11-3 9 0 14 3 9 4 15 0-2 2-7 2-1 3 1 2-1 4 4-5 3-1 1 4-3 4 4 1 0-2 4 0 2-2-5-6 4-4-1-2-3-2-6 0-5-4-13-2-1-2 1-2-4-3 0-2 2-2 46-1 17-2 1 1-12 4 0 1 9 2-8-3 12-2 5-2-10-4-6-1 4-2 5 2 3-1-8-2-6 0 4-2 7 1 6-3-6-1 1-1 7 1 25-5 13 0 27-4-12 1-1-1 4-1 28 0-4 2 9-1-1 1 22-3 11 2-3 2 4-1-1-2-10-4 28 1 1-1-8-1 2-1-2-2 6-3 11-3 14-2 21 3-19 3 14 0 18 2-10 3 0 1 13 0 5-2 29 0 10 2-2 1 7 0 2 3-1 0 6-2 3 4 3 0-3 3-11-2 12 3-1 2-7 3-31 7 1 0-1 1-16 5-9 1-6 3-5 0-11 5 6 0 8-3 44-6-11 0-1-1 6-2 8 1 0-2 5 1-4 0 2 2 7 1 7 0 1-1-1-2 2 1 4 3-2 1 3 2 0 3-4 2 6 2-5-2 4-4 3-1-4-2 6-1 12-1 32 1 4 1-4 0-1 3 14 2 30 1-3-1 7 0 4-2-3-2 1-2 11-2 11 3 0 1 7-1 0 1 3 1 4-2 7 0 14 4-5 2 4 0 3 2-9 2 9 1 1 1-1 2-16-3 12 6 2 0 0-2 4 3-7 0 10 6 7 2 3-1 2 3 6-2 4-3 0-2 2-2 5-3 4 3 6 2 10 0 14-2 18 5-1-1 5-1-4-1 3-2 6 0 4 2 8-1-3-2 0-2-3-1 8-2-10 0-1-1 5-2 15-1-4-2 1-1 13 2 14 0 28 3-1 1-13-1-7 1 3 1 23-1-7 4-1 0 2-2-4-1-1 1 1 2-7 0-1 1 2 1 9-1 12-5 22 1 5 2 0 1-11 2 18 2-6 3 9-2 6 1 5 3-3 0 7 2 34-3 15 0 20 3 5 3 1 2-3 4 1 1 11 2 1 5 3 2-4 4 7-4-1-5 17-3 36 2 11-2 3 1 1 3 10 2 3 3 9 0 5-2-4-6-4 0 3-3 0-2 21 1 7 2 1-1 25 0 10 3 19 2 12 4 0 39-6 3-9 2-8-1-8-4-6 1 7 0 2 1-1 1-10-2-3 2-13 1 16-2 3 2-3 1 13-2 1 1-1 3 6 2 2-2 3 4 2 0 0 3-2 1 2 0 0 2 1-1 1 2 4 1 1 1-1 1 3 2-1 2-3 1-1 2-18-3 0-2-3 0 2 2-27 8-9 1-5 3-2-1 0 2-5 1 0 1-18 7-2 4-4-1-8-5-11 0-9 2-10 6-1-2 3-5-13 4-1 3-5-3-4 2 0-1-4 0-3 2-1 5-12 9-1 3 0 2 4 1 0 1 3-2 5 1 0 2-4 2 0 6 5 1 0 5-3 2-4-2 4-3-3 0-6 4-4 6 4 7-5 3-5-1-10 4-3 4 2 7-4-1-9 3-3-1 2 1-1 5-4 6-14 8-2-4-1-11-3-4-5-23 1-9 3-6 10-8-2-3 7 0 2-2 6 0 9-5 6-6 20-11 3-3 16-4-1-1 4-3-2-2 2-2 2-6 4-2 6 1 2-1-10-2-11 1-3 7 0 1 3 1-3 2-1-2-5 0-16 9-6 2 2-4-6 0 5-9-7 2-4-2-21 2-14 10-7 3-7 6-2 3 11 1 0 2-5 1-2-1-5 1-6-1-6 3-5-1-10 1-2-2 12-1-5-1-5-3-8 1 2-1-11-2-5 2 1 1-4 0-1 1 3 0-3 1-4-1-8 1-10-2-2 3-3 0-4-2-17 0-13 2-6 2-4 4-8 3-4 5-17 8-10 9-24 12 0 2 15 1-1 8 5 0 1-2-2-2 6-1-4 2 5 2-5 4 7-1 5-4 1 2-4 3 3 0 2-2 0-6 6 1 5-1 4 2 1 3 11 5-2 3-4-1 5 3-2 4 4 2-1 3-5 3-4 8 0 7 1 0-3 10 1 1-3 6-7 5-8 8-3 6-6 7-9 6-17 17-11 6-8 2-5-2-4 0 0-4-4 2 1-2-2 0-6 7-5-1 1 2-1 2-5 1-5 6 1 3-1 4-12 8-9 3-2 6 4 1 5 4 11 16 0 10 2 0 0 2-4 7-7 1-1 2-7-1-1 1 1 2-3-1 1 2-3 1 0-3-3 4-1-1-3 2 0-2-2-2 3-1-2 0-1-4 5-7-3-3 0-5-3 0 0-1 3-2 4 2 1-1-3-3 1-1-2-5-2-1-3 2 0-2-3-1-4 3-4-2 2-2-5 0 2-1 2-4 5-1-4-1 2-7-6-3-2 2 0-2-3-1 1-1-3 2-4-1-14 5-3 3-8 4-1-2 6-2-1-1 2-2-5 0 0-1 10-10-5-5-1 2-5-1-7 7-11 4-4 6-7 1-3-1-2 1-2 4 1 3 3 2 8 1 3 4-1 4 3 2 5-1 5-5 5-1 12 4 1-1 6 1-3 3 1 2-2 1-1-2-3 0-8 4-3 0 1 2-2 0-1 3-4-1-1 1 2 1-9 7-2 5 0 1 11 4 2 7 4 6 0 3 5 5 4 2 1 2 0 1-2 0-3-2-4 0-5-2-5 2 7-1 1 2 9 5 2 4-5 1-6 4-4 0-2 2 3-1 1 2 7-2 4 3 4 1-6 4 4-1 1 1-1 4-2-2-3 2 3 1-2 1 2 0-2 3 1 3-3 1-2-1-1 3-3 0 1 1-2 5-5 7-2 1-1-2-1 1-1-1 3 5-4 2-4 0 2 2 3-1-1 4 1 2-4 0 1 2-3 0-1 3-3 1 1 2-9 1 3 3-6 4-1 2-1-1-7 3 1 1-2 1 0 3-2-1-4 2-3-1-1 2-3-1-3 2-2-2-1 3-3 0 0 2-4-1 1-1-5-6-2 2 3 3-1 4-4 1 0-1-1 3-4 1-2-2-1 3-4-1-3 2-6 1-4 3-2-1-2 4 2 1-1 1 2 2-2 2-4 0 1-1-3-5 2-6-2 0-2-2 0 2-4 1 0-2-3 0-2-3-1 0 0 3-2-1-9 4 0 2-2 2-5-1 1 3-8 8-4 9 3 5 6 6 0 2-1 0 14 14 2 0 8 9 5 15 1 9 0 4-1-2-1 2 1 6-1 0 0 3-2 1 0 3-17 9-3-3-1 3-3-1 2 2-3 0 3 2-2 2-5-3 5 6-2 0-6-4 4 4 0 2-7 3-4 5-3 0 1-1-1-1 0-8 3-3-1-2-11-6-2 2-2-2 2-2-2-2-1 2-2 0-1-6-5-7-1 1-2-3-1 1-5-4-8 0 1-7-4-2-6 2 1 4-1 8-4 7-1 6-3 6 1 10 5 0 2 7 3 3 2 11-2-6-1 2 2 4 2 0 4 3 5 0 3 4 5 3 9 9 3 6-1 18 6 6 3 8-1 1-2-2 0 1-5 2-1-2-21-14 0-4-6-7 1 0-2-4-3-16-6-9-1-5-2 0-7-9-4 1-1-6 5-14-1 2-1-7 2-3 0-6 2-1-3 0 1-5-1 0 1-1-1-9-4-5 0-3-1 4 0-6-2-5 1 0-2-2-1-10-1-1 0-5 1-1-3 1-2-6-3-3-1 7-4 2-2-3 1 4-5 2-4 5-1-4-1 3-3 0 0-4-2 3 0-6 0 2-5 3 4-16-6-17-1 4-2-1-2-4 3 2 2-2-4-4 1-1-5-2 0 2-1 0-1-2 1-3-3 2 1-1-2-3 0 3-6-9-2-12-1 1-3-6-3 3-3 0-3-10 0 2-3-1 3 2 0 2-1 0 1 2-2 1 2 4-4 6-1-1 1-3-2 2-1-1 1-4-4 7-1-5-1 6-3-2 0-2-2 2 2 2-4 1-1-5 0 4-2 1-1-2 0 2-2 0 1-5-3-3 3 3-3 3-8 3-2 3 1 5-2 4-4 3-2-1 1 1-1 1-6 2-1 0 1-1-1-1-3 1 0 2 2-1 0 1-13 13-17 12-1 5-5 3-5 0-3 5-4-1-3 2-2 6 1 6-1 3 2 7-1-2-1 1 2 2-1 7-5 14 1 0 0 10-5 0-4 7 1 3 4 1-4-1-6 2-2 2-1 5-6 3-4-2-5-6-4-10 3 4-8-19-8-12-5-19-5-6-1-6-1 0-4-8-1-11-3-10 1-6-2 2 0-3 2 0-2-1-1-4 2-9-3-7 5-4-6 1 2-3-2 0 1-2 2 0-6-1 1 2-3 3 3 3-3 3-10 5-5-1-15-15 12-3 3-5-2 2-6 1-9-3-4-5 4-3-6 3 0-3-5 1-4-4-1-6-5-1 0-3-3-4-3 1 4 1-17 1-1 1-6-2-5 0-1 2-8-1-4 2-1-1-3 1-4-1-1 1-9-3-1 1-9-2-5 1-2-2-15-2-3-10-3-3-3-1-18 7-4-2-5 0-10-6-2-3-9-3-3-2-4-10-2 0-6-11-5 2-6-4 2 0 0-1-2 0-2 5-3 1-5-1 1 4-4 2 4 0 7 17 4 2 2 3 7 5-1 0 2 6-2 0 8 13 0-6 2-6 3-2 2 3 1 8-3 5 1 1-1 2 5 0 0 3 8-2 12 1 6-2 3-5 12-10 5-6-1 7 3 12 6 6 16 4 6 8 4 2 0 2-4 8-5 4-4 7-3 0 0-2-3 4-2 5 1 7-10 2-2 6-2 2-9 2-2 2 0 3-2 3-10 0-15 5-4 3 0 5-9 5-20 6-6 5-7 1-12 5-11 2-7 5-11 2-4-1-3-6 1-4-2-3-2-11-2-1 1-1-1-4 1-8-5-9-11-13-4-11-7-5-4-1-6-9-1-6 1-7-6-11-6-5-4-1-3-5 1-2-21-30-6-1 4-15-3 3-3 13-2 2-4-2-6-6-1-4-4-5-1-5-2 4 3 7 8 10 0 3 17 31 6 6-3 0 2 10 12 9 0 4 4 5 0 1-1-1-1 1 4 22 4 2 3 4 1-1 3 2 9 26 3 4 1-4 3 5 10 4 10 10 2 4 4 3 2 1 0-1 4 5-1 4-8 4 0 1 7-1 11 11 6 1 9-4 8 1 8-5 3 1 24-4 7-5 5 2-2 5-1 9 2-2 2 2-5 1-1 9-16 26-2 6-10 17-19 20-12 7-12 9-17 19-6 9-4 1 0 1-1-1-1 4-5 2-2 7-6 12-3 2-4 14 7 9-2 5 0 3 1 0-1 6 5 15-1 1 7 4 2 3-2 6 1 12 1 1-2 4 2 0 0 11 1 1-1 3 1-1 1 1 0 3-2 3 0 4-15 15-10 2-12 8-5 8-1-1-1 2-3 1-10 8-3-1 2 1-1 7 3 3 3 9 0 7 1 1 1-4 1 9-2 12-4 5-17 6-5 3-2 4 2 3 2-2-6 24-11 9-13 19-21 18-13 6-8 0-2 3-6 0-2 2-11-2-4 1-7-1-4 1-4 3-13 1-5 3-7-2-2-2-3 0 0-3-3 0 0 2-1-1 0-3 1 0-6-11 4-3-1-8-9-13-8-18-8-6-4-6-2-6-3-11 0-7-3-8-1-12 1-6-10-15-10-20-5-4-2-5-1-5 1-17 2-3 6-21 4-6 7-7 1-10-1-5-4-6-3-10 4-3 0-3-11-23 8-2-6 1-3-2 0-5-4-7-21-21 4 0-5-1-3-5 2 1 0-1-2-1-3-5 3 3 2 0-2-1 0-2-1 1-1-1-4-7 2 1 4-3 1-7 4 3 2-2-5-1-2-3 2-1 1 1 0-5-2 0 4-8 1-12-2-4 1-1-2 0 1-5-2 0-1 2-4-2-1-5-2-1-1 2 0-3-2 1-1-2 0 3-7 1-1-2-2 2-2-2 1 2-3 1-1-3 1 3-3 1 0-2 0 2-3 0 0-1-2 1-5-3-1-2-1-5 1-2-1 1-2-1 3-1-2-1-2 1-2-4-5-3-9-1 2-2-4 2-22 3-2 3-6 0-23 10-12-3 2 0-2-1 0-2-1 3-8-2-5 1 6 0-9 1-5-1 3 1-8 1-16 6-8-2-20-15-5-2 0-2-5-2-4-4-8-3 0-4-2 1-2-1-1-3-3-3 2 0 2-2-3 0 1-3-2-1-1-4-3-1 0-4-7-3-2-3 0-3-1 1-2-3-1 2-1-3-1 1 0-2-2 0 1-2-2 0 4-2-1-1-2 1-1-2 4-2-8 2-4-3 1-1-2 0-4-3 4-1-2-1-2 1 0-8 1-1 1 2 12-2-10 1-4-5 2-1-2 0-4-6-3-2 4-1 5-8 1-9 4-9-1-15-3-4 2-1-1 0 2-7-2-5-2 1-3-5-1 3-1-1 2-10 5-7 6-12-2 1 11-10 1-7 3-8 9-5 4-10 3-2 13-4 14-11 5-7 0-3-2-3 1-7 5-7 1-5 7-7 16-7 10-18 6-1 0 3 7 4 9-1 3 1 4-2 2 3 9 0 10-6 5-2 4 1 3-4 10-3 13-1 4-2 8-1 10 0 5 3 12-5 4 2 3-1 0-1 7 2 9-1 3-2 6-1 1 0 0 2 1-2 3 1 2 5 7-4 0 2-6 6 1 4 4 3 1 4-11 11 3 4 4 0 0 2 3-1 3 3-1 1 11 3 5 1 5-1 9 2 3 2 7 1 2 2 1 5 2 3 21 5 11 6 7-1 4-4 1-4-2-6 2-4 5-4 10-3 6 0 9 3 0 3 2 1 5 0 3 2 8 0 3 5 7-1 9 1 12 4 5 0 6 3 11-5 2-2 5-1-3 2 5-2 8 1 2 2-2-2-1 2 3 2 2-2 3 2 13-1 6-4 11-26 4-3-2-11 2-4-2-3 4-5-2-1-6 3-7-2-10 6-9 2-8-5-14-4-2 6-7 1-5-1-2-4-7-1-2 2-1 0 1-2-6 1 5-1 2-2-9 0 2-2-3-2-1-3 1 0 0-3-9-3 1-3 2 0 1 3 0-1 4-1-2 0-1-2 2-2-2-1 1-1-2-2 2-2-8 0 1-5 5-4 6-1 2 2 2 0 1-1-1-1 13 1-2-1 10-3-7-1-1-1 1-2 22 1 10-6 11-3 14 0 2-1 2 1-1 1 2 2 3 1 5-1 1 3 2 1 4-1 3 2 13 3 10-2 9 1 11-4 3-3 1-3-4-7-27-16-5-1-3-3-4 0-3-3-6-2 3-1-2-1 5 1 4-1 0-2 3-4 2 1 1-2 3 0-4-3-2 0-1-2 7-1-1-1 9-2-1-3-5 2-1-1 2-1-6 2-7 0-7 4-2-1-8 2-8 5 3-2-1-1-4 2 2 5 5 4 7-2 4 1-2 3-5 1-4-1-4 3-6 1-2 2-4 1-4-2 1-5-11-3 12-5-1-2-4-1-7 1-7-2 2-1-4-2 8 1 2-1-6 0-2-6 1 6-4-1 1-1-2 2-6 0-1 3-5 4-6 2 1 4-1 5-6 0 1-2-2 0-1 4 1 0-3 3 0 8-5 1-2 2 0 5-4 2 5 5 2 4 9 4-1 2-8-1-7 1-2 3-11 6 1-2 5-3-7 0-2-2-8-2-13 3 1 3 3 1 1 2-4-3-2 1 3 2-1 1-5-3 0 2 2 2-7-5 0-2-3 1 0 5 7 8-1 1 0-2-4 0 3 3-5 1 7 2 7 4 0 6-5-3-5 1 5 5-3 1-2-2-3 0 5 11-5-4-1 0-1 4-1-3-3-3-1 0-1 3-3-4 1-3-6-5 3-3 4-1 11 3 2-2-7-2-9 1-2-2-1 2-4-6 3 0 0-1-3 0-5-3-4-7-6-4 2 0-2-3 2-2-1-5 2-4-4-1-6-5-16-6 7 1-8-5-9-1-1-2-8-6 4 0-5-3-1-5-3-2-3 0-4 5-3-3-1-4 3-1-2-2-1 1-3-1-2 2-7 2-1 2 3 2-3 3 2 5 12 6 4 9 5 5 7 3 10 0-3 4 21 8 5 5-2 4-2-1-2-4-5 0-2-2-3 0-4 8 6 3 1 4-6 2-1 4-4 5-5-1 0-2 6-6-5-12-7-2-2-5-5 1 2-1-5-1-3-4-6 0-15-11-5-1 1-1-7-5-3-9-14-5-8 5-7 2-7 5-5 1-7-1-3-2-10-2-8 4-3 4 3 5-1 0 0 4-11 6-11 2-3 3 2 1-3 1-9 11 1 4 4 3-7 5-3 5 1 2-6 0-8 8-23 1-3 2-5 1-4 4-8-6 2-3-2 1-5-5-1 1-5 0-3 2-8-1-4 1 2-4-1-10 2 0-1-1-4 1-1-3 3 0 2-4-2 1-1 3-4-1 1-5 3-2 3-6-1-2 2-8-2-10 2-3-1-2-2 0 1-2-3-2 0-2 10-2-1-2 6-2 6 2 13 0 13 2 9-1 6 1 1-1 9 2 5-3 4-11-1-1 1-7 3 1 1 3 2 1-3-5-4-2 2 0-1-6-7-2-3-4 1-1-2-2 5 0-8-1 1-2-4 0 0-1-15-2-1-2-3 0 4-2-3-1 4 0-5-1 0-1 15-3 2 0 3 3 13-2-2-1 0-4-3-5 6 0 2 3 9 1 6-1-3-1 1-2 12-4 2-2 0-4 2-2 16-5 8 0-8-1 3-1 6 1-3-1 2 0-3-2 6-5 3-6 7-4 6-1 11 1-1-1 1-3 8 0 2 3 1-2 2 2 1-5 6 0 6 3-5-3-3 0-1-4-3 0 0-1 4-1-3-3-1-6-5-2 1-10 5 1 4-3 1 1 1-3-3 0-2 3-5-1 3-3 8-1 6-4 6-1-2 1 1 4-2 2 0 4 6 2-1 2-5 0-1 3-3 1-3 3 1 2-2 3 2 0 0 2 3 1-1 2 8 2 3-1 1 1-3 2 6 2 12-6 4 1 4 3 3-1 3 4 6 2 0-2-7-1-1-2 6 2 18-4 4-3 15-2 7 1 0 1-4-1 3 3 7 0 5-2 1-3 7-2 4-5-5 6 6 1-2-17 4-4 3-6 9-1 7 6 3 1 3 0 5-3-1-5 2-6-4 1-3-1-3-3 2-1-3-1 1-3 6-1 0-1 3-1 10 0 1-1 24 2 2-2 0-2 2 1 6-1 2-2 10 1 1-1-5-2-6 0-5-2-1-1 2-1-2-1-20 3 1-2-2 2-4-1 0 2-16 3-9 0-5 2 2-2-3-2-4 2-1-2 2 0-1-1 1-1-12-2 0-4 2-5-1-1 1 0-3-4 0-3-2-3 4-4 2 0-2-2 8-1-1-1 3-2 11-4 10-8 8-2-1-5-6-2-1-2-15 2-4-2-2 1-1-1-1 3-9 3 2 2-5 3 4 3-5 3-2 3-11 4-3 0-4 3-4 0-3 2 2 0 0 1-3 1-3-1 1 3-6 1 0 2 2 1-1 0-1 3 1 2-4 1 2 9 4 2 3-1 6 3-1 1 3 1 2 3zM507-469l-14 4 1 1-2 0 0 1-5 2 0 2-5 2-5 0-1 1-1-1-1 5-7 7 6 4 2 5 1-3-1 9 2 3 18 19 9 5-8 1-3 6 1 3-2 3-2-1-1 7 2 7 3 2 7 1 2 3 6 3 9 2 19-3 3 1-2-11 1-10-2-3-6-2 1-2 4 1-1-4-5-1 0 2-3-6 2-6 2 2 5 0 3 2 5-1-1-1 4-1 0-2-6-4-3-6-8 1-2 3 1 0 0 5-4-7 1-9-7-1-3-3-3 0 0-3-5-7-5-2 0-2 12 1-5-4 4-5 18 1-4-3 4-11-3-3-4 0-4 2-9-3z"/>
+              <path class="lakes" d="M1066-528l-1-1 6-3 9-7 11-11 1-5 3-2 4 0-2 10-5 11-2-2-4 4 2 0 0 2-3 1-3 3-9 4-7 1-14 8-9 0-7-2 3-2 12-1zM-990-539l10-4 4 9 12 20 2 7-5 3-5-11-10-7-10-10zM-1150-620l-11-8 27 8 16-4 8-5 8-2 11 3 0 1-22 4-23 12-28 2-19-5-1-1 2-1 14 3zM-791-433l-3 1-4-1 3-3 10-3 9-1 4 1 6-3 4 2 0 4-7 3-16-1zM-831-421l5 1 15-7 6 1 16-4-9 7-25 9-12-3zM-896-480l4-4 6-2 4-3 16 2 3 1 3 6 11 1-1 3 4 3-2 4 4 1-2 4-3-1-2-3-19 3-13-5 4-5-25 9-6-3-10 2 0-2 14-8zM339-1l2 4 0 8-5 4-3 5 3 3-5 2-1-1-11 3-3-4 2-7 0-10 5-5 10-4zM298-612l11-6 16 7 4 5-3 1 0 3-9 0-2 3-4 0 0-2-6-5 0-2zM790-467l2 1-3 2-5 1-28-2-1-2-1 2-5 1-1 3-5 1-2 10-7-6 0-2 3-2 0-2 3 0 1-2 8-4 34 3 1-2zM308 86l-3-1 1-4-3-3-2-5-6-5-3-8 2-4-3-5 2-16 4 9-1 5 2 1 0 5 2 4-3 3 8 7 1 6 6 12-2 1zM353 143l-1 1-3-4-2 3-2-3 1-3-3-3 0-5-3-7 3-5 0-13-4-6 1-3 5 5 1 11 3 4-2 9 2 13 2 0zM140-592l-1 3-6 3-8 1 0-4 11-4zM-849-111l-9-4-1-4 3 0 6 4zM371-119l-1-1 2-2 3 0 0 4-2 1zM-694 161l-6-4 1 0 0-3 3 0 6 5 3 5-3 1zM-994-531l-10-2-2-2 3-2-1-2 2-3 2 0-2 3 3 0-2 5 7 1zM357-623l7 10-3 3-7 1-5-2 7 0-11-8-2-4 4 1-1-3 5 4 4-2-9-5 6 1zM-1122-413l0 4-5-2-2-5 5 3 2-1zM-1178-662l-3 4-16 1 0 3-17 5 5-5-17 4-6-2 0-1 9-5-1-1-26-1 1-2 54-8 1 1-8 4 26-1zM-1097-590l-14 4-1-1 21-9 26 3zM-1019-580l4 1-5 6 1 1-13 9-1-1 2-3 1 1 4-3-2-6 7-5zM-804-456l6 8-3 3-8-1-5-7 1 7-5 5 1 5-1 3-6 3-3-10-3-1-8 5-1-3 6-4 0-9-8-4-8-2 1-1 10-1-5-4 2-2 1 3 24 2 9 2zM-855-460l7 1-3 5-2 1-2 5-1-4-4 3-5 8 0 4 3 7 0 6-6 6-6 2-4-6-1-10 4-13 5-8-9 7-1-1 10-10z"/>
+              <path class="rivers" d="M824-304l3 0 20 11 30 1 3-1 30 0 23 2 11-2 9-5 0 4-4 6 2 6 3 3-10 9-6 3-11 1-10 4-14 1-4 2-3 10 1 10 5 5 3 6M941-332l8 1 13 6 7 5 4 9 10 14 9 27 0 13 5 7 8 5 0 3-4 7 1 4 8 13 2 0 0 4-9 6-2 4 5 5 16-1-3 4-1 9-3 5 1 4 5-3 3 2 6-1 2-3 8 1 7 8 1 10 8 8 0 3 3 5 1 9-1 15-9 6 0 2 2 9 12 13M903-477l-1 3-8 3-30-8-11-1-9 3-8-6-1-5 5-4-1-1-18-9-36-6-13-11-6-8-13-8-3-5-5-4-11-5-3-4 14-6 2-3-1-4-3-4-14-4-47-8 8-12 8-5 0-6-3-3-11-4-12-9-18-7-1-3 4-5 2-6-5-10 4-6 0-4 9-4 15 0 8-2 25 1M-1248-568l6 6 7 2 15 0 6-2 19-1 8 3 9-1 6-3-1-5 3-10 5-4 19-2 13-3 7-3 12 1 0-5-2-3-8-4-2-3-6-4-1-3-13-1-17 2-19-3-16 1-8-3-2-2-25-5 0-8-17-16-37-10-3-3 2-3-12-6-5-4-7-2-18 2-8-2-4-2-2-4 2-3 0-3-11-7M82-480l12-1 13-5 10-2 3-2 27 8 12-2 10 2 10 4 8-1 3 2-2 17 6 8 8 1 6 4 6-1 7 3 4-2 2 1-2 2 4 6 4-1 8 2 15 0 25-7-2-3 1-5 2-3 5 2 4-2 5 2M-551 143l-12 6-1 2 5 11-14 17-3 10 3 3-5 8-4 2 3 5-1 15 8 18 1 6-18 30-3 15-3 3-2 13-9 11-1 3 1 7 4 4 10 6 8 2M262 117l-3 0-3-5 1-5-2-3 0-9 9-12 3-1 2-3 1-13-1-16-8-9-3-27-3-9-1-8-11-5-20-13-20 2-12 3-6 7-3 8-18 18-4 10 0 8-2 4-12 11-5 0-5 4-2 5-11 2M1080-540l0-2-2-1-8 4-9 0-4-1-4-4-1-7 5-7 1-4 4-3-3-3 18-6 9-6 14-6 11-2 12-5 26-14 13 1 16 7 5 1 29-8 24 0 49-7 7-2 5-4 3-5-6-11-11-1-35-14-3-2-14-24 1-3 9-11 10-8 8-4 0-2 12-2 4-3-4-9-4-5-39-6M908-343l22 2 17-6 7 3 28 21 6 9-1 2 3 9 2 19 6 12 2 1 4-6 1 1 0 12 1 2 12-3 2 4 9-3 1-8 5-9 3-2 1-4 19-2 8-6 10-4 8-8 5-2 14-1 5 1 7 5 5 0 4 6 5 1 2 2 8-6 4-5 5 1 9 6 6 1 4-2 3-4 13-10 4-6 3-2 7 1 9 5 13 2M332-3l-3-10-7-4 1-2-1-3-4-1-4 1 2-10 4-4-4-7 1-16-11-16-3-14 0-3 2-2 10-1 7-7 0-4 4-5 1-19-4-15 2-11 2-6 9-7 2-3 1-7-5-15-5 0-16 14-5-2-5-16 3-4-3-5 15-17 8-5 3-8-1-12-3-7 2-4-6-1-10-12-2-5-1-7 4-12 0-13-2-5M-717 153l2-5-2-7-4-4-11-3-7-9-2-12 3-1 1-2-4-8 1-3-5-9 2-5-6-7-3-6 1-10 8-6 2-5 3-1 8-14 11-2 6 5 9 0 5 4 4-2 2-5 3-2 9-1 7-6 6 0 3-2 5 0 6 2 14 10 8 3 8-2 6 1 20-8 11 2 4-1 8-7 8 0 12-6 10 5 10-6 17-7 8-6 4-6M-1107-447l-2 0-7-4 1-11-4-7 3-4 14-7 4 2 19 3 15-5 35-1 15 6 4 3 4 7 2 11-2 9 12 5 0 4 8 6 6 2 7 0 8 3 6 14 1 6 5 5 3 1-1 4 2 3 3 1 14-2 12 7 11 0 8-2-3 5 8 6 2 6 3 1 0 3-4 2-2 6-4 5 0 3-8 8-3 6 1 7-1 2 3 5-7 10 1 5 5 7 10 2 6 7M1371-505l0 3-2 1-1 3M1401-518l-2 2M973-348l-2-1M978-351l-1 1-2 1M728-346l0 3-1 2M354-313l2-5M356-329l0 2M46-99l-1-5 2-2M-40-153l-3-2M457-502l1-2-1-3 3-1-2-4 6-5 4 0M491-555l2 3-4 3-1 3-3 1 0 2 5 5 1 3 8 0M434-567l-3-4 1-2-6-1M372-568l-3 0-4 2-1-1M378-573l3-1 2-2M413-575l-5-3-8 2M384-580l-1-1 1-2 3 2M1368-498l0 2-4 2-2 4-10 3-2 3-12 1-3 2-4 0-6 4-15 0-3-3 1-3-2-3 0-3-4 0-7-5-4 0-4-2-9 0-3-3 1-3M1399-516l-10 2-1 2-17 7M1401-518l3-4 0-3-6-5 2-2 8 1M172-481l6 3 13 0 0 3-2 3 1 5-3 7 2 4 2 1-1 1 9 1 8 6 7-1 5 1 2 2 5-2 1 1-2 2 5 3-1 3 3-1 25 2 8-4 6-1 3 1 6-2 1-2-3-3 2-6 2-1 6 3M455-313l0 1 10 3 10-1M410-344l8-1 3 2 3 0 0 2 5 5 7 2 5 3 2 3 2 12 10 3M895-223l-1-2-1-1M893-226l1 9M884-230l-3 8M884-230l4 1 3 8M901-236l0 3 3 5M891-240l5 6 4 7 0 2M891-240l4 2 2 0M884-244l2 4 3 1-1 4 5 9M884-244l7 4M879-248l3 6 0 5 3 6-1 1M879-248l2 3 3 1M798-309l1 2-2 2-5 2-4 0-2 2-3 0-3 6 1 6 3 8 11 5 2 4 2 1 8 10 4 1 4 4 4 1 1 2 9 2 3-4 3 1 1-2 3 1 3-2 9 0 2 2 5 0 4 2 4-1 1 1 5 0 2-1 4 2 1 4M973-348l2-1M978-351l6 3-1 2 3 2 2-1 2 1 1 5 2 2 4-1 5 2 1-2 4-1 10 2 4 3 4-1-3-4-9-4-4-4-5-1-2-4 1-5 6-4 9-1 4 4 10 0 1-1-1-1 2-1 6 0 7-5-1-2-3-1 1-3 6-3 8-1 7-8 1-4 3-3-2-9 5-6 9-3 8 4 14 0 11 5 0 4-2 2-3 8-4 5 3 5-4 6 2 15-3 4 0 5 5 0 3-2 5-1 2-2 11 3 5-2 5 1 8 0 1-1M962-351l5 0 4 2M1148-350l7-7 11-7 1-3 23-11M679-239l0-1M676-239l1-1 0-1M679-240l1 0 0 2M679-240l0-1-2 0M797-324l-3-3M794-327l-4-4-8-3-7-7-12-6-4-6-12-5-2 4-12-1 0 2-4 3 1 2-2 2M727-341l-7 3-3 8-3 2-1 5-4 7-1 3 0 13-2 10-11 8-6 2 0 3-2-1-4 2-1 4-3 3 0 6 5 5-1 6 1 1-3 2-3 7-3 2M354-313l0 1M356-327l0 9M359-336l-3 4 0 3M63-50l-2 3 0 4M63-50l0 6M65-54l-4 3-6-1M65-54l-2 3 0 1M66-55l0 2-2 2 3 5 0 3M-107-91l1-1-1-4 1-2-2-5 11-4 6-5 0-2 7-5 4-7 11-7 5-1 14-8 6-1 5-7-1-3 2-1-1-1 1-1-1 0 4-4M46-99l0 4 2 3 10 5 5 0 4 6 1 3-1 18-2 6M-43-155l1-4 7-3M-35-160l0-2M-35-162l3-2M-32-164l0 2-3 2M-32-164l2-3 10-1 6-2 9 0 2 1 4 9 6 6 0 4 7 7 3 6 6 4 2 7 21 16 1 4M424-371l2 3 3 1-1 2 5 3 0 7 6 13 5 2-1 5 1 2 10 7 4 1 3-1 6 2 0 3 7 6 0 5M478-467l4 1 5 5M457-502l-3 1 0 3-9 12 14 2 3 5 16 11 2 4-4 7M499-535l2 1 0 2-16 1 1 2-3 2-4 6-6 1-5 3M434-567l12 6 8 0 11-2 13 2 3 2 7 1 3 3M371-568l4-1 3-4M326-573l1 4 8 1 5 2-1 2 8 2 2-1 0-2 8-3 7 1M413-575l13 1M400-576l-2-2-11-3M383-576l2-3-1-1M831-701l14 5 6-2 9 3 1 4-1 3 3 1 0 2 2 2-1 2 1 2-2 3 3 2 1 3 0 3-4 2 7 0 5 2-2 2 6 1-1 2 2 2-2 8-3 4 1 5-3 3 1 1-1 2 11 5 2 3 4 2 3 5 4 1 1 2 3 0-5 4 6 9 11 11 4 1 0 2 3 1 1 3 2 0 2 3 5 1"/>
+            </g>
+            <use href="#geo" x="-3600"/>
+            <use href="#geo" x="3600"/>
+            <g id="seas"></g>
+            <g id="ov"></g>
+          </svg>
+        </div>
+        <div class="slider-row">
+          <button type="button" class="btn arrow" id="t-prev" aria-label="Épisode précédent">‹</button>
+          <div class="t-field">
+            <label for="t">Épisode <span id="t-n">1</span> sur <span id="t-max">22</span></label>
+            <input type="range" id="t" min="0" max="21" step="1" value="0">
+          </div>
+          <button type="button" class="btn arrow" id="t-next" aria-label="Épisode suivant">›</button>
+          <button type="button" class="btn" id="t-play" aria-pressed="false">Lecture automatique</button>
+        </div>
+        <p class="cap" id="t-cap"></p>
+        <p class="sr-only" id="t-status" aria-live="polite"></p>
+        <label class="chk"><input type="checkbox" id="keep" checked> Garder les épisodes précédents, en pâle</label>
+        <p class="map-note">Les côtes dessinées sont celles d’aujourd’hui. Le texte décrit d’autres géographies : une Méditerranée bien plus vaste, des ponts terrestres à Béring, en Sicile et à Gibraltar, une péninsule mésopotamienne aujourd’hui immergée, la péninsule d’Éden engloutie <span class="ref">73:3 ; 73:7</span>. Les cercles en pointillé marquent les lieux que le texte ne situe que vaguement ; les flèches en pointillé, des itinéraires schématiques.</p>
+        <div class="legend" id="legend" aria-label="Légende de la carte"></div>
+      </div>
+      <article class="fiche" id="fiche" aria-labelledby="f-title"></article>
+    </div>
+    <div class="ep-index">
+      <h3 class="ctl-lbl" id="h-eps">Tous les épisodes</h3>
+      <ol class="ep-list" id="ep-list" aria-labelledby="h-eps"></ol>
+    </div>
+  </section>
+
+  <aside class="callout" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces récits</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les dates et les lieux de cette page sont ceux du livre, références à l’appui. Il prévient qu’il arrondit ses nombres <span class="ref">57:0.1</span>. Il distingue ses faits historiques, qu’il dit durables, de ses affirmations sur les sciences physiques, dont il annonce qu’elles devront être revues <span class="ref">101:4.2</span> :
+        <blockquote class="cite" data-ref="101:4.2"><p>« La cosmologie révélée ici n’est pas inspirée. »</p><span class="ref">101:4.2</span></blockquote></li>
+      <li><b>Lecture courante.</b> Certains lecteurs prennent ces chapitres pour une histoire au sens propre ; d’autres y voient un récit révélé dont la part scientifique reflète les connaissances des années 1930 à 1950, en s’appuyant sur 101:4.2. Les passages qui hiérarchisent les races (par exemple <span class="ref">64:1.8 ; 64:6.25 ; 79:2.7–8</span>) sont parmi les plus discutés : des critiques, comme Martin Gardner dans <i>Urantia: The Great Cult Mystery</i> (1995), y voient l’empreinte des théories raciales et eugénistes du début du XX<sup>e</sup> siècle ; d’autres lecteurs demandent qu’on les lise dans leur contexte. Cette page rapporte ce que dit le texte sans reprendre ces jugements à son compte.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Son récit des origines emploie des noms de découvertes connues à l’époque : homme de Java, race de Heidelberg, Néandertal, Cro-Magnon <span class="ref">64:1.6 ; 64:2.3 ; 64:4 ; 80:3</span>. La paléoanthropologie actuelle propose d’autres chronologies et d’autres scénarios ; cette page n’en donne pas le détail. Le livre dit lui-même s’appuyer sur plus de mille concepts humains <span class="ref">0:12.12</span>.</li>
+    </ul>
+  </aside>
+
+  <details class="unk">
+    <summary>Ce que le texte ne précise pas</summary>
+    <ul>
+      <li><b>Les positions exactes.</b> Le berceau de l’humanité, Oban, Dalamatia, Dilmun, Bablot, Éden ou le centre d’Adamson sont situés par rapport à des repères (ouest de l’Inde, mer Caspienne, golfe Persique, côte orientale de la Méditerranée, monts Kopet), sans plus. Leur place sur la carte est une estimation.</li>
+      <li><b>Les itinéraires.</b> Le texte donne surtout des directions : vers le nord, vers le nord-est, le long de la côte de Palestine. Les flèches sont des schémas. Il ne dit pas d’où part la tribu andite qui s’installe en Crète <span class="ref">80:7.2</span>, ni par où les Andonites gagnent la Tasmanie <span class="ref">64:1.6</span>.</li>
+      <li><b>Plusieurs dates absolues.</b> Certains épisodes ne sont datés que les uns par rapport aux autres : Dalamatia engloutie 162 ans après la rébellion <span class="ref">67:5.4</span> ; Babel environ 50 000 ans après la mort de Nod, qui n’est pas datée <span class="ref">77:3.1</span> ; Éden englouti près de 4 000 ans après l’invasion nodite <span class="ref">73:7.1</span>. La traversée du Pacifique n’est pas datée <span class="ref">78:5.7</span>.</li>
+      <li><b>Deux calendriers.</b> <i>Il y a N ans</i> part des premières décennies du XX<sup>e</sup> siècle <span class="ref">57:0.2</span> ; <i>l’an N av. J.-C.</i> suit le calendrier usuel. L’écart, d’environ 1 934 ans, se perd dans l’arrondi des grandes dates, pas dans celui des plus récentes : le début des premières migrations adamites est donné à la fois il y a environ 25 000 ans <span class="ref">78:3.3</span> et en l’an 25 000 av. J.-C. <span class="ref">78:3.9</span>.</li>
+      <li><b>Les migrations Sangik.</b> Les dates du départ des bleus vers l’Europe et des indigo vers l’Afrique ne sont pas données. Armageddon, quartier général des orangés, n’est pas situé <span class="ref">64:6.12</span> ; il ne figure donc pas sur la carte.</li>
+      <li><b>Les géographies anciennes.</b> Le texte évoque une Méditerranée qui s’étendait à l’est jusqu’à l’océan Indien <span class="ref">64:1.1</span>, une mer Noire très étendue <span class="ref">64:4.10</span>, une Caspienne plus vaste <span class="ref">80:2.5</span>, des iles du Pacifique plus nombreuses et plus grandes <span class="ref">78:5.7</span>, sans en donner le tracé.</li>
+      <li><b>Les effectifs.</b> Quelques nombres seulement : dix-neuf enfants Sangik <span class="ref">64:5.3</span>, un peu plus de sept mille hommes rouges <span class="ref">64:7.5</span>, douze cents partisans d’Adam <span class="ref">75:6.2</span>, 4 500 000 Adamites vers l’an 19 000 av. J.-C. <span class="ref">78:2.5</span>, cent trente-deux navigateurs <span class="ref">78:5.7</span>, trois cent soixante-quinze ancêtres des Grecs <span class="ref">80:7.4</span>.</li>
+    </ul>
+  </details>
+
+  <footer class="foot">
+    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites.</p>
+    <p>Fond de carte : Natural Earth (domaine public), côtes, lacs et fleuves actuels, projection équirectangulaire. Les lieux marqués ≈ et les flèches en pointillé sont des estimations.</p>
+    <p>Les couleurs des peuples reprennent les noms que le texte leur donne (rouge, orangé, jaune, vert, bleu, indigo, violet) ; les autres couleurs sont un choix de présentation.</p>
+  </footer>
+
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var NS = "http://www.w3.org/2000/svg";
+  var F3D = "atlas-3d.html#frise";
+  function see(what) { return what + " : voir la <a href=\"" + F3D + "\" target=\"_blank\" rel=\"noopener\">frise de l’atlas 3D</a>"; }
+  function R(s) { return String(s).replace(/\{([^}]+)\}/g, "<span class=\"ref\">$1</span>"); }
+  function reduceMotion() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function quote(c) { return "<blockquote class=\"cite\"><p>« " + c.cite + " »</p><span class=\"ref\">" + c.ref + "</span></blockquote>"; }
+
+  /* ====================== 1. La frise des époques ====================== */
+  /* a, b : début et fin en années avant le présent du texte ; ev : [date telle qu’écrite, repère, référence] */
+  var BANDS = [
+    { id: "andronover", c: "e-c1", n: "La nébuleuse d’Andronover", alt: "fasc. 57", a: 875e9, b: 6e9, ds: "il y a 875 à 6 milliards d’années",
+      x: "Une immense nébuleuse spirale, la n° 876 926, prend forme dans ce qui était alors le segment oriental d’Orvonton {57:1.3–6 ; 15:3.6}. Elle grandit, atteint sa masse maximale, puis libère ses soleils par vagues successives, plus d’un million en tout. Le nôtre nait parmi les derniers {57:4.8}.",
+      ev: [["Il y a 987 milliards d’années", "un organisateur de force, l’inspecteur n° 811 307, signale aux Anciens des Jours des conditions favorables à la matérialisation", "57:1.3"],
+        ["Il y a 900 milliards d’années", "un permis du Conseil d’Équilibre d’Uversa autorise l’envoi d’un organisateur de force", "57:1.4"],
+        ["Il y a 875 milliards d’années", "la formation de la nébuleuse commence", "57:1.6"],
+        ["Il y a 600 milliards d’années", "elle atteint sa masse maximale", "57:2.4"],
+        ["Il y a 500 milliards d’années", "son premier soleil nait", "57:3.6"],
+        ["Il y a 300 milliards d’années", "l’état-major de Micaël arrive sur Salvington ; Uversa reconnait l’existence physique de Nébadon", "57:3.9"],
+        ["Il y a 50 milliards d’années", "876 926 systèmes solaires sont nés", "57:4.3"],
+        ["il y a 6 milliards d’années", "naissance du Soleil, cinquante-sixième avant-dernier de la deuxième famille solaire ; la nébuleuse a produit en tout 1 013 628 soleils et systèmes", "57:4.8"]] },
+    { id: "monmatia", c: "e-c2", n: "Le Soleil et l’origine de Monmatia", alt: "fasc. 57", a: 6e9, b: 4.5e9, ds: "il y a 6 à 4,5 milliards d’années",
+      x: "Le jeune Soleil, encore étoile variable, vit d’abord isolé {57:5.1–2}. Puis le système d’Angona, centré sur un géant obscur, s’en approche : au plus près, le Soleil se disloque et une immense colonne de gaz s’en détache, d’où naitront les douze planètes de Monmatia, le système solaire {57:5.4–7}. Selon le texte, moins d’un pour cent des systèmes planétaires d’Orvonton ont une telle origine {57:5.3}.",
+      ev: [["Il y a 5 milliards d’années", "le Soleil est un globe incandescent relativement isolé", "57:5.1"],
+        ["Il y a 4 milliards et demi d’années", "le système d’Angona commence à s’approcher du Soleil", "57:5.4"],
+        ["pendant environ cinq-cent-mille ans", "les épanchements solaires croissent jusqu’à la dislocation ; la colonne de gaz détachée formera les planètes", "57:5.6–7"]] },
+    { id: "planetes", c: "e-c3", n: "La formation des planètes", alt: "fasc. 57", a: 4.5e9, b: 2e9, ds: "il y a 4,5 à 2 milliards d’années",
+      x: "Les noyaux de gaz se condensent, puis grossissent en captant des météores : les planètes ont ainsi une double origine {57:5.11}. Jupiter et Saturne, nés du centre de la colonne, brillent un temps comme des soleils secondaires {57:5.10}. Urantia grossit surtout par absorption de météorites {57:6.10}.",
+      ev: [["Il y a 4 milliards d’années", "les systèmes de Jupiter et de Saturne prennent une forme proche de l’actuelle", "57:6.6"],
+        ["Il y a 3 milliards et demi d’années", "les noyaux des dix autres planètes sont bien formés : c’est l’ère de l’assemblage planétaire", "57:6.7"],
+        ["Il y a 3 milliards d’années", "le système solaire fonctionne à peu près comme aujourd’hui", "57:6.8"],
+        ["Il y a 2 milliards et demi d’années", "Urantia a environ un dixième de sa masse actuelle", "57:6.10"]] },
+    { id: "meteorique", c: "e-c4", n: "L’ère météorique, l’âge volcanique", alt: "fasc. 57", a: 2e9, b: 1e9, ds: "il y a 2 à 1 milliard d’années",
+      x: "Faute d’atmosphère protectrice, les météorites frappent sans cesse la surface {57:7.1}. La Terre devient assez grosse pour retenir une atmosphère primitive ; les volcans dominent, mais une croute surtout granitique commence à se former {57:7.2 ; 57:7.5}.",
+      ev: [["Il y a 2 milliards d’années", "la Terre gagne nettement sur la Lune ; à un cinquième de sa taille actuelle, elle retient l’atmosphère primitive", "57:7.2"],
+        ["Il y a un milliard et demi d’années", "elle atteint les deux tiers de sa taille actuelle ; la Lune approche de sa masse présente", "57:7.4"]] },
+    { id: "previe", c: "e-1", n: "L’ère de la prévie", alt: "archéozoïque", a: 1e9, b: 550e6, ds: "il y a 1 milliard à 550 millions d’années",
+      x: "Le texte divise l’histoire d’Urantia en cinq grandes ères {59:0.1–6} ; la première dure 450 millions d’années, jusqu’à l’établissement de la vie {59:0.2}. Un seul continent, entouré de l’océan Pacifique, se fissure peu à peu ; la croute se stabilise, et les mers prennent la salinité nécessaire à la vie {57:8.5 ; 57:8.16 ; 57:8.23–25}.",
+      q: { cite: "La date du commencement effectif de l’histoire d’Urantia se situe il y a un milliard d’années.", ref: "57:8.1" },
+      ev: [["il y a un milliard d’années", "la planète, à peu près à sa taille actuelle, est inscrite sur les registres de Nébadon et reçoit son nom", "57:8.1"],
+        ["Il y a 950 millions d’années", "un grand continent unique entouré de l’océan Pacifique", "57:8.5"],
+        ["Il y a 900 millions d’années", "une commission de vingt-quatre membres venue de Jérusem examine la planète comme station expérimentale de vie", "57:8.7"],
+        ["Il y a 850 millions d’années", "première époque de stabilisation de la croute", "57:8.16"],
+        ["Il y a 750 millions d’années", "premières brèches dans la masse continentale", "57:8.23"],
+        ["il y a 650 millions d’années", "les mers continentales atteignent la salinité indispensable à la vie", "57:8.25"],
+        ["Il y a 600 millions d’années", "arrivée de la commission des Porteurs de Vie", "58:1.1"]] },
+    { id: "aurore", c: "e-2", n: "L’ère de l’aurore de la vie", alt: "protérozoïque", a: 550e6, b: 400e6, ds: "il y a 550 à 400 millions d’années",
+      x: "Les Porteurs de Vie implantent la vie marine en trois points à la fois, dans des baies tropicales abritées, pour que chaque masse continentale l’emporte en dérivant {58:4.2–4}. La vie n’est pas apportée d’ailleurs : elle est élaborée sur place, sur un monde modificateur de vie {58:4.1}. La vie végétale des mers s’établit, puis la vie animale en sort {58:4.3 ; 58:6.1}.",
+      q: { cite: "Il y a 550 millions d’années, le corps des Porteurs de Vie revint sur Urantia.", ref: "58:4.2" },
+      ev: [["Il y a 550 millions d’années", "trois implantations simultanées : centrale (eurasienne-africaine), orientale (australasienne) et occidentale (Groenland et Amériques)", "58:4.2"],
+        ["Il y a 500 millions d’années", "la vie végétale marine est bien établie ; les Amériques et le Groenland dérivent lentement vers l’ouest", "58:4.3"],
+        ["Il y a 450 millions d’années", "transition de la vie végétale à la vie animale, dans des baies et des lagunes tropicales", "58:6.1"]] },
+    { id: "marine", c: "e-3", n: "L’ère de la vie marine", alt: "paléozoïque", a: 400e6, b: 150e6, ds: "il y a 400 à 150 millions d’années",
+      x: "Environ un quart de l’histoire de la planète, en six longues périodes {59:0.7}. Les continents sont tour à tour inondés et émergés ; trilobites, coraux et brachiopodes, puis poissons dominent les mers, tandis que fougères et forêts du charbon gagnent les terres. L’ère s’achève sur une crise : de plus de cent mille espèces, moins de cinq cents survivent {59:6.2}.",
+      per: [["Les trilobites", 400e6, 350e6, "400 → 360 millions", "59:1"], ["Première inondation des continents : les invertébrés", 350e6, 300e6, "350 → 310 millions", "59:2"],
+        ["Deuxième grande inondation : corail et brachiopodes", 300e6, 270e6, "300 → 280 millions", "59:3"], ["Grande émergence des terres : plantes terrestres et poissons", 270e6, 220e6, "270 → 230 millions", "59:4"],
+        ["Forêts de fougères du carbonifère : l’âge des grenouilles", 220e6, 170e6, "220 → 180 millions", "59:5"], ["Transition climatique : plantes à graines, tribulations biologiques", 170e6, 150e6, "170 → 160 millions", "59:6"]],
+      q: { cite: "Il y a 250 millions d’années se situe l’une des étapes les plus importantes de l’évolution préhumaine : l’apparition de la famille des poissons, des vertébrés.", ref: "59:4.9" },
+      ev: [["Il y a 400 millions d’années", "la vie marine, végétale et animale, est répandue sur tout le globe", "59:1.2"],
+        ["Il y a 230 millions d’années", "volcans dans la région du Saint-Laurent : le mont Royal, à Montréal, est le vestige de l’un d’eux", "59:4.16"],
+        ["Il y a 220 millions d’années", "véritable âge des fougères", "59:5.2"],
+        ["il y a 180 millions d’années", "fin de la période carbonifère : le charbon s’est formé dans le monde entier", "59:5.20"],
+        ["Il y a 160 millions d’années", "fin des épreuves biologiques ; l’atmosphère convient désormais à la respiration animale", "59:6.10"]] },
+    { id: "terrestre", c: "e-4", n: "L’ère de la vie terrestre primitive", alt: "mésozoïque", a: 150e6, b: 50e6, ds: "il y a 150 à 50 millions d’années",
+      x: "Les reptiles apparaissent soudainement ; les dinosaures atteignent les plus grandes tailles de la vie terrestre, puis disparaissent presque entièrement {60:1.9 ; 60:2.1}. La dérive des continents s’achève et les chaines côtières du Pacifique se dressent {60:3.12}. Les plantes à fleurs couvrent les continents, et le premier véritable oiseau apparait {60:3.7 ; 60:3.22}.",
+      per: [["L’âge primitif des reptiles", 150e6, 120e6, "150 → 130 millions", "60:1"], ["La nouvelle phase : essor et déclin des dinosaures", 120e6, 100e6, "120 → 100 millions", "60:2"],
+        ["Le crétacé : plantes à fleurs et oiseaux", 100e6, 50e6, "100 → 55 millions", "60:3–4"]],
+      ev: [["Il y a 140 millions d’années", "les reptiles apparaissent soudain, avec tous leurs attributs", "60:1.9"],
+        ["Il y a cent-millions d’années", "l’âge des reptiles tire à sa fin", "60:2.14"],
+        ["Il y a 90 millions d’années", "les angiospermes envahissent les continents", "60:3.7"],
+        ["il y a 75 millions d’années", "fin de la dérive continentale", "60:3.12"],
+        ["Il y a 55 millions d’années", "le premier véritable oiseau, petite créature du genre pigeon", "60:3.22"]] },
+    { id: "mammiferes", c: "e-5", n: "L’ère des mammifères", alt: "cénozoïque", a: 50e6, b: 35e3, ds: "il y a 50 millions à 35 000 ans",
+      x: "Les mammifères placentaires dominent, les types modernes apparaissent, le cheval et l’éléphant évoluent {61:2–4}. Puis vient l’âge glaciaire, avec six invasions des glaces au nord {61:5.4} ; les premiers humains naissent vers le début de la troisième {61:6.3}. La fin des glaces coïncide à peu près avec l’arrivée d’Adam et Ève, Fils et Fille Matériels {61:7.18}.",
+      per: [["Les premiers mammifères", 50e6, 35e6, "50 → 40 millions", "61:1"], ["Les mammifères évolués", 35e6, 25e6, "35 → 30 millions", "61:2"],
+        ["L’éléphant et le cheval", 25e6, 10e6, "25 → 15 millions", "61:3"], ["La dernière grande migration des mammifères", 10e6, 2e6, "10 → 5 millions", "61:4"],
+        ["L’âge glaciaire", 2e6, 35e3, "2 millions → 35 000 ans", "61:5–7"]],
+      q: { cite: "Il y a 35 000 ans s’acheva ce grand âge glaciaire, sauf pour les régions polaires de la planète.", ref: "61:7.18" },
+      ev: [["Il y a 35 millions d’années", "début de la domination mondiale des mammifères placentaires", "61:2.3"],
+        ["Il y a 20 millions d’années", "âge d’or des mammifères ; par l’isthme de Béring, des animaux passent d’Asie en Amérique du Nord", "61:3.4"],
+        ["Il y a 5 millions d’années", "le cheval atteint son état actuel et se répand dans le monde depuis l’Amérique du Nord", "61:4.5"],
+        ["Il y a 2 millions d’années", "le premier glacier d’Amérique du Nord descend vers le sud", "61:5.5"],
+        ["Il y a un million d’années", "Urantia est enregistrée comme monde habité : deux premiers êtres humains naissent d’une mutation des primates", "61:6.2"],
+        ["Il y a 500 000 ans", "apparition des six races de couleur ; arrivée du Prince Planétaire", "61:7.4"],
+        ["Il y a 200 000 ans", "rébellion de Lucifer", "61:7.8"]] }
+  ];
+  var MARKS = [[5.5e8, "la vie"], [1e6, "l’homme"], [3.5e4, "fin des glaces", "end"]];
+  var TICKS = [[1e12, "1 000 Md", "first"], [1e11, "100 Md", "minor"], [1e10, "10 Md"], [1e9, "1 Md", "minor"], [1e8, "100 M"], [1e7, "10 M", "minor"], [1e6, "1 M"], [1e5, "100 000", "minor"], [1e4, "10 000", "last"]];
+  function xp(t) { return (12 - Math.log(t) / Math.LN10) / 8 * 100; }
+
+  var stripEl = document.getElementById("strip"), bandsEl = document.getElementById("bands");
+  var sbs = [], rows = [];
+
+  function bandCard(b) {
+    var h = "<p>" + R(b.x) + "</p>";
+    if (b.per) {
+      var tot = b.a - b.b;
+      h += "<div class=\"per\" aria-hidden=\"true\" style=\"--c:var(--" + b.c + ")\">" + b.per.map(function (p, j) {
+        return "<span style=\"flex-grow:" + ((p[1] - p[2]) / tot * 100).toFixed(2) + ";opacity:" + (j % 2 ? ".74" : "1") + "\">" + (j + 1) + "</span>";
+      }).join("") + "</div>";
+      h += "<ol class=\"per-list\">" + b.per.map(function (p) {
+        return "<li><b>" + p[0] + "</b> · <span class=\"per-d\">" + p[3] + "</span> <span class=\"ref\">" + p[4] + "</span></li>";
+      }).join("") + "</ol>";
+    }
+    h += "<p class=\"label\">Repères datés</p><ul class=\"ev\">" + b.ev.map(function (e) {
+      return "<li><span class=\"ev-d\">" + e[0] + "</span><span>" + e[1] + " <span class=\"ref\">" + e[2] + "</span></span></li>";
+    }).join("") + "</ul>";
+    if (b.q) h += quote(b.q);
+    return h;
+  }
+
+  function toggleBand(i, open, fromStrip) {
+    rows.forEach(function (li, j) {
+      var o = open && j === i;
+      li.firstChild.setAttribute("aria-expanded", String(o));
+      li.lastChild.hidden = !o;
+      sbs[j].classList.toggle("on", o);
+    });
+    if (open && fromStrip) {
+      rows[i].scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "nearest" });
+      rows[i].firstChild.focus({ preventScroll: true });
+    }
+  }
+
+  BANDS.forEach(function (b, i) {
+    var x0 = xp(b.a), x1 = xp(b.b);
+    var s = document.createElement("button");
+    s.type = "button"; s.className = "sb"; s.tabIndex = -1; s.setAttribute("aria-hidden", "true");
+    s.style.left = x0.toFixed(3) + "%"; s.style.width = (x1 - x0).toFixed(3) + "%";
+    s.style.setProperty("--c", "var(--" + b.c + ")");
+    s.title = (i + 1) + ". " + b.n + " · " + b.ds;
+    s.innerHTML = "<span>" + (i + 1) + "</span>";
+    s.addEventListener("click", function () { toggleBand(i, true, true); });
+    stripEl.appendChild(s); sbs.push(s);
+
+    var li = document.createElement("li"); li.className = "band";
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "band-row";
+    btn.setAttribute("aria-expanded", "false"); btn.setAttribute("aria-controls", "band-" + b.id);
+    btn.innerHTML = "<span class=\"b-num\" style=\"--c:var(--" + b.c + ")\">" + (i + 1) + "</span><span class=\"b-main\"><span class=\"b-name\">" + b.n +
+      "</span> <span class=\"b-alt\">" + b.alt + "</span></span><span class=\"b-dates\">" + b.ds + "</span><span class=\"chev\" aria-hidden=\"true\"></span>";
+    var card = document.createElement("div");
+    card.className = "band-card"; card.id = "band-" + b.id; card.hidden = true;
+    card.innerHTML = bandCard(b);
+    btn.addEventListener("click", function () { toggleBand(i, btn.getAttribute("aria-expanded") !== "true", false); });
+    li.appendChild(btn); li.appendChild(card);
+    bandsEl.appendChild(li); rows.push(li);
+  });
+
+  (function () {
+    var head = document.getElementById("strip-head"), axis = document.getElementById("axis"), marks = document.getElementById("marks");
+    var split = xp(1e9), a0 = xp(BANDS[0].a), a1 = xp(BANDS[BANDS.length - 1].b);
+    head.innerHTML = "<span style=\"left:" + a0.toFixed(2) + "%;width:" + (split - a0).toFixed(2) + "%\" title=\"Fascicule 57\">Avant l’histoire</span>" +
+      "<span style=\"left:" + split.toFixed(2) + "%;width:" + (a1 - split).toFixed(2) + "%\" title=\"59:0.1–6\">Les cinq ères d’Urantia</span>";
+    axis.innerHTML = TICKS.map(function (t) { return "<span class=\"tk " + (t[2] || "") + "\" style=\"left:" + xp(t[0]).toFixed(2) + "%\">" + t[1] + "</span>"; }).join("");
+    marks.innerHTML = MARKS.map(function (m) { return "<span class=\"mk " + (m[2] || "") + "\" style=\"left:" + xp(m[0]).toFixed(2) + "%\">" + m[1] + "</span>"; }).join("");
+  })();
+
+  function fitStrip() { sbs.forEach(function (s) { s.classList.toggle("tight", s.getBoundingClientRect().width < 17); }); }
+
+  /* ====================== 2. La carte ====================== */
+  var GROUPS = [["prim", "Origine commune, précurseurs"], ["andon", "Andonites et descendants"], ["rouge", "Hommes rouges"], ["orange", "Hommes orangés"],
+    ["jaune", "Hommes jaunes"], ["vert", "Hommes verts"], ["bleu", "Hommes bleus"], ["indigo", "Peuples indigo"], ["nodite", "Nodites"],
+    ["adam", "Adamites, race violette"], ["andite", "Andites"]];
+
+  /* Lieux : [nom, longitude, latitude, rayon d’incertitude ou de zone en degrés, groupe, position de l’étiquette, type]
+     type : absent = point (≈ si rayon > 0) ; "z" = région nommée ; "e" = péninsule d’Éden (schéma) */
+  var PL = {
+    berceau: ["Berceau de l’humanité", 56, 26, 5, "prim", "b"],
+    oban: ["Oban", 49.3, 39.2, 2, "andon", "r"],
+    somme: ["Vallée de la Somme", 2.3, 49.95, 0, "andon", "l"],
+    manche: ["Établissements andoniques", 2.6, 52.6, 2, "andon", "t"],
+    angleterre: ["Angleterre", -1.8, 52.6, 2, "andon", "l", "z"],
+    france: ["France", 2.5, 46.6, 2.6, "andon", "b", "z"],
+    java: ["Java", 110, -7.4, 0, "andon", "b"],
+    tasmanie: ["Tasmanie", 146.6, -42, 0, "andon", "r"],
+    foxhall: ["Peuples de Foxhall, en Angleterre", 0, 52.4, 1.6, "andon", "l"],
+    badonan: ["Tribus de Badonan", 72.5, 34, 2.2, "andon", "l"],
+    chine: ["Chine", 110, 34.5, 4, "andon", "r", "z"],
+    afnord: ["Afrique du Nord", 6, 33, 4, "andon", "b", "z"],
+    sangik: ["Famille Sangik", 75.5, 34.8, 1.8, "prim", "r"],
+    nilbas: ["Basse vallée du Nil", 31.2, 29.2, 1.6, "orange", "l", "z"],
+    dalamatia: ["Dalamatia", 49, 28.8, 1.8, "nodite", "b"],
+    golfe: ["Fond du golfe Persique", 48.2, 30.3, 0.9, "nodite", "l"],
+    elam: ["Élam", 49.3, 32.4, 1.3, "nodite", "r"],
+    syrie: ["Côte de Syrie", 36.2, 35.6, 1.1, "nodite", "l"],
+    dilmun: ["Dilmun", 50.8, 29.9, 1.3, "nodite", "r"],
+    lacvan: ["Lac Van", 42.9, 38.6, 0, "andon", "l"],
+    ararat: ["Mont Ararat", 44.3, 39.7, 0, "nodite", "r"],
+    babel: ["Bablot, plus tard Babel", 44.4, 32.6, 1.3, "nodite", "l"],
+    syrnod: ["Nodites syriens", 39.6, 36.6, 1.3, "nodite", "t"],
+    embouchure: ["Embouchure du Tigre et de l’Euphrate", 47.9, 30.5, 0.8, "nodite", "b"],
+    beringie: ["Isthme de Béring", -169, 65.7, 0, "rouge", "b"],
+    californie: ["Onamonalonton, Californie", -122.8, 39.5, 2.5, "rouge", "l"],
+    mexique: ["Mexique", -101, 21, 3, "rouge", "l", "z"],
+    amcentr: ["Amérique centrale", -87.5, 14.5, 2, "rouge", "r", "z"],
+    amsud: ["Amérique du Sud", -70, -10, 4.5, "rouge", "r", "z"],
+    islande: ["Islande", -18.8, 65, 0, "andon", "t"],
+    groenland: ["Groenland", -42, 72, 4, "andon", "t", "z"],
+    nordest: ["Nord-Est de l’Amérique du Nord", -66, 54, 3.5, "andon", "b", "z"],
+    eden: ["Éden", 34.1, 33.95, 0, "adam", "t", "e"],
+    ilegolfe: ["Une ile du golfe Persique", 51.6, 26.8, 1.3, "andon", "b"],
+    jardin2: ["Second jardin", 44.9, 32.5, 1.1, "adam", "b"],
+    adamson: ["Centre d’Adamson, monts Kopet", 57.3, 38.1, 1.4, "adam", "t"],
+    zviolet: ["Race violette", 45.5, 34, 3, "adam", "t", "z"],
+    zadamson: ["Adamsonites", 57.3, 38.1, 1.6, "adam", "r", "z"],
+    zpresum: ["Présumériens", 48, 30.4, 1.2, "nodite", "b", "z"],
+    zandon: ["Andonites", 85, 62, 7, "andon", "c", "z"],
+    zandon2: ["Andonites d’Islande et du Groenland", -30, 68, 4, "andon", "c", "z"],
+    zrouge: ["Hommes rouges", -100, 43, 9, "rouge", "c", "z"],
+    zjaune: ["Hommes jaunes", 104, 33, 7, "jaune", "c", "z"],
+    zbleu: ["Hommes bleus", 12, 48.5, 6, "bleu", "c", "z"],
+    zinde: ["Inde prédravidienne", 78, 21, 5, "prim", "c", "z"],
+    zsahara: ["Civilisation saharienne", 8, 24, 6, "indigo", "c", "z"],
+    zmedit: ["Bassin méditerranéen", 17, 38, 3.5, "prim", "c", "z"],
+    sicile: ["Isthme Sicile–Afrique", 11.8, 37, 1, "prim", "b"],
+    gibraltar: ["Isthme de Gibraltar", -5.6, 36, 0.8, "prim", "b"],
+    turkestan: ["Turkestan", 62, 40, 4, "adam", "t", "z"],
+    zandites: ["Naissance des Andites", 45, 32.8, 3.2, "andite", "l", "z"],
+    balouch: ["Béloutchistan", 65.5, 28.3, 2.2, "andite", "b", "z"],
+    indus: ["Vallée de l’Indus", 70, 27.5, 1.6, "andite", "l", "z"],
+    gange: ["Vallée du Gange", 82, 25.8, 2.4, "andite", "t", "z"],
+    deccan: ["Deccan", 77.5, 17, 3, "andite", "b", "z"],
+    pendjab: ["Pendjab", 74, 31, 1.6, "andite", "r", "z"],
+    tarim: ["Bassin du Tarim", 83, 40, 3.4, "andite", "t", "z"],
+    titao: ["Col de Ti Tao", 103.8, 35.4, 1.2, "andite", "b"],
+    honan: ["Honan", 113.5, 34.2, 2, "andite", "r", "z"],
+    crete: ["Crète", 24.9, 35.25, 0, "andite", "b"],
+    grece: ["Grèce", 22.3, 39.3, 1.8, "adam", "l", "z"],
+    japon: ["Japon", 137, 36, 3, "andite", "t", "z"],
+    paques: ["Ile de Pâques", -109.4, -27.1, 0, "andite", "b"],
+    andes: ["Andes", -75.5, -12, 3, "andite", "r", "z"],
+    danemark: ["Danemark", 9.5, 56, 1.5, "andite", "r", "z"],
+    adonia: ["Adonia, près d’Ashkhabad", 58.4, 37.95, 0.6, "andite", "r"],
+    sinkiang: ["Sin-Kiang", 85, 42, 3.4, "andite", "t", "z"],
+    iran: ["Plateau iranien", 55, 32.5, 3.2, "andite", "b", "z"],
+    egypte: ["Égypte", 31, 26.5, 3, "andite", "l", "z"],
+    erech: ["Érech", 45.64, 31.32, 0, "andite", "l"],
+    aram: ["Aram", 45.3, 31.75, 0.5, "andite", "t"],
+    ur: ["Ur", 46.1, 30.96, 0, "andite", "b"],
+    suse: ["Suse", 48.26, 32.19, 0, "andite", "r"],
+    balkans: ["Balkans", 23, 42.5, 2.4, "andon", "l", "z"],
+    ukraine: ["Ukraine", 32, 48.5, 3, "andon", "t", "z"],
+    nordasie: ["Nord de l’Asie centrale", 72, 51, 4, "andon", "r", "z"]
+  };
+
+  /* Cadrages : [ouest, nord, est, sud] en degrés ; au-delà de 180° E, la carte se répète */
+  var VIEWS = {
+    monde: [-180, 84, 180, -60], ancien: [-20, 68, 152, -46], ouest: [-14, 62, 92, 16], proche: [26, 43.5, 62, 23],
+    golfe: [38, 41, 72, 15], inde: [50, 46, 96, 20], medit: [-10, 46, 40, 28.5], egee: [14, 44, 48, 29], meso: [37, 38.5, 53, 28],
+    asie: [38, 52, 125, 4], pacif: [95, 78, 362, -48], pacsud: [118, 44, 298, -40]
+  };
+  var SEAS = [["Méditerranée", 18, 34.4, 75], ["mer Noire", 34.6, 43.4, 60], ["mer Caspienne", 50.4, 42.3, 60], ["golfe Persique", 51.7, 27.1, 55],
+    ["mer Rouge", 38.7, 20.4, 60], ["mer d’Arabie", 64, 16, 100], ["océan Indien", 76, -6, 200], ["océan Atlantique", -38, 28, 260],
+    ["océan Pacifique", -145, 8, 400]];
+
+  /* Épisodes : d = date telle qu’écrite (dp : précision ajoutée) ; p = lieux (« id|étiquette|groupe ») ; m = migrations (s : itinéraire schématique) */
+  var EPS = [
+    { id: "precurseurs", t: "Les mammifères précurseurs", d: "Il y a un peu plus d’un million d’années", r: "62:2.1", ds: "un peu plus d’un million d’années",
+      l: "Une péninsule mésopotamienne ou persane, légèrement à l’ouest de l’Inde, sur une terre aujourd’hui immergée", ax: 1, f: "fascicules 61 et 62", v: "monde",
+      x: "Des lémurs de type nord-américain avaient gagné l’Asie, des millions d’années plus tôt, par le pont terrestre de Béring, puis longé la côte vers le sud-ouest {62:1.2}. Dans une péninsule isolée entre une Méditerranée bien plus vaste et les montagnes de l’Inde, trois mutations soudaines se succèdent : les mammifères précurseurs, les mammifères intermédiaires, puis les primates {62:2–4}. Un couple de jumeaux attardés des mammifères intermédiaires donne naissance aux tribus simiennes : l’homme et le singe viennent de la même tribu, mais non des mêmes parents {62:3.11–13}.",
+      q: [{ cite: "Légèrement à l’Ouest de l’Inde, sur une terre maintenant immergée […], les mammifères précurseurs de l’homme apparurent soudainement.", ref: "61:6.1" }],
+      p: ["berceau"],
+      m: [{ g: "prim", s: 1, w: [[245, 57], [210, 63], [191, 65.6], [175, 65], [163, 61], [146, 52], [130, 40], [119, 30], [106, 20], [91, 19], [72, 24], [60, 26]] }] },
+    { id: "andon", t: "Andon et Fonta", d: "993 419 ans avant l’année 1934 de l’ère chrétienne", r: "62:5.1", ds: "993 419 ans avant 1934",
+      l: "La côte ouest de la péninsule mésopotamienne, puis une région retirée, vers le nord", ax: 1, f: "fascicules 62 et 63", v: "golfe",
+      x: "Des primates naissent deux jumeaux, les premiers êtres humains. Vers onze ans, ils décident de fuir ensemble vers le nord, loin de leur tribu ; c’est la première décision d’un mental de type humain sur Urantia, qui est officiellement reconnue comme planète habitée 993 408 ans avant 1934 {62:6.5 ; 62:7.3 ; 62:7.7}. En route, le couple apprend à faire du feu avec le silex : c’est Fonta qui trouve l’astuce du nid sec {63:2.4–5}. Andon et Fonta ont dix-neuf enfants et meurent à quarante-deux ans, dans un tremblement de terre {63:3.2–4}.",
+      q: [{ cite: "La naissance des deux premiers êtres humains se situe exactement 993 419 ans avant l’année 1934 de l’ère chrétienne.", ref: "62:5.1" }],
+      p: ["berceau|Péninsule natale d’Andon et de Fonta"],
+      m: [{ g: "andon", s: 1, w: [[56.5, 27.5], [55.6, 31], [54.6, 34.2]] }] },
+    { id: "onagar", t: "Les clans andoniques et Onagar", dp: "Naissance d’Onagar :", d: "983 323 ans avant l’an 1934 de l’ère chrétienne", r: "63:6.8", ds: "983 323 ans avant 1934",
+      l: "Vers le nord, puis l’Europe jusqu’à la mer du Nord ; Oban, sur le rivage nord de la Méditerranée ancienne, dans la région de l’actuelle mer Caspienne", ax: 1, f: "fascicule 63", v: "ouest",
+      x: "La famille d’Andon reste unie jusqu’à la vingtième génération, puis se disperse {63:3.6}. Les Andonites remontent toujours plus au nord, jusqu’à ce que le troisième glacier les arrête ; ils gagnent alors l’ouest à travers l’Europe et fondent plus de mille établissements le long des fleuves qui mènent à la mer du Nord, dont la Somme {63:5.1–3}. Après près de dix mille ans de recul, Onagar ramène la paix depuis Oban, envoie les premiers missionnaires du monde et enseigne une Déité unique, le Souffle de Vie {63:6.1 ; 63:6.7}. Avec lui, Ajusteurs et anges gardiens viennent en grand nombre : c’est l’âge d’or de l’homme primitif {63:6.9}.",
+      q: [{ cite: "Ô Souffle de Vie, donne-nous aujourd’hui notre nourriture quotidienne, délivre-nous de la malédiction de la glace […]", ref: "63:6.6" }],
+      p: ["oban|Oban, centre d’Onagar", "manche|Établissements le long des fleuves de la mer du Nord", "somme"],
+      m: [{ g: "andon", s: 1, w: [[55, 30], [52.5, 34.5], [49.5, 39], [45.5, 42.3], [40, 45.3], [32, 47.3], [22, 49.2], [12, 50.6], [4.5, 51.5]] }] },
+    { id: "est-ouest", t: "Jusqu’à l’Angleterre et à Java", d: "Il y a 950 000 ans", r: "64:1.6", ds: "il y a 950 000 ans",
+      l: "La France et l’Angleterre à l’ouest ; Java, puis la Tasmanie, à l’est", ax: 0, f: "fascicule 64", v: "ancien",
+      x: "Les Andonites sont enfermés : glaces au nord, hautes terres du Tibet à l’est, Méditerranée étendue jusqu’à l’océan Indien au sud et à l’ouest ; les plus intelligents refusent de redescendre vers leurs cousins des forêts {64:1.1–2}. Une voie terrestre continue relie alors l’Angleterre à Java {64:1.5}. Le texte leur attribue les ossements de l’homme de Java ; plus tard, ils atteignent la Tasmanie, sans que l’itinéraire soit décrit {64:1.6}. Les groupes de l’ouest restent plus purs ; ceux de l’est se mêlent aux tribus attardées, et le culte du Donneur de Souffle recule {64:1.7}.",
+      q: [{ cite: "Il y a 950 000 ans, les descendants d’Andon et de Fonta avaient émigré très loin vers l’est et vers l’ouest.", ref: "64:1.6" }],
+      p: ["france", "angleterre", "java", "tasmanie"],
+      m: [{ g: "andon", s: 1, w: [[50, 40], [44, 43], [36, 46], [26, 48], [15, 49.5], [5, 50.2], [-1, 52]] },
+        { g: "andon", s: 1, w: [[60, 30], [68, 28], [77, 26.5], [86, 24.5], [95, 20], [100.5, 12], [103.5, 3], [106.5, -3], [109.5, -6.8]] },
+        { g: "andon", s: 1, w: [[112, -8.8], [122, -13], [132, -21], [140, -31], [145.8, -41]] }] },
+    { id: "foxhall", t: "Foxhall et Badonan", d: "Il y a 900 000 ans", r: "64:2.1", ds: "il y a 900 000 ans",
+      l: "L’Angleterre (peuples de Foxhall) ; les contreforts des hautes terres du Nord-Ouest de l’Inde (tribus de Badonan)", ax: 1, f: "fascicule 64", v: "ouest",
+      x: "La culture d’Andon et d’Onagar est au plus bas {64:2.1}. Des tribus très mêlées venues du sud de la France passent en Angleterre ; un peuple plus prolifique, la race de Heidelberg, se répand ensuite dans toute l’Europe {64:2.2–3}. Deux foyers gardent des traditions andoniques : à l’ouest, les peuples de Foxhall, dont les descendants deviendront les Esquimaux ; à l’est, les tribus de Badonan, un arrière-arrière-petit-fils d’Andon, seuls descendants d’Andon à n’avoir jamais pratiqué de sacrifices humains {64:2.4–7 ; 64:3.1}.",
+      p: ["foxhall", "badonan"],
+      m: [{ g: "andon", s: 1, w: [[1.5, 44.5], [0.6, 47.8], [-0.4, 51]] }] },
+    { id: "neandertal", t: "Les Néandertaliens", d: "Il y a 850 000 ans", r: "64:3.5", ds: "il y a 850 000 ans",
+      l: "Depuis les hautes terres du Nord-Ouest de l’Inde : jusqu’en Chine à l’est, jusqu’en France à l’ouest, et en Afrique du Nord", ax: 0, f: "fascicule 64", v: "ancien",
+      x: "Les tribus supérieures de Badonan mènent une guerre d’extermination contre leurs voisins à tendances animales ; leurs descendants mêlés forment un peuple apparemment nouveau, la race du Néandertal {64:3.5}. Grands voyageurs et grands chasseurs, les Néandertaliens dominent le monde pendant près d’un demi-million d’années {64:4.1–2}. Le texte suit leurs mouvements au rythme des glaciers, de la quatrième avance à la cinquième, et décrit une religion de la peur qui aboutit aux sacrifices humains {64:4.4–13}.",
+      p: ["badonan|Hautes terres du Nord-Ouest de l’Inde", "chine", "france", "afnord"],
+      m: [{ g: "andon", s: 1, w: [[73.5, 35.2], [82, 37.5], [92, 37.2], [102, 35.6], [109, 35]] },
+        { g: "andon", s: 1, w: [[71, 35.3], [62, 38.2], [52, 39.8], [44, 41.6], [35, 45], [24, 47], [13, 47.2], [4, 46.7]] },
+        { g: "andon", s: 1, w: [[43, 40.5], [38.5, 37], [35.5, 33.2], [30, 31.2], [20, 31.2], [8.5, 33.6]] }] },
+    { id: "sangik", t: "La famille Sangik", d: "Il y a 500 000 ans", r: "64:5.1", ds: "il y a 500 000 ans",
+      l: "La partie nord-est des hautes terres alors habitées, au Nord-Ouest de l’Inde", ax: 1, f: "fascicules 61 et 64", v: "inde",
+      x: "Une guerre de plus de cent ans ne laisse qu’une centaine de familles badonites {64:5.1}. Un couple donne alors naissance à dix-neuf enfants très intelligents, dont la peau prend des couleurs différentes au soleil : cinq rouges, deux orangés, quatre jaunes, deux verts, quatre bleus et deux indigo {64:5.2–3}. Les six races de couleur apparaissent ainsi en une seule génération et dans une seule famille, ce que le texte dit exceptionnel {64:6.1}. La même date marque l’arrivée du Prince Planétaire {61:7.4 ; 64:5.4}.",
+      q: [{ cite: "Ce fut la famille Sangik, ancêtre des six races colorées d’Urantia.", ref: "64:5.2" }],
+      see: see("Le Prince Planétaire et son état-major"),
+      p: ["badonan|Tribus badonites", "sangik"], m: [] },
+    { id: "dispersion", t: "Les six races se dispersent", dp: "Fantad :", d: "il y a environ trois-cent-cinquante-mille ans", r: "64:6.17",
+      dp2: "Les jaunes entrent en Chine :", d2: "Il y a plus de trois-cent-mille ans", r2: "79:5.3", ds: "vers 350 000 à 300 000 ans",
+      l: "Depuis les hautes terres du Nord-Ouest de l’Inde, dans toutes les directions", ax: 0, f: "fascicules 64 et 79", v: "ancien",
+      x: "Pendant près de cent mille ans, les peuples Sangik restent autour de leurs montagnes : le cinquième glacier ferme l’Asie orientale et la Méditerranée barre l’Afrique {64:7.1–2}. Puis les rouges partent vers le nord-est, suivis de près par les jaunes, dont la masse principale entre en Chine par le sud, en longeant la côte ; les bleus gagnent l’Europe par le nord-ouest, sur les anciennes pistes andoniques {64:7.3–8 ; 79:5.3}. Les orangés longent la Méditerranée vers l’Afrique ; les verts se divisent en trois branches ; les indigo partent les derniers, le long de la côte de Palestine, vers l’Égypte puis le sud de l’Afrique {64:6.11 ; 64:6.18 ; 64:7.14–15}. Chaque race a ses éducateurs : Fantad pour les verts, Porshunta pour les orangés, Singlangton pour les jaunes, Orlandof pour les bleus, Orvonon pour les indigo {64:6}. Armageddon, quartier général des orangés, n’est pas situé {64:6.12}.",
+      p: ["sangik", "nilbas", "chine|Chine|jaune"],
+      m: [{ g: "rouge", s: 1, w: [[76.5, 36], [82, 41], [92, 46], [105, 49.3], [120, 52.3], [136, 56.3], [149, 60], [160, 62.4]] },
+        { g: "jaune", s: 1, w: [[75.5, 32.5], [79, 27.3], [87, 23.6], [95, 19.2], [103, 17.8], [109, 20.6], [114, 24], [117.6, 29], [118.6, 34]] },
+        { g: "bleu", s: 1, w: [[73.5, 36.8], [64, 39.3], [54, 41.8], [46, 44], [38, 46.3], [28, 48.3], [17, 49.3], [6, 48.8]] },
+        { g: "orange", s: 1, w: [[72, 34.6], [62, 35.4], [50, 36.8], [40, 36.8], [36, 34.8], [34.6, 32.2], [32.4, 30.6], [31.2, 29.6]] },
+        { g: "vert", s: 1, w: [[76, 36.2], [74.5, 41.5], [71, 46.5]] },
+        { g: "vert", s: 1, w: [[77, 33], [79.5, 28.5], [80.5, 24]] },
+        { g: "vert", s: 1, w: [[72, 32.2], [61, 29.4], [51, 28.4], [42, 28.6], [35.5, 28.8], [32.2, 27.6]] },
+        { g: "indigo", s: 1, w: [[72, 33.2], [61, 32], [50, 32.8], [41, 33.6], [35.6, 33.2], [34.4, 31.2], [32.6, 29.6], [31.9, 26], [32.4, 18], [29.5, 8], [24, 0]] }] },
+    { id: "nodites", t: "Dalamatia engloutie, les Nodites", dp: "", d: "Cent-soixante-deux ans après la rébellion", r: "67:5.4",
+      dp2: "Rébellion de Lucifer :", d2: "Il y a 200 000 ans", r2: "61:7.8", ds: "après la rébellion, il y a 200 000 ans",
+      l: "Dalamatia, dans la région du golfe Persique d’alors ; puis le fond du golfe, les hauts plateaux d’Élam, la côte de Syrie et Dilmun", ax: 1, f: "fascicules 66, 67, 73 et 77", v: "proche",
+      x: "Le quartier général du Prince, Dalamatia, se trouvait dans la région du golfe Persique {66:3.1}. Un raz de marée l’engloutit ; ses vestiges gisent sous les eaux du golfe {67:5.4 ; 78:7.7}. Les descendants des membres rebelles de l’état-major forment les Nodites, la huitième race {73:1.3 ; 77:2.8}. Ils se divisent en trois groupes : au fond du golfe Persique, sur les hauts plateaux d’Élam, sur la côte nord-est de la Méditerranée, en Syrie {73:1.5}. Puis ils fondent Dilmun, leur nouveau centre {77:3.1}. Les fidèles de Van et d’Amadon, les Amadonites, vivent au nord de la Mésopotamie, près du lac Van {73:1.3 ; 73:1.6}.",
+      see: see("La rébellion et le gouvernement de Caligastia"),
+      p: ["dalamatia|Dalamatia, engloutie", "golfe|Nodites du centre", "elam|Élam, Nodites de l’est", "syrie|Syrie, Nodites de l’ouest", "dilmun", "lacvan|Lac Van : Van et Amadon"],
+      m: [{ g: "nodite", s: 1, w: [[49.3, 29.4], [49.6, 30.6], [49.3, 31.8]] }, { g: "nodite", s: 1, w: [[48.2, 29.6], [45, 31.6], [41, 34], [37.2, 35.4]] },
+        { g: "nodite", s: 1, w: [[49.2, 28.9], [50.6, 29.7]] }] },
+    { id: "babel", t: "La tour de Babel", d: "Environ cinquante-mille ans après la mort de Nod", r: "77:3.1", ds: "50 000 ans après la mort de Nod",
+      dn: "La date de la mort de Nod n’est pas donnée.",
+      l: "Au centre du territoire nodite, en Mésopotamie ; puis les centres nodites de Syrie, d’Élam et de l’embouchure des fleuves", ax: 1, f: "fascicule 77", v: "proche",
+      x: "Trop nombreux autour de Dilmun, les Nodites adoptent le plan de Bablot, un descendant de Nod : un temple surmonté d’une tour sans équivalent, bâti loin des dangers de la mer {77:3.1–2}. Après quatre ans et demi de travaux, la dispute sur le but de la tour tourne à la guerre {77:3.4–8}. La ville devait porter le nom de Bablot ; elle devint Bablod, puis Babel {77:3.3}. Les survivants fondent les centres nodites : à l’ouest, vers le nord-ouest de la Mésopotamie ; à l’est, en Élam ; au centre, à l’embouchure du Tigre et de l’Euphrate, ancêtres des Sumériens ; au nord vivent déjà les Vanites, autour du lac Van et du mont Ararat {77:4}. Une seconde tentative échoue il y a environ douze mille ans {77:3.9}.",
+      p: ["babel", "syrnod", "elam|Élam, Nodites de l’est", "embouchure|Nodites présumériens", "lacvan|Lac Van : Vanites|nodite", "ararat"],
+      m: [{ g: "nodite", s: 1, w: [[44, 33.2], [42, 35], [39.9, 36.3]] }, { g: "nodite", s: 1, w: [[45, 32.4], [47, 32.2], [48.6, 32.3]] },
+        { g: "nodite", s: 1, w: [[45, 32], [46.5, 31.2], [47.6, 30.7]] }] },
+    { id: "rouges", t: "Les hommes rouges passent en Amérique", d: "Il y a environ 85 000 ans", r: "64:6.5", ds: "il y a environ 85 000 ans",
+      l: "L’Asie du Nord-Est, l’isthme de Béring, l’Amérique du Nord ; plus tard le Mexique, l’Amérique centrale et l’Amérique du Sud", ax: 0, f: "fascicules 64 et 79", v: "pacif",
+      x: "Après plus de deux cent mille ans de guerre contre les jaunes, les dernières tribus rouges, onze tribus d’un peu plus de sept mille personnes, quittent l’Asie par l’isthme de Béring, qui s’effondre peu après {79:5.5–6 ; 64:7.5 ; 64:6.5}. Trois petits groupes mêlés descendent vers le Mexique et l’Amérique centrale ; leurs descendants fondent les civilisations du Mexique, de l’Amérique centrale et de l’Amérique du Sud {64:7.5}. Il y a un peu plus de quatre-vingt mille ans, des descendants andoniques du Groenland passent dans le nord-est de l’Amérique : ce sont les Esquimaux. Plus tôt, à l’arrivée du sixième glacier, des Andonites du sud de l’Angleterre avaient pris la mer ; quelques-uns atteignirent l’Islande et le Groenland {64:7.17–18}. Il y a environ soixante-cinq mille ans, Onamonalonton ramène chez les rouges une paix temporaire, depuis les séquoias de Californie {64:6.7}.",
+      q: [{ cite: "Il y a environ 85 000 ans, les survivants relativement purs de la race rouge passèrent en masse en Amérique du Nord.", ref: "64:6.5" }],
+      p: ["beringie", "californie", "mexique", "amcentr", "amsud", "islande", "groenland", "nordest"],
+      m: [{ g: "rouge", w: [[150, 60.5], [167, 64.6], [191, 65.7], [205, 64.2], [221, 59.5], [236, 52], [250, 45]] },
+        { g: "rouge", s: 1, w: [[250, 44], [255, 35], [259, 26], [262, 20], [270.5, 15.5]] },
+        { g: "rouge", s: 1, w: [[271, 14], [279, 6], [283.5, -3], [286, -10]] },
+        { g: "andon", s: 1, w: [[-3, 50.3], [-10, 55.8], [-19, 63.6], [-30, 65.4], [-39.5, 64]] },
+        { g: "andon", w: [[-45, 61], [-53, 60.2], [-60, 57.2]] }] },
+    { id: "eden", t: "Le Jardin d’Éden", d: "37 848 ans avant l’an 1934 de l’ère chrétienne", r: "74:0.1", ds: "37 848 ans avant 1934",
+      l: "Une longue péninsule étroite sur la côte orientale de la Méditerranée, aujourd’hui engloutie", ax: 1, f: "fascicules 73 et 74", v: "proche",
+      x: "Quatre-vingt-trois ans avant l’arrivée d’Adam et Ève, Van propose de leur préparer un foyer-jardin ; plus de trois mille volontaires répondent {73:2.2–3}. Le comité du site, absent près de trois ans, retient trois emplacements : une ile du golfe Persique, un site fluvial (le futur second jardin) et une péninsule méditerranéenne, choisie presque à l’unanimité {73:3.1–2}. Un isthme, large de quarante-trois kilomètres à son point le plus étroit, la relie au continent ; un mur de briques le ferme {73:3.4 ; 73:4.2}. Le fleuve d’Éden coulait vers l’est, à travers l’isthme, puis à travers la Mésopotamie {73:3.4}. Adam et Ève arrivent près du temple du Père, au centre du Jardin, alors achevé au quart {74:0.1 ; 73:5.1–2}.",
+      q: [{ cite: "[…] une longue péninsule étroite — presque une ile — qui faisait saillie vers l’ouest sur la côte orientale de la Méditerranée.", ref: "73:3.1" },
+        { cite: "[…] arrivèrent sur Urantia 37 848 ans avant l’an 1934 de l’ère chrétienne, au milieu de la belle saison […]", ref: "74:0.1" }],
+      see: see("La mission d’Adam et Ève et leur faute"),
+      p: ["eden", "ilegolfe|Site écarté : une ile du golfe Persique", "jardin2|Site écarté : le futur second jardin", "lacvan|Hautes terres de Van et d’Amadon"],
+      m: [{ g: "andon", s: 1, w: [[43, 38.2], [40.2, 36.6], [37.6, 35.2], [36, 34.2]] }] },
+    { id: "second-jardin", t: "Le second jardin", dp: "Séjour dans le premier jardin :", d: "pendant cent-dix-sept ans", r: "74:8.14",
+      dp2: "Centre d’Adamson :", d2: "Environ 35 000 ans av. J.-C.", r2: "77:4.13", ds: "117 ans après l’arrivée d’Adam",
+      l: "Entre le Tigre et l’Euphrate ; plus tard le centre d’Adamson, près des monts Kopet, au sud-est de la mer Caspienne", ax: 1, f: "fascicules 74 à 78", v: "proche",
+      x: "Quand les Nodites marchent sur Éden, Adam choisit de partir sans combattre, avec douze cents partisans {75:6.2}. Le troisième jour, les deux tiers des enfants en âge de choisir, et tous les plus jeunes, partent pour Édentia {75:6.3}. La caravane trouve l’Euphrate en crue, puis s’installe entre les deux fleuves, protégée au nord par un mur de quatre-vingt-dix kilomètres {76:1.1–3}. Adamson, le fils ainé, part vers le nord avec vingt-sept compagnons, épouse Ratta, dernière descendante de sang pur de l’état-major du Prince, et fonde un centre de la race violette {77:5.2–6 ; 78:1.3}. Adam vit 530 ans {76:5.5}.",
+      q: [{ cite: "Il fallut presque une année entière à la caravane d’Adam pour atteindre l’Euphrate.", ref: "76:1.1" }],
+      p: ["eden|Éden, abandonné", "jardin2", "adamson"],
+      m: [{ g: "adam", s: 1, w: [[36, 34], [37.6, 35], [39.6, 35.6], [41.2, 35.1], [43, 33.9], [44.6, 32.8]] },
+        { g: "adam", s: 1, w: [[45.2, 33], [47.2, 35.6], [50.2, 36.9], [53.6, 37.4], [56.8, 37.9]] }] },
+    { id: "monde-35000", t: "Le monde il y a 35 000 ans", d: "il y a 35 000 ans", r: "78:1.2", ds: "il y a 35 000 ans",
+      l: "Le monde entier", ax: 0, f: "fascicule 78", v: "monde",
+      x: "Le texte dresse un tableau des peuples au temps d’Adam {78:1.3–11} : la race violette dans le second jardin et chez les Adamsonites ; des Nodites présumériens à l’embouchure des fleuves ; des Andonites au nord de l’Eurasie, en Islande et au Groenland ; les rouges dans les Amériques ; les jaunes en Asie orientale, les plus avancés au nord-ouest de la Chine, près du Tibet ; les bleus dans toute l’Europe ; une Inde prédravidienne très mêlée ; une civilisation indigo dans l’actuel Sahara ; un Bassin méditerranéen très mélangé. La plus grande partie du monde vit encore à l’état sauvage {78:1.2}.",
+      p: ["zviolet", "zadamson", "zpresum", "zandon", "zandon2", "zrouge", "zjaune", "zbleu", "zinde", "zsahara", "zmedit"], m: [] },
+    { id: "eden-englouti", t: "Éden englouti", dp: "Après l’invasion nodite :", d: "près de quatre-mille ans", r: "73:7.1", ds: "4 000 ans après l’invasion nodite",
+      l: "L’extrémité orientale de la Méditerranée", ax: 1, f: "fascicules 73, 78 et 80", v: "medit",
+      x: "Après le départ d’Adam, le premier jardin est occupé par des Nodites, des Cutites et des Suntites, puis par les Nodites du nord {73:7.1}. Près de quatre mille ans plus tard, le fond oriental de la Méditerranée s’enfonce, avec une violente activité volcanique et la submersion de l’isthme qui reliait la Sicile à l’Afrique, tandis que la côte orientale se relève ; l’engloutissement prend plusieurs siècles {73:7.1}. Le texte y voit un évènement naturel, dont la date semble fixée pour coïncider avec le moment où la race violette serait assez nombreuse {73:7.2}. Par recoupement avec 80:2.4, c’est aussi l’époque où l’isthme de Gibraltar puis le pont de Sicile s’effondrent : la Méditerranée devient une seule mer reliée à l’Atlantique.",
+      q: [{ cite: "[…] le fond oriental de la mer Méditerranée s’enfonça, entrainant sous les eaux la péninsule édénique tout entière.", ref: "73:7.1" }],
+      p: ["eden|Éden, englouti", "sicile", "gibraltar"], m: [] },
+    { id: "adamites", t: "Les premières expansions adamites", d: "Il y a environ 25 000 ans", r: "78:3.3", dp2: "Durée :", d2: "entre l’an 25 000 et l’an 15 000 av. J.-C.", r2: "78:3.9", ds: "il y a environ 25 000 ans",
+      l: "Vers le nord, puis vers l’ouest autour de la mer Caspienne jusqu’en Europe ; le Turkestan ; quelques groupes vers le Nil et vers l’Asie", ax: 0, f: "fascicule 78", v: "ouest",
+      x: "Fidèles aux traditions pacifiques d’Éden, les Adamites envoient leur excédent de population comme éducateurs plutôt que de conquérir {78:3.1}. Vers l’an 19 000 av. J.-C., ils forment une nation de 4 500 000 habitants {78:2.5}. La plupart des émigrants vont vers le nord, puis tournent vers l’ouest autour de la Caspienne ; en chemin, ils se mêlent aux autres peuples, surtout aux Nodites, et deviennent de moins en moins adamiques {78:3.2–3}. À la périphérie du second jardin, le mélange d’Adamites et de Nodites donne naissance aux Andites, il y a plus de vingt-cinq mille ans {78:4.2}. Vers l’an 15 000 av. J.-C., l’Europe et l’Asie centrale comptent plus de descendants d’Adam que la Mésopotamie {78:3.5}.",
+      p: ["zandites", "jardin2", "turkestan"],
+      m: [{ g: "adam", s: 1, w: [[45, 33.6], [46.6, 37], [46.4, 40.6], [44.8, 43.2], [41.5, 45.6], [36.5, 47.6], [28, 49.2], [18, 50.2]] },
+        { g: "adam", s: 1, w: [[45.6, 33.5], [50, 35.6], [55, 37.6], [60.5, 39.6]] },
+        { g: "adam", s: 1, w: [[44.4, 32.4], [40, 30.9], [35.6, 30.5], [32.2, 30.2]] },
+        { g: "adam", s: 1, w: [[46, 32.4], [52, 30.8], [58.5, 29.8]] }] },
+    { id: "inde-chine", t: "Les Andites en Inde et en Chine", dp: "En Inde :", d: "Vers l’an 15 000 av. J.-C.", r: "79:2.4", dp2: "En Chine :", d2: "Il y a environ quinze-mille ans", r2: "79:7.1", ds: "vers l’an 15 000 av. J.-C.",
+      l: "De l’Iran et du Turkestan vers l’Inde, par le Béloutchistan et le Pendjab ; du bassin du Tarim vers le fleuve Jaune, par le col de Ti Tao", ax: 1, f: "fascicule 79", v: "asie",
+      x: "Sous la pression de la population, les Andites entrent en Inde par les hautes terres du Béloutchistan pendant plus de quinze siècles, puis gagnent les vallées de l’Indus et du Gange et le Deccan {79:2.4}. Leur mélange avec les peuples déjà présents produit les Dravidiens, qui bâtissent des villes et commercent par mer jusqu’aux villes sumériennes {79:3.1 ; 79:3.7}. Vers l’an 10 000 av. J.-C., les Andites de l’Inde sont absorbés {79:2.6}. À l’est, des centres andites durent près de quinze mille ans dans le bassin du Tarim et sur les plateaux du Tibet {79:1.2}. Des Andites franchissent le col de Ti Tao et rejoignent les colonies chinoises du fleuve Jaune, au Kansou puis au Honan {79:7.1}.",
+      q: [{ cite: "Il y a environ quinze-mille ans, les Andites franchissaient en nombre considérable le col de Ti Tao […]", ref: "79:7.1" }],
+      p: ["balouch", "indus", "gange", "deccan", "pendjab", "tarim", "titao", "honan"],
+      m: [{ g: "andite", s: 1, w: [[55, 32.6], [61, 30.2], [65.6, 28.6], [69.4, 27.2], [76, 26.6], [82, 25.6]] },
+        { g: "andite", s: 1, w: [[78, 25.2], [77.6, 20.5], [77.2, 17.2]] },
+        { g: "andite", s: 1, w: [[64, 39], [68.6, 36.4], [71.6, 33.4], [73.8, 31.3]] },
+        { g: "andite", s: 1, w: [[83, 40.6], [92, 39.6], [99, 37.6], [103.6, 35.7], [109, 34.7], [113, 34.3]] }] },
+    { id: "crete", t: "Crète et Grèce", d: "Vers l’an 12 000 av. J.-C.", r: "80:7.2", ds: "vers l’an 12 000 av. J.-C.",
+      l: "La Crète ; la Grèce, atteinte par les iles du nord", ax: 0, f: "fascicules 78 et 80", v: "egee",
+      x: "Une tribu d’Andites de petite taille, mêlés de Nodites vanites et chassés du continent, s’installe en Crète : tissage, métaux, poterie, plomberie, construction en pierre, écriture {80:7.2}. Le texte ne dit pas d’où elle part. Près de deux mille ans plus tard, trois cent soixante-quinze descendants d’Adamson, conduits par Sato depuis les hautes terres du nord de la Mésopotamie, gagnent la Grèce par les iles du nord {80:7.3–4}. La Grèce et les iles de la mer Égée succèdent ensuite à la Mésopotamie et à l’Égypte comme centre occidental du commerce et de l’art {80:7.5}. Vers la même date, les trois quarts des Andites du monde vivent dans le nord et l’est de l’Europe {78:5.4}.",
+      q: [{ cite: "Vers l’an 12 000 av. J.-C., une brillante tribu d’Andites émigra en Crète.", ref: "80:7.2" }],
+      p: ["crete", "grece"],
+      m: [{ g: "adam", s: 1, w: [[42, 37.3], [37, 38.1], [31, 39.2], [27, 39.7], [24.4, 39.4], [22.8, 39.2]] }] },
+    { id: "pacifique", t: "À travers le Pacifique", dp: "Non datée ; pendant les migrations andites {78:5}", d: "", r: "", ds: "non datée",
+      l: "Du Japon à l’Amérique du Sud, d’ile en ile ; l’ile de Pâques", ax: 0, f: "fascicule 78", v: "pacsud",
+      x: "Cent trente-deux Andites partis du Japon traversent le Pacifique par petites étapes, en s’arrêtant dans les iles, alors plus nombreuses et plus grandes qu’aujourd’hui {78:5.7}. Arrivés dans les Andes, ils s’unissent aux natifs : selon le texte, ils sont les ancêtres des chefs incas. De nombreux centres de civilisation se développent sur des terres aujourd’hui submergées ; l’ile de Pâques est longtemps le centre religieux et administratif de l’un de ces groupes disparus {78:5.7}. D’autres petits groupes andites atteignent le Japon, Formose et les Indes orientales {78:5.6}.",
+      q: [{ cite: "Cent-trente-deux membres de cette race s’embarquèrent au Japon sur une flottille de petits bateaux et finirent par atteindre l’Amérique du Sud.", ref: "78:5.7" }],
+      p: ["japon", "paques", "andes"],
+      m: [{ g: "andite", s: 1, w: [[136.5, 34], [150, 26], [165, 15], [180, 3], [197, -8], [215, -17], [234, -24], [250.6, -27.1], [268, -20.5], [284, -12.5]] }] },
+    { id: "dernieres-vagues", t: "Les dernières vagues andites", d: "entre l’an 8 000 et l’an 6 000 av. J.-C.", r: "78:6.1", ds: "8 000 à 6 000 av. J.-C.",
+      l: "De la Mésopotamie vers l’Europe, l’Iran et le Turkestan, le Sin-Kiang et la Chine, l’Égypte par l’Arabie", ax: 0, f: "fascicules 78 à 80", v: "ouest",
+      x: "Refoulés par les tribus des montagnes à l’est et par les hommes des plaines à l’ouest, les derniers Andites quittent la Mésopotamie en trois vagues : soixante-cinq pour cent vers l’Europe par la route de la Caspienne, dix pour cent vers l’Iran et le Turkestan, dix pour cent vers le Sin-Kiang puis la Chine, dix pour cent vers l’Égypte par l’Arabie ; cinq pour cent restent près de l’embouchure des fleuves {78:6.1–6}. En Europe, les cavaliers andites arrivent au septième et au sixième millénaire avant le Christ ; leur quartier général du nord reste trois mille ans au Danemark, et les combats décisifs entre hommes blancs et hommes bleus se livrent dans la vallée de la Somme {80:4.5 ; 80:5.2–4}. En Asie centrale, l’aridité pousse les Andites vers les vallées ; Adonia, près de l’actuelle Ashkhabad, devient la métropole commerciale de la région {79:1.3–4}.",
+      q: [{ cite: "Soixante-cinq pour cent pénétrèrent en Europe par la route de la mer Caspienne […]", ref: "78:6.2" }],
+      p: ["embouchure|Ceux qui restent", "danemark", "somme", "adonia", "sinkiang", "iran", "egypte"],
+      m: [{ g: "andite", s: 1, w: [[45, 33.6], [47, 38], [48.4, 42.6], [47, 46.2], [41, 48.2], [32, 50.2], [22, 52.2], [13, 54.6], [9.6, 55.8]] },
+        { g: "andite", s: 1, w: [[46, 32.9], [49.2, 32.4], [53, 33], [58, 35.6], [62, 38], [65, 39.6]] },
+        { g: "andite", s: 1, w: [[45.5, 34.2], [48, 38.6], [53, 40.8], [60, 41.8], [70, 42.2], [80, 42.2], [84.5, 42]] },
+        { g: "andite", s: 1, w: [[45, 31.4], [41.5, 29.6], [37.5, 29.6], [34, 29.9], [31.6, 29.6]] },
+        { g: "andite", s: 1, w: [[9.4, 55.4], [7, 53.2], [4.2, 51.2], [2.4, 50.1]] }] },
+    { id: "inondations", t: "Les inondations et les Sumériens", d: "vers l’an 5 000 av. J.-C.", r: "78:7.2", ds: "vers l’an 5 000 av. J.-C.",
+      l: "La vallée de l’Euphrate ; Aram, près d’Érech ; Ur, Suse et l’embouchure des fleuves", ax: 0, f: "fascicule 78", v: "meso",
+      x: "L’exhaussement des montagnes et l’abondance des neiges provoquent chaque printemps des crues sans précédent ; pendant près de mille ans, des dizaines de villes sont abandonnées {78:7.2}. Noé, viticulteur d’Aram, près d’Érech, avertissait ses voisins de la date des crues ; seuls Noé et sa proche famille sont sauvés par leur maison flottante {78:7.5}. Le texte présente le déluge universel comme une invention de la prêtrise hébraïque pendant la captivité à Babylone {78:7.4}. Les Sumériens, derniers Andites de Mésopotamie, tiennent l’embouchure des fleuves ; il y a sept mille ans, Ur se trouvait sur le golfe Persique {78:8.1–2}. Vers 2 500 av. J.-C., ils subissent de graves défaites, puis se fondent parmi les Sémites du nord {78:8.10}.",
+      q: [{ cite: "Il n’y a jamais eu de déluge universel depuis que la vie fut établie sur Urantia.", ref: "78:7.4" }],
+      p: ["erech", "aram", "ur", "suse", "embouchure|Sumériens"], m: [] },
+    { id: "andonites-retour", t: "Le retour des Andonites", d: "Vers l’an 3 000 av. J.-C.", r: "80:9.6", dp2: "Arrivée en Europe :", d2: "Vers l’an 2 500 av. J.-C.", r2: "80:9.7", ds: "3 000 à 2 500 av. J.-C.",
+      l: "Du nord de l’Asie centrale vers le Turkestan, puis vers l’Europe par l’Ukraine et les Balkans ; les Aryens vers l’Inde", ax: 0, f: "fascicules 79 et 80", v: "ouest",
+      x: "Pendant près de vingt mille ans, les Andites avaient repoussé les Andonites toujours plus au nord ; l’aridité les ramène vers le Turkestan {80:9.6}. Leur poussée vers le sud dure plus de mille ans, se divise autour de la Caspienne et de la mer Noire et pénètre en Europe par les Balkans et par l’Ukraine {80:9.6–7}. Le texte y voit le plus grave et le plus durable recul de la culture enregistré jusque-là {80:9.7}. Au milieu du troisième millénaire avant le Christ, l’invasion aryenne de l’Inde marque l’exode final des Andites hors du Turkestan {79:4.1}.",
+      p: ["nordasie", "turkestan|Turkestan|andon", "ukraine", "balkans", "pendjab"],
+      m: [{ g: "andon", s: 1, w: [[72, 51.5], [66.5, 45.5], [62.5, 41.2]] },
+        { g: "andon", s: 1, w: [[60, 43.5], [55, 46.3], [49, 48.3], [42, 48.6], [34.5, 48.6]] },
+        { g: "andon", s: 1, w: [[58.5, 38.8], [52.6, 37.2], [46.5, 38.8], [40, 39.6], [33, 39.6], [27.5, 41.4], [24, 42.4]] },
+        { g: "andite", s: 1, w: [[64, 39.2], [68.6, 35], [72, 32.4], [74.6, 30.8]] }] }
+  ];
+
+  var SUNK = 0;
+  EPS.forEach(function (e, i) { if (e.id === "eden-englouti") SUNK = i; });
+
+  var svg = document.getElementById("map"), ov = document.getElementById("ov"), seasG = document.getElementById("seas");
+  var fiche = document.getElementById("fiche"), list = document.getElementById("ep-list");
+  var range = document.getElementById("t"), tN = document.getElementById("t-n"), tStatus = document.getElementById("t-status"), tCap = document.getElementById("t-cap");
+  var playBtn = document.getElementById("t-play"), keepBox = document.getElementById("keep");
+  var state = { step: 0, view: "auto", keep: true, vb: null, raf: 0, timer: 0 };
+
+  function mk(name, attrs, parent) {
+    var e = document.createElementNS(NS, name);
+    for (var k in attrs) if (Object.prototype.hasOwnProperty.call(attrs, k)) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function f1(v) { return String(Math.round(v * 10) / 10); }
+  function aspect() { var r = svg.getBoundingClientRect(); return r.width > 0 && r.height > 0 ? r.width / r.height : 2; }
+  function kpx() { var r = svg.getBoundingClientRect(); return state.vb[2] / Math.max(1, r.width); }
+  function viewName() { return state.view === "auto" ? EPS[state.step].v : state.view; }
+
+  function fitVB(b) {
+    var x0 = b[0] * 10, x1 = b[2] * 10, y0 = -b[1] * 10, y1 = -b[3] * 10;
+    var w = x1 - x0, h = y1 - y0, cx = (x0 + x1) / 2, cy = (y0 + y1) / 2, A = aspect();
+    if (w / h > A) h = w / A; else w = h * A;
+    if (h > 1800) { h = 1800; w = h * A; }
+    var top = cy - h / 2;
+    if (top < -900) top = -900;
+    if (top + h > 900) top = 900 - h;
+    return [cx - w / 2, top, w, h];
+  }
+  function setVB(vb) { state.vb = vb; svg.setAttribute("viewBox", vb.map(f1).join(" ")); }
+
+  function goView(animate) {
+    var to = fitVB(VIEWS[viewName()]), from = state.vb;
+    cancelAnimationFrame(state.raf);
+    var same = from && Math.abs(from[0] - to[0]) < 1 && Math.abs(from[1] - to[1]) < 1 && Math.abs(from[2] - to[2]) < 1;
+    if (!animate || !from || same || reduceMotion()) { setVB(to); draw(); return; }
+    var fcx = from[0] + from[2] / 2, fcy = from[1] + from[3] / 2, tcx = to[0] + to[2] / 2, tcy = to[1] + to[3] / 2, t0 = 0, D = 650;
+    function frame(now) {
+      if (!t0) t0 = now;
+      var u = Math.min(1, (now - t0) / D), e = u < 0.5 ? 2 * u * u : 1 - Math.pow(-2 * u + 2, 2) / 2;
+      var w = Math.exp(Math.log(from[2]) + (Math.log(to[2]) - Math.log(from[2])) * e);
+      var h = Math.exp(Math.log(from[3]) + (Math.log(to[3]) - Math.log(from[3])) * e);
+      var cx = fcx + (tcx - fcx) * e, cy = fcy + (tcy - fcy) * e;
+      setVB([cx - w / 2, cy - h / 2, w, h]);
+      draw();
+      if (u < 1) state.raf = requestAnimationFrame(frame);
+    }
+    state.raf = requestAnimationFrame(frame);
+  }
+
+  function offsets(minX, maxX) {
+    var vb = state.vb, out = [];
+    [-3600, 0, 3600].forEach(function (o) { if (maxX + o >= vb[0] - 60 && minX + o <= vb[0] + vb[2] + 60) out.push(o); });
+    return out;
+  }
+  function P(ll) { return [ll[0] * 10, -ll[1] * 10]; }
+
+  function curve(p) {
+    var d = "M" + f1(p[0][0]) + " " + f1(p[0][1]), end = p[p.length - 1], c2, i;
+    if (p.length === 2) {
+      var dx = p[1][0] - p[0][0], dy = p[1][1] - p[0][1];
+      c2 = [(p[0][0] + p[1][0]) / 2 - dy * 0.18, (p[0][1] + p[1][1]) / 2 + dx * 0.18];
+      d += "Q" + f1(c2[0]) + " " + f1(c2[1]) + " " + f1(end[0]) + " " + f1(end[1]);
+    } else {
+      for (i = 0; i < p.length - 1; i++) {
+        var p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p2;
+        var c1 = [p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6];
+        c2 = [p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6];
+        d += "C" + f1(c1[0]) + " " + f1(c1[1]) + " " + f1(c2[0]) + " " + f1(c2[1]) + " " + f1(p2[0]) + " " + f1(p2[1]);
+      }
+    }
+    var vx = end[0] - c2[0], vy = end[1] - c2[1], L = Math.sqrt(vx * vx + vy * vy) || 1;
+    return { d: d, end: end, dir: [vx / L, vy / L] };
+  }
+  function arrow(e, u, k, now) {
+    var L = (now ? 11 : 8) * k, W = (now ? 5 : 3.6) * k, tx = e[0] + u[0] * 2 * k, ty = e[1] + u[1] * 2 * k;
+    var bx = tx - u[0] * L, by = ty - u[1] * L;
+    return "M" + f1(tx) + " " + f1(ty) + "L" + f1(bx - u[1] * W) + " " + f1(by + u[0] * W) + "L" + f1(bx + u[1] * W) + " " + f1(by - u[0] * W) + "Z";
+  }
+  function route(g, r, now, k) {
+    var pts = r.w.map(P), minX = Infinity, maxX = -Infinity;
+    pts.forEach(function (q) { minX = Math.min(minX, q[0]); maxX = Math.max(maxX, q[0]); });
+    var c = curve(pts), head = arrow(c.end, c.dir, k, now);
+    offsets(minX, maxX).forEach(function (o) {
+      var a = { "class": "rt g-" + r.g + (now ? " now" : " past") + (r.s ? " sch" : "") };
+      if (o) a.transform = "translate(" + o + " 0)";
+      var gg = mk("g", a, g);
+      mk("path", { "class": "rt-line", d: c.d }, gg);
+      mk("path", { "class": "rt-head", d: head }, gg);
+    });
+  }
+  function label(g, x, y, txt, lp, k, zone) {
+    var fs = (zone ? 12 : 12.5) * k, dx = 0, dy = 4 * k, anchor = "middle";
+    var vb = state.vb, L = vb[0] + 6 * k, Rr = vb[0] + vb[2] - 6 * k, T = vb[1] + fs, B = vb[1] + vb[3] - 5 * k;
+    var w = txt.length * fs * 0.53;
+    if (lp === "r") { dx = 8 * k; anchor = "start"; }
+    else if (lp === "l") { dx = -8 * k; anchor = "end"; }
+    else if (lp === "t") { dy = -9 * k; }
+    else if (lp === "b") { dy = 17 * k; }
+    /* garder l’étiquette dans le cadre */
+    if (anchor === "start" && x + dx + w > Rr) { anchor = "end"; dx = -8 * k; }
+    else if (anchor === "end" && x + dx - w < L) { anchor = "start"; dx = 8 * k; }
+    var tx = x + dx;
+    if (anchor === "start" && tx + w > Rr) tx = Rr - w;
+    if (anchor === "end" && tx - w < L) tx = L + w;
+    if (anchor === "middle") tx = Math.max(L + w / 2, Math.min(Rr - w / 2, tx));
+    var ty = y + dy;
+    if (ty < T) ty = y + 17 * k;
+    if (ty > B) ty = y - 9 * k;
+    var t = mk("text", { "class": "lbl" + (zone ? " zl" : ""), x: f1(tx), y: f1(ty), "text-anchor": anchor,
+      "font-size": f1(fs), "stroke-width": f1(3.2 * k) }, g);
+    t.textContent = txt;
+  }
+  function place(gP, gL, id, info, k) {
+    var d = PL[id];
+    if (!d) return;
+    var name = info.lab || d[0], ax = d[3], kind = d[6] || "", grp = info.g || d[4];
+    var x = d[1] * 10, y = -d[2] * 10, rad = kind === "e" ? 20 : ax * 10;
+    var approx = kind === "e" || (ax > 0 && kind !== "z");
+    offsets(x - rad, x + rad).forEach(function (o) {
+      var X = x + o, g = mk("g", { "class": "pl g-" + grp + (info.now ? " now" : " past") }, gP);
+      if (kind === "z") mk("circle", { "class": "zn", cx: f1(X), cy: f1(y), r: f1(ax * 10) }, g);
+      else if (kind === "e") mk("ellipse", { "class": "eden" + (state.step >= SUNK ? " sunk" : ""), cx: f1(X), cy: f1(y), rx: "17", ry: "3.8" }, g);
+      else {
+        if (ax) mk("circle", { "class": "ax", cx: f1(X), cy: f1(y), r: f1(ax * 10) }, g);
+        mk("circle", { "class": "dot", cx: f1(X), cy: f1(y), r: f1((info.now ? 4.6 : 3.2) * k) }, g);
+      }
+      mk("title", {}, g).textContent = name + (approx ? " (position approximative)" : "");
+      if (info.now) label(gL, X, y, name + (approx ? " ≈" : ""), d[5], k, kind === "z");
+    });
+  }
+  function seas(k) {
+    seasG.textContent = "";
+    var wdeg = state.vb[2] / 10;
+    SEAS.forEach(function (s) {
+      if (wdeg > s[3]) return;
+      offsets(s[1] * 10, s[1] * 10).forEach(function (o) {
+        mk("text", { "class": "sea-lbl", x: f1(s[1] * 10 + o), y: f1(-s[2] * 10), "text-anchor": "middle", "font-size": f1(11.5 * k) }, seasG).textContent = s[0];
+      });
+    });
+  }
+  function draw() {
+    if (!state.vb) return;
+    var k = kpx(), cur = state.step, i, j, places = {};
+    ov.textContent = "";
+    var gR = mk("g", {}, ov), gP = mk("g", {}, ov), gL = mk("g", {}, ov);
+    for (i = state.keep ? 0 : cur; i <= cur; i++) {
+      var ep = EPS[i], now = i === cur;
+      for (j = 0; j < ep.m.length; j++) route(gR, ep.m[j], now, k);
+      for (j = 0; j < ep.p.length; j++) {
+        var parts = ep.p[j].split("|");
+        places[parts[0]] = { now: now, lab: parts[1] || "", g: parts[2] || "" };
+      }
+    }
+    Object.keys(places).sort(function (a, b) { return (places[a].now ? 1 : 0) - (places[b].now ? 1 : 0); })
+      .forEach(function (id) { place(gP, gL, id, places[id], k); });
+    seas(k);
+  }
+
+  (function () {
+    var d = "", v;
+    for (v = -540; v <= 540; v += 30) d += "M" + v * 10 + " -900V900";
+    for (v = -60; v <= 60; v += 30) d += "M-5400 " + (-v * 10) + "H5400";
+    document.getElementById("grat").setAttribute("d", d);
+  })();
+
+  function dateHTML(ep) {
+    var h = "";
+    if (ep.d) h += (ep.dp ? ep.dp + " " : "") + "<span class=\"f-date\">" + ep.d + "</span> <span class=\"ref\">" + ep.r + "</span>";
+    else h += R(ep.dp || "");
+    if (ep.d2) h += "<br>" + (ep.dp2 ? ep.dp2 + " " : "") + "<span class=\"f-date\">" + ep.d2 + "</span> <span class=\"ref\">" + ep.r2 + "</span>";
+    if (ep.dn) h += "<br><span class=\"f-note\">" + R(ep.dn) + "</span>";
+    return h;
+  }
+  function renderFiche() {
+    var ep = EPS[state.step];
+    var h = "<p class=\"eyebrow\">Épisode " + (state.step + 1) + " sur " + EPS.length + " · " + ep.f + "</p><h3 id=\"f-title\">" + ep.t + "</h3>" +
+      "<dl class=\"f-dl\"><dt>Date</dt><dd>" + dateHTML(ep) + "</dd><dt>Lieu</dt><dd>" + ep.l + (ep.ax ? " <span class=\"approx\">position approximative</span>" : "") + "</dd></dl>" +
+      "<p class=\"f-txt\">" + R(ep.x) + "</p>";
+    (ep.q || []).forEach(function (c) { h += quote(c); });
+    if (ep.see) h += "<p class=\"see\">" + ep.see + ".</p>";
+    fiche.innerHTML = h;
+  }
+
+  EPS.forEach(function (ep, i) {
+    var li = document.createElement("li");
+    li.innerHTML = "<button type=\"button\" data-i=\"" + i + "\"><span class=\"ep-n\">" + (i + 1) + "</span><span class=\"ep-t\">" + ep.t + "</span><span class=\"ep-d\">" + ep.ds + "</span></button>";
+    list.appendChild(li);
+  });
+  var epBtns = list.querySelectorAll("button");
+
+  document.getElementById("legend").innerHTML = GROUPS.map(function (g) { return "<span class=\"g-" + g[0] + "\"><i class=\"sw\"></i>" + g[1] + "</span>"; }).join("") +
+    "<span><i class=\"sw-ax\"></i>position approximative</span><span><i class=\"sw-ln\"></i>migration</span><span><i class=\"sw-ln dash\"></i>itinéraire schématique</span>";
+
+  function setStep(i, announce) {
+    i = Math.max(0, Math.min(EPS.length - 1, i | 0));
+    state.step = i;
+    var ep = EPS[i], txt = "Épisode " + (i + 1) + " sur " + EPS.length + " : " + ep.t + " (" + ep.ds + ")";
+    range.value = String(i);
+    range.setAttribute("aria-valuetext", txt);
+    tN.textContent = String(i + 1);
+    tStatus.textContent = announce ? txt : "";
+    tCap.innerHTML = "<b>" + ep.t + "</b> <span class=\"ep-d\">" + ep.ds + "</span>";
+    renderFiche();
+    Array.prototype.forEach.call(epBtns, function (b, j) { if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+    svg.setAttribute("aria-label", "Carte du monde aux côtes actuelles. " + txt + ". Lieux : " +
+      ep.p.map(function (s) { var q = s.split("|"); return q[1] || PL[q[0]][0]; }).join(", ") + ". Le détail figure dans la fiche de l’épisode.");
+    goView(true);
+  }
+  function stopPlay() {
+    if (state.timer) clearInterval(state.timer);
+    state.timer = 0; playBtn.setAttribute("aria-pressed", "false");
+  }
+  function startPlay() {
+    if (state.step >= EPS.length - 1) setStep(0, true);
+    playBtn.setAttribute("aria-pressed", "true");
+    state.timer = setInterval(function () {
+      if (state.step >= EPS.length - 1) { stopPlay(); return; }
+      setStep(state.step + 1, true);
+    }, 4200);
+  }
+
+  range.max = String(EPS.length - 1);
+  document.getElementById("t-max").textContent = String(EPS.length);
+  range.addEventListener("input", function () { stopPlay(); setStep(+range.value, false); });
+  document.getElementById("t-prev").addEventListener("click", function () { stopPlay(); setStep(state.step - 1, true); });
+  document.getElementById("t-next").addEventListener("click", function () { stopPlay(); setStep(state.step + 1, true); });
+  playBtn.addEventListener("click", function () { if (state.timer) stopPlay(); else startPlay(); });
+  keepBox.addEventListener("change", function () { state.keep = keepBox.checked; draw(); });
+  list.addEventListener("click", function (ev) {
+    var b = ev.target.closest("button[data-i]");
+    if (!b) return;
+    stopPlay(); setStep(+b.getAttribute("data-i"), true);
+    var atlas = document.getElementById("atlas");
+    if (atlas.getBoundingClientRect().top < 0) atlas.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+  });
+  var vBtns = document.querySelectorAll("#views button");
+  Array.prototype.forEach.call(vBtns, function (b) {
+    b.addEventListener("click", function () {
+      state.view = b.getAttribute("data-v");
+      Array.prototype.forEach.call(vBtns, function (x) { x.setAttribute("aria-pressed", String(x === b)); });
+      goView(true);
+    });
+  });
+
+  function relayout() { cancelAnimationFrame(state.raf); state.vb = null; goView(false); fitStrip(); }
+  if (window.ResizeObserver) {
+    var lastW = 0;
+    new ResizeObserver(function (entries) {
+      var w = entries[0].contentRect.width;
+      if (Math.abs(w - lastW) > 0.5) { lastW = w; relayout(); }
+    }).observe(svg);
+  } else {
+    window.addEventListener("resize", relayout);
+  }
+
+  setStep(0, false);
+  fitStrip();
+})();
+</script>
+</body>
+</html>

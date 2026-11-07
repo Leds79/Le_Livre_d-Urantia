@@ -14,6 +14,8 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [Familles de personnalités](familles-de-personnalites.html) | les êtres de l’univers selon les classifications d’Uversa (30:2) et du Paradis (30:1) |
 | [Concepts en schémas](concepts-en-schemas.html) | personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité, morontia |
 | [Dieu et la Déité](dieu-et-deite.html) | le JE SUIS et les sept Absolus, la Trinité, les Sept Maitres Esprits, Dieu le Septuple, les Déités expérientielles |
+| [L’histoire d’Urantia](histoire-d-urantia.html) | frise des époques, de la nébuleuse d’Andronover à la fin des glaces ; carte des migrations humaines en 22 épisodes |
+| [La vie de Jésus](vie-de-jesus.html) | frise de 92 étapes, de l’annonce à Marie à la Pentecôte ; cartes de Palestine, de la Méditerranée et de l’Orient |
 <!--PAGES-A-VENIR-->
 
 La vue 3D accepte des liens directs : `atlas-3d.html#lune`, `#nebadon`, `#orvonton`, `#havona`, `#paradis`, `#frise`, `#carriere`, `#gouvernement`, `#coupe`, `#deite`.

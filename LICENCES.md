@@ -8,6 +8,8 @@
 | Orbites des planètes | éléments képlériens approchés du JPL (NASA), tableau 1, valables de 1800 à 2050 | données publiques |
 | Terre de jour et de nuit (vue 3D) | NASA, Blue Marble Next Generation et « The earth at night », via Wikimedia Commons | domaine public |
 | Lune (vue 3D) | NASA Scientific Visualization Studio, CGI Moon Kit (LRO) | domaine public |
+| Jupiter, Mars, Mercure, Pluton (vue 3D) | NASA : carte Cassini PIA07782 ; mosaïque Viking MDIM21 (USGS) ; MESSENGER PIA15063 ; New Horizons (calotte sud non photographiée, complétée), via Wikimedia Commons | domaine public |
+| Soleil, Vénus, Saturne, Uranus, Neptune, anneaux (vue 3D) | images générées d’après les photographies ; rayons des anneaux d’après les mesures des sondes Voyager et Cassini | contenu du dépôt |
 | Nuages (vue 3D) | image générée par `sources/textures.py` (bruit fractal), illustrative | — |
 | Continents, lacs et fleuves | Natural Earth (https://www.naturalearthdata.com) | domaine public |
 | Citations du livre | *Le Livre d’Urantia*, traduction française, Fondation Urantia, édition 2024 | courtes citations référencées ; le texte appartient à son éditeur |
