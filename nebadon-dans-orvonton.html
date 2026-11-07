@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Schéma : la place de Nébadon dans le superunivers d’Orvonton, et celle de la Voie lactée.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Nébadon dans Orvonton">
+<meta property="og:description" content="Schéma : la place de Nébadon dans le superunivers d’Orvonton, et celle de la Voie lactée.">
+<meta property="og:url" content="https://constructoai.github.io/Le_Livre_d-Urantia/nebadon-dans-orvonton.html">
+<meta property="og:image" content="https://constructoai.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Nébadon dans Orvonton</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : une carte céleste annotée. Colonne de lecture d’environ 68 caractères,
+   figures élargies jusqu’à 1100 px, l’adresse d’Urantia comme fil conducteur. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des figures */
+  --tint: #E4E9F2;     /* intérieur d’Orvonton, survol */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --cell: #DCE1EB;     /* cases */
+  --cell-on: #8D9ABD;  /* mondes habités */
+  --gold: #C98A12;     /* notre adresse */
+  --gold-ink: #8A5A00; /* notre adresse, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --core: #5F78CF;     /* lueur de la Voie lactée */
+  --orb: #3D6BAE;
+  --orb-hi: #A9C5EC;
+  --orb-lo: #1E3A66;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --cell: #232C46; --cell-on: #5B6891; --gold: #EDB03A; --gold-ink: #F4C664;
+    --on-gold: #1B1405; --core: #7A90DE; --orb: #4C7CC2; --orb-hi: #A3C0EA; --orb-lo: #1A3058;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --cell: #232C46; --cell-on: #5B6891; --gold: #EDB03A; --gold-ink: #F4C664;
+  --on-gold: #1B1405; --core: #7A90DE; --orb: #4C7CC2; --orb-hi: #A3C0EA; --orb-lo: #1A3058;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 84px;
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); font-variant-numeric: lining-nums; letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+sup { font-size: .65em; line-height: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); white-space: nowrap; letter-spacing: 0; }
+.qt { font-family: var(--font-display); font-style: italic; font-size: 1.16em; line-height: 1.38; }
+.qt .ref { font-size: .68em; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 42ch; }
+.pull { margin: 0; display: grid; gap: 6px; max-width: 48ch; }
+.pull p { font-family: var(--font-display); font-style: italic; font-size: 1.42rem; line-height: 1.36; }
+.calc { font: 400 .88rem/1.55 var(--font-mono); color: var(--muted); max-width: 60ch; }
+.calc b { font-weight: 500; color: var(--gold-ink); }
+
+.addr { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 10px; min-width: 0; }
+.addr-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.addr ol { list-style: none; margin: 0; padding: 0; }
+.addr li { display: grid; grid-template-columns: 7.4rem minmax(0, 1fr) auto; gap: 10px; align-items: baseline; padding: 7px 0; border-top: 1px solid var(--rule); }
+.addr li:first-child { border-top: 0; }
+.addr .lvl { font-size: .8rem; color: var(--muted); }
+.addr .nm { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; }
+.addr .no { font: 500 .8rem/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--muted); white-space: nowrap; }
+.addr li.here .nm, .addr li.here .no { color: var(--gold-ink); }
+.addr .cat { padding-top: 10px; border-top: 1px solid var(--rule); font-size: .82rem; color: var(--muted); }
+.addr .cat b { display: block; font: 500 1.05rem/1.35 var(--font-mono); color: var(--ink); letter-spacing: .03em; font-variant-numeric: tabular-nums; }
+
+/* Sections */
+.sec-head { display: grid; gap: 12px; max-width: 68ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+.sec-head a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* Zoom */
+.zoom { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; align-items: start; margin-top: 28px; }
+.stage-col { display: grid; gap: 14px; min-width: 0; }
+.stage {
+  position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 1;
+  background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px;
+  overflow: hidden; display: grid; place-items: center; padding: 18px;
+}
+.view { width: 100%; display: block; }
+.grid { display: grid; gap: 4px; }
+.grid.dense { gap: 1.5px; }
+.c { display: block; aspect-ratio: 1 / 1; min-width: 0; border-radius: 3px; background: var(--cell); }
+.grid.dense .c { border-radius: 1px; }
+.c.on { background: var(--cell-on); }
+button.c { appearance: none; border: 0; padding: 0; margin: 0; font: 500 12px/1 var(--font-mono); }
+.c.hot { background: var(--gold); color: var(--on-gold); cursor: pointer; display: grid; place-items: center; position: relative; z-index: 1; transition: transform .15s ease; }
+.c.hot:hover { transform: scale(1.1); }
+.grid.dense .c.hot { box-shadow: 0 0 0 2px var(--sheet), 0 0 0 4px var(--gold); }
+.ring .sec { fill: var(--cell); stroke: var(--sheet); stroke-width: 1.5; }
+.ring .sec.hot { fill: var(--gold); cursor: pointer; }
+.ring .sec.hot:focus { outline: none; }
+.ring .sec.hot:focus-visible { stroke: var(--ink); stroke-width: 2.5; }
+.ring .num { font: 500 13px var(--font-mono); fill: var(--muted); text-anchor: middle; dominant-baseline: central; pointer-events: none; }
+.ring .num.hot { fill: var(--on-gold); }
+.ring .lbl { font: 600 22px var(--font-display); fill: var(--ink); text-anchor: middle; }
+.ring .lbl.gold { fill: var(--gold-ink); }
+.ring .small { font: 400 14px var(--font-body); fill: var(--muted); text-anchor: middle; }
+.ring .dot { fill: var(--ink); }
+.planet { display: grid; justify-items: center; gap: 8px; text-align: center; }
+.orb { width: 42%; max-width: 100%; aspect-ratio: 1 / 1; border-radius: 50%; background: radial-gradient(circle at 34% 30%, var(--orb-hi), var(--orb) 55%, var(--orb-lo)); box-shadow: 0 0 0 3px var(--sheet), 0 0 0 5px var(--gold); margin-bottom: 8px; }
+.pl-name { font: 600 2.1rem/1 var(--font-display); color: var(--gold-ink); }
+.pl-meta { color: var(--muted); }
+.pl-reg { font-size: .85rem; color: var(--muted); }
+.pl-reg b { display: block; font: 500 1.08rem/1.35 var(--font-mono); color: var(--ink); letter-spacing: .03em; }
+.cap { min-height: 3.3em; max-width: 52ch; }
+.legend { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 16px; font-size: .88rem; color: var(--muted); }
+.legend .item { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+.sw-on { background: var(--cell-on); }
+.sw-off { background: var(--cell); }
+.sw-hot { background: var(--gold); }
+.ctrl { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { appearance: none; display: inline-flex; align-items: center; gap: 8px; padding: 9px 15px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .95rem/1.2 var(--font-body); cursor: pointer; }
+.btn svg { width: 16px; height: 16px; flex: none; }
+.btn:hover:not(:disabled) { border-color: var(--muted); }
+.btn.primary { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.btn:disabled { opacity: .4; cursor: default; }
+.note { font-size: .86rem; color: var(--muted); max-width: 60ch; }
+
+.levels { list-style: none; margin: 0; padding: 0; position: relative; display: grid; gap: 2px; min-width: 0; }
+.levels::before { content: ""; position: absolute; left: 11.5px; top: 22px; bottom: 22px; width: 1px; background: var(--rule); }
+.lv { appearance: none; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 10px; color: inherit; font: inherit; cursor: pointer; display: grid; grid-template-columns: 24px minmax(0, 1fr); column-gap: 12px; padding: 9px 12px 9px 0; }
+.lv:hover { background: var(--tint); }
+.lv > span { grid-column: 2; min-width: 0; }
+.lv > .dot { grid-column: 1; grid-row: 1 / span 5; width: 10px; height: 10px; margin: 9px 0 0 7px; border-radius: 50%; background: var(--paper); border: 1.5px solid var(--muted); position: relative; z-index: 1; }
+.lv .t { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.lv .n { font-family: var(--font-display); font-weight: 600; font-size: 1.4rem; line-height: 1.15; }
+.lv .m { font-size: .92rem; color: var(--muted); }
+.lv .k { font-size: .92rem; }
+.lv .r { font: .76rem/1.4 var(--font-mono); color: var(--muted); }
+.lv[aria-current="step"] { background: var(--tint); }
+.lv[aria-current="step"] .dot { background: var(--gold); border-color: var(--gold); }
+.lv[aria-current="step"] .n { color: var(--gold-ink); }
+
+/* Figures */
+.figs { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 44px; align-items: start; margin-top: 28px; }
+.fig-stack { display: grid; gap: 14px; min-width: 0; }
+figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 10px 10px 12px; display: grid; gap: 6px; min-width: 0; }
+.fig svg { display: block; width: 100%; height: auto; color: var(--ink); }
+.fig figcaption { font-size: .84rem; color: var(--muted); padding: 0 8px; }
+.notes { display: grid; gap: 16px; min-width: 0; max-width: 60ch; }
+.notes h3 + p { margin-top: -6px; }
+.t-title { font: 600 22px var(--font-display); fill: var(--ink); }
+.t-lbl { font: 600 18px var(--font-display); fill: var(--ink); }
+.t-gold { fill: var(--gold-ink); }
+.t-sm { font: 400 14px var(--font-body); fill: var(--muted); }
+.t-mono { font: 500 12.5px var(--font-mono); fill: var(--ink); }
+.halo { paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+.halo-in { paint-order: stroke; stroke: var(--tint); stroke-width: 4px; stroke-linejoin: round; }
+.orv { fill: var(--tint); stroke: var(--ink); stroke-opacity: .4; stroke-width: 1.2; }
+.core-a { stop-color: var(--core); stop-opacity: .72; }
+.core-b { stop-color: var(--core); stop-opacity: .3; }
+.core-c { stop-color: var(--core); stop-opacity: 0; }
+.stars { fill: var(--ink); }
+.ink-dot { fill: var(--ink); }
+.gold-dot { fill: var(--gold); }
+.gold-ring { fill: none; stroke: var(--gold); stroke-width: 1.8; }
+.dim { fill: none; stroke: var(--ink); stroke-opacity: .6; stroke-width: 1.1; }
+.dim-dot { fill: none; stroke: var(--ink); stroke-opacity: .35; stroke-width: 1; stroke-dasharray: 2 3; }
+.sight { fill: none; stroke: var(--ink); stroke-opacity: .75; stroke-width: 1.3; stroke-dasharray: 5 4; }
+.arrowhead { fill: var(--ink); }
+.andro { fill: var(--muted); fill-opacity: .6; }
+
+/* Registres */
+.regs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 28px; }
+.reg { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.reg .label { display: flex; align-items: center; gap: 8px; }
+.reg .label::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--mark); flex: none; }
+.r-text { --mark: var(--gold); }
+.r-read { --mark: var(--core); }
+.r-hist { --mark: var(--muted); }
+.cmp-wrap { margin-top: 40px; overflow-x: auto; }
+.cmp { width: 100%; min-width: 600px; border-collapse: collapse; font-size: .96rem; }
+.cmp caption { text-align: left; padding-bottom: 12px; }
+.cmp th, .cmp td { text-align: left; vertical-align: top; padding: 11px 16px 11px 0; border-top: 1px solid var(--rule); }
+.cmp thead th { border-top: 0; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; }
+.cmp tbody th { font-weight: 500; width: 24%; }
+.cmp-note { margin-top: 12px; font-size: .88rem; color: var(--muted); max-width: 72ch; }
+
+/* Suite */
+.more { display: grid; gap: 14px; max-width: 72ch; }
+.more h2 { font-size: 1.7rem; }
+.more ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.more li { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.more li .ref { font-size: .9rem; color: var(--gold-ink); }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+
+@media (max-width: 900px) { .regs { grid-template-columns: minmax(0, 1fr); gap: 28px; } }
+@media (max-width: 860px) {
+  .hero, .zoom, .figs { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .stage { max-width: 100%; }
+}
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  .addr li { grid-template-columns: 6.3rem minmax(0, 1fr) auto; }
+  .stage { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .c.hot { transition: none; }
+  .c.hot:hover { transform: none; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Le Livre d’Urantia · fascicules 15, 32 et 41</p>
+      <h1>Nébadon, un univers local parmi 100&#8239;000</h1>
+      <p class="lede">Nébadon n’est pas la Voie lactée. Dans le livre, la Voie lactée forme le noyau central du superunivers d’Orvonton. Nébadon, notre univers local, n’en occupe qu’une petite région, loin du centre.</p>
+      <p class="hint"><a href="index.html">Accueil de l’atlas</a> · <a href="atlas-3d.html">Voir en 3D</a> · <a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a></p>
+      <figure class="pull">
+        <p>«&nbsp;Le vaste système d’étoiles de la Voie Lactée représente le noyau central d’Orvonton et se trouve très au-delà des frontières de votre univers local.&nbsp;»</p>
+        <figcaption class="ref">15:3.1</figcaption>
+      </figure>
+      <p class="calc">10 secteurs majeurs × 100 secteurs mineurs × 100 univers locaux = <b>100&#8239;000 univers locaux</b> prévus dans Orvonton <span class="ref">15:2.6–8</span></p>
+    </div>
+
+    <aside class="addr" aria-label="Adresse d’Urantia">
+      <div class="addr-head"><span class="label">Adresse d’Urantia</span><span class="ref">15:14.5–8</span></div>
+      <ol>
+        <li><span class="lvl">Planète</span><span class="nm">Urantia</span><span class="no">n°&nbsp;606</span></li>
+        <li><span class="lvl">Système local</span><span class="nm">Satania</span><span class="no">n°&nbsp;24</span></li>
+        <li><span class="lvl">Constellation</span><span class="nm">Norlatiadek</span><span class="no">n°&nbsp;70</span></li>
+        <li class="here"><span class="lvl">Univers local</span><span class="nm">Nébadon</span><span class="no">n°&nbsp;84</span></li>
+        <li><span class="lvl">Secteur mineur</span><span class="nm">Ensa</span><span class="no">n°&nbsp;3</span></li>
+        <li><span class="lvl">Secteur majeur</span><span class="nm">Splandon</span><span class="no">n°&nbsp;5</span></li>
+        <li><span class="lvl">Superunivers</span><span class="nm">Orvonton</span><span class="no">n°&nbsp;7</span></li>
+      </ol>
+      <p class="cat">Numéro au catalogue des mondes habités<b>5&#8239;342&#8239;482&#8239;337&#8239;666</b></p>
+    </aside>
+  </header>
+
+  <section aria-labelledby="h-zoom">
+    <div class="sec-head">
+      <h2 id="h-zoom">D’Orvonton à Urantia, en six zooms</h2>
+      <p>Orvonton compte dix secteurs majeurs. Chaque niveau suivant en compte cent, jusqu’au système local, qui réunit environ mille mondes habitables <span class="ref">15:2.3–8</span>.</p>
+      <p class="hint">La case dorée est la nôtre. Clique dessus pour zoomer, ou choisis un niveau dans la liste.</p>
+    </div>
+    <div class="zoom">
+      <div class="stage-col">
+        <div class="stage" id="stage"></div>
+        <p class="cap" id="cap" aria-live="polite"></p>
+        <p class="legend" id="legend" hidden>
+          <span class="item"><span class="sw sw-on"></span>monde habité</span>
+          <span class="item"><span class="sw sw-off"></span>habitable, pas encore habité</span>
+          <span class="item"><span class="sw sw-hot"></span>Urantia</span>
+        </p>
+        <div class="ctrl">
+          <button type="button" class="btn" id="up"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14M5 7h4"/></svg><span id="up-t">Revenir</span></button>
+          <button type="button" class="btn primary" id="down"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="7" cy="7" r="4.6"/><path d="M10.4 10.4 14 14M7 5v4M5 7h4"/></svg><span id="down-t">Zoomer</span></button>
+        </div>
+        <p class="note">Schéma&nbsp;: les cases figurent des numéros d’ordre, pas des positions dans l’espace.</p>
+      </div>
+
+      <ol class="levels" aria-label="Les sept niveaux, du plus grand au plus petit">
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Superunivers</span><span class="n">Orvonton</span><span class="m">7<sup>e</sup> du grand univers · capitale Uversa</span><span class="k">10 secteurs majeurs · ≈&#8239;1&#8239;000 milliards de mondes habitables</span><span class="r">15:2.8 · 15:14.7</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Secteur majeur</span><span class="n">Splandon</span><span class="m">5<sup>e</sup> d’Orvonton · capitale Umajor la cinquième</span><span class="k">100 secteurs mineurs · ≈&#8239;100 milliards de mondes habitables</span><span class="r">15:2.7 · 15:14.7</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Secteur mineur</span><span class="n">Ensa</span><span class="m">n°&nbsp;3 dans Splandon · capitale Uminor la troisième</span><span class="k">100 univers locaux · ≈&#8239;1 milliard de mondes habitables</span><span class="r">15:2.6 · 15:14.7</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Univers local</span><span class="n">Nébadon</span><span class="m">n°&nbsp;84 dans Ensa · capitale Salvington</span><span class="k">100 constellations · ≈&#8239;10 millions de mondes habitables au plan · 3&#8239;840&#8239;101 planètes habitées</span><span class="r">15:2.5 · 15:14.6 · 32:2.9</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Constellation</span><span class="n">Norlatiadek</span><span class="m">n°&nbsp;70 dans Nébadon · capitale Édentia</span><span class="k">100 systèmes locaux · ≈&#8239;100&#8239;000 mondes habitables</span><span class="r">15:2.4 · 15:14.6</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Système local</span><span class="n">Satania</span><span class="m">n°&nbsp;24 dans Norlatiadek · capitale Jérusem</span><span class="k">≈&#8239;1&#8239;000 mondes habitables · 619 habités</span><span class="r">15:2.3 · 15:14.5</span></button></li>
+        <li><button type="button" class="lv"><span class="dot"></span><span class="t">Planète</span><span class="n">Urantia</span><span class="m">n°&nbsp;606 dans Satania</span><span class="k">Catalogue des mondes habités&nbsp;: 5&#8239;342&#8239;482&#8239;337&#8239;666</span><span class="r">15:14.5 · 15:14.8</span></button></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-vl">
+    <div class="sec-head">
+      <h2 id="h-vl">Où se trouve la Voie lactée&nbsp;?</h2>
+      <p>Presque toutes les étoiles visibles à l’œil nu appartiennent à Orvonton <span class="ref">15:3.1</span>. La Voie lactée en est le cœur. Nébadon se trouve en bordure.</p>
+      <p class="hint"><a href="atlas-3d.html">Voir en 3D, d’Urantia au Paradis</a></p>
+    </div>
+    <div class="figs">
+      <div class="fig-stack">
+        <figure class="fig">
+          <svg viewBox="0 0 480 330" role="img" aria-label="Orvonton vu de face. La Voie lactée en occupe le centre, autour d’Uversa. Nébadon est près du bord, à plus de 200 000 années-lumière du centre. Andromède est en dehors.">
+            <defs>
+              <radialGradient id="core-face" cx="50%" cy="50%" r="50%">
+                <stop offset="0" class="core-a"/>
+                <stop offset="0.55" class="core-b"/>
+                <stop offset="1" class="core-c"/>
+              </radialGradient>
+              <marker id="ah-face" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 Z" class="arrowhead"/>
+              </marker>
+            </defs>
+            <text x="16" y="34" class="t-title">Orvonton</text>
+            <text x="16" y="53" class="t-sm">vu de face</text>
+            <ellipse cx="240" cy="170" rx="215" ry="104" class="orv"/>
+            <ellipse cx="240" cy="170" rx="140" ry="68" fill="url(#core-face)"/>
+            <g id="stars-face" class="stars"></g>
+            <text x="240" y="120" text-anchor="middle" class="t-lbl halo-in">Voie lactée</text>
+            <text x="240" y="137" text-anchor="middle" class="t-sm halo-in">noyau central</text>
+            <line x1="78" y1="175.6" x2="233" y2="170.3" class="dim" marker-start="url(#ah-face)" marker-end="url(#ah-face)"/>
+            <text x="153" y="160" text-anchor="middle" class="t-mono halo-in">plus de 200 000 a.-l.</text>
+            <circle cx="240" cy="170" r="3.5" class="ink-dot"/>
+            <text x="248" y="190" class="t-sm halo-in">Uversa</text>
+            <circle cx="66" cy="176" r="9" class="gold-ring"/>
+            <circle cx="66" cy="176" r="4.5" class="gold-dot"/>
+            <text x="72" y="205" class="t-lbl t-gold halo-in">Nébadon</text>
+            <ellipse cx="446" cy="32" rx="13" ry="5" transform="rotate(-25 446 32)" class="andro"/>
+            <text x="426" y="36" text-anchor="end" class="t-sm">Andromède</text>
+            <text x="426" y="53" text-anchor="end" class="t-sm">hors du superunivers</text>
+            <line x1="240" y1="176" x2="240" y2="290" class="dim-dot"/>
+            <line x1="455" y1="172" x2="455" y2="290" class="dim-dot"/>
+            <line x1="240" y1="296" x2="455" y2="296" class="dim"/>
+            <line x1="240" y1="290" x2="240" y2="302" class="dim"/>
+            <line x1="455" y1="290" x2="455" y2="302" class="dim"/>
+            <text x="347.5" y="318" text-anchor="middle" class="t-mono">un peu moins de 250 000 a.-l.</text>
+          </svg>
+          <figcaption>Vu de face, d’après 15:3.1, 15:4.7 et 32:2.11. Proportions indicatives.</figcaption>
+        </figure>
+        <figure class="fig">
+          <svg viewBox="0 0 480 170" role="img" aria-label="Orvonton vu de profil : un disque très mince. Depuis Urantia, un regard dans le plan du disque traverse beaucoup d’étoiles, c’est la bande de la Voie lactée ; un regard hors du plan en traverse peu.">
+            <defs>
+              <radialGradient id="core-edge" cx="50%" cy="50%" r="50%">
+                <stop offset="0" class="core-a"/>
+                <stop offset="0.55" class="core-b"/>
+                <stop offset="1" class="core-c"/>
+              </radialGradient>
+              <marker id="ah-edge" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0 0 L10 5 L0 10 Z" class="arrowhead"/>
+              </marker>
+            </defs>
+            <text x="464" y="24" text-anchor="end" class="t-sm">vu de profil</text>
+            <ellipse cx="240" cy="86" rx="215" ry="17" class="orv"/>
+            <ellipse cx="240" cy="86" rx="140" ry="12" fill="url(#core-edge)"/>
+            <g id="stars-edge" class="stars"></g>
+            <line x1="78" y1="86" x2="468" y2="86" class="sight" marker-end="url(#ah-edge)"/>
+            <line x1="66" y1="76" x2="66" y2="14" class="sight" marker-end="url(#ah-edge)"/>
+            <line x1="66" y1="96" x2="66" y2="158" class="sight" marker-end="url(#ah-edge)"/>
+            <text x="78" y="24" class="t-sm halo">hors du plan&#160;: peu d’étoiles</text>
+            <text x="300" y="62" text-anchor="middle" class="t-sm halo">regard dans le plan</text>
+            <text x="300" y="133" text-anchor="middle" class="t-sm halo">beaucoup d’étoiles&#160;: la bande de la Voie lactée</text>
+            <circle cx="66" cy="86" r="9" class="gold-ring"/>
+            <circle cx="66" cy="86" r="4.5" class="gold-dot"/>
+            <text x="78" y="120" class="t-lbl t-gold halo">Urantia</text>
+          </svg>
+          <figcaption>Vu de profil, d’après 15:3.1–3. Le texte ne précise pas l’épaisseur.</figcaption>
+        </figure>
+      </div>
+
+      <div class="notes">
+        <h3>Vu de face</h3>
+        <p>La Voie lactée est le «&nbsp;noyau central&nbsp;» d’Orvonton, autour d’Uversa, sa capitale <span class="ref">15:3.1</span>. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;» <span class="ref">32:2.11</span>. Plus de 200&#8239;000 années-lumière séparent Jérusem du centre, et le système habité le plus lointain en est à un peu moins de 250&#8239;000.</p>
+        <p>Nébadon tourne autour du centre de son secteur mineur, situé dans le nuage stellaire du Sagittaire <span class="ref">15:3.5 · 41:0.4</span>. Andromède est «&nbsp;en dehors du superunivers habité&nbsp;» <span class="ref">15:4.7</span>.</p>
+        <h3>Vu de profil</h3>
+        <p>Orvonton est mince, «&nbsp;à profil de montre&nbsp;» <span class="ref">15:3.1</span>. Un regard dans son plan traverse beaucoup plus d’étoiles. C’est ce que nous voyons comme la bande de la Voie lactée <span class="ref">15:3.2–3</span>.</p>
+        <p>Dans la bonne direction, on regarde même «&nbsp;vers l’univers résidentiel et le centre de toutes choses&nbsp;» <span class="ref">15:3.3</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-reg">
+    <div class="sec-head">
+      <h2 id="h-reg">Ce que dit le texte, ce qu’on en lit</h2>
+    </div>
+    <div class="regs">
+      <div class="reg r-text">
+        <p class="label">Le texte dit</p>
+        <p>Un univers local est l’œuvre d’un Fils Créateur <span class="ref">15:2.5</span>. Celui de Nébadon est Micaël, qui a vécu sur Urantia en Jésus <span class="ref">32:2.1 · 32:2.13</span>.</p>
+        <p class="qt">«&nbsp;Ce qui est imprégné par l’Esprit-Mère de notre univers local <em>est</em> Nébadon […]&nbsp;» <span class="ref">41:0.1</span></p>
+        <p>Ses frontières physiques sont difficiles à identifier <span class="ref">41:0.2</span>. Matériellement, c’est un «&nbsp;nuage local d’étoiles&nbsp;» <span class="ref">41:0.4</span>.</p>
+      </div>
+      <div class="reg r-read">
+        <p class="label">Lecture courante</p>
+        <p>Beaucoup de lecteurs identifient, en gros, Orvonton à notre galaxie. Nébadon serait alors une région modeste de cette galaxie, autour du Soleil.</p>
+        <p>Le texte ne pose pas cette équation. Il dit seulement que la Voie lactée est le «&nbsp;noyau central&nbsp;» d’Orvonton.</p>
+        <p><strong>Nuance de traduction.</strong> En 15:3.1, «&nbsp;très au-delà des frontières&nbsp;» rend l’anglais <em>largely beyond the borders</em>, soit «&nbsp;en grande partie au-delà&nbsp;». Le français suggère une séparation nette. L’anglais laisse ouverte l’idée d’un chevauchement.</p>
+      </div>
+      <div class="reg r-hist">
+        <p class="label">Regard historique</p>
+        <p>Les auteurs préviennent eux-mêmes que beaucoup de leurs affirmations scientifiques devront être revues.</p>
+        <p class="qt">«&nbsp;La cosmologie révélée ici n’est <em>pas inspirée.</em>&nbsp;» <span class="ref">101:4.2</span></p>
+        <p>Le tableau ci-dessous compare quelques chiffres du livre avec ceux de l’astronomie actuelle.</p>
+      </div>
+    </div>
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <caption><h3>Le livre et l’astronomie actuelle</h3></caption>
+        <thead>
+          <tr><th scope="col">Point comparé</th><th scope="col">Selon le livre</th><th scope="col">Selon l’astronomie actuelle</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Distance jusqu’au centre</th><td>Plus de 200&#8239;000 a.-l., de Jérusem au centre d’Orvonton <span class="ref">32:2.11</span></td><td>Environ 26&#8239;000 a.-l., du Soleil au centre de la galaxie</td></tr>
+          <tr><th scope="row">Ce qui se trouve dans le Sagittaire</th><td>Le centre de notre secteur mineur, Ensa <span class="ref">15:3.5</span></td><td>Le centre de la galaxie</td></tr>
+          <tr><th scope="row">Lumière d’Andromède</th><td>Partie «&nbsp;depuis près d’un million d’années&nbsp;» <span class="ref">15:4.7</span></td><td>Environ 2,5 millions d’années. Avant 1952, on l’estimait à moins d’un million.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cmp-note">Les deux colonnes ne désignent pas forcément le même centre, et c’est tout le débat. Certains lecteurs cherchent à concilier les chiffres&nbsp;; d’autres y voient les limites d’une cosmologie datée.</p>
+  </section>
+
+  <section class="more" aria-labelledby="h-more">
+    <h2 id="h-more">Pour aller plus loin</h2>
+    <ul>
+      <li><span class="ref">15:14</span><span>L’adresse complète d’Urantia, niveau par niveau.</span></li>
+      <li><span class="ref">32:2</span><span>L’organisation de Nébadon et les univers voisins (32:2.12).</span></li>
+      <li><span class="ref">fasc. 41</span><span><em>Aspects physiques de l’univers local</em>.</span></li>
+      <li><span class="ref">101:4</span><span>Les limites que les auteurs reconnaissent à leur cosmologie.</span></li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <em>Le Livre d’Urantia</em>, traduction française, édition 2024. Références au format fascicule:section.paragraphe.</p>
+    <p>Citations courtes, vérifiées dans le texte. Schémas indicatifs. Page d’étude du 2026-11-07.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  const NS = 'http://www.w3.org/2000/svg';
+  const LV = [
+    { name: 'Orvonton', kind: 'ring', hot: 5, child: 'Splandon',
+      cap: 'Orvonton : dix secteurs majeurs tournent autour d’Uversa. Le nôtre, Splandon, est le cinquième.' },
+    { name: 'Splandon', kind: 'grid', n: 100, cols: 10, hot: 3, child: 'Ensa',
+      cap: 'Splandon : cent secteurs mineurs. Le nôtre, Ensa, porte le n° 3.' },
+    { name: 'Ensa', kind: 'grid', n: 100, cols: 10, hot: 84, child: 'Nébadon',
+      cap: 'Ensa : cent univers locaux. Nébadon, le nôtre, porte le n° 84.' },
+    { name: 'Nébadon', kind: 'grid', n: 100, cols: 10, hot: 70, child: 'Norlatiadek',
+      cap: 'Nébadon : cent constellations. La nôtre, Norlatiadek, porte le n° 70.' },
+    { name: 'Norlatiadek', kind: 'grid', n: 100, cols: 10, hot: 24, child: 'Satania',
+      cap: 'Norlatiadek : cent systèmes locaux. Le nôtre, Satania, porte le n° 24.' },
+    { name: 'Satania', kind: 'grid', n: 1000, cols: 40, hot: 606, on: 619, child: 'Urantia',
+      cap: 'Satania : environ mille mondes habitables, dont 619 habités. Urantia porte le n° 606.' },
+    { name: 'Urantia', kind: 'planet',
+      cap: 'Urantia, n° 606 de Satania. Au catalogue des mondes habités, son numéro est 5 342 482 337 666.' }
+  ];
+
+  const stage = document.getElementById('stage');
+  const cap = document.getElementById('cap');
+  const legend = document.getElementById('legend');
+  const up = document.getElementById('up');
+  const down = document.getElementById('down');
+  const upT = document.getElementById('up-t');
+  const downT = document.getElementById('down-t');
+  const lvBtns = Array.prototype.slice.call(document.querySelectorAll('.lv'));
+  let cur = 0;
+  let busy = false;
+
+  const reduced = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function el(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    Object.keys(attrs).forEach((k) => e.setAttribute(k, String(attrs[k])));
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  function ringView(L) {
+    const s = el('svg', { viewBox: '0 0 400 400', class: 'view ring', role: 'group', 'aria-label': L.cap });
+    const cx = 200, cy = 206, rx = 178, ry = 116, k = 0.25, gap = 0.024;
+    const P = (t, a, b) => (cx + a * Math.cos(t)).toFixed(2) + ' ' + (cy + b * Math.sin(t)).toFixed(2);
+    el('text', { x: 200, y: 52, class: 'lbl' }, s).textContent = 'Orvonton';
+    for (let i = 0; i < 10; i++) {
+      const t0 = ((-90 + i * 36) * Math.PI) / 180 + gap;
+      const t1 = ((-90 + (i + 1) * 36) * Math.PI) / 180 - gap;
+      const d = 'M' + P(t0, rx, ry) + ' A' + rx + ' ' + ry + ' 0 0 1 ' + P(t1, rx, ry) +
+        ' L' + P(t1, rx * k, ry * k) + ' A' + (rx * k).toFixed(2) + ' ' + (ry * k).toFixed(2) + ' 0 0 0 ' + P(t0, rx * k, ry * k) + ' Z';
+      const isHot = i + 1 === L.hot;
+      const p = el('path', { d: d, class: isHot ? 'sec hot' : 'sec' }, s);
+      const tm = (t0 + t1) / 2;
+      el('text', {
+        x: (cx + rx * 0.64 * Math.cos(tm)).toFixed(1),
+        y: (cy + ry * 0.64 * Math.sin(tm)).toFixed(1),
+        class: isHot ? 'num hot' : 'num'
+      }, s).textContent = String(i + 1);
+      if (isHot) {
+        p.setAttribute('tabindex', '0');
+        p.setAttribute('role', 'button');
+        p.setAttribute('aria-label', 'Zoomer sur ' + L.child + ', cinquième secteur majeur');
+        p.addEventListener('click', () => go(cur + 1, 'stage'));
+        p.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(cur + 1, 'stage'); }
+        });
+        el('text', {
+          x: (cx + rx * 1.13 * Math.cos(tm)).toFixed(1),
+          y: (cy + ry * 1.13 * Math.sin(tm) + 16).toFixed(1),
+          class: 'lbl gold'
+        }, s).textContent = L.child;
+      }
+    }
+    el('circle', { cx: cx, cy: cy - 7, r: 4, class: 'dot' }, s);
+    el('text', { x: cx, y: cy + 16, class: 'small' }, s).textContent = 'Uversa';
+    return s;
+  }
+
+  function gridView(L) {
+    const g = document.createElement('div');
+    g.className = 'view grid' + (L.cols > 20 ? ' dense' : '');
+    g.style.gridTemplateColumns = 'repeat(' + L.cols + ', minmax(0, 1fr))';
+    g.setAttribute('role', 'group');
+    g.setAttribute('aria-label', L.cap);
+    const frag = document.createDocumentFragment();
+    for (let k = 1; k <= L.n; k++) {
+      if (k === L.hot) {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'c hot';
+        b.setAttribute('aria-label', 'Zoomer sur ' + L.child + ', n° ' + L.hot);
+        b.title = L.child + ' · n° ' + L.hot;
+        if (L.cols <= 20) b.textContent = String(L.hot);
+        b.addEventListener('click', () => go(cur + 1, 'stage'));
+        frag.appendChild(b);
+      } else {
+        const sp = document.createElement('span');
+        sp.className = (L.on && k <= L.on) ? 'c on' : 'c';
+        frag.appendChild(sp);
+      }
+    }
+    g.appendChild(frag);
+    return g;
+  }
+
+  function planetView() {
+    const d = document.createElement('div');
+    d.className = 'view planet';
+    d.innerHTML = '<div class="orb" aria-hidden="true"></div>' +
+      '<p class="pl-name">Urantia</p>' +
+      '<p class="pl-meta">n° 606 dans Satania</p>' +
+      '<p class="pl-reg">Catalogue des mondes habités<b>5 342 482 337 666</b></p>';
+    return d;
+  }
+
+  function show() {
+    const L = LV[cur];
+    const v = L.kind === 'ring' ? ringView(L) : (L.kind === 'grid' ? gridView(L) : planetView());
+    stage.replaceChildren(v);
+    cap.textContent = L.cap;
+    legend.hidden = L.name !== 'Satania';
+    up.disabled = cur === 0;
+    down.disabled = cur === LV.length - 1;
+    upT.textContent = cur > 0 ? 'Revenir à ' + LV[cur - 1].name : 'Revenir';
+    downT.textContent = cur < LV.length - 1 ? 'Zoomer sur ' + L.child : 'Zoomer';
+    lvBtns.forEach((b, k) => b.setAttribute('aria-current', k === cur ? 'step' : 'false'));
+  }
+
+  function originOf(view, hot) {
+    const vr = view.getBoundingClientRect();
+    const hr = hot.getBoundingClientRect();
+    return (hr.left + hr.width / 2 - vr.left) + 'px ' + (hr.top + hr.height / 2 - vr.top) + 'px';
+  }
+
+  function zoomScale(hot) {
+    const sr = stage.getBoundingClientRect();
+    const hr = hot.getBoundingClientRect();
+    return Math.max(3, Math.min(sr.width / Math.max(hr.width, 1), 60));
+  }
+
+  function go(i, src) {
+    if (busy || i < 0 || i >= LV.length || i === cur) return;
+    const prev = cur;
+    const old = stage.firstElementChild;
+    cur = i;
+    const finish = () => {
+      busy = false;
+      if (src === 'stage') {
+        const h = stage.querySelector('.hot');
+        (h || up).focus({ preventScroll: true });
+      } else if (src && src.disabled) {
+        (src === down ? up : down).focus({ preventScroll: true });
+      }
+    };
+    if (!old || reduced() || typeof old.animate !== 'function') { show(); finish(); return; }
+    busy = true;
+    if (i === prev + 1) {
+      const hot = old.querySelector('.hot');
+      old.style.transformOrigin = originOf(old, hot);
+      const k = zoomScale(hot);
+      const a = old.animate(
+        [{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(' + k + ')', opacity: 0 }],
+        { duration: 560, easing: 'cubic-bezier(.55,0,.8,.25)', fill: 'forwards' }
+      );
+      a.onfinish = () => {
+        show();
+        const nv = stage.firstElementChild;
+        nv.animate(
+          [{ transform: 'scale(.92)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+          { duration: 320, easing: 'ease-out' }
+        ).onfinish = finish;
+      };
+    } else if (i === prev - 1) {
+      const a = old.animate(
+        [{ transform: 'scale(1)', opacity: 1 }, { transform: 'scale(.9)', opacity: 0 }],
+        { duration: 200, easing: 'ease-in', fill: 'forwards' }
+      );
+      a.onfinish = () => {
+        show();
+        const nv = stage.firstElementChild;
+        const hot = nv.querySelector('.hot');
+        if (hot) nv.style.transformOrigin = originOf(nv, hot);
+        const k = hot ? zoomScale(hot) : 1.1;
+        nv.animate(
+          [{ transform: 'scale(' + k + ')', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+          { duration: 560, easing: 'cubic-bezier(.2,.75,.35,1)' }
+        ).onfinish = finish;
+      };
+    } else {
+      const a = old.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 180, fill: 'forwards' });
+      a.onfinish = () => {
+        show();
+        stage.firstElementChild.animate(
+          [{ opacity: 0, transform: 'scale(.96)' }, { opacity: 1, transform: 'scale(1)' }],
+          { duration: 300, easing: 'ease-out' }
+        ).onfinish = finish;
+      };
+    }
+  }
+
+  function mulberry32(a) {
+    return function () {
+      a |= 0;
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  function starsFace() {
+    const g = document.getElementById('stars-face');
+    if (!g) return;
+    const r = mulberry32(20261107);
+    for (let i = 0; i < 330; i++) {
+      const t = r() * Math.PI * 2;
+      const p = Math.pow(r(), 1.15) * 0.97;
+      el('circle', {
+        cx: (240 + p * 215 * Math.cos(t)).toFixed(1),
+        cy: (170 + p * 104 * Math.sin(t)).toFixed(1),
+        r: (0.45 + r() * 1.05).toFixed(2),
+        'fill-opacity': (0.16 + r() * 0.5).toFixed(2)
+      }, g);
+    }
+  }
+
+  function starsEdge() {
+    const g = document.getElementById('stars-edge');
+    if (!g) return;
+    const r = mulberry32(1955);
+    for (let i = 0; i < 240; i++) {
+      const sx = (r() < 0.5 ? -1 : 1) * Math.pow(r(), 1.1) * 0.98;
+      const half = 17 * Math.sqrt(Math.max(0, 1 - sx * sx));
+      const gy = (r() + r() + r() - 1.5) / 1.5;
+      el('circle', {
+        cx: (240 + sx * 215).toFixed(1),
+        cy: (86 + gy * half * 0.9).toFixed(1),
+        r: (0.4 + r() * 0.9).toFixed(2),
+        'fill-opacity': (0.18 + r() * 0.5).toFixed(2)
+      }, g);
+    }
+  }
+
+  starsFace();
+  starsEdge();
+  lvBtns.forEach((b, k) => b.addEventListener('click', () => go(k, null)));
+  up.addEventListener('click', () => go(cur - 1, up));
+  down.addEventListener('click', () => go(cur + 1, down));
+  show();
+})();
+</script>
+</body>
+</html>

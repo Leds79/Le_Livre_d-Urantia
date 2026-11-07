@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Atlas visuel du Livre d’Urantia : notre adresse dans l’univers, la vue 3D d’Urantia au Paradis, la frise du temps, la carrière ascendante, les êtres de l’univers et les concepts, avec les références du texte.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Le Livre d’Urantia en images">
+<meta property="og:description" content="Atlas visuel du Livre d’Urantia : notre adresse dans l’univers, la vue 3D d’Urantia au Paradis, la frise du temps, la carrière ascendante, les êtres de l’univers et les concepts, avec les références du texte.">
+<meta property="og:url" content="https://constructoai.github.io/Le_Livre_d-Urantia/">
+<meta property="og:image" content="https://constructoai.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Le Livre d’Urantia en images</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : la page d’entrée d’un atlas céleste. L’adresse d’Urantia en frise,
+   puis un parcours numéroté, le plan du livre et la manière de lire. Jusqu’à 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : notre adresse */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --core: #5F78CF;     /* lecture courante, lueurs */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 80px;
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.hero-text { display: grid; gap: 20px; min-width: 0; }
+.sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.35; max-width: 36ch; }
+.disc { font-size: .98rem; color: var(--muted); max-width: 58ch; }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 4px; }
+.btn-main { display: inline-flex; align-items: center; gap: 10px; padding: 12px 20px; border-radius: 999px; background: var(--gold); color: var(--on-gold); font: 500 1.02rem/1.2 var(--font-body); text-decoration: none; }
+.btn-main:hover { filter: brightness(1.05); }
+.btn-main svg { width: 18px; height: 18px; flex: none; }
+.orrery { width: 100%; max-width: 440px; justify-self: center; color: var(--ink); }
+.orrery svg { display: block; width: 100%; height: auto; }
+.o-line { fill: none; stroke: currentColor; stroke-opacity: .55; stroke-width: 1.1; }
+.o-faint { fill: none; stroke: currentColor; stroke-opacity: .28; stroke-width: 1; stroke-dasharray: 3 4; }
+.o-core { fill: var(--core); fill-opacity: .18; stroke: var(--core); stroke-opacity: .6; stroke-width: 1.2; }
+.o-gold { fill: var(--gold); }
+.o-ring { fill: none; stroke: var(--gold); stroke-width: 1.6; }
+.o-dot { fill: currentColor; fill-opacity: .55; }
+.o-lbl { font: 500 11px var(--font-mono); fill: var(--muted); letter-spacing: .06em; }
+.o-lbl-g { font: 600 15px var(--font-display); fill: var(--gold-ink); }
+.halo { paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
+
+/* Sections */
+.sec-head { display: grid; gap: 12px; max-width: 70ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+.pull { margin: 6px 0 0; display: grid; gap: 4px; max-width: 60ch; }
+.pull p { font-family: var(--font-display); font-style: italic; font-size: 1.3rem; line-height: 1.38; }
+
+/* Frise de l’adresse */
+.addr-scroll { overflow-x: auto; margin-top: 26px; padding-bottom: 6px; }
+.addr-line { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 0 6px; position: relative; min-width: 960px; }
+.addr-line::before { content: ""; position: absolute; left: 4%; right: 4%; top: 25px; height: 2px; background: var(--rule); }
+.stop { display: grid; align-content: start; gap: 3px; height: 100%; padding: 12px 8px 12px; border-radius: 10px; color: inherit; text-decoration: none; }
+.stop:hover { background: var(--tint); }
+.stop .pin { width: 15px; height: 15px; border-radius: 50%; background: var(--paper); border: 2px solid var(--muted); margin: 4px 0 10px; position: relative; z-index: 1; }
+.stop.here .pin { background: var(--gold); border-color: var(--gold); box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--gold); }
+.stop .lvl { font: 500 .68rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.stop .nm { font-family: var(--font-display); font-weight: 600; font-size: 1.22rem; line-height: 1.1; }
+.stop.here .nm { color: var(--gold-ink); }
+.stop .fig { font-size: .86rem; line-height: 1.35; }
+.stop .fig b { font-weight: 700; font-variant-numeric: tabular-nums; }
+.stop .more { font-size: .8rem; color: var(--muted); line-height: 1.35; }
+.stop .ref { font-size: .7rem; }
+.stop .go { font-size: .8rem; color: var(--gold-ink); margin-top: 4px; }
+.addr-note { margin-top: 12px; font-size: .88rem; color: var(--muted); max-width: 72ch; }
+
+/* Parcours */
+.cards { list-style: none; margin: 28px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 16px 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.card .top { display: flex; align-items: center; gap: 10px; }
+.num { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid var(--gold); color: var(--gold-ink); display: grid; place-items: center; font: 500 .9rem/1 var(--font-mono); flex: none; }
+.card .ill { color: var(--ink); background: var(--paper); border-radius: 8px; padding: 6px; }
+.card .ill svg { display: block; width: 100%; height: auto; }
+.card h3 { font-size: 1.28rem; }
+.card p { font-size: .95rem; }
+.card .see { font-size: .9rem; color: var(--muted); }
+.card .see b { color: var(--ink); font-weight: 500; }
+.card .go { margin-top: auto; font-weight: 500; font-size: .96rem; }
+.card.alt { background: transparent; border-style: dashed; }
+.s { fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.s-th { fill: none; stroke: currentColor; stroke-width: 1.1; stroke-opacity: .55; stroke-linecap: round; stroke-linejoin: round; }
+.s-g { fill: none; stroke: var(--gold); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.f-ink { fill: currentColor; }
+.f-mut { fill: currentColor; fill-opacity: .45; }
+.f-g { fill: var(--gold); }
+.f-core { fill: var(--core); fill-opacity: .22; stroke: var(--core); stroke-width: 1.2; }
+
+/* Le livre en bref */
+.parts { list-style: none; margin: 28px 0 0; padding: 0; display: grid; }
+.part { display: grid; grid-template-columns: 11rem minmax(0, 1.25fr) minmax(0, 1fr); gap: 8px 28px; padding: 18px 0; border-top: 1px solid var(--rule); align-items: start; }
+.part:last-child { border-bottom: 1px solid var(--rule); }
+.part .rng { font: 500 .8rem/1.5 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.part .rng b { display: block; font: 600 1rem/1.3 var(--font-body); color: var(--ink); letter-spacing: 0; }
+.part h3 { font-size: 1.42rem; }
+.part .spons { font-size: .9rem; color: var(--muted); margin-top: 6px; max-width: 54ch; }
+.part .atlas { display: grid; gap: 8px; font-size: .94rem; min-width: 0; }
+.part .atlas ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+.soon { display: inline-flex; align-items: center; gap: 8px; font-size: .9rem; }
+.pill { font: 500 .7rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--gold); color: var(--gold-ink); white-space: nowrap; }
+.pill.later { border-color: var(--muted); color: var(--muted); }
+
+/* Comment lire */
+.regs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 28px; }
+.reg { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.reg .label { display: flex; align-items: center; gap: 8px; }
+.reg .label::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--mark); flex: none; }
+.r-text { --mark: var(--gold); }
+.r-read { --mark: var(--core); }
+.r-hist { --mark: var(--muted); }
+.reg blockquote { margin: 0; display: grid; gap: 4px; }
+.reg blockquote p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.38; }
+.rules { list-style: none; margin: 32px 0 0; padding: 0; display: grid; gap: 14px; max-width: 76ch; }
+.rules li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 4px 18px; padding-top: 14px; border-top: 1px solid var(--rule); }
+.rules .k { font: 500 .76rem/1.6 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ex { font-family: var(--font-mono); font-size: .9em; color: var(--gold-ink); }
+
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+@media (max-width: 1000px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .regs { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .orrery { max-width: 380px; }
+  .part { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .addr-scroll { overflow-x: visible; }
+  .addr-line { min-width: 0; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .addr-line::before { left: 22px; right: auto; top: 26px; bottom: 26px; width: 2px; height: auto; }
+  .stop { grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; padding: 10px 8px; }
+  .stop .pin { grid-column: 1; grid-row: 1 / span 6; margin: 4px 0 0 7px; }
+  .stop > :not(.pin) { grid-column: 2; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .rules li { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) { .btn-main:hover { filter: none; } }
+</style>
+</head>
+<body>
+<div class="wrap" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Atlas d’étude · 197 fascicules, de 0 à 196</p>
+      <h1>Le Livre d’Urantia en images</h1>
+      <p class="sub">L’origine et l’organisation de l’univers selon le Livre d’Urantia, en cartes, en 3D et en schémas</p>
+      <p class="disc">Ces pages sont une aide à l’étude indépendante. Elles n’ont aucun lien officiel avec la Fondation Urantia, éditrice du texte. Les citations sont tirées de sa traduction française, édition 2024.</p>
+      <div class="actions">
+        <a class="btn-main" href="atlas-3d.html"><svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><ellipse cx="9" cy="9" rx="7.5" ry="3.2"/><circle cx="9" cy="9" r="1.6" fill="currentColor"/><path d="M15.2 4.6 16.5 3.3"/></svg>Commencer le voyage en 3D</a>
+        <a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a>
+      </div>
+    </div>
+    <figure class="orrery" role="img" aria-label="Schéma : le Paradis au centre, entouré de Havona, puis des superunivers ; Urantia se trouve loin du centre">
+      <svg viewBox="0 0 440 300">
+        <ellipse class="o-faint" cx="220" cy="150" rx="210" ry="128"/>
+        <ellipse class="o-line" cx="220" cy="150" rx="168" ry="100"/>
+        <ellipse class="o-faint" cx="220" cy="150" rx="128" ry="76"/>
+        <ellipse class="o-line" cx="220" cy="150" rx="74" ry="44"/>
+        <ellipse class="o-line" cx="220" cy="150" rx="58" ry="34"/>
+        <ellipse class="o-line" cx="220" cy="150" rx="42" ry="25"/>
+        <ellipse class="o-core" cx="220" cy="150" rx="20" ry="9"/>
+        <circle class="o-dot" cx="301" cy="98" r="2.2"/><circle class="o-dot" cx="128" cy="210" r="2"/>
+        <circle class="o-dot" cx="76" cy="132" r="1.6"/><circle class="o-dot" cx="358" cy="196" r="1.8"/>
+        <circle class="o-dot" cx="190" cy="56" r="1.5"/><circle class="o-dot" cx="262" cy="245" r="1.6"/>
+        <circle class="o-ring" cx="352" cy="85" r="9"/>
+        <circle class="o-gold" cx="352" cy="85" r="4"/>
+        <text class="o-lbl-g halo" x="366" y="74">tu es ici</text>
+        <text class="o-lbl halo" x="220" y="154" text-anchor="middle">PARADIS</text>
+        <text class="o-lbl halo" x="220" y="114" text-anchor="middle">HAVONA</text>
+        <text class="o-lbl halo" x="220" y="40" text-anchor="middle">SUPERUNIVERS</text>
+      </svg>
+    </figure>
+  </header>
+
+  <section aria-labelledby="h-addr">
+    <div class="sec-head">
+      <h2 id="h-addr">Notre adresse dans l’univers</h2>
+      <p>Le livre situe notre planète comme une adresse postale, du plus petit au plus grand. Chaque étape ouvre la vue 3D au niveau choisi.</p>
+      <figure class="pull">
+        <p>«&nbsp;Votre monde s’appelle Urantia, et il porte le numéro 606 dans le groupe planétaire ou système de Satania, qui comprend présentement six-cent-dix-neuf mondes habités.&nbsp;»</p>
+        <figcaption class="ref">15:14.5</figcaption>
+      </figure>
+    </div>
+    <div class="addr-scroll">
+      <ol class="addr-line" aria-label="L’adresse d’Urantia, de la planète au Paradis">
+        <li><a class="stop here" href="atlas-3d.html#urantia"><span class="pin" aria-hidden="true"></span><span class="lvl">Planète · tu es ici</span><span class="nm">Urantia</span><span class="fig"><b>n°&nbsp;606</b> de Satania</span><span class="more">catalogue des mondes habités&nbsp;: 5&#8239;342&#8239;482&#8239;337&#8239;666</span><span class="ref">15:14.5 · 15:14.8</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#monmatia"><span class="pin" aria-hidden="true"></span><span class="lvl">Système solaire</span><span class="nm">Monmatia</span><span class="fig"><b>3 planètes</b> aptes à héberger la vie</span><span class="more">nom inscrit au registre physique de Nébadon</span><span class="ref">15:6.15 · 57:6.9</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#satania"><span class="pin" aria-hidden="true"></span><span class="lvl">Système local</span><span class="nm">Satania</span><span class="fig"><b>619</b> mondes habités</span><span class="more">capitale Jérusem · n°&nbsp;24 de Norlatiadek</span><span class="ref">32:2.10 · 15:14.6</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#norlatiadek"><span class="pin" aria-hidden="true"></span><span class="lvl">Constellation</span><span class="nm">Norlatiadek</span><span class="fig"><b>100</b> systèmes locaux</span><span class="more">capitale Édentia · n°&nbsp;70 de Nébadon</span><span class="ref">15:14.6</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#nebadon"><span class="pin" aria-hidden="true"></span><span class="lvl">Univers local</span><span class="nm">Nébadon</span><span class="fig"><b>3&#8239;840&#8239;101</b> planètes habitées</span><span class="more">capitale Salvington · 100 constellations · n°&nbsp;84 d’Ensa</span><span class="ref">32:2.9 · 15:14.6</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#ensa"><span class="pin" aria-hidden="true"></span><span class="lvl">Secteur mineur</span><span class="nm">Ensa</span><span class="fig"><b>100</b> univers locaux</span><span class="more">capitale Uminor la troisième · n°&nbsp;3 de Splandon</span><span class="ref">15:14.7</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#splandon"><span class="pin" aria-hidden="true"></span><span class="lvl">Secteur majeur</span><span class="nm">Splandon</span><span class="fig"><b>100</b> secteurs mineurs</span><span class="more">capitale Umajor la cinquième · 5<sup>e</sup> secteur majeur d’Orvonton</span><span class="ref">15:14.7</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#orvonton"><span class="pin" aria-hidden="true"></span><span class="lvl">Superunivers</span><span class="nm">Orvonton</span><span class="fig">environ <b>1&#8239;000 milliards</b> de mondes habitables</span><span class="more">capitale Uversa · 7<sup>e</sup> superunivers</span><span class="ref">15:2.8 · 15:7.10</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#grand-univers"><span class="pin" aria-hidden="true"></span><span class="lvl">Grand univers</span><span class="nm">Les sept superunivers</span><span class="fig">environ <b>7 billions</b> de mondes habitables</span><span class="more">un billion vaut mille milliards</span><span class="ref">15:2.9</span><span class="go">Voir en 3D</span></a></li>
+        <li><a class="stop" href="atlas-3d.html#paradis"><span class="pin" aria-hidden="true"></span><span class="lvl">Centre</span><span class="nm">Paradis</span><span class="fig">entouré du <b>milliard</b> de mondes de Havona</span><span class="more">«&nbsp;Le Paradis est le centre géographique de l’infinité.&nbsp;» <span class="ref">11:9.2</span></span><span class="ref">14:0.1</span><span class="go">Voir en 3D</span></a></li>
+      </ol>
+    </div>
+    <p class="addr-note">Les numéros d’ordre (606, 24, 70, 84, 3, 5, 7) viennent tous de 15:14.5–7. Dans la vue 3D, les positions sont schématiques : le livre ne donne pas la carte exacte de ces régions.</p>
+  </section>
+
+  <section aria-labelledby="h-path">
+    <div class="sec-head">
+      <h2 id="h-path">Parcours de découverte</h2>
+      <p>Sept étapes, dans l’ordre conseillé. Chacune ouvre une page de l’atlas ; tu peux aussi les visiter dans le désordre.</p>
+      <figure class="pull">
+        <p>«&nbsp;Sur votre monde, il est naturel de parler du Paradis comme situé <em>vers le haut,</em> mais il serait plus exact de mentionner le but divin de l’ascension comme situé <em>vers l’intérieur.</em>&nbsp;»</p>
+        <figcaption class="ref">18:2.4</figcaption>
+      </figure>
+    </div>
+    <ol class="cards">
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">1</span><h3>Où sommes-nous ?</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <rect class="s-th" x="10" y="8" width="74" height="74" rx="4"/>
+          <rect class="s-th" x="26" y="24" width="42" height="42" rx="3"/>
+          <rect class="s" x="38" y="36" width="18" height="18" rx="2"/>
+          <circle class="f-g" cx="47" cy="45" r="3.4"/>
+          <path class="s-th" d="M84 8 112 18M84 82 112 72"/>
+          <circle class="s" cx="128" cy="45" r="18"/>
+          <path class="s" d="M141 58 152 70"/>
+          <circle class="f-g" cx="128" cy="45" r="4"/>
+        </svg></div>
+        <p>Avant le voyage, une carte plane pour situer notre planète. Six zooms vont d’Orvonton jusqu’à Urantia : Orvonton compte dix secteurs majeurs, et chaque niveau suivant en contient cent <span class="ref">15:2.3–8</span>.</p>
+        <p class="see"><b>Tu y verras</b> la place de Nébadon dans Orvonton, celle de la Voie lactée, et la différence entre ce que dit le texte et les lectures courantes.</p>
+        <a class="go" href="nebadon-dans-orvonton.html">Ouvrir « Nébadon dans Orvonton »</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">2</span><h3>Le voyage en 3D</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <ellipse class="s-th" cx="80" cy="46" rx="72" ry="34"/>
+          <ellipse class="s-th" cx="80" cy="46" rx="48" ry="22"/>
+          <ellipse class="s" cx="80" cy="46" rx="28" ry="12"/>
+          <ellipse class="f-core" cx="80" cy="46" rx="11" ry="4.5"/>
+          <circle class="f-g" cx="140" cy="28" r="3.4"/>
+          <path class="s-g" d="M134 31C118 38 104 42 94 44" stroke-dasharray="3 4"/>
+          <circle class="f-mut" cx="22" cy="20" r="1.4"/><circle class="f-mut" cx="40" cy="78" r="1.4"/><circle class="f-mut" cx="120" cy="80" r="1.2"/><circle class="f-mut" cx="60" cy="12" r="1.1"/>
+        </svg></div>
+        <p>Une scène en trois dimensions qu’on fait tourner, de la Terre jusqu’au Paradis. Chaque niveau s’accompagne de ses chiffres et de ses références.</p>
+        <p class="see"><b>Tu y verras</b> Satania, Nébadon, Orvonton, les sept superunivers, Havona et l’Ile du Paradis, avec une vue en coupe.</p>
+        <a class="go" href="atlas-3d.html">Ouvrir la vue 3D</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">3</span><h3>Qui gouverne quoi</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s" d="M80 10 92 30H68Z"/>
+          <path class="s-th" d="M80 30V40M80 40H40M80 40H120M40 40V52M120 40V52"/>
+          <circle class="s" cx="40" cy="58" r="6"/>
+          <circle class="s" cx="120" cy="58" r="6"/>
+          <path class="s-th" d="M40 64V72M28 72H52M28 72V78M52 72V78M120 64V72M108 72H132M108 72V78M132 72V78"/>
+          <circle class="f-ink" cx="28" cy="81" r="2.6"/><circle class="f-ink" cx="52" cy="81" r="2.6"/><circle class="f-ink" cx="108" cy="81" r="2.6"/>
+          <circle class="f-g" cx="132" cy="81" r="3.2"/>
+        </svg></div>
+        <p>Deux lignées d’autorité se partagent l’univers. Des personnalités issues de la Trinité administrent les superunivers ; chaque univers local a pour père un Fils Créateur et pour mère un Esprit Créatif <span class="ref">33:5.1</span>.</p>
+        <p class="see"><b>Tu y verras</b> la chaîne qui va du Paradis jusqu’à notre monde, échelon par échelon.</p>
+        <a class="go" href="atlas-3d.html#gouvernement">Ouvrir « Qui gouverne quoi »</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">4</span><h3>L’histoire dans le temps : Satania et Urantia</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s" d="M10 62H150"/>
+          <path class="s-th" d="M30 56V68M58 56V68M86 56V68M114 56V68M142 56V68"/>
+          <path class="s-th" d="M30 40c-8 0-12-6-8-11s14-4 15 3-6 13-14 11-12-12-5-19"/>
+          <circle class="s" cx="114" cy="38" r="9"/>
+          <path class="s-th" d="M106 34c5 2 11 2 16-1M107 43c4-2 10-2 15 1"/>
+          <path class="f-g" d="M86 50l5 7h-10z"/>
+          <circle class="f-g" cx="142" cy="62" r="3.4"/>
+        </svg></div>
+        <p>Une frise relie les grands évènements de notre système et de notre planète. On la parcourt d’un repère à l’autre.</p>
+        <p class="see"><b>Tu y verras</b> la nébuleuse d’Andronover <span class="ref">15:3.6</span>, la rébellion de Lucifer suivie par trente-sept Princes Planétaires <span class="ref">53:7.1</span>, et la quarantaine de Satania <span class="ref">46:8.2</span>.</p>
+        <a class="go" href="atlas-3d.html#frise">Ouvrir la frise du temps</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">5</span><h3>Le voyage de l’ascendeur, de la mort au Paradis</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s-th" d="M14 80C40 78 54 66 66 56S96 34 118 30" stroke-dasharray="2 5"/>
+          <circle class="f-g" cx="14" cy="80" r="3.4"/>
+          <circle class="f-ink" cx="34" cy="77" r="2.2"/><circle class="f-ink" cx="50" cy="69" r="2.2"/><circle class="f-ink" cx="64" cy="58" r="2.2"/>
+          <circle class="f-ink" cx="80" cy="47" r="2.2"/><circle class="f-ink" cx="96" cy="38" r="2.2"/>
+          <ellipse class="s-th" cx="136" cy="24" rx="20" ry="11"/>
+          <ellipse class="s-th" cx="136" cy="24" rx="12" ry="6.5"/>
+          <ellipse class="f-core" cx="136" cy="24" rx="5" ry="2.4"/>
+        </svg></div>
+        <p>Après la mort, le livre décrit une longue montée de monde en monde. La page suit cette carrière étape par étape, avec les guides de chaque étape.</p>
+        <p class="see"><b>Tu y verras</b> les sept mondes des maisons, Jérusem, Édentia, Salvington, Uversa, puis les sept circuits de Havona.</p>
+        <a class="go" href="atlas-3d.html#carriere">Ouvrir le voyage de l’ascendeur</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">6</span><h3>Les êtres de l’univers</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s-th" d="M14 18H146M14 46H146M14 74H146"/>
+          <rect class="f-ink" x="14" y="12" width="46" height="10" rx="2"/><rect class="f-mut" x="62" y="12" width="30" height="10" rx="2"/>
+          <rect class="f-mut" x="14" y="40" width="22" height="10" rx="2"/><rect class="f-ink" x="38" y="40" width="70" height="10" rx="2"/><rect class="f-g" x="110" y="40" width="20" height="10" rx="2"/>
+          <rect class="f-ink" x="14" y="68" width="34" height="10" rx="2"/><rect class="f-mut" x="50" y="68" width="52" height="10" rx="2"/>
+        </svg></div>
+        <p>Le livre range les êtres de l’univers de deux façons : par fonction et par origine. Un arbre interactif présente plus d’une centaine d’ordres, des Maitres Esprits aux médians.</p>
+        <p class="see"><b>Tu y verras</b> les deux classifications côte à côte, une fiche par ordre et la liste de ce que le texte ne précise pas.</p>
+        <a class="go" href="familles-de-personnalites.html">Ouvrir « Familles de personnalités »</a>
+      </li>
+      <li class="card">
+        <div class="top"><span class="num" aria-hidden="true">7</span><h3>L’être humain en schémas</h3></div>
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <circle class="s-th" cx="62" cy="45" r="36"/>
+          <circle class="s-th" cx="62" cy="45" r="24"/>
+          <circle class="s" cx="62" cy="45" r="12"/>
+          <path class="f-g" d="M62 37l2.4 5.6 6 .5-4.6 3.9 1.4 5.9-5.2-3.2-5.2 3.2 1.4-5.9-4.6-3.9 6-.5z"/>
+          <path class="s" d="M104 30H146M104 45H140M104 60H134"/>
+          <path class="s-th" d="M98 45h-6"/>
+        </svg></div>
+        <p>Sept schémas montrent ce qui compose la personne humaine selon le livre et ce qui l’influence. Chaque flèche porte le verbe du texte, avec sa référence.</p>
+        <p class="see"><b>Tu y verras</b> la constitution de l’être humain, l’échelle des sept adjuvats, les sept cercles psychiques et la morontia.</p>
+        <a class="go" href="concepts-en-schemas.html">Ouvrir « Concepts en schémas »</a>
+      </li>
+      <li class="card alt">
+        <div class="top"><span class="num" aria-hidden="true">+</span><h3>Et le texte lui-même</h3></div>
+        <p>L’atlas ne remplace pas la lecture. Chaque page donne ses références, pour retrouver le passage exact dans le livre.</p>
+        <p class="see"><b>Tu y trouveras</b> les 197 fascicules en ligne, sur le site de la Fondation Urantia.</p>
+        <a class="go" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre en ligne</a>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-book">
+    <div class="sec-head">
+      <h2 id="h-book">Le livre en bref</h2>
+      <p>Une introduction et quatre parties, soit 197 fascicules. Voici ce que l’atlas en montre déjà, et ce qui viendra.</p>
+    </div>
+    <ol class="parts">
+      <li class="part">
+        <p class="rng"><b>Introduction</b>fascicule 0</p>
+        <div><h3>Introduction</h3><p class="spons">Présentée par un Conseiller Divin. Elle précise le sens de termes comme Dieu, divinité et déité, employés dans tout le livre <span class="ref">0:0.1</span>.</p></div>
+        <div class="atlas"><p>Pas encore de page dédiée.</p></div>
+      </li>
+      <li class="part">
+        <p class="rng"><b>Première partie</b>fascicules 1 à 31</p>
+        <div><h3>L’univers central et les superunivers</h3><p class="spons">Parrainée par des personnalités superuniverselles agissant par autorité des Anciens des Jours d’Orvonton.</p></div>
+        <div class="atlas">
+          <ul>
+            <li>Le Paradis, Havona et les superunivers <a href="atlas-3d.html#havona">en 3D</a></li>
+            <li><a href="atlas-3d.html#gouvernement">Qui gouverne quoi</a></li>
+            <li><a href="familles-de-personnalites.html">Les familles de personnalités</a></li>
+          </ul>
+          <p class="soon"><span class="pill">À venir</span>« Dieu et la Déité »</p>
+        </div>
+      </li>
+      <li class="part">
+        <p class="rng"><b>Deuxième partie</b>fascicules 32 à 56</p>
+        <div><h3>L’univers local</h3><p class="spons">Parrainée par des personnalités de l’univers local de Nébadon, sous l’autorité de Gabriel de Salvington.</p></div>
+        <div class="atlas">
+          <ul>
+            <li><a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, en 2D</li>
+            <li>Nébadon et Satania <a href="atlas-3d.html#nebadon">en 3D</a></li>
+            <li><a href="atlas-3d.html#carriere">Le voyage de l’ascendeur</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="part">
+        <p class="rng"><b>Troisième partie</b>fascicules 57 à 119</p>
+        <div><h3>L’histoire d’Urantia</h3><p class="spons">Parrainée, elle aussi, par des personnalités de Nébadon, sous l’autorité de Gabriel de Salvington.</p></div>
+        <div class="atlas">
+          <ul>
+            <li><a href="atlas-3d.html#frise">La frise du temps</a>, de la nébuleuse d’Andronover à aujourd’hui</li>
+            <li><a href="concepts-en-schemas.html">Les concepts en schémas</a>, en partie</li>
+          </ul>
+          <p class="soon"><span class="pill">À venir</span>« L’histoire d’Urantia », avec une carte du monde</p>
+        </div>
+      </li>
+      <li class="part">
+        <p class="rng"><b>Quatrième partie</b>fascicules 120 à 196</p>
+        <div><h3>La vie et les enseignements de Jésus</h3><p class="spons">Parrainée par une commission de douze médians d’Urantia, sous la supervision d’un Melchizédek.</p></div>
+        <div class="atlas">
+          <p class="soon"><span class="pill later">Plus tard</span>« La vie de Jésus »</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="h-read">
+    <div class="sec-head">
+      <h2 id="h-read">Comment lire ces pages</h2>
+      <p>Chaque page distingue ce que dit le texte de ce qu’on en dit. Trois registres reviennent partout.</p>
+    </div>
+    <div class="regs">
+      <div class="reg r-text">
+        <p class="label">Le texte dit</p>
+        <p>Ce qui est écrit dans le livre, avec la référence du passage. Les citations restent courtes et exactes.</p>
+      </div>
+      <div class="reg r-read">
+        <p class="label">Lecture courante</p>
+        <p>Les interprétations répandues chez les lecteurs. Elles sont signalées comme telles, sans trancher entre elles.</p>
+      </div>
+      <div class="reg r-hist">
+        <p class="label">Regard historique</p>
+        <p>Les origines du livre, son contexte et ses sources humaines, que le texte reconnait lui-même <span class="ref">0:12.12 ; 121:8.12–14</span>.</p>
+        <blockquote><p>«&nbsp;Autant que possible, j’ai tiré mes informations de sources purement humaines.&nbsp;»</p><span class="ref">121:8.12</span></blockquote>
+      </div>
+    </div>
+    <ul class="rules">
+      <li><span class="k">Références</span><p>Elles s’écrivent fascicule:section.paragraphe. Ainsi <span class="ex">15:14.5</span> désigne le fascicule 15, section 14, paragraphe 5. La section 0 est l’introduction d’un fascicule.</p></li>
+      <li><span class="k">Orthographe</span><p>La traduction française applique l’orthographe rectifiée de 1990 : <i>connaitre, maitre, ile, évènement</i>. Les citations la conservent telle quelle.</p></li>
+      <li><span class="k">Schémas</span><p>En 3D, les positions et les formes sont souvent schématiques, car le livre ne donne ni carte ni distances pour la plupart des régions. Chaque page le signale.</p></li>
+      <li><span class="k">Chiffres</span><p>Dans le texte, un billion vaut mille milliards. Les nombres sont donnés tels quels, avec leur référence.</p></li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <p>Données : étoiles du catalogue HYG v4.1 (licence CC BY-SA 4.0) ; éléments planétaires du JPL ; continents de Natural Earth (domaine public).</p>
+    <p>Texte : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Citations courtes ; le reste est paraphrasé, avec ses références.</p>
+    <p>Mise à jour : 2026-11-07.</p>
+  </footer>
+
+</div>
+</body>
+</html>
