@@ -57,6 +57,22 @@ body { margin: 0; background: var(--space); color: var(--ink); font-family: var(
 h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-display); text-wrap: balance; }
 .sub { margin: 0; color: var(--muted); max-width: 38ch; font-size: .95rem; }
 .read { margin: 6px 0 0; font-size: .85rem; }
+.abs { position: absolute; z-index: 2; top: 118px; left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); display: grid; gap: 8px; background: var(--panel); border: 1.5px solid var(--frame-a); border-radius: 16px; padding: 12px 14px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.abs p { margin: 0; }
+.abs-t { font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); text-align: center; }
+.abs-s, .abs-f { font-size: .82rem; color: var(--muted); text-align: center; }
+.abs-row { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; }
+.abs-b { display: grid; gap: 5px; padding: 10px 12px; border-radius: 12px; font-size: .84rem; }
+.abs-d { border: 1px solid var(--gold); background: rgba(240, 179, 60, .08); }
+.abs-u { border: 1px solid var(--violet); background: rgba(201, 174, 245, .08); }
+.abs-n { font: 700 1.08rem/1.15 var(--font-display); }
+.abs-d .abs-n { color: var(--gold-ink); }
+.abs-u .abs-n { color: var(--violet); }
+.abs-m { display: grid; justify-items: center; gap: 2px; font: 500 .72rem/1.2 var(--font-mono); color: var(--muted); }
+.abs-m svg { width: 48px; height: 14px; }
+@media (max-width: 640px) { .abs { top: 96px; max-height: 46vh; overflow: auto; } .abs-row { grid-template-columns: minmax(0, 1fr); } .abs-m { grid-auto-flow: column; align-items: center; } }
+.go-btn { appearance: none; cursor: pointer; pointer-events: auto; background: transparent; color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 999px; padding: 1px 9px; font: 500 .84rem/1.4 var(--font-body); }
+.go-btn:hover { background: var(--gold); color: var(--on-gold); }
 .read a { pointer-events: auto; color: var(--gold-ink); }
 .l3.go { pointer-events: auto; cursor: pointer; }
 .l3.go:hover { color: var(--gold-ink); }
@@ -171,6 +187,25 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   <div class="frame" id="frame" aria-hidden="true"></div>
   <div class="labels" id="labels" aria-hidden="true"></div>
   <aside class="gov" id="gov" aria-label="Qui gouverne quoi" hidden></aside>
+  <aside class="abs" id="abs" aria-label="Les trois Absolus" hidden>
+    <p class="abs-t">L’Absolu Universel</p>
+    <p class="abs-s">Il unifie le déifié et le non déifié <span class="ref">105:3.8</span>&nbsp;: «&nbsp;Les deux Absolus — Qualifié et Non Qualifié — sont coordonnés et unifiés par l’Absolu Universel et en lui.&nbsp;» <span class="ref">0:3.18</span></p>
+    <div class="abs-row">
+      <div class="abs-b abs-d">
+        <p class="abs-n">Absolu de Déité</p>
+        <p>Le déifié, l’Absolu Qualifié&nbsp;: la totalité du potentiel de Déité <span class="ref">105:3.6 · 0:11.6</span></p>
+        <p>«&nbsp;expérientiel en actualisation mais existentiel en potentialité&nbsp;» <span class="ref">0:7.5</span></p>
+        <p>Il «&nbsp;ne peut guère être présent dans l’espace&nbsp;» <span class="ref">12:6.13</span></p>
+      </div>
+      <div class="abs-m" aria-hidden="true"><span>tension</span><svg viewBox="0 0 48 14"><path d="M5 7H43M9 3 4 7l5 4M39 3l5 4-5 4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg><span>0:4.5</span></div>
+      <div class="abs-b abs-u">
+        <p class="abs-n">Absolu Non Qualifié</p>
+        <p>Le non déifié, non personnel&nbsp;: l’infinité cosmique, statique, réactive et en attente <span class="ref">0:11.7 · 105:3.7</span></p>
+        <p>«&nbsp;L’Absolu Non Qualifié pénètre tout l’espace.&nbsp;» <span class="ref">12:6.13</span></p>
+      </div>
+    </div>
+    <p class="abs-f">Image symbolique&nbsp;: aucun des trois n’est un lieu. La tension entre le déifié et le non déifié est résolue par l’Absolu Universel <span class="ref">0:4.5</span>. Au centre de la vue, le maitre univers baigne dans l’espace que l’Absolu Non Qualifié pénètre.</p>
+  </aside>
   <div class="ui" id="ui">
     <header class="top">
       <div class="title">
@@ -265,7 +300,7 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
       <div class="zoombar">
         <button type="button" class="round" id="z-in" aria-label="Se rapprocher">+</button>
         <span class="end">Urantia</span>
-        <input type="range" id="zoom" min="0" max="11" step="0.01" value="0" aria-label="Zoom, d’Urantia jusqu’au-delà du maitre univers">
+        <input type="range" id="zoom" min="-1" max="11" step="0.01" value="0" aria-label="Zoom, d’Urantia jusqu’au-delà du maitre univers">
         <span class="end">Au-delà</span>
         <button type="button" class="round" id="z-out" aria-label="S’éloigner">−</button>
       </div>
@@ -607,7 +642,7 @@ const TEX = /*__TEX__*/null;
   }
 
   // 0. Urantia, la planète (axe orienté vers le vrai pôle céleste, éclairée par le vrai Soleil)
-  const L0 = addLevel({ name: 'Urantia', R: 6.73e-10, stop: 2.6, win: [-Infinity, -Infinity, 1.75, 2.3], floor: -Infinity });
+  const L0 = addLevel({ name: 'Urantia', R: 6.73e-10, stop: 2.6, win: [-Infinity, -Infinity, 2.45, 2.95], floor: -Infinity });
   // Reflet du Soleil sur les océans seulement : masque tiré des contours Natural Earth
   function oceanMask() {
     const cv = document.createElement('canvas'); cv.width = 1024; cv.height = 512;
@@ -663,6 +698,7 @@ const TEX = /*__TEX__*/null;
     return Math.atan2(-gl.z, gl.x);
   }
   planet.rotation.y = earthAngle(Date.now());
+  const MOON_PHYS = new V3();
   // La Lune à sa position du jour (formules simplifiées) ; elle présente toujours la même face (57:6.2)
   {
     const d = Date.now() / 86400000 + 2440587.5 - 2451545.0;
@@ -676,6 +712,9 @@ const TEX = /*__TEX__*/null;
     moon.position.copy(mp);
     moon.quaternion.setFromUnitVectors(new V3(1, 0, 0), mp.clone().negate().normalize());   // face visible tournée vers la Terre
     L0.group.add(moon);
+    // repère cliquable quand la Lune n’occupe qu’un pixel ; un clic amène tout près (zoomV : hauteur du champ visée)
+    fixedSprite(L0, mp, 0xe9e5da, 0.01, null, null, 'moondot').userData.zoomV = 0.75 * L0.R;
+    MOON_PHYS.copy(mp).multiplyScalar(L0.R);       // Urantia est l’origine du repère physique
     // Textures réelles (NASA) : la Terre de jour, ses lumières de nuit, la Lune ; nuages générés
     if (TEX) {
       const tl = new THREE.TextureLoader(), an = Math.min(8, renderer.capabilities.getMaxAnisotropy());
@@ -688,7 +727,7 @@ const TEX = /*__TEX__*/null;
     const mo = [];
     for (let k = 0; k <= 160; k++) { const a = (k / 160) * Math.PI * 2; mo.push(eclToScene(Math.cos(a), Math.sin(a), 0).multiplyScalar(60.3)); }
     L0.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(mo), lineMat(L0, 0x7d8dc0, 0.3, false, 0, 0, 'planets')));
-    lab(L0, 'la Lune · toujours la même face (57:6.2)', mp, 'small', { cf: 'planets' });
+    lab(L0, 'la Lune · toujours la même face (57:6.2)', mp, 'small', { cf: 'planets', zoomV: 0.75 * L0.R });
   }
   // Frise du temps : repères sur Urantia (isolement, effusion, gouvernement à la date choisie, lieux)
   const isoRing = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: dashTex, color: 0xff7a6b, blending: THREE.AdditiveBlending, depthTest: false }), 0.95, 'isol'));
@@ -738,6 +777,7 @@ const TEX = /*__TEX__*/null;
     for (let k = 0; k <= 180; k++) orbit.push(keplerPos(pl.o, k * 2).divideScalar(40));
     const ours = i === 2;
     L1.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, ours ? 0xF0B33C : 0x7d8dc0, ours ? 0.9 : 0.35, false, 0, 0, 'planets')));
+    if (ours) fixedSprite(L1, pl.pos.clone().divideScalar(40), 0x8fb8ff, 0.012, null, null, 'planets').userData.zoomV = 2.6 * L0.R;   // un clic ramène sur Urantia
     if (!ours) {
       const p = pl.pos.clone().divideScalar(40), st = PSTYLE[pl.name] || [0xcfd6ee, 0.012];
       fixedSprite(L1, p, st[0], st[1], null, null, 'planets');
@@ -1236,13 +1276,13 @@ const TEX = /*__TEX__*/null;
   arcArrow(L9, 0.47, 0.4, 0.9, 0xb8c4ff, 0.45);
   arcArrow(L9, 0.65, 0.9, 0.5, 0x9aa6d8, 0.35);
   lab(L9, 'zone de calme · ≈ 400 000 a.-l.', ring(2.6, 0.0049), 'small', { vmin: 2.5e6, vmax: 1.6e7 });
-  lab(L9, 'premier niveau d’espace extérieur · plus de 25 millions d’a.-l.', ring(1.9, 0.09), 'violet', { vmin: 4e6 });
+  lab(L9, 'premier niveau d’espace extérieur · plus de 25 millions d’a.-l.', ring(1.9, 0.09), 'violet', { vmin: 4e6, vmax: 1.2e9 });
   lab(L9, 'sens des aiguilles d’une montre', ring(0.65, 0.13), 'small', { vmin: 1.2e7, vmax: 1.5e8 });
-  lab(L9, 'grand univers', new V3(0, 0, 0), 'gold small', { vmin: 1.2e7, dy: -6 });
-  lab(L9, 'deuxième niveau · plus de 50 millions d’a.-l. au-delà du premier', ring(1.9, 0.38), 'core', { vmin: 6e7 });
-  lab(L9, 'sens inverse', ring(0.65, 0.49), 'small', { vmin: 8e7 });
-  lab(L9, 'troisième niveau · schéma', ring(1.9, 0.62), 'small', { vmin: 1e8 });
-  lab(L9, 'quatrième et dernier niveau · schéma', ring(1.9, 0.86), 'small', { vmin: 1e8 });
+  lab(L9, 'grand univers', new V3(0, 0, 0), 'gold small', { vmin: 1.2e7, vmax: 1.2e9, dy: -6 });
+  lab(L9, 'deuxième niveau · plus de 50 millions d’a.-l. au-delà du premier', ring(1.9, 0.38), 'core', { vmin: 6e7, vmax: 1.2e9 });
+  lab(L9, 'sens inverse', ring(0.65, 0.49), 'small', { vmin: 8e7, vmax: 1.2e9 });
+  lab(L9, 'troisième niveau · schéma', ring(1.9, 0.62), 'small', { vmin: 1e8, vmax: 1.2e9 });
+  lab(L9, 'quatrième et dernier niveau · schéma', ring(1.9, 0.86), 'small', { vmin: 1e8, vmax: 1.2e9 });
   // Halo de Dieu l’Ultime (mode Déité) : présent jusqu’aux bordures du quatrième niveau (12:6.13)
   {
     const sh = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 32), fadeMat(L9, new THREE.MeshBasicMaterial({ color: 0xB9A6FF, side: THREE.DoubleSide }), 0.06, 'ult'));
@@ -1251,7 +1291,7 @@ const TEX = /*__TEX__*/null;
     const eq = [];
     for (let k = 0; k <= 200; k++) eq.push(ring((k / 200) * Math.PI * 2, 0.95));
     L9.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(eq), lineMat(L9, 0xC9AEF5, 0.6, false, 0, 0, 'ult')));
-    lab(L9, 'Dieu l’Ultime · jusqu’aux bordures du quatrième niveau', ring(0.35, 0.97, 0.04), 'violet', { cf: 'ult' });
+    lab(L9, 'Dieu l’Ultime · jusqu’aux bordures du quatrième niveau', ring(0.35, 0.97, 0.04), 'violet', { cf: 'ult', vmax: 1.2e9 });
   }
   // Coupe à l’échelle du maitre univers
   const coupe9 = new THREE.Group();
@@ -1337,7 +1377,7 @@ const TEX = /*__TEX__*/null;
 
   /* ---------- Interface : textes ---------- */
   const INFO = [
-    { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour&nbsp;: éloigne-toi un peu, ou clique sur son nom, pour la voir à sa vraie distance. Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
+    { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour, à sa vraie distance (environ 384&#8239;000 km, soixante rayons terrestres)&nbsp;: éloigne-toi un peu, ou <button type="button" class="go-btn" data-go="lune">va la voir de près</button>. Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
     { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley&nbsp;; les couleurs et les tailles des planètes sont indicatives.' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
@@ -1357,7 +1397,7 @@ const TEX = /*__TEX__*/null;
     if (V < 4e5) return '<b>Déité.</b> Ce niveau appartient au grand univers, que l’Être Suprême «&nbsp;englobe&nbsp;»' + REF('0:9.1') + '.';
     if (V < 2e7) return '<b>Dieu le Suprême.</b> L’Être Suprême se développe à partir du potentiel du grand univers «&nbsp;qu’il englobe&nbsp;»' + REF('0:9.1') + '. C’est «&nbsp;sur le niveau fini&nbsp;» que l’actuel et le potentiel se manifestent en conjonction avec lui' + REF('115:4.5') + '. Le halo doré marque le grand univers.';
     if (V < 1e9) return '<b>Dieu l’Ultime.</b> Il émerge des potentiels du maitre univers' + REF('0:9.1') + ' et est présent dans l’espace, ou le sera, «&nbsp;jusqu’aux bordures extérieures du quatrième niveau d’espace extérieur&nbsp;»' + REF('12:6.13') + '. Le halo violet marque cette limite.';
-    return '<b>Les trois Absolus.</b> «&nbsp;L’Absolu Non Qualifié pénètre tout l’espace.&nbsp;» L’Absolu de Déité «&nbsp;ne peut guère être présent dans l’espace&nbsp;»' + REF('12:6.13') + '. Les deux Absolus sont «&nbsp;coordonnés et unifiés par l’Absolu Universel et en lui&nbsp;»' + REF('0:3.18') + '. Le voile violet et le cadre lumineux sont des images symboliques, pas des lieux.';
+    return '<b>Les trois Absolus.</b> «&nbsp;L’Absolu Non Qualifié pénètre tout l’espace.&nbsp;» L’Absolu de Déité «&nbsp;ne peut guère être présent dans l’espace&nbsp;»' + REF('12:6.13') + '. Les deux Absolus sont «&nbsp;coordonnés et unifiés par l’Absolu Universel et en lui&nbsp;»' + REF('0:3.18') + '. Le schéma en haut de l’écran montre leurs relations&nbsp;; le voile violet et le cadre lumineux sont des images symboliques, pas des lieux.';
   }
 
   const PLACES = [
@@ -1524,7 +1564,7 @@ const TEX = /*__TEX__*/null;
     if (l.L && l.L !== SKY && !l.tl && !l.pin && l.cls.indexOf('core') < 0) {
       l.el.classList.add('go');
       l.el.title = 'S’en approcher';
-      l.el.addEventListener('click', () => { if (l.wp && !coupe) goWorld(l.wp); });
+      l.el.addEventListener('click', () => { if (l.wp && !coupe) goWorld(l.wp, l.zoomV); });
     }
     labelsEl.appendChild(l.el);
   }
@@ -1543,28 +1583,29 @@ const TEX = /*__TEX__*/null;
 
   /* ---------- Zoom, cadrage et déplacement ---------- */
   const STOPV = LV.map((L) => L.stopV || L.stop * L.R).concat([3.3e8, 2.5e9]);
-  const UMAX = STOPV.length - 1;
+  const UMAX = STOPV.length - 1, UMIN = -1;      // sous 0 : plus près d’Urantia ou de la Lune
   function uToV(u) {
-    u = clamp(u, 0, UMAX);
+    u = clamp(u, UMIN, UMAX);
+    if (u < 0) return STOPV[0] * Math.pow(10, u * 0.6);   // au plus près, la caméra reste au-dessus de la surface
     const i = Math.min(UMAX - 1, Math.floor(u)), f = u - i;
     const g = 0.5 - 0.5 * Math.cos(Math.PI * f);
     return Math.pow(10, (1 - g) * Math.log10(STOPV[i]) + g * Math.log10(STOPV[i + 1]));
   }
   function vToU(V) {
-    let lo = 0, hi = UMAX;
+    let lo = UMIN, hi = UMAX;
     for (let k = 0; k < 40; k++) { const m = (lo + hi) / 2; if (uToV(m) < V) lo = m; else hi = m; }
     return (lo + hi) / 2;
   }
   let uCur = 0, uTarget = 0, coupe = false, deity = false, labelsOn = true, camAnim = null, last = performance.now(), sliderActive = false;
   let free = false, fly = null, blendT = 0;
   const freeFocus = new V3(), blendFrom = new V3(), focusPhys = new V3();
-  const FACT = { c8: 1, c9: 0, sup: 0, ult: 0, abs: 0, frame: 0, sun: 1, planets: 1, noplanet: 0, neb: 0, reb: 0, isol: 0, inc: 0, asc: 0 };
+  const FACT = { c8: 1, c9: 0, sup: 0, ult: 0, abs: 0, frame: 0, sun: 1, planets: 1, noplanet: 0, neb: 0, reb: 0, isol: 0, inc: 0, asc: 0, moondot: 1 };
 
   const centerOf = (L) => L.P.clone().negate();
   function deepest(f) {
     for (let i = 0; i < LV.length; i++) {
       const L = LV[i];
-      const r = i === 0 ? L.R * 3 : L.R;
+      const r = i === 0 ? L.R * 80 : L.R;          // la région d’Urantia inclut l’orbite de la Lune
       if (i === LV.length - 1 || f.distanceTo(centerOf(L)) < r) return i;
     }
     return LV.length - 1;
@@ -1648,9 +1689,10 @@ const TEX = /*__TEX__*/null;
     if (au < 5000) return '≈ ' + nf(au) + ' UA';
     return '≈ ' + nf(ly) + ' a.-l.';
   }
-  let shownKey = '', shownMeta = '', shownDeity = '';
+  let shownKey = '', shownMeta = '', shownDeity = '', absShown = false;
+  const absEl = document.getElementById('abs');
   function updateHUD(V) {
-    const n = Math.round(uCur);
+    const n = Math.max(0, Math.round(uCur));
     let t = coupe ? COUPE : INFO[n], key = coupe ? 'coupe' : 's' + n;
     if (free && !coupe) {
       const p = placeAt(focusPhys, V);
@@ -1671,11 +1713,13 @@ const TEX = /*__TEX__*/null;
     if (meta !== shownMeta) { shownMeta = meta; infoMeta.textContent = meta; }
     const dt = deity ? deityText(V) : '';
     if (dt !== shownDeity) { shownDeity = dt; infoD.hidden = !deity; infoD.innerHTML = dt; }
+    const sa = deity && !coupe && V >= 1e9;     // schéma des trois Absolus, au-delà du maitre univers
+    if (sa !== absShown) { absShown = sa; absEl.hidden = !sa; }
     if (!sliderActive) slider.value = uCur.toFixed(2);
   }
 
   function setU(v) {
-    uTarget = clamp(v, 0, UMAX);
+    uTarget = clamp(v, UMIN, UMAX);
     if (coupe && uTarget < 7.6) setCoupe(false);
   }
   function setRotate(on) { controls.autoRotate = on; tRot.setAttribute('aria-pressed', String(on)); }
@@ -2120,10 +2164,12 @@ const TEX = /*__TEX__*/null;
   }
   // Clic sur un point (étoile, système, amas, univers) : on vole vers lui et on s’en approche
   const pm4 = new THREE.Matrix4(), vp4 = new THREE.Matrix4(), pickV = new V3(), camV = new V3();
-  function goWorld(wp) {
+  function goMoon() { if (coupe) setCoupe(false); flyTo(MOON_PHYS); setU(vToU(0.75 * L0.R)); }
+  infoP.addEventListener('click', (e) => { const b = e.target.closest && e.target.closest('[data-go]'); if (b && b.dataset.go === 'lune') goMoon(); });
+  function goWorld(wp, v) {                        // v : hauteur de champ visée (la Lune, Urantia), sinon on s’approche d’un cran
     const kv = K / uToV(uCur);
     flyTo(wp.clone().divideScalar(kv));
-    setU(uTarget - 0.7);
+    setU(v ? vToU(v) : uTarget - 0.7);
   }
   function pickAt(cx, cy) {
     if (coupe) return false;
@@ -2156,9 +2202,9 @@ const TEX = /*__TEX__*/null;
         if (d < bd) { bd = d; hs = fx.s; }
       });
     });
-    if (hs) hs.getWorldPosition(pickV);
-    else if (hp) pickV.fromArray(hp.geometry.attributes.position.array, hi).applyMatrix4(hp.matrixWorld);
-    else return false;
+    if (hs) { hs.getWorldPosition(pickV); goWorld(pickV, hs.userData.zoomV); return true; }
+    if (!hp) return false;
+    pickV.fromArray(hp.geometry.attributes.position.array, hi).applyMatrix4(hp.matrixWorld);
     goWorld(pickV);
     return true;
   }
@@ -2254,6 +2300,7 @@ const TEX = /*__TEX__*/null;
       if (blendT > 0) { focusPhys.lerp(blendFrom, blendT); blendT = Math.max(0, blendT - dt / 0.8); }
     }
     for (const k in TF) FACT[k] = reduced ? TF[k] : FACT[k] + (TF[k] - FACT[k]) * Math.min(1, dt * 5);
+    FACT.moondot = FACT.planets * clamp((V / L0.R - 4) / 6, 0, 1);   // le repère s’efface quand la Lune devient grande
     updateLevels(V, focusPhys);
     const expected = focusPhys.clone().multiplyScalar(kv);
     camera.position.add(expected.clone().sub(controls.target));
@@ -2313,7 +2360,8 @@ const TEX = /*__TEX__*/null;
     if (!h) return;
     const i = HASH_LV.indexOf(h);
     if (i >= 0) { if (coupe) setCoupe(false); recenter(); setU(i); return; }
-    if (h === 'havona') { flyTo(PAR); setU(vToU(2.5e5)); }
+    if (h === 'lune') goMoon();
+    else if (h === 'havona') { flyTo(PAR); setU(vToU(2.5e5)); }
     else if (h === 'paradis') { flyTo(PAR); setU(vToU(6e4)); }
     else if (h === 'gouvernement') { if (!govOn) tGov.click(); }
     else if (h === 'frise') { if (!tlOn) setTimeline(true); }

@@ -16,7 +16,7 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [Dieu et la Déité](dieu-et-deite.html) | le JE SUIS et les sept Absolus, la Trinité, les Sept Maitres Esprits, Dieu le Septuple, les Déités expérientielles |
 <!--PAGES-A-VENIR-->
 
-La vue 3D accepte des liens directs : `atlas-3d.html#nebadon`, `#orvonton`, `#havona`, `#paradis`, `#frise`, `#carriere`, `#gouvernement`, `#coupe`, `#deite`.
+La vue 3D accepte des liens directs : `atlas-3d.html#lune`, `#nebadon`, `#orvonton`, `#havona`, `#paradis`, `#frise`, `#carriere`, `#gouvernement`, `#coupe`, `#deite`.
 
 ## Consulter hors ligne
 
