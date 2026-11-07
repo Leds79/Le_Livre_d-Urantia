@@ -28,7 +28,7 @@ PAGES = [
      'Les familles de personnalités selon le Livre d’Urantia : classifications d’Uversa et du Paradis, en arbre interactif.'),
     ('concepts.html', 'https://claude.ai/artifact/4qy2hFKTsUHbnQUZb4abT1', 'concepts-en-schemas.html',
      'Sept schémas : personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité et morontia.'),
-    ('dieu-et-deite.html', None, 'dieu-et-deite.html',
+    ('dieu-et-deite.html', 'https://claude.ai/artifact/Dw332DFEqbZTfoqrwLk3at', 'dieu-et-deite.html',
      'Dieu et la Déité selon le Livre d’Urantia : le JE SUIS, les sept Absolus, la Trinité, les Maitres Esprits, les Déités expérientielles.'),
     ('histoire-d-urantia.html', None, 'histoire-d-urantia.html',
      'L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.'),
@@ -39,8 +39,8 @@ CDN = {
     'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js': 'assets/lib/three.min.js',
     'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js': 'assets/lib/OrbitControls.js',
 }
-SOURCES = ['urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'assembler.py', 'etoiles.py', 'geo.py',
-           'polices.py', 'smoke3d.js', 'construire_site.py']
+SOURCES = ['urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'assembler.py', 'etoiles.py', 'geo.py',
+           'textures.py', 'polices.py', 'smoke3d.js', 'construire_site.py']
 RESET = ('<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);'
          'padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}'
          'img{max-width:100%}[hidden]{display:none!important}</style>')

@@ -13,6 +13,7 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [Nébadon dans Orvonton](nebadon-dans-orvonton.html) | la place de notre univers local, et celle de la Voie lactée |
 | [Familles de personnalités](familles-de-personnalites.html) | les êtres de l’univers selon les classifications d’Uversa (30:2) et du Paradis (30:1) |
 | [Concepts en schémas](concepts-en-schemas.html) | personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité, morontia |
+| [Dieu et la Déité](dieu-et-deite.html) | le JE SUIS et les sept Absolus, la Trinité, les Sept Maitres Esprits, Dieu le Septuple, les Déités expérientielles |
 <!--PAGES-A-VENIR-->
 
 La vue 3D accepte des liens directs : `atlas-3d.html#nebadon`, `#orvonton`, `#havona`, `#paradis`, `#frise`, `#carriere`, `#gouvernement`, `#coupe`, `#deite`.
@@ -34,7 +35,7 @@ Aide à l’étude indépendante, sans lien officiel avec la Fondation Urantia. 
 
 ## Sources de la vue 3D
 
-Le dossier `sources/` contient le gabarit de la vue 3D, les données d’étoiles (`etoiles.json`) et de contours terrestres (`geo.json`), et les scripts qui les produisent et les assemblent : `etoiles.py`, `geo.py`, `polices.py`, `assembler.py`, `construire_site.py`. `smoke3d.js` exécute la vue 3D hors navigateur pour détecter les erreurs.
+Le dossier `sources/` contient le gabarit de la vue 3D, les données d’étoiles (`etoiles.json`) et de contours terrestres (`geo.json`), et les scripts qui les produisent et les assemblent : `etoiles.py`, `geo.py`, `textures.py`, `polices.py`, `assembler.py`, `construire_site.py`. `smoke3d.js` exécute la vue 3D hors navigateur pour détecter les erreurs.
 
 ## Données et licences
 

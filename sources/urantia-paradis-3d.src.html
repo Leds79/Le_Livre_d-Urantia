@@ -197,7 +197,7 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         <h2 id="info-h">Urantia</h2>
         <p id="info-p"></p>
         <p class="deity" id="info-d" hidden></p>
-        <p class="scale">Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines et Orvonton (32:2.11) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Continents&nbsp;: Natural Earth (domaine public).</p>
+        <p class="scale">Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines et Orvonton (32:2.11) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Terre et Lune&nbsp;: images de la NASA (domaine public)&nbsp;; continents&nbsp;: Natural Earth (domaine public)&nbsp;; nuages&nbsp;: image générée.</p>
       </section>
       <section class="tl" id="tl" aria-label="Frise du temps : Nébadon, Norlatiadek, Satania et Urantia" hidden>
         <div class="tl-top">
@@ -282,6 +282,7 @@ h1 { margin: 4px 0; font: 700 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 <script>
 const STARS = /*__STARS__*/null;
 const GEO = /*__GEO__*/null;
+const TEX = /*__TEX__*/null;
 (() => {
   'use strict';
   const fallback = document.getElementById('fallback');
@@ -319,7 +320,7 @@ const GEO = /*__GEO__*/null;
   controls.minDistance = D;
   controls.maxDistance = D;
 
-  scene.add(new THREE.AmbientLight(0x404a66, 0.5));
+  scene.add(new THREE.AmbientLight(0x404a66, 0.22));   // côté nuit sombre, où brillent les villes
   const sunLight = new THREE.DirectionalLight(0xfff1dc, 1.3);
   scene.add(sunLight);
 
@@ -607,14 +608,50 @@ const GEO = /*__GEO__*/null;
 
   // 0. Urantia, la planète (axe orienté vers le vrai pôle céleste, éclairée par le vrai Soleil)
   const L0 = addLevel({ name: 'Urantia', R: 6.73e-10, stop: 2.6, win: [-Infinity, -Infinity, 1.75, 2.3], floor: -Infinity });
-  const planetMat = fadeMat(L0, new THREE.MeshPhongMaterial({ map: planetTex(), shininess: 14, specular: 0x1a2a44 }), 1, 'planets');
+  // Reflet du Soleil sur les océans seulement : masque tiré des contours Natural Earth
+  function oceanMask() {
+    const cv = document.createElement('canvas'); cv.width = 1024; cv.height = 512;
+    const g = cv.getContext('2d');
+    g.fillStyle = '#fff'; g.fillRect(0, 0, 1024, 512);
+    if (GEO) {
+      const path = (a) => { let x = 0, y = 0; for (let i = 0; i < a.length; i += 2) { x += a[i]; y += a[i + 1]; const px = (x / 10 + 180) / 360 * 1024, py = (90 - y / 10) / 180 * 512; if (i === 0) g.moveTo(px, py); else g.lineTo(px, py); } g.closePath(); };
+      g.fillStyle = '#000';
+      GEO.land.forEach((p) => { g.beginPath(); p.forEach(path); g.fill('evenodd'); });
+      g.fillStyle = '#fff';
+      GEO.lakes.forEach((p) => { g.beginPath(); p.forEach(path); g.fill('evenodd'); });
+    }
+    return new THREE.CanvasTexture(cv);
+  }
+  const planetMat = fadeMat(L0, new THREE.MeshPhongMaterial({ map: planetTex(), specularMap: oceanMask(), shininess: 30, specular: 0x4a6684 }), 1, 'planets');
   planetMat.depthWrite = true;
+  // lumières des villes : visibles seulement du côté nuit (direction du Soleil passée au shader)
+  const sunView = { value: new V3(0, 0, 1) };
+  planetMat.onBeforeCompile = (sh) => {
+    sh.uniforms.uSun = sunView;
+    sh.fragmentShader = 'uniform vec3 uSun;\n' + sh.fragmentShader.replace('#include <emissivemap_fragment>',
+      '#include <emissivemap_fragment>\n\ttotalEmissiveRadiance *= smoothstep(0.12, -0.2, dot(normal, uSun));');
+  };
   const pivot = new THREE.Group();
   pivot.quaternion.setFromUnitVectors(new V3(0, 1, 0), POLE);
   L0.group.add(pivot);
   const planet = new THREE.Mesh(new THREE.SphereGeometry(1, 64, 40), planetMat);
   pivot.add(planet);
-  const halo = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: haloTex, blending: THREE.AdditiveBlending }), 1, 'planets'));
+  // Nuages : couche translucide un peu au-dessus du sol (image générée, illustrative), qui dérive lentement
+  const cloudMat = fadeMat(L0, new THREE.MeshPhongMaterial({ color: 0xffffff, transparent: true, shininess: 2 }), 0.95, 'planets');
+  const cloudLayer = new THREE.Mesh(new THREE.SphereGeometry(1.012, 64, 40), cloudMat);
+  cloudLayer.visible = false;                    // affichée quand la carte des nuages est chargée
+  cloudLayer.renderOrder = 1;
+  planet.add(cloudLayer);
+  // Atmosphère : lueur bleutée au bord du disque (effet de Fresnel)
+  const atmoMat = glowBlend(new THREE.ShaderMaterial({
+    uniforms: { uOp: { value: 1 } },
+    vertexShader: 'varying vec3 vN; varying vec3 vV; void main() { vec4 mv = modelViewMatrix * vec4(position, 1.0); vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz); gl_Position = projectionMatrix * mv; }',
+    fragmentShader: 'uniform float uOp; varying vec3 vN; varying vec3 vV; void main() { float k = pow(clamp(1.0 - abs(dot(vN, vV)), 0.0, 1.0), 3.0); gl_FragColor = vec4(vec3(0.32, 0.58, 1.0) * k * 1.6 * uOp, 1.0); }',
+    side: THREE.BackSide, transparent: true, depthWrite: false
+  }), true);
+  const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.07, 64, 40), atmoMat);
+  L0.group.add(atmo);
+  const halo = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: haloTex, blending: THREE.AdditiveBlending }), 0.35, 'planets'));
   halo.scale.set(2.52, 2.52, 1);
   L0.group.add(halo);
   lab(L0, 'Urantia · n° 606 de Satania', new V3(0, 1.2, 0), 'gold', { cf: 'planets' });
@@ -635,9 +672,19 @@ const GEO = /*__GEO__*/null;
     const mp = eclToScene(Math.cos(lat) * Math.cos(lon), Math.cos(lat) * Math.sin(lon), Math.sin(lat)).multiplyScalar(distR);
     const moonMat = fadeMat(L0, new THREE.MeshPhongMaterial({ color: 0xbdbab3, shininess: 4 }), 1, 'planets');
     moonMat.depthWrite = true;
-    const moon = new THREE.Mesh(new THREE.SphereGeometry(0.273, 32, 20), moonMat);
+    const moon = new THREE.Mesh(new THREE.SphereGeometry(0.273, 48, 32), moonMat);
     moon.position.copy(mp);
+    moon.quaternion.setFromUnitVectors(new V3(1, 0, 0), mp.clone().negate().normalize());   // face visible tournée vers la Terre
     L0.group.add(moon);
+    // Textures réelles (NASA) : la Terre de jour, ses lumières de nuit, la Lune ; nuages générés
+    if (TEX) {
+      const tl = new THREE.TextureLoader(), an = Math.min(8, renderer.capabilities.getMaxAnisotropy());
+      const ld = (k, fn) => { try { tl.load(TEX[k], (t) => { t.anisotropy = an; fn(t); }); } catch (e) { /* on garde la texture dessinée */ } };
+      ld('day', (t) => { planetMat.map = t; planetMat.needsUpdate = true; });
+      ld('night', (t) => { planetMat.emissiveMap = t; planetMat.emissive.set(0xffd9a0); planetMat.emissiveIntensity = 1.3; planetMat.needsUpdate = true; });
+      ld('clouds', (t) => { cloudMat.alphaMap = t; cloudMat.needsUpdate = true; cloudLayer.visible = true; });
+      ld('moon', (t) => { moonMat.map = t; moonMat.color.set(0xffffff); moonMat.needsUpdate = true; });
+    }
     const mo = [];
     for (let k = 0; k <= 160; k++) { const a = (k / 160) * Math.PI * 2; mo.push(eclToScene(Math.cos(a), Math.sin(a), 0).multiplyScalar(60.3)); }
     L0.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(mo), lineMat(L0, 0x7d8dc0, 0.3, false, 0, 0, 'planets')));
@@ -682,17 +729,51 @@ const GEO = /*__GEO__*/null;
   L1.local.copy(EARTH).divideScalar(40);
   fixedSprite(L1, new V3(0, 0, 0), 0xffd59a, 0.05, null, null, 'sun');
   fixedSprite(L1, new V3(0, 0, 0), 0xffb860, 0.13, glowTex, null, 'sun');
+  // couleurs et tailles d’affichage indicatives ; distance moyenne au Soleil en unités astronomiques
+  const PSTYLE = { Mercure: [0xb9ab9c, 0.010], 'Vénus': [0xf3dcae, 0.013], Mars: [0xe8875c, 0.011], Jupiter: [0xe9cba0, 0.024], Saturne: [0xeedca8, 0.020], Uranus: [0xa6e6ea, 0.016], Neptune: [0x7795f2, 0.016] };
+  const saturnTex = canvasTex(128, (g) => { g.strokeStyle = '#fff'; g.lineWidth = 7; g.beginPath(); g.ellipse(64, 64, 58, 17, -0.35, 0, Math.PI * 2); g.stroke(); });
+  const ua = (a) => a.toLocaleString('fr-CA', { maximumFractionDigits: a < 2 ? 2 : 1 }) + ' UA';
   PLANETS.forEach((pl, i) => {
     const orbit = [];
     for (let k = 0; k <= 180; k++) orbit.push(keplerPos(pl.o, k * 2).divideScalar(40));
     const ours = i === 2;
     L1.group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, ours ? 0xF0B33C : 0x7d8dc0, ours ? 0.9 : 0.35, false, 0, 0, 'planets')));
     if (!ours) {
-      const p = pl.pos.clone().divideScalar(40);
-      fixedSprite(L1, p, 0xcfd6ee, 0.012, null, null, 'planets');
-      lab(L1, pl.name, p, 'small', { cf: 'planets' });
+      const p = pl.pos.clone().divideScalar(40), st = PSTYLE[pl.name] || [0xcfd6ee, 0.012];
+      fixedSprite(L1, p, st[0], st[1], null, null, 'planets');
+      if (pl.name === 'Saturne') fixedSprite(L1, p, st[0], st[1] * 2.4, saturnTex, null, 'planets');
+      lab(L1, pl.name + ' · ' + ua(pl.o.a), p, 'small', { cf: 'planets' });
     }
   });
+  { // Pluton, planète naine (astronomie moderne) : éléments képlériens classiques du JPL, position du jour
+    const po = orbitOf(['Pluton', 39.48211675, 0.24882730, 17.14001206, 238.92903833, 224.06891629, 110.30393684, -0.00031596, 0.00005170, 0.00004818, 145.20780515, -0.04062942, -0.01183482]);
+    const orbit = [];
+    for (let k = 0; k <= 240; k++) orbit.push(keplerPos(po, k * 1.5).divideScalar(40));
+    const pl = new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, 0x8e86a8, 0.35, true, 0.012, 0.01, 'planets'));
+    pl.computeLineDistances();
+    L1.group.add(pl);
+    const pp = keplerPos(po, eccAnomaly(po)).divideScalar(40);
+    fixedSprite(L1, pp, 0xd8c3a8, 0.009, null, null, 'planets');
+    lab(L1, 'Pluton · planète naine · 39,5 UA', pp, 'small', { cf: 'planets' });
+  }
+  { // ceinture de Kuiper : petits corps glacés au-delà de Neptune (astronomie moderne)
+    const b = buf(), rk = mulberry32(1992);
+    for (let i = 0; i < 1800 * F; i++) {
+      const p = keplerPos({ a: 39 + rk() * 9, e: rk() * 0.12, I: (rk() - 0.5) * 18, om: rk() * 360, O: rk() * 360 }, rk() * 360).divideScalar(40);
+      put(b, p.x, p.y, p.z, tc.set(0x9fb0c8), 0.18 + rk() * 0.2, 1.0 + rk() * 0.5);
+    }
+    addPts(L1, b).userData.f = 'planets';
+    lab(L1, 'ceinture de Kuiper · astronomie moderne', keplerPos({ a: 44, e: 0, I: 0, om: 0, O: 0 }, 230).divideScalar(40), 'small', { cf: 'planets' });
+  }
+  { // comète de Halley : orbite seulement (éléments approchés, astronomie moderne)
+    const ho = { a: 17.834, e: 0.96714, I: 162.26, om: 111.33, O: 58.42 };
+    const orbit = [];
+    for (let k = 0; k <= 360; k++) orbit.push(keplerPos(ho, k).divideScalar(40));
+    const hl = new THREE.Line(new THREE.BufferGeometry().setFromPoints(orbit), lineMat(L1, 0x9fd0e8, 0.4, true, 0.01, 0.008, 'planets'));
+    hl.computeLineDistances();
+    L1.group.add(hl);
+    lab(L1, 'comète de Halley · orbite, environ 76 ans', keplerPos(ho, 180).divideScalar(40), 'small', { cf: 'planets' });
+  }
   lab(L1, 'Soleil', new V3(0, 0, 0), '', { below: true, dy: 6, cf: 'sun' });
   { // frise : avant la naissance du Soleil, la matière de la nébuleuse d’Andronover (image)
     const neb = new THREE.Sprite(fadeMat(L1, new THREE.SpriteMaterial({ map: glowTex, color: 0xffb27a, blending: THREE.AdditiveBlending, depthTest: false }), 0.75, 'neb'));
@@ -1256,8 +1337,8 @@ const GEO = /*__GEO__*/null;
 
   /* ---------- Interface : textes ---------- */
   const INFO = [
-    { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment. Les continents sont réels (Natural Earth), la Lune est à sa position du jour, et le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
-    { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '.' },
+    { h: 'Urantia', p: 'Notre planète, point de départ du zoom. Urantia porte le n°&nbsp;606 dans le système de Satania' + REF('15:14.5') + ' et le n°&nbsp;5&#8239;342&#8239;482&#8239;337&#8239;666 au catalogue des mondes habités' + REF('15:14.8') + '. Son axe pointe vers le vrai pôle céleste et elle tourne à sa vraie vitesse&nbsp;: le côté éclairé par le vrai Soleil est le côté jour en ce moment, et les lumières des villes brillent du côté nuit. La Terre et la Lune sont des images de la NASA&nbsp;; les nuages sont une image générée, illustrative, et non la météo du jour. La Lune est à sa position du jour&nbsp;: éloigne-toi un peu, ou clique sur son nom, pour la voir à sa vraie distance. Le ciel du fond montre les étoiles visibles à l’œil nu, à leur vraie place.' },
+    { h: 'Monmatia', p: 'Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley&nbsp;; les couleurs et les tailles des planètes sont indicatives.' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
     { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#8239;840&#8239;101 planètes habitées' + REF('32:2.9') + '.' },
@@ -2188,6 +2269,9 @@ const GEO = /*__GEO__*/null;
     coupe9.visible = coupe && L9.a > 0.05 && FACT.c9 > 0.01;
     frameEl.style.opacity = FACT.frame.toFixed(3);
     planet.rotation.y = earthAngle(Date.now());   // rotation réelle d’Urantia
+    if (!reduced) cloudLayer.rotation.y += dt * 0.003;   // les nuages dérivent un peu
+    atmoMat.uniforms.uOp.value = L0.a * FACT.planets;
+    sunView.value.copy(sunLight.position).normalize().transformDirection(camera.matrixWorldInverse);
     if (ascOn && ASC[ascI].seat) {                 // repère de l’étape en cours de la carrière ascendante
       const s = SEATS[ASC[ascI].seat], SL = s.L;
       ascMark.visible = SL.group.visible && SL.a > 0.3;

@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dieu et la Déité selon le Livre d’Urantia : le JE SUIS, les sept Absolus, la Trinité, les Maitres Esprits, les Déités expérientielles.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:title" content="Dieu et la Déité">
+<meta property="og:description" content="Dieu et la Déité selon le Livre d’Urantia : le JE SUIS, les sept Absolus, la Trinité, les Maitres Esprits, les Déités expérientielles.">
+<meta property="og:url" content="https://constructoai.github.io/Le_Livre_d-Urantia/dieu-et-deite.html">
+<meta property="og:image" content="https://constructoai.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Dieu et la Déité</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Partie I et Introduction : six schémas sur Dieu et la Déité. Mêmes jetons et règles de dessin que la page des concepts ;
+   l’or est la seule couleur porteuse de sens, avec une signification propre à chaque schéma. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des figures */
+  --tint: #E4E9F2;     /* survol */
+  --hl: #D9E1F0;       /* élément sélectionné */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* la couleur qui porte le sens */
+  --gold-ink: #8A5A00; /* l’or, en texte */
+  --on-gold: #1B1405;
+  --acc-fill: #F8ECD2; /* fond doré des éléments marqués */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --hl: #26314F; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --acc-fill: #392C10;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --hl: #26314F; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --acc-fill: #392C10;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); white-space: nowrap; letter-spacing: 0; }
+.qt { font-family: var(--font-display); font-style: italic; font-size: 1.16em; line-height: 1.38; }
+.qt .ref { font-size: .68em; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 44ch; }
+.pull { margin: 0; display: grid; gap: 6px; max-width: 48ch; }
+.pull p { font-family: var(--font-display); font-style: italic; font-size: 1.42rem; line-height: 1.36; }
+.addr { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 10px; min-width: 0; }
+.addr .lnk { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.25; padding: 7px 0; border-top: 1px solid var(--rule); }
+.addr .cat { padding-top: 10px; border-top: 1px solid var(--rule); font-size: .86rem; color: var(--muted); }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+
+/* Sections et schémas */
+.sec-head { display: grid; gap: 12px; max-width: 68ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+.duo { display: grid; grid-template-columns: minmax(0, 384px) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 26px; }
+figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 10px 10px 12px; display: grid; gap: 8px; min-width: 0; }
+.fig figcaption { font-size: .86rem; color: var(--muted); padding: 0 8px; }
+.side { position: sticky; top: 16px; display: grid; gap: 14px; min-width: 0; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-left: 3px solid var(--gold); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; min-height: 8em; align-content: start; }
+.panel .ph { color: var(--muted); }
+.panel .ref, .tv .ref { white-space: normal; }
+.tv summary { cursor: pointer; font: 500 .74rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tv ul { margin: 10px 0 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: .92rem; }
+
+/* Dessin */
+.dg { display: block; width: 100%; max-width: 360px; height: auto; margin: 0 auto; color: var(--ink); overflow: visible; }
+.dg text { font-family: var(--font-body); }
+.dg .box { fill: var(--sheet); stroke: currentColor; stroke-width: 1.2; }
+.dg .box.g { fill: var(--acc-fill); stroke: var(--gold); stroke-width: 1.6; }
+.dg .box.dash { stroke: var(--muted); stroke-dasharray: 4 3; }
+.dg .frame { fill: none; stroke: var(--gold); stroke-width: 1.6; stroke-dasharray: 7 5; }
+.dg .ln { fill: none; stroke: currentColor; stroke-width: 1.3; }
+.dg .ln.g { stroke: var(--gold); stroke-width: 1.8; }
+.dg .ln.d { stroke-dasharray: 5 4; }
+.dg .mk { fill: currentColor; }
+.dg .mk.g { fill: var(--gold); }
+.dg .lbl { font-size: 13px; font-weight: 700; fill: var(--ink); }
+.dg .lbl.s12 { font-size: 12px; }
+.dg .sub { font-size: 11px; fill: var(--muted); }
+.dg .gi { fill: var(--gold-ink); }
+.dg .al { font-size: 11.5px; font-weight: 500; fill: var(--ink); paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+.dg .al.g { fill: var(--gold-ink); }
+.dg .al.m { fill: var(--muted); }
+.dg .al.hf { stroke: var(--acc-fill); }
+.dg .cap2 { font-size: 12px; font-weight: 500; fill: var(--muted); }
+.dg .rg { fill: none; stroke-width: 1.2; }
+.dg .rg.g { stroke: var(--gold); stroke-width: 2; }
+.dg .rg.u { stroke: var(--muted); stroke-dasharray: 3 3; }
+.dg .disk { fill: var(--acc-fill); stroke: var(--gold); stroke-width: 2; }
+.dg .badge { fill: var(--acc-fill); stroke: var(--gold); stroke-width: 1.4; }
+.dg .bdg { font-size: 12px; font-weight: 700; fill: var(--gold-ink); }
+.dg .dot-g { fill: var(--gold); }
+.dg .dt { fill: currentColor; }
+.dg .dto { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.dg .thr-v { stroke: currentColor; stroke-width: 2; }
+.dg .thr-h { stroke: var(--muted); stroke-width: 2; }
+.dg .hit { cursor: pointer; }
+.dg .hb { fill: transparent; stroke: none; }
+.dg path.hb { fill: none; stroke: transparent; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+.dg .hbr { fill: none; stroke: transparent; }
+.dg .hit:focus { outline: none; }
+.dg .hit:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+.dg .hit:hover .box, .dg .hit:focus-visible .box { stroke-width: 2.2; }
+.dg .hit:hover .ln, .dg .hit:focus-visible .ln, .dg .hit:hover .rg { stroke-width: 2.4; }
+.dg .hit:hover rect.hb { fill: var(--tint); }
+.dg .hit.sel .box, .dg .hit.sel .disk { stroke-width: 2.8; }
+.dg .hit.sel .ln, .dg .hit.sel .rg { stroke-width: 2.8; }
+.dg .hit.sel rect.hb { fill: var(--hl); }
+.dg .hit.sel path.hb, .dg .hit.sel .hbr { stroke: var(--hl); }
+
+/* Fin de page */
+.np { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 20px; max-width: 80ch; }
+.np summary { cursor: pointer; }
+.np summary h2 { display: inline; font-size: clamp(1.4rem, 2.8vw, 1.9rem); }
+.np ul { margin: 14px 0 0; padding-left: 1.1em; display: grid; gap: 10px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 80ch; display: grid; gap: 6px; }
+
+/* Tableau des attributs */
+.attr-wrap { margin-top: 24px; display: grid; gap: 12px; max-width: 80ch; }
+.attr { width: 100%; border-collapse: collapse; font-size: .96rem; }
+.attr th, .attr td { text-align: left; vertical-align: top; padding: 9px 12px 9px 0; border-top: 1px solid var(--rule); }
+.attr thead th { border-top: 0; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; }
+.attr td .ref { margin-left: 6px; }
+
+@media (max-width: 860px) {
+  .hero, .duo { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .side { position: static; }
+}
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  figure.fig { padding: 8px 6px 10px; }
+  .panel { padding: 14px 14px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Le Livre d’Urantia · Introduction et partie I</p>
+      <h1>Dieu et la Déité</h1>
+      <p class="lede">Six schémas pour voir comment le texte articule l’Infini, les trois personnes de la Déité, la Trinité et les Déités qui émergent par l’expérience. Clique sur un élément ou une flèche&nbsp;: la relation, sa référence et, pour les relations clés, une courte citation s’affichent.</p>
+      <figure class="pull">
+        <p>«&nbsp;Le mot Dieu dénote toujours <em>la personnalité.</em>&nbsp;»</p>
+        <figcaption class="ref">0:2.10</figcaption>
+      </figure>
+    </div>
+    <aside class="addr" aria-label="Dans l’atlas">
+      <span class="label">Dans l’atlas</span>
+      <a class="lnk" href="index.html">Accueil de l’atlas</a>
+      <a class="lnk" href="atlas-3d.html#deite">Vue 3D&nbsp;: le bouton Déité</a>
+      <a class="lnk" href="concepts-en-schemas.html">Les concepts en schémas</a>
+      <a class="lnk" href="familles-de-personnalites.html">Les familles d’êtres</a>
+      <a class="lnk" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre</a>
+      <p class="cat">Vocabulaire&nbsp;: <em>Dieu</em> désigne toujours une personnalité&nbsp;; <em>Déité</em>, pas forcément <span class="ref">0:2.10</span>. La page présente ce que dit le texte, sans le défendre ni le juger.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#s1"><span class="nb">1</span><span class="tt">Le JE SUIS et les sept Absolus</span></a></li>
+      <li><a href="#s2"><span class="nb">2</span><span class="tt">Les trois personnes et l’Ile</span></a></li>
+      <li><a href="#s3"><span class="nb">3</span><span class="tt">La Trinité du Paradis</span></a></li>
+      <li><a href="#s4"><span class="nb">4</span><span class="tt">Les Sept Maitres Esprits</span></a></li>
+      <li><a href="#s5"><span class="nb">5</span><span class="tt">Dieu le Septuple</span></a></li>
+      <li><a href="#s6"><span class="nb">6</span><span class="tt">Les Déités expérientielles</span></a></li>
+      <li><a href="#s-attr"><span class="nb">+</span><span class="tt">Les attributs du Père</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="s1" aria-labelledby="h-s1">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 1</p>
+      <h2 id="h-s1">Le JE SUIS et les sept Absolus de l’Infinité</h2>
+      <p>Pour aider le mental fini, le texte part d’un JE SUIS infini, dont les relations internes deviennent sept Absolus éternels <span class="ref">105:1–3</span>. Il précise que ce point de départ est une concession philosophique, et que les Absolus n’ont jamais eu de commencement <span class="ref">0:3.23 · 105:3.10</span>.</p>
+      <p class="hint">Clique sur un élément ou une flèche. Au clavier&nbsp;: Tab, puis Entrée.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="1">
+        <svg class="dg" viewBox="0 0 360 392" role="img" aria-label="Le JE SUIS et les sept Absolus. Les relations du JE SUIS s’éternisent en sept Absolus : du côté déifié, le Père, le Fils, l’Esprit Infini et l’Absolu de Déité ; du côté non déifié, l’Ile du Paradis, dont le Père est la source, et l’Absolu Non Qualifié. Une tension relie les deux Absolus ; l’Absolu Universel les unifie.">
+          <defs>
+            <marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+          </defs>
+          <g class="hit" data-k="1-jesuis"><rect class="box" x="120" y="12" width="120" height="40" rx="8"/><text class="lbl" x="180" y="30" text-anchor="middle">JE SUIS</text><text class="sub" x="180" y="45" text-anchor="middle">l’Infini</text></g>
+          <g class="hit" data-k="1-eternise"><path class="hb" d="M180 52V76M86 92V76H274V92"/><path class="ln" d="M180 52V76"/><path class="ln" d="M180 76H86V91" marker-end="url(#m1)"/><path class="ln" d="M180 76H274V91" marker-end="url(#m1)"/><text class="al" x="186" y="68">s’éternisent en</text></g>
+          <text class="cap2 gi" x="86" y="108" text-anchor="middle">Déifié</text>
+          <text class="cap2" x="274" y="108" text-anchor="middle">Non déifié</text>
+          <g class="hit" data-k="1-pere"><rect class="box g" x="16" y="118" width="140" height="40" rx="8"/><text class="lbl" x="28" y="135">Père Universel</text><text class="sub" x="28" y="150">Source-Centre Première</text></g>
+          <g class="hit" data-k="1-fils"><rect class="box g" x="16" y="166" width="140" height="40" rx="8"/><text class="lbl" x="28" y="183">Fils Éternel</text><text class="sub" x="28" y="198">Source-Centre Deuxième</text></g>
+          <g class="hit" data-k="1-esprit"><rect class="box g" x="16" y="214" width="140" height="40" rx="8"/><text class="lbl" x="28" y="231">Esprit Infini</text><text class="sub" x="28" y="246">Source-Centre Troisième</text></g>
+          <g class="hit" data-k="1-absdeite"><rect class="box g" x="16" y="262" width="140" height="40" rx="8"/><text class="lbl" x="28" y="279">Absolu de Déité</text><text class="sub" x="28" y="294">le Qualifié, activateur</text></g>
+          <g class="hit" data-k="1-ile"><rect class="box" x="204" y="118" width="140" height="40" rx="8"/><text class="lbl" x="216" y="135">Ile du Paradis</text><text class="sub" x="216" y="150">archétype de non-déité</text></g>
+          <g class="hit" data-k="1-nonqual"><rect class="box" x="204" y="262" width="140" height="40" rx="8"/><text class="lbl s12" x="214" y="279">Absolu Non Qualifié</text><text class="sub" x="216" y="294">mécanicien, non déifié</text></g>
+          <g class="hit" data-k="1-source"><path class="hb" d="M156 138H204"/><path class="ln" d="M156 138H203" marker-end="url(#m1)"/><text class="al" x="180" y="132" text-anchor="middle">source</text></g>
+          <g class="hit" data-k="1-tension"><path class="hb" d="M156 282H204"/><path class="ln" d="M157 282H203" marker-start="url(#m1)" marker-end="url(#m1)"/><text class="al" x="180" y="276" text-anchor="middle">tension</text></g>
+          <g class="hit" data-k="1-unifie"><path class="hb" d="M140 334L86 302M220 334L274 302"/><path class="ln" d="M140 334L86.8 302.5" marker-end="url(#m1)"/><path class="ln" d="M220 334L273.2 302.5" marker-end="url(#m1)"/><text class="al" x="180" y="322" text-anchor="middle">unifie</text></g>
+          <g class="hit" data-k="1-univ"><rect class="box" x="100" y="334" width="160" height="44" rx="8"/><text class="lbl" x="180" y="352" text-anchor="middle">Absolu Universel</text><text class="sub" x="180" y="367" text-anchor="middle">unifie déifié et non déifié</text></g>
+        </svg>
+        <figcaption>Les sept Absolus coexistent de toute éternité&nbsp;; l’ordre du dessin n’est pas une chronologie. En or&nbsp;: le côté déifié.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 1">
+        <div class="panel" id="pan-1" aria-live="polite"><p class="ph">Choisis un Absolu ou une flèche pour voir la relation, sa référence et, pour les relations clés, une courte citation.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="1"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s2" aria-labelledby="h-s2">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 2</p>
+      <h2 id="h-s2">Les trois personnes de la Déité et l’Ile du Paradis</h2>
+      <p>Qui est quoi&nbsp;: le Père, Source-Centre Première&nbsp;; le Fils Éternel, Deuxième&nbsp;; l’Esprit Infini, Troisième&nbsp;; et l’Ile du Paradis, source non personnelle de la matière <span class="ref">0:3.1–8 · 0:4.12</span>. Chacun est le centre d’un circuit <span class="ref">0:6.1</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="2">
+        <svg class="dg" viewBox="0 0 360 296" role="img" aria-label="Les trois personnes et l’Ile. Le Père est père du Fils et source de l’Ile du Paradis. Il agit par l’Esprit Infini, avec le Fils ; l’Esprit apparait en présence du Paradis. Le Père est le centre du circuit de personnalité, le Fils de la gravité de l’esprit, l’Esprit de celle du mental, l’Ile de celle de la matière.">
+          <defs>
+            <marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+          </defs>
+          <g class="hit" data-k="2-perede"><path class="hb" d="M140 66L100 118"/><path class="ln" d="M140 66L100.6 117.2" marker-end="url(#m2)"/><text class="al" x="110" y="96" text-anchor="end">père de</text></g>
+          <g class="hit" data-k="2-sourcede"><path class="hb" d="M220 66L260 118"/><path class="ln" d="M220 66L259.4 117.2" marker-end="url(#m2)"/><text class="al" x="250" y="96">source de</text></g>
+          <g class="hit" data-k="2-agitpar"><path class="hb" d="M180 66V230"/><path class="ln" d="M180 66V229" marker-end="url(#m2)"/><text class="al" x="186" y="190">agit par</text></g>
+          <g class="hit" data-k="2-avecfils"><path class="hb" d="M100 170L140 230"/><path class="ln" d="M100 170L139.4 229.2" marker-end="url(#m2)"/><text class="al" x="110" y="210" text-anchor="end">avec le Fils</text></g>
+          <g class="hit" data-k="2-presence"><path class="hb" d="M260 170L220 230"/><path class="ln d" d="M260 170L220.6 229.2" marker-end="url(#m2)"/><text class="al" x="252" y="214">en présence</text></g>
+          <g class="hit" data-k="2-pere"><rect class="box g" x="110" y="14" width="140" height="52" rx="8"/><text class="lbl" x="180" y="32" text-anchor="middle">Père Universel</text><text class="sub" x="180" y="47" text-anchor="middle">Source-Centre Première</text><text class="sub" x="180" y="61" text-anchor="middle">circuit de personnalité</text></g>
+          <g class="hit" data-k="2-fils"><rect class="box g" x="16" y="118" width="140" height="52" rx="8"/><text class="lbl" x="86" y="136" text-anchor="middle">Fils Éternel</text><text class="sub" x="86" y="151" text-anchor="middle">Source-Centre Deuxième</text><text class="sub" x="86" y="165" text-anchor="middle">gravité de l’esprit</text></g>
+          <g class="hit" data-k="2-ile"><rect class="box" x="204" y="118" width="140" height="52" rx="8"/><text class="lbl" x="274" y="136" text-anchor="middle">Ile du Paradis</text><text class="sub" x="274" y="151" text-anchor="middle">non personnelle</text><text class="sub" x="274" y="165" text-anchor="middle">gravité de la matière</text></g>
+          <g class="hit" data-k="2-esprit"><rect class="box g" x="110" y="230" width="140" height="52" rx="8"/><text class="lbl" x="180" y="248" text-anchor="middle">Esprit Infini</text><text class="sub" x="180" y="263" text-anchor="middle">Source-Centre Troisième</text><text class="sub" x="180" y="277" text-anchor="middle">gravité du mental</text></g>
+        </svg>
+        <figcaption>Le Père devient père du Fils et source de l’Ile&nbsp;; avec le Fils, il agit par l’Esprit Infini. Chacun est le centre d’un circuit. En or&nbsp;: les trois personnes de la Déité.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 2">
+        <div class="panel" id="pan-2" aria-live="polite"><p class="ph">Choisis une personne, l’Ile ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="2"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s3" aria-labelledby="h-s3">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 3</p>
+      <h2 id="h-s3">La Trinité du Paradis</h2>
+      <p>La Trinité est l’union des trois personnes&nbsp;: une association qui a des fonctions plutôt que des attributs <span class="ref">10:4–5</span>. Le schéma montre ce qu’elle est, ce qu’elle fait et ce qui en est issu.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="3">
+        <svg class="dg" viewBox="0 0 360 344" role="img" aria-label="La Trinité du Paradis. Le Père, origine de la loi, le Fils, qui l’administre, et l’Esprit Infini, qui la révèle, s’unissent dans la Trinité, qui applique la loi : la justice. Ses attitudes envers le fini, l’absonite et l’absolu se rapportent à l’Être Suprême, à l’Ultimité et à la Déité totale. Les Fils Stationnaires de la Trinité, issus d’elle, rendent le jugement.">
+          <defs>
+            <marker id="m3" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m3g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="3-pere"><rect class="box" x="16" y="14" width="96" height="40" rx="8"/><text class="lbl" x="64" y="31" text-anchor="middle">Père</text><text class="sub" x="64" y="46" text-anchor="middle">origine de la loi</text></g>
+          <g class="hit" data-k="3-fils"><rect class="box" x="132" y="14" width="96" height="40" rx="8"/><text class="lbl" x="180" y="31" text-anchor="middle">Fils Éternel</text><text class="sub" x="180" y="46" text-anchor="middle">administre la loi</text></g>
+          <g class="hit" data-k="3-esprit"><rect class="box" x="248" y="14" width="96" height="40" rx="8"/><text class="lbl" x="296" y="31" text-anchor="middle">Esprit Infini</text><text class="sub" x="296" y="46" text-anchor="middle">révèle la loi</text></g>
+          <g class="hit" data-k="3-union"><path class="hb" d="M64 54L140 100M180 54V100M296 54L220 100"/><path class="ln" d="M64 54L139.1 99.5" marker-end="url(#m3)"/><path class="ln" d="M180 54V99" marker-end="url(#m3)"/><path class="ln" d="M296 54L220.9 99.5" marker-end="url(#m3)"/><text class="al" x="186" y="82">union</text></g>
+          <g class="hit" data-k="3-fini"><path class="hb" d="M120 144L68 196"/><path class="ln" d="M120 144L68.7 195.3" marker-end="url(#m3)"/><text class="al" x="86" y="166" text-anchor="end">fini</text></g>
+          <g class="hit" data-k="3-absonite"><path class="hb" d="M180 144V196"/><path class="ln" d="M180 144V195" marker-end="url(#m3)"/><text class="al" x="186" y="174">absonite</text></g>
+          <g class="hit" data-k="3-absolu"><path class="hb" d="M240 144L292 196"/><path class="ln" d="M240 144L291.3 195.3" marker-end="url(#m3)"/><text class="al" x="274" y="166">absolu</text></g>
+          <g class="hit" data-k="3-justice"><path class="hb" d="M270 122H350V308H300"/><path class="ln g" d="M270 122H350V308H301" marker-end="url(#m3g)"/><text class="al g" x="311" y="116" text-anchor="middle">justice</text></g>
+          <g class="hit" data-k="3-trinite"><rect class="box g" x="90" y="100" width="180" height="44" rx="8"/><text class="lbl" x="180" y="118" text-anchor="middle">Trinité du Paradis</text><text class="sub" x="180" y="133" text-anchor="middle">applique la loi : la justice</text></g>
+          <g class="hit" data-k="3-supreme"><rect class="box" x="16" y="196" width="104" height="40" rx="8"/><text class="lbl" x="68" y="213" text-anchor="middle">Être Suprême</text><text class="sub" x="68" y="228" text-anchor="middle">le fini</text></g>
+          <g class="hit" data-k="3-ultimite"><rect class="box" x="128" y="196" width="104" height="40" rx="8"/><text class="lbl" x="180" y="213" text-anchor="middle">Ultimité</text><text class="sub" x="180" y="228" text-anchor="middle">l’absonite</text></g>
+          <g class="hit" data-k="3-totale"><rect class="box" x="240" y="196" width="104" height="40" rx="8"/><text class="lbl" x="292" y="213" text-anchor="middle">Déité totale</text><text class="sub" x="292" y="228" text-anchor="middle">l’absolu</text></g>
+          <g class="hit" data-k="3-stationnaires"><rect class="box g" x="60" y="286" width="240" height="44" rx="8"/><text class="lbl" x="180" y="304" text-anchor="middle">Fils Stationnaires de la Trinité</text><text class="sub" x="180" y="319" text-anchor="middle">dix ordres · rendent le jugement</text></g>
+        </svg>
+        <figcaption>La Trinité unit les trois personnes, applique la loi, et ses Fils Stationnaires rendent le jugement. En or&nbsp;: la Trinité et ce qui en est issu.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 3">
+        <div class="panel" id="pan-3" aria-live="polite"><p class="ph">Choisis la Trinité, une personne, une attitude ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="3"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s4" aria-labelledby="h-s4">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 4</p>
+      <h2 id="h-s4">Les Sept Maitres Esprits</h2>
+      <p>Les trois personnes peuvent s’exprimer seules ou associées de sept manières&nbsp;: ce sont les Sept Maitres Esprits, chacun à la tête d’un superunivers <span class="ref">16:1.1 · 16:3</span>. Orvonton, le nôtre, est le septième.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="4">
+        <svg class="dg" viewBox="0 0 360 376" role="img" aria-label="Les Sept Maitres Esprits, par lesquels se révèle l’Esprit Infini. Le premier exprime le Père, le deuxième le Fils, le troisième l’Esprit, le quatrième le Père et le Fils, le cinquième le Père et l’Esprit, le sixième le Fils et l’Esprit, le septième les trois. Chacun régit le superunivers de même numéro ; le septième est Orvonton.">
+          <defs>
+            <marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+          </defs>
+          <g class="hit" data-k="4-ei"><rect class="box" x="110" y="10" width="140" height="32" rx="8"/><text class="lbl" x="180" y="31" text-anchor="middle">Esprit Infini</text></g>
+          <g class="hit" data-k="4-revele"><path class="hb" d="M180 42V66"/><path class="ln" d="M180 42V65" marker-end="url(#m4)"/><text class="al" x="186" y="58">se révèle par</text></g>
+          <text class="cap2" x="160" y="84" text-anchor="middle">Père</text><text class="cap2" x="196" y="84" text-anchor="middle">Fils</text><text class="cap2" x="232" y="84" text-anchor="middle">Esprit</text><text class="cap2" x="332" y="84" text-anchor="end">superunivers</text>
+          <g class="hit" data-k="4-m1"><rect class="box" x="16" y="92" width="328" height="32" rx="6"/><text class="lbl" x="28" y="113">Maitre Esprit 1</text><circle class="dt" cx="160" cy="108" r="6"/><circle class="dto" cx="196" cy="108" r="4"/><circle class="dto" cx="232" cy="108" r="4"/><text class="lbl" x="332" y="113" text-anchor="end">1er</text></g>
+          <g class="hit" data-k="4-m2"><rect class="box" x="16" y="132" width="328" height="32" rx="6"/><text class="lbl" x="28" y="153">Maitre Esprit 2</text><circle class="dto" cx="160" cy="148" r="4"/><circle class="dt" cx="196" cy="148" r="6"/><circle class="dto" cx="232" cy="148" r="4"/><text class="lbl" x="332" y="153" text-anchor="end">2e</text></g>
+          <g class="hit" data-k="4-m3"><rect class="box" x="16" y="172" width="328" height="32" rx="6"/><text class="lbl" x="28" y="193">Maitre Esprit 3</text><circle class="dto" cx="160" cy="188" r="4"/><circle class="dto" cx="196" cy="188" r="4"/><circle class="dt" cx="232" cy="188" r="6"/><text class="lbl" x="332" y="193" text-anchor="end">3e</text></g>
+          <g class="hit" data-k="4-m4"><rect class="box" x="16" y="212" width="328" height="32" rx="6"/><text class="lbl" x="28" y="233">Maitre Esprit 4</text><path class="ln" d="M160 228H196"/><circle class="dt" cx="160" cy="228" r="6"/><circle class="dt" cx="196" cy="228" r="6"/><circle class="dto" cx="232" cy="228" r="4"/><text class="lbl" x="332" y="233" text-anchor="end">4e</text></g>
+          <g class="hit" data-k="4-m5"><rect class="box" x="16" y="252" width="328" height="32" rx="6"/><text class="lbl" x="28" y="273">Maitre Esprit 5</text><path class="ln" d="M160 268H232"/><circle class="dt" cx="160" cy="268" r="6"/><circle class="dto" cx="196" cy="268" r="4"/><circle class="dt" cx="232" cy="268" r="6"/><text class="lbl" x="332" y="273" text-anchor="end">5e</text></g>
+          <g class="hit" data-k="4-m6"><rect class="box" x="16" y="292" width="328" height="32" rx="6"/><text class="lbl" x="28" y="313">Maitre Esprit 6</text><path class="ln" d="M196 308H232"/><circle class="dto" cx="160" cy="308" r="4"/><circle class="dt" cx="196" cy="308" r="6"/><circle class="dt" cx="232" cy="308" r="6"/><text class="lbl" x="332" y="313" text-anchor="end">6e</text></g>
+          <g class="hit" data-k="4-m7"><rect class="box g" x="16" y="332" width="328" height="32" rx="6"/><text class="lbl" x="28" y="353">Maitre Esprit 7</text><path class="ln" d="M160 348H232"/><circle class="dt" cx="160" cy="348" r="6"/><circle class="dt" cx="196" cy="348" r="6"/><circle class="dt" cx="232" cy="348" r="6"/><text class="lbl gi" x="332" y="353" text-anchor="end">7e · Orvonton</text></g>
+        </svg>
+        <figcaption>Chaque ligne combine une, deux ou trois personnes de la Déité&nbsp;; la dernière colonne donne le superunivers régi. En or&nbsp;: Orvonton, notre superunivers.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 4">
+        <div class="panel" id="pan-4" aria-live="polite"><p class="ph">Choisis un Maitre Esprit ou la flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="4"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s5" aria-labelledby="h-s5">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 5</p>
+      <h2 id="h-s5">Dieu le Septuple</h2>
+      <p>Pour compenser les limites des créatures, le Père a établi une approche de la Déité en sept niveaux, que l’homme rencontre l’un après l’autre <span class="ref">0:8.1 · 116:2.4</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="5">
+        <svg class="dg" viewBox="0 0 360 386" role="img" aria-label="Dieu le Septuple : sept niveaux que l’homme mortel rencontre dans l’ordre, des Fils Créateurs, des Anciens des Jours et des Sept Maitres Esprits, les Créateurs Suprêmes, à l’Être Suprême, expérientiel, puis à l’Acteur Conjoint, au Fils Éternel et au Père Universel, les Déités du Paradis, existentielles.">
+          <defs>
+            <marker id="m5" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+          </defs>
+          <g class="hit" data-k="5-l7"><rect class="box" x="40" y="20" width="210" height="34" rx="6"/><text class="lbl" x="52" y="42">7 · Père Universel</text></g>
+          <g class="hit" data-k="5-l6"><rect class="box" x="40" y="64" width="210" height="34" rx="6"/><text class="lbl" x="52" y="86">6 · Fils Éternel</text></g>
+          <g class="hit" data-k="5-l5"><rect class="box" x="40" y="108" width="210" height="34" rx="6"/><text class="lbl" x="52" y="130">5 · Acteur Conjoint</text></g>
+          <g class="hit" data-k="5-l4"><rect class="box g" x="40" y="152" width="210" height="34" rx="6"/><text class="lbl" x="52" y="174">4 · Être Suprême</text></g>
+          <g class="hit" data-k="5-l3"><rect class="box" x="40" y="196" width="210" height="34" rx="6"/><text class="lbl" x="52" y="218">3 · Sept Maitres Esprits</text></g>
+          <g class="hit" data-k="5-l2"><rect class="box" x="40" y="240" width="210" height="34" rx="6"/><text class="lbl" x="52" y="262">2 · Anciens des Jours</text></g>
+          <g class="hit" data-k="5-l1"><rect class="box" x="40" y="284" width="210" height="34" rx="6"/><text class="lbl" x="52" y="306">1 · Fils Créateurs</text></g>
+          <g class="hit" data-k="5-paradis"><rect class="hb" x="256" y="20" width="96" height="122"/><path class="ln" d="M258 22H266V140H258"/><text class="al" x="274" y="74">Déités du</text><text class="al" x="274" y="89">Paradis</text><text class="sub" x="274" y="104">existentielles</text></g>
+          <g class="hit" data-k="5-createurs"><rect class="hb" x="256" y="196" width="96" height="122"/><path class="ln" d="M258 198H266V316H258"/><text class="al" x="274" y="252">Créateurs</text><text class="al" x="274" y="267">Suprêmes</text></g>
+          <text class="sub gi" x="274" y="174">expérientiel</text>
+          <g class="hit" data-k="5-approche"><path class="hb" d="M30 301V37"/><path class="ln" d="M30 301V38" marker-end="url(#m5)"/><text class="al" x="0" y="0" transform="translate(21 170) rotate(-90)" text-anchor="middle">s’approche</text></g>
+          <g class="hit" data-k="5-rencontre"><path class="hb" d="M145 340V318"/><path class="ln" d="M145 340V319" marker-end="url(#m5)"/><text class="al" x="151" y="333">rencontre</text></g>
+          <g class="hit" data-k="5-mortel"><rect class="box dash" x="40" y="340" width="210" height="34" rx="8"/><text class="lbl" x="145" y="362" text-anchor="middle">Homme mortel</text></g>
+        </svg>
+        <figcaption>Les trois premiers niveaux sont les Créateurs Suprêmes, les trois derniers les Déités du Paradis&nbsp;; l’Être Suprême est entre les deux. En or&nbsp;: le niveau expérientiel.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 5">
+        <div class="panel" id="pan-5" aria-live="polite"><p class="ph">Choisis un niveau, un groupe ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="5"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s6" aria-labelledby="h-s6">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 6</p>
+      <h2 id="h-s6">Les Déités expérientielles</h2>
+      <p>Le Père, le Fils et l’Esprit existent de toujours&nbsp;; le Suprême, l’Ultime et l’Absolu émergent par l’expérience, chacun à travers une Trinité <span class="ref">0:7.1–6 · 0:12</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="6">
+        <svg class="dg" viewBox="0 0 360 384" role="img" aria-label="Les Déités expérientielles. À gauche, l’existentiel : le Père, le Fils et l’Esprit, unis dans la Trinité du Paradis, où Dieu le Suprême a son origine. À droite, l’expérientiel : Créateurs et créatures actualisent le Suprême ; le Suprême constitue la Trinité Ultime, qui s’unifie en Dieu l’Ultime ; l’Ultime constitue la Trinité Absolue, qui s’unifierait en Dieu l’Absolu.">
+          <defs>
+            <marker id="m6" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+          </defs>
+          <text class="cap2" x="16" y="20">Existentiel : de toujours</text>
+          <text class="cap2 gi" x="196" y="20">Expérientiel : émerge</text>
+          <g class="hit" data-k="6-pfe"><rect class="box" x="16" y="30" width="140" height="66" rx="8"/><text class="lbl" x="86" y="51" text-anchor="middle">Père Universel</text><text class="lbl" x="86" y="68" text-anchor="middle">Fils Éternel</text><text class="lbl" x="86" y="85" text-anchor="middle">Esprit Infini</text></g>
+          <g class="hit" data-k="6-union"><path class="hb" d="M86 96V130"/><path class="ln" d="M86 96V129" marker-end="url(#m6)"/><text class="al" x="92" y="117">union</text></g>
+          <g class="hit" data-k="6-trinite"><rect class="box" x="16" y="130" width="140" height="40" rx="8"/><text class="lbl" x="86" y="148" text-anchor="middle">Trinité du Paradis</text><text class="sub" x="86" y="163" text-anchor="middle">existentielle</text></g>
+          <g class="hit" data-k="6-origine"><path class="hb" d="M156 150L196 288"/><path class="ln" d="M156 150L195.7 287" marker-end="url(#m6)"/><text class="al" x="172" y="228" text-anchor="end">origine</text></g>
+          <g class="hit" data-k="6-u-ta"><path class="hb" d="M270 90V66"/><path class="ln" d="M270 90V67" marker-end="url(#m6)"/><text class="al" x="276" y="82">s’unifie en</text></g>
+          <g class="hit" data-k="6-c-ta"><path class="hb" d="M270 150V126"/><path class="ln" d="M270 150V127" marker-end="url(#m6)"/><text class="al" x="276" y="142">constitue</text></g>
+          <g class="hit" data-k="6-u-tu"><path class="hb" d="M270 210V186"/><path class="ln" d="M270 210V187" marker-end="url(#m6)"/><text class="al" x="276" y="202">s’unifie en</text></g>
+          <g class="hit" data-k="6-c-tu"><path class="hb" d="M270 270V246"/><path class="ln" d="M270 270V247" marker-end="url(#m6)"/><text class="al" x="276" y="262">constitue</text></g>
+          <g class="hit" data-k="6-actualisent"><path class="hb" d="M270 336V306"/><path class="ln" d="M270 336V307" marker-end="url(#m6)"/><text class="al" x="276" y="325">actualisent</text></g>
+          <g class="hit" data-k="6-absolu"><rect class="box g" x="196" y="30" width="148" height="36" rx="8"/><text class="lbl" x="270" y="47" text-anchor="middle">Dieu l’Absolu</text><text class="sub" x="270" y="61" text-anchor="middle">niveau absolu</text></g>
+          <g class="hit" data-k="6-ta"><rect class="box dash" x="196" y="90" width="148" height="36" rx="8"/><text class="lbl s12" x="270" y="106" text-anchor="middle">Trinité Absolue</text><text class="sub" x="270" y="120" text-anchor="middle">+ Consommateur non révélé</text></g>
+          <g class="hit" data-k="6-ultime"><rect class="box g" x="196" y="150" width="148" height="36" rx="8"/><text class="lbl" x="270" y="167" text-anchor="middle">Dieu l’Ultime</text><text class="sub" x="270" y="181" text-anchor="middle">niveau absonite</text></g>
+          <g class="hit" data-k="6-tu"><rect class="box dash" x="196" y="210" width="148" height="36" rx="8"/><text class="lbl s12" x="270" y="226" text-anchor="middle">Trinité Ultime</text><text class="sub" x="270" y="240" text-anchor="middle">+ Créateurs, Architectes</text></g>
+          <g class="hit" data-k="6-supreme"><rect class="box g" x="196" y="270" width="148" height="36" rx="8"/><text class="lbl" x="270" y="287" text-anchor="middle">Dieu le Suprême</text><text class="sub" x="270" y="301" text-anchor="middle">niveau fini</text></g>
+          <g class="hit" data-k="6-cc"><rect class="box" x="196" y="336" width="148" height="36" rx="8"/><text class="lbl s12" x="270" y="352" text-anchor="middle">Créateurs et créatures</text><text class="sub" x="270" y="366" text-anchor="middle">font la volonté de Dieu</text></g>
+        </svg>
+        <figcaption>Ce qui existe de toujours, à gauche&nbsp;; ce qui émerge, à droite, chaque Déité naissant de l’unification d’une Trinité. En or&nbsp;: les Déités expérientielles. En pointillé&nbsp;: les Trinités pas encore pleinement manifestes.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 6">
+        <div class="panel" id="pan-6" aria-live="polite"><p class="ph">Choisis une Déité, une Trinité ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="6"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s-attr" aria-labelledby="h-attr">
+    <div class="sec-head">
+      <p class="eyebrow">En complément</p>
+      <h2 id="h-attr">Les attributs du Père</h2>
+      <p>Le fascicule 2 traite de la nature de Dieu, le fascicule 3 de ses attributs. Voici leurs sections, à lire dans le texte.</p>
+    </div>
+    <div class="attr-wrap">
+      <table class="attr">
+        <thead><tr><th scope="col">La nature de Dieu · fasc. 2</th><th scope="col">Les attributs de Dieu · fasc. 3</th></tr></thead>
+        <tbody>
+          <tr><td>L’infinité<span class="ref">2:1</span></td><td>L’omniprésence<span class="ref">3:1</span></td></tr>
+          <tr><td>La perfection éternelle<span class="ref">2:2</span></td><td>Le pouvoir infini<span class="ref">3:2</span></td></tr>
+          <tr><td>Justice et droiture<span class="ref">2:3</span></td><td>La connaissance universelle<span class="ref">3:3</span></td></tr>
+          <tr><td>La miséricorde<span class="ref">2:4</span></td><td>Le caractère illimité<span class="ref">3:4</span></td></tr>
+          <tr><td>L’amour<span class="ref">2:5</span></td><td>Le gouvernement suprême<span class="ref">3:5</span></td></tr>
+          <tr><td>La bonté<span class="ref">2:6</span></td><td>La primauté<span class="ref">3:6</span></td></tr>
+          <tr><td>Vérité et beauté<span class="ref">2:7</span></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-np">
+    <details class="np">
+      <summary><h2 id="h-np">Ce que le texte ne précise pas</h2></summary>
+      <ul>
+        <li>Le JE SUIS est une concession philosophique au mental fini&nbsp;; les Absolus n’ont jamais eu de commencement, et le texte prévient que les présenter en séquence crée des paradoxes de langage <span class="ref">0:3.23 · 105:3.10</span>.</li>
+        <li>Le texte dit que les sept relations du JE SUIS deviennent les sept Absolus, sans apparier une à une les deux listes <span class="ref">105:2.4–11 · 105:3.1</span>.</li>
+        <li>Rien, ni fait ni expérience ni philosophie, ne peut pénétrer la nature de l’Absolu Non Qualifié <span class="ref">0:11.7</span>.</li>
+        <li>L’auteur du fascicule 10 dit ne pas disposer d’un langage pour transmettre la vérité complète sur la Trinité <span class="ref">10:5.8</span>.</li>
+        <li>Les Trinités Ultime et Absolue ne sont pas encore pleinement manifestes, et le Consommateur de la Destinée de l’Univers n’est pas révélé <span class="ref">0:12.5 · 0:12.7</span>.</li>
+        <li>Le texte hésite à parler de Dieu l’Absolu, trop éloigné de toute actualisation <span class="ref">0:10.2</span>.</li>
+        <li>Aucune date n’est donnée pour l’émergence du Suprême&nbsp;: elle dépend de la mesure où les créatures font la volonté de Dieu <span class="ref">117:0.1–2</span>.</li>
+        <li>Les Maitres Esprits ont des noms, mais le texte préfère les présenter par leur numéro et ne donne pas ces noms <span class="ref">16:3.1</span>.</li>
+        <li>Les positions et tailles des schémas sont des choix de mise en page&nbsp;: seuls les éléments, les liens et leurs étiquettes viennent du texte.</li>
+      </ul>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <em>Le Livre d’Urantia</em>, traduction française de la Fondation Urantia, édition 2024. Références au format fascicule:section.paragraphe.</p>
+    <p>Seize citations courtes, vérifiées dans le texte&nbsp;; le reste est paraphrasé avec sa référence. Page d’étude du 2026-11-07.</p>
+  </footer>
+</div>
+
+<script>
+(() => {
+  /* t : titre ; d : paraphrase ; r : références ; q et qr : citation courte exacte, pour les relations clés seulement. */
+  const D = {
+    '1-jesuis': { t: 'JE SUIS', d: 'Concept philosophique de l’Infini : le Père Universel considéré comme cause première absolue. Le texte le présente comme une concession au mental fini, lié au temps.', r: '105:1.1 · 0:3.23', q: 'Aucune qualification ne peut être appliquée à l’Infini, si ce n’est que l’on peut affirmer que le JE SUIS <em>est.</em>', qr: '105:1.4' },
+    '1-eternise': { t: 'JE SUIS → sept Absolus : s’éternisent', d: 'Les relations primordiales du JE SUIS deviennent les Sept Absolus de l’Infinité, tous éternels et coordonnés.', r: '105:3.1', q: 'Les sept relations primordiales à l’intérieur du JE SUIS s’éternisent sous l’aspect des Sept Absolus de l’Infinité.', qr: '105:3.1' },
+    '1-pere': { t: 'Source-Centre Première : le Père Universel', d: 'Première personne de la Déité, et aussi archétype primordial de non-déité : créateur, contrôleur et soutien, source des archétypes et Père des personnes.', r: '105:3.2' },
+    '1-fils': { t: 'Source-Centre Deuxième : le Fils Éternel', d: 'La personnalité absolue ; c’est par lui que toute personnalité peut atteindre le Père.', r: '105:3.3' },
+    '1-esprit': { t: 'Source-Centre Troisième : l’Esprit Infini', d: 'L’Acteur Conjoint, qui intègre les énergies cosmiques du Paradis et les énergies spirituelles du Fils, et unifie toute réalité actuelle.', r: '105:3.5' },
+    '1-absdeite': { t: 'Absolu de Déité', d: 'La totalité du potentiel de Déité : l’Absolu qualifié, séparé de la réalité infinie par le libre choix du Père. Il parait être l’activateur tout-puissant.', r: '105:3.6 · 0:11.4 · 0:11.6' },
+    '1-ile': { t: 'Source-Centre du Paradis : l’Ile', d: 'Deuxième archétype de non-déité et fondement du contrôle par la gravité dans tous les univers ; l’absolu des archétypes pour toute réalité non spirituelle.', r: '105:3.4' },
+    '1-nonqual': { t: 'Absolu Non Qualifié', d: 'Statique, réactif, en attente : la totalité de la réalité non déifiée, sans personnalité ni divinité. Il parait être le mécanicien parfaitement efficace de l’univers.', r: '105:3.7 · 0:11.4 · 0:11.7' },
+    '1-source': { t: 'Père → Ile : source', d: 'En devenant le Père du Fils, le JE SUIS devient en même temps la source éternelle de l’Ile du Paradis.', r: '0:3.22' },
+    '1-tension': { t: 'Absolu de Déité ↔ Absolu Non Qualifié : tension', d: 'Les deux différentiels primordiaux de la réalité sont le déifié et le non déifié ; leur relation primordiale est une tension.', r: '0:4.5' },
+    '1-unifie': { t: 'Absolu Universel → les deux Absolus : unifie', d: 'Cette tension est résolue par l’Absolu Universel ; quand on ne peut distinguer les deux Absolus, on parle de l’action de l’Absolu Universel.', r: '0:4.5 · 0:11.3', q: 'Les deux Absolus — Qualifié et Non Qualifié — sont coordonnés et unifiés par l’Absolu Universel et en lui.', qr: '0:3.18' },
+    '1-univ': { t: 'Absolu Universel', d: 'Il unifie le déifié et le non déifié et met en relation l’absolu et le relatif ; il compense la tension entre l’existentiel et l’inachevé. Grâce à lui, le fini peut coexister avec l’Infini.', r: '105:3.8 · 0:11.13' },
+
+    '2-pere': { t: 'Père Universel : Source-Centre Première', d: 'La personnalité de la Source-Centre Première. Tout ce qui réagit à son circuit de personnalité est dit personnel ; la personnalité potentielle de tout être moral est centrée en lui.', r: '0:3.10 · 0:6.1 · 0:3.19' },
+    '2-fils': { t: 'Fils Éternel : Source-Centre Deuxième', d: 'Les forces d’esprit de l’univers convergent en lui ; tout ce qui réagit à son circuit est dit esprit. Les Fils divins sont le Verbe de Dieu.', r: '0:3.15 · 0:6.1 · 10:3.3' },
+    '2-esprit': { t: 'Esprit Infini : Source-Centre Troisième', d: 'Les forces mentales convergent en lui ; tout ce qui réagit à son circuit est dit mental. Ses enfants sont les Actes de Dieu.', r: '0:3.14 · 0:6.1 · 10:3.3' },
+    '2-ile': { t: 'Ile du Paradis', d: 'Non personnelle et extraspirituelle : la gravité des univers matériels converge vers le bas Paradis. Elle dérive de la Déité, mais on ne peut pas dire qu’elle soit Déité.', r: '0:3.13 · 0:4.12 · 0:5.5', q: 'Cette Ile éternelle est la source effective des univers physiques — passés, présents et futurs.', qr: '0:4.12' },
+    '2-perede': { t: 'Père → Fils : père de', d: 'Le JE SUIS réalise la personnalité en devenant le Père Éternel du Fils Originel, et en même temps la source de l’Ile.', r: '0:3.22', q: 'Dans cette opération originelle, le JE SUIS théorique aboutit à la réalisation de la personnalité en devenant le Père Éternel du Fils Originel et devenant simultanément l’Éternelle Source de l’Ile du Paradis.', qr: '0:3.22' },
+    '2-sourcede': { t: 'Père → Ile : source de', d: 'L’Ile a pour source éternelle le Père, devenu en même temps Père du Fils.', r: '0:3.22' },
+    '2-agitpar': { t: 'Père → Esprit Infini : agit par', d: 'Le Père parle par le Fils ; avec le Fils, il agit par l’Esprit Infini.', r: '10:3.3 · 16:2.2', q: 'Dieu parle par le Fils et, avec le Fils, agit par l’Esprit Infini […]', qr: '10:3.3' },
+    '2-avecfils': { t: 'Fils → Esprit Infini : avec le Fils', d: 'Le Père et le Fils n’agissent conjointement qu’à travers l’Esprit Infini ; le Fils et l’Esprit travaillent en frères.', r: '16:2.2 · 10:3.3' },
+    '2-presence': { t: 'Ile → Esprit Infini : en présence', d: 'C’est en présence du Paradis, en même temps que la différenciation du Fils et du Père, que sont apparus l’Esprit Infini et l’univers central de Havona.', r: '0:3.22' },
+
+    '3-pere': { t: 'Père : origine de la loi', d: 'Toute loi prend origine dans la Source-Centre Première : elle est la loi.', r: '10:6.1' },
+    '3-fils': { t: 'Fils Éternel : administre la loi', d: 'L’administration de la loi spirituelle est inhérente à la Source-Centre Deuxième.', r: '10:6.1' },
+    '3-esprit': { t: 'Esprit Infini : révèle la loi', d: 'Révéler, promulguer et interpréter les statuts divins revient à la Source-Centre Troisième ; ses personnalités fournissent aussi le témoignage.', r: '10:6.1 · 10:6.3' },
+    '3-union': { t: 'Les trois personnes → Trinité : union', d: 'La Trinité du Paradis est la première triunité, la seule association exclusive de Déité personnelle ; la Déité y est parfaitement unifiée en trois personnes individualisées.', r: '10:4.1–2' },
+    '3-trinite': { t: 'Trinité du Paradis', d: 'Elle a des fonctions plutôt que des attributs : administration de la justice, attitudes de totalité, action coordonnée, supercontrôle cosmique.', r: '10:5.1 · 10:4.3', q: 'La Trinité est une association de personnes infinies fonctionnant impersonnellement, mais sans contrevenir à la personnalité.', qr: '10:4.3' },
+    '3-fini': { t: 'Attitude envers le fini', d: 'C’est la limite maximale que la Trinité s’impose ; le Suprême est l’approche la plus proche d’une focalisation personnelle de la Trinité, sans en être une personnalisation exclusive.', r: '10:5.4' },
+    '3-absonite': { t: 'Attitude envers l’absonite', d: 'La Trinité prend en compte ce qui est plus que fini et moins qu’absolu : c’est parfois appelé la Trinité de l’Ultimité.', r: '10:5.5' },
+    '3-absolu': { t: 'Attitude absolue', d: 'Elle se rapporte aux existences absolues et culmine dans l’action de la Déité totale.', r: '10:5.6' },
+    '3-supreme': { t: 'Être Suprême', d: 'Ni le Suprême ni l’Ultime ne représentent totalement la Trinité ; le Suprême en est l’approche la plus proche pour le fini.', r: '10:5.4–5' },
+    '3-ultimite': { t: 'Ultimité', d: 'Le rapport de la Trinité avec les niveaux absonites.', r: '10:5.5' },
+    '3-totale': { t: 'Déité totale', d: 'L’aboutissement de l’attitude absolue de la Trinité.', r: '10:5.6' },
+    '3-justice': { t: 'Trinité → Fils Stationnaires : justice', d: 'La justice est l’attitude trinitaire des trois personnes, non celle de l’une d’elles ; la bonté, la miséricorde et la vérité forment le ministère des personnes divines.', r: '10:6.1–2', q: 'L’application de la loi, la justice, tombe dans le domaine de la Trinité du Paradis, et elle est mise à exécution par certains Fils de la Trinité.', qr: '10:6.1' },
+    '3-stationnaires': { t: 'Fils Stationnaires de la Trinité', d: 'Dix ordres, enfants des trois Déités fonctionnant comme Trinité : Secrets de Suprématie Trinitisés, Éternels des Jours, Anciens des Jours, Perfections des Jours, Récents des Jours, Unions des Jours, Fidèles des Jours, Perfecteurs de Sagesse, Conseillers Divins, Censeurs Universels. Ils rendent le jugement selon les témoignages des personnalités de l’Esprit Infini.', r: '10:6.4–16' },
+
+    '4-ei': { t: 'Esprit Infini', d: 'Hors du Paradis et de Havona, sa présence spirituelle personnelle se manifeste par l’un des Sept Maitres Esprits ; ensemble, ceux-ci ont ses attributs suprêmes-ultimes.', r: '16:2.3–4' },
+    '4-revele': { t: 'Esprit Infini → Maitres Esprits : se révèle par', d: 'Comme le Fils Éternel est révélé par les Fils divins, l’Esprit Infini l’est par les Sept Maitres Esprits.', r: '16:2.1 · 16:1.2', q: 'On ne saurait dire que les Sept Maitres Esprits soient l’expression de la Déité <em>triple,</em> mais ils sont le portrait éternel de la Déité <em>septuple,</em> les fonctions actives et associatives des trois personnes de la Déité d’existence éternelle.', qr: '16:1.2' },
+    '4-m1': { t: 'Maitre Esprit 1 : le Père', d: 'Représentation directe du Père, de son pouvoir, de son amour et de sa sagesse. Il préside le premier superunivers.', r: '16:3.2–3' },
+    '4-m2': { t: 'Maitre Esprit 2 : le Fils', d: 'Il dépeint la nature du Fils Éternel et dirige le deuxième superunivers presque comme le ferait le Fils.', r: '16:3.4–5' },
+    '4-m3': { t: 'Maitre Esprit 3 : l’Esprit', d: 'Il ressemble spécialement à l’Esprit Infini et administre le troisième superunivers presque comme lui.', r: '16:3.6–7' },
+    '4-m4': { t: 'Maitre Esprit 4 : le Père et le Fils', d: 'Il participe des natures conjuguées du Père et du Fils et stimule le quatrième superunivers.', r: '16:3.8–9' },
+    '4-m5': { t: 'Maitre Esprit 5 : le Père et l’Esprit', d: 'Il unit les caractères du Père et de l’Esprit et dirige le bienêtre du cinquième superunivers.', r: '16:3.10–11' },
+    '4-m6': { t: 'Maitre Esprit 6 : le Fils et l’Esprit', d: 'Il dépeint le caractère conjugué du Fils et de l’Esprit et dirige le sixième superunivers.', r: '16:3.12–13' },
+    '4-m7': { t: 'Maitre Esprit 7 : les trois personnes', d: 'Il régit Orvonton, le septième superunivers ; il conseille les êtres d’origine trine et guide les pèlerins ascendants de Havona. C’est lui qui exprime l’attitude spirituelle de l’Être Suprême.', r: '16:3.14–15', q: 'L’Esprit qui régit le septième superunivers est un portrait fidèle, seul de son genre, du Père Universel, du Fils Éternel et de l’Esprit Infini.', qr: '16:3.14' },
+
+    '5-l1': { t: '1 · Fils Créateurs', d: 'Avec les Esprits Créatifs, ils sont le premier niveau rencontré. Ils fournissent le mécanisme par lequel le mortel devient immortel.', r: '116:2.5 · 0:8.11' },
+    '5-l2': { t: '2 · Anciens des Jours', d: 'Deuxième niveau ; avec les Maitres Esprits, ils sont probablement installés pour toujours comme administrateurs du grand univers.', r: '116:2.6 · 0:8.11' },
+    '5-l3': { t: '3 · Sept Maitres Esprits', d: 'Troisième niveau, dernier des Créateurs Suprêmes. Voir le schéma 4.', r: '116:2.7' },
+    '5-l4': { t: '4 · Être Suprême', d: 'Il fournit la technique qui synthétise toutes ces opérations et permet au fini d’atteindre l’absonite. Il intervient comme une personnalisation expérientielle de la Trinité.', r: '116:2.8 · 0:8.11 · 116:2.12' },
+    '5-l5': { t: '5 · Acteur Conjoint', d: 'Dieu l’Esprit, premier des trois niveaux de la Déité du Paradis.', r: '116:2.9 · 0:8.6' },
+    '5-l6': { t: '6 · Fils Éternel', d: 'Dieu le Fils.', r: '116:2.10 · 0:8.7' },
+    '5-l7': { t: '7 · Père Universel', d: 'Dieu le Père, dernier niveau de l’approche.', r: '116:2.11 · 0:8.8' },
+    '5-paradis': { t: 'Déités du Paradis', d: 'Les trois derniers niveaux. La Déité du Paradis est existentielle : elle n’équivaut pas à la réunion des actes des Créateurs Suprêmes.', r: '116:2.12–13', q: 'Les trois premiers niveaux sont les Créateurs Suprêmes, les trois derniers sont les Déités du Paradis.', qr: '116:2.12' },
+    '5-createurs': { t: 'Créateurs Suprêmes', d: 'Les trois premiers niveaux. Leurs activités synthétisent le pouvoir en évolution du Suprême, mais Dieu le Suprême n’est ni l’un d’eux ni leur ensemble.', r: '116:2.12 · 116:2.14' },
+    '5-approche': { t: 'Une approche septuple', d: 'Le Père a établi cette approche pour compenser le statut fini des créatures et les limites de leurs concepts.', r: '0:8.1' },
+    '5-rencontre': { t: 'Homme mortel → niveau 1 : rencontre', d: 'L’homme mortel rencontre les niveaux successifs dans cet ordre, des Fils Créateurs jusqu’au Père.', r: '116:2.4', q: 'Cette personnalisation septuple de la Déité dans le temps et l’espace et pour les sept superunivers, rend l’homme mortel capable d’atteindre la présence de Dieu, qui est esprit.', qr: '0:8.9' },
+    '5-mortel': { t: 'Homme mortel', d: 'Il parait nécessaire à la pleine fonction de Dieu le Septuple, dans la mesure où ce groupement culmine dans le Suprême.', r: '116:4.12' },
+
+    '6-pfe': { t: 'Père, Fils, Esprit', d: 'Les trois personnes originelles sont existentielles : elles existent de toute éternité, passée, présente et future.', r: '0:7.1–3 · 0:7.5', q: 'Dieu le Père, Dieu le Fils et Dieu l’Esprit sont éternels — sont des êtres existentiels — tandis que Dieu le Suprême, Dieu l’Ultime et Dieu l’Absolu sont des personnalités de Déité <em>en voie d’actualisation.</em>', qr: '0:7.1' },
+    '6-union': { t: 'Les trois → Trinité du Paradis : union', d: 'La Trinité originelle était inévitable : elle est existentielle en actualité, mais tous ses potentiels sont expérientiels.', r: '0:12.1–2' },
+    '6-trinite': { t: 'Trinité du Paradis', d: 'Seule réalité de Déité qui embrasse l’infinité ; c’est pourquoi se produit l’actualisation du Suprême, de l’Ultime et de l’Absolu.', r: '0:12.2' },
+    '6-origine': { t: 'Trinité du Paradis → Dieu le Suprême : origine', d: 'Dieu le Suprême est potentiel dans la Trinité, dont il tire sa personnalité et ses attributs d’esprit ; il ne devient manifeste aux créatures qu’à travers les Créateurs.', r: '0:8.10 · 116:2.14' },
+    '6-supreme': { t: 'Dieu le Suprême', d: 'Le Dieu du temps et de l’espace, qui évolue ; niveau fini. Il est entièrement expérientiel.', r: '0:2.15 · 0:7.5', q: 'Avec Dieu le Suprême, l’accomplissement est la condition préalable au statut — il faut faire quelque chose aussi bien qu’être quelque chose.', qr: '115:0.1' },
+    '6-c-tu': { t: 'Suprême → Trinité Ultime : constitue', d: 'La Trinité Ultime, en évolution, sera constituée de l’Être Suprême, des Personnalités Créatrices Suprêmes et des Architectes du Maitre Univers.', r: '0:12.6' },
+    '6-tu': { t: 'Trinité Ultime', d: 'Première Trinité expérientielle, pas encore pleinement manifeste.', r: '0:12.5–6' },
+    '6-u-tu': { t: 'Trinité Ultime → Dieu l’Ultime : s’unifie en', d: 'Dieu l’Ultime acquerra pouvoir et personnalité quand cette Trinité sera unifiée.', r: '0:12.6' },
+    '6-ultime': { t: 'Dieu l’Ultime', d: 'La Déité personnelle des niveaux absonites, au-delà du temps et de l’espace. Il est entièrement expérientiel.', r: '0:9.2 · 0:7.5' },
+    '6-c-ta': { t: 'Ultime → Trinité Absolue : constitue', d: 'La Trinité Absolue consistera en Dieu le Suprême, Dieu l’Ultime et le Consommateur non révélé de la Destinée de l’Univers.', r: '0:12.7' },
+    '6-ta': { t: 'Trinité Absolue', d: 'Seconde Trinité expérientielle, en cours d’actualisation.', r: '0:12.7' },
+    '6-u-ta': { t: 'Trinité Absolue → Dieu l’Absolu : s’unifierait en', d: 'Son unification rendrait la Déité absolue expérientielle.', r: '0:12.7 · 0:10.1' },
+    '6-absolu': { t: 'Dieu l’Absolu', d: 'Le but de tous les êtres superabsonites ; le texte hésite à en parler, tant il est éloigné de l’actualisation.', r: '0:10.1–2 · 0:7.5', q: 'L’Absolu de Déité est expérientiel en actualisation mais existentiel en potentialité.', qr: '0:7.5' },
+    '6-cc': { t: 'Créateurs et créatures', d: 'Les activités des Créateurs synthétisent le pouvoir du Suprême ; et plus les créatures font la volonté de Dieu, plus son potentiel devient actuel.', r: '116:2.14 · 117:0.1–2' },
+    '6-actualisent': { t: 'Créateurs et créatures → Suprême : actualisent', d: 'Si tous les habitants du grand univers vivaient pleinement la volonté de Dieu, la personnalité divine de Dieu le Suprême émergerait.', r: '117:0.2' }
+  };
+
+  const reduced = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  function show(fig, panel, k) {
+    const it = D[k];
+    if (!it) return;
+    fig.querySelectorAll('.hit.sel').forEach((x) => x.classList.remove('sel'));
+    fig.querySelectorAll('.hit[data-k="' + k + '"]').forEach((x) => x.classList.add('sel'));
+    let h = '<h3>' + it.t + '</h3><p>' + it.d + ' <span class="ref">' + it.r + '</span></p>';
+    if (it.q) h += '<p class="qt">«&nbsp;' + it.q + '&nbsp;» <span class="ref">' + it.qr + '</span></p>';
+    panel.innerHTML = h;
+    const r = panel.getBoundingClientRect();
+    if (r.top > window.innerHeight - 40 || r.bottom < 0) {
+      panel.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+    }
+  }
+
+  document.querySelectorAll('figure.fig[data-fig]').forEach((fig) => {
+    const n = fig.getAttribute('data-fig');
+    const panel = document.getElementById('pan-' + n);
+    const list = document.querySelector('[data-tv="' + n + '"]');
+    const seen = new Set();
+    fig.querySelectorAll('.hit').forEach((g) => {
+      const k = g.getAttribute('data-k');
+      const it = D[k];
+      if (!it || !panel) return;
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('role', 'button');
+      g.setAttribute('aria-label', it.t);
+      g.addEventListener('click', () => show(fig, panel, k));
+      g.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(fig, panel, k); }
+      });
+      if (list && !seen.has(k)) {
+        seen.add(k);
+        const li = document.createElement('li');
+        li.innerHTML = '<b>' + it.t + '</b> — ' + it.d + ' <span class="ref">' + it.r + '</span>';
+        list.appendChild(li);
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
