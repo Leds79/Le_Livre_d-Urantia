@@ -2,7 +2,7 @@
 
 Un atlas visuel et interactif pour comprendre l’origine et l’organisation de l’univers selon *Le Livre d’Urantia* : notre adresse dans l’univers, une vue en 3D d’Urantia jusqu’au Paradis, la frise du temps de Satania et d’Urantia, la carrière ascendante, les êtres de l’univers et les grands concepts du livre.
 
-**Consulter en ligne :** https://constructoai.github.io/Le_Livre_d-Urantia/
+**Consulter en ligne :** https://leds79.github.io/Le_Livre_d-Urantia/
 
 ## Les pages
 

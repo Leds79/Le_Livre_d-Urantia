@@ -15,7 +15,7 @@ from pathlib import Path
 
 SRC, OUT = Path(sys.argv[1]), Path(sys.argv[2])
 LIB = SRC.parent / 'lib'
-BASE = 'https://constructoai.github.io/Le_Livre_d-Urantia/'
+BASE = 'https://leds79.github.io/Le_Livre_d-Urantia/'
 # fichier publié, adresse de l'artefact en ligne, nom dans le site, description
 PAGES = [
     ('accueil.html', 'https://claude.ai/artifact/C8kuuUiuBDqFepzcHaYzyn', 'index.html',
