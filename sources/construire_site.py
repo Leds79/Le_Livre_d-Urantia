@@ -39,7 +39,7 @@ CDN = {
     'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js': 'assets/lib/three.min.js',
     'https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js': 'assets/lib/OrbitControls.js',
 }
-SOURCES = ['urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'assembler.py', 'etoiles.py', 'geo.py',
+SOURCES = ['urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'liens_refs.py', 'refs-urantia.js', 'assembler.py', 'etoiles.py', 'geo.py',
            'textures.py', 'polices.py', 'smoke3d.js', 'construire_site.py']
 RESET = ('<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);'
          'padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}'
