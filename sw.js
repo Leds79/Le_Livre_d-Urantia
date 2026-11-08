@@ -2,14 +2,14 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '7bd75a1d5c8d';
+const VERSION = '6593b87352ed';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
 const FICHIERS = {
-  "index.html": [148140, "3af2e46ba70db1a8"],
+  "index.html": [149275, "6e53304d125b9a35"],
   "nebadon-dans-orvonton.html": [73579, "36fbfa57db940c2f"],
-  "atlas-3d.html": [2517624, "447a79603d8ec3c7"],
+  "atlas-3d.html": [2517721, "0205ca0e2242776a"],
   "familles-de-personnalites.html": [123226, "d3d0d4f2da69a369"],
   "concepts-en-schemas.html": [110356, "60ab0fad8ccbf155"],
   "dieu-et-deite.html": [96392, "45db020028759700"],
@@ -36,7 +36,7 @@ const FICHIERS = {
   "histoire-du-livre.html": [137102, "101d8d9345cb8f89"],
   "auteurs-et-chiffres.html": [269022, "41a1a87774b14e9d"],
   "fascicules.html": [390403, "5de54765f4f6de74"],
-  "parcours-de-lecture.html": [165930, "f4f563e270e5bed8"],
+  "parcours-de-lecture.html": [166089, "f38464ddb23c2b92"],
   "glossaire.html": [198313, "f67ff5a0fa8b2b48"],
   "hors-ligne.html": [7909, "d90e88e0ae9a0f97"],
   "manifest.webmanifest": [840, "3d1ea890c7f7d469"],
@@ -61,7 +61,7 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
-  "assets/recherche.js": [1183249, "718fe74ad9bb070c"],
+  "assets/recherche.js": [1183575, "5202f70c716e9701"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };
