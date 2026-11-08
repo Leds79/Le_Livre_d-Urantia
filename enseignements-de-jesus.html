@@ -39,7 +39,7 @@
 <style>
 /* Mise en page : au centre, Dieu est votre Père ; autour, quatorze thèmes en trois familles (choix de la page),
    reliés par des traits tirés du texte. La carte interactive ouvre une fiche ; chaque thème a ensuite sa section,
-   puis viennent le sermon d’ordination, la comparaison avec les Évangiles et les trois registres de lecture.
+   puis viennent le sermon d’ordination, les grands discours, la comparaison avec les Évangiles et les trois registres de lecture.
    Couleurs : l’or pour le centre, le bleu, le vert d’eau et la terre pour les trois familles. Largeur utile : 1100 px. */
 :root {
   --paper: #EEF1F6;    /* fond : papier bleuté */
@@ -354,6 +354,84 @@ section, article { scroll-margin-top: 12px; }
 .unk-body { margin-top: 14px; }
 .foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 86ch; display: grid; gap: 6px; }
 
+/* ==================== Les grands discours ==================== */
+/* Cinq moments, d’avril 29 à avril 30, dans une frise ; puis une fiche par discours, celle de Rodan plus développée.
+   L’or, couleur du centre, sert de fil : chaque discours touche plusieurs familles de thèmes. */
+.disc { display: grid; gap: 24px; }
+.disc .sec-head { max-width: 80ch; }
+.dc-frise { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 16px 14px 12px; display: grid; gap: 4px; }
+.dc-ans { display: grid; grid-template-columns: 3fr 2fr; gap: 10px; }
+.dc-ans span { font: 500 .7rem/1 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); text-align: center; padding-bottom: 7px; border-bottom: 1.5px solid var(--rule); }
+.dc-tl { list-style: none; margin: 0; padding: 10px 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; }
+.dc-tl::before { content: ""; position: absolute; left: 10%; right: 10%; top: 38px; border-top: 2px dashed var(--gold-ui); opacity: .5; }
+.dc-tl li { position: relative; display: grid; min-width: 0; }
+.dc-pt { display: grid; justify-items: center; align-content: start; gap: 3px; text-align: center; padding: 0 6px 8px; color: var(--ink); text-decoration: none; border-radius: 12px; min-width: 0; }
+.dc-pi { width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--gold-ui); color: var(--gold-ink); position: relative; z-index: 1; box-shadow: 0 0 0 5px var(--sheet); transition: transform .2s ease, background-color .2s ease; }
+.dc-pi .ic { width: 26px; height: 26px; }
+.dc-pt:hover .dc-pi { background: var(--gold-soft); transform: translateY(-2px); }
+.dc-pt:hover .dc-pp { color: var(--gold-ink); }
+.dc-pd { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--gold-ink); margin-top: 6px; }
+.dc-pp { font: 600 1.16rem/1.15 var(--font-display); }
+.dc-pk { font-size: .86rem; line-height: 1.3; color: var(--muted); }
+.dc-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.dc { --c: var(--gold-ui); --ci: var(--gold-ink); --soft: var(--gold-soft); background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 20px 22px 22px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.dc-head { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 0 14px; align-items: center; }
+.dc-ic { width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); border: 2px solid var(--gold-ui); color: var(--gold-ink); }
+.dc-ic .ic { width: 25px; height: 25px; }
+.dc-eye { font: 500 .72rem/1.35 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 4px; }
+.dc h3 { font-size: clamp(1.45rem, 2.4vw, 1.85rem); line-height: 1.1; }
+.dc-sub { font-family: var(--font-display); font-style: italic; font-size: 1.1rem; line-height: 1.3; color: var(--muted); margin-top: 3px; }
+.dc-where { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 7px 12px; font-size: .92rem; line-height: 1.42; background: var(--paper); border-radius: 10px; padding: 12px 14px; align-items: baseline; }
+.dc-where dt { font: 500 .68rem/1.6 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); white-space: nowrap; }
+.dc-where dd { margin: 0; min-width: 0; }
+.dc-idee { font-size: 1.02rem; }
+.dc-note, .dc-ev { font-size: .93rem; line-height: 1.5; color: var(--muted); }
+.dc-note b, .dc-ev b { color: var(--ink); font-weight: 700; }
+.dc-h { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 12px; }
+.dc .rel { margin-top: -4px; }
+.dc-rodan { grid-column: 1 / -1; background: linear-gradient(180deg, var(--gold-soft), var(--sheet) 260px); }
+.dr-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 18px 30px; align-items: start; }
+.dr-col { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.dr-plan { list-style: none; margin: 0; padding: 0; display: grid; gap: 9px; counter-reset: dr; }
+.dr-plan li { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .94rem; line-height: 1.42; }
+.dr-plan li::before { counter-increment: dr; content: counter(dr); width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; font: 600 .8rem/1 var(--font-mono); color: var(--gold-ink); background: var(--sheet); border: 1.5px solid var(--gold-ui); }
+.dr-plan b { font-family: var(--font-display); font-size: 1.08rem; font-weight: 600; }
+.dr-six { list-style: none; margin: -4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.dr-six li { border: 1.5px solid var(--gold-ui); background: var(--sheet); border-radius: 999px; padding: 4px 12px; font-size: .88rem; font-weight: 700; line-height: 1.3; }
+.dr-suite { border-top: 1px solid var(--rule); padding-top: 16px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 30px; }
+.dr-suite > div { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.dr-suite h4 { font-size: 1.3rem; }
+.dr-suite p { font-size: .96rem; }
+.dr-reg { display: grid; gap: 8px; background: var(--paper); border-radius: 12px; padding: 14px 16px; font-size: .92rem; line-height: 1.5; color: var(--muted); }
+.dr-reg b { color: var(--ink); font-weight: 700; }
+/* Dans la fiche de la carte : les discours où le thème revient */
+.fi-disc { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.fi-dl { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; max-width: 100%; padding: 4px 13px 4px 9px; border-radius: 999px; border: 1.5px solid var(--gold-ui); background: var(--sheet); color: var(--ink); font: 700 .88rem/1.2 var(--font-body); text-decoration: none; }
+.fi-dl .ic { color: var(--gold-ink); width: 1.05rem; height: 1.05rem; }
+.fi-dl:hover { background: var(--gold-soft); }
+@media (max-width: 860px) {
+  .dc-list, .dr-grid, .dr-suite { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .dc, .dc-frise { padding: 18px 16px 20px; }
+  .dc-ans { display: none; }
+  .dc-tl { grid-template-columns: minmax(0, 1fr); gap: 10px; padding-top: 0; }
+  .dc-pi { box-shadow: 0 0 0 3px var(--sheet); }
+  .dc-tl::before { left: 28px; right: auto; top: 30px; bottom: 30px; border-top: 0; border-left: 2px dashed var(--gold-ui); }
+  .dc-pt { grid-template-columns: 56px minmax(0, 1fr); justify-items: start; align-items: center; text-align: left; gap: 0 14px; padding: 4px 0; }
+  .dc-pi { grid-row: 1 / span 3; }
+  .dc-pd { margin-top: 0; }
+  .dc-head { grid-template-columns: 46px minmax(0, 1fr); gap: 0 12px; }
+  .dc-ic { width: 46px; height: 46px; }
+  .dc-where { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .dc-where dd { margin-bottom: 7px; }
+  .dc-where dd:last-child { margin-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dc-pi { transition: none; }
+  .dc-pt:hover .dc-pi { transform: none; }
+}
+
 /* Moins d’animations : préférence du système ou bouton de la carte */
 .calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
 @media (prefers-reduced-motion: reduce) {
@@ -421,6 +499,11 @@ section, article { scroll-margin-top: 12px; }
   <symbol id="i-famille" viewBox="0 0 20 20"><path d="M2.8 9.6 10 3.4l7.2 6.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.9 8.2v9.2h10.2V8.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8.5 17.4v-4.2a1.5 1.5 0 0 1 3 0v4.2Z" fill="currentColor"/></symbol>
   <symbol id="i-mal" viewBox="0 0 20 20"><path d="M10 18.4v-6.6M10 11.8 4.6 3.4M10 11.8l5.4-8.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="4.6" cy="3.4" r="1.6" fill="currentColor"/><circle cx="15.4" cy="3.4" r="1.6" fill="currentColor"/></symbol>
   <symbol id="i-survie" viewBox="0 0 20 20"><path d="M1.8 15.4h16.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 15.4a5 5 0 0 1 10 0Z" fill="currentColor"/><path d="M10 5.4v2.4M3.7 8.6l1.6 1.6M16.3 8.6l-1.6 1.6M1.8 12.6h1.9M16.3 12.6h1.9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-pain" viewBox="0 0 20 20"><path d="M2.6 12.2c0-4 3.3-6.6 7.4-6.6s7.4 2.6 7.4 6.6v2.4c0 1.1-.9 2-2 2H4.6c-1.1 0-2-.9-2-2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.6 8.6l1.6 2.8M9.6 7.8l1.6 2.8M12.6 8.6l1.6 2.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-pont" viewBox="0 0 20 20"><path d="M1.6 8.6h16.8M3.4 8.6v7.6M16.6 8.6v7.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M3.4 14.4c1.6-2.7 3.8-4 6.6-4s5 1.3 6.6 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5.6 18.4c1.5-.9 2.9-.9 4.4 0s2.9.9 4.4 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-colonne" viewBox="0 0 20 20"><path d="M3.4 3.2h13.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="5.3" cy="5.7" r="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="14.7" cy="5.7" r="1.6" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6.9 5.7h6.2M7 8.2v7.6M10 8.2v7.6M13 8.2v7.6M5.4 16.8h9.2M3.6 18.6h12.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-temple" viewBox="0 0 20 20"><path d="M2.2 7.6 10 2.6l7.8 5Z" fill="currentColor"/><path d="M3.2 9.4h13.6M5 11.2v5.2M8.3 11.2v5.2M11.7 11.2v5.2M15 11.2v5.2M2.4 18h15.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-tente" viewBox="0 0 20 20"><path d="M10 2.8 2.6 16.6h14.8Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 8.6 7.3 16.6h5.4Z" fill="currentColor"/><path d="M1.4 16.6h17.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
 </svg>
 
 <main class="wrap" id="contenu" lang="fr">
@@ -457,6 +540,7 @@ section, article { scroll-margin-top: 12px; }
       <li><a href="#g-vie"><span class="nb">6–10</span><span class="tt">Vivre en enfant de Dieu</span></a></li>
       <li><a href="#g-monde"><span class="nb">11–15</span><span class="tt">Dans le monde et au-delà</span></a></li>
       <li><a href="#sermon"><span class="nb">§</span><span class="tt">Le sermon d’ordination</span></a></li>
+      <li><a href="#discours"><span class="nb">¶</span><span class="tt">Les grands discours</span></a></li>
       <li><a href="#evangiles"><span class="nb">↔</span><span class="tt">Le livre, les Évangiles et les Églises</span></a></li>
       <li><a href="#registres"><span class="nb">≡</span><span class="tt">Trois manières de lire</span></a></li>
       <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
@@ -615,6 +699,124 @@ section, article { scroll-margin-top: 12px; }
     </p>
   </section>
 
+  <section class="disc" id="discours" aria-labelledby="h-disc">
+    <div class="sec-head">
+      <p class="eyebrow">Fascicules 153 à 178 · d’avril 29 à avril 30</p>
+      <h2 id="h-disc">Les grands discours</h2>
+      <p>Après le sermon d’ordination, le livre rapporte d’autres discours longs, souvent résumés en langage moderne&nbsp;: le sermon qui retourne l’opinion à Capharnaüm, l’enseignement donné aux Gentils de Phénicie, les exposés d’un philosophe grec devant deux apôtres, les adieux publics au Temple et le dernier discours au camp. Pour chacun&nbsp;: le lieu, le moment, l’idée centrale et une citation.</p>
+      <p class="hint">Les thèmes liés à chaque discours sont un rapprochement de la page ; la carte des thèmes les reprend dans ses fiches.</p>
+    </div>
+    <div class="dc-frise">
+      <div class="dc-ans" aria-hidden="true"><span>an 29</span><span>an 30</span></div>
+      <ol class="dc-tl" aria-label="Les cinq moments, dans l’ordre du récit">
+        <li><a class="dc-pt" href="#d-capharnaum"><span class="dc-pi" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pain"/></svg></span><span class="dc-pd">30 avril 29</span><span class="dc-pp">Capharnaüm</span><span class="dc-pk">le pain de vie</span></a></li>
+        <li><a class="dc-pt" href="#d-phenicie"><span class="dc-pi" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pont"/></svg></span><span class="dc-pd">juin et juillet 29</span><span class="dc-pp">Sidon et Tyr</span><span class="dc-pk">chez les Gentils</span></a></li>
+        <li><a class="dc-pt" href="#d-rodan"><span class="dc-pi" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-colonne"/></svg></span><span class="dc-pd">septembre 29</span><span class="dc-pp">Magadan</span><span class="dc-pk">Rodan d’Alexandrie</span></a></li>
+        <li><a class="dc-pt" href="#d-temple"><span class="dc-pi" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-temple"/></svg></span><span class="dc-pd">4 avril 30</span><span class="dc-pp">Le Temple</span><span class="dc-pk">le dernier appel</span></a></li>
+        <li><a class="dc-pt" href="#d-camp"><span class="dc-pi" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-tente"/></svg></span><span class="dc-pd">6 avril 30</span><span class="dc-pp">Le camp</span><span class="dc-pk">filiation et citoyenneté</span></a></li>
+      </ol>
+    </div>
+    <div class="dc-list">
+
+      <article class="dc" id="d-capharnaum" aria-labelledby="h-d1" data-themes="royaume foi verite sincerite survie" data-court="Capharnaüm" data-ic="i-pain">
+        <header class="dc-head"><span class="dc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pain"/></svg></span><div><p class="dc-eye">1 · Fascicule 153</p><h3 id="h-d1">Le sermon de Capharnaüm</h3><p class="dc-sub">Le pain de vie, et la fin de la faveur populaire</p></div></header>
+        <dl class="dc-where"><dt>Où</dt><dd>La nouvelle synagogue de Capharnaüm&nbsp;: Jaïre, qui préside, a maintenu sa permission malgré les pressions <span class="ref">153:1.1 ; 153:1.7</span>.</dd><dt>Quand</dt><dd>Le sabbat 30 avril 29, à trois heures de l’après-midi, au lendemain du retour à Bethsaïde <span class="ref">152:7.3 ; 153:1.1</span>.</dd><dt>Devant qui</dt><dd>Cinquante-trois pharisiens et sadducéens venus de Jérusalem, des chefs de synagogues voisines, des observateurs d’Hérode Antipas, et la foule <span class="ref">153:1.1</span>.</dd></dl>
+        <p class="dc-idee">Après avoir refusé d’être fait roi par ceux qu’il avait nourris, Jésus attaque l’attente d’un Messie qui donnerait du pain sans travail&nbsp;: il se dit le pain de vie, c’est-à-dire sa propre nature vivante, où s’unissent le divin et l’humain, offerte à qui veut la recevoir <span class="ref">153:1.6 ; 153:2.6 ; 153:2.12</span>. Pour le texte, ce sermon est un tournant&nbsp;: la faveur populaire reflue, et s’ouvre la période du conflit ouvert, jusqu’à l’acceptation ou au rejet définitifs <span class="ref">153:1.2</span>.</p>
+        <blockquote class="cite" data-ref="153:2.6"><p>«&nbsp;Je suis venu proclamer la liberté spirituelle, enseigner la vérité éternelle et nourrir la foi vivante.&nbsp;»</p><p class="by"><span class="who">Jésus · synagogue de Capharnaüm</span><span class="ref">153:2.6</span></p></blockquote>
+        <p class="dc-note">Après la réunion, il répond aux questions plus de trois heures durant&nbsp;: ce qui souille spirituellement l’homme, dit-il, n’est pas ce qui entre dans sa bouche, mais ce qui vient de son cœur <span class="ref">153:2.13 ; 153:3.5</span>. Vers minuit, on apprend qu’un tiers des évangélistes ont abandonné la cause ; huit jours plus tard, le sanhédrin ferme à Jésus toutes les synagogues de Palestine <span class="ref">153:5.2 ; 154:2.1</span>.</p>
+        <p class="dc-ev"><b>Dans les Évangiles.</b> Le discours sur le pain de vie, dans la synagogue de Capharnaüm, après lequel beaucoup de disciples se retirent <span class="bref">Jean 6, 35</span> ; <span class="bref">Jean 6, 59</span> ; <span class="bref">Jean 6, 66</span>.</p>
+        <p class="dc-h">Thèmes liés</p>
+        <ul class="rel" aria-label="Thèmes liés à ce discours"><li><a class="relc fam-a" href="#t-royaume"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-royaume"/></svg>Le royaume des cieux</a></li><li><a class="relc fam-a" href="#t-foi"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-foi"/></svg>La foi</a></li><li><a class="relc fam-a" href="#t-verite"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-verite"/></svg>La vérité et la liberté</a></li><li><a class="relc fam-b" href="#t-sincerite"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-sincerite"/></svg>La sincérité et la droiture</a></li><li><a class="relc fam-c" href="#t-survie"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-survie"/></svg>La survie</a></li></ul>
+        <ul class="vl"><li><a class="vlink" href="bible-et-livre.html#p-pains"><span class="vl-k">La Bible et le livre</span><span class="vl-t">La multiplication des pains</span></a></li></ul>
+      </article>
+
+      <article class="dc" id="d-phenicie" aria-labelledby="h-d2" data-themes="pere foi mal joie" data-court="Sidon et Tyr" data-ic="i-pont">
+        <header class="dc-head"><span class="dc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pont"/></svg></span><div><p class="dc-eye">2 · Fascicule 156</p><h3 id="h-d2">L’enseignement en Phénicie</h3><p class="dc-sub">Six semaines chez des Gentils de langue grecque</p></div></header>
+        <dl class="dc-where"><dt>Où</dt><dd>Sidon, la côte jusqu’à Porphyréon et Heldoue, puis Tyr, où l’on ouvre pour lui le temple de Melkarth <span class="ref">156:3.1 ; 156:4.2</span>.</dd><dt>Quand</dt><dd>Du vendredi 10 juin au dimanche 24 juillet 29 ; à Tyr, il ne parle qu’une fois, l’après-midi du 20 juillet <span class="ref">156:0.1 ; 156:4.2 ; 156:6.1</span>.</dd><dt>Devant qui</dt><dd>Les vingt-quatre, apôtres et évangélistes, puis les croyants gentils de Tyr <span class="ref">156:2.2 ; 156:4.2</span>.</dd></dl>
+        <p class="dc-idee">À Sidon, il prend pour thème le progrès spirituel&nbsp;: on ne peut s’arrêter en route, il faut avancer vers la droiture ou reculer dans le mal <span class="ref">156:2.6</span>. À Tyr, il parle de l’amour du Père pour toute l’humanité, et conseille de vaincre la tentation non par la seule volonté, mais par l’amour de ce qui est plus élevé <span class="ref">156:4.2 ; 156:5.4–5</span>.</p>
+        <blockquote class="cite" data-ref="156:2.1"><p>«&nbsp;Ce monde n’est qu’un pont. On peut le traverser, mais il ne faudrait pas songer à bâtir une demeure dessus.&nbsp;»</p><p class="by"><span class="who">Jésus, en passant un pont · Sidon</span><span class="ref">156:2.1</span></p></blockquote>
+        <p class="dc-note">La foi d’une Syrienne, Norana, qui obtient la guérison de sa fille, lui fait dire que des Gentils sont capables d’une foi salvatrice <span class="ref">156:1.7–8</span> ; il goute leur humour et regrette que ses compatriotes en manquent <span class="ref">156:2.8</span>. À Tyr, il compare l’homme au lis blanc, racines dans la boue et fleur dans la lumière, et emploie sa seule parabole tirée de son métier&nbsp;: le charpentier qui s’échine sur une poutre pourrie <span class="ref">156:5.1–2</span>. Selon le texte, les auteurs juifs des Évangiles ont ensuite glissé sur cet accueil des Gentils <span class="ref">156:2.3</span>.</p>
+        <p class="dc-ev"><b>Dans les Évangiles.</b> Ils n’en gardent que l’épisode de la mère&nbsp;: la Cananéenne de Matthieu, la Syro-Phénicienne de Marc <span class="bref">Matthieu 15, 21-28</span> ; <span class="bref">Marc 7, 24-30</span>.</p>
+        <p class="dc-h">Thèmes liés</p>
+        <ul class="rel" aria-label="Thèmes liés à ce discours"><li><a class="relc fam-o" href="#t-pere"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pere"/></svg>Dieu est votre Père</a></li><li><a class="relc fam-a" href="#t-foi"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-foi"/></svg>La foi</a></li><li><a class="relc fam-c" href="#t-mal"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mal"/></svg>Le mal, le péché et l’iniquité</a></li><li><a class="relc fam-b" href="#t-joie"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-joie"/></svg>La joie et la bonne humeur</a></li></ul>
+      </article>
+
+      <article class="dc dc-rodan" id="d-rodan" aria-labelledby="h-d3" data-themes="pere religion priere famille richesse courage" data-court="Rodan d’Alexandrie" data-ic="i-colonne">
+        <header class="dc-head"><span class="dc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-colonne"/></svg></span><div><p class="dc-eye">3 · Fascicules 160 et 161</p><h3 id="h-d3">Rodan d’Alexandrie</h3><p class="dc-sub">La philosophie grecque au service de la religion de Jésus</p></div></header>
+        <div class="dr-grid">
+          <div class="dr-col">
+            <dl class="dc-where"><dt>Qui</dt><dd>Un philosophe grec d’Alexandrie, devenu disciple grâce à un associé d’Abner qui y avait dirigé une mission ; il veut harmoniser sa philosophie de vie avec l’enseignement de Jésus <span class="ref">160:0.1</span>.</dd><dt>Où</dt><dd>À Magadan, pendant une semaine de repos&nbsp;: Jésus refuse d’entrer dans la discussion, mais charge Nathanael et Thomas d’écouter Rodan et de lui présenter l’évangile <span class="ref">160:0.1</span>.</dd><dt>Quand</dt><dd>Dix exposés à partir du lundi 19 septembre 29, devant les deux apôtres et quelque deux douzaines de croyants, puis, après le 25, quelques jours d’entretiens <span class="ref">160:1.1 ; 161:0.1–2</span>.</dd></dl>
+            <p class="dc-idee">Sa philosophie cherchait la maturité sans en avoir la force motrice&nbsp;: l’évangile lui donne un but stable, le Dieu vivant, et une méthode, la méditation adoratrice solitaire qu’il observe chez le Maitre <span class="ref">160:1.10 ; 160:1.14–15</span>. Unie à cet évangile, elle forme selon lui <span class="q" data-ref="160:1.14">«&nbsp;la nouvelle religion de la maturité&nbsp;»</span> <span class="ref">160:1.14</span> ; mais la religion de Jésus, ajoute-t-il, exige une expérience spirituelle vivante <span class="ref">160:5.12</span>.</p>
+            <blockquote class="cite" data-ref="160:3.1"><p>«&nbsp;La méditation établit le contact du mental avec l’esprit ; la détente détermine la capacité de la réceptivité spirituelle.&nbsp;»</p><p class="by"><span class="who">Rodan · Magadan</span><span class="ref">160:3.1</span></p></blockquote>
+          </div>
+          <div class="dr-col">
+            <h4 class="dc-h">Les dix exposés, en cinq thèmes</h4>
+            <ol class="dr-plan">
+              <li><span><b>Les trois stimulations.</b> Les impulsions, les désirs et les attraits ; et l’art de vivre, à réapprendre toutes les dix générations <span class="ref">160:1.2–3</span>.</span></li>
+              <li><span><b>L’art de vivre.</b> L’amitié et le mariage aident à s’exprimer, à unir sa sagesse, à garder l’entrain de vivre et à mieux résister au mal <span class="ref">160:2.5–10</span>.</span></li>
+              <li><span><b>Les attraits de la maturité.</b> L’énergie vient de l’adoration, la méditation jointe à la détente ; et le tact gagne mieux que le combat <span class="ref">160:3.1 ; 160:3.4</span>.</span></li>
+              <li><span><b>L’équilibre de la maturité.</b> Pourvoir à la vie temporelle, et savoir échouer&nbsp;: l’échec n’est qu’un épisode éducatif <span class="ref">160:4.1 ; 160:4.13–15</span>.</span></li>
+              <li><span><b>La religion de l’idéal.</b> L’<i>idée</i> de Dieu n’est pas l’<i>idéal</i> de Dieu ; la religion de Jésus est, pour Rodan, la plus haute conception de la religion que le monde ait connue <span class="ref">160:5.6–7</span>.</span></li>
+            </ol>
+            <h4 class="dc-h">Les six facteurs de la vie temporelle <span class="ref">160:4.2–8</span></h4>
+            <ul class="dr-six"><li>une bonne santé</li><li>une pensée claire et pure</li><li>aptitudes et habileté</li><li>la richesse</li><li>résister à la défaite</li><li>la culture</li></ul>
+            <blockquote class="cite" data-ref="160:5.11"><p>«&nbsp;[…] dans notre cœur, Dieu est esprit ; quand nous le transmettons à nos semblables, Dieu est amour.&nbsp;»</p><p class="by"><span class="who">Rodan · Magadan</span><span class="ref">160:5.11</span></p></blockquote>
+          </div>
+        </div>
+        <div class="dr-suite">
+          <div>
+            <h4>La personnalité de Dieu</h4>
+            <p>Rodan admet tous les attributs de Dieu, mais soutient qu’il transcende la personnalité, faute d’égal avec qui communiquer <span class="ref">161:1.1–2</span>. Jésus refuse d’arbitrer ; il dit seulement à Thomas <span class="q" data-ref="161:1.3">«&nbsp;Peu importe l’<i>idée</i> que tu peux te faire du Père, pourvu que tu connaisses spirituellement l’<i>idéal</i> de sa nature infinie et éternelle.&nbsp;»</span> <span class="ref">161:1.3</span>. Le mardi soir, Nathanael le convainc en cinq étapes, appuyées sur la Trinité et sur la personnalité de Jésus <span class="ref">161:1.5–10</span>.</p>
+            <blockquote class="cite" data-ref="161:1.11"><p>«&nbsp;Je suis désormais convaincu que Dieu doit être infiniment plus qu’une personnalité, mais qu’il ne peut rien être de moins.&nbsp;»</p><p class="by"><span class="who">Rodan, à Nathanael et Thomas</span><span class="ref">161:1.11</span></p></blockquote>
+          </div>
+          <div>
+            <h4>La nature divine de Jésus</h4>
+            <p>Nathanael et Thomas lui exposent ensemble neuf raisons de croire en la divinité du Maitre, de son propre témoignage à sa vie de prière, dans une présentation que le texte dit résumée et reformulée <span class="ref">161:2.1–10</span>.</p>
+            <h4>Rodan dans la suite du récit</h4>
+            <ul class="ep">
+              <li>Il enseigne longtemps sa philosophie à l’école de Méganta, à Alexandrie, et meurt en Grèce au plus fort des persécutions <span class="ref">161:2.12</span>.</li>
+              <li>Des Grecs, dont certains avaient été instruits par lui à Alexandrie, passent des heures avec Pierre et Jean au camp, la dernière semaine <span class="ref">177:3.5</span>.</li>
+              <li>Le 18 avril 30, Jésus ressuscité lui apparait à Alexandrie, avec environ quatre-vingts croyants <span class="ref">191:6.1</span>.</li>
+              <li>Deux de ses élèves convertissent à Jérusalem des Hellénistes, dont Étienne et Barnabas <span class="ref">194:4.11</span>.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="dr-reg">
+          <p><b>Le texte dit.</b> Ces exposés sont donnés condensés et retranscrits en langage moderne <span class="ref">160:1.1</span>&nbsp;: c’est la philosophie d’un disciple, dont Jésus n’a pas voulu débattre lui-même <span class="ref">160:0.1</span>. Rodan vient d’Alexandrie, la ville de Philon, qui, selon le livre, avait entrepris d’harmoniser la philosophie grecque et la théologie hébraïque <span class="ref">121:6.3–4</span>.</p>
+          <p><b>Regard historique.</b> Matthew Block (<i lang="en">The Rodan Parallels</i>, 2003) a relevé que ces exposés et les deux premières sections du fascicule 161 suivent de près un livre de 1930, <i lang="en">The Issues of Life</i>, du philosophe de la religion Henry Nelson Wieman, professeur à la faculté de théologie de l’université de Chicago. Wieman ne croyait pas en un Dieu personnel&nbsp;: c’est la thèse que Rodan défend avant d’être convaincu <span class="ref">161:1.2</span>. À notre connaissance, aucune source ancienne ne mentionne Rodan ni l’école de Méganta.</p>
+        </div>
+        <p class="dc-h">Thèmes liés</p>
+        <ul class="rel" aria-label="Thèmes liés à ce discours"><li><a class="relc fam-o" href="#t-pere"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pere"/></svg>Dieu est votre Père</a></li><li><a class="relc fam-a" href="#t-religion"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-religion"/></svg>La religion personnelle</a></li><li><a class="relc fam-b" href="#t-priere"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-priere"/></svg>La prière et l’adoration</a></li><li><a class="relc fam-c" href="#t-famille"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-famille"/></svg>La famille</a></li><li><a class="relc fam-c" href="#t-richesse"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-richesse"/></svg>La richesse et le partage</a></li><li><a class="relc fam-c" href="#t-courage"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-courage"/></svg>La non-résistance et le courage</a></li></ul>
+      </article>
+
+      <article class="dc" id="d-temple" aria-labelledby="h-d4" data-themes="pardon sincerite royaume" data-court="Le Temple" data-ic="i-temple">
+        <header class="dc-head"><span class="dc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-temple"/></svg></span><div><p class="dc-eye">4 · Fascicule 175</p><h3 id="h-d4">Le dernier discours au Temple</h3><p class="dc-sub">Un dernier appel, puis les adieux publics</p></div></header>
+        <dl class="dc-where"><dt>Où</dt><dd>Les cours du Temple de Jérusalem, où les changeurs n’ont pas osé revenir depuis la veille <span class="ref">175:0.1–2</span>.</dd><dt>Quand</dt><dd>Le mardi 4 avril 30, un peu après deux heures de l’après-midi <span class="ref">175:0.1 ; 175:3.1</span>.</dd><dt>Devant qui</dt><dd>Onze apôtres, Joseph d’Arimathie, trente Grecs et d’autres disciples, face à l’auditoire de la cour ; cet après-midi-là, nul ne l’interroge <span class="ref">175:0.1</span>.</dd></dl>
+        <p class="dc-idee">C’est, dit le texte, l’ultime appel au peuple juif et l’accusation finale contre les chefs qui cherchent à l’anéantir&nbsp;: Jésus offre encore la miséricorde du Père, avertit que le royaume sera donné à d’autres peuples, puis dénonce l’hypocrisie des scribes et des pharisiens, tout en disant n’avoir contre eux aucune rancune <span class="ref">175:0.1 ; 175:1.3–6 ; 175:1.11–21</span>. Le soir même, peu avant minuit, le sanhédrin vote à l’unanimité la mort de Jésus et de Lazare <span class="ref">175:3.1</span>.</p>
+        <blockquote class="cite" data-ref="175:1.22"><p>«&nbsp;Mais, maintenant encore, au nom de mon Père, je vous offre miséricorde et pardon.&nbsp;»</p><p class="by"><span class="who">Jésus · cours du Temple</span><span class="ref">175:1.22</span></p></blockquote>
+        <p class="dc-note"><b>Le texte dit.</b> Le narrateur fait suivre ce récit d’un avertissement&nbsp;: le rejet de Jésus par les chefs de la nation n’affecte en rien la position de chaque Juif devant Dieu, même si la nation, comme groupe sociopolitique, en a payé le prix <span class="ref">175:2.1</span>. <span class="q" data-ref="175:2.3">«&nbsp;Le Père et son Fils Créateur n’ont jamais cessé d’aimer les Juifs.&nbsp;»</span> <span class="ref">175:2.3</span></p>
+        <p class="dc-note"><b>Regard historique.</b> Le livre parait en 1955 ; en 1965, la déclaration <i>Nostra Ætate</i> du concile Vatican II écarte elle aussi l’idée d’imputer la passion du Christ à tous les Juifs de son temps comme à ceux d’aujourd’hui.</p>
+        <p class="dc-ev"><b>Dans les Évangiles.</b> Les invectives contre les scribes et les pharisiens <span class="bref">Matthieu 23, 13-36</span>.</p>
+        <p class="dc-h">Thèmes liés</p>
+        <ul class="rel" aria-label="Thèmes liés à ce discours"><li><a class="relc fam-b" href="#t-pardon"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-pardon"/></svg>Le pardon</a></li><li><a class="relc fam-b" href="#t-sincerite"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-sincerite"/></svg>La sincérité et la droiture</a></li><li><a class="relc fam-a" href="#t-royaume"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-royaume"/></svg>Le royaume des cieux</a></li></ul>
+        <ul class="vl"><li><a class="vlink" href="bible-et-livre.html#p-temple"><span class="vl-k">La veille, dans la Bible et le livre</span><span class="vl-t">Les marchands chassés du temple</span></a></li></ul>
+      </article>
+
+      <article class="dc" id="d-camp" aria-labelledby="h-d5" data-themes="royaume courage amour verite" data-court="Le camp" data-ic="i-tente">
+        <header class="dc-head"><span class="dc-ic" aria-hidden="true"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-tente"/></svg></span><div><p class="dc-eye">5 · Fascicule 178</p><h3 id="h-d5">La filiation et la citoyenneté</h3><p class="dc-sub">Le discours d’adieu au camp</p></div></header>
+        <dl class="dc-where"><dt>Où</dt><dd>Un lieu isolé, un peu au-dessus du camp installé près de Gethsémani <span class="ref">178:0.1 ; 174:0.3</span>.</dd><dt>Quand</dt><dd>Le jeudi 6 avril 30, au matin, veille de la crucifixion&nbsp;: son dernier jour de liberté <span class="ref">178:0.1 ; 185:0.1</span>.</dd><dt>Devant qui</dt><dd>Une cinquantaine de disciples de confiance, Juifs et Gentils, et les apôtres, sauf Judas ; près de deux heures, et une vingtaine de questions <span class="ref">178:0.1 ; 178:1.1</span>.</dd></dl>
+        <p class="dc-idee">Être fils de Dieu et citoyen d’un État ne s’opposent pas&nbsp;: il faut rendre à César ce qui est à César et à Dieu ce qui est à Dieu, à moins que César ne réclame le culte dû à Dieu <span class="ref">178:1.3</span>. Le royaume, fraternité spirituelle, ne s’impose ni par la force ni par les lois civiles&nbsp;: il se répand par le service aimant et par la persuasion <span class="ref">178:1.2 ; 178:1.6 ; 178:1.12</span>.</p>
+        <blockquote class="cite" data-ref="178:1.12"><p>«&nbsp;Vous pouvez toujours vous efforcer de persuader le mental des hommes, mais n’ayez jamais l’audace de le contraindre.&nbsp;»</p><p class="by"><span class="who">Discours de Jésus au camp, résumé par le narrateur</span><span class="ref">178:1.12</span></p></blockquote>
+        <p class="dc-note">Dans ce résumé, il annonce aussi que la lumière de l’évangile conduira au divorce graduel de la politique et de la religion <span class="ref">178:1.9</span>. Peu d’auditeurs comprirent ce discours ; les Grecs le saisirent le mieux <span class="ref">178:2.1</span>.</p>
+        <p class="dc-ev"><b>Dans les Évangiles.</b> La parole sur César, dite au Temple à ceux qui voulaient le prendre au piège <span class="bref">Matthieu 22, 21</span>.</p>
+        <p class="dc-h">Thèmes liés</p>
+        <ul class="rel" aria-label="Thèmes liés à ce discours"><li><a class="relc fam-a" href="#t-royaume"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-royaume"/></svg>Le royaume des cieux</a></li><li><a class="relc fam-c" href="#t-courage"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-courage"/></svg>La non-résistance et le courage</a></li><li><a class="relc fam-b" href="#t-amour"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-amour"/></svg>L’amour et le service</a></li><li><a class="relc fam-a" href="#t-verite"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-verite"/></svg>La vérité et la liberté</a></li></ul>
+        <ul class="vl"><li><a class="vlink" href="bible-et-livre.html#p-cesar"><span class="vl-k">La Bible et le livre</span><span class="vl-t">Rendez à César</span></a></li></ul>
+      </article>
+
+    </div>
+  </section>
+
   <section id="evangiles" aria-labelledby="h-ev">
     <div class="sec-head">
       <p class="eyebrow">Regard historique · le livre face aux sources anciennes</p>
@@ -657,6 +859,7 @@ section, article { scroll-margin-top: 12px; }
         <li><b>Des lois sur le mariage et le divorce.</b> Il refusa à maintes reprises d’en formuler ; le texte ajoute que des premiers disciples lui prêtèrent leurs propres vues, plus strictes <span class="ref">140:8.14</span>.</li>
         <li><b>La date de son retour.</b> Elle <span class="q" data-ref="176:2.5">«&nbsp;n’est connue que dans les conseils du Paradis&nbsp;»</span> <span class="ref">176:2.5</span>, et Jésus ne relia jamais ce retour à la venue du royaume dans sa plénitude <span class="ref">170:4.15</span>.</li>
         <li><b>Les deux lignes perdues du Notre Père.</b> Le texte dit que deux lignes furent perdues dans les copies <span class="ref">144:3.15</span>, sans les désigner. On peut penser aux deux demandes de sa version absentes des Évangiles <span class="ref">144:3.8 ; 144:3.12</span>, mais c’est une déduction.</li>
+        <li><b>Comment Jésus usait de son mental divin.</b> Les médians le voient tantôt limiter sa conscience divine, tantôt cacher sa prescience, sans pouvoir dire, dans chaque cas, laquelle des deux il employait&nbsp;: <span class="q" data-ref="161:3.3">«&nbsp;en réalité, nous ne savons pas toute la vérité sur ce mystère&nbsp;»</span> <span class="ref">161:3.3</span>.</li>
         <li><b>La carte et ses familles.</b> Le centre vient du texte <span class="ref">188:4.8</span>, les liens aussi, avec leurs références ; le choix des quinze thèmes, leur répartition en trois familles, les couleurs et les icônes sont des choix de la page.</li>
       </ul>
     </div>
@@ -664,7 +867,7 @@ section, article { scroll-margin-top: 12px; }
 
   <div class="atlas-suite atlas-suite-seule"><div class="etape"><p>Thème</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div></div>
 <footer class="foot">
-    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-trois citations courtes du livre et six de la Bible, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Soixante-quatre citations courtes du livre et six de la Bible, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
     <p>La carte est une image de présentation&nbsp;: le centre et les liens viennent du texte, avec leurs références ; le choix des thèmes, les familles, les couleurs et les icônes sont des choix de la page.</p>
     <p>Faits extérieurs au livre (manuscrits, traductions, traditions des Églises, histoire des idées, sources relevées par Matthew Block)&nbsp;: résumés prudents, vérifiés le 2026-11-08, sans prise de position.</p>
   <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Les%20enseignements%20de%20J%C3%A9sus&amp;page=Les%20enseignements%20de%20J%C3%A9sus%20%28enseignements-de-jesus.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
@@ -885,6 +1088,27 @@ section, article { scroll-margin-top: 12px; }
         ul2.className = "fi-liens";
         vs.forEach(function (v) { ul2.appendChild(puce(v.k, E[v.e].html)); });
         fiche.appendChild(ul2);
+      }
+      /* Les grands discours où revient ce thème : rapprochements choisis par la page (attribut data-themes de #discours) */
+      var dsc = Array.prototype.filter.call(document.querySelectorAll("#discours [data-themes]"), function (d) {
+        return (" " + d.getAttribute("data-themes") + " ").indexOf(" " + t.id + " ") >= 0;
+      });
+      if (dsc.length) {
+        var hd = document.createElement("p"), ud = document.createElement("ul");
+        hd.className = "fi-h";
+        hd.textContent = "Dans les grands discours";
+        ud.className = "fi-disc";
+        dsc.forEach(function (d) {
+          var li = document.createElement("li"), a = document.createElement("a");
+          a.className = "fi-dl";
+          a.href = "#" + d.id;
+          a.innerHTML = ico(d.getAttribute("data-ic")) + "<span></span>";
+          a.querySelector("span").textContent = d.getAttribute("data-court");
+          li.appendChild(a);
+          ud.appendChild(li);
+        });
+        fiche.appendChild(hd);
+        fiche.appendChild(ud);
       }
       var act = document.createElement("div");
       act.className = "fi-act";

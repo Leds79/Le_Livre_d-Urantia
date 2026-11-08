@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Mise en page : un atlas historique annoté. Frise des époques en bandes (échelle logarithmique),
-   puis carte du monde pilotée par un curseur d’épisodes, la fiche de l’épisode en regard. Jusqu’à 1100 px. */
+   puis le supercontrôle de l’évolution (fascicule 65), puis carte du monde pilotée par un curseur d’épisodes, la fiche de l’épisode en regard. Jusqu’à 1100 px. */
 :root {
   --paper: #EEF1F6;    /* fond : papier de carte bleuté */
   --sheet: #FFFFFF;    /* surfaces des fiches */
@@ -210,6 +210,48 @@ input[type="range"] { width: 100%; margin: 6px 0 4px; accent-color: var(--gold);
 .ep-t { font-weight: 500; font-size: .95rem; line-height: 1.25; }
 .ep-d { font: 400 .74rem/1.4 var(--font-mono); color: var(--muted); }
 
+/* Le supercontrôle de l’évolution (fascicule 65) : trois niveaux de la vie et du mental, en bandes superposées
+   (la terre de la prévie en bas, la sarcelle de l’aurore de la vie au milieu, l’or en haut), puis des fiches. */
+.sv-main { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 22px; margin-top: 24px; align-items: start; }
+.sv-fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px; display: grid; gap: 10px; min-width: 0; }
+.sv-fig figcaption { font-size: .84rem; color: var(--muted); line-height: 1.4; }
+.sv-lv { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.sv-lv > li { --c: var(--e-1); position: relative; border: 1px solid var(--rule); border-left: 5px solid var(--c); border-radius: 10px; padding: 11px 14px 12px; display: grid; gap: 6px; background: var(--sheet); background: linear-gradient(90deg, color-mix(in srgb, var(--c) 11%, var(--sheet)), var(--sheet) 75%); font-size: .95rem; line-height: 1.45; min-width: 0; }
+.sv-lv > li.lv-3 { --c: var(--gold-ui); }
+.sv-lv > li.lv-2 { --c: var(--e-2); }
+.sv-k { font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.sv-lv b { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; }
+.sv-adj { list-style: none; margin: 2px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.sv-adj li { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); padding: 3px 11px 3px 4px; font-size: .86rem; font-weight: 500; }
+.sv-adj .n { width: 1.45rem; height: 1.45rem; border-radius: 50%; display: grid; place-items: center; font: 600 .74rem/1 var(--font-mono); color: var(--on-band); background: var(--e-2); }
+.sv-adj li.hi { border-color: var(--gold-ui); }
+.sv-adj li.hi .n { background: var(--gold); color: var(--on-gold); }
+.sv-card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.sv-card h3 { font-size: 1.3rem; }
+.sv-card p, .sv-card li { font-size: .95rem; line-height: 1.5; }
+.sv-ph { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: ph; }
+.sv-ph li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 0 10px; align-items: start; }
+.sv-ph li::before { counter-increment: ph; content: counter(ph); width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center; font: 600 .78rem/1 var(--font-mono); color: var(--ink); border: 1.5px solid var(--e-2); background: var(--sheet); }
+.sv-ph li:last-child::before { border-color: var(--gold-ui); }
+.sv-side { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sv-cards { margin-top: 12px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.sv-card ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; }
+.sv-card .tag { font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); }
+.sv-reg { margin: 18px 0 0; padding: 14px 18px 16px; list-style: none; display: grid; gap: 8px; background: var(--tint); border-radius: 12px; font-size: .93rem; line-height: 1.5; max-width: 86ch; }
+.sv-reg b { font-weight: 700; }
+.sv-links { margin-top: 12px; font-size: .95rem; color: var(--muted); max-width: 80ch; }
+.sv-links a { padding-block: 10px; }
+@media (max-width: 960px) {
+  .sv-main { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .sv-cards { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .sv-fig, .sv-card { padding: 14px; }
+  .sv-reg { padding: 12px 14px 14px; }
+}
+
 /* Encadrés */
 .callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 80ch; }
 .callout h2 { font-size: 1.7rem; }
@@ -262,9 +304,9 @@ details.unk[open] summary { margin-bottom: 14px; }
 
   <header class="hero">
     <div class="hero-text">
-      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · partie III · fascicules 57 à 64 et 73 à 80</p>
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · partie III · fascicules 57 à 65 et 73 à 80</p>
       <h1>L’histoire d’Urantia</h1>
-      <p class="lede">Le livre raconte la Terre depuis la nébuleuse d’où naquit le Soleil jusqu’aux premiers temps historiques. Cette page en suit deux fils : les grandes époques physiques et biologiques, puis l’apparition des humains et leurs migrations, sur une carte du monde.</p>
+      <p class="lede">Le livre raconte la Terre depuis la nébuleuse d’où naquit le Soleil jusqu’aux premiers temps historiques. Cette page en suit deux fils : les grandes époques physiques et biologiques, puis l’apparition des humains et leurs migrations, sur une carte du monde&nbsp;; entre les deux, la manière dont, selon le livre, la vie a été conduite.</p>
     </div>
     <aside class="codebox" aria-label="Lire une date">
       <span class="label">Lire une date</span>
@@ -290,6 +332,79 @@ details.unk[open] summary { margin-bottom: 14px; }
       <p class="frise-cap">Échelle logarithmique, en années avant le présent du texte : chaque graduation divise le temps par dix (Md : milliards, M : millions). Les bandes suivent les dates du texte ; quand il ne donne qu’un début, la bande s’arrête au début de la suivante.</p>
     </div>
     <ol class="bands" id="bands" aria-label="Les époques, de la plus ancienne à la plus récente"></ol>
+  </section>
+
+  <section id="supercontrole" aria-labelledby="h-sup">
+    <div class="sec-head">
+      <p class="eyebrow">Fascicule 65 · parrainé par un Porteur de Vie résidant sur Urantia</p>
+      <h2 id="h-sup">Le supercontrôle de l’évolution</h2>
+      <p>La frise montre les ères de la vie&nbsp;; le fascicule 65 dit comment, selon le livre, cette vie a été conduite <span class="ref">65:8.7</span>. Trois activités s’y conjuguent&nbsp;: celle des contrôleurs physiques, celle des esprits-mentaux adjuvats et celle des Porteurs de Vie, qui gardent la main sur le milieu jusqu’à l’apparition de la volonté humaine <span class="ref">65:0.6–7</span>. L’auteur dit agir sur Urantia depuis l’époque d’Andon et de Fonta <span class="ref">65:1.8</span>.</p>
+      <blockquote class="cite" data-ref="65:0.7"><p>«&nbsp;C’est pourquoi l’évolution — sur Urantia ou ailleurs — est toujours intentionnelle et jamais accidentelle.&nbsp;»</p><span class="ref">65:0.7</span></blockquote>
+    </div>
+    <div class="sv-main">
+      <figure class="sv-fig" aria-labelledby="sv-fig-t">
+        <figcaption id="sv-fig-t">Trois niveaux de production et d’évolution de la vie, du plus simple, en bas, au plus spirituel <span class="ref">65:0.2–5</span>.</figcaption>
+        <ol class="sv-lv" reversed>
+          <li class="lv-3"><p class="sv-k">3 · L’esprit</p><p><b>La dotation spirituelle du mental mortel</b>, qui culmine dans l’octroi des Ajusteurs de Pensée <span class="ref">65:0.5</span>.</p></li>
+          <li class="lv-2"><p class="sv-k">2 · Le mental qui apprend</p><p><b>Le ministère des sept esprits-mentaux adjuvats</b>, qui entre en fonction avec l’aptitude à apprendre par l’expérience&nbsp;; ce sont plutôt des circuits que des entités <span class="ref">65:7.3&nbsp;; 65:7.6</span>.</p>
+            <ol class="sv-adj" aria-label="Les sept adjuvats, dans l’ordre"><li><span class="n">1</span>intuition</li><li><span class="n">2</span>compréhension</li><li><span class="n">3</span>courage</li><li><span class="n">4</span>connaissance</li><li><span class="n">5</span>conseil</li><li class="hi"><span class="n">6</span>adoration</li><li class="hi"><span class="n">7</span>sagesse</li></ol>
+            <p>Leurs noms sont donnés au fascicule 36 <span class="ref">36:5.2</span>. Les cinq premiers agissent déjà dans le règne animal <span class="ref">36:5.13</span>&nbsp;; avec le sixième vient l’adoration, «&nbsp;l’insigne de la candidature à l’ascension spirituelle&nbsp;» <span class="ref">36:5.11</span>. À ce niveau, les ministères se chevauchent, et un ministère d’esprit supplémentaire accompagne le septième <span class="ref">65:7.7</span>.</p></li>
+          <li class="lv-1"><p class="sv-k">1 · La matière vivante</p><p><b>Le domaine physicoénergétique</b>, qui produit la capacité mentale&nbsp;; ses réactions machinales, qu’aucun apprentissage ne modifie, relèvent des contrôleurs physiques <span class="ref">65:0.3&nbsp;; 65:0.6&nbsp;; 65:7.5</span>.</p></li>
+        </ol>
+      </figure>
+      <div class="sv-side">
+      <div class="sv-card">
+        <p class="tag">Leurs fonctions</p>
+        <h3>Les Porteurs de Vie, en trois états</h3>
+        <ol class="sv-ph">
+          <li><span><b>Électrochimique.</b> Une commission de dix ordres, présidée par le chef des archanges, les y transmue pour implanter la vie <span class="ref">65:1.3&nbsp;; 65:1.6</span>.</span></li>
+          <li><span><b>Médian.</b> Leur état ordinaire, quasi morontiel&nbsp;: ils conduisent les organismes, sans plus pouvoir créer de nouveaux modèles de vie <span class="ref">65:1.4&nbsp;; 65:1.7</span>.</span></li>
+          <li><span><b>Semi-spirituel.</b> Quand la volonté humaine apparait, ils quittent la planète, ou y restent comme conseillers après un vœu de renoncement <span class="ref">65:1.5&nbsp;; 65:1.8</span>.</span></li>
+        </ol>
+        <p>Ils peuvent employer toutes les ressources naturelles et les circonstances favorables, mais non intervenir mécaniquement ni manipuler arbitrairement le cours de l’évolution <span class="ref">65:3.2</span>.</p>
+      </div>
+      <article class="sv-card">
+        <p class="tag">L’entretien de l’évolution</p>
+        <h3>Mille lignées, une grenouille</h3>
+        <p>La lignée humaine passa par une seule grenouille, qui échappa de justesse à la destruction&nbsp;; mais les Porteurs de Vie entretenaient alors au moins mille lignées mutantes, et cette grenouille était leur troisième sélection <span class="ref">65:3.3</span>. Même la perte d’Andon et de Fonta n’aurait fait que retarder l’évolution humaine&nbsp;: sept-mille lignées favorables apparurent encore <span class="ref">65:3.4</span>.</p>
+      </article>
+      </div>
+    </div>
+    <div class="sv-cards">
+      <article class="sv-card">
+        <p class="tag">L’aventure d’Urantia</p>
+        <h3>Un monde où la vie est modifiée</h3>
+        <p>Urantia fut leur soixantième tentative pour mieux adapter à Satania les types de vie de Nébadon <span class="ref">65:4.1</span>. Le texte en relève les particularités&nbsp;:</p>
+        <ul>
+          <li>au moins vingt-huit modifications de la vie utiles à tout Nébadon <span class="ref">65:4.1</span>, et une formule de cicatrisation retenue après plus d’un demi-million d’expériences <span class="ref">65:4.4</span>&nbsp;;</li>
+          <li>la race andonique avant les races de couleur, et six races de couleur issues d’une seule famille, une première en Satania <span class="ref">65:4.7</span>&nbsp;;</li>
+          <li>une volonté humaine apparue avant les races de couleur&nbsp;: le seul cas en Satania <span class="ref">65:4.11</span>&nbsp;;</li>
+          <li>un Prince Planétaire arrivé près de cinq-cent-mille ans après Andon et Fonta, douze Melchizédeks veillant dans l’intervalle <span class="ref">65:4.8–9</span>.</li>
+        </ul>
+      </article>
+      <article class="sv-card">
+        <p class="tag">Les vicissitudes</p>
+        <h3>Des déceptions</h3>
+        <p>La trahison de Caligastia et la faute adamique ont entravé leurs efforts. Leur plus grande déception fut pourtant le retour, à grande échelle, de végétaux primitifs à l’état de bactéries parasitaires, source de maladies contre lesquelles l’apport adamique devait immuniser la race <span class="ref">65:5.1–2</span>. Parmi les compensations, le texte cite l’effusion de Micaël <span class="ref">65:5.4</span>.</p>
+      </article>
+      <article class="sv-card">
+        <p class="tag">Les techniques</p>
+        <h3>L’adaptation</h3>
+        <p>Pour le végétal, la chlorophylle, puis la graine&nbsp;; chez les animaux supérieurs, le fer du sang, là où la seiche emploie le cuivre et l’ascidie le vanadium <span class="ref">65:6.3–4</span>. L’ajustement se poursuit&nbsp;: jusqu’à trente-six dents chez des ancêtres lointains, trente-deux chez l’homme primitif, et une lente tendance vers vingt-huit <span class="ref">65:6.5</span>.</p>
+      </article>
+      <article class="sv-card">
+        <p class="tag">Le temps</p>
+        <h3>Au rythme de la planète</h3>
+        <p>Les Porteurs de Vie n’ont aucun contrôle sur l’évolution géologique&nbsp;; si les conditions physiques le permettaient, la vie pourrait évoluer en bien moins d’un million d’années <span class="ref">65:8.2</span>.</p>
+        <blockquote class="cite" data-ref="65:8.5"><p>«&nbsp;Le statut physique peut handicaper le mental, et la perversité mentale peut retarder l’aboutissement spirituel, mais, si un homme a choisi de toute son âme, aucun de ces obstacles ne peut triompher de sa volonté.&nbsp;»</p><span class="ref">65:8.5</span></blockquote>
+      </article>
+    </div>
+    <ul class="sv-reg">
+      <li><b>Le texte dit.</b> Une évolution conduite, mais sans coup de force&nbsp;: l’établissement de la vie n’est jamais expérimental au sens de tenter l’inconnu <span class="ref">65:4.2</span>, et l’auteur admet que bien des sous-produits de ces essais peuvent troubler l’observateur humain <span class="ref">65:4.12</span>.</li>
+      <li><b>Lecture courante.</b> Des lecteurs y voient une manière d’accorder l’évolution et un dessein divin&nbsp;; d’autres rappellent que le livre annonce lui-même la révision de ses affirmations scientifiques <span class="ref">101:4.2</span>.</li>
+      <li><b>Regard historique.</b> Le livre parait en 1955, quand la biologie explique l’évolution par la sélection naturelle de variations dues au hasard (la <i>synthèse moderne</i>, formée dans les années 1930 et 1940). Le vœu de remplacer un jour «&nbsp;une sélection naturelle non contrôlée&nbsp;» par l’intelligence scientifique <span class="ref">65:3.6</span> rappelle l’eugénisme, très répandu dans la première moitié du XX<sup>e</sup> siècle et rejeté depuis&nbsp;; voir plus bas les trois manières de lire ces récits.</li>
+    </ul>
+    <p class="sv-links">Avant ce chapitre&nbsp;: <a href="#h-frise">la frise des ères de la vie</a>, où la vie est implantée il y a 550&nbsp;millions d’années <span class="ref">58:4.2</span>. Après lui&nbsp;: <a href="#h-carte">la carte des migrations</a>, d’Andon et Fonta aux Andites.</p>
   </section>
 
   <section aria-labelledby="h-carte">
@@ -365,12 +480,13 @@ details.unk[open] summary { margin-bottom: 14px; }
       <li><b>Deux calendriers.</b> <i>Il y a N ans</i> part des premières décennies du XX<sup>e</sup> siècle <span class="ref">57:0.2</span> ; <i>l’an N av. J.-C.</i> suit le calendrier usuel. L’écart, d’environ 1 934 ans, se perd dans l’arrondi des grandes dates, pas dans celui des plus récentes : le début des premières migrations adamites est donné à la fois il y a environ 25 000 ans <span class="ref">78:3.3</span> et en l’an 25 000 av. J.-C. <span class="ref">78:3.9</span>.</li>
       <li><b>Les migrations Sangik.</b> Les dates du départ des bleus vers l’Europe et des indigo vers l’Afrique ne sont pas données. Armageddon, quartier général des orangés, n’est pas situé <span class="ref">64:6.12</span> ; il ne figure donc pas sur la carte.</li>
       <li><b>Les géographies anciennes.</b> Le texte évoque une Méditerranée qui s’étendait à l’est jusqu’à l’océan Indien <span class="ref">64:1.1</span>, une mer Noire très étendue <span class="ref">64:4.10</span>, une Caspienne plus vaste <span class="ref">80:2.5</span>, des iles du Pacifique plus nombreuses et plus grandes <span class="ref">78:5.7</span>, sans en donner le tracé.</li>
+      <li><b>Les lignées perdues.</b> La grenouille ancestrale fut la troisième sélection des Porteurs de Vie&nbsp;; le texte ne dit pas ce qu’étaient les deux lignées qui périrent avant elle <span class="ref">65:3.3</span>.</li>
       <li><b>Les effectifs.</b> Quelques nombres seulement : dix-neuf enfants Sangik <span class="ref">64:5.3</span>, un peu plus de sept mille hommes rouges <span class="ref">64:7.5</span>, douze cents partisans d’Adam <span class="ref">75:6.2</span>, 4 500 000 Adamites vers l’an 19 000 av. J.-C. <span class="ref">78:2.5</span>, cent trente-deux navigateurs <span class="ref">78:5.7</span>, trois cent soixante-quinze ancêtres des Grecs <span class="ref">80:7.4</span>.</li>
     </ul>
   </details>
 
   <footer class="foot">
-    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt-deux citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites.</p>
+    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt-six citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites.</p>
     <p>Fond de carte : Natural Earth (domaine public), côtes, lacs et fleuves actuels, projection équirectangulaire. Les lieux marqués ≈ et les flèches en pointillé sont des estimations.</p>
     <p>Les couleurs des peuples reprennent les noms que le texte leur donne (rouge, orangé, jaune, vert, bleu, indigo, violet) ; les autres couleurs sont un choix de présentation.</p>
   </footer>

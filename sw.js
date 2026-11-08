@@ -2,24 +2,24 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '49d5312a3077';
+const VERSION = 'f377f1b146f2';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
 const FICHIERS = {
-  "index.html": [133208, "7fc420bb10e5b43d"],
+  "index.html": [133208, "fabf721175184f5e"],
   "nebadon-dans-orvonton.html": [73088, "114d42eb9598db79"],
   "atlas-3d.html": [2516689, "4dab2a2d4b0081f1"],
   "familles-de-personnalites.html": [122735, "56d7bdc605a52c44"],
   "concepts-en-schemas.html": [109865, "531f4d691bb450c5"],
   "dieu-et-deite.html": [95901, "caaff481abf541da"],
   "destinee-humaine.html": [137525, "bab02ce085a01e5e"],
-  "histoire-d-urantia.html": [185163, "61c33546b8e1f3de"],
+  "histoire-d-urantia.html": [198554, "89ad2f7654327698"],
   "rebellion-de-lucifer.html": [153662, "8100e8e574a801f0"],
   "vie-de-jesus.html": [121183, "4690515d4e9a1249"],
   "bible-et-livre.html": [450050, "9092444f06825bf9"],
   "pere-fils-esprit.html": [151040, "ccff80874374bd8f"],
-  "paradis-et-havona.html": [169392, "15dcf685b5ddaa5d"],
+  "paradis-et-havona.html": [180261, "25f1c83bf30cf68a"],
   "etre-supreme.html": [176984, "80fe28fb56d2537d"],
   "effusions-de-micael.html": [148077, "5e762bdfbfa8486a"],
   "jerusem-et-edentia.html": [271595, "df764dd91ea6d91e"],
@@ -29,10 +29,10 @@ const FICHIERS = {
   "evolution-religion.html": [120706, "46fb0232d67ddbd5"],
   "melchizedek-et-religions.html": [198979, "dc144e0c9f7deaff"],
   "douze-apotres.html": [144824, "b51ca6bab3e944b4"],
-  "enseignements-de-jesus.html": [172972, "0405e8d26015ee01"],
+  "enseignements-de-jesus.html": [209101, "d21d4c3be514beec"],
   "histoire-du-livre.html": [136611, "14a3cbf70b100294"],
   "auteurs-et-chiffres.html": [268531, "06bdd6bcfe61635e"],
-  "fascicules.html": [382405, "ef96b0a1e58468f1"],
+  "fascicules.html": [384202, "27958e4d1b4fd06f"],
   "parcours-de-lecture.html": [164871, "5de92b74b33fd1e0"],
   "glossaire.html": [197822, "f55053bd82f9eac1"],
   "hors-ligne.html": [7588, "6b8c5c1ceba61b98"],
@@ -58,7 +58,7 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
-  "assets/recherche.js": [1018499, "4c5e9eb47fc1089e"],
+  "assets/recherche.js": [1045540, "9a5c705592c57871"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };

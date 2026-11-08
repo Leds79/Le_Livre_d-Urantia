@@ -425,6 +425,36 @@ blockquote.cite p i { font-style: normal; }
 .path .pc.fin { border-color: var(--gold); background: var(--gold-soft); }
 .path .arr { color: var(--muted); font-family: var(--font-mono); }
 
+/* Au Paradis : les supernaphins primaires (fascicule 27). Sept marches, de l’accueil au réveil jusqu’à l’adoration,
+   reliées par un fil d’or ; à côté, les sept jubilés de la carrière. */
+.sn-grid { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 22px 30px; margin-top: 26px; align-items: start; }
+.sn-steps { list-style: none; margin: 0; padding: 0; display: grid; }
+.sn-steps > li { position: relative; display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 14px; padding-bottom: 16px; }
+.sn-steps > li::after { content: ""; position: absolute; left: calc(1.3rem - 1px); top: 2.6rem; bottom: 0; width: 2px; background: var(--gold-ui); opacity: .45; }
+.sn-steps > li:last-child { padding-bottom: 0; }
+.sn-steps > li:last-child::after { display: none; }
+.sn-n { width: 2.6rem; height: 2.6rem; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--gold-ui); font: 600 1rem/1 var(--font-mono); color: var(--ink); position: relative; z-index: 1; }
+.sn-steps > li:first-child .sn-n { background: var(--gold-soft); }
+.sn-steps > li:last-child .sn-n { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.sn-b { display: grid; gap: 3px; min-width: 0; padding-top: 4px; }
+.sn-w { font: 500 .68rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.sn-t { font-family: var(--font-display); font-weight: 600; font-size: 1.28rem; line-height: 1.18; }
+.sn-d { font-size: .95rem; line-height: 1.5; }
+.sn-side { display: grid; gap: 14px; align-content: start; min-width: 0; }
+.sn-j { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; counter-reset: jb; }
+.sn-j li { display: grid; grid-template-columns: 1.75rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .94rem; line-height: 1.42; }
+.sn-j li::before { counter-increment: jb; content: counter(jb); width: 1.75rem; height: 1.75rem; border-radius: 50%; display: grid; place-items: center; font: 600 .76rem/1 var(--font-mono); color: var(--gold-ink); border: 1.5px solid var(--gold-ui); background: var(--gold-soft); }
+.sn-j li:last-child::before { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.sn-j a { padding-block: 10px; }
+.sn-reg { list-style: none; margin: 20px 0 0; padding: 14px 18px 16px; display: grid; gap: 8px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; font-size: .93rem; line-height: 1.55; max-width: 86ch; }
+.sn-reg b { font-weight: 700; }
+@media (max-width: 860px) {
+  .sn-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .sn-reg { padding: 12px 14px 14px; }
+}
+
 /* Encadrés */
 .callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
 .callout h2 { font-size: 1.7rem; }
@@ -511,7 +541,8 @@ blockquote.cite p i { font-style: normal; }
       <li><a href="#obscurs"><span class="nb">7</span><span class="tt">Les corps de gravité obscurs</span></a></li>
       <li><a href="#havona"><span class="nb">8</span><span class="tt">La vie dans Havona</span></a></li>
       <li><a href="#carriere"><span class="nb">9</span><span class="tt">Havona dans la carrière ascendante</span></a></li>
-      <li><a href="#registres"><span class="nb">10</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#supernaphins"><span class="nb">10</span><span class="tt">Au Paradis&nbsp;: les supernaphins primaires</span></a></li>
+      <li><a href="#registres"><span class="nb">11</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
       <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
     </ol>
   </nav>
@@ -993,7 +1024,8 @@ blockquote.cite p i { font-style: normal; }
           <h3 class="tv-h"><span class="tv-n">1</span>Circuit 1&nbsp;: le seuil du Paradis</h3>
           <p class="cnt"><b>plus de 35&nbsp;millions</b><span>de mondes <span class="ref">14:1.9</span></span></p>
           <p>Son année, la plus courte, dure presque mille ans d’Urantia&nbsp;: c’est le jour standard du Paradis-Havona <span class="ref">14:1.12</span>. Y arriver, c’est être admis au service du Paradis ; on y reste un temps indéterminé, selon la longueur et la nature de son ascension <span class="ref">14:5.4</span>. Les compléments de repos y préparent à la vie au Paradis <span class="ref">26:11.1</span>.</p>
-          <p><b>Ensuite&nbsp;:</b> la résidence au Paradis et le Corps de la Finalité <span class="ref">14:5.4</span>.</p>
+          <p><b>Venus du Paradis&nbsp;:</b> les instigateurs de repos, premiers supernaphins primaires que rencontre le pèlerin, y préparent avec eux le dernier sommeil <span class="ref">27:1.1</span>.</p>
+          <p><b>Ensuite&nbsp;:</b> la résidence au Paradis et le Corps de la Finalité <span class="ref">14:5.4</span> ; voir <a href="#supernaphins">les supernaphins primaires</a>.</p>
           <blockquote class="cite e-hav" data-ref="26:11.6"><p>«&nbsp;Les pèlerins ayant atteint la perfection commencent ce repos et s’endorment sur le premier cercle de Havona, mais se réveillent sur les rives du Paradis.&nbsp;»</p><span class="ref">26:11.6</span></blockquote>
         </li>
         <li id="tv-sat" data-kick="entre Havona et l’Ile">
@@ -1004,6 +1036,7 @@ blockquote.cite p i { font-style: normal; }
         <li id="tv-par" data-kick="au centre">
           <h3 class="tv-h">L’Ile du Paradis</h3>
           <p>Immobile au cœur de l’univers éternel <span class="ref">14:0.1</span>, elle n’appartient pourtant pas vraiment à Havona <span class="ref">11:9.2</span>. Seules les zones tranquilles d’espace médian la touchent <span class="ref">14:1.2 ; 11:7.1</span>.</p>
+          <p>Les ascendeurs qui y résident suivent l’école des supernaphins primaires, en sept étapes, avant la carrière de finalitaire <span class="ref">27:0.11</span>&nbsp;: voir <a href="#supernaphins">Au Paradis</a>.</p>
           <p>Au Paradis, on ne compte pas le temps ; il apparait avec les circuits de Havona, où chaque monde a son temps local <span class="ref">14:1.11</span>. Voir <a href="#forme">sa forme</a> et <a href="#plans">ses deux faces</a>.</p>
           <blockquote class="cite e-pere" data-ref="14:6.39"><p>«&nbsp;Le Paradis est le foyer, et Havona l’atelier et le terrain de jeu des finalitaires.&nbsp;»</p><span class="ref">14:6.39</span></blockquote>
         </li>
@@ -1059,7 +1092,7 @@ blockquote.cite p i { font-style: normal; }
           <li><span class="bd" aria-hidden="true">6</span><span><b>Une autre zone semi-tranquille,</b> puis les circuits intérieurs des sept superunivers <span class="ref">14:1.8</span>.</span></li>
         </ol>
       </div>
-      <figcaption>Coupe schématique&nbsp;: ni les distances ni la hauteur du circuit extérieur, coupé en haut et en bas, ne sont à l’échelle. Seule son épaisseur suit le texte&nbsp;: par calcul, un cinquième de la hauteur du circuit intérieur (10&#160;000 divisé par 50&#160;000).</figcaption>
+      <figcaption>Coupe schématique&nbsp;: ni les distances ni la hauteur du circuit extérieur, coupé en haut et en bas, ne sont à l’échelle. Seule son épaisseur suit le texte&nbsp;: par calcul, un cinquième de la hauteur du circuit intérieur (10&nbsp;000 divisé par 50&nbsp;000).</figcaption>
     </figure>
     <div class="prose">
       <blockquote class="cite e-obs" data-ref="14:1.16"><p>«&nbsp;Une coupe transversale de ce circuit ferait ressortir trois cercles concentriques de densité à peu près égale.&nbsp;»</p><span class="ref">14:1.16</span></blockquote>
@@ -1094,10 +1127,10 @@ blockquote.cite p i { font-style: normal; }
     </div>
     <div class="fact-row">
       <div class="fact e-hav"><p class="big">1&nbsp;milliard</p><p>de mondes, tous différents&nbsp;: chacun a été développé et embelli selon les plans de l’Éternel des Jours qui y réside <span class="ref">14:5.6</span>.</p></div>
-      <div class="fact e-hav"><p class="big">1&#160;000</p><p>éléments chimiques de base, et sept formes d’énergie havonienne <span class="ref">14:2.3</span>.</p></div>
+      <div class="fact e-hav"><p class="big">1&nbsp;000</p><p>éléments chimiques de base, et sept formes d’énergie havonienne <span class="ref">14:2.3</span>.</p></div>
       <div class="fact e-hav"><p class="big">49</p><p>formes de sensation chez les natifs ; les sens morontiels sont au nombre de soixante-dix <span class="ref">14:2.3</span>.</p></div>
       <div class="fact e-hav"><p class="big">3</p><p>Des énergies triples, et non doubles comme dans les superunivers&nbsp;: la création centrale est triple, comme la Trinité <span class="ref">14:2.2</span>.</p></div>
-      <div class="fact e-pere"><p class="big">≈&nbsp;1&#160;000&nbsp;ans</p><p>Un jour du Paradis-Havona, commune mesure du temps pour les sept superunivers <span class="ref">14:1.12–13</span>.</p></div>
+      <div class="fact e-pere"><p class="big">≈&nbsp;1&nbsp;000&nbsp;ans</p><p>Un jour du Paradis-Havona, commune mesure du temps pour les sept superunivers <span class="ref">14:1.12–13</span>.</p></div>
       <div class="fact e-nsp"><p class="big">0</p><p>gouvernement&nbsp;: ni tribunaux ni assemblées législatives, une simple direction administrative <span class="ref">14:3.1</span>.</p></div>
     </div>
     <div class="two">
@@ -1180,6 +1213,51 @@ blockquote.cite p i { font-style: normal; }
     <p class="more"><a href="destinee-humaine.html">Le début du voyage&nbsp;: La destinée humaine</a> · <a href="atlas-3d.html#carriere">La carrière ascendante dans la vue 3D</a></p>
   </section>
 
+  <section id="supernaphins" aria-labelledby="h-sn">
+    <div class="sec-head">
+      <p class="eyebrow"><b>10</b> · Fascicule 27</p>
+      <h2 id="h-sn">Au Paradis&nbsp;: les supernaphins primaires</h2>
+      <p>Les supernaphins primaires sont les serviteurs célestes des Déités sur l’Ile du Paradis&nbsp;: des enfants de l’Esprit Infini, parfaits, dont aucun ne s’est jamais égaré <span class="ref">27:0.1</span>. Le pèlerin ne passe sous leur influence directe qu’une fois résident du Paradis ; il est alors formé par leurs sept ordres, dans l’ordre inverse de leur liste, des instigateurs de repos aux conducteurs d’adoration, avant de commencer la carrière de finalitaire <span class="ref">27:0.3–11</span>.</p>
+      <blockquote class="cite e-pere" data-ref="27:7.1"><p>«&nbsp;L’adoration est le privilège suprême et le premier devoir de toutes les intelligences créées.&nbsp;»</p><span class="ref">27:7.1</span></blockquote>
+    </div>
+    <div class="sn-grid">
+      <ol class="sn-steps" aria-label="Les sept ordres, dans l’ordre où le pèlerin les rencontre">
+        <li><span class="sn-n" aria-hidden="true">1</span><div class="sn-b"><p class="sn-w">Du circuit intérieur de Havona aux rives du Paradis</p><p class="sn-t">Les instigateurs de repos</p><p class="sn-d">Venus de l’Ile, ils préparent le dernier sommeil avec les compléments de repos du premier circuit ; le même supernaphin accueille le pèlerin à son réveil, sur les rives éternelles <span class="ref">27:1.1 ; 27:1.4</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">2</span><div class="sn-b"><p class="sn-t">Les chefs d’affectation</p><p class="sn-d">Désignés par le chef des supernaphins, <span class="q" data-ref="27:2.1">«&nbsp;l’ange modèle originel&nbsp;»</span>, ils organisent les trois ordres de supernaphins et le service, qui fait partie de l’éducation des mortels avant le Corps de la Finalité <span class="ref">27:2.1–2</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">3</span><div class="sn-b"><p class="sn-t">Les interprètes d’éthique</p><p class="sn-d">Les pèlerins n’ont plus besoin qu’on leur enseigne l’éthique, mais qu’on leur interprète ce qu’ils ont appris, face à tant d’êtres nouveaux <span class="ref">27:3.2–3</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">4</span><div class="sn-b"><p class="sn-t">Les directeurs de conduite</p><p class="sn-d">Au Paradis, toute conduite est spontanée, mais il y a une manière parfaite de faire les choses&nbsp;: ils guident les nouveaux venus, pour qui l’Ile reste étrange et neuve <span class="ref">27:4.3–4</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">5</span><div class="sn-b"><p class="sn-w">À l’extrémité nord de l’Ile</p><p class="sn-t">Les gardiens de la connaissance</p><p class="sn-d">Des <span class="q" data-ref="27:5.1">«&nbsp;livres vivants&nbsp;»</span>&nbsp;: on y consulte face à face les anges qui sont la connaissance cherchée <span class="ref">27:5.1–2</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">6</span><div class="sn-b"><p class="sn-w">À l’extrémité sud</p><p class="sn-t">Les maitres de philosophie</p><p class="sn-d">Les <span class="q" data-ref="27:6.2">«&nbsp;sages du ciel&nbsp;»</span> y enseignent les soixante-dix divisions fonctionnelles de la sagesse <span class="ref">27:6.2–3</span>.</p></div></li>
+        <li><span class="sn-n" aria-hidden="true">7</span><div class="sn-b"><p class="sn-w">Jusqu’au serment trinitaire</p><p class="sn-t">Les conducteurs d’adoration</p><p class="sn-d">Ils apprennent aux ascendeurs à exprimer pleinement leur adoration ; nul n’est affecté au service éternel avant d’y avoir trouvé pleine satisfaction <span class="ref">27:7.3–4</span>. Ils font leurs adieux au pèlerin quand il prête le serment trinitaire de l’éternité et entre dans le Corps des Mortels de la Finalité <span class="ref">27:7.9</span>.</p></div></li>
+      </ol>
+      <div class="sn-side">
+        <aside class="card e-pere" aria-labelledby="h-jub">
+          <h3 id="h-jub">Les sept jubilés</h3>
+          <p>Le texte jalonne toute la carrière de sept jubilés <span class="ref">27:7.8</span>&nbsp;:</p>
+          <ol class="sn-j">
+            <li><span><b>L’accord avec l’Ajusteur</b>, quand le dessein de survivre est scellé</span></li>
+            <li><span><b>L’éveil dans la vie morontielle</b>&nbsp;: <a href="destinee-humaine.html#reveil">le réveil</a></span></li>
+            <li><span><b>La fusion avec l’Ajusteur</b>&nbsp;: <a href="destinee-humaine.html#fusion">la fusion</a></span></li>
+            <li><span><b>L’éveil dans Havona</b>&nbsp;: <a href="#circuits">les sept circuits</a></span></li>
+            <li><span><b>La découverte du Père Universel</b></span></li>
+            <li><span><b>L’éveil au Paradis</b>, après le dernier sommeil</span></li>
+            <li><span><b>L’entrée dans le Corps de la Finalité</b></span></li>
+          </ol>
+          <blockquote class="cite e-pere" data-ref="27:7.8"><p>«&nbsp;Le septième jubilé marque l’entrée dans le corps des finalitaires mortels et le commencement du service de l’éternité.&nbsp;»</p><span class="ref">27:7.8</span></blockquote>
+        </aside>
+      </div>
+    </div>
+    <div class="fact-row">
+      <div class="fact e-pere"><p class="big">10&nbsp;000</p><p>ans de nos méthodes de mémorisation&nbsp;: ce que vaudrait une heure d’instruction au Paradis, selon l’auteur <span class="ref">27:6.4</span>.</p></div>
+      <div class="fact e-pere"><p class="big">7</p><p>grands ordres de connaissance, chacun d’environ un million de subdivisions <span class="ref">27:5.5</span>.</p></div>
+      <div class="fact e-pere"><p class="big">3&nbsp;000</p><p>ordres de Citoyens du Paradis, et plus, que l’ascendeur y côtoie <span class="ref">27:2.3</span>.</p></div>
+    </div>
+    <ul class="sn-reg">
+      <li><b>Le texte dit.</b> Le fascicule est présenté par un Perfecteur de Sagesse venu d’Uversa <span class="ref">27:7.11</span>. Il précise que les supernaphins primaires ne travaillent sous cette classification que depuis l’arrivée au Paradis des pèlerins du temps venus de Havona, et qu’un supernaphin primaire prend la tête des séraphins d’un monde isolé par la rébellion, une fois celui-ci délivré par l’effusion d’un Fils du Paradis&nbsp;: sur Urantia, l’actuel <span class="q" data-ref="27:0.2">«&nbsp;chef des séraphins&nbsp;»</span> est le second de cet ordre depuis l’effusion de Micaël <span class="ref">27:0.2–3</span>.</li>
+      <li><b>Regard historique.</b> Le texte emprunte des images bibliques&nbsp;: les <span class="q" data-ref="27:5.1">«&nbsp;épitres vivantes&nbsp;»</span> connues et lues de tous rappellent la lettre <span class="q" data-bible="2 Corinthiens 3:2">«&nbsp;connue et lue de tous les hommes&nbsp;»</span> <span class="bref">2 Corinthiens 3, 2</span>, et le <span class="q" data-ref="27:5.1">«&nbsp;livre de vie&nbsp;»</span> rappelle celui de l’Apocalypse <span class="bref">Apocalypse 20, 12</span> ; l’accueil sur les rives du Paradis reprend des versets de l’Apocalypse sur la fin des larmes et de la nuit <span class="ref">27:1.5</span> ; <span class="bref">Apocalypse 21, 4</span> ; <span class="bref">Apocalypse 22, 5</span>.</li>
+    </ul>
+  </section>
+
   <aside class="callout" id="registres" aria-labelledby="h-reg">
     <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
     <ul>
@@ -1213,7 +1291,7 @@ blockquote.cite p i { font-style: normal; }
 
   <div class="atlas-suite atlas-suite-seule"><div class="etape"><p>Thème</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div></div>
 <footer class="foot">
-    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-trois&nbsp;citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Soixante et une citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
     <p>Les schémas sont des images symboliques&nbsp;: positions, couleurs, épaisseurs et mouvements sont des choix de présentation. Seules les proportions de l’Ile, vue de dessus et de profil, sont celles du texte.</p>
     <p>Faits extérieurs au livre (date de parution, Dante, cosmologie actuelle, interprétations de lecteurs)&nbsp;: résumés prudents, sans prise de position.</p>
   <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Le%20Paradis%20et%20Havona&amp;page=Le%20Paradis%20et%20Havona%20%28paradis-et-havona.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
