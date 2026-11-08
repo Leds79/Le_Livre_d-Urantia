@@ -38,6 +38,7 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [Après la Pentecôte](apres-la-pentecote.html) | thème : l’effusion de l’Esprit de Vérité, la diffusion du message et la naissance du christianisme |
 | [D’où vient ce livre ?](histoire-du-livre.html) | le livre : ce qu’il dit de lui-même, ce que racontent ses premiers lecteurs, ce qu’en disent les critiques, chaque voix avec ses sources |
 | [Les auteurs déclarés et le livre en chiffres](auteurs-et-chiffres.html) | le livre : qui présente chaque fascicule, puis le livre mesuré (parties, longueurs, mots) |
+| [La science et l’histoire face au livre](science-et-histoire.html) | le livre : ses affirmations confrontées aux connaissances actuelles |
 | [Le livre fascicule par fascicule](fascicules.html) | outil : pour chacun des 197 fascicules, l’auteur que le texte lui donne, le temps de lecture, le lien vers son texte et les pages de l’atlas qui en parlent ; une mosaïque montre ce que l’atlas couvre du livre |
 | [Parcours de lecture](parcours-de-lecture.html) | outil : cinq itinéraires de lecture, fascicule par fascicule, avec une case « Lu » gardée sur l’appareil |
 | [Glossaire](glossaire.html) | outil : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références ; une ancre par terme (`glossaire.html#ajusteur-de-pensee`) |
