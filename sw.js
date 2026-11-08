@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '125ab73b9a7a';
+const VERSION = '59665e684e4f';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -14,7 +14,7 @@ const FICHIERS = {
   "concepts-en-schemas.html": [110540, "a9f987a1d81e4734"],
   "dieu-et-deite.html": [96576, "5c04e67a98561679"],
   "destinee-humaine.html": [147415, "027ce777c257fb87"],
-  "histoire-d-urantia.html": [199229, "29d313097e77fc3b"],
+  "histoire-d-urantia.html": [199770, "abd025ba8a163b49"],
   "rebellion-de-lucifer.html": [154337, "702f2799d2c58e69"],
   "vie-de-jesus.html": [121858, "a5b5760da868bb22"],
   "bible-et-livre.html": [450751, "b8e871adc308b9df"],
@@ -25,15 +25,15 @@ const FICHIERS = {
   "jerusem-et-edentia.html": [272270, "4af57b36e5c1b169"],
   "les-anges.html": [163576, "d601968893639885"],
   "avenir-d-une-planete.html": [171607, "5207e4b407eb0860"],
-  "institutions-humaines.html": [200796, "4366524b4f95da4d"],
+  "institutions-humaines.html": [200817, "0580ebfe43b98fd9"],
   "evolution-religion.html": [121381, "81a3f425204631bc"],
   "religion-vecue.html": [162548, "d294af37ee25e98d"],
-  "melchizedek-et-religions.html": [199654, "89d8c380f44ae129"],
+  "melchizedek-et-religions.html": [199695, "347a7bf1e0c5a3ed"],
   "annees-cachees-de-jesus.html": [209709, "dfa126e94eecc9a3"],
   "douze-apotres.html": [146510, "0c564ba1011171b3"],
   "enseignements-de-jesus.html": [209963, "9b70720babb15c6c"],
   "apres-la-pentecote.html": [156188, "6793e51aa1533bea"],
-  "histoire-du-livre.html": [137301, "af1a0836d2ebf651"],
+  "histoire-du-livre.html": [137495, "826775cc7c66a7ea"],
   "auteurs-et-chiffres.html": [269206, "a52e63163f59b256"],
   "science-et-histoire.html": [514087, "193d497fc9b5a016"],
   "fascicules.html": [397244, "9ffdef32e0dea48d"],
@@ -62,7 +62,7 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
-  "assets/recherche.js": [1397525, "d2acd2318688f1b5"],
+  "assets/recherche.js": [1397884, "e2012f6905a21688"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };
