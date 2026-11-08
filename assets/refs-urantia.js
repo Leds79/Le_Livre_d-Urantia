@@ -19,7 +19,8 @@
       a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
       a.target = '_blank';
       a.rel = 'noopener';
-      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org (nouvel onglet)';
+      a.setAttribute('aria-label', 'Lire ' + m[0] + ' sur urantia.org, nouvel onglet');   // nom accessible : contient le texte visible
       a.textContent = m[0];
       frag.appendChild(a);
       last = m.index + m[0].length;

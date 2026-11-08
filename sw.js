@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = 'a5509773d43b';
+const VERSION = '4ae2642ebc24';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -41,7 +41,7 @@ const FICHIERS = {
   "glossaire.html": [198497, "02718f8f87bfc986"],
   "hors-ligne.html": [8034, "0b63c01870a12a34"],
   "manifest.webmanifest": [840, "3d1ea890c7f7d469"],
-  "assets/refs-urantia.js": [11858, "1e90f999f912766f"],
+  "assets/refs-urantia.js": [12010, "e640f74ad35fbbd9"],
   "assets/hors-ligne.js": [5241, "d9b44df9a17c61f0"],
   "assets/musique.js": [8725, "036b5f1d0e719ff8"],
   "assets/navigation.js": [44949, "df3429012e63a6f3"],
