@@ -2,26 +2,29 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '44548db0b94d';
+const VERSION = 'd1916a1107b4';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
 const FICHIERS = {
-  "index.html": [68520, "f96c03802dceaaf3"],
-  "nebadon-dans-orvonton.html": [52466, "d5d77aea262fedb6"],
-  "atlas-3d.html": [2381478, "805909ceb36ceb72"],
-  "familles-de-personnalites.html": [102188, "f4a61ffcec7464b4"],
-  "concepts-en-schemas.html": [89250, "3dd5a9e3c936f6b5"],
-  "dieu-et-deite.html": [75292, "e5c819909d6e0d75"],
-  "histoire-d-urantia.html": [164528, "6929d031059ed0c0"],
-  "rebellion-de-lucifer.html": [133077, "197183b75ce9412e"],
-  "vie-de-jesus.html": [100609, "df730068ee24562b"],
-  "bible-et-livre.html": [430002, "8d43c127c7bd20b7"],
-  "hors-ligne.html": [5535, "2661729f0f0204ea"],
+  "index.html": [72273, "11cab9b4a6536ea3"],
+  "nebadon-dans-orvonton.html": [52817, "76e8fd10a0256add"],
+  "atlas-3d.html": [2381620, "6c5261a7339c6618"],
+  "familles-de-personnalites.html": [102539, "1450ac3bed5c2790"],
+  "concepts-en-schemas.html": [89601, "3a1b831badcbd9cc"],
+  "dieu-et-deite.html": [75637, "100a2ca2847cf4a6"],
+  "destinee-humaine.html": [117321, "b3e82e2c2efaef7c"],
+  "histoire-d-urantia.html": [164886, "2ba3d4c24d5d8a91"],
+  "rebellion-de-lucifer.html": [133428, "1d0d47e232fffa63"],
+  "vie-de-jesus.html": [100960, "14604065784a80d4"],
+  "bible-et-livre.html": [430353, "e265c5a7769670da"],
+  "glossaire.html": [177464, "903b1dd15915344b"],
+  "hors-ligne.html": [5806, "3dcc0cd29f066266"],
   "manifest.webmanifest": [840, "3d1ea890c7f7d469"],
   "assets/refs-urantia.js": [11858, "1e90f999f912766f"],
   "assets/hors-ligne.js": [5241, "d9b44df9a17c61f0"],
   "assets/musique.js": [8725, "036b5f1d0e719ff8"],
+  "assets/glossaire.js": [102097, "b839c8e7878791cb"],
   "assets/favicon.svg": [440, "272fe83973cfb82d"],
   "assets/apple-touch-icon.png": [8093, "bb9210212b2e3f22"],
   "assets/icone-192.png": [9405, "208d49b2cf6fc956"],
@@ -40,7 +43,7 @@ const FICHIERS = {
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };
 // enregistrés dès l’installation : accueil, page hors ligne, manifeste, scripts communs, icônes, polices
-const NOYAU = ["index.html", "hors-ligne.html", "manifest.webmanifest", "assets/refs-urantia.js", "assets/hors-ligne.js", "assets/musique.js", "assets/favicon.svg", "assets/apple-touch-icon.png", "assets/icone-192.png", "assets/icone-512.png", "assets/icone-512-maskable.png", "assets/fonts/alegreya-sans-400-italic.woff2", "assets/fonts/alegreya-sans-400.woff2", "assets/fonts/alegreya-sans-500.woff2", "assets/fonts/alegreya-sans-700.woff2", "assets/fonts/cormorant-garamond-500-600-italic.woff2", "assets/fonts/cormorant-garamond-500-700.woff2", "assets/fonts/fonts.css", "assets/fonts/ibm-plex-mono-400.woff2", "assets/fonts/ibm-plex-mono-500.woff2"];
+const NOYAU = ["index.html", "hors-ligne.html", "manifest.webmanifest", "assets/refs-urantia.js", "assets/hors-ligne.js", "assets/musique.js", "assets/glossaire.js", "assets/favicon.svg", "assets/apple-touch-icon.png", "assets/icone-192.png", "assets/icone-512.png", "assets/icone-512-maskable.png", "assets/fonts/alegreya-sans-400-italic.woff2", "assets/fonts/alegreya-sans-400.woff2", "assets/fonts/alegreya-sans-500.woff2", "assets/fonts/alegreya-sans-700.woff2", "assets/fonts/cormorant-garamond-500-600-italic.woff2", "assets/fonts/cormorant-garamond-500-700.woff2", "assets/fonts/fonts.css", "assets/fonts/ibm-plex-mono-400.woff2", "assets/fonts/ibm-plex-mono-500.woff2"];
 const HORS_LIGNE = 'hors-ligne.html';
 const DELAI_RESEAU = 3000;                 // navigations : au-delà, la copie enregistrée est servie
 const PORTEE = new URL('./', self.location.href).href;

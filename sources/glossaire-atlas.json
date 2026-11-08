@@ -1,0 +1,3536 @@
+{
+ "_doc": "Glossaire de l’atlas : un objet par terme. id = ancre de la page (glossaire.html#id) ; terme = vedette ; formes = ce qui est repéré dans les pages (une forme en minuscule repère aussi sa majuscule initiale, sauf casse « stricte » ; les élisions d’, l’ sont gérées par le script) ; anglais = terme du texte de 1955 ; autres = autres noms affichés ; definition = dans nos mots ; refs = 1 à 3 références vérifiées (fascicule:section.paragraphe) ; citation = une phrase exacte au plus, avec sa référence ; atlas = page qui illustre le terme ; voir = renvois ; theme = deite, univers, etres, humain, histoire, jesus. exclusions = expressions jamais marquées. Contrôle : python -I glossaire.py verifie glossaire-atlas.json ; page : python -I glossaire.py page glossaire-atlas.json glossaire.html artefacts.json.",
+ "version": "2026-11-08",
+ "exclusions": [
+  "adjuvats dodécuples"
+ ],
+ "termes": [
+  {
+   "id": "absolu-de-deite",
+   "terme": "Absolu de Déité",
+   "formes": [
+    "Absolu de Déité"
+   ],
+   "anglais": "Deity Absolute",
+   "autres": [
+    "Absolu Qualifié"
+   ],
+   "definition": "L’un des sept Absolus : tout le potentiel de Déité, que le Père a distingué de l’infini par son libre choix et où se déroulent toutes les activités divines. Il semble être l’activateur tout-puissant de l’univers.",
+   "refs": [
+    "105:3.6",
+    "0:11.6",
+    "0:11.4"
+   ],
+   "citation": {
+    "texte": "Il est l’Absolu Qualifié par contraste avec l’Absolu Non Qualifié.",
+    "ref": "0:11.6"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "absolu-non-qualifie",
+    "absolu-universel",
+    "dieu-l-absolu"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "absolu-non-qualifie",
+   "terme": "Absolu Non Qualifié",
+   "formes": [
+    "Absolu Non Qualifié"
+   ],
+   "anglais": "Unqualified Absolute",
+   "definition": "L’un des sept Absolus : toute la réalité non déifiée et non personnelle, à l’état de potentiel. Statique et en attente, il a une présence sans limites ; il parait être le mécanicien parfait de l’univers, quand l’Absolu de Déité en serait l’activateur.",
+   "refs": [
+    "105:3.7",
+    "0:11.7",
+    "0:11.4"
+   ],
+   "citation": {
+    "texte": "L’Absolu Non Qualifié est donc dépourvu de personnalité, de divinité et de toute prérogative de créateur.",
+    "ref": "0:11.7"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "absolu-de-deite",
+    "absolu-universel",
+    "sept-absolus"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "absolu-universel",
+   "terme": "Absolu Universel",
+   "formes": [
+    "Absolu Universel"
+   ],
+   "anglais": "Universal Absolute",
+   "definition": "L’un des sept Absolus : il unifie le déifié et le non déifié, c’est-à-dire l’Absolu de Déité et l’Absolu Non Qualifié, et relie l’absolu au relatif. Par lui, le fini peut coexister avec l’infini ; il équilibre aussi les tensions entre le temps et l’éternité.",
+   "refs": [
+    "105:3.8",
+    "0:11.13",
+    "0:11.15"
+   ],
+   "citation": {
+    "texte": "En dernière analyse et en compréhension finale, les trois ne sont qu’un Absolu.",
+    "ref": "0:11.15"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "absolu-de-deite",
+    "absolu-non-qualifie",
+    "sept-absolus"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "absonite",
+   "terme": "absonite",
+   "formes": [
+    "absonite",
+    "absonites"
+   ],
+   "anglais": "absonite",
+   "definition": "Niveau de réalité situé entre le fini et l’absolu : des choses et des êtres sans commencement ni fin, qui dépassent le temps et l’espace. Ils ne sont pas créés mais extériorisés ; le livre y rattache l’Ultimité de la Déité.",
+   "refs": [
+    "0:1.12",
+    "10:5.5",
+    "42:10.7"
+   ],
+   "citation": {
+    "texte": "Au Paradis, le mental est absolu ; dans Havona, il est absonite ; dans Orvonton, il est fini.",
+    "ref": "42:10.7"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s5",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "ultimite",
+    "dieu-l-ultime",
+    "havona"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "acteur-conjoint",
+   "terme": "Acteur Conjoint",
+   "formes": [
+    "Acteur Conjoint"
+   ],
+   "anglais": "Conjoint Actor",
+   "autres": [
+    "Esprit Infini"
+   ],
+   "definition": "Autre nom de l’Esprit Infini, Troisième Personne de la Déité : le Père et le Fils agissent ensemble en lui et par lui. Il unit les énergies cosmiques du Paradis aux énergies spirituelles du Fils et dispense le mental.",
+   "refs": [
+    "8:5.5",
+    "105:3.5",
+    "9:1.1"
+   ],
+   "citation": {
+    "texte": "En tant qu’Acteur Conjoint, il est le coreprésentant et partenaire exécutif du Père-Fils.",
+    "ref": "9:1.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s2",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "esprit-infini",
+    "mental",
+    "maitres-esprits"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "adam-et-eve",
+   "terme": "Adam et Ève",
+   "formes": [
+    "Adam et Ève",
+    "Fils Matériels",
+    "Fils Matériel",
+    "Fille Matérielle",
+    "Filles Matérielles",
+    "Adam",
+    "Ève"
+   ],
+   "anglais": "Adam and Eve",
+   "autres": [
+    "Fils et Fille Matériels"
+   ],
+   "definition": "Fils et Fille Matériels envoyés sur Urantia pour élever biologiquement les races humaines ; ils arrivèrent 37 848 ans avant l’an 1934. Leur mission échoua en partie après leur défaillance, mais leurs descendants enrichirent beaucoup l’humanité.",
+   "refs": [
+    "51:0.1",
+    "74:0.1",
+    "75:8.1"
+   ],
+   "citation": {
+    "texte": "Ces Fils, car il y en a deux — le Fils et la Fille Matériels — sont généralement appelés Adam et Ève sur une planète.",
+    "ref": "51:0.1"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#echelles",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "eden",
+    "defaillance",
+    "adamites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "adamites",
+   "terme": "Adamites",
+   "formes": [
+    "Adamites",
+    "adamites",
+    "adamite",
+    "race violette"
+   ],
+   "anglais": "Adamites",
+   "autres": [
+    "race violette"
+   ],
+   "definition": "Descendants d’Adam et Ève, appelés aussi race violette, établis en Mésopotamie autour du second jardin. Vers l’an 15 000 av. J.-C., mêlés aux Nodites et aux Sangiks, ils donnèrent naissance au peuple andite.",
+   "refs": [
+    "76:3.8",
+    "78:0.2",
+    "78:3.1"
+   ],
+   "citation": {
+    "texte": "Les Adamites dépassaient considérablement les peuplades environnantes en accomplissements culturels et en développement intellectuel.",
+    "ref": "76:3.8"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "adam-et-eve",
+    "second-jardin",
+    "andites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "ajusteur-de-pensee",
+   "terme": "Ajusteur de Pensée",
+   "formes": [
+    "Ajusteur de Pensée",
+    "Ajusteurs de Pensée",
+    "Ajusteur",
+    "Ajusteurs",
+    "Moniteur de Mystère",
+    "Moniteurs de Mystère"
+   ],
+   "anglais": "Thought Adjuster",
+   "autres": [
+    "Moniteur de Mystère"
+   ],
+   "definition": "Fragment du Père Universel venu habiter le mental humain ; sur Urantia, il arrive en moyenne juste avant six ans, après le premier choix moral de l’enfant. Si l’homme le choisit, il peut s’unir à lui pour toujours.",
+   "refs": [
+    "107:0.3",
+    "108:2.1",
+    "107:0.6"
+   ],
+   "citation": {
+    "texte": "L’Ajusteur est l’infaillible compas cosmique de l’homme, orientant toujours et surement l’âme vers Dieu.",
+    "ref": "107:0.6"
+   },
+   "atlas": {
+    "href": "destinee-humaine.html#don",
+    "titre": "La destinée humaine"
+   },
+   "voir": [
+    "fusion",
+    "mental",
+    "pere-universel"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "ame",
+   "terme": "âme",
+   "formes": [
+    "âme",
+    "âmes"
+   ],
+   "anglais": "soul",
+   "definition": "Réalité nouvelle qui grandit en l’homme à mesure qu’il choisit de faire la volonté de Dieu : l’Ajusteur en est le père, le mental humain la mère. Elle n’est ni matérielle ni spirituelle, mais morontielle.",
+   "refs": [
+    "0:5.10",
+    "0:5.9",
+    "111:2.3"
+   ],
+   "citation": {
+    "texte": "C’est l’âme émergente et immortelle destinée à survivre à la mort physique et à commencer l’ascension du Paradis.",
+    "ref": "0:5.10"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s1",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "ajusteur-de-pensee",
+    "mental",
+    "morontia"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "anciens-des-jours",
+   "terme": "Anciens des Jours",
+   "formes": [
+    "Anciens des Jours"
+   ],
+   "anglais": "Ancients of Days",
+   "definition": "Les dirigeants des sept superunivers : vingt-et-un êtres issus de la Trinité, tous créés en même temps, qui gouvernent par groupes de trois. C’est à eux qu’appartient notamment le jugement de la rébellion de Lucifer.",
+   "refs": [
+    "18:3.4",
+    "15:10.3",
+    "53:1.2"
+   ],
+   "citation": {
+    "texte": "Chaque superunivers est régi par trois Anciens des Jours, chefs exécutifs conjoints du supergouvernement.",
+    "ref": "15:10.3"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#gouvernement",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "superunivers",
+    "personnalites-supremes-de-la-trinite",
+    "uversa"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "andites",
+   "terme": "Andites",
+   "formes": [
+    "Andites",
+    "andites",
+    "andite"
+   ],
+   "anglais": "Andites",
+   "definition": "Peuple né en Mésopotamie du mélange des Adamites avec les Nodites et les Sangiks. Leurs migrations successives portèrent la culture du second jardin en Eurasie et en Afrique du Nord ; ils quittèrent leur foyer vers 2 000 ans av. J.-C.",
+   "refs": [
+    "78:0.1",
+    "78:0.2",
+    "78:5.2"
+   ],
+   "citation": {
+    "texte": "De cette région partirent les hommes et les femmes qui inaugurèrent les activités des temps historiques et accélérèrent prodigieusement les progrès culturels sur Urantia.",
+    "ref": "78:0.1"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "adamites",
+    "nodites",
+    "sangiks"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "andon-et-fonta",
+   "terme": "Andon et Fonta",
+   "formes": [
+    "Andon et Fonta",
+    "Andon",
+    "Fonta"
+   ],
+   "anglais": "Andon and Fonta",
+   "definition": "Les deux premiers êtres humains, des jumeaux nés « 993 419 ans avant l’année 1934 », ancêtres de tous les humains. Ils ne reçurent ces noms que lorsqu’ils fusionnèrent avec leur Ajusteur de Pensée.",
+   "refs": [
+    "63:0.3",
+    "62:5.1",
+    "63:1.1"
+   ],
+   "citation": {
+    "texte": "Andon est le nom nébadonien qui signifie « la première créature semblable au Père et montrant une soif de perfection humaine ».",
+    "ref": "63:0.3"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "andonites",
+    "ajusteur-de-pensee",
+    "porteurs-de-vie"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "andonites",
+   "terme": "Andonites",
+   "formes": [
+    "Andonites",
+    "andonites",
+    "andonite"
+   ],
+   "anglais": "Andonites",
+   "definition": "Les premiers humains, descendants d’Andon et Fonta, au teint bistré, qui se protégeaient du froid avec des peaux de bêtes et se dispersèrent vers le nord. La famille Sangik, ancêtre des races de couleur, naquit plus tard parmi eux.",
+   "refs": [
+    "63:4.1",
+    "63:5.1",
+    "64:5.1-2"
+   ],
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "andon-et-fonta",
+    "sangiks",
+    "van-et-amadon"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "archanges",
+   "terme": "archanges",
+   "formes": [
+    "archanges",
+    "archange"
+   ],
+   "anglais": "archangels",
+   "definition": "Ordre élevé d’êtres spirituels de l’univers local, enfants du Fils Créateur et de l’Esprit-Mère, voués à la survie des mortels. Lors des résurrections, un archange fait l’appel des défunts ; leur circuit de communication fonctionne aujourd’hui sur Urantia.",
+   "refs": [
+    "37:3.1",
+    "37:3.6",
+    "114:5.4"
+   ],
+   "citation": {
+    "texte": "C’est l’archange de la résurrection parfois dénommé « l’archange de Micaël ».",
+    "ref": "37:3.6"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "fils-createur",
+    "esprit-mere",
+    "gabriel"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "ascendeurs",
+   "terme": "ascendeurs",
+   "formes": [
+    "ascendeurs",
+    "ascendeur",
+    "mortels ascendants",
+    "mortel ascendant",
+    "pèlerins ascendants"
+   ],
+   "anglais": "ascenders",
+   "autres": [
+    "mortels ascendants",
+    "pèlerins ascendants"
+   ],
+   "definition": "Les survivants mortels, appelés aussi pèlerins ascendants, qui montent de monde en monde vers le Paradis : mondes des maisons, Jérusem, Édentia, Salvington, capitales de secteur, Uversa, puis Havona.",
+   "refs": [
+    "30:4.1",
+    "15:7.5-10",
+    "14:6.38"
+   ],
+   "citation": {
+    "texte": "Havona est le but d’éducation préparadisiaque de tous les ascendeurs mortels.",
+    "ref": "14:6.38"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#carriere",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "mondes-des-maisons",
+    "finalitaires",
+    "havona"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "avonals",
+   "terme": "Avonals",
+   "formes": [
+    "Avonals",
+    "Avonal",
+    "Fils Magistraux",
+    "Fils Magistral"
+   ],
+   "anglais": "Avonals",
+   "autres": [
+    "Fils Magistraux"
+   ],
+   "definition": "Fils Magistraux : deuxième ordre de Fils du Paradis, nés du Fils Éternel et de l’Esprit Infini. Ils clôturent les dispensations des mondes habités, y accomplissent des missions et s’y incarnent comme Fils d’effusion, chacun au moins une fois.",
+   "refs": [
+    "20:2.1",
+    "20:2.5-7",
+    "35:0.1"
+   ],
+   "citation": {
+    "texte": "Les Avonals sont des ministres et des juges planétaires, les magistrats des royaumes de l’espace-temps — de toutes les races, pour tous les mondes et dans tous les univers.",
+    "ref": "20:2.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "daynals",
+    "fils-createur",
+    "effusion"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "caligastia",
+   "terme": "Caligastia",
+   "formes": [
+    "Caligastia"
+   ],
+   "anglais": "Caligastia",
+   "definition": "Prince Planétaire d’Urantia, arrivé il y a environ cinq-cent-mille ans pour diriger l’humanité primitive. Il rallia la rébellion de Lucifer, puis refusa le pardon offert par Micaël ; il n’a aucun pouvoir sur le mental de qui ne le désire pas.",
+   "refs": [
+    "66:0.2",
+    "53:1.4",
+    "53:8.6"
+   ],
+   "citation": {
+    "texte": "Le « diable » n’est autre que Caligastia, le Prince Planétaire déposé d’Urantia et Fils de l’ordre secondaire des Lanonandeks.",
+    "ref": "53:1.4"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#echelles",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "daligastia",
+    "prince-planetaire",
+    "lucifer"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "cano",
+   "terme": "Cano",
+   "formes": [
+    "Cano"
+   ],
+   "anglais": "Cano",
+   "definition": "Brillant chef nodite d’une colonie voisine du Jardin. Convaincu par le projet de Sérapatatia, il rencontra Ève en secret, puis périt peu après avec sa colonie ; il était le père de Caïn, né ensuite.",
+   "refs": [
+    "75:3.7",
+    "75:3.8",
+    "75:5.3"
+   ],
+   "citation": {
+    "texte": "Cano était très bien disposé envers le régime adamique ; en fait, il était le sincère chef spirituel des Nodites des environs qui souhaitaient des relations amicales avec le Jardin.",
+    "ref": "75:3.7"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-eve",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "serapatatia",
+    "defaillance",
+    "nodites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "censeurs-universels",
+   "terme": "Censeurs Universels",
+   "formes": [
+    "Censeurs Universels",
+    "Censeur Universel"
+   ],
+   "anglais": "Universal Censors",
+   "definition": "Êtres issus de la Trinité du Paradis, chargés du jugement divin dans tout le grand univers. Ils sont huit milliards : un sur chacun des mondes de Havona et un milliard par superunivers. Même les Anciens des Jours ne jugent qu’avec leur concours.",
+   "refs": [
+    "19:4.1",
+    "19:4.2",
+    "19:4.3"
+   ],
+   "citation": {
+    "texte": "Ces êtres uniques sont le jugement de la Déité.",
+    "ref": "19:4.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "perfecteurs-de-sagesse",
+    "conseillers-divins",
+    "anciens-des-jours"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "cercles-psychiques",
+   "terme": "cercles psychiques",
+   "formes": [
+    "cercles psychiques",
+    "cercle psychique",
+    "sept cercles",
+    "cercles cosmiques"
+   ],
+   "anglais": "psychic circles",
+   "definition": "Les sept niveaux de croissance de la personnalité humaine pendant la vie terrestre, franchis du septième au premier. Au troisième, on reçoit un gardien séraphique personnel ; les franchir prépare la fusion avec l’Ajusteur, sans en tenir lieu.",
+   "refs": [
+    "110:6.1",
+    "110:6.3",
+    "110:6.14"
+   ],
+   "citation": {
+    "texte": "Les cercles psychiques ne sont ni exclusivement intellectuels ni entièrement morontiels ; ils concernent le statut de personnalité, les accomplissements mentaux, la croissance de l’âme et l’accord avec l’Ajusteur.",
+    "ref": "110:6.3"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s4",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "ajusteur-de-pensee",
+    "fusion",
+    "seraphins"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "cherubins",
+   "terme": "chérubins",
+   "formes": [
+    "chérubins",
+    "chérubin"
+   ],
+   "anglais": "cherubim",
+   "definition": "Anges de l’univers local, de même origine que les séraphins mais de l’ordre le plus humble. Associés par paires aux sanobins, ils assistent les séraphins, sans les suivre hors de l’univers local.",
+   "refs": [
+    "38:7.1",
+    "38:7.2",
+    "38:7.3"
+   ],
+   "citation": {
+    "texte": "Ils sont magnifiquement intelligents, merveilleusement efficaces, touchants d’affection et presque humains.",
+    "ref": "38:7.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "seraphins"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "conseillers-divins",
+   "terme": "Conseillers Divins",
+   "formes": [
+    "Conseillers Divins",
+    "Conseiller Divin"
+   ],
+   "anglais": "Divine Counselors",
+   "definition": "Êtres issus de la Trinité qui forment le conseil de la Déité pour les superunivers : vingt-et-un milliards, trois milliards par superunivers. Un Conseiller Divin d’Orvonton signe l’Introduction du livre, et plusieurs fascicules de la partie I sont présentés par un Conseiller Divin.",
+   "refs": [
+    "19:3.1",
+    "0:12.14",
+    "1:7.9"
+   ],
+   "citation": {
+    "texte": "Ils ne sont pas le reflet du divin conseil de la Trinité ; ils sont ce conseil.",
+    "ref": "19:3.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "perfecteurs-de-sagesse",
+    "censeurs-universels",
+    "trinite-du-paradis"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "constellation",
+   "terme": "constellation",
+   "formes": [
+    "constellation",
+    "constellations"
+   ],
+   "anglais": "constellation",
+   "definition": "Au sens propre au livre, et non au sens astronomique : division d’un univers local, gouvernée par trois Vorondadeks, les Très Hauts. Un univers local en compte cent ; la nôtre est Norlatiadek.",
+   "refs": [
+    "15:2.4",
+    "43:0.1",
+    "15:14.6"
+   ],
+   "citation": {
+    "texte": "Cent systèmes (environ cent-mille planètes habitables) forment une constellation.",
+    "ref": "15:2.4"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html#h-zoom",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "norlatiadek",
+    "systeme-local",
+    "vorondadeks"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "corps-de-gravite-obscurs",
+   "terme": "corps de gravité obscurs",
+   "formes": [
+    "corps de gravité obscurs",
+    "corps de gravité"
+   ],
+   "anglais": "dark gravity bodies",
+   "definition": "Énormes masses obscures qui forment deux ceintures autour de Havona, tournant en sens contraires. Insensibles à la lumière, elles cachent l’univers central aux mondes du temps et en équilibrent la gravité.",
+   "refs": [
+    "14:1.14",
+    "14:1.15",
+    "12:1.10"
+   ],
+   "citation": {
+    "texte": "Ces corps de gravité obscurs ne réfléchissent pas la lumière et ne l’absorbent pas non plus […]",
+    "ref": "14:1.14"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#havona",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "havona",
+    "grand-univers"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "dalamatia",
+   "terme": "Dalamatia",
+   "formes": [
+    "Dalamatia"
+   ],
+   "anglais": "Dalamatia",
+   "definition": "Cité du Prince Planétaire, bâtie en Mésopotamie près du golfe Persique d’alors ; centre mondial de culture, elle fut nommée en l’honneur de Daligastia. Après la rébellion, elle fut engloutie par la mer.",
+   "refs": [
+    "66:3.1",
+    "66:3.3",
+    "67:5.2"
+   ],
+   "citation": {
+    "texte": "Le noyau de l’établissement du prince était une cité très simple mais très belle, enclose dans une muraille de douze mètres de haut.",
+    "ref": "66:3.3"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "daligastia",
+    "etat-major",
+    "caligastia"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "daligastia",
+   "terme": "Daligastia",
+   "formes": [
+    "Daligastia"
+   ],
+   "anglais": "Daligastia",
+   "definition": "Fils Lanonandek secondaire, adjoint-associé du Prince Planétaire Caligastia. Lors de la rébellion, c’est lui qui convoqua les dix conseils d’Urantia, sommés de lui remettre tous leurs pouvoirs pour le compte de Caligastia.",
+   "refs": [
+    "66:2.2",
+    "67:2.1",
+    "53:8.6"
+   ],
+   "citation": {
+    "texte": "Le dernier acte de Micaël avant de quitter Urantia fut d’offrir son pardon à Caligastia et Daligastia, mais ils dédaignèrent cette affectueuse proposition.",
+    "ref": "53:8.6"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#echelles",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "caligastia",
+    "dalamatia"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "daynals",
+   "terme": "Daynals",
+   "formes": [
+    "Daynals",
+    "Daynal",
+    "Fils Instructeurs de la Trinité",
+    "Fils Instructeurs"
+   ],
+   "anglais": "Daynals",
+   "autres": [
+    "Fils Instructeurs de la Trinité"
+   ],
+   "definition": "Fils du Paradis issus de la Trinité, appelés aussi Fils Instructeurs de la Trinité. Ni créateurs, ni juges, ni administrateurs, ils enseignent : leur ministère favorise le progrès moral et spirituel des créatures qui montent vers le Paradis.",
+   "refs": [
+    "20:7.1",
+    "20:7.3",
+    "35:0.1"
+   ],
+   "citation": {
+    "texte": "Ils sont les éducateurs universels, et se consacrent à l’éveil spirituel et à la gouverne morale de tous les royaumes.",
+    "ref": "20:7.3"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "avonals",
+    "trinite-du-paradis"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "defaillance",
+   "terme": "défaillance",
+   "formes": [
+    "défaillance"
+   ],
+   "anglais": "default",
+   "definition": "Nom que le livre donne à la faute d’Adam et Ève. Pressée d’améliorer les peuples voisins, Ève s’unit en secret au chef nodite Cano, sur le conseil de Sérapatatia ; Adam choisit ensuite délibérément de partager son sort.",
+   "refs": [
+    "75:3.5-8",
+    "75:5.2",
+    "75:8.1"
+   ],
+   "citation": {
+    "texte": "Adam et Ève furent vraiment déchus de leur état supérieur de filiation matérielle jusqu’à l’humble statut des hommes mortels ; mais ce ne fut pas la chute de l’homme.",
+    "ref": "75:8.1"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-eve",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "adam-et-eve",
+    "serapatatia",
+    "cano"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "deite",
+   "terme": "Déité",
+   "formes": [
+    "Déité",
+    "Déités"
+   ],
+   "anglais": "Deity",
+   "definition": "Source de tout ce qui est divin. La Déité peut être personnelle, et l’on parle alors de Dieu, mais aussi prépersonnelle ou superpersonnelle. Elle peut exister de toujours, comme dans le Fils Éternel, ou émerger par l’expérience, comme l’Être Suprême.",
+   "refs": [
+    "0:1.2",
+    "0:1.14-15",
+    "0:2.10"
+   ],
+   "citation": {
+    "texte": "Le mot Déité peut se référer ou non à des personnalités de divinité.",
+    "ref": "0:2.10"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s2",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "divinite",
+    "existentiel",
+    "experientiel"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "dieu-le-septuple",
+   "terme": "Dieu le Septuple",
+   "formes": [
+    "Dieu le Septuple"
+   ],
+   "anglais": "God the Sevenfold",
+   "definition": "Association des Déités du Paradis et de leurs associés créateurs, telle que la rencontrent les créatures du temps et de l’espace, en sept niveaux : Fils Créateurs, Anciens des Jours, Sept Maitres Esprits, Être Suprême, puis Dieu l’Esprit, Dieu le Fils et Dieu le Père.",
+   "refs": [
+    "0:8.1-8",
+    "0:2.16",
+    "0:8.9"
+   ],
+   "citation": {
+    "texte": "Cette personnalisation septuple de la Déité dans le temps et l’espace et pour les sept superunivers, rend l’homme mortel capable d’atteindre la présence de Dieu, qui est esprit.",
+    "ref": "0:8.9"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s5",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "etre-supreme",
+    "maitres-esprits",
+    "anciens-des-jours"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "dieu-l-absolu",
+   "terme": "Dieu l’Absolu",
+   "formes": [
+    "Dieu l’Absolu"
+   ],
+   "anglais": "God the Absolute",
+   "definition": "Troisième Déité expérientielle, la plus éloignée de toute actualisation : elle résulterait de l’unification d’une seconde Trinité expérientielle, la Trinité Absolue. Le livre la rattache à l’Absolu de Déité et hésite à en dire davantage.",
+   "refs": [
+    "0:10.1",
+    "0:10.2",
+    "0:2.18"
+   ],
+   "citation": {
+    "texte": "Dieu l’Absolu est le but d’aboutissement et de réalisation de tous les êtres superabsonites.",
+    "ref": "0:10.2"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s6",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "absolu-de-deite",
+    "dieu-l-ultime",
+    "trinite-du-paradis"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "dieu-l-ultime",
+   "terme": "Dieu l’Ultime",
+   "formes": [
+    "Dieu l’Ultime",
+    "Ultime"
+   ],
+   "anglais": "God the Ultimate",
+   "autres": [
+    "l’Ultime"
+   ],
+   "definition": "Deuxième Déité expérientielle, encore en voie d’actualisation : Dieu agissant au-delà du temps et de l’espace, sur le niveau absonite. Il émergera pleinement quand sera unifiée la Trinité Ultime, dont l’Être Suprême fera partie.",
+   "refs": [
+    "0:9.2",
+    "0:12.6",
+    "0:2.17"
+   ],
+   "citation": {
+    "texte": "L’Ultime est l’unification de la Trinité du Paradis comprise par les êtres absonites.",
+    "ref": "0:9.2"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s6",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "ultimite",
+    "absonite",
+    "etre-supreme"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "divinite",
+   "terme": "divinité",
+   "formes": [
+    "divinité",
+    "divinités"
+   ],
+   "anglais": "divinity",
+   "definition": "Qualité caractéristique de la Déité, qui unifie et coordonne. Dans la personnalité, elle se traduit en amour, miséricorde et ministère ; sur les niveaux impersonnels, en justice, pouvoir et souveraineté. Tout ce qui est divin n’est pas pour autant Déité.",
+   "refs": [
+    "0:1.16",
+    "0:1.17",
+    "0:1.15"
+   ],
+   "citation": {
+    "texte": "La divinité est intelligible aux créatures en tant que vérité, beauté et bonté.",
+    "ref": "0:1.17"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s5",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "deite"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "edentia",
+   "terme": "Édentia",
+   "formes": [
+    "Édentia"
+   ],
+   "anglais": "Edentia",
+   "definition": "Capitale de notre constellation, Norlatiadek, et siège des Très Hauts : un monde architectural environ cent fois plus grand qu’Urantia. Les ascendeurs y font étape après Jérusem.",
+   "refs": [
+    "43:0.2",
+    "15:7.6"
+   ],
+   "citation": {
+    "texte": "Édentia, siège de votre constellation de Norlatiadek, a soixante-dix satellites de culture et d’entrainement social.",
+    "ref": "15:7.6"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#norlatiadek",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "norlatiadek",
+    "vorondadeks",
+    "ascendeurs"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "effusion",
+   "terme": "effusion",
+   "formes": [
+    "effusion",
+    "effusions"
+   ],
+   "anglais": "bestowal",
+   "definition": "Pour un Fils divin, le fait de vivre la vie de ses propres créatures en prenant leur forme. Micaël s’est effusé sept fois, la dernière sur Urantia. Le mot désigne aussi le don d’un esprit, comme l’effusion de l’Esprit de Vérité.",
+   "refs": [
+    "120:0.1",
+    "119:0.3",
+    "52:5.6"
+   ],
+   "citation": {
+    "texte": "Vivre une vie identique à celle qu’il impose aux êtres intelligents de sa propre création, donc de s’effuser dans la similitude de ses divers ordres d’êtres créés […]",
+    "ref": "120:0.1"
+   },
+   "atlas": {
+    "href": "vie-de-jesus.html",
+    "titre": "La vie de Jésus"
+   },
+   "voir": [
+    "micael",
+    "avonals",
+    "fils-de-l-homme"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "ensa",
+   "terme": "Ensa",
+   "formes": [
+    "Ensa"
+   ],
+   "anglais": "Ensa",
+   "definition": "Notre secteur mineur, le troisième du secteur majeur de Splandon. Il réunit cent univers locaux, dont Nébadon, et a pour capitale Uminor la troisième.",
+   "refs": [
+    "15:14.7",
+    "15:14.6",
+    "15:3.5"
+   ],
+   "citation": {
+    "texte": "Le centre de rotation de votre secteur mineur est situé fort loin dans l’énorme et dense nuage stellaire du Sagittaire […]",
+    "ref": "15:3.5"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#ensa",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "secteur-mineur",
+    "splandon",
+    "nebadon"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "espace-exterieur",
+   "terme": "espace extérieur",
+   "formes": [
+    "espace extérieur",
+    "niveaux d’espace extérieur",
+    "niveau d’espace extérieur"
+   ],
+   "anglais": "outer space",
+   "definition": "Les quatre immenses niveaux d’espace qui entourent le grand univers, au-delà d’une zone de calme relatif. Des énergies colossales s’y organisent : ces niveaux, encore inhabités, sont destinés à recevoir de futurs univers.",
+   "refs": [
+    "12:1.14",
+    "12:1.16",
+    "0:0.6"
+   ],
+   "citation": {
+    "texte": "Ces formidables roues de forces énergétiques sont situées dans le premier niveau d’espace extérieur, une ceinture continue d’activité cosmique entourant la totalité de la création connue, organisée et habitée.",
+    "ref": "12:1.14"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#espace-exterieur",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "maitre-univers",
+    "grand-univers"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "esprit",
+   "terme": "esprit",
+   "formes": [
+    "esprit",
+    "esprits"
+   ],
+   "casse": "stricte",
+   "anglais": "spirit",
+   "definition": "Traduit l’anglais spirit, à ne pas confondre avec le mental (mind) : est esprit tout ce qui répond au circuit d’esprit du Fils Éternel. Chez l’homme, l’esprit qui l’habite est l’Ajusteur de Pensée.",
+   "refs": [
+    "0:6.1",
+    "0:5.9",
+    "42:12.12"
+   ],
+   "citation": {
+    "texte": "L’esprit est l’architecte, le mental est le constructeur, le corps est le bâtiment matériel.",
+    "ref": "42:12.12"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s6",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "mental",
+    "ajusteur-de-pensee",
+    "ame"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "esprit-de-verite",
+   "terme": "Esprit de Vérité",
+   "formes": [
+    "Esprit de Vérité"
+   ],
+   "anglais": "Spirit of Truth",
+   "definition": "Esprit que Jésus, le Fils Créateur, a envoyé à sa place après son départ, le jour de la Pentecôte. Il vit dans le croyant, l’aide à saisir la vérité et a préparé tout mental normal à recevoir l’Ajusteur.",
+   "refs": [
+    "194:2.1",
+    "194:3.1",
+    "194:2.3"
+   ],
+   "citation": {
+    "texte": "Le Fils Créateur, dans la chair, a révélé Dieu aux hommes ; l’Esprit de Vérité, dans le cœur, révèle le Fils Créateur aux hommes.",
+    "ref": "194:3.1"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s2",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "pentecote",
+    "ajusteur-de-pensee",
+    "saint-esprit"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "esprit-infini",
+   "terme": "Esprit Infini",
+   "formes": [
+    "Esprit Infini",
+    "Dieu l’Esprit"
+   ],
+   "anglais": "Infinite Spirit",
+   "autres": [
+    "Acteur Conjoint",
+    "Dieu l’Esprit",
+    "Source-Centre Troisième"
+   ],
+   "definition": "Troisième Personne de la Déité, issue de l’action commune du Père et du Fils. Source du mental pour toutes les créatures, il révèle la miséricorde du Fils par ses nombreux enfants.",
+   "refs": [
+    "8:0.3",
+    "0:2.14",
+    "105:3.5"
+   ],
+   "citation": {
+    "texte": "À l’instant même où Dieu le Père et Dieu le Fils conçoivent conjointement une action identique et infinie […] l’Esprit Infini, en possession de tous ses moyens, jaillit instantanément à l’existence.",
+    "ref": "8:0.3"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s2",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "acteur-conjoint",
+    "maitres-esprits",
+    "mental"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "esprit-mere",
+   "terme": "Esprit-Mère de l’univers local",
+   "formes": [
+    "Esprit-Mère de l’univers local",
+    "Esprit-Mère de l’Univers",
+    "Esprit-Mère",
+    "Esprits-Mères",
+    "Divine Ministre",
+    "Divines Ministres",
+    "Esprit Créatif",
+    "Esprits Créatifs"
+   ],
+   "anglais": "Universe Mother Spirit (Local Universe Mother Spirit)",
+   "autres": [
+    "Divine Ministre",
+    "Esprit Créatif"
+   ],
+   "definition": "Compagne du Fils Créateur dans chaque univers local : une représentation personnelle de l’Esprit Infini, associée à toute son œuvre de création. Ses enfants, les sept esprits-mentaux adjuvats, servent le mental des créatures.",
+   "refs": [
+    "34:1.1",
+    "34:0.1",
+    "36:5.1"
+   ],
+   "citation": {
+    "texte": "L’Esprit Créatif individualisé, auxiliaire du Fils Créateur, est devenu son associée créative personnelle, l’Esprit-Mère de l’univers local.",
+    "ref": "34:1.1"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s1",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "fils-createur",
+    "adjuvats",
+    "saint-esprit"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "adjuvats",
+   "terme": "esprits-mentaux adjuvats",
+   "formes": [
+    "esprits-mentaux adjuvats",
+    "esprit-mental adjuvat",
+    "adjuvats",
+    "adjuvat"
+   ],
+   "anglais": "adjutant mind-spirits",
+   "definition": "Les sept esprits par lesquels l’Esprit-Mère de l’univers local sert le mental des êtres vivants, de l’intuition à la sagesse ; ils ressemblent davantage à des circuits qu’à des êtres. Les cinq premiers agissent chez l’animal, les sept chez l’être humain.",
+   "refs": [
+    "36:5.1",
+    "36:5.2-4",
+    "42:10.4"
+   ],
+   "citation": {
+    "texte": "Les adjuvats sont les enfants de l’Esprit-Mère de l’Univers et constituent son ministère personnel auprès du mental matériel des royaumes.",
+    "ref": "36:5.1"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s3",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "esprit-mere",
+    "mental"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "etat-major",
+   "terme": "état-major du Prince",
+   "formes": [
+    "état-major corporel",
+    "état-major du Prince",
+    "état-major du prince",
+    "état-major"
+   ],
+   "anglais": "corporeal staff",
+   "autres": [
+    "les cent de Caligastia"
+   ],
+   "definition": "Les cent membres corporels qui accompagnaient Caligastia : des volontaires ascendants de Jérusem, dotés sur Urantia de corps physiques. Lors de la rébellion, quarante restèrent loyaux, dont Van ; les soixante autres suivirent Nod.",
+   "refs": [
+    "66:2.3-5",
+    "67:3.2",
+    "67:4.2"
+   ],
+   "citation": {
+    "texte": "Ils travaillèrent de tout cœur pour le Prince rebelle, mais s’aperçurent bientôt qu’ils étaient privés du soutien des circuits vitaux du système.",
+    "ref": "67:4.2"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#camps",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "caligastia",
+    "van-et-amadon",
+    "nodites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "etre-supreme",
+   "terme": "Être Suprême",
+   "formes": [
+    "Être Suprême",
+    "Dieu le Suprême",
+    "Tout-Puissant Suprême",
+    "Suprême"
+   ],
+   "anglais": "Supreme Being",
+   "autres": [
+    "Dieu le Suprême",
+    "le Suprême"
+   ],
+   "definition": "Le Dieu du temps et de l’espace, encore en train d’émerger : une Déité expérientielle qui grandit avec les accomplissements des Créateurs et des créatures du grand univers. Plus la volonté de Dieu est faite, plus son potentiel devient réel.",
+   "refs": [
+    "0:2.15",
+    "117:0.1",
+    "117:1.1"
+   ],
+   "citation": {
+    "texte": "Il est la surâme du grand univers, la conscience du cosmos fini, le parachèvement de la réalité finie et la personnification de l’expérience Créateur-créature.",
+    "ref": "117:1.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s6",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "suprematie",
+    "experientiel",
+    "dieu-l-ultime"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "existentiel",
+   "terme": "existentiel",
+   "formes": [
+    "existentiel",
+    "existentielle",
+    "existentiels",
+    "existentielles",
+    "existentiellement"
+   ],
+   "anglais": "existential",
+   "definition": "Se dit de ce qui existe de toute éternité, sans commencement : avant tout le Père, le Fils et l’Esprit. Le livre l’oppose à expérientiel, qui qualifie ce qui se réalise peu à peu par l’expérience, comme l’Être Suprême.",
+   "refs": [
+    "0:7.3",
+    "0:7.1",
+    "0:1.14"
+   ],
+   "citation": {
+    "texte": "Dieu le Père, Dieu le Fils et Dieu l’Esprit sont éternels — sont des êtres existentiels […]",
+    "ref": "0:7.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s6",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "experientiel",
+    "trinite-du-paradis",
+    "sept-absolus"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "experientiel",
+   "terme": "expérientiel",
+   "formes": [
+    "expérientiel",
+    "expérientielle",
+    "expérientiels",
+    "expérientielles",
+    "expérientiellement"
+   ],
+   "anglais": "experiential",
+   "definition": "Se dit de ce qui devient réel par l’expérience et la croissance : cela commence dans le temps, mais peut durer sans fin. L’Être Suprême et Dieu l’Ultime sont des Déités expérientielles, encore en voie d’actualisation.",
+   "refs": [
+    "0:7.4-6",
+    "0:4.9"
+   ],
+   "citation": {
+    "texte": "La Déité Paradisiaque est existentielle, mais le Suprême et l’Ultime qui émergent sont expérientiels.",
+    "ref": "0:4.9"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s6",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "existentiel",
+    "etre-supreme",
+    "dieu-l-ultime"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "fils-createur",
+   "terme": "Fils Créateur",
+   "formes": [
+    "Fils Créateur",
+    "Fils Créateurs",
+    "Micaëls"
+   ],
+   "anglais": "Creator Son",
+   "autres": [
+    "Micaëls"
+   ],
+   "definition": "Fils divin issu de l’union du Père Universel et du Fils Éternel, qui bâtit et gouverne un univers local. Chacun est unique ; tous appartiennent à l’ordre des Micaëls, et celui de notre univers, Nébadon, est Micaël.",
+   "refs": [
+    "21:0.1",
+    "21:0.3",
+    "32:0.1"
+   ],
+   "citation": {
+    "texte": "Ces créateurs et souverains d’univers sont d’origine duelle, incorporant les caractéristiques de Dieu le Père et Dieu le Fils.",
+    "ref": "21:0.1"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#gouvernement",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "micael",
+    "univers-local",
+    "esprit-mere"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "fils-de-l-homme",
+   "terme": "Fils de l’Homme",
+   "formes": [
+    "Fils de l’Homme",
+    "Fils de l’homme"
+   ],
+   "anglais": "Son of Man",
+   "definition": "Titre que Jésus choisit pour se désigner, inspiré selon le livre d’un passage du Livre d’Énoch plutôt que de Daniel. Il souligne que le Fils Créateur a vécu en homme véritable, né d’une femme.",
+   "refs": [
+    "126:3.6",
+    "126:3.8",
+    "128:1.2"
+   ],
+   "citation": {
+    "texte": "Et même maintenant qu’il préside avec une autorité souveraine aux destinées d’un univers, il porte encore, parmi ses nombreux titres bien gagnés, celui de Fils de l’Homme.",
+    "ref": "128:1.2"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-daniel",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "micael",
+    "effusion",
+    "maitre"
+   ],
+   "theme": "jesus"
+  },
+  {
+   "id": "fils-eternel",
+   "terme": "Fils Éternel",
+   "formes": [
+    "Fils Éternel",
+    "Dieu le Fils",
+    "Fils Originel"
+   ],
+   "anglais": "Eternal Son",
+   "autres": [
+    "Dieu le Fils",
+    "Source-Centre Deuxième"
+   ],
+   "definition": "Deuxième Personne de la Déité : l’expression parfaite et personnelle du Père, que le livre appelle aussi le Verbe. Les forces de l’esprit convergent en lui, et il est l’archétype absolu de toute personnalité.",
+   "refs": [
+    "6:0.1",
+    "0:3.15",
+    "105:3.3"
+   ],
+   "citation": {
+    "texte": "Nulle personnalité ne peut espérer atteindre le Père Universel sinon par son Fils Éternel.",
+    "ref": "105:3.3"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s2",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "pere-universel",
+    "esprit-infini",
+    "trinite-du-paradis"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "fils-trinitises",
+   "terme": "Fils Trinitisés",
+   "formes": [
+    "Fils Trinitisés",
+    "Fils de Dieu Trinitisés",
+    "fils trinitisés"
+   ],
+   "anglais": "Trinitized Sons of God",
+   "autres": [
+    "Fils de Dieu Trinitisés"
+   ],
+   "definition": "Troisième groupe de Fils de Dieu, à côté des Fils descendants et ascendants. Leur point commun est d’avoir été trinitisés, ou embrassés par la Trinité, comme les mortels parfaits devenus Puissants Messagers, éprouvés dans leur loyauté.",
+   "refs": [
+    "22:0.1",
+    "20:0.5",
+    "22:2.1"
+   ],
+   "citation": {
+    "texte": "Les Fils Trinitisés sont un groupe d’origine complexe comprenant tous les êtres embrassés par la Trinité du Paradis, même s’ils ne sont pas issus directement de la Trinité.",
+    "ref": "20:0.5"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "trinite-du-paradis",
+    "ascendeurs",
+    "finalitaires"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "finalitaires",
+   "terme": "finalitaires",
+   "formes": [
+    "finalitaires",
+    "finalitaire",
+    "Corps de la Finalité"
+   ],
+   "anglais": "finaliters",
+   "definition": "Les ascendeurs parvenus au Paradis au terme de leur ascension, surtout des mortels fusionnés avec leur Ajusteur, réunis dans le Corps de la Finalité. Ils servent aujourd’hui dans les univers du temps ; les auteurs disent ignorer leur destinée finale.",
+   "refs": [
+    "31:0.1",
+    "31:0.11",
+    "31:3.2"
+   ],
+   "citation": {
+    "texte": "Il y a en permanence une ou plusieurs compagnies de finalitaires mortels en service sur Urantia.",
+    "ref": "31:0.11"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#carriere",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "ascendeurs",
+    "fusion",
+    "paradis"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "fusion",
+   "terme": "fusion",
+   "formes": [
+    "fusion",
+    "fusionner",
+    "fusionna",
+    "fusionnent",
+    "fusionnés"
+   ],
+   "anglais": "fusion",
+   "definition": "Union éternelle de l’âme humaine avec l’Ajusteur de Pensée. Elle se produit habituellement après la mort, sur les mondes des maisons ; certains mortels fusionnent plutôt avec l’Esprit ou le Fils.",
+   "refs": [
+    "112:7.2",
+    "47:8.3",
+    "40:9.1"
+   ],
+   "citation": {
+    "texte": "Et cette fusion constitue le mystère qui fait que Dieu et l’homme sont un […]",
+    "ref": "112:7.2"
+   },
+   "atlas": {
+    "href": "destinee-humaine.html#fusion",
+    "titre": "La destinée humaine"
+   },
+   "voir": [
+    "ajusteur-de-pensee",
+    "mondes-des-maisons",
+    "finalitaires"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "gabriel",
+   "terme": "Gabriel",
+   "formes": [
+    "Gabriel de Salvington",
+    "Gabriel",
+    "Radieuse Étoile du Matin"
+   ],
+   "anglais": "Gabriel",
+   "autres": [
+    "Radieuse Étoile du Matin",
+    "Gabriel de Salvington"
+   ],
+   "definition": "Premier-né de l’univers local de Nébadon, appelé la Radieuse Étoile du Matin, et chef exécutif de cet univers. Selon le récit du livre, c’est aussi lui qui annonça à Marie la naissance de Jésus.",
+   "refs": [
+    "33:4.1-5",
+    "53:5.4",
+    "122:3.1"
+   ],
+   "citation": {
+    "texte": "Puis, en conseil avec les Très Hauts, il décida d’assumer le commandement des armées loyales de Satania.",
+    "ref": "53:5.4"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "nebadon",
+    "lucifer",
+    "archanges"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "grand-univers",
+   "terme": "grand univers",
+   "formes": [
+    "grand univers"
+   ],
+   "anglais": "grand universe",
+   "definition": "Ensemble de l’univers central, Havona, et des sept superunivers qui l’entourent : la partie de la création aujourd’hui organisée et habitée, avec quelque sept mille milliards de mondes habitables. Il fait partie du maitre univers.",
+   "refs": [
+    "0:0.6",
+    "15:2.9",
+    "12:1.13"
+   ],
+   "citation": {
+    "texte": "Et c’est près de cette frontière extérieure, dans un coin éloigné de cette magnifique création, que votre univers local poursuit son existence mouvementée.",
+    "ref": "12:1.13"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#grand-univers",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "havona",
+    "superunivers",
+    "maitre-univers"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "havona",
+   "terme": "Havona",
+   "formes": [
+    "Havona"
+   ],
+   "anglais": "Havona",
+   "definition": "Univers central, parfait et éternel, au cœur duquel repose l’Ile du Paradis. Les créations du temps et de l’espace tournent autour de lui ; les ascendeurs y sont formés, circuit après circuit, avant d’atteindre le Paradis.",
+   "refs": [
+    "14:0.1",
+    "14:1.9",
+    "14:3.4"
+   ],
+   "citation": {
+    "texte": "Le milliard de mondes de Havona est disposé en sept circuits concentriques qui entourent immédiatement les trois circuits des satellites du Paradis.",
+    "ref": "14:1.9"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#havona",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "paradis",
+    "grand-univers",
+    "ascendeurs"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "isolement",
+   "terme": "isolement d’Urantia",
+   "formes": [
+    "isolement",
+    "planète isolée",
+    "planètes isolées",
+    "monde isolé",
+    "mondes isolés"
+   ],
+   "anglais": "isolation",
+   "definition": "Coupure des circuits qui reliaient Urantia au reste du système, survenue quand Caligastia rallia la rébellion de Lucifer. La planète reste techniquement isolée, mais, pour chacun, cela compte peu depuis la venue de l’Esprit de Vérité.",
+   "refs": [
+    "67:2.3",
+    "114:5.4"
+   ],
+   "citation": {
+    "texte": "Entretemps, les circuits du système avaient été coupés ; Urantia était isolée.",
+    "ref": "67:2.3"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#isolement",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "quarantaine",
+    "caligastia",
+    "urantia"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "eden",
+   "terme": "Jardin d’Éden",
+   "formes": [
+    "Jardin d’Éden",
+    "Éden",
+    "premier jardin",
+    "premier Éden"
+   ],
+   "anglais": "Garden of Eden",
+   "autres": [
+    "premier jardin"
+   ],
+   "definition": "Siège préparé pour Adam et Ève par Van et ses compagnons, sur une longue péninsule de la Méditerranée orientale. Son nom rappelle la beauté d’Édentia ; la péninsule fut plus tard engloutie par la mer.",
+   "refs": [
+    "73:3.1",
+    "73:4.1",
+    "73:7.1"
+   ],
+   "citation": {
+    "texte": "Telle fut la fin de la plus belle création naturelle qu’Urantia ait jamais abritée.",
+    "ref": "73:7.1"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-jardin",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "adam-et-eve",
+    "second-jardin",
+    "van-et-amadon"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "je-suis",
+   "terme": "JE SUIS",
+   "formes": [
+    "JE SUIS"
+   ],
+   "anglais": "I AM",
+   "definition": "Concept philosophique de l’Infini : le Père Universel envisagé comme cause première de toute réalité, avant toute différenciation. Il répond au besoin humain de se représenter un commencement. Le livre emploie aussi ces mots pour le nom divin dévoilé à Moïse.",
+   "refs": [
+    "105:1.1-5",
+    "0:3.23",
+    "182:1.9"
+   ],
+   "citation": {
+    "texte": "Le concept du JE SUIS est une concession philosophique que nous faisons au mental fini de l’homme lié au temps et enchainé à l’espace […]",
+    "ref": "0:3.23"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "sept-absolus",
+    "pere-universel"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "jerusem",
+   "terme": "Jérusem",
+   "formes": [
+    "Jérusem"
+   ],
+   "anglais": "Jerusem",
+   "definition": "Capitale du système local de Satania, monde architectural presque cent fois plus grand qu’Urantia. Autour d’elle tournent sept mondes de transition, parmi les satellites desquels se trouvent les sept mondes des maisons, première étape des humains après la mort.",
+   "refs": [
+    "46:0.1",
+    "45:0.1",
+    "15:7.5"
+   ],
+   "citation": {
+    "texte": "[…] le siège du système est vraiment le ciel imaginé par la majorité des croyants religieux du vingtième siècle.",
+    "ref": "46:0.1"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#satania",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "satania",
+    "mondes-des-maisons",
+    "lucifer"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "lanaforge",
+   "terme": "Lanaforge",
+   "formes": [
+    "Lanaforge"
+   ],
+   "anglais": "Lanaforge",
+   "definition": "Fils Lanonandek primaire, actuel Souverain du système de Satania, envoyé pour succéder à Lucifer. Lors d’une rébellion antérieure dans Nébadon, il était resté fidèle à Micaël alors que son supérieur faisait défection.",
+   "refs": [
+    "45:3.2",
+    "45:2.3",
+    "53:7.13"
+   ],
+   "citation": {
+    "texte": "Avec l’arrivée de Lanaforge, les archirebelles furent détrônés et dépouillés de tout pouvoir de gouvernement.",
+    "ref": "53:7.13"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#statut",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "lucifer",
+    "satania",
+    "lanonandeks"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "lanonandeks",
+   "terme": "Lanonandeks",
+   "formes": [
+    "Lanonandeks",
+    "Lanonandek",
+    "Fils Lanonandeks",
+    "Fils Lanonandek"
+   ],
+   "anglais": "Lanonandeks",
+   "definition": "Troisième ordre de Fils de l’univers local, créés par le Fils Créateur et l’Esprit-Mère, puis formés par les Melchizédeks. Lucifer et Satan appartenaient à leur rang primaire, Caligastia au rang secondaire.",
+   "refs": [
+    "35:8.1",
+    "35:8.2",
+    "53:1.4"
+   ],
+   "citation": {
+    "texte": "[…] ils sont surtout connus comme Souverains de Systèmes, gouvernant les systèmes locaux, et comme Princes Planétaires, chefs administratifs des mondes habités.",
+    "ref": "35:8.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "prince-planetaire",
+    "lucifer",
+    "caligastia"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "lucifer",
+   "terme": "Lucifer",
+   "formes": [
+    "Lucifer"
+   ],
+   "anglais": "Lucifer",
+   "definition": "Fils Lanonandek primaire, brillant souverain du système de Satania. Avec son premier assistant, Satan, il se dressa contre le Père Universel et contre Micaël, et lança la rébellion qui porte son nom.",
+   "refs": [
+    "53:0.1",
+    "53:2.1",
+    "53:9.2"
+   ],
+   "citation": {
+    "texte": "Quand Micaël devint le chef confirmé de Nébadon, Lucifer fut mis en prison par les agents des Anciens des Jours d’Uversa […]",
+    "ref": "53:9.2"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "satan",
+    "manifeste-de-lucifer",
+    "satania"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "machiventa",
+   "terme": "Machiventa Melchizédek",
+   "formes": [
+    "Machiventa Melchizédek",
+    "Machiventa",
+    "Melchizédek"
+   ],
+   "anglais": "Machiventa Melchizedek",
+   "definition": "Melchizédek venu vivre parmi les humains à Salem « 1 973 ans avant la naissance de Jésus », pour y raviver la croyance en un Dieu unique ; Abraham devint son disciple. Il a reçu depuis le titre de Prince Planétaire vice-gérant d’Urantia.",
+   "refs": [
+    "93:2.1",
+    "93:3.1",
+    "93:10.5"
+   ],
+   "citation": {
+    "texte": "Son arrivée n’eut rien de spectaculaire ; nul œil humain ne fut témoin de sa matérialisation.",
+    "ref": "93:2.1"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-melchisedech",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "melchizedeks",
+    "prince-planetaire",
+    "yahweh"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "maitre",
+   "terme": "Maitre",
+   "formes": [
+    "Maitre"
+   ],
+   "anglais": "Master",
+   "definition": "Titre que le texte donne très souvent à Jésus, comme le faisaient ses apôtres et ses disciples. Le mot s’écrit ici sans accent circonflexe, selon l’orthographe rectifiée de 1990.",
+   "refs": [
+    "129:1.11",
+    "139:1.2"
+   ],
+   "citation": {
+    "texte": "[…] Zébédée avait beaucoup d’ouvriers, et ce fut parmi ces travailleurs que, pour la première fois, Jésus fut appelé « le Maitre ».",
+    "ref": "129:1.11"
+   },
+   "atlas": {
+    "href": "vie-de-jesus.html",
+    "titre": "La vie de Jésus"
+   },
+   "voir": [
+    "micael",
+    "fils-de-l-homme",
+    "royaume-des-cieux"
+   ],
+   "theme": "jesus"
+  },
+  {
+   "id": "maitre-univers",
+   "terme": "maitre univers",
+   "formes": [
+    "maitre univers",
+    "Maitre Univers"
+   ],
+   "anglais": "master universe",
+   "definition": "L’ensemble de la création, disposé autour du Paradis en six ellipses concentriques : Havona, les sept superunivers, puis quatre niveaux d’espace extérieur, encore inhabités, où de futurs univers sont en formation.",
+   "refs": [
+    "12:1.3",
+    "0:0.6",
+    "12:1.16"
+   ],
+   "citation": {
+    "texte": "[…] nous considérons le maitre univers, tel qu’il existe et qu’il est administré comme ayant des limitations, comme étant nettement délimité et borné à ses lisières extérieures par l’espace ouvert.",
+    "ref": "12:1.16"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#maitre-univers",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "grand-univers",
+    "espace-exterieur",
+    "paradis"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "maitres-organisateurs-de-force",
+   "terme": "Maitres Organisateurs de Force",
+   "formes": [
+    "Maitres Organisateurs de Force",
+    "Maitre Organisateur de Force",
+    "organisateurs de force",
+    "organisateur de force"
+   ],
+   "anglais": "Master Force Organizers",
+   "definition": "Êtres du Paradis, ni créateurs ni créatures, qui façonnent l’énergie de l’espace : ils font passer la force primordiale sous l’emprise de la gravité du Paradis et lancent les nébuleuses. L’un d’eux a déclenché la formation de la nébuleuse d’Andronover.",
+   "refs": [
+    "29:5.1",
+    "29:5.5",
+    "57:1.6"
+   ],
+   "citation": {
+    "texte": "Les Maitres Organisateurs de Force Primaires sont les manipulateurs des forces spatiales primordiales ou fondamentales de l’Absolu Non Qualifié ; ce sont des créateurs de nébuleuses.",
+    "ref": "29:5.5"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "andronover",
+    "absolu-non-qualifie",
+    "paradis"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "manifeste-de-lucifer",
+   "terme": "manifeste de Lucifer",
+   "formes": [
+    "manifeste de Lucifer",
+    "Déclaration Luciférienne de Liberté",
+    "Déclaration de Liberté"
+   ],
+   "anglais": "Lucifer manifesto",
+   "autres": [
+    "Déclaration Luciférienne de Liberté",
+    "Déclaration de Liberté"
+   ],
+   "definition": "Proclamation de la rébellion, faite sur Jérusem il y a environ deux-cent-mille ans. Elle niait l’existence du Père Universel, contestait l’autorité de Micaël et des Anciens des Jours, et attaquait le plan d’ascension des mortels.",
+   "refs": [
+    "53:3.1",
+    "53:3.2-6",
+    "53:4.1"
+   ],
+   "citation": {
+    "texte": "Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre […]",
+    "ref": "53:4.1"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#manifeste",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "lucifer",
+    "satan",
+    "jerusem"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "medians",
+   "terme": "médians",
+   "formes": [
+    "médians",
+    "créatures médianes"
+   ],
+   "anglais": "midwayers",
+   "autres": [
+    "créatures médianes"
+   ],
+   "definition": "Êtres présents sur la plupart des mondes habités de Nébadon, à mi-chemin entre les mortels et les anges. Urantia en compte deux ordres, nés aux temps de Dalamatia puis d’Adam ; un médian secondaire a rédigé le récit de la vie de Jésus.",
+   "refs": [
+    "77:0.1",
+    "77:0.2",
+    "121:0.1"
+   ],
+   "citation": {
+    "texte": "Elles paraissent être un accident du temps, mais sont si répandues et apportent une aide si précieuse que nous les avons acceptées […]",
+    "ref": "77:0.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "seraphins",
+    "dalamatia",
+    "adam-et-eve"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "melchizedeks",
+   "terme": "Melchizédeks",
+   "formes": [
+    "Melchizédeks",
+    "Fils Melchizédeks",
+    "Père Melchizédek",
+    "Manovandet Melchizédek",
+    "un Melchizédek"
+   ],
+   "anglais": "Melchizedeks",
+   "autres": [
+    "Fils Melchizédeks"
+   ],
+   "definition": "Ordre de Fils de l’univers local, à mi-chemin entre la Divinité et les créatures les plus humbles. Surnommés « Fils de secours », ils interviennent dans les situations d’urgence ; douze d’entre eux administrèrent Urantia après la chute de Caligastia.",
+   "refs": [
+    "35:2.1",
+    "93:0.1",
+    "67:6.5"
+   ],
+   "citation": {
+    "texte": "En fait, toutes les formes de vie intelligente trouvent en ces Fils des amis compréhensifs, des instructeurs sympathiques et des conseillers avisés.",
+    "ref": "35:2.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "machiventa",
+    "lanonandeks"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "mental",
+   "terme": "mental",
+   "formes": [
+    "mental"
+   ],
+   "anglais": "mind",
+   "definition": "Traduit l’anglais mind, à ne pas confondre avec l’esprit (spirit) : l’intelligence, qui vient de l’Esprit Infini. Chez l’homme, il est prêté pour la vie physique, et l’usage qu’on en fait engage la vie éternelle.",
+   "refs": [
+    "0:6.1",
+    "111:1.5"
+   ],
+   "citation": {
+    "texte": "Le mental est à peu près tout ce que vous possédez de réalité universelle qui soit soumise à votre volonté.",
+    "ref": "111:1.5"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s6",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "esprit",
+    "adjuvats",
+    "esprit-infini"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "messagers-solitaires",
+   "terme": "Messagers Solitaires",
+   "formes": [
+    "Messagers Solitaires",
+    "Messager Solitaire"
+   ],
+   "anglais": "Solitary Messengers",
+   "definition": "Ordre le plus ancien des Personnalités Supérieures de l’Esprit Infini, qui les a créés seul. Ils portent rapidement les messages urgents dans tout le grand univers, plus vite que les séraphins ; leur nombre est fixe, mais le texte n’en donne pas le total.",
+   "refs": [
+    "23:0.1-2",
+    "23:2.1",
+    "23:3.1-2"
+   ],
+   "citation": {
+    "texte": "Entre eux, ils n’ont ni organisation ni gouvernement d’aucune sorte ; ils sont des Messagers Solitaires.",
+    "ref": "23:2.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "esprit-infini",
+    "seraphins"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "micael",
+   "terme": "Micaël",
+   "formes": [
+    "Micaël de Nébadon",
+    "Micaël de Salvington",
+    "Christ Micaël",
+    "Micaël"
+   ],
+   "anglais": "Michael",
+   "autres": [
+    "Christ Micaël",
+    "Micaël de Nébadon"
+   ],
+   "definition": "Le Fils Créateur de notre univers local, Nébadon. Pour en recevoir la pleine souveraineté, il s’est effusé sept fois sous la forme de ses propres créatures ; la septième et dernière fois, il a vécu sur Urantia comme un homme.",
+   "refs": [
+    "33:1.1",
+    "119:0.3",
+    "32:0.3"
+   ],
+   "citation": {
+    "texte": "Urantia appartient à un univers local dont le souverain est l’homme-Dieu de Nébadon, Jésus de Nazareth et Micaël de Salvington.",
+    "ref": "32:0.3"
+   },
+   "atlas": {
+    "href": "vie-de-jesus.html",
+    "titre": "La vie de Jésus"
+   },
+   "voir": [
+    "fils-createur",
+    "effusion",
+    "nebadon"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "mondes-des-maisons",
+   "terme": "mondes des maisons",
+   "formes": [
+    "mondes des maisons",
+    "monde des maisons"
+   ],
+   "anglais": "mansion worlds",
+   "definition": "Les sept satellites du premier monde de transition de Jérusem, où les humains se réveillent après la mort. On y corrige les lacunes de la vie terrestre ; le nom rappelle les « nombreuses maisons » dont Jésus a parlé.",
+   "refs": [
+    "47:0.1",
+    "15:7.5",
+    "47:3.8"
+   ],
+   "citation": {
+    "texte": "À la manière dont le mot ciel a été employé sur Urantia, il a quelquefois désigné ces sept mondes des maisons […]",
+    "ref": "15:7.5"
+   },
+   "atlas": {
+    "href": "destinee-humaine.html#maisons",
+    "titre": "La destinée humaine"
+   },
+   "voir": [
+    "jerusem",
+    "survie",
+    "morontia"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "monmatia",
+   "terme": "Monmatia",
+   "formes": [
+    "Monmatia"
+   ],
+   "anglais": "Monmatia",
+   "definition": "Nom de notre système solaire : le Soleil et sa famille de planètes, dont Urantia. Son origine est exceptionnelle : moins d’un pour cent des systèmes planétaires d’Orvonton sont nés de la même façon.",
+   "refs": [
+    "57:5.3",
+    "57:6.9"
+   ],
+   "citation": {
+    "texte": "Vers cette époque, votre système solaire fut inscrit sur le registre physique de Nébadon et reçut le nom de Monmatia.",
+    "ref": "57:6.9"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#monmatia",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "urantia",
+    "andronover"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "morontia",
+   "terme": "morontia",
+   "formes": [
+    "morontia",
+    "morontiel",
+    "morontielle",
+    "morontiels",
+    "morontielles"
+   ],
+   "anglais": "morontia",
+   "definition": "Niveau de réalité qui s’étend entre le monde matériel et celui de l’esprit (adjectif : morontiel). Après la mort, le survivant le traverse en recevant 570 corps morontiels successifs, du système local jusqu’à Salvington, avant de devenir esprit.",
+   "refs": [
+    "0:5.12",
+    "48:1.5",
+    "48:1.1"
+   ],
+   "citation": {
+    "texte": "Morontia est un terme désignant un vaste niveau intermédiaire entre le matériel et le spirituel.",
+    "ref": "0:5.12"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s7",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "ame",
+    "mondes-des-maisons",
+    "survie"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "nebadon",
+   "terme": "Nébadon",
+   "formes": [
+    "Nébadon"
+   ],
+   "anglais": "Nebadon",
+   "definition": "Notre univers local, dont le souverain est Micaël, le Fils Créateur qui a vécu sur Urantia en Jésus. Il comptait 3 840 101 planètes habitées à la dernière inscription et se trouve près du bord extérieur d’Orvonton.",
+   "refs": [
+    "32:0.3",
+    "32:2.9",
+    "32:2.11"
+   ],
+   "citation": {
+    "texte": "L’organisation des demeures planétaires est encore en voie de progrès dans Nébadon, car cet univers est en vérité un jeune amas dans les royaumes stellaires et planétaires d’Orvonton.",
+    "ref": "32:2.9"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#nebadon",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "univers-local",
+    "micael",
+    "salvington"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "andronover",
+   "terme": "nébuleuse d’Andronover",
+   "formes": [
+    "nébuleuse d’Andronover",
+    "Andronover"
+   ],
+   "anglais": "Andronover nebula",
+   "definition": "Immense nébuleuse dont la formation commença il y a 875 milliards d’années. Plus d’un million de soleils en sont issus, dont le nôtre, né il y a environ six milliards d’années.",
+   "refs": [
+    "57:1.6",
+    "57:4.8",
+    "57:4.9"
+   ],
+   "citation": {
+    "texte": "Désormais, la grande nébuleuse d’Andronover n’existe plus, mais elle vit toujours dans les nombreux soleils et les familles planétaires qui ont leur origine dans ce nuage-mère de l’espace.",
+    "ref": "57:4.9"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-frise",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "monmatia",
+    "nebadon"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "nodites",
+   "terme": "Nodites",
+   "formes": [
+    "Nodites",
+    "nodites",
+    "nodite",
+    "Nod"
+   ],
+   "anglais": "Nodites",
+   "definition": "Peuple issu des soixante membres de l’état-major du Prince qui avaient suivi Caligastia, et nommé d’après leur chef, Nod. Les Nodites formèrent la huitième race d’Urantia et furent longtemps en guerre avec les Adamites.",
+   "refs": [
+    "67:4.2",
+    "73:1.3",
+    "75:5.9"
+   ],
+   "citation": {
+    "texte": "Les descendants de ces membres furent connus longtemps sous le nom de Nodites, et leur lieu d’habitation comme « pays de Nod ».",
+    "ref": "67:4.2"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "etat-major",
+    "cano",
+    "andites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "norlatiadek",
+   "terme": "Norlatiadek",
+   "formes": [
+    "Norlatiadek"
+   ],
+   "anglais": "Norlatiadek",
+   "definition": "Notre constellation, numéro 70 de l’univers local de Nébadon, dont fait partie le système de Satania. Elle est gouvernée depuis Édentia par les Très Hauts, les Pères de la Constellation.",
+   "refs": [
+    "15:14.6",
+    "43:0.2"
+   ],
+   "citation": {
+    "texte": "Votre constellation, Norlatiadek, est composée de cent systèmes locaux ; elle possède un monde-siège appelé Édentia.",
+    "ref": "15:14.6"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#norlatiadek",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "constellation",
+    "edentia",
+    "satania"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "orvonton",
+   "terme": "Orvonton",
+   "formes": [
+    "Orvonton"
+   ],
+   "anglais": "Orvonton",
+   "definition": "Le septième superunivers, auquel appartient notre univers local, Nébadon ; sa capitale est Uversa. Presque toutes les étoiles visibles à l’œil nu en font partie, et la Voie lactée en forme le « noyau central ».",
+   "refs": [
+    "15:3.1",
+    "0:0.5",
+    "15:3.4"
+   ],
+   "citation": {
+    "texte": "Si vous pouviez examiner le superunivers d’Orvonton depuis un emplacement très éloigné dans l’espace, vous reconnaitriez immédiatement les dix secteurs majeurs de la septième galaxie.",
+    "ref": "15:3.4"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "superunivers",
+    "uversa",
+    "nebadon"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "paradis",
+   "terme": "Paradis",
+   "formes": [
+    "Ile du Paradis",
+    "Paradis",
+    "Ile"
+   ],
+   "anglais": "Paradise (Isle of Paradise)",
+   "autres": [
+    "Ile du Paradis"
+   ],
+   "definition": "Le centre immobile et éternel de toute la création, où demeurent le Père, le Fils et l’Esprit : une Ile immense, à la fois matérielle et spirituelle, d’où proviennent les univers physiques et vers laquelle converge leur gravité.",
+   "refs": [
+    "11:0.1",
+    "0:4.12",
+    "0:3.13"
+   ],
+   "citation": {
+    "texte": "L’Ile du Paradis a un emplacement dans l’univers mais pas de position dans l’espace.",
+    "ref": "0:4.12"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#paradis",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "havona",
+    "source-centre",
+    "trinite-du-paradis"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "pentecote",
+   "terme": "Pentecôte",
+   "formes": [
+    "Pentecôte"
+   ],
+   "anglais": "Pentecost",
+   "definition": "Fête juive au cours de laquelle, selon le livre, l’Esprit de Vérité vint sur les disciples de Jésus réunis à Jérusalem. Depuis ce jour, cet esprit est répandu sur tous les humains, et tout mental normal capable de choix moral reçoit un Ajusteur.",
+   "refs": [
+    "194:1.1",
+    "194:3.9",
+    "108:2.3"
+   ],
+   "citation": {
+    "texte": "Le jour de la Pentecôte marqua le grand effort de l’esprit pour libérer la religion de Jésus des entraves juives dont elle avait hérité.",
+    "ref": "194:3.9"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-pentecote",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "esprit-de-verite",
+    "ajusteur-de-pensee",
+    "maitre"
+   ],
+   "theme": "jesus"
+  },
+  {
+   "id": "pere-universel",
+   "terme": "Père Universel",
+   "formes": [
+    "Père Universel",
+    "Dieu le Père",
+    "Père Éternel"
+   ],
+   "anglais": "Universal Father",
+   "autres": [
+    "Dieu le Père",
+    "Source-Centre Première"
+   ],
+   "definition": "Première Personne de la Déité, « le Dieu de toute la création » : la Source-Centre Première de toutes choses et le Père de toute personnalité. Les créatures du temps cherchent à le connaitre et à l’atteindre au Paradis.",
+   "refs": [
+    "1:0.1",
+    "105:3.2",
+    "1:0.3"
+   ],
+   "citation": {
+    "texte": "Pensez d’abord à Dieu comme à un créateur, puis comme à un contrôleur, et enfin comme à un soutien infini.",
+    "ref": "1:0.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s2",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "fils-eternel",
+    "esprit-infini",
+    "trinite-du-paradis"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "perfecteurs-de-sagesse",
+   "terme": "Perfecteurs de Sagesse",
+   "formes": [
+    "Perfecteurs de Sagesse",
+    "Perfecteur de Sagesse"
+   ],
+   "anglais": "Perfectors of Wisdom",
+   "definition": "Êtres issus de la Trinité du Paradis qui personnifient la sagesse divine dans les superunivers. Ils sont sept milliards, un milliard par superunivers, au service des Anciens des Jours ; au besoin, ils agissent en trio avec un Censeur Universel et des Conseillers Divins.",
+   "refs": [
+    "19:2.1-2",
+    "19:2.3",
+    "19:3.3"
+   ],
+   "citation": {
+    "texte": "Elles ne reflètent pas la sagesse de la Trinité du Paradis, elles sont cette sagesse.",
+    "ref": "19:2.3"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "conseillers-divins",
+    "censeurs-universels",
+    "anciens-des-jours"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "personnalite",
+   "terme": "personnalité",
+   "formes": [
+    "personnalité",
+    "personnalités"
+   ],
+   "anglais": "personality",
+   "definition": "Don unique du Père Universel, qui fait d’un être une personne ; au pluriel, le mot désigne souvent les êtres eux-mêmes. Elle n’est ni le corps, ni le mental, ni l’esprit, ni l’âme, mais elle unifie l’ensemble de l’individu.",
+   "refs": [
+    "0:5.11",
+    "112:0.1",
+    "112:0.3"
+   ],
+   "citation": {
+    "texte": "[…] une partie de vous reste toujours absolument inchangée ; c’est la personnalité — la permanence en présence du changement.",
+    "ref": "112:0.1"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s1",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "pere-universel",
+    "ame",
+    "survie"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "personnalites-supremes-de-la-trinite",
+   "terme": "Personnalités Suprêmes de la Trinité",
+   "formes": [
+    "Personnalités Suprêmes de la Trinité",
+    "Personnalité Suprême de la Trinité",
+    "Secrets de Suprématie Trinitisés",
+    "Secrets de Suprématie",
+    "Éternels des Jours",
+    "Éternel des Jours",
+    "Perfections des Jours",
+    "Perfection des Jours",
+    "Récents des Jours",
+    "Récent des Jours",
+    "Unions des Jours",
+    "Union des Jours",
+    "Fidèles des Jours",
+    "Fidèle des Jours"
+   ],
+   "anglais": "Supreme Trinity Personalities",
+   "definition": "Sept ordres d’administrateurs issus de la Trinité, créés une fois pour toutes : Secrets de Suprématie Trinitisés, Éternels, Anciens, Perfections, Récents, Unions et Fidèles des Jours. Leur administration s’étend des sphères du Père, près du Paradis, jusqu’aux capitales des univers locaux.",
+   "refs": [
+    "18:0.1-8",
+    "18:0.9",
+    "18:0.10"
+   ],
+   "citation": {
+    "texte": "Elles représentent la justice et sont le jugement exécutoire de la Trinité du Paradis.",
+    "ref": "18:0.10"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "anciens-des-jours",
+    "trinite-du-paradis",
+    "havona"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "porteurs-de-vie",
+   "terme": "Porteurs de Vie",
+   "formes": [
+    "Porteurs de Vie",
+    "Porteur de Vie"
+   ],
+   "anglais": "Life Carriers",
+   "definition": "Fils de l’univers local chargés de concevoir la vie physique et de l’établir sur les planètes, où ils restent pour veiller à son évolution. Sur Urantia, ils l’élaborèrent sur place et l’implantèrent dans les mers il y a 550 millions d’années.",
+   "refs": [
+    "36:0.1",
+    "58:4.1",
+    "58:4.2"
+   ],
+   "citation": {
+    "texte": "La vie sur Urantia est unique et a son origine sur cette planète.",
+    "ref": "58:4.1"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-frise",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "andon-et-fonta",
+    "urantia"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "prince-planetaire",
+   "terme": "Prince Planétaire",
+   "formes": [
+    "Prince Planétaire",
+    "Princes Planétaires"
+   ],
+   "anglais": "Planetary Prince",
+   "definition": "Fils Lanonandek secondaire chargé de gouverner un monde habité dès les débuts de son humanité. Celui d’Urantia, Caligastia, est déchu ; c’est désormais Micaël qui détient le titre de Prince Planétaire d’Urantia.",
+   "refs": [
+    "50:0.1",
+    "50:1.1",
+    "93:10.6"
+   ],
+   "citation": {
+    "texte": "Sur un monde nouvellement habité, le Prince Planétaire est le seul représentant dont la divinité soit complète.",
+    "ref": "50:1.1"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#echelles",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "caligastia",
+    "lanonandeks",
+    "etat-major"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "quarantaine",
+   "terme": "quarantaine",
+   "formes": [
+    "quarantaine"
+   ],
+   "anglais": "quarantine",
+   "definition": "Mise à l’écart des mondes ou des systèmes tombés dans la rébellion, partiellement coupés du reste de la création pour la protéger. Le système de Satania y fut placé dès la révolte de Lucifer, et Urantia reste en quarantaine spirituelle partielle.",
+   "refs": [
+    "3:1.10",
+    "67:3.1",
+    "28:7.4"
+   ],
+   "citation": {
+    "texte": "Tout ceci, comme c’est le cas pour Urantia, est une réaction spirituellement défensive de la majorité des mondes.",
+    "ref": "3:1.10"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#isolement",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "isolement",
+    "satania",
+    "norlatiadek"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "sangiks",
+   "terme": "races Sangik",
+   "formes": [
+    "races Sangik",
+    "races sangik",
+    "races sangiks",
+    "famille Sangik",
+    "sangiks",
+    "sangik"
+   ],
+   "anglais": "Sangik races",
+   "definition": "Les six races de couleur — rouge, orangée, jaune, verte, bleue et indigo — issues des dix-neuf enfants d’une même famille, la famille Sangik, née il y a environ 500 000 ans dans les hautes terres du nord-ouest de l’Inde.",
+   "refs": [
+    "64:5.2",
+    "64:5.1",
+    "64:5.3"
+   ],
+   "citation": {
+    "texte": "[…] leur peau manifestait en outre une tendance extraordinaire à prendre différentes couleurs quand elle était exposée à la lumière solaire.",
+    "ref": "64:5.3"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "andonites",
+    "andites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "royaume-des-cieux",
+   "terme": "royaume des cieux",
+   "formes": [
+    "royaume des cieux",
+    "royaume de Dieu"
+   ],
+   "anglais": "kingdom of heaven",
+   "definition": "Thème central de l’enseignement de Jésus, qui disait aussi royaume de Dieu. Le livre y voit surtout une réalité spirituelle intérieure, fondée sur la paternité de Dieu et la fraternité des hommes, et non un royaume terrestre.",
+   "refs": [
+    "170:0.1",
+    "170:1.13",
+    "170:2.1"
+   ],
+   "citation": {
+    "texte": "Mais, à ses apôtres, il enseigna toujours le royaume comme embrassant l’expérience personnelle d’un homme par rapport à ses contemporains sur terre et au Père dans les cieux.",
+    "ref": "170:1.13"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-ivraie-seneve",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "maitre",
+    "fils-de-l-homme",
+    "pentecote"
+   ],
+   "theme": "jesus"
+  },
+  {
+   "id": "saint-esprit",
+   "terme": "Saint-Esprit",
+   "formes": [
+    "Saint-Esprit"
+   ],
+   "anglais": "Holy Spirit",
+   "definition": "Le circuit spirituel de l’Esprit-Mère, propre à chaque univers local : l’esprit de sa présence sur les mondes habités. Il agit sur l’homme bien avant la venue de l’Esprit de Vérité et des Ajusteurs ; le livre le distingue de l’Esprit Infini, présent partout.",
+   "refs": [
+    "8:5.3",
+    "36:5.16",
+    "103:0.1"
+   ],
+   "citation": {
+    "texte": "La première dotation supramentale de l’homme est la mise en circuit de sa personnalité dans le Saint-Esprit de l’Esprit Créatif de l’univers […]",
+    "ref": "103:0.1"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s2",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "esprit-mere",
+    "esprit-de-verite",
+    "ajusteur-de-pensee"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "salvington",
+   "terme": "Salvington",
+   "formes": [
+    "Salvington"
+   ],
+   "anglais": "Salvington",
+   "definition": "Capitale de Nébadon, notre univers local, située au centre d’énergie massique de cet univers et quartier général de Micaël. C’est là que les ascendeurs reçoivent leur formation spirituelle, après la formation sociale de la constellation.",
+   "refs": [
+    "32:2.4",
+    "32:2.5",
+    "15:7.7"
+   ],
+   "citation": {
+    "texte": "Salvington, capitale de Nébadon, votre univers local, est entourée de dix groupes universitaires de quarante-neuf sphères chacun.",
+    "ref": "15:7.7"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#nebadon",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "nebadon",
+    "micael",
+    "esprit-mere"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "satan",
+   "terme": "Satan",
+   "formes": [
+    "Satan"
+   ],
+   "anglais": "Satan",
+   "definition": "Fils Lanonandek primaire, premier assistant de Lucifer, avec qui il régnait sur Jérusem et qu’il suivit dans la rébellion. Il est aujourd’hui détenu avec lui sur les mondes-prisons de Jérusem.",
+   "refs": [
+    "53:1.4",
+    "53:2.1",
+    "53:9.4"
+   ],
+   "citation": {
+    "texte": "On a très peu entendu parler de Lucifer sur Urantia parce qu’il délégua Satan, son premier lieutenant, pour plaider sa cause sur votre planète.",
+    "ref": "53:1.4"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#camps",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "lucifer",
+    "caligastia"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "satania",
+   "terme": "Satania",
+   "formes": [
+    "Satania"
+   ],
+   "anglais": "Satania",
+   "definition": "Notre système local, numéro 24 de la constellation de Norlatiadek : 619 mondes habités, dont Urantia, avec Jérusem pour capitale. Son ancien souverain, Lucifer, s’y est rebellé.",
+   "refs": [
+    "15:14.5",
+    "15:14.6",
+    "53:1.3"
+   ],
+   "citation": {
+    "texte": "Lucifer est maintenant le Souverain déchu et déposé de Satania.",
+    "ref": "53:1.3"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#satania",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "systeme-local",
+    "jerusem",
+    "lucifer"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "second-jardin",
+   "terme": "second jardin",
+   "formes": [
+    "second jardin",
+    "Second Jardin",
+    "second Éden",
+    "nouvel Éden"
+   ],
+   "anglais": "second garden",
+   "autres": [
+    "second Éden"
+   ],
+   "definition": "Nouvel établissement fondé par Adam, Ève et leurs partisans entre le Tigre et l’Euphrate, en Mésopotamie, après qu’ils eurent abandonné le premier jardin. Il resta pendant près de trente-mille ans le berceau de la civilisation.",
+   "refs": [
+    "76:0.1",
+    "76:1.4",
+    "78:0.1"
+   ],
+   "citation": {
+    "texte": "Ils avaient trouvé le premier jardin partiellement préparé pour eux, mais il leur fallut créer le second par le travail de leurs propres mains […]",
+    "ref": "76:1.4"
+   },
+   "atlas": {
+    "href": "histoire-d-urantia.html#h-carte",
+    "titre": "L’histoire d’Urantia"
+   },
+   "voir": [
+    "eden",
+    "adamites",
+    "andites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "secteur-majeur",
+   "terme": "secteur majeur",
+   "formes": [
+    "secteur majeur",
+    "secteurs majeurs"
+   ],
+   "anglais": "major sector",
+   "definition": "Grande division d’un superunivers, gouvernée par trois Perfections des Jours depuis un siège grandiose. Orvonton en compte dix ; le nôtre, Splandon, est le cinquième.",
+   "refs": [
+    "15:2.7",
+    "15:2.8",
+    "15:14.7"
+   ],
+   "citation": {
+    "texte": "Cent secteurs mineurs (environ cent-milliards de planètes habitables) forment un secteur majeur.",
+    "ref": "15:2.7"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html#h-zoom",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "splandon",
+    "secteur-mineur",
+    "superunivers"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "secteur-mineur",
+   "terme": "secteur mineur",
+   "formes": [
+    "secteur mineur",
+    "secteurs mineurs"
+   ],
+   "anglais": "minor sector",
+   "definition": "Division d’un secteur majeur, administrée par trois Récents des Jours depuis un monde-siège. Chaque secteur majeur en compte cent ; le nôtre est Ensa.",
+   "refs": [
+    "15:2.6",
+    "15:2.7",
+    "15:14.7"
+   ],
+   "citation": {
+    "texte": "Cent univers locaux (environ un milliard de planètes habitables) constituent un secteur mineur du gouvernement du superunivers.",
+    "ref": "15:2.6"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html#h-zoom",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "ensa",
+    "secteur-majeur",
+    "univers-local"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "sept-absolus",
+   "terme": "sept Absolus",
+   "formes": [
+    "Sept Absolus de l’Infinité",
+    "sept Absolus",
+    "Sept Absolus",
+    "Absolus"
+   ],
+   "anglais": "Seven Absolutes of Infinity",
+   "autres": [
+    "Sept Absolus de l’Infinité"
+   ],
+   "definition": "Les sept réalités éternelles sur lesquelles repose toute réalité : le Père (Source-Centre Première), le Fils Éternel, l’Esprit Infini, l’Ile du Paradis, l’Absolu de Déité, l’Absolu Universel et l’Absolu Non Qualifié. Le livre les présente en séquence, mais aucun n’a eu de commencement.",
+   "refs": [
+    "105:3.1",
+    "0:3.1-8",
+    "105:3.10"
+   ],
+   "citation": {
+    "texte": "Les sept relations primordiales à l’intérieur du JE SUIS s’éternisent sous l’aspect des Sept Absolus de l’Infinité.",
+    "ref": "105:3.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "je-suis",
+    "source-centre",
+    "absolu-universel"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "maitres-esprits",
+   "terme": "Sept Maitres Esprits",
+   "formes": [
+    "Sept Maitres Esprits",
+    "Maitres Esprits",
+    "Maitre Esprit"
+   ],
+   "anglais": "Seven Master Spirits",
+   "definition": "Les sept personnalités primaires de l’Esprit Infini. Chaque Maitre Esprit exprime l’une des sept associations possibles du Père, du Fils et de l’Esprit et imprègne de sa nature l’un des sept superunivers ; le Septième, qui unit les trois, régit le nôtre, Orvonton.",
+   "refs": [
+    "16:0.1",
+    "16:5.1",
+    "16:3.20"
+   ],
+   "citation": {
+    "texte": "[…] il y a juste sept possibilités d’association, et seulement sept, qui soient inhérentes à trois Déités.",
+    "ref": "16:0.1"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s4",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "esprit-infini",
+    "superunivers",
+    "orvonton"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "serapatatia",
+   "terme": "Sérapatatia",
+   "formes": [
+    "Sérapatatia"
+   ],
+   "anglais": "Serapatatia",
+   "definition": "Chef nodite de la confédération syrienne, devenu proche d’Adam et Ève. Impatient de voir des résultats, il suggéra à Ève de donner aux Nodites un chef ayant du sang violet, projet qui mena à la défaillance.",
+   "refs": [
+    "75:3.1",
+    "75:3.5",
+    "75:3.6"
+   ],
+   "citation": {
+    "texte": "Il y a lieu de souligner de nouveau que Sérapatatia était complètement honnête et totalement sincère dans toutes ses propositions.",
+    "ref": "75:3.6"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-eve",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "cano",
+    "defaillance",
+    "nodites"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "seraphins",
+   "terme": "séraphins",
+   "formes": [
+    "séraphins",
+    "séraphin",
+    "séraphique",
+    "séraphiques"
+   ],
+   "anglais": "seraphim",
+   "definition": "Anges de l’univers local, créés par l’Esprit-Mère, qui servent auprès des mondes et des mortels. Certains deviennent les gardiens de la destinée d’une personne ; à la mort, c’est à son gardien que l’âme est confiée.",
+   "refs": [
+    "38:1.1",
+    "113:1.1",
+    "112:3.5"
+   ],
+   "citation": {
+    "texte": "L’enseignement au sujet des anges gardiens n’est pas un mythe ; certains groupes d’êtres humains ont effectivement des anges personnels.",
+    "ref": "113:1.1"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "cherubins",
+    "esprit-mere",
+    "survie"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "source-centre",
+   "terme": "Source-Centre",
+   "formes": [
+    "Source-Centre Première",
+    "Source-Centre Deuxième",
+    "Source-Centre Troisième",
+    "Source-Centre du Paradis",
+    "Source-Centre",
+    "Sources-Centres"
+   ],
+   "anglais": "Source and Center (First Source and Center…)",
+   "definition": "Nom que le livre donne aux réalités premières, à la fois sources et centres : la Source-Centre Première est le Père Universel, la Deuxième le Fils Éternel, la Troisième l’Esprit Infini ; l’Ile du Paradis en est une aussi. Gravité, esprit et mental convergent vers elles.",
+   "refs": [
+    "105:3.2-5",
+    "0:3.11",
+    "0:3.13-15"
+   ],
+   "citation": {
+    "texte": "La Source-Centre Première est donc primordiale dans tous les domaines : déifiés ou non déifiés, personnels ou impersonnels, actuels ou potentiels, finis ou infinis.",
+    "ref": "0:3.11"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s1",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "sept-absolus",
+    "pere-universel",
+    "paradis"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "splandon",
+   "terme": "Splandon",
+   "formes": [
+    "Splandon"
+   ],
+   "anglais": "Splandon",
+   "definition": "Notre secteur majeur, le cinquième d’Orvonton : il réunit cent secteurs mineurs, dont le nôtre, Ensa. Sa capitale est Umajor la cinquième.",
+   "refs": [
+    "15:14.7",
+    "15:7.9"
+   ],
+   "citation": {
+    "texte": "Umajor la cinquième, siège de Splandon, votre secteur majeur, est entourée par les soixante-dix sphères d’enseignement intellectuel supérieur des superunivers.",
+    "ref": "15:7.9"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#splandon",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "secteur-majeur",
+    "ensa",
+    "orvonton"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "superunivers",
+   "terme": "superunivers",
+   "formes": [
+    "superunivers",
+    "superuniversel",
+    "superuniverselle",
+    "superuniversels",
+    "superuniverselles"
+   ],
+   "anglais": "superuniverse",
+   "definition": "Chacune des sept immenses créations évolutionnaires qui entourent Havona et forment avec lui le grand univers. Chaque superunivers est gouverné par trois Anciens des Jours depuis sa capitale ; le nôtre est Orvonton.",
+   "refs": [
+    "15:2.8",
+    "0:0.5",
+    "15:2.9"
+   ],
+   "citation": {
+    "texte": "Dix secteurs majeurs (environ mille milliards de planètes habitables) constituent un superunivers.",
+    "ref": "15:2.8"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#grand-univers",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "orvonton",
+    "grand-univers",
+    "anciens-des-jours"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "suprematie",
+   "terme": "Suprématie",
+   "formes": [
+    "Suprématie"
+   ],
+   "anglais": "Supremacy",
+   "definition": "Premier niveau où la Déité s’identifie aux créatures et agit sur le grand univers du temps et de l’espace. C’est le niveau de l’Être Suprême, Déité expérientielle qui unit la créature au Créateur.",
+   "refs": [
+    "0:1.9",
+    "0:1.11"
+   ],
+   "citation": {
+    "texte": "Le niveau de Déité de la Suprématie peut être conçu comme une fonction relative aux existences finies.",
+    "ref": "0:1.11"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s5",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "etre-supreme",
+    "ultimite",
+    "experientiel"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "survie",
+   "terme": "survie",
+   "formes": [
+    "survie",
+    "survivant",
+    "survit"
+   ],
+   "anglais": "survival",
+   "definition": "Le fait, pour la personnalité humaine, de continuer à vivre après la mort, sous une forme morontielle. Elle n’est pas automatique : elle dépend des décisions sincères et persévérantes de la personne dans sa quête de Dieu.",
+   "refs": [
+    "112:2.20",
+    "112:5.2",
+    "47:3.3"
+   ],
+   "citation": {
+    "texte": "Et c’est la réunion de l’âme morontielle confiée aux séraphins et du mental spirituel confié à l’Ajusteur qui reconstitue la personnalité de la créature […]",
+    "ref": "47:3.3"
+   },
+   "atlas": {
+    "href": "destinee-humaine.html#schema",
+    "titre": "La destinée humaine"
+   },
+   "voir": [
+    "ame",
+    "mondes-des-maisons",
+    "seraphins"
+   ],
+   "theme": "humain"
+  },
+  {
+   "id": "systeme-local",
+   "terme": "système local",
+   "formes": [
+    "système local",
+    "systèmes locaux"
+   ],
+   "anglais": "local system",
+   "definition": "Unité de base de l’organisation de l’univers, gouvernée par un Souverain Systémique depuis sa capitale : environ mille mondes habités ou habitables. Cent systèmes forment une constellation ; le nôtre est Satania.",
+   "refs": [
+    "15:2.3",
+    "15:2.4",
+    "15:14.6"
+   ],
+   "citation": {
+    "texte": "On appelle système cet ensemble de mille mondes aptes à entretenir la vie, mais, dans les systèmes jeunes, seul un nombre relativement restreint de ces mondes peut être habité.",
+    "ref": "15:2.3"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html#h-zoom",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "satania",
+    "constellation",
+    "jerusem"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "trinite-du-paradis",
+   "terme": "Trinité du Paradis",
+   "formes": [
+    "Trinité du Paradis",
+    "Trinité Paradisiaque",
+    "Trinité",
+    "Trinités"
+   ],
+   "anglais": "Paradise Trinity",
+   "definition": "Union éternelle du Père, du Fils et de l’Esprit en une seule Déité. Le livre lui reconnait des fonctions plutôt que des attributs, comme l’administration de la justice. Deux autres Trinités, expérientielles, sont encore en formation : l’Ultime et l’Absolue.",
+   "refs": [
+    "0:12.2-5",
+    "10:5.1",
+    "10:4.3"
+   ],
+   "citation": {
+    "texte": "La Trinité est une association de personnes infinies fonctionnant impersonnellement, mais sans contrevenir à la personnalité.",
+    "ref": "10:4.3"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s3",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "triunites",
+    "personnalites-supremes-de-la-trinite",
+    "etre-supreme"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "triunites",
+   "terme": "triunités",
+   "formes": [
+    "triunités",
+    "triunité"
+   ],
+   "anglais": "triunities",
+   "definition": "Associations de fonction entre les Absolus, par lesquelles le Père Universel, membre de chacune, exerce un contrôle personnel sur les grandes fonctions de l’infinité. Le livre en décrit sept ; la première réunit le Père, le Fils et l’Esprit agissant ensemble en tant que personnes.",
+   "refs": [
+    "104:4.1",
+    "104:3.18",
+    "104:3.14"
+   ],
+   "citation": {
+    "texte": "Les triunités n’en sont pas moins réelles, très réelles.",
+    "ref": "104:3.18"
+   },
+   "atlas": {
+    "href": "dieu-et-deite.html#s3",
+    "titre": "Dieu et la Déité"
+   },
+   "voir": [
+    "trinite-du-paradis",
+    "sept-absolus"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "ultimite",
+   "terme": "Ultimité",
+   "formes": [
+    "Ultimité"
+   ],
+   "anglais": "Ultimacy",
+   "definition": "Niveau où la Déité agit en rapport avec les réalités absonites, au-delà du temps et de l’espace, à l’échelle du maitre univers. C’est le second niveau expérientiel de la Déité, celui de Dieu l’Ultime.",
+   "refs": [
+    "0:1.12",
+    "0:1.10",
+    "0:2.17"
+   ],
+   "citation": {
+    "texte": "Où que ce soit dans le maitre univers, quand le temps et l’espace sont transcendés, ce phénomène absonite est un acte de l’Ultimité de la Déité.",
+    "ref": "0:1.12"
+   },
+   "atlas": {
+    "href": "concepts-en-schemas.html#s5",
+    "titre": "Concepts en schémas"
+   },
+   "voir": [
+    "dieu-l-ultime",
+    "absonite",
+    "suprematie"
+   ],
+   "theme": "deite"
+  },
+  {
+   "id": "univers-local",
+   "terme": "univers local",
+   "formes": [
+    "univers local",
+    "univers locaux"
+   ],
+   "anglais": "local universe",
+   "definition": "Création d’un Fils Créateur, un Micaël, associé à un Esprit-Mère : il s’étend aussi loin que la présence de cet Esprit. Le nôtre est Nébadon.",
+   "refs": [
+    "32:0.1",
+    "15:2.5",
+    "41:0.1"
+   ],
+   "citation": {
+    "texte": "Cent constellations (environ dix-millions de planètes habitables) constituent un univers local.",
+    "ref": "15:2.5"
+   },
+   "atlas": {
+    "href": "nebadon-dans-orvonton.html#h-zoom",
+    "titre": "Nébadon dans Orvonton"
+   },
+   "voir": [
+    "fils-createur",
+    "esprit-mere",
+    "nebadon"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "urantia",
+   "terme": "Urantia",
+   "formes": [
+    "Urantia"
+   ],
+   "anglais": "Urantia",
+   "definition": "Nom que le livre donne à notre planète, la Terre, et qui figure dans son titre. C’est le monde habité numéro 606 du système de Satania, dans l’univers local de Nébadon.",
+   "refs": [
+    "15:14.5",
+    "0:0.5",
+    "43:0.1"
+   ],
+   "citation": {
+    "texte": "Votre monde, Urantia, est l’une des nombreuses planètes habitées similaires comprises dans l’univers local de Nébadon.",
+    "ref": "0:0.5"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#urantia",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "satania",
+    "monmatia",
+    "nebadon"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "uversa",
+   "terme": "Uversa",
+   "formes": [
+    "Uversa"
+   ],
+   "anglais": "Uversa",
+   "definition": "Capitale du superunivers d’Orvonton, d’où les ascendeurs partent pour Havona après une dernière préparation. C’est sur l’ordre des Anciens des Jours d’Uversa qu’une commission de vingt-quatre administrateurs d’Orvonton a présenté les fascicules 1 à 31 du livre.",
+   "refs": [
+    "15:7.10",
+    "31:10.22",
+    "0:0.5"
+   ],
+   "citation": {
+    "texte": "Uversa, siège d’Orvonton, votre superunivers, est immédiatement entourée par les sept universités supérieures de haute éducation spirituelle pour les créatures volitives ascendantes.",
+    "ref": "15:7.10"
+   },
+   "atlas": {
+    "href": "atlas-3d.html#orvonton",
+    "titre": "D’Urantia au Paradis (3D)"
+   },
+   "voir": [
+    "orvonton",
+    "anciens-des-jours",
+    "ascendeurs"
+   ],
+   "theme": "univers"
+  },
+  {
+   "id": "van-et-amadon",
+   "terme": "Van et Amadon",
+   "formes": [
+    "Van et Amadon",
+    "Van",
+    "Amadon",
+    "Amadonites"
+   ],
+   "anglais": "Van and Amadon",
+   "definition": "Van, membre loyal de l’état-major du Prince, et Amadon, son associé humain descendant d’Andon et Fonta, résistèrent à la rébellion de Caligastia. Maintenus en vie plus de cent-cinquante-mille ans, ils préparèrent ensuite la venue d’Adam et Ève.",
+   "refs": [
+    "67:3.8",
+    "67:6.4",
+    "73:2.3"
+   ],
+   "citation": {
+    "texte": "Amadon est le héros humain le plus remarquable de la rébellion de Lucifer.",
+    "ref": "67:3.8"
+   },
+   "atlas": {
+    "href": "rebellion-de-lucifer.html#camps",
+    "titre": "La rébellion de Lucifer"
+   },
+   "voir": [
+    "etat-major",
+    "andonites",
+    "eden"
+   ],
+   "theme": "histoire"
+  },
+  {
+   "id": "vorondadeks",
+   "terme": "Vorondadeks",
+   "formes": [
+    "Vorondadeks",
+    "Vorondadek",
+    "Très Hauts",
+    "Très Haut",
+    "Pères de la Constellation",
+    "Père de la Constellation",
+    "Pères des Constellations"
+   ],
+   "anglais": "Vorondadeks",
+   "autres": [
+    "Très Hauts",
+    "Pères de la Constellation"
+   ],
+   "definition": "Ordre de Fils de l’univers local qui gouvernent les constellations sous le titre de Très Hauts ; le Très Haut régnant est appelé Père de la Constellation. Un observateur Vorondadek réside sur chaque monde isolé, dont Urantia.",
+   "refs": [
+    "35:6.1",
+    "35:6.2",
+    "43:5.17"
+   ],
+   "citation": {
+    "texte": "Les cent Pères des Constellations, les chefs actuels présidant les gouvernements des constellations, constituent le cabinet consultatif suprême du Fils Créateur.",
+    "ref": "35:6.2"
+   },
+   "atlas": {
+    "href": "familles-de-personnalites.html#h-tree",
+    "titre": "Familles de personnalités"
+   },
+   "voir": [
+    "constellation",
+    "edentia",
+    "norlatiadek"
+   ],
+   "theme": "etres"
+  },
+  {
+   "id": "yahweh",
+   "terme": "Yahweh",
+   "formes": [
+    "Yahweh"
+   ],
+   "anglais": "Yahweh",
+   "definition": "Nom du Dieu des Hébreux. Le livre retrace l’évolution de ce concept : d’un dieu tribal de la nature, élargi par Moïse, jusqu’au Créateur suprême et Père aimant de toute l’humanité ; la vie de Jésus l’amplifia encore.",
+   "refs": [
+    "96:1.3",
+    "96:4.2",
+    "97:10.8"
+   ],
+   "citation": {
+    "texte": "Yahweh était le dieu des tribus palestiniennes du Sud, qui associèrent ce concept de la déité au mont Horeb, le volcan du Sinaï.",
+    "ref": "96:1.3"
+   },
+   "atlas": {
+    "href": "bible-et-livre.html#p-sinai",
+    "titre": "La Bible et le Livre d’Urantia"
+   },
+   "voir": [
+    "machiventa",
+    "pere-universel"
+   ],
+   "theme": "jesus"
+  }
+ ]
+}

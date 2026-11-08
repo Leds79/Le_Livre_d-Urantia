@@ -6,7 +6,9 @@ s'ouvrent dans le même onglet et des ressources locales (assets/) : le site s'o
 et se publie tel quel sur GitHub Pages. Les sources sont copiées dans sources/, sans les adresses claude.ai.
 Le site est aussi une application web installable (PWA) : manifest.webmanifest, sw.js (service worker écrit à
 chaque construction, VERSION = empreinte du contenu), hors-ligne.html, assets/hors-ligne.js et, sur l'accueil,
-l'encadré « Lire hors ligne ». Chaque page porte le crédit de l'auteur et le lien du dépôt GitHub.
+l'encadré « Lire hors ligne ». Chaque page porte le crédit de l'auteur et le lien du dépôt GitHub. Le glossaire
+(glossaire.html, glossaire-atlas.json) a sa page, à droite de la barre, et ses infobulles dans les pages 2D
+(assets/glossaire.js, avec les données injectées à la construction).
 
 Usage : python -I construire_site.py <dossier source de l'atlas> <dossier du site>
 Le dossier source contient les pages publiées, polices/ (fonts.css, fichiers WOFF2, OFL), site/ (README,
@@ -58,7 +60,9 @@ PAGES = [
      'Sept schémas : personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité et morontia.'),
     ('dieu-et-deite.html', 'dieu-et-deite.html', 'Dieu et la Déité', 'Dieu et la Déité',
      'Dieu et la Déité selon le Livre d’Urantia : le JE SUIS, les sept Absolus, la Trinité, les Maitres Esprits, les Déités expérientielles.'),
-    ('histoire-d-urantia.html', 'histoire-d-urantia.html', 'L’histoire d’Urantia', 'Histoire d’Urantia',
+    ('destinee-humaine.html', 'destinee-humaine.html', 'La destinée humaine', 'Destinée',
+     'Que devient-on à la mort, selon le livre ? L’Ajusteur de Pensée, l’âme, la personnalité, le réveil sur les mondes des maisons et la fusion, en un schéma de sept étapes.'),
+    ('histoire-d-urantia.html', 'histoire-d-urantia.html', 'L’histoire d’Urantia', 'Histoire',
      'L’histoire d’Urantia selon le livre : formation de la planète, ères de la vie, apparition et dispersion des races, sur une carte du monde.'),
     ('rebellion-de-lucifer.html', 'rebellion-de-lucifer.html', 'La rébellion de Lucifer', 'La rébellion',
      'La rébellion de Lucifer selon le Livre d’Urantia : les trois échelles (Jérusem, Dalamatia, le Jardin), pourquoi Urantia est une planète isolée, le manifeste, les loyaux et les rebelles.'),
@@ -66,7 +70,13 @@ PAGES = [
      'La vie de Jésus selon la quatrième partie du livre : une frise de 92 étapes, de l’annonce à Marie à la Pentecôte, et les cartes de ses voyages.'),
     ('bible-et-livre.html', 'bible-et-livre.html', 'La Bible et le Livre d’Urantia', 'La Bible',
      'Cent parallèles entre la Bible (Crampon 1923) et le Livre d’Urantia, de la Création à l’Apocalypse : ce qui concorde, ce qui diffère, et ce que le livre en dit.'),
+    ('glossaire.html', 'glossaire.html', 'Glossaire', 'Glossaire',
+     'Glossaire du Livre d’Urantia : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références du texte.'),
 ]
+# Glossaire : sa page est à droite de la barre (près de « Lire le livre »), hors du parcours numéroté ; ses infobulles
+# (assets/glossaire.js, données de glossaire-atlas.json injectées à la place du marqueur) sont chargées par les pages 2D.
+GLOSSAIRE = 'glossaire.html'
+GLOSSAIRE_JS, GLOSSAIRE_JSON, MARQUE_GLOSSAIRE = 'glossaire.js', 'glossaire-atlas.json', '/*__GLOSSAIRE__*/null'
 # Parcours de découverte (accueil), dans l'ordre : (adresse dans le site, nom canonique).
 PARCOURS = [
     ('nebadon-dans-orvonton.html', 'Nébadon dans Orvonton'),
@@ -77,6 +87,7 @@ PARCOURS = [
     ('familles-de-personnalites.html', 'Familles de personnalités'),
     ('concepts-en-schemas.html', 'Concepts en schémas'),
     ('dieu-et-deite.html', 'Dieu et la Déité'),
+    ('destinee-humaine.html', 'La destinée humaine'),
     ('histoire-d-urantia.html', 'L’histoire d’Urantia'),
     ('rebellion-de-lucifer.html', 'La rébellion de Lucifer'),
     ('vie-de-jesus.html', 'La vie de Jésus'),
@@ -96,8 +107,8 @@ CDN = {
 # (adresses claude.ai rendues relatives, rangées data-artefact et balises claude: retirées).
 SOURCES = [p[0] for p in PAGES if p[0] != 'urantia-paradis-3d.html'] + [
            'urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'liens_refs.py', 'refs-urantia.js',
-           'hors-ligne.js', 'musique.js', 'assembler.py', 'etoiles.py', 'geo.py', 'textures.py', 'polices.py', 'smoke3d.js',
-           'construire_site.py', 'CONSTRUIRE.md', 'requirements.txt']
+           'hors-ligne.js', 'musique.js', GLOSSAIRE_JS, GLOSSAIRE_JSON, 'glossaire.py', 'assembler.py', 'etoiles.py', 'geo.py',
+           'textures.py', 'polices.py', 'smoke3d.js', 'construire_site.py', 'CONSTRUIRE.md', 'requirements.txt']
 RACINE = ['README.md', 'LICENCES.md', 'LICENSE', 'LICENSE-CONTENU.md', 'CONTRIBUER.md']   # copiés de site/ à la racine du site
 GITHUB = ['.github/ISSUE_TEMPLATE/erreur.yml', '.github/ISSUE_TEMPLATE/idee.yml', '.github/ISSUE_TEMPLATE/config.yml',
           '.github/pull_request_template.md']                                           # formulaires de tickets, modèle de demande
@@ -120,21 +131,21 @@ NAV_CSS = ('<style>/* barre commune et parcours de l’atlas (construire_site.py
            '.aller-contenu:focus{left:12px}'
            '.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}'
            '.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));'
-           'display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}'
+           'display:flex;flex-wrap:wrap;align-items:center;column-gap:14px}'
            '.atlas-nav li{margin:0;flex:none}'
            '.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);'
            'text-decoration:none;white-space:nowrap}'
            '.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}'
            '.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}'
            '.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}'
-           '.atlas-nav .musique{margin-left:auto}.atlas-nav .musique+.livre{margin-left:0}'
+           '.atlas-nav .musique{margin-left:auto}.atlas-nav .musique+.livre,.atlas-nav .glossaire+.livre{margin-left:0}'
            '.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;'
            'margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}'
            '.atlas-musique:hover{color:var(--gold-ink)}'
            '.atlas-musique:focus-visible{outline:2px solid var(--gold-ink);outline-offset:-2px}'
            '.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}'
            '.atlas-musique svg{display:block;width:20px;height:20px}'
-           '@media (max-width:880px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;'
+           '@media (max-width:1000px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;'
            '-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}'
            '.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}'
            '.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}'
@@ -164,13 +175,15 @@ def signaler(name, nom):
     return f'{DEPOT}/issues/new?{q}'
 
 
-def pied(name, nom, droits='index.html#droits'):
+def pied(name, nom, droits='index.html#droits', base=''):
     """Lignes de crédit et de droits, ajoutées à la fin du pied de chaque page (texte déjà typographié : posées après
     la passe de typographie). Les liens externes s'ouvrent dans un nouvel onglet ; le signalement demande un compte
-    GitHub. La ligne de droits renvoie à la déclaration de la Fondation Urantia, sur l'accueil."""
+    GitHub. La ligne de droits renvoie à la déclaration de la Fondation Urantia, sur l'accueil, puis au glossaire
+    (base : préfixe des adresses du site, pour la page 404 servie à n'importe quelle profondeur)."""
     sep = ' <span aria-hidden="true">·</span> '
+    lien_gl = f'{sep}<a href="{base}{GLOSSAIRE}">glossaire des termes</a>' if GLOSSAIRE in noms and name != GLOSSAIRE else ''
     return pied_credit(name, nom, sep) + (f'\n<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française '
-                                          f'©&nbsp;1960 Urantia Foundation{sep}<a href="{droits}">droits</a></p>')
+                                          f'©&nbsp;1960 Urantia Foundation{sep}<a href="{droits}">droits</a>{lien_gl}</p>')
 
 
 def pied_credit(name, nom, sep):
@@ -329,6 +342,8 @@ def passe_typo(html, js=True):
 def barre(name, pages):
     lis = []
     for _, n, nom, court, _ in pages:
+        if n == GLOSSAIRE:                 # à droite de la barre, près de « Lire le livre »
+            continue
         cur = ' aria-current="page"' if n == name else ''
         tit = f' title="{nom}"' if court != nom else ''
         lis.append(f'<li><a href="{n}"{tit}{cur}>{court}</a></li>')
@@ -338,6 +353,9 @@ def barre(name, pages):
                '<ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/>'
                '<path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" '
                'stroke-linecap="round" stroke-linejoin="round"/></svg></button></li>')
+    if any(p[1] == GLOSSAIRE for p in pages):
+        cur = ' aria-current="page"' if name == GLOSSAIRE else ''
+        lis.append(f'<li class="glossaire"><a href="{GLOSSAIRE}" title="Glossaire{NBSP}: les mots du livre, de A à Z"{cur}>Glossaire</a></li>')
     lis.append(f'<li class="livre"><a href="{LIVRE[0]}" target="_blank" rel="noopener" '
                f'title="{LIVRE[1]}, nouvel onglet">{LIVRE[2]}&nbsp;↗</a></li>')
     return ('<a class="aller-contenu" href="#contenu">Aller au contenu</a>\n'
@@ -579,16 +597,57 @@ present = [p for p in PAGES if (SRC / p[0]).exists()
 noms = {p[1] for p in present}
 urlmap = {artefacts[f]: n for (f, n, _, _, _) in present if f in artefacts}
 problems = []
+GL_ACTIF = (SRC / GLOSSAIRE_JS).exists() and (SRC / GLOSSAIRE_JSON).exists()   # infobulles du glossaire dans les pages 2D
+
+
+def empreinte_glossaire():
+    """Empreinte des données du glossaire, inscrite par glossaire.py dans la page (liste des termes à jour ?)."""
+    return hashlib.sha256((SRC / GLOSSAIRE_JSON).read_bytes().replace(b'\r\n', b'\n')).hexdigest()[:12]
+
+
+def donnees_glossaire():
+    """Données des infobulles, compactes et typographiées, pour assets/glossaire.js ; contrôles au passage."""
+    d = json.loads((SRC / GLOSSAIRE_JSON).read_text(encoding='utf-8'))
+    termes = d['termes'] if isinstance(d, dict) else d
+    exclusions = d.get('exclusions', []) if isinstance(d, dict) else []      # expressions à ne jamais marquer
+    out, vus, formes = [], set(), {}
+    for t in termes:
+        i = t.get('id', '')
+        if i in vus:
+            problems.append(f'glossaire : identifiant en double ({i})')
+        vus.add(i)
+        a = t.get('atlas') or {}
+        if a and a.get('href', '').split('#')[0] not in noms:
+            problems.append(f'glossaire : {i} renvoie vers une page absente ({a.get("href")})')
+        for f in t.get('formes', []):
+            k = re.sub(r'\s+', ' ', f).replace("'", '’')
+            if formes.get(k, i) != i:
+                problems.append(f'glossaire : forme « {f} » partagée par {formes[k]} et {i}')
+            formes[k] = i
+        o = {'i': i, 't': typo(t['terme']), 'e': t.get('anglais', ''), 'd': typo(t['definition']), 'r': t.get('refs', []),
+             'f': t.get('formes', [])}
+        if t.get('casse') == 'stricte':
+            o['s'] = 1
+        if t.get('citation'):
+            o['c'] = [typo(t['citation']['texte']), t['citation']['ref']]
+        if a:
+            o['a'] = [a['href'], typo(a.get('titre', ''))]
+        out.append(o)
+    return json.dumps({'termes': out, 'exclusions': exclusions}, ensure_ascii=False, separators=(',', ':'))
 OUT.mkdir(parents=True, exist_ok=True)
 apercu_wh = taille_png(ACTIFS_DIR / 'apercu.png') if (ACTIFS_DIR / 'apercu.png').exists() else (1200, 630)
 
 
 def adresses_locales(html):
-    """Adresses claude.ai et CDN remplacées par des liens relatifs ; liens internes dans le même onglet."""
+    """Adresses claude.ai et CDN remplacées par des liens relatifs ; liens internes dans le même onglet. Un lien vers
+    une page du site publié (BASE…, utile dans une page claude.ai quand la page visée n'y est pas publiée) devient
+    relatif lui aussi."""
     for u, n in urlmap.items():
         html = html.replace(u, n)
     for u, n in CDN.items():
         html = html.replace(u, n)
+    html = re.sub(r'href="' + re.escape(BASE) + r'([a-z0-9-]+\.html)(#[^"]*)?"',
+                  lambda m: f'href="{m.group(1)}{m.group(2) or ""}"' if m.group(1) in noms else m.group(0), html)
 
     def same_tab(m):
         tag = m.group(0)
@@ -613,6 +672,12 @@ for fichier, name, nom, _, desc in present:
     html = re.sub(r'\s*<(p|div|span|li)\b[^>]*\sdata-artefact\b[^>]*>.*?</\1>', '', html, flags=re.S)
     titre = NOM_SITE if name == 'index.html' else f'{nom} — {NOM_SITE}'
     html = re.sub(r'<title>.*?</title>', f'<title>{titre}</title>', html, count=1, flags=re.S)
+    if name == GLOSSAIRE:             # liste des termes écrite par glossaire.py : à jour avec glossaire-atlas.json ?
+        m = re.search(r'<!--GLOSSAIRE:DEBUT empreinte=([0-9a-f]+)-->', html)
+        if (SRC / GLOSSAIRE_JSON).exists() and (not m or m.group(1) != empreinte_glossaire()):
+            problems.append('glossaire.html : liste des termes à régénérer '
+                            '(python -I glossaire.py page glossaire-atlas.json glossaire.html artefacts.json)')
+        html = re.sub(r'<!--(?:GLOSSAIRE|AZ|THEMES):(?:DEBUT|FIN)[^>]*-->\n?', '', html)
     if name == 'index.html':          # encadré « Lire hors ligne » : avec le bloc de crédit (div.fin), sinon avant le pied
         k = html.find('<div class="fin">')
         k = k + len('<div class="fin">') if k >= 0 else html.find('<footer class="foot"')
@@ -682,7 +747,9 @@ for fichier, name, nom, _, desc in present:
             '<meta name="twitter:card" content="summary_large_image">\n'
             f'<meta name="twitter:image:alt" content="{esc(APERCU_ALT)}">\n'
             '<script src="assets/hors-ligne.js" defer></script>\n'
-            '<script src="assets/musique.js" defer></script>\n')
+            '<script src="assets/musique.js" defer></script>\n' +
+            ('<script src="assets/glossaire.js" defer></script>\n'          # infobulles : pages 2D, sauf le glossaire lui-même
+             if GL_ACTIF and name not in SANS_BARRE and name != GLOSSAIRE else ''))
     page = ('<!doctype html>\n<html lang="fr">\n<head>\n' + meta + RESET + '\n' + head.strip() +
             '\n</head>\n<body>\n' + body.strip() + '\n</body>\n</html>\n')
     for bad in ('claude.ai', 'fonts.googleapis', 'fonts.gstatic', 'cdnjs.cloudflare', 'cdn.jsdelivr'):
@@ -740,7 +807,7 @@ ul {{ margin: 0; padding-left: 20px; display: grid; gap: 6px; }}
 <p>Cette adresse ne correspond à aucune page de l’atlas. Elle a peut-être changé de nom.</p>
 <p><a class="home" href="{BASE}">Revenir à l’accueil de l’atlas</a></p>
 <ul>{liste}</ul>
-<footer class="foot">{pied('404.html', 'Page introuvable', BASE + '#droits')}</footer>
+<footer class="foot">{pied('404.html', 'Page introuvable', BASE + '#droits', BASE)}</footer>
 </main>
 </body>
 </html>
@@ -767,6 +834,14 @@ for f in ('refs-urantia.js', 'hors-ligne.js', 'musique.js'):
         shutil.copy2(SRC / f, assets / f)
     else:
         problems.append(f'source absente : {f}')
+if GL_ACTIF:                                     # infobulles du glossaire : le script, avec ses données à la place du marqueur
+    gl_js = (SRC / GLOSSAIRE_JS).read_text(encoding='utf-8')
+    if gl_js.count(MARQUE_GLOSSAIRE) != 1:
+        problems.append(f'{GLOSSAIRE_JS} : marqueur des données introuvable ou en double ({MARQUE_GLOSSAIRE})')
+    else:
+        (assets / GLOSSAIRE_JS).write_text(gl_js.replace(MARQUE_GLOSSAIRE, donnees_glossaire()), encoding='utf-8', newline='\n')
+else:
+    problems.append(f'glossaire : {GLOSSAIRE_JS} ou {GLOSSAIRE_JSON} absent, infobulles non posées')
 for f in RACINE + GITHUB:                        # le dossier .git du site n'est jamais touché
     if (ENTREES / f).exists():
         (OUT / f).parent.mkdir(parents=True, exist_ok=True)
@@ -874,7 +949,8 @@ a {{ color: var(--gold-ink); text-underline-offset: 3px; }}
 polices_web = ['assets/fonts/' + f.name for f in sorted(POLICES.iterdir()) if f.suffix in ('.woff2', '.css')]
 icones = ['assets/' + i[0] for i in ICONES]
 NOYAU_HL = (['index.html', 'hors-ligne.html', 'manifest.webmanifest', 'assets/refs-urantia.js', 'assets/hors-ligne.js',
-             'assets/musique.js', 'assets/favicon.svg', 'assets/apple-touch-icon.png'] + icones + polices_web)
+             'assets/musique.js'] + (['assets/' + GLOSSAIRE_JS] if GL_ACTIF else []) +
+            ['assets/favicon.svg', 'assets/apple-touch-icon.png'] + icones + polices_web)
 LISTE_HL = list(dict.fromkeys([n for _, n, _, _, _ in present] + NOYAU_HL + ['assets/lib/three.min.js', 'assets/lib/OrbitControls.js']))
 absents = [p for p in LISTE_HL if not (OUT / p).exists()]
 if absents:

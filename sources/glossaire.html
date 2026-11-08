@@ -1,0 +1,2018 @@
+<title>Glossaire du Livre d’Urantia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Glossaire : les termes du livre de A à Z, avec une définition dans nos mots, l’anglais d’origine, une courte citation
+   et les références. Outils : recherche (casse et accents ignorés), thèmes, index des lettres ; une ancre par terme
+   (#ajusteur-de-pensee). La liste est écrite par glossaire.py à partir de glossaire-atlas.json. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --shadow: 0 6px 20px rgba(24, 33, 59, .16);
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+    --shadow: 0 6px 22px rgba(0, 0, 0, .5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+  --shadow: 0 6px 22px rgba(0, 0, 0, .5);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 16px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 64px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.6rem, 6vw, 4.2rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.vh { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 48ch; }
+.links { display: flex; flex-wrap: wrap; gap: 0 22px; font-size: .98rem; }
+.links a { display: inline-flex; align-items: center; min-height: 44px; }
+.methode { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.methode dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 9px 14px; font-size: .92rem; line-height: 1.45; }
+.methode dt { font: 500 .78rem/1.6 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.methode dd { margin: 0; color: var(--muted); min-width: 0; }
+.methode dd b { color: var(--ink); font-weight: 600; }
+.demo { color: var(--ink); text-decoration: underline dotted var(--gold); text-decoration-color: color-mix(in srgb, var(--gold) 85%, transparent); text-decoration-thickness: 1.25px; text-underline-offset: .26em; }
+
+/* Outils : recherche, thèmes, lettres */
+.sec-head { display: grid; gap: 10px; max-width: 70ch; }
+.hint { color: var(--muted); font-size: .98rem; }
+.tools { margin-top: 26px; display: grid; gap: 14px; }
+.search { position: relative; max-width: 34rem; }
+.search input { width: 100%; min-height: 50px; padding: 10px 50px 10px 44px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); color: var(--ink);
+  font: 400 1rem/1.3 var(--font-body); -webkit-appearance: none; appearance: none; }
+.search input::placeholder { color: var(--muted); opacity: 1; }
+.search input::-webkit-search-cancel-button { -webkit-appearance: none; display: none; }
+.search input:hover { border-color: var(--muted); }
+.search input:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; border-color: var(--gold-ink); }
+.loupe { position: absolute; left: 16px; top: 50%; width: 15px; height: 15px; margin-top: -9px; border: 2px solid var(--muted); border-radius: 50%; pointer-events: none; }
+.loupe::after { content: ""; position: absolute; width: 2px; height: 7px; right: -4px; bottom: -6px; background: var(--muted); border-radius: 1px; transform: rotate(-45deg); }
+.efface { position: absolute; right: 3px; top: 50%; width: 44px; height: 44px; margin-top: -22px; border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer;
+  display: grid; place-items: center; font: 400 1.5rem/1 var(--font-body); }
+.efface:hover { color: var(--ink); background: var(--tint); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { appearance: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 15px; border-radius: 999px;
+  border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .93rem/1.2 var(--font-body); cursor: pointer; }
+.chips button:hover { border-color: var(--muted); }
+.chips button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chips .cnt { font: 500 .74rem/1 var(--font-mono); opacity: .8; }
+.statut { font-size: .95rem; color: var(--muted); min-height: 1.6em; }
+.statut b { color: var(--ink); }
+.az { margin-top: 18px; display: grid; grid-template-columns: repeat(26, minmax(0, 1fr)); gap: 2px; padding: 6px; border: 1px solid var(--rule); border-radius: 14px; background: var(--sheet); }
+.az a, .az span { display: grid; place-items: center; min-width: 0; height: 44px; border-radius: 9px; font: 600 1.25rem/1 var(--font-display); text-decoration: none; }
+.az a { color: var(--gold-ink); }
+.az a:hover { background: var(--tint); }
+.az span, .az a.off { color: var(--rule); pointer-events: none; }
+.vide { margin-top: 24px; padding: 22px; border: 1px dashed var(--rule); border-radius: 12px; text-align: center; color: var(--muted); display: grid; gap: 12px; justify-items: center; }
+.vide button { appearance: none; min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 600 .95rem/1.2 var(--font-body); cursor: pointer; }
+
+/* Liste : une lettre, puis ses termes */
+.liste { margin-top: 30px; display: grid; gap: 34px; }
+.lettre { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 0 24px; align-items: start; scroll-margin-top: 12px; }
+.lettre h3 { position: sticky; top: 10px; font-size: 3.6rem; line-height: .9; color: var(--gold-ink); padding-top: 14px; }
+.termes { display: grid; border-top: 1px solid var(--rule); }
+.terme { display: grid; grid-template-columns: minmax(0, 15.5rem) minmax(0, 1fr); gap: 6px 30px; padding: 20px 0 22px; border-bottom: 1px solid var(--rule);
+  scroll-margin-top: 14px; border-radius: 2px; }
+.terme:target { background: rgba(201, 138, 18, .08); background: linear-gradient(90deg, color-mix(in srgb, var(--gold) 16%, transparent), transparent 70%); box-shadow: inset 3px 0 0 var(--gold); padding-left: 14px; }
+.t-tete { display: grid; gap: 4px; align-content: start; min-width: 0; }
+.t-tete h4 { font-size: 1.6rem; line-height: 1.1; }
+.t-tete dfn { font-style: normal; }
+.t-en { font-size: .95rem; line-height: 1.35; color: var(--muted); }
+.t-en i { font-style: italic; }
+.t-theme { margin-top: 4px; font: 500 .68rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.t-corps { display: grid; gap: 10px; min-width: 0; align-content: start; }
+.t-autres { font-size: .95rem; color: var(--muted); }
+.t-def { font-size: 1.06rem; line-height: 1.55; max-width: 68ch; }
+.t-cit { margin: 2px 0 0; padding: 1px 0 1px 14px; border-left: 2px solid var(--gold); display: grid; gap: 2px; max-width: 64ch; }
+.t-cit blockquote { margin: 0; }
+.t-cit p { font: italic 500 1.12rem/1.4 var(--font-display); }
+.t-ou { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 12px; }
+.t-ou .lbl { font: 500 .68rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.t-liens { display: flex; flex-wrap: wrap; align-items: center; gap: 0 20px; font-size: .95rem; }
+.t-liens a { display: inline-flex; align-items: center; min-height: 44px; }
+.t-atlas { font-weight: 600; }
+.t-atlas::after { content: "\00a0→"; }
+.t-voir { color: var(--muted); }
+.t-voir a { min-height: 0; display: inline; padding-block: 12px; }
+
+/* Fin de page */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 10px; max-width: 76ch; }
+.callout h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.callout p { color: var(--muted); }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; display: grid; gap: 8px; font-size: .86rem; color: var(--muted); max-width: 84ch; }
+
+@media (max-width: 900px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .terme { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .wrap { padding-block: 28px 44px; gap: 48px; }
+  .lede { font-size: 1.1rem; }
+  .lettre { grid-template-columns: minmax(0, 1fr); }
+  .lettre h3 { position: static; font-size: 2.6rem; padding: 0 0 8px; }
+  .terme { padding: 16px 0 18px; }
+  .terme:target { padding-left: 10px; }
+  .t-tete h4 { font-size: 1.45rem; }
+  .az { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+  .methode dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .methode dd { margin-bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+@media print {
+  .tools, .az, .links { display: none !important; }
+  .terme[hidden], .lettre[hidden] { display: grid !important; }
+  .lettre h3 { position: static; }
+}
+</style>
+
+<main class="wrap" id="contenu" lang="fr" data-glossaire-page data-glossaire="non">
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Le Livre d’Urantia · vocabulaire</p>
+      <h1>Glossaire</h1>
+      <p class="lede">Les mots du livre qui arrêtent le lecteur, expliqués simplement&nbsp;: <span data-gl-nombre>117</span> termes, chacun avec une définition dans nos mots, son nom anglais d’origine et les passages où le lire.</p>
+    </div>
+    <aside class="methode" aria-labelledby="h-meth">
+      <p class="label" id="h-meth">Note de méthode</p>
+      <dl>
+        <dt>nos mots</dt><dd>Chaque définition <b>résume</b> le texte sans le recopier. Les citations, courtes et exactes, sont entre guillemets, avec leur référence.</dd>
+        <dt>vérifié</dt><dd>Chaque référence et chaque citation a été <b>relue dans le texte</b>&nbsp;: traduction française de la Fondation Urantia, édition 2024.</dd>
+        <dt>sans autorité</dt><dd>La Fondation Urantia ne propose <b>aucune interprétation officielle</b> du livre. Ces définitions sont une aide à la lecture, pas une doctrine.</dd>
+        <dt>107:0.1</dt><dd>Fascicule 107, section 0, paragraphe 1&nbsp;: chaque référence ouvre le passage sur urantia.org.</dd>
+        <dt>dans l’atlas</dt><dd>Dans les pages, un <span class="demo">mot souligné en pointillé</span> ouvre sa définition&nbsp;: touche-le ou clique dessus.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <section aria-labelledby="h-termes">
+    <div class="sec-head">
+      <h2 id="h-termes">Les termes de A à Z</h2>
+      <p class="hint">Cherche un mot, en français ou en anglais, ou choisis un thème ou une lettre. La recherche ignore les majuscules et les accents.</p>
+    </div>
+
+    <div class="tools" id="outils">
+      <div class="search">
+        <span class="loupe" aria-hidden="true"></span>
+        <label class="vh" for="q">Chercher un terme</label>
+        <input id="q" type="search" placeholder="Ajusteur, morontia, Nébadon…" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search">
+        <button type="button" class="efface" id="q-efface" aria-label="Effacer la recherche" hidden>×</button>
+      </div>
+      <div class="chips" id="themes" role="group" aria-label="Thèmes"><!--THEMES:DEBUT--><button type="button" data-th="tous" aria-pressed="true">Tout <span class="cnt">117</span></button><button type="button" data-th="deite" aria-pressed="false">Dieu et la Déité <span class="cnt">27</span></button><button type="button" data-th="univers" aria-pressed="false">L’univers <span class="cnt">26</span></button><button type="button" data-th="etres" aria-pressed="false">Les êtres de l’univers <span class="cnt">22</span></button><button type="button" data-th="humain" aria-pressed="false">L’être humain <span class="cnt">13</span></button><button type="button" data-th="histoire" aria-pressed="false">L’histoire d’Urantia <span class="cnt">24</span></button><button type="button" data-th="jesus" aria-pressed="false">Jésus et la Bible <span class="cnt">5</span></button><!--THEMES:FIN--></div>
+      <p class="statut" id="statut" aria-live="polite"></p>
+    </div>
+
+    <nav class="az" aria-label="Lettres de l’alphabet"><!--AZ:DEBUT--><a href="#lettre-a" data-l="A">A</a><span aria-hidden="true">B</span><a href="#lettre-c" data-l="C">C</a><a href="#lettre-d" data-l="D">D</a><a href="#lettre-e" data-l="E">E</a><a href="#lettre-f" data-l="F">F</a><a href="#lettre-g" data-l="G">G</a><a href="#lettre-h" data-l="H">H</a><a href="#lettre-i" data-l="I">I</a><a href="#lettre-j" data-l="J">J</a><span aria-hidden="true">K</span><a href="#lettre-l" data-l="L">L</a><a href="#lettre-m" data-l="M">M</a><a href="#lettre-n" data-l="N">N</a><a href="#lettre-o" data-l="O">O</a><a href="#lettre-p" data-l="P">P</a><a href="#lettre-q" data-l="Q">Q</a><a href="#lettre-r" data-l="R">R</a><a href="#lettre-s" data-l="S">S</a><a href="#lettre-t" data-l="T">T</a><a href="#lettre-u" data-l="U">U</a><a href="#lettre-v" data-l="V">V</a><span aria-hidden="true">W</span><span aria-hidden="true">X</span><a href="#lettre-y" data-l="Y">Y</a><span aria-hidden="true">Z</span><!--AZ:FIN--></nav>
+
+    <div class="liste" id="liste">
+<!--GLOSSAIRE:DEBUT empreinte=6da4655d7f68-->
+<section class="lettre" id="lettre-a" aria-labelledby="h-a">
+<h3 id="h-a">A</h3>
+<div class="termes">
+<article class="terme" id="absolu-de-deite" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Absolu de Déité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Deity Absolute</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Absolu Qualifié</p>
+<p class="t-def">L’un des sept Absolus : tout le potentiel de Déité, que le Père a distingué de l’infini par son libre choix et où se déroulent toutes les activités divines. Il semble être l’activateur tout-puissant de l’univers.</p>
+<figure class="t-cit"><blockquote><p>« Il est l’Absolu Qualifié par contraste avec l’Absolu Non Qualifié. »</p></blockquote><figcaption class="ref">0:11.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:3.6</span> <span class="ref">0:11.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#absolu-non-qualifie">Absolu Non Qualifié</a>, <a href="#absolu-universel">Absolu Universel</a>, <a href="#dieu-l-absolu">Dieu l’Absolu</a></span></p>
+</div>
+</article>
+<article class="terme" id="absolu-non-qualifie" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Absolu Non Qualifié</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Unqualified Absolute</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">L’un des sept Absolus : toute la réalité non déifiée et non personnelle, à l’état de potentiel. Statique et en attente, il a une présence sans limites ; il parait être le mécanicien parfait de l’univers, quand l’Absolu de Déité en serait l’activateur.</p>
+<figure class="t-cit"><blockquote><p>« L’Absolu Non Qualifié est donc dépourvu de personnalité, de divinité et de toute prérogative de créateur. »</p></blockquote><figcaption class="ref">0:11.7</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:3.7</span> <span class="ref">0:11.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#absolu-de-deite">Absolu de Déité</a>, <a href="#absolu-universel">Absolu Universel</a>, <a href="#sept-absolus">sept Absolus</a></span></p>
+</div>
+</article>
+<article class="terme" id="absolu-universel" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Absolu Universel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Universal Absolute</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">L’un des sept Absolus : il unifie le déifié et le non déifié, c’est-à-dire l’Absolu de Déité et l’Absolu Non Qualifié, et relie l’absolu au relatif. Par lui, le fini peut coexister avec l’infini ; il équilibre aussi les tensions entre le temps et l’éternité.</p>
+<figure class="t-cit"><blockquote><p>« En dernière analyse et en compréhension finale, les trois ne sont qu’un Absolu. »</p></blockquote><figcaption class="ref">0:11.15</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:3.8</span> <span class="ref">0:11.13</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#absolu-de-deite">Absolu de Déité</a>, <a href="#absolu-non-qualifie">Absolu Non Qualifié</a>, <a href="#sept-absolus">sept Absolus</a></span></p>
+</div>
+</article>
+<article class="terme" id="absonite" data-theme="deite" data-f="absonites">
+<div class="t-tete">
+<h4><dfn>absonite</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">absonite</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Niveau de réalité situé entre le fini et l’absolu : des choses et des êtres sans commencement ni fin, qui dépassent le temps et l’espace. Ils ne sont pas créés mais extériorisés ; le livre y rattache l’Ultimité de la Déité.</p>
+<figure class="t-cit"><blockquote><p>« Au Paradis, le mental est absolu ; dans Havona, il est absonite ; dans Orvonton, il est fini. »</p></blockquote><figcaption class="ref">42:10.7</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:1.12</span> <span class="ref">10:5.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s5">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#ultimite">Ultimité</a>, <a href="#dieu-l-ultime">Dieu l’Ultime</a>, <a href="#havona">Havona</a></span></p>
+</div>
+</article>
+<article class="terme" id="acteur-conjoint" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Acteur Conjoint</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Conjoint Actor</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Esprit Infini</p>
+<p class="t-def">Autre nom de l’Esprit Infini, Troisième Personne de la Déité : le Père et le Fils agissent ensemble en lui et par lui. Il unit les énergies cosmiques du Paradis aux énergies spirituelles du Fils et dispense le mental.</p>
+<figure class="t-cit"><blockquote><p>« En tant qu’Acteur Conjoint, il est le coreprésentant et partenaire exécutif du Père-Fils. »</p></blockquote><figcaption class="ref">9:1.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">8:5.5</span> <span class="ref">105:3.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s2">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#esprit-infini">Esprit Infini</a>, <a href="#mental">mental</a>, <a href="#maitres-esprits">Sept Maitres Esprits</a></span></p>
+</div>
+</article>
+<article class="terme" id="adam-et-eve" data-theme="histoire" data-f="fils materiels fils materiel fille materielle filles materielles">
+<div class="t-tete">
+<h4><dfn>Adam et Ève</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Adam and Eve</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Fils et Fille Matériels</p>
+<p class="t-def">Fils et Fille Matériels envoyés sur Urantia pour élever biologiquement les races humaines ; ils arrivèrent 37 848 ans avant l’an 1934. Leur mission échoua en partie après leur défaillance, mais leurs descendants enrichirent beaucoup l’humanité.</p>
+<figure class="t-cit"><blockquote><p>« Ces Fils, car il y en a deux — le Fils et la Fille Matériels — sont généralement appelés Adam et Ève sur une planète. »</p></blockquote><figcaption class="ref">51:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">74:0.1</span> <span class="ref">75:8.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#echelles">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#eden">Jardin d’Éden</a>, <a href="#defaillance">défaillance</a>, <a href="#adamites">Adamites</a></span></p>
+</div>
+</article>
+<article class="terme" id="adamites" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Adamites</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Adamites</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : race violette</p>
+<p class="t-def">Descendants d’Adam et Ève, appelés aussi race violette, établis en Mésopotamie autour du second jardin. Vers l’an 15 000 av. J.-C., mêlés aux Nodites et aux Sangiks, ils donnèrent naissance au peuple andite.</p>
+<figure class="t-cit"><blockquote><p>« Les Adamites dépassaient considérablement les peuplades environnantes en accomplissements culturels et en développement intellectuel. »</p></blockquote><figcaption class="ref">76:3.8</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">78:0.2</span> <span class="ref">78:3.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#adam-et-eve">Adam et Ève</a>, <a href="#second-jardin">second jardin</a>, <a href="#andites">Andites</a></span></p>
+</div>
+</article>
+<article class="terme" id="ajusteur-de-pensee" data-theme="humain" data-f="ajusteurs de pensee ajusteurs moniteurs de mystere">
+<div class="t-tete">
+<h4><dfn>Ajusteur de Pensée</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Thought Adjuster</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Moniteur de Mystère</p>
+<p class="t-def">Fragment du Père Universel venu habiter le mental humain ; sur Urantia, il arrive en moyenne juste avant six ans, après le premier choix moral de l’enfant. Si l’homme le choisit, il peut s’unir à lui pour toujours.</p>
+<figure class="t-cit"><blockquote><p>« L’Ajusteur est l’infaillible compas cosmique de l’homme, orientant toujours et surement l’âme vers Dieu. »</p></blockquote><figcaption class="ref">107:0.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">107:0.3</span> <span class="ref">108:2.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="destinee-humaine.html#don">Voir dans l’atlas : La destinée humaine</a> <span class="t-voir">Voir aussi : <a href="#fusion">fusion</a>, <a href="#mental">mental</a>, <a href="#pere-universel">Père Universel</a></span></p>
+</div>
+</article>
+<article class="terme" id="ame" data-theme="humain" data-f="ames">
+<div class="t-tete">
+<h4><dfn>âme</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">soul</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Réalité nouvelle qui grandit en l’homme à mesure qu’il choisit de faire la volonté de Dieu : l’Ajusteur en est le père, le mental humain la mère. Elle n’est ni matérielle ni spirituelle, mais morontielle.</p>
+<figure class="t-cit"><blockquote><p>« C’est l’âme émergente et immortelle destinée à survivre à la mort physique et à commencer l’ascension du Paradis. »</p></blockquote><figcaption class="ref">0:5.10</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:5.9</span> <span class="ref">111:2.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s1">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#mental">mental</a>, <a href="#morontia">morontia</a></span></p>
+</div>
+</article>
+<article class="terme" id="anciens-des-jours" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>Anciens des Jours</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Ancients of Days</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les dirigeants des sept superunivers : vingt-et-un êtres issus de la Trinité, tous créés en même temps, qui gouvernent par groupes de trois. C’est à eux qu’appartient notamment le jugement de la rébellion de Lucifer.</p>
+<figure class="t-cit"><blockquote><p>« Chaque superunivers est régi par trois Anciens des Jours, chefs exécutifs conjoints du supergouvernement. »</p></blockquote><figcaption class="ref">15:10.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">18:3.4</span> <span class="ref">53:1.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#gouvernement">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#superunivers">superunivers</a>, <a href="#personnalites-supremes-de-la-trinite">Personnalités Suprêmes de la Trinité</a>, <a href="#uversa">Uversa</a></span></p>
+</div>
+</article>
+<article class="terme" id="andites" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Andites</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Andites</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Peuple né en Mésopotamie du mélange des Adamites avec les Nodites et les Sangiks. Leurs migrations successives portèrent la culture du second jardin en Eurasie et en Afrique du Nord ; ils quittèrent leur foyer vers 2 000 ans av. J.-C.</p>
+<figure class="t-cit"><blockquote><p>« De cette région partirent les hommes et les femmes qui inaugurèrent les activités des temps historiques et accélérèrent prodigieusement les progrès culturels sur Urantia. »</p></blockquote><figcaption class="ref">78:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">78:0.2</span> <span class="ref">78:5.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#adamites">Adamites</a>, <a href="#nodites">Nodites</a>, <a href="#sangiks">races Sangik</a></span></p>
+</div>
+</article>
+<article class="terme" id="andon-et-fonta" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Andon et Fonta</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Andon and Fonta</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les deux premiers êtres humains, des jumeaux nés « 993 419 ans avant l’année 1934 », ancêtres de tous les humains. Ils ne reçurent ces noms que lorsqu’ils fusionnèrent avec leur Ajusteur de Pensée.</p>
+<figure class="t-cit"><blockquote><p>« Andon est le nom nébadonien qui signifie « la première créature semblable au Père et montrant une soif de perfection humaine ». »</p></blockquote><figcaption class="ref">63:0.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">62:5.1</span> <span class="ref">63:1.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#andonites">Andonites</a>, <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#porteurs-de-vie">Porteurs de Vie</a></span></p>
+</div>
+</article>
+<article class="terme" id="andonites" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Andonites</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Andonites</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les premiers humains, descendants d’Andon et Fonta, au teint bistré, qui se protégeaient du froid avec des peaux de bêtes et se dispersèrent vers le nord. La famille Sangik, ancêtre des races de couleur, naquit plus tard parmi eux.</p>
+<p class="t-ou"><span class="lbl">Où lire</span> <span class="ref">63:4.1</span> <span class="ref">63:5.1</span> <span class="ref">64:5.1-2</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#andon-et-fonta">Andon et Fonta</a>, <a href="#sangiks">races Sangik</a>, <a href="#van-et-amadon">Van et Amadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="archanges" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>archanges</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">archangels</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Ordre élevé d’êtres spirituels de l’univers local, enfants du Fils Créateur et de l’Esprit-Mère, voués à la survie des mortels. Lors des résurrections, un archange fait l’appel des défunts ; leur circuit de communication fonctionne aujourd’hui sur Urantia.</p>
+<figure class="t-cit"><blockquote><p>« C’est l’archange de la résurrection parfois dénommé « l’archange de Micaël ». »</p></blockquote><figcaption class="ref">37:3.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">37:3.1</span> <span class="ref">114:5.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#fils-createur">Fils Créateur</a>, <a href="#esprit-mere">Esprit-Mère de l’univers local</a>, <a href="#gabriel">Gabriel</a></span></p>
+</div>
+</article>
+<article class="terme" id="ascendeurs" data-theme="humain" data-f="mortel ascendant">
+<div class="t-tete">
+<h4><dfn>ascendeurs</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">ascenders</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : mortels ascendants, pèlerins ascendants</p>
+<p class="t-def">Les survivants mortels, appelés aussi pèlerins ascendants, qui montent de monde en monde vers le Paradis : mondes des maisons, Jérusem, Édentia, Salvington, capitales de secteur, Uversa, puis Havona.</p>
+<figure class="t-cit"><blockquote><p>« Havona est le but d’éducation préparadisiaque de tous les ascendeurs mortels. »</p></blockquote><figcaption class="ref">14:6.38</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">30:4.1</span> <span class="ref">15:7.5-10</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#carriere">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#mondes-des-maisons">mondes des maisons</a>, <a href="#finalitaires">finalitaires</a>, <a href="#havona">Havona</a></span></p>
+</div>
+</article>
+<article class="terme" id="avonals" data-theme="etres" data-f="fils magistral">
+<div class="t-tete">
+<h4><dfn>Avonals</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Avonals</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Fils Magistraux</p>
+<p class="t-def">Fils Magistraux : deuxième ordre de Fils du Paradis, nés du Fils Éternel et de l’Esprit Infini. Ils clôturent les dispensations des mondes habités, y accomplissent des missions et s’y incarnent comme Fils d’effusion, chacun au moins une fois.</p>
+<figure class="t-cit"><blockquote><p>« Les Avonals sont des ministres et des juges planétaires, les magistrats des royaumes de l’espace-temps — de toutes les races, pour tous les mondes et dans tous les univers. »</p></blockquote><figcaption class="ref">20:2.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">20:2.5-7</span> <span class="ref">35:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#daynals">Daynals</a>, <a href="#fils-createur">Fils Créateur</a>, <a href="#effusion">effusion</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-c" aria-labelledby="h-c">
+<h3 id="h-c">C</h3>
+<div class="termes">
+<article class="terme" id="caligastia" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Caligastia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Caligastia</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Prince Planétaire d’Urantia, arrivé il y a environ cinq-cent-mille ans pour diriger l’humanité primitive. Il rallia la rébellion de Lucifer, puis refusa le pardon offert par Micaël ; il n’a aucun pouvoir sur le mental de qui ne le désire pas.</p>
+<figure class="t-cit"><blockquote><p>« Le « diable » n’est autre que Caligastia, le Prince Planétaire déposé d’Urantia et Fils de l’ordre secondaire des Lanonandeks. »</p></blockquote><figcaption class="ref">53:1.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">66:0.2</span> <span class="ref">53:8.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#echelles">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#daligastia">Daligastia</a>, <a href="#prince-planetaire">Prince Planétaire</a>, <a href="#lucifer">Lucifer</a></span></p>
+</div>
+</article>
+<article class="terme" id="cano" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Cano</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Cano</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Brillant chef nodite d’une colonie voisine du Jardin. Convaincu par le projet de Sérapatatia, il rencontra Ève en secret, puis périt peu après avec sa colonie ; il était le père de Caïn, né ensuite.</p>
+<figure class="t-cit"><blockquote><p>« Cano était très bien disposé envers le régime adamique ; en fait, il était le sincère chef spirituel des Nodites des environs qui souhaitaient des relations amicales avec le Jardin. »</p></blockquote><figcaption class="ref">75:3.7</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">75:3.8</span> <span class="ref">75:5.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-eve">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#serapatatia">Sérapatatia</a>, <a href="#defaillance">défaillance</a>, <a href="#nodites">Nodites</a></span></p>
+</div>
+</article>
+<article class="terme" id="censeurs-universels" data-theme="etres" data-f="censeur universel">
+<div class="t-tete">
+<h4><dfn>Censeurs Universels</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Universal Censors</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Êtres issus de la Trinité du Paradis, chargés du jugement divin dans tout le grand univers. Ils sont huit milliards : un sur chacun des mondes de Havona et un milliard par superunivers. Même les Anciens des Jours ne jugent qu’avec leur concours.</p>
+<figure class="t-cit"><blockquote><p>« Ces êtres uniques sont le jugement de la Déité. »</p></blockquote><figcaption class="ref">19:4.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">19:4.2</span> <span class="ref">19:4.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#perfecteurs-de-sagesse">Perfecteurs de Sagesse</a>, <a href="#conseillers-divins">Conseillers Divins</a>, <a href="#anciens-des-jours">Anciens des Jours</a></span></p>
+</div>
+</article>
+<article class="terme" id="cercles-psychiques" data-theme="humain" data-f="cercle psychique sept cercles cercles cosmiques">
+<div class="t-tete">
+<h4><dfn>cercles psychiques</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">psychic circles</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les sept niveaux de croissance de la personnalité humaine pendant la vie terrestre, franchis du septième au premier. Au troisième, on reçoit un gardien séraphique personnel ; les franchir prépare la fusion avec l’Ajusteur, sans en tenir lieu.</p>
+<figure class="t-cit"><blockquote><p>« Les cercles psychiques ne sont ni exclusivement intellectuels ni entièrement morontiels ; ils concernent le statut de personnalité, les accomplissements mentaux, la croissance de l’âme et l’accord avec l’Ajusteur. »</p></blockquote><figcaption class="ref">110:6.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">110:6.1</span> <span class="ref">110:6.14</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s4">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#fusion">fusion</a>, <a href="#seraphins">séraphins</a></span></p>
+</div>
+</article>
+<article class="terme" id="cherubins" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>chérubins</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">cherubim</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Anges de l’univers local, de même origine que les séraphins mais de l’ordre le plus humble. Associés par paires aux sanobins, ils assistent les séraphins, sans les suivre hors de l’univers local.</p>
+<figure class="t-cit"><blockquote><p>« Ils sont magnifiquement intelligents, merveilleusement efficaces, touchants d’affection et presque humains. »</p></blockquote><figcaption class="ref">38:7.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">38:7.2</span> <span class="ref">38:7.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#seraphins">séraphins</a></span></p>
+</div>
+</article>
+<article class="terme" id="conseillers-divins" data-theme="etres" data-f="conseiller divin">
+<div class="t-tete">
+<h4><dfn>Conseillers Divins</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Divine Counselors</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Êtres issus de la Trinité qui forment le conseil de la Déité pour les superunivers : vingt-et-un milliards, trois milliards par superunivers. Un Conseiller Divin d’Orvonton signe l’Introduction du livre, et plusieurs fascicules de la partie I sont présentés par un Conseiller Divin.</p>
+<figure class="t-cit"><blockquote><p>« Ils ne sont pas le reflet du divin conseil de la Trinité ; ils sont ce conseil. »</p></blockquote><figcaption class="ref">19:3.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:12.14</span> <span class="ref">1:7.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#perfecteurs-de-sagesse">Perfecteurs de Sagesse</a>, <a href="#censeurs-universels">Censeurs Universels</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="constellation" data-theme="univers" data-f="constellations">
+<div class="t-tete">
+<h4><dfn>constellation</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">constellation</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Au sens propre au livre, et non au sens astronomique : division d’un univers local, gouvernée par trois Vorondadeks, les Très Hauts. Un univers local en compte cent ; la nôtre est Norlatiadek.</p>
+<figure class="t-cit"><blockquote><p>« Cent systèmes (environ cent-mille planètes habitables) forment une constellation. »</p></blockquote><figcaption class="ref">15:2.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">43:0.1</span> <span class="ref">15:14.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html#h-zoom">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#norlatiadek">Norlatiadek</a>, <a href="#systeme-local">système local</a>, <a href="#vorondadeks">Vorondadeks</a></span></p>
+</div>
+</article>
+<article class="terme" id="corps-de-gravite-obscurs" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>corps de gravité obscurs</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">dark gravity bodies</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Énormes masses obscures qui forment deux ceintures autour de Havona, tournant en sens contraires. Insensibles à la lumière, elles cachent l’univers central aux mondes du temps et en équilibrent la gravité.</p>
+<figure class="t-cit"><blockquote><p>« Ces corps de gravité obscurs ne réfléchissent pas la lumière et ne l’absorbent pas non plus […] »</p></blockquote><figcaption class="ref">14:1.14</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">14:1.15</span> <span class="ref">12:1.10</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#havona">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#havona">Havona</a>, <a href="#grand-univers">grand univers</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-d" aria-labelledby="h-d">
+<h3 id="h-d">D</h3>
+<div class="termes">
+<article class="terme" id="dalamatia" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Dalamatia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Dalamatia</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Cité du Prince Planétaire, bâtie en Mésopotamie près du golfe Persique d’alors ; centre mondial de culture, elle fut nommée en l’honneur de Daligastia. Après la rébellion, elle fut engloutie par la mer.</p>
+<figure class="t-cit"><blockquote><p>« Le noyau de l’établissement du prince était une cité très simple mais très belle, enclose dans une muraille de douze mètres de haut. »</p></blockquote><figcaption class="ref">66:3.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">66:3.1</span> <span class="ref">67:5.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#daligastia">Daligastia</a>, <a href="#etat-major">état-major du Prince</a>, <a href="#caligastia">Caligastia</a></span></p>
+</div>
+</article>
+<article class="terme" id="daligastia" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Daligastia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Daligastia</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils Lanonandek secondaire, adjoint-associé du Prince Planétaire Caligastia. Lors de la rébellion, c’est lui qui convoqua les dix conseils d’Urantia, sommés de lui remettre tous leurs pouvoirs pour le compte de Caligastia.</p>
+<figure class="t-cit"><blockquote><p>« Le dernier acte de Micaël avant de quitter Urantia fut d’offrir son pardon à Caligastia et Daligastia, mais ils dédaignèrent cette affectueuse proposition. »</p></blockquote><figcaption class="ref">53:8.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">66:2.2</span> <span class="ref">67:2.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#echelles">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#caligastia">Caligastia</a>, <a href="#dalamatia">Dalamatia</a></span></p>
+</div>
+</article>
+<article class="terme" id="daynals" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>Daynals</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Daynals</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Fils Instructeurs de la Trinité</p>
+<p class="t-def">Fils du Paradis issus de la Trinité, appelés aussi Fils Instructeurs de la Trinité. Ni créateurs, ni juges, ni administrateurs, ils enseignent : leur ministère favorise le progrès moral et spirituel des créatures qui montent vers le Paradis.</p>
+<figure class="t-cit"><blockquote><p>« Ils sont les éducateurs universels, et se consacrent à l’éveil spirituel et à la gouverne morale de tous les royaumes. »</p></blockquote><figcaption class="ref">20:7.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">20:7.1</span> <span class="ref">35:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#avonals">Avonals</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="defaillance" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>défaillance</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">default</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Nom que le livre donne à la faute d’Adam et Ève. Pressée d’améliorer les peuples voisins, Ève s’unit en secret au chef nodite Cano, sur le conseil de Sérapatatia ; Adam choisit ensuite délibérément de partager son sort.</p>
+<figure class="t-cit"><blockquote><p>« Adam et Ève furent vraiment déchus de leur état supérieur de filiation matérielle jusqu’à l’humble statut des hommes mortels ; mais ce ne fut pas la chute de l’homme. »</p></blockquote><figcaption class="ref">75:8.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">75:3.5-8</span> <span class="ref">75:5.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-eve">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#adam-et-eve">Adam et Ève</a>, <a href="#serapatatia">Sérapatatia</a>, <a href="#cano">Cano</a></span></p>
+</div>
+</article>
+<article class="terme" id="deite" data-theme="deite" data-f="deites">
+<div class="t-tete">
+<h4><dfn>Déité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Deity</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Source de tout ce qui est divin. La Déité peut être personnelle, et l’on parle alors de Dieu, mais aussi prépersonnelle ou superpersonnelle. Elle peut exister de toujours, comme dans le Fils Éternel, ou émerger par l’expérience, comme l’Être Suprême.</p>
+<figure class="t-cit"><blockquote><p>« Le mot Déité peut se référer ou non à des personnalités de divinité. »</p></blockquote><figcaption class="ref">0:2.10</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:1.2</span> <span class="ref">0:1.14-15</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s2">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#divinite">divinité</a>, <a href="#existentiel">existentiel</a>, <a href="#experientiel">expérientiel</a></span></p>
+</div>
+</article>
+<article class="terme" id="dieu-l-absolu" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Dieu l’Absolu</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">God the Absolute</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Troisième Déité expérientielle, la plus éloignée de toute actualisation : elle résulterait de l’unification d’une seconde Trinité expérientielle, la Trinité Absolue. Le livre la rattache à l’Absolu de Déité et hésite à en dire davantage.</p>
+<figure class="t-cit"><blockquote><p>« Dieu l’Absolu est le but d’aboutissement et de réalisation de tous les êtres superabsonites. »</p></blockquote><figcaption class="ref">0:10.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:10.1</span> <span class="ref">0:2.18</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s6">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#absolu-de-deite">Absolu de Déité</a>, <a href="#dieu-l-ultime">Dieu l’Ultime</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="dieu-l-ultime" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Dieu l’Ultime</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">God the Ultimate</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : l’Ultime</p>
+<p class="t-def">Deuxième Déité expérientielle, encore en voie d’actualisation : Dieu agissant au-delà du temps et de l’espace, sur le niveau absonite. Il émergera pleinement quand sera unifiée la Trinité Ultime, dont l’Être Suprême fera partie.</p>
+<figure class="t-cit"><blockquote><p>« L’Ultime est l’unification de la Trinité du Paradis comprise par les êtres absonites. »</p></blockquote><figcaption class="ref">0:9.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:12.6</span> <span class="ref">0:2.17</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s6">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#ultimite">Ultimité</a>, <a href="#absonite">absonite</a>, <a href="#etre-supreme">Être Suprême</a></span></p>
+</div>
+</article>
+<article class="terme" id="dieu-le-septuple" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Dieu le Septuple</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">God the Sevenfold</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Association des Déités du Paradis et de leurs associés créateurs, telle que la rencontrent les créatures du temps et de l’espace, en sept niveaux : Fils Créateurs, Anciens des Jours, Sept Maitres Esprits, Être Suprême, puis Dieu l’Esprit, Dieu le Fils et Dieu le Père.</p>
+<figure class="t-cit"><blockquote><p>« Cette personnalisation septuple de la Déité dans le temps et l’espace et pour les sept superunivers, rend l’homme mortel capable d’atteindre la présence de Dieu, qui est esprit. »</p></blockquote><figcaption class="ref">0:8.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:8.1-8</span> <span class="ref">0:2.16</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s5">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#etre-supreme">Être Suprême</a>, <a href="#maitres-esprits">Sept Maitres Esprits</a>, <a href="#anciens-des-jours">Anciens des Jours</a></span></p>
+</div>
+</article>
+<article class="terme" id="divinite" data-theme="deite" data-f="divinites">
+<div class="t-tete">
+<h4><dfn>divinité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">divinity</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Qualité caractéristique de la Déité, qui unifie et coordonne. Dans la personnalité, elle se traduit en amour, miséricorde et ministère ; sur les niveaux impersonnels, en justice, pouvoir et souveraineté. Tout ce qui est divin n’est pas pour autant Déité.</p>
+<figure class="t-cit"><blockquote><p>« La divinité est intelligible aux créatures en tant que vérité, beauté et bonté. »</p></blockquote><figcaption class="ref">0:1.17</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:1.16</span> <span class="ref">0:1.15</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s5">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#deite">Déité</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-e" aria-labelledby="h-e">
+<h3 id="h-e">E</h3>
+<div class="termes">
+<article class="terme" id="edentia" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Édentia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Edentia</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Capitale de notre constellation, Norlatiadek, et siège des Très Hauts : un monde architectural environ cent fois plus grand qu’Urantia. Les ascendeurs y font étape après Jérusem.</p>
+<figure class="t-cit"><blockquote><p>« Édentia, siège de votre constellation de Norlatiadek, a soixante-dix satellites de culture et d’entrainement social. »</p></blockquote><figcaption class="ref">15:7.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">43:0.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#norlatiadek">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#norlatiadek">Norlatiadek</a>, <a href="#vorondadeks">Vorondadeks</a>, <a href="#ascendeurs">ascendeurs</a></span></p>
+</div>
+</article>
+<article class="terme" id="effusion" data-theme="etres" data-f="effusions">
+<div class="t-tete">
+<h4><dfn>effusion</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">bestowal</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Pour un Fils divin, le fait de vivre la vie de ses propres créatures en prenant leur forme. Micaël s’est effusé sept fois, la dernière sur Urantia. Le mot désigne aussi le don d’un esprit, comme l’effusion de l’Esprit de Vérité.</p>
+<figure class="t-cit"><blockquote><p>« Vivre une vie identique à celle qu’il impose aux êtres intelligents de sa propre création, donc de s’effuser dans la similitude de ses divers ordres d’êtres créés […] »</p></blockquote><figcaption class="ref">120:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">119:0.3</span> <span class="ref">52:5.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="vie-de-jesus.html">Voir dans l’atlas : La vie de Jésus</a> <span class="t-voir">Voir aussi : <a href="#micael">Micaël</a>, <a href="#avonals">Avonals</a>, <a href="#fils-de-l-homme">Fils de l’Homme</a></span></p>
+</div>
+</article>
+<article class="terme" id="ensa" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Ensa</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Ensa</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Notre secteur mineur, le troisième du secteur majeur de Splandon. Il réunit cent univers locaux, dont Nébadon, et a pour capitale Uminor la troisième.</p>
+<figure class="t-cit"><blockquote><p>« Le centre de rotation de votre secteur mineur est situé fort loin dans l’énorme et dense nuage stellaire du Sagittaire […] »</p></blockquote><figcaption class="ref">15:3.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:14.7</span> <span class="ref">15:14.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#ensa">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#secteur-mineur">secteur mineur</a>, <a href="#splandon">Splandon</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="espace-exterieur" data-theme="univers" data-f="niveaux d&#x27;espace exterieur niveau d&#x27;espace exterieur">
+<div class="t-tete">
+<h4><dfn>espace extérieur</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">outer space</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les quatre immenses niveaux d’espace qui entourent le grand univers, au-delà d’une zone de calme relatif. Des énergies colossales s’y organisent : ces niveaux, encore inhabités, sont destinés à recevoir de futurs univers.</p>
+<figure class="t-cit"><blockquote><p>« Ces formidables roues de forces énergétiques sont situées dans le premier niveau d’espace extérieur, une ceinture continue d’activité cosmique entourant la totalité de la création connue, organisée et habitée. »</p></blockquote><figcaption class="ref">12:1.14</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">12:1.16</span> <span class="ref">0:0.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#espace-exterieur">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#maitre-univers">maitre univers</a>, <a href="#grand-univers">grand univers</a></span></p>
+</div>
+</article>
+<article class="terme" id="esprit" data-theme="humain" data-f="esprits">
+<div class="t-tete">
+<h4><dfn>esprit</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">spirit</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Traduit l’anglais spirit, à ne pas confondre avec le mental (mind) : est esprit tout ce qui répond au circuit d’esprit du Fils Éternel. Chez l’homme, l’esprit qui l’habite est l’Ajusteur de Pensée.</p>
+<figure class="t-cit"><blockquote><p>« L’esprit est l’architecte, le mental est le constructeur, le corps est le bâtiment matériel. »</p></blockquote><figcaption class="ref">42:12.12</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:6.1</span> <span class="ref">0:5.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s6">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#mental">mental</a>, <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#ame">âme</a></span></p>
+</div>
+</article>
+<article class="terme" id="esprit-de-verite" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Esprit de Vérité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Spirit of Truth</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Esprit que Jésus, le Fils Créateur, a envoyé à sa place après son départ, le jour de la Pentecôte. Il vit dans le croyant, l’aide à saisir la vérité et a préparé tout mental normal à recevoir l’Ajusteur.</p>
+<figure class="t-cit"><blockquote><p>« Le Fils Créateur, dans la chair, a révélé Dieu aux hommes ; l’Esprit de Vérité, dans le cœur, révèle le Fils Créateur aux hommes. »</p></blockquote><figcaption class="ref">194:3.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">194:2.1</span> <span class="ref">194:2.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s2">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#pentecote">Pentecôte</a>, <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#saint-esprit">Saint-Esprit</a></span></p>
+</div>
+</article>
+<article class="terme" id="esprit-infini" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Esprit Infini</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Infinite Spirit</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Acteur Conjoint, Dieu l’Esprit, Source-Centre Troisième</p>
+<p class="t-def">Troisième Personne de la Déité, issue de l’action commune du Père et du Fils. Source du mental pour toutes les créatures, il révèle la miséricorde du Fils par ses nombreux enfants.</p>
+<figure class="t-cit"><blockquote><p>« À l’instant même où Dieu le Père et Dieu le Fils conçoivent conjointement une action identique et infinie […] l’Esprit Infini, en possession de tous ses moyens, jaillit instantanément à l’existence. »</p></blockquote><figcaption class="ref">8:0.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:2.14</span> <span class="ref">105:3.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s2">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#acteur-conjoint">Acteur Conjoint</a>, <a href="#maitres-esprits">Sept Maitres Esprits</a>, <a href="#mental">mental</a></span></p>
+</div>
+</article>
+<article class="terme" id="esprit-mere" data-theme="deite" data-f="esprits-meres divines ministres esprits creatifs">
+<div class="t-tete">
+<h4><dfn>Esprit-Mère de l’univers local</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Universe Mother Spirit (Local Universe Mother Spirit)</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Divine Ministre, Esprit Créatif</p>
+<p class="t-def">Compagne du Fils Créateur dans chaque univers local : une représentation personnelle de l’Esprit Infini, associée à toute son œuvre de création. Ses enfants, les sept esprits-mentaux adjuvats, servent le mental des créatures.</p>
+<figure class="t-cit"><blockquote><p>« L’Esprit Créatif individualisé, auxiliaire du Fils Créateur, est devenu son associée créative personnelle, l’Esprit-Mère de l’univers local. »</p></blockquote><figcaption class="ref">34:1.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">34:0.1</span> <span class="ref">36:5.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s1">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#fils-createur">Fils Créateur</a>, <a href="#adjuvats">esprits-mentaux adjuvats</a>, <a href="#saint-esprit">Saint-Esprit</a></span></p>
+</div>
+</article>
+<article class="terme" id="adjuvats" data-theme="humain" data-f="esprit-mental adjuvat">
+<div class="t-tete">
+<h4><dfn>esprits-mentaux adjuvats</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">adjutant mind-spirits</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les sept esprits par lesquels l’Esprit-Mère de l’univers local sert le mental des êtres vivants, de l’intuition à la sagesse ; ils ressemblent davantage à des circuits qu’à des êtres. Les cinq premiers agissent chez l’animal, les sept chez l’être humain.</p>
+<figure class="t-cit"><blockquote><p>« Les adjuvats sont les enfants de l’Esprit-Mère de l’Univers et constituent son ministère personnel auprès du mental matériel des royaumes. »</p></blockquote><figcaption class="ref">36:5.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">36:5.2-4</span> <span class="ref">42:10.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s3">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#esprit-mere">Esprit-Mère de l’univers local</a>, <a href="#mental">mental</a></span></p>
+</div>
+</article>
+<article class="terme" id="etat-major" data-theme="histoire" data-f="etat-major corporel">
+<div class="t-tete">
+<h4><dfn>état-major du Prince</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">corporeal staff</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : les cent de Caligastia</p>
+<p class="t-def">Les cent membres corporels qui accompagnaient Caligastia : des volontaires ascendants de Jérusem, dotés sur Urantia de corps physiques. Lors de la rébellion, quarante restèrent loyaux, dont Van ; les soixante autres suivirent Nod.</p>
+<figure class="t-cit"><blockquote><p>« Ils travaillèrent de tout cœur pour le Prince rebelle, mais s’aperçurent bientôt qu’ils étaient privés du soutien des circuits vitaux du système. »</p></blockquote><figcaption class="ref">67:4.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">66:2.3-5</span> <span class="ref">67:3.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#camps">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#caligastia">Caligastia</a>, <a href="#van-et-amadon">Van et Amadon</a>, <a href="#nodites">Nodites</a></span></p>
+</div>
+</article>
+<article class="terme" id="etre-supreme" data-theme="deite" data-f="tout-puissant supreme">
+<div class="t-tete">
+<h4><dfn>Être Suprême</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Supreme Being</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Dieu le Suprême, le Suprême</p>
+<p class="t-def">Le Dieu du temps et de l’espace, encore en train d’émerger : une Déité expérientielle qui grandit avec les accomplissements des Créateurs et des créatures du grand univers. Plus la volonté de Dieu est faite, plus son potentiel devient réel.</p>
+<figure class="t-cit"><blockquote><p>« Il est la surâme du grand univers, la conscience du cosmos fini, le parachèvement de la réalité finie et la personnification de l’expérience Créateur-créature. »</p></blockquote><figcaption class="ref">117:1.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:2.15</span> <span class="ref">117:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s6">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#suprematie">Suprématie</a>, <a href="#experientiel">expérientiel</a>, <a href="#dieu-l-ultime">Dieu l’Ultime</a></span></p>
+</div>
+</article>
+<article class="terme" id="existentiel" data-theme="deite" data-f="existentielle existentiels existentielles existentiellement">
+<div class="t-tete">
+<h4><dfn>existentiel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">existential</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Se dit de ce qui existe de toute éternité, sans commencement : avant tout le Père, le Fils et l’Esprit. Le livre l’oppose à expérientiel, qui qualifie ce qui se réalise peu à peu par l’expérience, comme l’Être Suprême.</p>
+<figure class="t-cit"><blockquote><p>« Dieu le Père, Dieu le Fils et Dieu l’Esprit sont éternels — sont des êtres existentiels […] »</p></blockquote><figcaption class="ref">0:7.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:7.3</span> <span class="ref">0:1.14</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s6">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#experientiel">expérientiel</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a>, <a href="#sept-absolus">sept Absolus</a></span></p>
+</div>
+</article>
+<article class="terme" id="experientiel" data-theme="deite" data-f="experientielle experientiels experientielles experientiellement">
+<div class="t-tete">
+<h4><dfn>expérientiel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">experiential</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Se dit de ce qui devient réel par l’expérience et la croissance : cela commence dans le temps, mais peut durer sans fin. L’Être Suprême et Dieu l’Ultime sont des Déités expérientielles, encore en voie d’actualisation.</p>
+<figure class="t-cit"><blockquote><p>« La Déité Paradisiaque est existentielle, mais le Suprême et l’Ultime qui émergent sont expérientiels. »</p></blockquote><figcaption class="ref">0:4.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:7.4-6</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s6">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#existentiel">existentiel</a>, <a href="#etre-supreme">Être Suprême</a>, <a href="#dieu-l-ultime">Dieu l’Ultime</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-f" aria-labelledby="h-f">
+<h3 id="h-f">F</h3>
+<div class="termes">
+<article class="terme" id="fils-createur" data-theme="etres" data-f="fils createurs">
+<div class="t-tete">
+<h4><dfn>Fils Créateur</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Creator Son</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Micaëls</p>
+<p class="t-def">Fils divin issu de l’union du Père Universel et du Fils Éternel, qui bâtit et gouverne un univers local. Chacun est unique ; tous appartiennent à l’ordre des Micaëls, et celui de notre univers, Nébadon, est Micaël.</p>
+<figure class="t-cit"><blockquote><p>« Ces créateurs et souverains d’univers sont d’origine duelle, incorporant les caractéristiques de Dieu le Père et Dieu le Fils. »</p></blockquote><figcaption class="ref">21:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">21:0.3</span> <span class="ref">32:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#gouvernement">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#micael">Micaël</a>, <a href="#univers-local">univers local</a>, <a href="#esprit-mere">Esprit-Mère de l’univers local</a></span></p>
+</div>
+</article>
+<article class="terme" id="fils-de-l-homme" data-theme="jesus">
+<div class="t-tete">
+<h4><dfn>Fils de l’Homme</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Son of Man</i></p>
+<p class="t-theme">Jésus et la Bible</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Titre que Jésus choisit pour se désigner, inspiré selon le livre d’un passage du Livre d’Énoch plutôt que de Daniel. Il souligne que le Fils Créateur a vécu en homme véritable, né d’une femme.</p>
+<figure class="t-cit"><blockquote><p>« Et même maintenant qu’il préside avec une autorité souveraine aux destinées d’un univers, il porte encore, parmi ses nombreux titres bien gagnés, celui de Fils de l’Homme. »</p></blockquote><figcaption class="ref">128:1.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">126:3.6</span> <span class="ref">126:3.8</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-daniel">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#micael">Micaël</a>, <a href="#effusion">effusion</a>, <a href="#maitre">Maitre</a></span></p>
+</div>
+</article>
+<article class="terme" id="fils-eternel" data-theme="deite" data-f="fils originel">
+<div class="t-tete">
+<h4><dfn>Fils Éternel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Eternal Son</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Dieu le Fils, Source-Centre Deuxième</p>
+<p class="t-def">Deuxième Personne de la Déité : l’expression parfaite et personnelle du Père, que le livre appelle aussi le Verbe. Les forces de l’esprit convergent en lui, et il est l’archétype absolu de toute personnalité.</p>
+<figure class="t-cit"><blockquote><p>« Nulle personnalité ne peut espérer atteindre le Père Universel sinon par son Fils Éternel. »</p></blockquote><figcaption class="ref">105:3.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">6:0.1</span> <span class="ref">0:3.15</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s2">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#pere-universel">Père Universel</a>, <a href="#esprit-infini">Esprit Infini</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="fils-trinitises" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>Fils Trinitisés</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Trinitized Sons of God</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Fils de Dieu Trinitisés</p>
+<p class="t-def">Troisième groupe de Fils de Dieu, à côté des Fils descendants et ascendants. Leur point commun est d’avoir été trinitisés, ou embrassés par la Trinité, comme les mortels parfaits devenus Puissants Messagers, éprouvés dans leur loyauté.</p>
+<figure class="t-cit"><blockquote><p>« Les Fils Trinitisés sont un groupe d’origine complexe comprenant tous les êtres embrassés par la Trinité du Paradis, même s’ils ne sont pas issus directement de la Trinité. »</p></blockquote><figcaption class="ref">20:0.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">22:0.1</span> <span class="ref">22:2.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#trinite-du-paradis">Trinité du Paradis</a>, <a href="#ascendeurs">ascendeurs</a>, <a href="#finalitaires">finalitaires</a></span></p>
+</div>
+</article>
+<article class="terme" id="finalitaires" data-theme="humain" data-f="corps de la finalite">
+<div class="t-tete">
+<h4><dfn>finalitaires</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">finaliters</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les ascendeurs parvenus au Paradis au terme de leur ascension, surtout des mortels fusionnés avec leur Ajusteur, réunis dans le Corps de la Finalité. Ils servent aujourd’hui dans les univers du temps ; les auteurs disent ignorer leur destinée finale.</p>
+<figure class="t-cit"><blockquote><p>« Il y a en permanence une ou plusieurs compagnies de finalitaires mortels en service sur Urantia. »</p></blockquote><figcaption class="ref">31:0.11</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">31:0.1</span> <span class="ref">31:3.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#carriere">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#ascendeurs">ascendeurs</a>, <a href="#fusion">fusion</a>, <a href="#paradis">Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="fusion" data-theme="humain" data-f="fusionner fusionna fusionnent fusionnes">
+<div class="t-tete">
+<h4><dfn>fusion</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">fusion</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Union éternelle de l’âme humaine avec l’Ajusteur de Pensée. Elle se produit habituellement après la mort, sur les mondes des maisons ; certains mortels fusionnent plutôt avec l’Esprit ou le Fils.</p>
+<figure class="t-cit"><blockquote><p>« Et cette fusion constitue le mystère qui fait que Dieu et l’homme sont un […] »</p></blockquote><figcaption class="ref">112:7.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">47:8.3</span> <span class="ref">40:9.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="destinee-humaine.html#fusion">Voir dans l’atlas : La destinée humaine</a> <span class="t-voir">Voir aussi : <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#mondes-des-maisons">mondes des maisons</a>, <a href="#finalitaires">finalitaires</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-g" aria-labelledby="h-g">
+<h3 id="h-g">G</h3>
+<div class="termes">
+<article class="terme" id="gabriel" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>Gabriel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Gabriel</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Radieuse Étoile du Matin, Gabriel de Salvington</p>
+<p class="t-def">Premier-né de l’univers local de Nébadon, appelé la Radieuse Étoile du Matin, et chef exécutif de cet univers. Selon le récit du livre, c’est aussi lui qui annonça à Marie la naissance de Jésus.</p>
+<figure class="t-cit"><blockquote><p>« Puis, en conseil avec les Très Hauts, il décida d’assumer le commandement des armées loyales de Satania. »</p></blockquote><figcaption class="ref">53:5.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">33:4.1-5</span> <span class="ref">122:3.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#nebadon">Nébadon</a>, <a href="#lucifer">Lucifer</a>, <a href="#archanges">archanges</a></span></p>
+</div>
+</article>
+<article class="terme" id="grand-univers" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>grand univers</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">grand universe</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Ensemble de l’univers central, Havona, et des sept superunivers qui l’entourent : la partie de la création aujourd’hui organisée et habitée, avec quelque sept mille milliards de mondes habitables. Il fait partie du maitre univers.</p>
+<figure class="t-cit"><blockquote><p>« Et c’est près de cette frontière extérieure, dans un coin éloigné de cette magnifique création, que votre univers local poursuit son existence mouvementée. »</p></blockquote><figcaption class="ref">12:1.13</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:0.6</span> <span class="ref">15:2.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#grand-univers">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#havona">Havona</a>, <a href="#superunivers">superunivers</a>, <a href="#maitre-univers">maitre univers</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-h" aria-labelledby="h-h">
+<h3 id="h-h">H</h3>
+<div class="termes">
+<article class="terme" id="havona" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Havona</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Havona</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Univers central, parfait et éternel, au cœur duquel repose l’Ile du Paradis. Les créations du temps et de l’espace tournent autour de lui ; les ascendeurs y sont formés, circuit après circuit, avant d’atteindre le Paradis.</p>
+<figure class="t-cit"><blockquote><p>« Le milliard de mondes de Havona est disposé en sept circuits concentriques qui entourent immédiatement les trois circuits des satellites du Paradis. »</p></blockquote><figcaption class="ref">14:1.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">14:0.1</span> <span class="ref">14:3.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#havona">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#paradis">Paradis</a>, <a href="#grand-univers">grand univers</a>, <a href="#ascendeurs">ascendeurs</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-i" aria-labelledby="h-i">
+<h3 id="h-i">I</h3>
+<div class="termes">
+<article class="terme" id="isolement" data-theme="histoire" data-f="planete isolee planetes isolees monde isole mondes isoles">
+<div class="t-tete">
+<h4><dfn>isolement d’Urantia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">isolation</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Coupure des circuits qui reliaient Urantia au reste du système, survenue quand Caligastia rallia la rébellion de Lucifer. La planète reste techniquement isolée, mais, pour chacun, cela compte peu depuis la venue de l’Esprit de Vérité.</p>
+<figure class="t-cit"><blockquote><p>« Entretemps, les circuits du système avaient été coupés ; Urantia était isolée. »</p></blockquote><figcaption class="ref">67:2.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">114:5.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#isolement">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#quarantaine">quarantaine</a>, <a href="#caligastia">Caligastia</a>, <a href="#urantia">Urantia</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-j" aria-labelledby="h-j">
+<h3 id="h-j">J</h3>
+<div class="termes">
+<article class="terme" id="eden" data-theme="histoire" data-f="premier eden">
+<div class="t-tete">
+<h4><dfn>Jardin d’Éden</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Garden of Eden</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : premier jardin</p>
+<p class="t-def">Siège préparé pour Adam et Ève par Van et ses compagnons, sur une longue péninsule de la Méditerranée orientale. Son nom rappelle la beauté d’Édentia ; la péninsule fut plus tard engloutie par la mer.</p>
+<figure class="t-cit"><blockquote><p>« Telle fut la fin de la plus belle création naturelle qu’Urantia ait jamais abritée. »</p></blockquote><figcaption class="ref">73:7.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">73:3.1</span> <span class="ref">73:4.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-jardin">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#adam-et-eve">Adam et Ève</a>, <a href="#second-jardin">second jardin</a>, <a href="#van-et-amadon">Van et Amadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="je-suis" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>JE SUIS</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">I AM</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Concept philosophique de l’Infini : le Père Universel envisagé comme cause première de toute réalité, avant toute différenciation. Il répond au besoin humain de se représenter un commencement. Le livre emploie aussi ces mots pour le nom divin dévoilé à Moïse.</p>
+<figure class="t-cit"><blockquote><p>« Le concept du JE SUIS est une concession philosophique que nous faisons au mental fini de l’homme lié au temps et enchainé à l’espace […] »</p></blockquote><figcaption class="ref">0:3.23</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:1.1-5</span> <span class="ref">182:1.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#sept-absolus">sept Absolus</a>, <a href="#pere-universel">Père Universel</a></span></p>
+</div>
+</article>
+<article class="terme" id="jerusem" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Jérusem</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Jerusem</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Capitale du système local de Satania, monde architectural presque cent fois plus grand qu’Urantia. Autour d’elle tournent sept mondes de transition, parmi les satellites desquels se trouvent les sept mondes des maisons, première étape des humains après la mort.</p>
+<figure class="t-cit"><blockquote><p>« […] le siège du système est vraiment le ciel imaginé par la majorité des croyants religieux du vingtième siècle. »</p></blockquote><figcaption class="ref">46:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">45:0.1</span> <span class="ref">15:7.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#satania">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#satania">Satania</a>, <a href="#mondes-des-maisons">mondes des maisons</a>, <a href="#lucifer">Lucifer</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-l" aria-labelledby="h-l">
+<h3 id="h-l">L</h3>
+<div class="termes">
+<article class="terme" id="lanaforge" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Lanaforge</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Lanaforge</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils Lanonandek primaire, actuel Souverain du système de Satania, envoyé pour succéder à Lucifer. Lors d’une rébellion antérieure dans Nébadon, il était resté fidèle à Micaël alors que son supérieur faisait défection.</p>
+<figure class="t-cit"><blockquote><p>« Avec l’arrivée de Lanaforge, les archirebelles furent détrônés et dépouillés de tout pouvoir de gouvernement. »</p></blockquote><figcaption class="ref">53:7.13</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">45:3.2</span> <span class="ref">45:2.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#statut">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#lucifer">Lucifer</a>, <a href="#satania">Satania</a>, <a href="#lanonandeks">Lanonandeks</a></span></p>
+</div>
+</article>
+<article class="terme" id="lanonandeks" data-theme="etres" data-f="fils lanonandeks fils lanonandek">
+<div class="t-tete">
+<h4><dfn>Lanonandeks</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Lanonandeks</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Troisième ordre de Fils de l’univers local, créés par le Fils Créateur et l’Esprit-Mère, puis formés par les Melchizédeks. Lucifer et Satan appartenaient à leur rang primaire, Caligastia au rang secondaire.</p>
+<figure class="t-cit"><blockquote><p>« […] ils sont surtout connus comme Souverains de Systèmes, gouvernant les systèmes locaux, et comme Princes Planétaires, chefs administratifs des mondes habités. »</p></blockquote><figcaption class="ref">35:8.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">35:8.2</span> <span class="ref">53:1.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#prince-planetaire">Prince Planétaire</a>, <a href="#lucifer">Lucifer</a>, <a href="#caligastia">Caligastia</a></span></p>
+</div>
+</article>
+<article class="terme" id="lucifer" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Lucifer</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Lucifer</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils Lanonandek primaire, brillant souverain du système de Satania. Avec son premier assistant, Satan, il se dressa contre le Père Universel et contre Micaël, et lança la rébellion qui porte son nom.</p>
+<figure class="t-cit"><blockquote><p>« Quand Micaël devint le chef confirmé de Nébadon, Lucifer fut mis en prison par les agents des Anciens des Jours d’Uversa […] »</p></blockquote><figcaption class="ref">53:9.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">53:0.1</span> <span class="ref">53:2.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#satan">Satan</a>, <a href="#manifeste-de-lucifer">manifeste de Lucifer</a>, <a href="#satania">Satania</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-m" aria-labelledby="h-m">
+<h3 id="h-m">M</h3>
+<div class="termes">
+<article class="terme" id="machiventa" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Machiventa Melchizédek</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Machiventa Melchizedek</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Melchizédek venu vivre parmi les humains à Salem « 1 973 ans avant la naissance de Jésus », pour y raviver la croyance en un Dieu unique ; Abraham devint son disciple. Il a reçu depuis le titre de Prince Planétaire vice-gérant d’Urantia.</p>
+<figure class="t-cit"><blockquote><p>« Son arrivée n’eut rien de spectaculaire ; nul œil humain ne fut témoin de sa matérialisation. »</p></blockquote><figcaption class="ref">93:2.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">93:3.1</span> <span class="ref">93:10.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-melchisedech">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#melchizedeks">Melchizédeks</a>, <a href="#prince-planetaire">Prince Planétaire</a>, <a href="#yahweh">Yahweh</a></span></p>
+</div>
+</article>
+<article class="terme" id="maitre" data-theme="jesus">
+<div class="t-tete">
+<h4><dfn>Maitre</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Master</i></p>
+<p class="t-theme">Jésus et la Bible</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Titre que le texte donne très souvent à Jésus, comme le faisaient ses apôtres et ses disciples. Le mot s’écrit ici sans accent circonflexe, selon l’orthographe rectifiée de 1990.</p>
+<figure class="t-cit"><blockquote><p>« […] Zébédée avait beaucoup d’ouvriers, et ce fut parmi ces travailleurs que, pour la première fois, Jésus fut appelé « le Maitre ». »</p></blockquote><figcaption class="ref">129:1.11</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">139:1.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="vie-de-jesus.html">Voir dans l’atlas : La vie de Jésus</a> <span class="t-voir">Voir aussi : <a href="#micael">Micaël</a>, <a href="#fils-de-l-homme">Fils de l’Homme</a>, <a href="#royaume-des-cieux">royaume des cieux</a></span></p>
+</div>
+</article>
+<article class="terme" id="maitre-univers" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>maitre univers</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">master universe</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">L’ensemble de la création, disposé autour du Paradis en six ellipses concentriques : Havona, les sept superunivers, puis quatre niveaux d’espace extérieur, encore inhabités, où de futurs univers sont en formation.</p>
+<figure class="t-cit"><blockquote><p>« […] nous considérons le maitre univers, tel qu’il existe et qu’il est administré comme ayant des limitations, comme étant nettement délimité et borné à ses lisières extérieures par l’espace ouvert. »</p></blockquote><figcaption class="ref">12:1.16</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">12:1.3</span> <span class="ref">0:0.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#maitre-univers">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#grand-univers">grand univers</a>, <a href="#espace-exterieur">espace extérieur</a>, <a href="#paradis">Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="maitres-organisateurs-de-force" data-theme="univers" data-f="maitre organisateur de force organisateur de force">
+<div class="t-tete">
+<h4><dfn>Maitres Organisateurs de Force</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Master Force Organizers</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Êtres du Paradis, ni créateurs ni créatures, qui façonnent l’énergie de l’espace : ils font passer la force primordiale sous l’emprise de la gravité du Paradis et lancent les nébuleuses. L’un d’eux a déclenché la formation de la nébuleuse d’Andronover.</p>
+<figure class="t-cit"><blockquote><p>« Les Maitres Organisateurs de Force Primaires sont les manipulateurs des forces spatiales primordiales ou fondamentales de l’Absolu Non Qualifié ; ce sont des créateurs de nébuleuses. »</p></blockquote><figcaption class="ref">29:5.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">29:5.1</span> <span class="ref">57:1.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#andronover">nébuleuse d’Andronover</a>, <a href="#absolu-non-qualifie">Absolu Non Qualifié</a>, <a href="#paradis">Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="manifeste-de-lucifer" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>manifeste de Lucifer</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Lucifer manifesto</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Déclaration Luciférienne de Liberté, Déclaration de Liberté</p>
+<p class="t-def">Proclamation de la rébellion, faite sur Jérusem il y a environ deux-cent-mille ans. Elle niait l’existence du Père Universel, contestait l’autorité de Micaël et des Anciens des Jours, et attaquait le plan d’ascension des mortels.</p>
+<figure class="t-cit"><blockquote><p>« Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre […] »</p></blockquote><figcaption class="ref">53:4.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">53:3.1</span> <span class="ref">53:3.2-6</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#manifeste">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#lucifer">Lucifer</a>, <a href="#satan">Satan</a>, <a href="#jerusem">Jérusem</a></span></p>
+</div>
+</article>
+<article class="terme" id="medians" data-theme="etres">
+<div class="t-tete">
+<h4><dfn>médians</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">midwayers</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : créatures médianes</p>
+<p class="t-def">Êtres présents sur la plupart des mondes habités de Nébadon, à mi-chemin entre les mortels et les anges. Urantia en compte deux ordres, nés aux temps de Dalamatia puis d’Adam ; un médian secondaire a rédigé le récit de la vie de Jésus.</p>
+<figure class="t-cit"><blockquote><p>« Elles paraissent être un accident du temps, mais sont si répandues et apportent une aide si précieuse que nous les avons acceptées […] »</p></blockquote><figcaption class="ref">77:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">77:0.2</span> <span class="ref">121:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#seraphins">séraphins</a>, <a href="#dalamatia">Dalamatia</a>, <a href="#adam-et-eve">Adam et Ève</a></span></p>
+</div>
+</article>
+<article class="terme" id="melchizedeks" data-theme="etres" data-f="pere melchizedek manovandet melchizedek un melchizedek">
+<div class="t-tete">
+<h4><dfn>Melchizédeks</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Melchizedeks</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Fils Melchizédeks</p>
+<p class="t-def">Ordre de Fils de l’univers local, à mi-chemin entre la Divinité et les créatures les plus humbles. Surnommés « Fils de secours », ils interviennent dans les situations d’urgence ; douze d’entre eux administrèrent Urantia après la chute de Caligastia.</p>
+<figure class="t-cit"><blockquote><p>« En fait, toutes les formes de vie intelligente trouvent en ces Fils des amis compréhensifs, des instructeurs sympathiques et des conseillers avisés. »</p></blockquote><figcaption class="ref">35:2.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">93:0.1</span> <span class="ref">67:6.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#machiventa">Machiventa Melchizédek</a>, <a href="#lanonandeks">Lanonandeks</a></span></p>
+</div>
+</article>
+<article class="terme" id="mental" data-theme="humain">
+<div class="t-tete">
+<h4><dfn>mental</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">mind</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Traduit l’anglais mind, à ne pas confondre avec l’esprit (spirit) : l’intelligence, qui vient de l’Esprit Infini. Chez l’homme, il est prêté pour la vie physique, et l’usage qu’on en fait engage la vie éternelle.</p>
+<figure class="t-cit"><blockquote><p>« Le mental est à peu près tout ce que vous possédez de réalité universelle qui soit soumise à votre volonté. »</p></blockquote><figcaption class="ref">111:1.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:6.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s6">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#esprit">esprit</a>, <a href="#adjuvats">esprits-mentaux adjuvats</a>, <a href="#esprit-infini">Esprit Infini</a></span></p>
+</div>
+</article>
+<article class="terme" id="messagers-solitaires" data-theme="etres" data-f="messager solitaire">
+<div class="t-tete">
+<h4><dfn>Messagers Solitaires</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Solitary Messengers</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Ordre le plus ancien des Personnalités Supérieures de l’Esprit Infini, qui les a créés seul. Ils portent rapidement les messages urgents dans tout le grand univers, plus vite que les séraphins ; leur nombre est fixe, mais le texte n’en donne pas le total.</p>
+<figure class="t-cit"><blockquote><p>« Entre eux, ils n’ont ni organisation ni gouvernement d’aucune sorte ; ils sont des Messagers Solitaires. »</p></blockquote><figcaption class="ref">23:2.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">23:0.1-2</span> <span class="ref">23:3.1-2</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#esprit-infini">Esprit Infini</a>, <a href="#seraphins">séraphins</a></span></p>
+</div>
+</article>
+<article class="terme" id="micael" data-theme="etres" data-f="micael de salvington">
+<div class="t-tete">
+<h4><dfn>Micaël</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Michael</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Christ Micaël, Micaël de Nébadon</p>
+<p class="t-def">Le Fils Créateur de notre univers local, Nébadon. Pour en recevoir la pleine souveraineté, il s’est effusé sept fois sous la forme de ses propres créatures ; la septième et dernière fois, il a vécu sur Urantia comme un homme.</p>
+<figure class="t-cit"><blockquote><p>« Urantia appartient à un univers local dont le souverain est l’homme-Dieu de Nébadon, Jésus de Nazareth et Micaël de Salvington. »</p></blockquote><figcaption class="ref">32:0.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">33:1.1</span> <span class="ref">119:0.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="vie-de-jesus.html">Voir dans l’atlas : La vie de Jésus</a> <span class="t-voir">Voir aussi : <a href="#fils-createur">Fils Créateur</a>, <a href="#effusion">effusion</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="mondes-des-maisons" data-theme="humain" data-f="monde des maisons">
+<div class="t-tete">
+<h4><dfn>mondes des maisons</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">mansion worlds</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les sept satellites du premier monde de transition de Jérusem, où les humains se réveillent après la mort. On y corrige les lacunes de la vie terrestre ; le nom rappelle les « nombreuses maisons » dont Jésus a parlé.</p>
+<figure class="t-cit"><blockquote><p>« À la manière dont le mot ciel a été employé sur Urantia, il a quelquefois désigné ces sept mondes des maisons […] »</p></blockquote><figcaption class="ref">15:7.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">47:0.1</span> <span class="ref">47:3.8</span></p>
+<p class="t-liens"><a class="t-atlas" href="destinee-humaine.html#maisons">Voir dans l’atlas : La destinée humaine</a> <span class="t-voir">Voir aussi : <a href="#jerusem">Jérusem</a>, <a href="#survie">survie</a>, <a href="#morontia">morontia</a></span></p>
+</div>
+</article>
+<article class="terme" id="monmatia" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Monmatia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Monmatia</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Nom de notre système solaire : le Soleil et sa famille de planètes, dont Urantia. Son origine est exceptionnelle : moins d’un pour cent des systèmes planétaires d’Orvonton sont nés de la même façon.</p>
+<figure class="t-cit"><blockquote><p>« Vers cette époque, votre système solaire fut inscrit sur le registre physique de Nébadon et reçut le nom de Monmatia. »</p></blockquote><figcaption class="ref">57:6.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">57:5.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#monmatia">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#urantia">Urantia</a>, <a href="#andronover">nébuleuse d’Andronover</a></span></p>
+</div>
+</article>
+<article class="terme" id="morontia" data-theme="humain" data-f="morontiel morontielle morontiels morontielles">
+<div class="t-tete">
+<h4><dfn>morontia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">morontia</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Niveau de réalité qui s’étend entre le monde matériel et celui de l’esprit (adjectif : morontiel). Après la mort, le survivant le traverse en recevant 570 corps morontiels successifs, du système local jusqu’à Salvington, avant de devenir esprit.</p>
+<figure class="t-cit"><blockquote><p>« Morontia est un terme désignant un vaste niveau intermédiaire entre le matériel et le spirituel. »</p></blockquote><figcaption class="ref">0:5.12</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">48:1.5</span> <span class="ref">48:1.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s7">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#ame">âme</a>, <a href="#mondes-des-maisons">mondes des maisons</a>, <a href="#survie">survie</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-n" aria-labelledby="h-n">
+<h3 id="h-n">N</h3>
+<div class="termes">
+<article class="terme" id="nebadon" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Nébadon</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Nebadon</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Notre univers local, dont le souverain est Micaël, le Fils Créateur qui a vécu sur Urantia en Jésus. Il comptait 3 840 101 planètes habitées à la dernière inscription et se trouve près du bord extérieur d’Orvonton.</p>
+<figure class="t-cit"><blockquote><p>« L’organisation des demeures planétaires est encore en voie de progrès dans Nébadon, car cet univers est en vérité un jeune amas dans les royaumes stellaires et planétaires d’Orvonton. »</p></blockquote><figcaption class="ref">32:2.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">32:0.3</span> <span class="ref">32:2.11</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#nebadon">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#univers-local">univers local</a>, <a href="#micael">Micaël</a>, <a href="#salvington">Salvington</a></span></p>
+</div>
+</article>
+<article class="terme" id="andronover" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>nébuleuse d’Andronover</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Andronover nebula</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Immense nébuleuse dont la formation commença il y a 875 milliards d’années. Plus d’un million de soleils en sont issus, dont le nôtre, né il y a environ six milliards d’années.</p>
+<figure class="t-cit"><blockquote><p>« Désormais, la grande nébuleuse d’Andronover n’existe plus, mais elle vit toujours dans les nombreux soleils et les familles planétaires qui ont leur origine dans ce nuage-mère de l’espace. »</p></blockquote><figcaption class="ref">57:4.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">57:1.6</span> <span class="ref">57:4.8</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-frise">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#monmatia">Monmatia</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="nodites" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Nodites</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Nodites</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Peuple issu des soixante membres de l’état-major du Prince qui avaient suivi Caligastia, et nommé d’après leur chef, Nod. Les Nodites formèrent la huitième race d’Urantia et furent longtemps en guerre avec les Adamites.</p>
+<figure class="t-cit"><blockquote><p>« Les descendants de ces membres furent connus longtemps sous le nom de Nodites, et leur lieu d’habitation comme « pays de Nod ». »</p></blockquote><figcaption class="ref">67:4.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">73:1.3</span> <span class="ref">75:5.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#etat-major">état-major du Prince</a>, <a href="#cano">Cano</a>, <a href="#andites">Andites</a></span></p>
+</div>
+</article>
+<article class="terme" id="norlatiadek" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Norlatiadek</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Norlatiadek</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Notre constellation, numéro 70 de l’univers local de Nébadon, dont fait partie le système de Satania. Elle est gouvernée depuis Édentia par les Très Hauts, les Pères de la Constellation.</p>
+<figure class="t-cit"><blockquote><p>« Votre constellation, Norlatiadek, est composée de cent systèmes locaux ; elle possède un monde-siège appelé Édentia. »</p></blockquote><figcaption class="ref">15:14.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">43:0.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#norlatiadek">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#constellation">constellation</a>, <a href="#edentia">Édentia</a>, <a href="#satania">Satania</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-o" aria-labelledby="h-o">
+<h3 id="h-o">O</h3>
+<div class="termes">
+<article class="terme" id="orvonton" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Orvonton</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Orvonton</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Le septième superunivers, auquel appartient notre univers local, Nébadon ; sa capitale est Uversa. Presque toutes les étoiles visibles à l’œil nu en font partie, et la Voie lactée en forme le « noyau central ».</p>
+<figure class="t-cit"><blockquote><p>« Si vous pouviez examiner le superunivers d’Orvonton depuis un emplacement très éloigné dans l’espace, vous reconnaitriez immédiatement les dix secteurs majeurs de la septième galaxie. »</p></blockquote><figcaption class="ref">15:3.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:3.1</span> <span class="ref">0:0.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#superunivers">superunivers</a>, <a href="#uversa">Uversa</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-p" aria-labelledby="h-p">
+<h3 id="h-p">P</h3>
+<div class="termes">
+<article class="terme" id="paradis" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Paradis</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Paradise (Isle of Paradise)</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Ile du Paradis</p>
+<p class="t-def">Le centre immobile et éternel de toute la création, où demeurent le Père, le Fils et l’Esprit : une Ile immense, à la fois matérielle et spirituelle, d’où proviennent les univers physiques et vers laquelle converge leur gravité.</p>
+<figure class="t-cit"><blockquote><p>« L’Ile du Paradis a un emplacement dans l’univers mais pas de position dans l’espace. »</p></blockquote><figcaption class="ref">0:4.12</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">11:0.1</span> <span class="ref">0:3.13</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#paradis">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#havona">Havona</a>, <a href="#source-centre">Source-Centre</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="pentecote" data-theme="jesus">
+<div class="t-tete">
+<h4><dfn>Pentecôte</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Pentecost</i></p>
+<p class="t-theme">Jésus et la Bible</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fête juive au cours de laquelle, selon le livre, l’Esprit de Vérité vint sur les disciples de Jésus réunis à Jérusalem. Depuis ce jour, cet esprit est répandu sur tous les humains, et tout mental normal capable de choix moral reçoit un Ajusteur.</p>
+<figure class="t-cit"><blockquote><p>« Le jour de la Pentecôte marqua le grand effort de l’esprit pour libérer la religion de Jésus des entraves juives dont elle avait hérité. »</p></blockquote><figcaption class="ref">194:3.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">194:1.1</span> <span class="ref">108:2.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-pentecote">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#esprit-de-verite">Esprit de Vérité</a>, <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a>, <a href="#maitre">Maitre</a></span></p>
+</div>
+</article>
+<article class="terme" id="pere-universel" data-theme="deite" data-f="pere eternel">
+<div class="t-tete">
+<h4><dfn>Père Universel</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Universal Father</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Dieu le Père, Source-Centre Première</p>
+<p class="t-def">Première Personne de la Déité, « le Dieu de toute la création » : la Source-Centre Première de toutes choses et le Père de toute personnalité. Les créatures du temps cherchent à le connaitre et à l’atteindre au Paradis.</p>
+<figure class="t-cit"><blockquote><p>« Pensez d’abord à Dieu comme à un créateur, puis comme à un contrôleur, et enfin comme à un soutien infini. »</p></blockquote><figcaption class="ref">1:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:3.2</span> <span class="ref">1:0.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s2">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#fils-eternel">Fils Éternel</a>, <a href="#esprit-infini">Esprit Infini</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="perfecteurs-de-sagesse" data-theme="etres" data-f="perfecteur de sagesse">
+<div class="t-tete">
+<h4><dfn>Perfecteurs de Sagesse</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Perfectors of Wisdom</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Êtres issus de la Trinité du Paradis qui personnifient la sagesse divine dans les superunivers. Ils sont sept milliards, un milliard par superunivers, au service des Anciens des Jours ; au besoin, ils agissent en trio avec un Censeur Universel et des Conseillers Divins.</p>
+<figure class="t-cit"><blockquote><p>« Elles ne reflètent pas la sagesse de la Trinité du Paradis, elles sont cette sagesse. »</p></blockquote><figcaption class="ref">19:2.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">19:2.1-2</span> <span class="ref">19:3.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#conseillers-divins">Conseillers Divins</a>, <a href="#censeurs-universels">Censeurs Universels</a>, <a href="#anciens-des-jours">Anciens des Jours</a></span></p>
+</div>
+</article>
+<article class="terme" id="personnalite" data-theme="humain" data-f="personnalites">
+<div class="t-tete">
+<h4><dfn>personnalité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">personality</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Don unique du Père Universel, qui fait d’un être une personne ; au pluriel, le mot désigne souvent les êtres eux-mêmes. Elle n’est ni le corps, ni le mental, ni l’esprit, ni l’âme, mais elle unifie l’ensemble de l’individu.</p>
+<figure class="t-cit"><blockquote><p>« […] une partie de vous reste toujours absolument inchangée ; c’est la personnalité — la permanence en présence du changement. »</p></blockquote><figcaption class="ref">112:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:5.11</span> <span class="ref">112:0.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s1">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#pere-universel">Père Universel</a>, <a href="#ame">âme</a>, <a href="#survie">survie</a></span></p>
+</div>
+</article>
+<article class="terme" id="personnalites-supremes-de-la-trinite" data-theme="etres" data-f="personnalite supreme de la trinite secrets de suprematie trinitises secrets de suprematie eternels des jours eternel des jours perfections des jours perfection des jours recents des jours recent des jours unions des jours union des jours fideles des jours fidele des jours">
+<div class="t-tete">
+<h4><dfn>Personnalités Suprêmes de la Trinité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Supreme Trinity Personalities</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Sept ordres d’administrateurs issus de la Trinité, créés une fois pour toutes : Secrets de Suprématie Trinitisés, Éternels, Anciens, Perfections, Récents, Unions et Fidèles des Jours. Leur administration s’étend des sphères du Père, près du Paradis, jusqu’aux capitales des univers locaux.</p>
+<figure class="t-cit"><blockquote><p>« Elles représentent la justice et sont le jugement exécutoire de la Trinité du Paradis. »</p></blockquote><figcaption class="ref">18:0.10</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">18:0.1-8</span> <span class="ref">18:0.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#anciens-des-jours">Anciens des Jours</a>, <a href="#trinite-du-paradis">Trinité du Paradis</a>, <a href="#havona">Havona</a></span></p>
+</div>
+</article>
+<article class="terme" id="porteurs-de-vie" data-theme="etres" data-f="porteur de vie">
+<div class="t-tete">
+<h4><dfn>Porteurs de Vie</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Life Carriers</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils de l’univers local chargés de concevoir la vie physique et de l’établir sur les planètes, où ils restent pour veiller à son évolution. Sur Urantia, ils l’élaborèrent sur place et l’implantèrent dans les mers il y a 550 millions d’années.</p>
+<figure class="t-cit"><blockquote><p>« La vie sur Urantia est unique et a son origine sur cette planète. »</p></blockquote><figcaption class="ref">58:4.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">36:0.1</span> <span class="ref">58:4.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-frise">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#andon-et-fonta">Andon et Fonta</a>, <a href="#urantia">Urantia</a></span></p>
+</div>
+</article>
+<article class="terme" id="prince-planetaire" data-theme="etres" data-f="princes planetaires">
+<div class="t-tete">
+<h4><dfn>Prince Planétaire</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Planetary Prince</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils Lanonandek secondaire chargé de gouverner un monde habité dès les débuts de son humanité. Celui d’Urantia, Caligastia, est déchu ; c’est désormais Micaël qui détient le titre de Prince Planétaire d’Urantia.</p>
+<figure class="t-cit"><blockquote><p>« Sur un monde nouvellement habité, le Prince Planétaire est le seul représentant dont la divinité soit complète. »</p></blockquote><figcaption class="ref">50:1.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">50:0.1</span> <span class="ref">93:10.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#echelles">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#caligastia">Caligastia</a>, <a href="#lanonandeks">Lanonandeks</a>, <a href="#etat-major">état-major du Prince</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-q" aria-labelledby="h-q">
+<h3 id="h-q">Q</h3>
+<div class="termes">
+<article class="terme" id="quarantaine" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>quarantaine</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">quarantine</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Mise à l’écart des mondes ou des systèmes tombés dans la rébellion, partiellement coupés du reste de la création pour la protéger. Le système de Satania y fut placé dès la révolte de Lucifer, et Urantia reste en quarantaine spirituelle partielle.</p>
+<figure class="t-cit"><blockquote><p>« Tout ceci, comme c’est le cas pour Urantia, est une réaction spirituellement défensive de la majorité des mondes. »</p></blockquote><figcaption class="ref">3:1.10</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">67:3.1</span> <span class="ref">28:7.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#isolement">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#isolement">isolement d’Urantia</a>, <a href="#satania">Satania</a>, <a href="#norlatiadek">Norlatiadek</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-r" aria-labelledby="h-r">
+<h3 id="h-r">R</h3>
+<div class="termes">
+<article class="terme" id="sangiks" data-theme="histoire" data-f="races sangiks famille sangik sangiks">
+<div class="t-tete">
+<h4><dfn>races Sangik</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Sangik races</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les six races de couleur — rouge, orangée, jaune, verte, bleue et indigo — issues des dix-neuf enfants d’une même famille, la famille Sangik, née il y a environ 500 000 ans dans les hautes terres du nord-ouest de l’Inde.</p>
+<figure class="t-cit"><blockquote><p>« […] leur peau manifestait en outre une tendance extraordinaire à prendre différentes couleurs quand elle était exposée à la lumière solaire. »</p></blockquote><figcaption class="ref">64:5.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">64:5.2</span> <span class="ref">64:5.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#andonites">Andonites</a>, <a href="#andites">Andites</a></span></p>
+</div>
+</article>
+<article class="terme" id="royaume-des-cieux" data-theme="jesus" data-f="royaume de dieu">
+<div class="t-tete">
+<h4><dfn>royaume des cieux</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">kingdom of heaven</i></p>
+<p class="t-theme">Jésus et la Bible</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Thème central de l’enseignement de Jésus, qui disait aussi royaume de Dieu. Le livre y voit surtout une réalité spirituelle intérieure, fondée sur la paternité de Dieu et la fraternité des hommes, et non un royaume terrestre.</p>
+<figure class="t-cit"><blockquote><p>« Mais, à ses apôtres, il enseigna toujours le royaume comme embrassant l’expérience personnelle d’un homme par rapport à ses contemporains sur terre et au Père dans les cieux. »</p></blockquote><figcaption class="ref">170:1.13</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">170:0.1</span> <span class="ref">170:2.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-ivraie-seneve">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#maitre">Maitre</a>, <a href="#fils-de-l-homme">Fils de l’Homme</a>, <a href="#pentecote">Pentecôte</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-s" aria-labelledby="h-s">
+<h3 id="h-s">S</h3>
+<div class="termes">
+<article class="terme" id="saint-esprit" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Saint-Esprit</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Holy Spirit</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Le circuit spirituel de l’Esprit-Mère, propre à chaque univers local : l’esprit de sa présence sur les mondes habités. Il agit sur l’homme bien avant la venue de l’Esprit de Vérité et des Ajusteurs ; le livre le distingue de l’Esprit Infini, présent partout.</p>
+<figure class="t-cit"><blockquote><p>« La première dotation supramentale de l’homme est la mise en circuit de sa personnalité dans le Saint-Esprit de l’Esprit Créatif de l’univers […] »</p></blockquote><figcaption class="ref">103:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">8:5.3</span> <span class="ref">36:5.16</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s2">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#esprit-mere">Esprit-Mère de l’univers local</a>, <a href="#esprit-de-verite">Esprit de Vérité</a>, <a href="#ajusteur-de-pensee">Ajusteur de Pensée</a></span></p>
+</div>
+</article>
+<article class="terme" id="salvington" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Salvington</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Salvington</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Capitale de Nébadon, notre univers local, située au centre d’énergie massique de cet univers et quartier général de Micaël. C’est là que les ascendeurs reçoivent leur formation spirituelle, après la formation sociale de la constellation.</p>
+<figure class="t-cit"><blockquote><p>« Salvington, capitale de Nébadon, votre univers local, est entourée de dix groupes universitaires de quarante-neuf sphères chacun. »</p></blockquote><figcaption class="ref">15:7.7</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">32:2.4</span> <span class="ref">32:2.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#nebadon">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#nebadon">Nébadon</a>, <a href="#micael">Micaël</a>, <a href="#esprit-mere">Esprit-Mère de l’univers local</a></span></p>
+</div>
+</article>
+<article class="terme" id="satan" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Satan</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Satan</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Fils Lanonandek primaire, premier assistant de Lucifer, avec qui il régnait sur Jérusem et qu’il suivit dans la rébellion. Il est aujourd’hui détenu avec lui sur les mondes-prisons de Jérusem.</p>
+<figure class="t-cit"><blockquote><p>« On a très peu entendu parler de Lucifer sur Urantia parce qu’il délégua Satan, son premier lieutenant, pour plaider sa cause sur votre planète. »</p></blockquote><figcaption class="ref">53:1.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">53:2.1</span> <span class="ref">53:9.4</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#camps">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#lucifer">Lucifer</a>, <a href="#caligastia">Caligastia</a></span></p>
+</div>
+</article>
+<article class="terme" id="satania" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Satania</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Satania</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Notre système local, numéro 24 de la constellation de Norlatiadek : 619 mondes habités, dont Urantia, avec Jérusem pour capitale. Son ancien souverain, Lucifer, s’y est rebellé.</p>
+<figure class="t-cit"><blockquote><p>« Lucifer est maintenant le Souverain déchu et déposé de Satania. »</p></blockquote><figcaption class="ref">53:1.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:14.5</span> <span class="ref">15:14.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#satania">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#systeme-local">système local</a>, <a href="#jerusem">Jérusem</a>, <a href="#lucifer">Lucifer</a></span></p>
+</div>
+</article>
+<article class="terme" id="second-jardin" data-theme="histoire" data-f="nouvel eden">
+<div class="t-tete">
+<h4><dfn>second jardin</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">second garden</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : second Éden</p>
+<p class="t-def">Nouvel établissement fondé par Adam, Ève et leurs partisans entre le Tigre et l’Euphrate, en Mésopotamie, après qu’ils eurent abandonné le premier jardin. Il resta pendant près de trente-mille ans le berceau de la civilisation.</p>
+<figure class="t-cit"><blockquote><p>« Ils avaient trouvé le premier jardin partiellement préparé pour eux, mais il leur fallut créer le second par le travail de leurs propres mains […] »</p></blockquote><figcaption class="ref">76:1.4</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">76:0.1</span> <span class="ref">78:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="histoire-d-urantia.html#h-carte">Voir dans l’atlas : L’histoire d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#eden">Jardin d’Éden</a>, <a href="#adamites">Adamites</a>, <a href="#andites">Andites</a></span></p>
+</div>
+</article>
+<article class="terme" id="secteur-majeur" data-theme="univers" data-f="secteurs majeurs">
+<div class="t-tete">
+<h4><dfn>secteur majeur</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">major sector</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Grande division d’un superunivers, gouvernée par trois Perfections des Jours depuis un siège grandiose. Orvonton en compte dix ; le nôtre, Splandon, est le cinquième.</p>
+<figure class="t-cit"><blockquote><p>« Cent secteurs mineurs (environ cent-milliards de planètes habitables) forment un secteur majeur. »</p></blockquote><figcaption class="ref">15:2.7</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:2.8</span> <span class="ref">15:14.7</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html#h-zoom">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#splandon">Splandon</a>, <a href="#secteur-mineur">secteur mineur</a>, <a href="#superunivers">superunivers</a></span></p>
+</div>
+</article>
+<article class="terme" id="secteur-mineur" data-theme="univers" data-f="secteurs mineurs">
+<div class="t-tete">
+<h4><dfn>secteur mineur</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">minor sector</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Division d’un secteur majeur, administrée par trois Récents des Jours depuis un monde-siège. Chaque secteur majeur en compte cent ; le nôtre est Ensa.</p>
+<figure class="t-cit"><blockquote><p>« Cent univers locaux (environ un milliard de planètes habitables) constituent un secteur mineur du gouvernement du superunivers. »</p></blockquote><figcaption class="ref">15:2.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:2.7</span> <span class="ref">15:14.7</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html#h-zoom">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#ensa">Ensa</a>, <a href="#secteur-majeur">secteur majeur</a>, <a href="#univers-local">univers local</a></span></p>
+</div>
+</article>
+<article class="terme" id="sept-absolus" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>sept Absolus</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Seven Absolutes of Infinity</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Sept Absolus de l’Infinité</p>
+<p class="t-def">Les sept réalités éternelles sur lesquelles repose toute réalité : le Père (Source-Centre Première), le Fils Éternel, l’Esprit Infini, l’Ile du Paradis, l’Absolu de Déité, l’Absolu Universel et l’Absolu Non Qualifié. Le livre les présente en séquence, mais aucun n’a eu de commencement.</p>
+<figure class="t-cit"><blockquote><p>« Les sept relations primordiales à l’intérieur du JE SUIS s’éternisent sous l’aspect des Sept Absolus de l’Infinité. »</p></blockquote><figcaption class="ref">105:3.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:3.1-8</span> <span class="ref">105:3.10</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#je-suis">JE SUIS</a>, <a href="#source-centre">Source-Centre</a>, <a href="#absolu-universel">Absolu Universel</a></span></p>
+</div>
+</article>
+<article class="terme" id="maitres-esprits" data-theme="deite" data-f="maitre esprit">
+<div class="t-tete">
+<h4><dfn>Sept Maitres Esprits</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Seven Master Spirits</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Les sept personnalités primaires de l’Esprit Infini. Chaque Maitre Esprit exprime l’une des sept associations possibles du Père, du Fils et de l’Esprit et imprègne de sa nature l’un des sept superunivers ; le Septième, qui unit les trois, régit le nôtre, Orvonton.</p>
+<figure class="t-cit"><blockquote><p>« […] il y a juste sept possibilités d’association, et seulement sept, qui soient inhérentes à trois Déités. »</p></blockquote><figcaption class="ref">16:0.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">16:5.1</span> <span class="ref">16:3.20</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s4">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#esprit-infini">Esprit Infini</a>, <a href="#superunivers">superunivers</a>, <a href="#orvonton">Orvonton</a></span></p>
+</div>
+</article>
+<article class="terme" id="serapatatia" data-theme="histoire">
+<div class="t-tete">
+<h4><dfn>Sérapatatia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Serapatatia</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Chef nodite de la confédération syrienne, devenu proche d’Adam et Ève. Impatient de voir des résultats, il suggéra à Ève de donner aux Nodites un chef ayant du sang violet, projet qui mena à la défaillance.</p>
+<figure class="t-cit"><blockquote><p>« Il y a lieu de souligner de nouveau que Sérapatatia était complètement honnête et totalement sincère dans toutes ses propositions. »</p></blockquote><figcaption class="ref">75:3.6</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">75:3.1</span> <span class="ref">75:3.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-eve">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#cano">Cano</a>, <a href="#defaillance">défaillance</a>, <a href="#nodites">Nodites</a></span></p>
+</div>
+</article>
+<article class="terme" id="seraphins" data-theme="etres" data-f="seraphique seraphiques">
+<div class="t-tete">
+<h4><dfn>séraphins</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">seraphim</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Anges de l’univers local, créés par l’Esprit-Mère, qui servent auprès des mondes et des mortels. Certains deviennent les gardiens de la destinée d’une personne ; à la mort, c’est à son gardien que l’âme est confiée.</p>
+<figure class="t-cit"><blockquote><p>« L’enseignement au sujet des anges gardiens n’est pas un mythe ; certains groupes d’êtres humains ont effectivement des anges personnels. »</p></blockquote><figcaption class="ref">113:1.1</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">38:1.1</span> <span class="ref">112:3.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#cherubins">chérubins</a>, <a href="#esprit-mere">Esprit-Mère de l’univers local</a>, <a href="#survie">survie</a></span></p>
+</div>
+</article>
+<article class="terme" id="source-centre" data-theme="deite" data-f="source-centre premiere source-centre deuxieme source-centre troisieme source-centre du paradis sources-centres">
+<div class="t-tete">
+<h4><dfn>Source-Centre</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Source and Center (First Source and Center…)</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Nom que le livre donne aux réalités premières, à la fois sources et centres : la Source-Centre Première est le Père Universel, la Deuxième le Fils Éternel, la Troisième l’Esprit Infini ; l’Ile du Paradis en est une aussi. Gravité, esprit et mental convergent vers elles.</p>
+<figure class="t-cit"><blockquote><p>« La Source-Centre Première est donc primordiale dans tous les domaines : déifiés ou non déifiés, personnels ou impersonnels, actuels ou potentiels, finis ou infinis. »</p></blockquote><figcaption class="ref">0:3.11</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">105:3.2-5</span> <span class="ref">0:3.13-15</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s1">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#sept-absolus">sept Absolus</a>, <a href="#pere-universel">Père Universel</a>, <a href="#paradis">Paradis</a></span></p>
+</div>
+</article>
+<article class="terme" id="splandon" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Splandon</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Splandon</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Notre secteur majeur, le cinquième d’Orvonton : il réunit cent secteurs mineurs, dont le nôtre, Ensa. Sa capitale est Umajor la cinquième.</p>
+<figure class="t-cit"><blockquote><p>« Umajor la cinquième, siège de Splandon, votre secteur majeur, est entourée par les soixante-dix sphères d’enseignement intellectuel supérieur des superunivers. »</p></blockquote><figcaption class="ref">15:7.9</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:14.7</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#splandon">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#secteur-majeur">secteur majeur</a>, <a href="#ensa">Ensa</a>, <a href="#orvonton">Orvonton</a></span></p>
+</div>
+</article>
+<article class="terme" id="superunivers" data-theme="univers" data-f="superuniversel superuniverselle superuniversels superuniverselles">
+<div class="t-tete">
+<h4><dfn>superunivers</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">superuniverse</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Chacune des sept immenses créations évolutionnaires qui entourent Havona et forment avec lui le grand univers. Chaque superunivers est gouverné par trois Anciens des Jours depuis sa capitale ; le nôtre est Orvonton.</p>
+<figure class="t-cit"><blockquote><p>« Dix secteurs majeurs (environ mille milliards de planètes habitables) constituent un superunivers. »</p></blockquote><figcaption class="ref">15:2.8</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:0.5</span> <span class="ref">15:2.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#grand-univers">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#orvonton">Orvonton</a>, <a href="#grand-univers">grand univers</a>, <a href="#anciens-des-jours">Anciens des Jours</a></span></p>
+</div>
+</article>
+<article class="terme" id="suprematie" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Suprématie</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Supremacy</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Premier niveau où la Déité s’identifie aux créatures et agit sur le grand univers du temps et de l’espace. C’est le niveau de l’Être Suprême, Déité expérientielle qui unit la créature au Créateur.</p>
+<figure class="t-cit"><blockquote><p>« Le niveau de Déité de la Suprématie peut être conçu comme une fonction relative aux existences finies. »</p></blockquote><figcaption class="ref">0:1.11</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:1.9</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s5">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#etre-supreme">Être Suprême</a>, <a href="#ultimite">Ultimité</a>, <a href="#experientiel">expérientiel</a></span></p>
+</div>
+</article>
+<article class="terme" id="survie" data-theme="humain" data-f="survivant survit">
+<div class="t-tete">
+<h4><dfn>survie</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">survival</i></p>
+<p class="t-theme">L’être humain</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Le fait, pour la personnalité humaine, de continuer à vivre après la mort, sous une forme morontielle. Elle n’est pas automatique : elle dépend des décisions sincères et persévérantes de la personne dans sa quête de Dieu.</p>
+<figure class="t-cit"><blockquote><p>« Et c’est la réunion de l’âme morontielle confiée aux séraphins et du mental spirituel confié à l’Ajusteur qui reconstitue la personnalité de la créature […] »</p></blockquote><figcaption class="ref">47:3.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">112:2.20</span> <span class="ref">112:5.2</span></p>
+<p class="t-liens"><a class="t-atlas" href="destinee-humaine.html#schema">Voir dans l’atlas : La destinée humaine</a> <span class="t-voir">Voir aussi : <a href="#ame">âme</a>, <a href="#mondes-des-maisons">mondes des maisons</a>, <a href="#seraphins">séraphins</a></span></p>
+</div>
+</article>
+<article class="terme" id="systeme-local" data-theme="univers" data-f="systemes locaux">
+<div class="t-tete">
+<h4><dfn>système local</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">local system</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Unité de base de l’organisation de l’univers, gouvernée par un Souverain Systémique depuis sa capitale : environ mille mondes habités ou habitables. Cent systèmes forment une constellation ; le nôtre est Satania.</p>
+<figure class="t-cit"><blockquote><p>« On appelle système cet ensemble de mille mondes aptes à entretenir la vie, mais, dans les systèmes jeunes, seul un nombre relativement restreint de ces mondes peut être habité. »</p></blockquote><figcaption class="ref">15:2.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:2.4</span> <span class="ref">15:14.6</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html#h-zoom">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#satania">Satania</a>, <a href="#constellation">constellation</a>, <a href="#jerusem">Jérusem</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-t" aria-labelledby="h-t">
+<h3 id="h-t">T</h3>
+<div class="termes">
+<article class="terme" id="trinite-du-paradis" data-theme="deite" data-f="trinite paradisiaque trinites">
+<div class="t-tete">
+<h4><dfn>Trinité du Paradis</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Paradise Trinity</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Union éternelle du Père, du Fils et de l’Esprit en une seule Déité. Le livre lui reconnait des fonctions plutôt que des attributs, comme l’administration de la justice. Deux autres Trinités, expérientielles, sont encore en formation : l’Ultime et l’Absolue.</p>
+<figure class="t-cit"><blockquote><p>« La Trinité est une association de personnes infinies fonctionnant impersonnellement, mais sans contrevenir à la personnalité. »</p></blockquote><figcaption class="ref">10:4.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:12.2-5</span> <span class="ref">10:5.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s3">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#triunites">triunités</a>, <a href="#personnalites-supremes-de-la-trinite">Personnalités Suprêmes de la Trinité</a>, <a href="#etre-supreme">Être Suprême</a></span></p>
+</div>
+</article>
+<article class="terme" id="triunites" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>triunités</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">triunities</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Associations de fonction entre les Absolus, par lesquelles le Père Universel, membre de chacune, exerce un contrôle personnel sur les grandes fonctions de l’infinité. Le livre en décrit sept ; la première réunit le Père, le Fils et l’Esprit agissant ensemble en tant que personnes.</p>
+<figure class="t-cit"><blockquote><p>« Les triunités n’en sont pas moins réelles, très réelles. »</p></blockquote><figcaption class="ref">104:3.18</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">104:4.1</span> <span class="ref">104:3.14</span></p>
+<p class="t-liens"><a class="t-atlas" href="dieu-et-deite.html#s3">Voir dans l’atlas : Dieu et la Déité</a> <span class="t-voir">Voir aussi : <a href="#trinite-du-paradis">Trinité du Paradis</a>, <a href="#sept-absolus">sept Absolus</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-u" aria-labelledby="h-u">
+<h3 id="h-u">U</h3>
+<div class="termes">
+<article class="terme" id="ultimite" data-theme="deite">
+<div class="t-tete">
+<h4><dfn>Ultimité</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Ultimacy</i></p>
+<p class="t-theme">Dieu et la Déité</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Niveau où la Déité agit en rapport avec les réalités absonites, au-delà du temps et de l’espace, à l’échelle du maitre univers. C’est le second niveau expérientiel de la Déité, celui de Dieu l’Ultime.</p>
+<figure class="t-cit"><blockquote><p>« Où que ce soit dans le maitre univers, quand le temps et l’espace sont transcendés, ce phénomène absonite est un acte de l’Ultimité de la Déité. »</p></blockquote><figcaption class="ref">0:1.12</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">0:1.10</span> <span class="ref">0:2.17</span></p>
+<p class="t-liens"><a class="t-atlas" href="concepts-en-schemas.html#s5">Voir dans l’atlas : Concepts en schémas</a> <span class="t-voir">Voir aussi : <a href="#dieu-l-ultime">Dieu l’Ultime</a>, <a href="#absonite">absonite</a>, <a href="#suprematie">Suprématie</a></span></p>
+</div>
+</article>
+<article class="terme" id="univers-local" data-theme="univers" data-f="univers locaux">
+<div class="t-tete">
+<h4><dfn>univers local</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">local universe</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Création d’un Fils Créateur, un Micaël, associé à un Esprit-Mère : il s’étend aussi loin que la présence de cet Esprit. Le nôtre est Nébadon.</p>
+<figure class="t-cit"><blockquote><p>« Cent constellations (environ dix-millions de planètes habitables) constituent un univers local. »</p></blockquote><figcaption class="ref">15:2.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">32:0.1</span> <span class="ref">41:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="nebadon-dans-orvonton.html#h-zoom">Voir dans l’atlas : Nébadon dans Orvonton</a> <span class="t-voir">Voir aussi : <a href="#fils-createur">Fils Créateur</a>, <a href="#esprit-mere">Esprit-Mère de l’univers local</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="urantia" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Urantia</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Urantia</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Nom que le livre donne à notre planète, la Terre, et qui figure dans son titre. C’est le monde habité numéro 606 du système de Satania, dans l’univers local de Nébadon.</p>
+<figure class="t-cit"><blockquote><p>« Votre monde, Urantia, est l’une des nombreuses planètes habitées similaires comprises dans l’univers local de Nébadon. »</p></blockquote><figcaption class="ref">0:0.5</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">15:14.5</span> <span class="ref">43:0.1</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#urantia">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#satania">Satania</a>, <a href="#monmatia">Monmatia</a>, <a href="#nebadon">Nébadon</a></span></p>
+</div>
+</article>
+<article class="terme" id="uversa" data-theme="univers">
+<div class="t-tete">
+<h4><dfn>Uversa</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Uversa</i></p>
+<p class="t-theme">L’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Capitale du superunivers d’Orvonton, d’où les ascendeurs partent pour Havona après une dernière préparation. C’est sur l’ordre des Anciens des Jours d’Uversa qu’une commission de vingt-quatre administrateurs d’Orvonton a présenté les fascicules 1 à 31 du livre.</p>
+<figure class="t-cit"><blockquote><p>« Uversa, siège d’Orvonton, votre superunivers, est immédiatement entourée par les sept universités supérieures de haute éducation spirituelle pour les créatures volitives ascendantes. »</p></blockquote><figcaption class="ref">15:7.10</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">31:10.22</span> <span class="ref">0:0.5</span></p>
+<p class="t-liens"><a class="t-atlas" href="atlas-3d.html#orvonton">Voir dans l’atlas : D’Urantia au Paradis (3D)</a> <span class="t-voir">Voir aussi : <a href="#orvonton">Orvonton</a>, <a href="#anciens-des-jours">Anciens des Jours</a>, <a href="#ascendeurs">ascendeurs</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-v" aria-labelledby="h-v">
+<h3 id="h-v">V</h3>
+<div class="termes">
+<article class="terme" id="van-et-amadon" data-theme="histoire" data-f="amadonites">
+<div class="t-tete">
+<h4><dfn>Van et Amadon</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Van and Amadon</i></p>
+<p class="t-theme">L’histoire d’Urantia</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Van, membre loyal de l’état-major du Prince, et Amadon, son associé humain descendant d’Andon et Fonta, résistèrent à la rébellion de Caligastia. Maintenus en vie plus de cent-cinquante-mille ans, ils préparèrent ensuite la venue d’Adam et Ève.</p>
+<figure class="t-cit"><blockquote><p>« Amadon est le héros humain le plus remarquable de la rébellion de Lucifer. »</p></blockquote><figcaption class="ref">67:3.8</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">67:6.4</span> <span class="ref">73:2.3</span></p>
+<p class="t-liens"><a class="t-atlas" href="rebellion-de-lucifer.html#camps">Voir dans l’atlas : La rébellion de Lucifer</a> <span class="t-voir">Voir aussi : <a href="#etat-major">état-major du Prince</a>, <a href="#andonites">Andonites</a>, <a href="#eden">Jardin d’Éden</a></span></p>
+</div>
+</article>
+<article class="terme" id="vorondadeks" data-theme="etres" data-f="pere de la constellation peres des constellations">
+<div class="t-tete">
+<h4><dfn>Vorondadeks</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Vorondadeks</i></p>
+<p class="t-theme">Les êtres de l’univers</p>
+</div>
+<div class="t-corps">
+<p class="t-autres">Aussi : Très Hauts, Pères de la Constellation</p>
+<p class="t-def">Ordre de Fils de l’univers local qui gouvernent les constellations sous le titre de Très Hauts ; le Très Haut régnant est appelé Père de la Constellation. Un observateur Vorondadek réside sur chaque monde isolé, dont Urantia.</p>
+<figure class="t-cit"><blockquote><p>« Les cent Pères des Constellations, les chefs actuels présidant les gouvernements des constellations, constituent le cabinet consultatif suprême du Fils Créateur. »</p></blockquote><figcaption class="ref">35:6.2</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">35:6.1</span> <span class="ref">43:5.17</span></p>
+<p class="t-liens"><a class="t-atlas" href="familles-de-personnalites.html#h-tree">Voir dans l’atlas : Familles de personnalités</a> <span class="t-voir">Voir aussi : <a href="#constellation">constellation</a>, <a href="#edentia">Édentia</a>, <a href="#norlatiadek">Norlatiadek</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<section class="lettre" id="lettre-y" aria-labelledby="h-y">
+<h3 id="h-y">Y</h3>
+<div class="termes">
+<article class="terme" id="yahweh" data-theme="jesus">
+<div class="t-tete">
+<h4><dfn>Yahweh</dfn></h4>
+<p class="t-en"><span class="vh">En anglais : </span><i lang="en">Yahweh</i></p>
+<p class="t-theme">Jésus et la Bible</p>
+</div>
+<div class="t-corps">
+<p class="t-def">Nom du Dieu des Hébreux. Le livre retrace l’évolution de ce concept : d’un dieu tribal de la nature, élargi par Moïse, jusqu’au Créateur suprême et Père aimant de toute l’humanité ; la vie de Jésus l’amplifia encore.</p>
+<figure class="t-cit"><blockquote><p>« Yahweh était le dieu des tribus palestiniennes du Sud, qui associèrent ce concept de la déité au mont Horeb, le volcan du Sinaï. »</p></blockquote><figcaption class="ref">96:1.3</figcaption></figure>
+<p class="t-ou"><span class="lbl">Où lire aussi</span> <span class="ref">96:4.2</span> <span class="ref">97:10.8</span></p>
+<p class="t-liens"><a class="t-atlas" href="bible-et-livre.html#p-sinai">Voir dans l’atlas : La Bible et le Livre d’Urantia</a> <span class="t-voir">Voir aussi : <a href="#machiventa">Machiventa Melchizédek</a>, <a href="#pere-universel">Père Universel</a></span></p>
+</div>
+</article>
+</div>
+</section>
+<!--GLOSSAIRE:FIN-->
+    </div>
+
+    <div class="vide" id="vide" hidden>
+      <p>Aucun terme ne correspond à cette recherche.</p>
+      <button type="button" id="tout">Tout réafficher</button>
+    </div>
+  </section>
+
+  <section class="callout" aria-labelledby="h-plus">
+    <h2 id="h-plus">Un mot manque&nbsp;?</h2>
+    <p>Ce glossaire réunit les termes employés dans les pages de l’atlas. Le livre en compte bien d’autres&nbsp;: pour les lire dans leur contexte, le plus sûr reste le texte lui-même, sur urantia.org. Si une définition te semble inexacte, signale-la avec le lien en bas de page.</p>
+  </section>
+
+  <footer class="foot">
+    <p>Sources&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Définitions rédigées pour cet atlas&nbsp;; <span data-gl-citations>116</span> citations courtes du livre, entre guillemets, avec leur référence (fascicule:section.paragraphe). Les termes anglais sont ceux du texte original de 1955.</p>
+    <p>Ce glossaire explique ce que dit le livre&nbsp;; il ne dit pas s’il a raison.</p>
+  </footer>
+</main>
+
+<script>
+(function () {
+  "use strict";
+  // Recherche (casse et accents ignorés), thèmes, index des lettres ; une ancre masquée par un filtre est réaffichée.
+  var champ = document.getElementById("q"), efface = document.getElementById("q-efface"), statut = document.getElementById("statut");
+  var vide = document.getElementById("vide"), tout = document.getElementById("tout");
+  var termes = Array.prototype.slice.call(document.querySelectorAll(".terme"));
+  var lettres = Array.prototype.slice.call(document.querySelectorAll(".lettre"));
+  var az = Array.prototype.slice.call(document.querySelectorAll(".az a"));
+  var themes = Array.prototype.slice.call(document.querySelectorAll("#themes button"));
+  if (!champ || !termes.length) return;
+  function texte(t, s) { var e = t.querySelector(s); return e ? e.textContent : ""; }
+  // index de recherche : vedette, anglais, autres noms, définition, et les formes repérées dans les pages (data-f)
+  var index = termes.map(function (t) {
+    return plier([texte(t, "h4"), texte(t, ".t-en"), texte(t, ".t-autres"), texte(t, ".t-def"), t.getAttribute("data-f") || ""].join(" "));
+  });
+  var total = termes.length, etat = { q: "", th: "tous" }, minuterie = null;
+
+  function plier(s) {
+    s = String(s || "");
+    if (s.normalize) s = s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+    return s.toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae").replace(/[’‘ʼ]/g, "'").replace(/\s+/g, " ").trim();
+  }
+  function appliquer() {
+    var mots = plier(etat.q).split(" ").filter(Boolean), n = 0;
+    termes.forEach(function (t, i) {
+      var ok = (etat.th === "tous" || t.getAttribute("data-theme") === etat.th) &&
+        mots.every(function (m) { return index[i].indexOf(m) >= 0; });
+      t.hidden = !ok;
+      if (ok) n++;
+    });
+    lettres.forEach(function (l) { l.hidden = !l.querySelector(".terme:not([hidden])"); });
+    az.forEach(function (a) {
+      var l = document.getElementById(a.getAttribute("href").slice(1)), off = !l || l.hidden;
+      a.classList.toggle("off", off);
+      if (off) { a.setAttribute("aria-disabled", "true"); a.setAttribute("tabindex", "-1"); }
+      else { a.removeAttribute("aria-disabled"); a.removeAttribute("tabindex"); }
+    });
+    themes.forEach(function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-th") === etat.th)); });
+    var filtre = etat.q || etat.th !== "tous";
+    vide.hidden = n > 0;
+    efface.hidden = !etat.q;
+    statut.innerHTML = !filtre ? "<b>" + total + "</b> termes, de A à Z." :
+      n ? "<b>" + n + "</b> " + (n > 1 ? "termes sur " : "terme sur ") + total + "." : "Aucun terme ne correspond.";
+  }
+  function toutReafficher() { etat = { q: "", th: "tous" }; champ.value = ""; appliquer(); }
+
+  champ.addEventListener("input", function () {
+    clearTimeout(minuterie);
+    minuterie = setTimeout(function () { etat.q = champ.value.trim(); appliquer(); }, 120);
+  });
+  champ.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && champ.value) { e.preventDefault(); champ.value = ""; etat.q = ""; appliquer(); }
+    if (e.key === "Enter") {
+      e.preventDefault(); clearTimeout(minuterie); etat.q = champ.value.trim(); appliquer();
+      if (window.matchMedia && window.matchMedia("(pointer: coarse)").matches) champ.blur();
+    }
+  });
+  efface.addEventListener("click", function () { champ.value = ""; etat.q = ""; appliquer(); champ.focus(); });
+  tout.addEventListener("click", function () { toutReafficher(); champ.focus(); });
+  themes.forEach(function (b) { b.addEventListener("click", function () { etat.th = b.getAttribute("data-th"); appliquer(); }); });
+
+  // ancre vers un terme (#ajusteur-de-pensee) : réaffiché s’il était masqué par un filtre
+  function montrer() {
+    var id = "";
+    try { id = decodeURIComponent((location.hash || "").slice(1)); } catch (e) { return; }
+    var el = id && document.getElementById(id);
+    if (!el || !el.classList || !(el.classList.contains("terme") || el.classList.contains("lettre"))) return;
+    if (el.hidden || (el.closest(".lettre") || el).hidden) { toutReafficher(); el.scrollIntoView({ block: "start" }); }
+  }
+  window.addEventListener("hashchange", montrer);
+  appliquer();
+  montrer();
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

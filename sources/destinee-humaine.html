@@ -1,0 +1,1157 @@
+<title>La destinée humaine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : un parcours en huit temps, du don de l’Ajusteur à la carrière ascendante, avec au centre le schéma
+   « ce qui survit ». Les cinq réalités de l’être humain ont chacune leur couleur et leur icône (choix de la page) ;
+   l’or est réservé à l’Ajusteur. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* l’Ajusteur ; accent de sélection */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  --aj: #A8740C;       /* l’Ajusteur : or un peu plus soutenu pour les icônes et les bordures */
+  /* Les cinq réalités (choix de la page) */
+  --perso: #6A4BC0; --perso-soft: #F1EDFA;   /* personnalité : violet */
+  --ame: #13837A; --ame-ink: #0B655E; --ame-soft: #E2F3EF;   /* âme morontielle : sarcelle */
+  --men: #2F62A8; --men-soft: #E7EEF8;       /* mental : bleu */
+  --cor: #8C5A36; --cor-soft: #F6EDE5;       /* corps : terre */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-soft: #221F17; --aj: #EDB03A;
+    --perso: #B6A0F5; --perso-soft: #211B37;
+    --ame: #52CFC0; --ame-ink: #7FDCD0; --ame-soft: #102928;
+    --men: #8CB4F2; --men-soft: #15213A;
+    --cor: #D9A47C; --cor-soft: #2A1E17;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-soft: #221F17; --aj: #EDB03A;
+  --perso: #B6A0F5; --perso-soft: #211B37;
+  --ame: #52CFC0; --ame-ink: #7FDCD0; --ame-soft: #102928;
+  --men: #8CB4F2; --men-soft: #15213A;
+  --cor: #D9A47C; --cor-soft: #2A1E17;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+.bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Les cinq réalités : couleur (--c), fond doux (--soft) */
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; color: var(--c, currentColor); }
+.e-perso { --c: var(--perso); --soft: var(--perso-soft); }
+.e-aj { --c: var(--aj); --soft: var(--gold-soft); }
+.e-ame { --c: var(--ame); --soft: var(--ame-soft); }
+.e-men { --c: var(--men); --soft: var(--men-soft); }
+.e-cor { --c: var(--cor); --soft: var(--cor-soft); }
+.e-nsp { --c: var(--muted); --soft: var(--tint); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 54ch; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .98rem; }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { padding-block: 6px; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.keys { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 10px; border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.35; }
+.keys .dot { grid-row: span 2; width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--soft); border: 1.5px solid var(--c); }
+.keys .dot .ic { width: 1.05rem; height: 1.05rem; }
+.keys .kd { color: var(--muted); font-size: .86rem; }
+.codebox .note { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; align-items: baseline; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.q i { font-style: italic; }
+
+/* Cartes */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.5rem), 1fr)); gap: 14px; margin-top: 24px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 1.36rem; display: flex; gap: 9px; align-items: center; }
+.card h3 .ic { width: 1.2rem; height: 1.2rem; }
+.card p { font-size: .97rem; }
+.card .st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Le don du Père : le chiffre */
+.duo { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
+.duo .prose { margin-top: 0; }
+.fact { --c: var(--aj); background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--aj); border-radius: 12px; padding: 20px 20px 22px; display: grid; gap: 12px; }
+.fact .big { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.9rem, 4.2vw, 2.6rem); line-height: 1.05; color: var(--ink); }
+.fact .big small { display: block; font: 500 .74rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 6px; }
+.fact p { font-size: .95rem; }
+.names { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.names li { border: 1px solid var(--rule); border-radius: 9px; padding: 7px 8px; display: grid; gap: 2px; font-size: .86rem; line-height: 1.25; background: var(--paper); }
+.names b { font-weight: 700; }
+.names span { color: var(--muted); font-size: .8rem; }
+
+/* Les cercles psychiques */
+.circles { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; max-width: 760px; }
+.circles li { display: grid; gap: 6px; justify-items: center; text-align: center; font-size: .84rem; line-height: 1.3; color: var(--muted); }
+.circles .n { width: 2.5rem; height: 2.5rem; border-radius: 50%; display: grid; place-items: center; border: 1.5px dashed var(--rule); font: 600 .95rem/1 var(--font-mono); color: var(--muted); background: var(--sheet); }
+.circles li.k .n { border: 2px solid var(--ame); color: var(--ink); background: var(--ame-soft); }
+.circles li.k { color: var(--ink); }
+.circles-cap { font-size: .86rem; color: var(--muted); margin-top: 10px; max-width: 76ch; }
+.why { margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.why article { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.why h3 { font-size: 1.3rem; }
+.why p { font-size: .96rem; }
+
+/* La mort */
+.where-l { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 8px; max-width: 860px; }
+.where-l li { display: grid; grid-template-columns: 2.1rem 7.5rem minmax(0, 1fr); gap: 4px 12px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-left: 3px solid var(--c); border-radius: 10px; padding: 9px 12px; font-size: .95rem; line-height: 1.4; }
+.where-l .dot { width: 2.1rem; height: 2.1rem; border-radius: 50%; display: grid; place-items: center; background: var(--soft); }
+.where-l .dot .ic { width: 1.1rem; height: 1.1rem; }
+.where-l b { font-weight: 700; }
+.where-l li.e-nsp { border-style: dashed; border-left-style: dashed; }
+.cases { margin-top: 24px; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 14px; }
+.cases article { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.cases h3 { font-size: 1.24rem; }
+.cases p { font-size: .95rem; }
+.cases .tag { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.sub-h { margin-top: 34px; font-size: 1.55rem; }
+.sub-p { margin-top: 10px; max-width: 74ch; }
+
+/* Le réveil */
+.assembly { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; counter-reset: as; }
+.assembly li { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 16px 18px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; font-size: .95rem; }
+.assembly li::before { counter-increment: as; content: counter(as); width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--soft, var(--tint)); border: 1.5px solid var(--c, var(--rule)); font: 600 .9rem/1 var(--font-mono); color: var(--ink); }
+.assembly b { font-family: var(--font-display); font-size: 1.22rem; font-weight: 600; line-height: 1.2; }
+
+/* Les mondes des maisons */
+.mw { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 32px; align-items: start; margin-top: 24px; }
+.worlds { list-style: none; margin: 0; padding: 0 0 0 4px; display: grid; }
+.worlds li { position: relative; display: grid; grid-template-columns: 2.4rem minmax(0, 1fr); gap: 0 14px; padding-bottom: 16px; }
+.worlds li::after { content: ""; position: absolute; left: calc(1.2rem + 4px - 1px); top: 2.4rem; bottom: 0; width: 2px; background: var(--rule); }
+.worlds li:last-child::after { display: none; }
+.worlds .wn { width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--ame); font: 600 1rem/1 var(--font-mono); color: var(--ink); position: relative; z-index: 1; }
+.worlds li.six .wn { border-color: var(--aj); background: var(--gold-soft); }
+.worlds .wt { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; padding-top: 6px; }
+.worlds .wd { font-size: .95rem; grid-column: 2; }
+.mw-fig { margin: 0; display: grid; gap: 8px; position: sticky; top: 12px; }
+.mw-fig svg { width: 100%; height: auto; display: block; }
+.mw-fig figcaption { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+.orb { fill: none; stroke: var(--rule); stroke-width: 1.2; stroke-dasharray: 3 4; }
+.sat { fill: var(--ame-soft); stroke: var(--ame); stroke-width: 1.8; }
+.sat.g { fill: var(--gold-soft); stroke: var(--aj); }
+.hub { fill: var(--tint); stroke: var(--muted); stroke-width: 1.2; }
+.fig-t { fill: var(--ink); font: 600 13px var(--font-body); }
+.fig-h { fill: var(--ink); font: 600 12px var(--font-body); }
+.fig-m { fill: var(--muted); font: 500 10px var(--font-mono); }
+.moron { margin-top: 30px; display: grid; gap: 14px; max-width: 78ch; }
+.moron h3 { font-size: 1.55rem; }
+
+/* La fusion */
+.when { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.when li { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 10px; padding: 12px 14px 14px; display: grid; gap: 6px; align-content: start; font-size: .93rem; line-height: 1.4; min-width: 0; }
+.when b { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; line-height: 1.15; }
+.when .often { --c: var(--aj); background: var(--gold-soft); }
+.transf { margin-top: 22px; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--aj); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 10px; max-width: 84ch; }
+.transf h3 { font-size: 1.36rem; }
+
+/* Et ensuite */
+.path { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
+.path li { display: inline-flex; align-items: center; gap: 6px; }
+.path .pc { display: inline-grid; gap: 1px; border: 1px solid var(--rule); background: var(--sheet); border-radius: 10px; padding: 7px 11px; line-height: 1.2; }
+.path .pc b { font-weight: 700; font-size: .95rem; }
+.path .pc span { font-size: .78rem; color: var(--muted); }
+.path .pc.fin { border-color: var(--gold); background: var(--gold-soft); }
+.path .arr { color: var(--muted); font-family: var(--font-mono); }
+.go3d { margin-top: 20px; }
+
+/* ==================== Le schéma ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 22px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.sc { display: grid; gap: 14px; }
+.sc-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "prev steps next"; align-items: center; gap: 10px; }
+.sc-nav { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px 16px; min-height: 44px; font: 500 .98rem/1.1 var(--font-body); cursor: pointer; white-space: nowrap; }
+.sc-nav:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.sc-nav[aria-disabled="true"] { opacity: .38; cursor: default; }
+.sc-nav[aria-disabled="true"]:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+#sc-prev { grid-area: prev; } #sc-next { grid-area: next; }
+.sc-steps { grid-area: steps; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.sc-steps button { appearance: none; min-width: 42px; height: 42px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 500 .92rem/1 var(--font-mono); cursor: pointer; }
+.sc-steps button:hover { border-color: var(--muted); }
+.sc-steps button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.sc-opts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 10px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .88rem/1.2 var(--font-body); padding: 8px 13px; min-height: 40px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip .sw { width: 30px; height: 16px; border-radius: 999px; border: 1.5px solid currentColor; position: relative; flex: none; }
+.chip .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform .2s ease; }
+.chip[aria-pressed="true"] .sw::after { transform: translateX(13px); }
+.sc-main { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+
+.stage { display: grid; gap: 10px; align-content: stretch; min-width: 0; min-height: 300px; }
+.stage[data-lay="l2"] .pl, .stage[data-lay="l7"] .pl { align-content: center; }
+.stage[data-lay="l1"] { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); grid-template-areas: "terre divi"; }
+.stage[data-lay="l2"] { grid-template-columns: minmax(0, 1fr); grid-template-areas: "terre"; }
+.stage[data-lay="l4"] { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "divi garde inconnu" "cesse garde elem"; }
+.stage[data-lay="l5"] { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-areas: "divi garde inconnu" "cesse garde elem" "attente attente attente"; }
+.stage[data-lay="l6"] { grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr); grid-template-areas: "salle laisse"; }
+.stage[data-lay="l7"] { grid-template-columns: minmax(0, 1fr); grid-template-areas: "fusion"; }
+.pl { position: relative; overflow: hidden; min-width: 0; border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); padding: 10px 10px 12px; display: grid; gap: 8px; align-content: start; }
+.pl-bg { position: absolute; right: -6px; bottom: -8px; width: 92px; height: 92px; color: var(--c, var(--muted)); opacity: .13; pointer-events: none; }
+.pl-h, .pl-s, .pl-tk { position: relative; }
+.pl-h { display: flex; align-items: center; gap: 8px; font: 600 1.08rem/1.15 var(--font-display); }
+.pl-h .ic { width: 1.25rem; height: 1.25rem; color: var(--c, var(--muted)); }
+.pl-s { font-size: .8rem; line-height: 1.35; color: var(--muted); }
+.pl-tk { display: flex; flex-wrap: wrap; gap: 6px; align-items: flex-start; }
+.pl.p-terre { --c: var(--muted); border-color: var(--muted); }
+.pl.p-divi { --c: var(--aj); background: var(--gold-soft); }
+.pl.p-garde { --c: var(--ame); background: var(--ame-soft); align-content: center; }
+.pl.p-salle { --c: var(--ame); background: var(--ame-soft); border-color: var(--ame); }
+.pl.p-fusion { --c: var(--aj); background: var(--gold-soft); border-color: var(--aj); }
+.pl.p-cesse, .pl.p-elem, .pl.p-laisse { background: var(--tint); }
+.pl.p-inconnu { --c: var(--muted); border: 1.5px dashed var(--muted); background: transparent; }
+.pl.p-attente { background: transparent; border-style: dashed; }
+.pl.p-attente ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: .86rem; line-height: 1.35; }
+.pl.in { animation: pl-in .45s ease both; }
+@keyframes pl-in { from { opacity: 0; } to { opacity: 1; } }
+
+.tk { position: relative; display: inline-grid; grid-template-columns: 1.15rem minmax(0, auto); column-gap: 7px; align-items: center; max-width: 100%; padding: 6px 10px 6px 8px; border-radius: 11px; border: 1.5px solid var(--c); background: var(--sheet); color: var(--ink); line-height: 1.2; transition: transform .75s cubic-bezier(.22, .7, .2, 1), opacity .45s ease; }
+.tk .ic { width: 1.15rem; height: 1.15rem; grid-row: span 2; }
+.tk-l { font-weight: 700; font-size: .9rem; }
+.tk-s { font-size: .76rem; color: var(--muted); }
+.tk-s:empty { display: none; }
+.tk.s-attend, .tk.s-dort { border-style: dashed; }
+.tk.s-cesse, .tk.s-old { border-style: dashed; background: transparent; }
+.tk.s-cesse .ic, .tk.s-old .ic { opacity: .5; }
+.tk.s-cesse .tk-l, .tk.s-old .tk-l { font-weight: 500; }
+.tk.s-nsp { border-style: dashed; }
+.tk.s-new { box-shadow: 0 0 0 3px var(--soft); }
+.tk.s-grand { padding: 9px 13px 9px 10px; }
+.tk.s-grand .tk-l { font-size: 1rem; }
+.tk.s-germe .ic { transform: scale(.72); }
+.tk.e-aj:not(.s-attend) .ic { animation: lueur 3.4s ease-in-out infinite; }
+@keyframes lueur { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+.fused { display: grid; gap: 8px; border: 2px solid var(--aj); border-radius: 14px; padding: 10px; background: linear-gradient(135deg, var(--gold-soft), var(--ame-soft)); }
+.fused-l { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.fused-tk { display: flex; flex-wrap: wrap; gap: 6px; }
+.parking { display: none; }
+
+.cap { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cap-n { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); }
+.cap .tv-h { font-size: 1.5rem; }
+.cap .tv-h .tv-n { display: none; }
+.cap .where { display: none; }
+.cap-nav { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 2px; }
+.cap-nav .chip { min-height: 44px; text-align: left; display: inline-grid; gap: 2px; justify-items: start; padding: 8px 14px 9px; border-radius: 12px; max-width: 100%; }
+.cap-nav .cn-l { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
+.cap-nav .cn-t { font-weight: 700; font-size: .95rem; }
+.cap-nav .chip.fort { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.cap-nav .chip.fort:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.cap p { font-size: .97rem; }
+.nsp-n { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+.nsp-n .qm { flex: none; margin-top: 1px; }
+.nsp-n b { color: var(--ink); font-weight: 600; }
+
+/* Version texte */
+.tv { border-top: 1px solid var(--rule); padding-top: 12px; }
+.tv summary { cursor: pointer; font: 600 1.2rem/1.3 var(--font-display); padding-block: 8px; min-height: 44px; display: flex; align-items: center; }
+.tv-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 22px; max-width: 80ch; }
+.tv-list > li { display: grid; gap: 8px; }
+.tv-h { font-size: 1.3rem; display: flex; gap: 10px; align-items: baseline; }
+.tv-n { font: 600 .85rem/1 var(--font-mono); color: var(--gold-ink); }
+.where { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: .93rem; }
+.where li { display: grid; grid-template-columns: 1.2rem minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.where .ic { width: 1rem; height: 1rem; vertical-align: -0.15em; }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.callout li, .unk li { max-width: 78ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+/* Moins d’animations : préférence du système ou bouton du schéma */
+.calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .tk, .chev, .chip .sw::after { transition: none; }
+  .tk .ic, .pl.in { animation: none; }
+}
+
+@media (max-width: 960px) {
+  .sc-main { grid-template-columns: minmax(0, 1fr); }
+  .mw { grid-template-columns: minmax(0, 1fr); }
+  .mw-fig { position: static; max-width: 300px; }
+  .when { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .duo, .why { grid-template-columns: minmax(0, 1fr); }
+  .assembly { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 719px) {
+  .stage[data-lay="l1"] { grid-template-columns: minmax(0, 1fr); grid-template-areas: "terre" "divi"; }
+  .stage[data-lay="l4"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "divi inconnu" "garde garde" "cesse elem"; }
+  .stage[data-lay="l5"] { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "divi inconnu" "garde garde" "cesse elem" "attente attente"; }
+  .stage[data-lay="l6"] { grid-template-columns: minmax(0, 1fr); grid-template-areas: "salle" "laisse"; }
+  .sc-bar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "steps steps" "prev next"; }
+  .sc-nav { width: 100%; }
+  .stage { min-height: 0; }
+  .sc-opts { justify-content: flex-start; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 16px 24px; }
+  .circles { gap: 3px; }
+  .circles li { font-size: .74rem; }
+  .circles .n { width: 2.1rem; height: 2.1rem; }
+  .when { grid-template-columns: minmax(0, 1fr); }
+  .where-l li { grid-template-columns: 2.1rem minmax(0, 1fr); }
+  .where-l li > span:last-child { grid-column: 2; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .names { grid-template-columns: minmax(0, 1fr); }
+  .sc-steps button { min-width: 40px; height: 40px; }
+  .pl { padding: 9px 8px 10px; }
+  .tk { padding: 5px 8px 5px 7px; column-gap: 6px; }
+}
+@media (pointer: coarse) { .sc-steps button { min-height: 44px; height: 44px; } }
+</style>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-perso" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="10" cy="10" r="2.7" fill="currentColor"/></symbol>
+  <symbol id="i-aj" viewBox="0 0 20 20"><path d="M10 1.2c.8 4.9 3.9 8 8.8 8.8-4.9.8-8 3.9-8.8 8.8-.8-4.9-3.9-8-8.8-8.8 4.9-.8 8-3.9 8.8-8.8Z" fill="currentColor"/></symbol>
+  <symbol id="i-ame" viewBox="0 0 20 20"><path d="M10 1.8c3.8 4.3 5.9 7.5 5.9 10.4a5.9 5.9 0 0 1-11.8 0c0-2.9 2.1-6.1 5.9-10.4Z" fill="currentColor"/><path d="M8.2 13.2a2.2 2.2 0 0 0 2.6 2" fill="none" stroke="#FFFFFF" stroke-opacity=".7" stroke-width="1.3" stroke-linecap="round"/></symbol>
+  <symbol id="i-men" viewBox="0 0 20 20"><path d="M2.2 6.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0M2.2 10.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0M2.2 14.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-mmor" viewBox="0 0 20 20"><path d="M2.2 6.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0M2.2 10.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0M2.2 14.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-dasharray="2.2 2.2"/></symbol>
+  <symbol id="i-cor" viewBox="0 0 20 20"><circle cx="10" cy="5.1" r="3.1" fill="currentColor"/><path d="M3.8 18.6c0-4.3 2.8-7.5 6.2-7.5s6.2 3.2 6.2 7.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-forme" viewBox="0 0 20 20"><circle cx="10" cy="5.1" r="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.9 18.4c0-4.2 2.8-7.3 6.1-7.3s6.1 3.1 6.1 7.3Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+  <symbol id="p-terre" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.6 10h14.8M10 2.4c2.4 2.2 3.4 4.8 3.4 7.6s-1 5.4-3.4 7.6c-2.4-2.2-3.4-4.8-3.4-7.6s1-5.4 3.4-7.6Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="p-divi" viewBox="0 0 20 20"><circle cx="10" cy="10" r="4.2" fill="currentColor"/><path d="M10 1.5v2.6M10 15.9v2.6M1.5 10h2.6M15.9 10h2.6M4 4l1.8 1.8M14.2 14.2 16 16M4 16l1.8-1.8M14.2 5.8 16 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="p-garde" viewBox="0 0 20 20"><path d="M10 9.2C8.3 5.2 5 3.4 1.6 3.9c.6 4 3.4 7.2 8.4 7.6M10 9.2c1.7-4 5-5.8 8.4-5.3-.6 4-3.4 7.2-8.4 7.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M5.3 12.6c1.4 2.7 3 4.3 4.7 5.2 1.7-.9 3.3-2.5 4.7-5.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="p-elem" viewBox="0 0 20 20"><path d="M2 16.5h16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M4.5 16.5c1.2-3.6 3.3-5.5 5.5-5.5s4.3 1.9 5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.4"/><circle cx="6" cy="7" r="1" fill="currentColor"/><circle cx="10" cy="5" r="1" fill="currentColor"/><circle cx="14" cy="7.5" r="1" fill="currentColor"/><circle cx="8.5" cy="2.8" r=".8" fill="currentColor"/></symbol>
+  <symbol id="p-cesse" viewBox="0 0 20 20"><path d="M2.2 10.2c2.6-2.1 5.2-2.1 7.8 0s5.2 2.1 7.8 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="1.6 2.6"/><path d="M5 15h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/></symbol>
+  <symbol id="p-salle" viewBox="0 0 20 20"><path d="M3 9.2a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2 9.6h16M4.5 9.6v7M8.2 9.6v7M11.8 9.6v7M15.5 9.6v7M2.5 17.2h15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M10 1.2v2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="p-fusion" viewBox="0 0 20 20"><circle cx="7.6" cy="10" r="5.4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="12.4" cy="10" r="5.4" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="p-nsp" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="2.4 2"/><path d="M7.6 7.7a2.5 2.5 0 1 1 3.5 2.3c-.8.4-1.1 1-1.1 1.8v.4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="14.6" r="1" fill="currentColor"/></symbol>
+  <symbol id="p-temps" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 5.4V10l3.2 2.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+</svg>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · surtout les fascicules 47, 48 et 107 à 113</p>
+      <h1>La destinée humaine</h1>
+      <p class="lede">Que se passe-t-il après la mort&nbsp;? Selon le livre, un fragment de Dieu, l’Ajusteur de Pensée, vient habiter l’enfant, en moyenne juste avant six ans, et une âme grandit avec lui au fil des choix d’une vie. À la mort, le corps retourne à la poussière&nbsp;; l’âme est confiée à un ange gardien et l’Ajusteur garde la mémoire. Leur réunion, sur un autre monde, est ce que le texte appelle la résurrection.</p>
+      <a class="cta" href="#schema">Voir ce qui survit, étape par étape <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">La suite du voyage&nbsp;: <a href="atlas-3d.html#carriere">La carrière ascendante</a>, dans la vue 3D</p>
+    </div>
+    <aside class="codebox" aria-label="Lire cette page">
+      <span class="label">Les cinq réalités de l’être humain</span>
+      <ul class="keys">
+        <li class="e-perso"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-perso"/></svg></span><b>La personnalité</b><span class="kd">don du Père, ce qui ne change pas <span class="ref">0:5.11</span></span></li>
+        <li class="e-aj"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-aj"/></svg></span><b>L’Ajusteur de Pensée</b><span class="kd">l’esprit du Père qui habite le mental <span class="ref">0:5.9</span></span></li>
+        <li class="e-ame"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-ame"/></svg></span><b>L’âme morontielle</b><span class="kd">nait de l’Ajusteur et du mental <span class="ref">0:5.10</span></span></li>
+        <li class="e-men"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-men"/></svg></span><b>Le mental</b><span class="kd">pense, perçoit et ressent <span class="ref">0:5.8</span></span></li>
+        <li class="e-cor"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-cor"/></svg></span><b>Le corps</b><span class="kd">l’organisme matériel <span class="ref">0:5.7</span></span></li>
+      </ul>
+      <dl>
+        <dt><span class="qm" aria-hidden="true">?</span></dt><dd>Ce que le texte ne précise pas.</dd>
+        <dt>mental</dt><dd>traduit l’anglais <i lang="en">mind</i>&nbsp;; <i>esprit</i> traduit <i lang="en">spirit</i>. Les deux ne se confondent jamais.</dd>
+      </dl>
+      <p class="note">Couleurs et icônes sont des choix de la page&nbsp;; l’or est réservé à l’Ajusteur.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#don"><span class="nb">1</span><span class="tt">Le don du Père&nbsp;: l’Ajusteur</span></a></li>
+      <li><a href="#ame"><span class="nb">2</span><span class="tt">Le mental, l’âme, la personnalité</span></a></li>
+      <li><a href="#vie"><span class="nb">3</span><span class="tt">La vie, une suite de décisions</span></a></li>
+      <li><a href="#schema" class="hot"><span class="nb">★</span><span class="tt">Le schéma&nbsp;: ce qui survit</span></a></li>
+      <li><a href="#mort"><span class="nb">4</span><span class="tt">La mort</span></a></li>
+      <li><a href="#reveil"><span class="nb">5</span><span class="tt">Le réveil</span></a></li>
+      <li><a href="#maisons"><span class="nb">6</span><span class="tt">Les sept mondes des maisons</span></a></li>
+      <li><a href="#fusion"><span class="nb">7</span><span class="tt">La fusion avec l’Ajusteur</span></a></li>
+      <li><a href="#ensuite"><span class="nb">8</span><span class="tt">Et ensuite&nbsp;?</span></a></li>
+      <li><a href="#registres"><span class="nb">9</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="don" aria-labelledby="h-don">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Fascicules 107 et 108</p>
+      <h2 id="h-don">Le don du Père&nbsp;: l’Ajusteur de Pensée</h2>
+    </div>
+    <div class="duo">
+      <div class="prose">
+        <p>Le livre appelle <b>Ajusteur de Pensée</b>, ou Moniteur de Mystère, un fragment du Père Universel qui vient habiter le mental humain <span class="ref">107:0.1</span>. Il n’est pas créé&nbsp;: il émane directement du Père <span class="ref">107:1.2</span>.</p>
+        <blockquote class="cite e-aj" data-ref="107:1.2"><p>«&nbsp;Ils sont de Dieu et, autant que nous puissions le discerner, <i>ils sont Dieu.</i>&nbsp;»</p><span class="ref">107:1.2</span></blockquote>
+        <p>Ce n’est pas une personne&nbsp;: l’Ajusteur est prépersonnel, mais pleinement réel <span class="ref">0:5.9 ; 107:7.1</span>. Il vient de Divinington, l’une des sphères du Père autour du Paradis <span class="ref">13:1.4</span>, <span class="q" data-ref="107:3.2">«&nbsp;royaume présumé de leur origine&nbsp;»</span>, dont l’auteur dit savoir moins que des autres <span class="ref">107:3.2–3</span>. Selon l’âge, le texte le nomme parfois Changeur de Pensée, Ajusteur, puis Contrôleur de Pensée <span class="ref">107:0.7</span>.</p>
+        <blockquote class="cite e-aj" data-ref="108:2.4"><p>«&nbsp;Dieu et l’homme sont reliés directement.&nbsp;»</p><span class="ref">108:2.4</span></blockquote>
+      </div>
+      <aside class="fact" aria-labelledby="h-fact">
+        <p class="big" id="h-fact"><small>Âge moyen de son arrivée</small>5&nbsp;ans, 10&nbsp;mois et 4&nbsp;jours</p>
+        <p>Soit 2&#8239;134&nbsp;jours de vie, chiffre donné pour <span class="q" data-ref="108:2.1">«&nbsp;la présente génération&nbsp;»</span>&nbsp;; en moyenne, dit le texte, juste avant six ans <span class="ref">108:2.1</span>.</p>
+        <p>L’Ajusteur s’est porté volontaire, mais il n’est affecté qu’après la <b>première décision morale</b> de l’enfant <span class="ref">108:2.1</span>. Le mental doit y avoir été préparé par les sept esprits-mentaux adjuvats <span class="ref">108:2.2</span>. Depuis la Pentecôte, il vient à <span class="q" data-ref="108:2.3">«&nbsp;tout mental normal ayant statut moral&nbsp;»</span> <span class="ref">108:2.3</span>.</p>
+        <ul class="names" aria-label="Ses noms selon l’âge">
+          <li><b>Changeur</b><span>jusque vers 20&nbsp;ans</span></li>
+          <li><b>Ajusteur</b><span>jusque vers 40&nbsp;ans</span></li>
+          <li><b>Contrôleur</b><span>ensuite</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="ame" aria-labelledby="h-ame">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Introduction, fascicules 111 et 112</p>
+      <h2 id="h-ame">Le mental, l’âme morontielle, la personnalité</h2>
+      <p>Le texte distingue en l’être humain cinq réalités&nbsp;: le corps, le mental, l’esprit, c’est-à-dire l’Ajusteur, l’âme et la personnalité <span class="ref">0:5.6–11</span>. L’Ajusteur vient d’être présenté&nbsp;; voici le mental, l’âme et la personnalité.</p>
+    </div>
+    <div class="cards">
+      <article class="card e-men">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg>Le mental</h3>
+        <p>Le cadre où l’on vit, où l’on décide, où l’on choisit Dieu ou l’abandonne <span class="ref">111:1.3</span>. Le Père a donné l’Ajusteur, mais le mental a été remis entre nos mains&nbsp;: c’est par lui que l’on vit ou que l’on meurt <span class="ref">111:1.4</span>. C’est un système prêté pour la durée de la vie <span class="ref">111:1.5</span>.</p>
+      </article>
+      <article class="card e-ame">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg>L’âme morontielle</h3>
+        <p>Ni matérielle ni spirituelle, elle est <i>morontielle</i>&nbsp;: l’Ajusteur en est le père, le mental la mère <span class="ref">0:5.10</span>. Elle nait de leur relation, peu à peu, à mesure que la personne choisit de faire la volonté du Père <span class="ref">0:5.10 ; 111:2.7</span>. Les médians l’appellent mental intermédiaire <span class="ref">111:2.8</span>.</p>
+        <blockquote class="cite e-ame" data-ref="111:2.2"><p>«&nbsp;Le mental matériel de l’homme mortel est le métier cosmique qui porte le tissu morontiel sur lequel l’Ajusteur de Pensée intérieur brode les modèles spirituels […]&nbsp;»</p><span class="ref">111:2.2</span></blockquote>
+      </article>
+      <article class="card e-perso">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg>La personnalité</h3>
+        <p>Don du Père, elle n’est ni le corps, ni le mental, ni l’esprit, ni l’âme <span class="ref">0:5.11</span>. Elle est unique et sans copie <span class="ref">112:0.12</span>, et peut survivre à la mort avec l’identité dans l’âme survivante <span class="ref">112:0.15</span>.</p>
+        <blockquote class="cite e-perso" data-ref="0:5.11"><p>«&nbsp;La personnalité est la seule réalité invariante dans l’expérience constamment changeante d’une créature […]&nbsp;»</p><span class="ref">0:5.11</span></blockquote>
+      </article>
+    </div>
+    <p class="sub-p hint">Le texte reconnait la limite de ces définitions&nbsp;: il juge présomptueux de définir la personnalité <span class="ref">112:0.2</span>, et l’âme, dit-il, ne se connait que <span class="q" data-ref="111:0.1">«&nbsp;par clairvoyance cosmique et par découverte spirituelle&nbsp;»</span> <span class="ref">111:0.1</span>.</p>
+  </section>
+
+  <section id="vie" aria-labelledby="h-vie">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicules 110 et 111</p>
+      <h2 id="h-vie">La vie, une suite de décisions</h2>
+      <p>Pour le texte, la vie terrestre est d’abord une école.</p>
+      <blockquote class="cite e-ame" data-ref="111:3.5"><p>«&nbsp;La carrière de mortel, l’évolution de l’âme, n’est pas tant une épreuve qu’une éducation.&nbsp;»</p><span class="ref">111:3.5</span></blockquote>
+    </div>
+    <div class="prose">
+      <p>L’Ajusteur ne domine jamais le mental contre la volonté <span class="ref">111:1.8</span>. Chaque décision gêne ou facilite son travail, et c’est la répétition des choix qui forme des habitudes <span class="ref">110:6.6</span>. Tant que la fusion n’a pas eu lieu, on peut encore revenir sur son choix <span class="ref">111:3.1</span>.</p>
+    </div>
+    <h3 class="sub-h">Les sept cercles psychiques</h3>
+    <p class="sub-p">La croissance se mesure en sept cercles, que l’on franchit du septième au premier, avec l’Ajusteur pour partenaire <span class="ref">110:6.1–2</span>. Le texte n’en décrit que trois&nbsp;:</p>
+    <ol class="circles" aria-label="Les sept cercles, du septième au premier">
+      <li class="k"><span class="n">7</span><span>l’entrée&nbsp;: choix moral, arrivée de l’Ajusteur</span></li>
+      <li><span class="n">6</span></li>
+      <li><span class="n">5</span></li>
+      <li><span class="n">4</span></li>
+      <li class="k"><span class="n">3</span><span>un gardien séraphique personnel</span></li>
+      <li><span class="n">2</span></li>
+      <li class="k"><span class="n">1</span><span>l’Ajusteur peut parler directement</span></li>
+    </ol>
+    <p class="circles-cap">Septième cercle <span class="ref">110:6.13</span>, troisième <span class="ref">110:6.14</span>, premier <span class="ref">110:6.15</span>. Franchir les cercles n’est pas la fusion <span class="ref">110:7.1</span>&nbsp;; ce qui n’est pas achevé ici se poursuit sur les mondes des maisons, où celui du septième cercle part comme celui du premier <span class="ref">110:6.16 ; 110:6.18</span>.</p>
+    <div class="why">
+      <article>
+        <h3>Qu’est-ce qui empêche de survivre&nbsp;?</h3>
+        <blockquote class="cite e-ame" data-ref="110:3.5"><p>«&nbsp;L’ignorance à elle seule ne peut jamais empêcher la survie, pas plus que les doutes confusionnels ou l’incertitude craintive.&nbsp;»</p><span class="ref">110:3.5</span></blockquote>
+        <p>Seule la résistance consciente à l’Ajusteur le peut, selon le même passage <span class="ref">110:3.5</span>. Si les accidents de la vie ont empêché d’avancer et que les intentions ont une valeur de survie, la période d’épreuve est prolongée&nbsp;; en cas de doute, les gouvernements de l’univers tranchent en faveur de la personne <span class="ref">112:5.6–7</span>.</p>
+      </article>
+      <article>
+        <h3>Une seconde chance&nbsp;?</h3>
+        <p>Pas après un premier refus, précise le texte. Mais chacun doit avoir une véritable occasion de faire un choix pleinement conscient et définitif <span class="ref">112:5.9</span>.</p>
+        <blockquote class="cite e-ame" data-ref="111:3.7"><p>«&nbsp;[…] ce que vous commencez dans le temps, vous l’achèverez surement dans l’éternité — si cela mérite d’être achevé.&nbsp;»</p><span class="ref">111:3.7</span></blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section id="schema" class="feature" aria-labelledby="h-sc">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif</p>
+      <h2 id="h-sc">Ce qui survit, et où va chaque élément</h2>
+      <p>Suis les cinq réalités de l’enfance au réveil. À la mort, elles se séparent, chacune vers le lieu que le texte indique&nbsp;; au réveil, celles qui survivent se retrouvent.</p>
+      <p class="hint" id="sc-aide">Avance avec <b>Suivant</b> et <b>Précédent</b>, ou choisis une étape. Au clavier&nbsp;: Tab jusqu’aux boutons, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="sc" id="sc" hidden>
+      <div class="sc-bar" id="sc-bar" role="group" aria-label="Étapes du schéma" aria-describedby="sc-aide">
+        <button type="button" class="sc-nav" id="sc-prev">← Précédent</button>
+        <ol class="sc-steps" id="sc-steps"></ol>
+        <button type="button" class="sc-nav" id="sc-next">Suivant →</button>
+      </div>
+      <div class="sc-opts">
+        <button type="button" class="chip" id="sc-calme" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip" href="#sc-texte" id="sc-tv">Version texte</a>
+      </div>
+      <div class="sc-main">
+        <div class="stage" id="stage" role="group" aria-label="Où se trouve chaque élément à cette étape"></div>
+        <div class="cap" id="sc-cap"></div>
+      </div>
+      <p class="sr-only" id="sc-status" aria-live="polite"></p>
+    </div>
+
+    <details class="tv" id="sc-texte" open>
+      <summary>Version texte du schéma</summary>
+      <ol class="tv-list">
+        <li id="tv-1">
+          <h3 class="tv-h"><span class="tv-n">1</span>Avant l’Ajusteur&nbsp;: l’enfant</h3>
+          <p>Le corps vient de l’évolution, le mental est prêté pour la durée de la vie <span class="ref">111:1.4–5</span>, et la personnalité est un don du Père <span class="ref">0:5.11</span>. L’Ajusteur s’est déjà porté volontaire&nbsp;; il n’est affecté qu’après la première décision morale de l’enfant <span class="ref">108:2.1</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: avec l’enfant, don du Père <span class="ref">0:5.11</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: sur Divinington, volontaire, en attente <span class="ref">108:2.1</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: pas encore&nbsp;; elle naitra de l’Ajusteur et du mental <span class="ref">0:5.10</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: prêté pour la durée de la vie <span class="ref">111:1.5</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: issu de l’évolution <span class="ref">111:1.4</span></span></li>
+          </ul>
+          <blockquote class="cite e-cor" data-ref="111:1.4"><p>«&nbsp;L’évolution matérielle vous a procuré une machine à vivre, votre corps.&nbsp;»</p><span class="ref">111:1.4</span></blockquote>
+          <p class="nsp-n"><span class="qm" aria-hidden="true">?</span><span><b>Non précisé.</b> À quel moment la personnalité est conférée à l’enfant.</span></p>
+        </li>
+        <li id="tv-2">
+          <h3 class="tv-h"><span class="tv-n">2</span>L’arrivée de l’Ajusteur</h3>
+          <p>Après le premier choix moral, l’Ajusteur vient habiter le mental, en moyenne juste avant six ans <span class="ref">108:2.1</span>. De leur relation nait peu à peu l’âme morontielle&nbsp;: l’Ajusteur en est le père, le mental la mère <span class="ref">0:5.10 ; 111:2.10</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: unifie le tout <span class="ref">0:5.11</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: habite le mental <span class="ref">0:5.9</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: commence à naitre <span class="ref">111:2.10</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: préparé par les sept adjuvats <span class="ref">108:2.2</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: sur Urantia</span></li>
+          </ul>
+          <blockquote class="cite e-aj" data-ref="108:2.1"><p>«&nbsp;Dans la présente génération, c’est à l’âge de cinq ans, dix mois et quatre jours, c’est-à-dire après 2&#8239;134 jours de la vie terrestre de l’enfant.&nbsp;»</p><span class="ref">108:2.1</span></blockquote>
+        </li>
+        <li id="tv-3">
+          <h3 class="tv-h"><span class="tv-n">3</span>Une vie de décisions</h3>
+          <p>Chaque décision gêne ou facilite le travail de l’Ajusteur <span class="ref">110:6.6</span>, et l’âme reflète la moisson des choix <span class="ref">111:1.5</span>. Au troisième cercle, un gardien séraphique personnel est affecté <span class="ref">110:6.14</span>&nbsp;; avant, des gardiens veillent sur des groupes, jusqu’à mille personnes <span class="ref">113:1.7</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: choisit, par la volonté <span class="ref">111:3.2</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: guide, sans jamais dominer <span class="ref">111:1.8</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: grandit avec les décisions <span class="ref">110:6.9</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: le cadre des choix <span class="ref">111:1.3</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: sur Urantia</span></li>
+          </ul>
+          <blockquote class="cite e-men" data-ref="111:1.9"><p>«&nbsp;Le mental est votre navire, l’Ajusteur est votre pilote, la volonté humaine est le capitaine.&nbsp;»</p><span class="ref">111:1.9</span></blockquote>
+        </li>
+        <li id="tv-4">
+          <h3 class="tv-h"><span class="tv-n">4</span>La mort&nbsp;: chacun vers son lieu</h3>
+          <p>L’Ajusteur reste jusqu’à l’arrêt des énergies du cerveau, puis part pour Divinington en passant par Uversa <span class="ref">112:3.4</span>. Le corps retourne au monde élémental&nbsp;; l’Ajusteur emporte la mémoire transcrite, et l’âme est confiée au gardien de la destinée <span class="ref">112:3.5</span>. Le mental matériel cesse, mais ses valeurs ne périssent pas <span class="ref">112:6.4</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: lieu exact inconnu&nbsp;; les archanges en gardent les données <span class="ref">112:5.15</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: vers Divinington, par Uversa, avec la mémoire <span class="ref">112:3.4–5</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: confiée au gardien séraphique <span class="ref">112:3.5</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: cesse&nbsp;; ses valeurs restent dans l’âme et chez l’Ajusteur <span class="ref">112:6.4 ; 47:3.3</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: retourne au monde élémental <span class="ref">112:3.5</span></span></li>
+          </ul>
+          <blockquote class="cite e-perso" data-ref="112:5.15"><p>«&nbsp;Quant à l’emplacement exact de la personnalité du mortel pendant la période intermédiaire entre la mort et la survie, nous ne le connaissons pas.&nbsp;»</p><span class="ref">112:5.15</span></blockquote>
+          <p class="nsp-n"><span class="qm" aria-hidden="true">?</span><span><b>Non précisé.</b> Où se trouve la personnalité pendant l’attente.</span></p>
+        </li>
+        <li id="tv-5">
+          <h3 class="tv-h"><span class="tv-n">5</span>Le sommeil</h3>
+          <p>L’âme est entièrement inconsciente et ne communique pas avec les vivants <span class="ref">112:3.7 ; 112:5.13</span>. L’Ajusteur n’habite aucun autre mental pendant ce temps <span class="ref">49:6.5</span>. Qui a un gardien personnel se réveille <span class="q" data-ref="30:4.11">«&nbsp;à la troisième période&nbsp;»</span>&nbsp;; les autres dorment jusqu’à un appel nominal de fin d’âge ou une résurrection spéciale <span class="ref">30:4.11 ; 49:6.2</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: lieu exact inconnu <span class="ref">112:5.15</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: sur Divinington, en attente ou en affectation temporaire <span class="ref">112:4.4–11</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: inconsciente, sous la garde du séraphin <span class="ref">112:5.13</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: a cessé <span class="ref">112:5.14</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: retourné à la poussière <span class="ref">30:4.15</span></span></li>
+          </ul>
+          <blockquote class="cite e-ame" data-ref="30:4.12"><p>«&nbsp;Lors du réassemblage de leur personnalité à la fin d’un âge, ceux qui auront dormi cinq-mille ans ne réagiront pas différemment de ceux qui se seront reposés cinq jours.&nbsp;»</p><span class="ref">30:4.12</span></blockquote>
+          <p class="nsp-n"><span class="qm" aria-hidden="true">?</span><span><b>Non précisé.</b> La durée de la <span class="q" data-ref="30:4.11">«&nbsp;troisième période&nbsp;»</span>.</span></p>
+        </li>
+        <li id="tv-6">
+          <h3 class="tv-h"><span class="tv-n">6</span>Le réveil</h3>
+          <p>Dans la salle de résurrection du premier monde des maisons, une forme morontielle est préparée, l’Ajusteur revient, et le gardien séraphique y place l’âme&nbsp;: la mémoire et la conscience reviennent <span class="ref">112:5.16–19</span>. Le corps de chair, lui, ne revient pas <span class="ref">30:4.15</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: reconstituée par la réunion de l’âme et de l’Ajusteur <span class="ref">112:3.5</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur</b>&nbsp;: revient, gardien de l’identité <span class="ref">112:5.18</span></span></li>
+            <li class="e-ame"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-ame"/></svg><span><b>Âme</b>&nbsp;: placée par le séraphin dans la forme morontielle <span class="ref">112:5.19</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mmor"/></svg><span><b>Mental</b>&nbsp;: un mental morontiel, variante du mental cosmique <span class="ref">112:5.17 ; 112:6.4</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-forme"/></svg><span><b>Corps</b>&nbsp;: remplacé par une forme morontielle <span class="ref">30:4.15 ; 112:5.17</span></span></li>
+          </ul>
+          <blockquote class="cite e-ame" data-ref="113:6.6"><p>«&nbsp;L’Ajusteur vous identifiera. L’ange gardien vous repersonnalisera et vous présentera de nouveau au fidèle Moniteur de vos jours terrestres.&nbsp;»</p><span class="ref">113:6.6</span></blockquote>
+        </li>
+        <li id="tv-7">
+          <h3 class="tv-h"><span class="tv-n">7</span>La fusion</h3>
+          <p>Plus tard, souvent sur le cinquième ou le sixième monde des maisons, l’âme et l’Ajusteur fusionnent pour toujours <span class="ref">47:8.3 ; 112:7.10</span>, une fois le choix devenu définitif <span class="ref">112:7.5</span>. Rare exception&nbsp;: la fusion pendant la vie terrestre, sans passer par la mort <span class="ref">110:7.2</span>.</p>
+          <ul class="where">
+            <li class="e-perso"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-perso"/></svg><span><b>Personnalité</b>&nbsp;: une seule personnalité, un seul être <span class="ref">112:7.8</span></span></li>
+            <li class="e-aj"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-aj"/></svg><span><b>Ajusteur et âme</b>&nbsp;: fusionnés pour l’éternité <span class="ref">112:7.10</span></span></li>
+            <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mmor"/></svg><span><b>Mental</b>&nbsp;: morontiel, jusqu’au stade d’esprit <span class="ref">112:6.10</span></span></li>
+            <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-forme"/></svg><span><b>Forme</b>&nbsp;: une nouvelle forme morontielle à chaque monde <span class="ref">47:4.4</span></span></li>
+          </ul>
+          <blockquote class="cite e-aj" data-ref="110:7.4"><p>«&nbsp;À la suite de sa fusion avec vous, votre Ajusteur partage votre destinée et votre expérience&nbsp;; <i>il est vous.</i>&nbsp;»</p><span class="ref">110:7.4</span></blockquote>
+        </li>
+      </ol>
+    </details>
+  </section>
+
+  <section id="mort" aria-labelledby="h-mort">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · Fascicules 112 et 113</p>
+      <h2 id="h-mort">La mort</h2>
+      <p>On ne connait d’ordinaire qu’une sorte de mort&nbsp;; le texte en compte <span class="q" data-ref="112:3.1">«&nbsp;trois espèces de morts&nbsp;»</span> <span class="ref">112:3.1</span>.</p>
+    </div>
+    <div class="cards">
+      <article class="card e-ame">
+        <p class="st">Spirituelle · de l’âme</p>
+        <h3>Le refus définitif</h3>
+        <p>Quand une personne a rejeté la survie pour de bon, et que ce verdict est confirmé sur Uversa, l’Ajusteur est libéré, même si le corps vit encore <span class="ref">112:3.2</span>.</p>
+        <blockquote class="cite e-ame" data-ref="112:3.2"><p>«&nbsp;Du point de vue cosmique, l’intéressé est déjà mort.&nbsp;»</p><span class="ref">112:3.2</span></blockquote>
+      </article>
+      <article class="card e-men">
+        <p class="st">Intellectuelle · du mental</p>
+        <h3>Le mental détruit</h3>
+        <p>Quand les circuits du mental sont détruits sans retour, l’Ajusteur part aussitôt pour Divinington. L’âme peut pourtant survivre&nbsp;: tout dépend des choix faits auparavant <span class="ref">112:3.3</span>.</p>
+      </article>
+      <article class="card e-cor">
+        <p class="st">Physique · du corps et du mental</p>
+        <h3>La mort ordinaire</h3>
+        <p>L’Ajusteur reste dans le mental jusqu’à ce que cessent les pulsations des énergies du cerveau, puis il part pour Divinington en passant par Uversa <span class="ref">112:3.4</span>.</p>
+      </article>
+    </div>
+
+    <h3 class="sub-h">Ce que devient chaque élément</h3>
+    <ul class="where-l">
+      <li class="e-cor"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-cor"/></svg></span><b>Le corps</b><span>Il retourne au monde élémental d’où il provenait <span class="ref">112:3.5</span>, et ne fera pas partie de la résurrection <span class="ref">30:4.15</span>.</span></li>
+      <li class="e-men"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-men"/></svg></span><b>Le mental</b><span><span class="q" data-ref="112:6.4">«&nbsp;L’intellect mortel en tant que tel a péri&nbsp;»</span>, mais pas ses valeurs&nbsp;: la matrice mentale demeure dans l’âme, les transcriptions de la mémoire chez l’Ajusteur <span class="ref">112:6.4 ; 47:3.3</span>.</span></li>
+      <li class="e-aj"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-aj"/></svg></span><b>L’Ajusteur</b><span>Il part pour Divinington avec la mémoire transcrite de la vie <span class="ref">112:3.5</span>, et n’habite aucun autre mental pendant l’attente <span class="ref">49:6.5</span>.</span></li>
+      <li class="e-ame"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-ame"/></svg></span><b>L’âme</b><span>Confiée au gardien séraphique de la destinée, elle est entièrement inconsciente jusqu’au réveil <span class="ref">112:3.5 ; 112:5.13</span>.</span></li>
+      <li class="e-perso e-nsp"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-perso"/></svg></span><b>La personnalité</b><span>Les archanges en gardent les données sur leurs mondes&nbsp;; son emplacement exact, l’auteur dit ne pas le connaitre <span class="ref">112:5.15 ; 37:3.8</span>.</span></li>
+    </ul>
+
+    <h3 class="sub-h">Le gardien séraphique et le <i>sommeil</i></h3>
+    <div class="prose">
+      <p>À la mort, le gardien de la destinée conserve le curriculum de la vie, les spécifications d’identité et l’âme morontielle, tout le vrai moi, sauf l’identité que représente l’Ajusteur et l’actualité de la personnalité <span class="ref">113:6.1</span>. Il se rend ensuite sur le premier monde des maisons pour y attendre le réveil <span class="ref">113:6.2</span>. Pour qui n’a pas de gardien personnel, des gardiens collectifs rendent le même service <span class="ref">112:3.6</span>.</p>
+      <blockquote class="cite e-ame" data-ref="113:6.5"><p>«&nbsp;Le séraphin gardien est le fidéicommissaire conservateur des valeurs de survie de l’âme endormie du mortel, tandis que l’Ajusteur absent <i>est</i> l’identité de cet être immortel de l’univers.&nbsp;»</p><span class="ref">113:6.5</span></blockquote>
+      <p>Le texte parle d’un sommeil, court ou long. Il n’y a ni conscience ni communication avec les vivants, et ceux qui vont sur les mondes des maisons ne peuvent pas envoyer de messages à ceux qu’ils aimaient <span class="ref">112:3.7</span>.</p>
+      <blockquote class="cite e-ame" data-ref="112:3.7"><p>«&nbsp;Ces âmes séparées de l’Ajusteur sont entièrement et absolument inconscientes pendant le court ou long sommeil de la mort.&nbsp;»</p><span class="ref">112:3.7</span></blockquote>
+      <p class="hint">À ne pas confondre avec le <i>sommeil de transit</i> d’un monde des maisons à l’autre, pendant lequel l’Ajusteur ne quitte plus la personne <span class="ref">47:4.4</span>.</p>
+    </div>
+
+    <h3 class="sub-h">Les différences selon les cas</h3>
+    <div class="cases">
+      <article>
+        <p class="tag">Avec un gardien personnel</p>
+        <h3>Un réveil rapide</h3>
+        <p>Qui a atteint le troisième cercle, ou mieux, et reçu un gardien personnel peut passer aussitôt aux salles de résurrection, si le séraphin et l’Ajusteur s’accordent sur sa vie et que les Censeurs Universels le confirment <span class="ref">112:4.12</span>. Le réveil a lieu à la troisième période, ou le troisième jour <span class="ref">30:4.11 ; 49:6.9</span>.</p>
+      </article>
+      <article>
+        <p class="tag">Sans gardien personnel</p>
+        <h3>Le sommeil jusqu’à un appel</h3>
+        <p>D’autres attendent la fin du jugement de leur cas, ou dorment avec les <i>survivants endormis</i>, réveillés ensemble à la fin d’une dispensation <span class="ref">112:5.10</span>, ou lors de résurrections spéciales, au moins tous les mille ans <span class="ref">49:6.2</span>. Selon le texte, le troisième appel général de la planète eut lieu à la résurrection de Jésus <span class="ref">189:3.2–3</span>.</p>
+      </article>
+      <article>
+        <p class="tag">Les enfants</p>
+        <h3>Ils suivent leurs parents</h3>
+        <p>Ceux qui meurent trop jeunes pour avoir un Ajusteur sont repersonnalisés quand l’un de leurs parents arrive sur les mondes des maisons&nbsp;; ceux qui ont un Ajusteur mais n’ont pas encore choisi suivent le parent le plus avancé <span class="ref">49:6.11–12</span>. Ils grandissent dans une nursery où ils pourront faire leur choix <span class="ref">47:2.1–5</span>.</p>
+        <blockquote class="cite e-ame" data-ref="49:6.12"><p>«&nbsp;[…] tous les enfants dépourvus d’Ajusteur sont comptés comme encore attachés à leurs parents.&nbsp;»</p><span class="ref">49:6.12</span></blockquote>
+      </article>
+      <article>
+        <p class="tag">Les transférés</p>
+        <h3>Sans passer par la mort</h3>
+        <p>Si la fusion avec l’Ajusteur a lieu pendant la vie, il n’y a pas de mort&nbsp;: la personne est transférée <span class="ref">110:7.2 ; 112:4.3</span>. Voir l’étape 7.</p>
+      </article>
+      <article>
+        <p class="tag">Le refus</p>
+        <h3>Ceux qui ne survivent pas</h3>
+        <p>À l’appel de fin d’âge, le séraphin répond pour eux, mais l’Ajusteur ne répond pas&nbsp;: c’est la <span class="q" data-ref="113:6.8">«&nbsp;résurrection des injustes&nbsp;»</span>, en fait le constat qu’ils ont cessé d’exister <span class="ref">113:6.8</span>. Leurs valeurs spirituelles survivent dans l’Ajusteur <span class="ref">2:3.4 ; 196:3.35</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="reveil" aria-labelledby="h-rev">
+    <div class="sec-head">
+      <p class="eyebrow"><b>5</b> · Fascicules 47 et 112</p>
+      <h2 id="h-rev">Le réveil&nbsp;: la salle de résurrection</h2>
+      <p>Le réveil a lieu sur le premier monde des maisons, l’un des cinquante-six mondes qui entourent Jérusem, la capitale du système <span class="ref">47:0.1</span>. Son centre est la salle de résurrection, <span class="q" data-ref="47:3.2">«&nbsp;le temple colossal où l’on reconstitue les personnalités&nbsp;»</span>&nbsp;; du Temple de la Vie Nouvelle partent sept ailes, une par race <span class="ref">47:3.2 ; 47:3.5</span>.</p>
+    </div>
+    <ol class="assembly" aria-label="Les trois opérations du réveil">
+      <li class="e-cor"><b>Une forme morontielle</b><span>Elle est construite pour accueillir le survivant et y relier un mental morontiel <span class="ref">112:5.17</span>.</span></li>
+      <li class="e-aj"><b>Le retour de l’Ajusteur</b><span>Il garantit que c’est bien la même personne qui se réveille <span class="ref">112:5.18</span>.</span></li>
+      <li class="e-ame"><b>L’âme est placée</b><span>Le gardien séraphique l’installe dans la forme et l’unit à l’Ajusteur&nbsp;: mémoire, clairvoyance et conscience reviennent <span class="ref">112:5.19</span>.</span></li>
+    </ol>
+    <div class="prose">
+      <blockquote class="cite e-aj" data-ref="112:5.18"><p>«&nbsp;Votre Moniteur représente l’assurance absolue que c’est vous-même et non un autre qui occuperez la forme morontielle créée pour le réveil de votre personnalité.&nbsp;»</p><span class="ref">112:5.18</span></blockquote>
+      <p><b>La mémoire.</b> Au réveil, la vie terrestre semble d’abord <span class="q" data-ref="112:5.21">«&nbsp;un vague rêve embrumé&nbsp;»</span>, que le temps éclaircira <span class="ref">112:5.21</span>. L’Ajusteur ne rend que ce qui a une valeur durable&nbsp;; le reste périt avec le cerveau <span class="ref">112:5.22</span>.</p>
+      <blockquote class="cite e-perso" data-ref="112:5.22"><p>«&nbsp;Mais la personnalité et les relations entre personnalités ne sont jamais des échafaudages&nbsp;; la mémoire humaine des relations de personnalités a une valeur cosmique et persistera.&nbsp;»</p><span class="ref">112:5.22</span></blockquote>
+      <p><b>Les premiers jours.</b> On reprend sa vie exactement là où la mort l’a interrompue&nbsp;: entre la mort et le réveil, on ne gagne rien, sauf l’expérience de la survie <span class="ref">47:3.1 ; 47:3.7</span>. Un Compagnon de la Morontia accueille l’arrivant <span class="ref">48:3.8</span>&nbsp;; viennent ensuite dix jours de liberté, pour explorer et rendre visite à ceux qu’on aimait <span class="ref">47:3.6</span>.</p>
+    </div>
+  </section>
+
+  <section id="maisons" aria-labelledby="h-mai">
+    <div class="sec-head">
+      <p class="eyebrow"><b>6</b> · Fascicules 47 et 48</p>
+      <h2 id="h-mai">Les sept mondes des maisons, puis la vie morontielle</h2>
+      <p>Le nom vient d’une parole de Jésus sur les <span class="q" data-ref="47:0.1">«&nbsp;nombreuses maisons dans l’univers du Père&nbsp;»</span>. Ce sont les sept satellites du premier monde de transition de Jérusem <span class="ref">47:0.1</span>. On passe de l’un à l’autre en s’endormant pour le transport séraphique, et l’on se réveille chaque fois dans un nouveau corps morontiel <span class="ref">47:4.4</span>.</p>
+    </div>
+    <div class="mw">
+      <ol class="worlds" aria-label="Les sept mondes des maisons">
+        <li><span class="wn">1</span><span class="wt">Le réveil et les déficiences</span><span class="wd">On y corrige surtout les manques de la vie terrestre <span class="ref">47:3.8</span>.</span></li>
+        <li><span class="wn">2</span><span class="wt">L’apaisement du mental</span><span class="wd">Les conflits intellectuels et les disharmonies du mental se guérissent&nbsp;; la vie sociale prend forme <span class="ref">47:4.1 ; 47:4.8</span>.</span></li>
+        <li><span class="wn">3</span><span class="wt">Une éducation positive</span><span class="wd">Commence la vraie culture morontielle <span class="ref">47:5.3</span>.</span></li>
+        <li><span class="wn">4</span><span class="wt">Une vie sociale nouvelle</span><span class="wd">Fondée sur le service mutuel, non sur la recherche de soi <span class="ref">47:6.3</span>.</span></li>
+        <li><span class="wn">5</span><span class="wt">L’éveil cosmique</span><span class="wd"><span class="q" data-ref="47:7.5">«&nbsp;Une véritable naissance de la conscience cosmique&nbsp;»</span>&nbsp;; on apprend la langue d’Uversa <span class="ref">47:7.2 ; 47:7.5</span>.</span></li>
+        <li class="six"><span class="wn">6</span><span class="wt">Souvent, la fusion</span><span class="wd">On y assiste d’ordinaire à la fusion avec l’Ajusteur&nbsp;; premières leçons d’administration de l’univers <span class="ref">47:8.2–3</span>.</span></li>
+        <li><span class="wn">7</span><span class="wt">Vers Jérusem</span><span class="wd">Les dernières traces d’une hérédité malheureuse et d’un milieu malsain disparaissent&nbsp;; on se prépare, en groupe, à la citoyenneté de Jérusem <span class="ref">47:9.1 ; 47:9.3</span>.</span></li>
+      </ol>
+      <figure class="mw-fig">
+        <svg viewBox="0 0 300 260" role="img" aria-label="Image symbolique : sept satellites, les mondes des maisons, autour du monde de transition numéro un, lui-même satellite de Jérusem. Le sixième est en or : la fusion y a souvent lieu.">
+          <circle class="orb" cx="150" cy="128" r="94"/>
+          <circle class="hub" cx="150" cy="128" r="38"/>
+          <text class="fig-h" x="150" y="124" text-anchor="middle">monde de</text>
+          <text class="fig-h" x="150" y="139" text-anchor="middle">transition 1</text>
+          <g>
+            <circle class="sat" cx="150" cy="34" r="17"/><text class="fig-t" x="150" y="38.5" text-anchor="middle">1</text>
+            <circle class="sat" cx="223.5" cy="69.4" r="17"/><text class="fig-t" x="223.5" y="73.9" text-anchor="middle">2</text>
+            <circle class="sat" cx="241.6" cy="148.9" r="17"/><text class="fig-t" x="241.6" y="153.4" text-anchor="middle">3</text>
+            <circle class="sat" cx="190.8" cy="212.7" r="17"/><text class="fig-t" x="190.8" y="217.2" text-anchor="middle">4</text>
+            <circle class="sat" cx="109.2" cy="212.7" r="17"/><text class="fig-t" x="109.2" y="217.2" text-anchor="middle">5</text>
+            <circle class="sat g" cx="58.4" cy="148.9" r="17"/><text class="fig-t" x="58.4" y="153.4" text-anchor="middle">6</text>
+            <circle class="sat" cx="76.5" cy="69.4" r="17"/><text class="fig-t" x="76.5" y="73.9" text-anchor="middle">7</text>
+          </g>
+          <text class="fig-m" x="150" y="252" text-anchor="middle">dix jours par monde, au moins</text>
+        </svg>
+        <figcaption>Image symbolique. Dix jours par monde si l’on n’y est pas retenu <span class="ref">47:3.10</span>&nbsp;; les plus avancés commencent plus haut, parfois sur le septième <span class="ref">49:6.10</span>.</figcaption>
+      </figure>
+    </div>
+    <blockquote class="cite e-ame" data-ref="47:9.5" style="margin-top: 22px; max-width: 74ch;"><p>«&nbsp;Vous aurez grand plaisir à progresser par les sept mondes dématérialisants&nbsp;; ce sont vraiment des sphères où l’on cesse progressivement d’être mortel.&nbsp;»</p><span class="ref">47:9.5</span></blockquote>
+    <div class="moron">
+      <h3>La vie morontielle</h3>
+      <p>La morontia est <span class="q" data-ref="0:5.12">«&nbsp;un vaste niveau intermédiaire entre le matériel et le spirituel&nbsp;»</span> <span class="ref">0:5.12</span>. Pour le texte, c’est la seule voie vers le monde spirituel&nbsp;: la mort n’a aucune <span class="q" data-ref="48:0.2">«&nbsp;vertu magique&nbsp;»</span> qui rendrait parfait d’un seul coup <span class="ref">48:0.2</span>.</p>
+      <p>Jusqu’à Salvington, la capitale de l’univers local, on reçoit successivement 570 corps morontiels <span class="ref">48:1.5</span>. Sur les mondes des maisons, on mange, on boit et l’on se repose encore <span class="ref">47:4.6</span>&nbsp;; la vie se partage à peu près également entre le travail et le jeu <span class="ref">48:4.1</span>. Des Compagnons de la Morontia guident les arrivants <span class="ref">47:3.11–12</span>, des Éducateurs des Mondes des Maisons enseignent <span class="ref">48:5.1</span>, et la <i>mota</i> morontielle prolonge la philosophie humaine <span class="ref">48:7.1</span>.</p>
+      <blockquote class="cite e-aj" data-ref="48:8.3"><p>«&nbsp;Il y a un but de service transcendant caché au-delà de l’horizon du présent âge de l’univers.&nbsp;»</p><span class="ref">48:8.3</span></blockquote>
+    </div>
+  </section>
+
+  <section id="fusion" aria-labelledby="h-fus">
+    <div class="sec-head">
+      <p class="eyebrow"><b>7</b> · Fascicules 110 et 112</p>
+      <h2 id="h-fus">La fusion avec l’Ajusteur</h2>
+      <p>C’est le but de tout le parcours&nbsp;: l’union éternelle de l’âme et de l’Ajusteur <span class="ref">112:0.1 ; 112:7.2</span>. Franchir les sept cercles ne suffit pas&nbsp;: il faut harmoniser définitivement la volonté humaine avec la volonté de Dieu, telle qu’elle réside dans l’Ajusteur <span class="ref">110:7.1</span>, et des décrets du superunivers doivent confirmer ce choix <span class="ref">112:7.5</span>.</p>
+    </div>
+    <ol class="when" aria-label="Où la fusion peut avoir lieu">
+      <li class="e-aj"><b>Pendant la vie</b><span>Rare&nbsp;: c’est le transfert, sans mort <span class="ref">110:7.2 ; 110:7.6</span>.</span></li>
+      <li class="often"><b>Sur un monde des maisons</b><span>Souvent pas avant le cinquième, voire le sixième <span class="ref">47:8.3</span>.</span></li>
+      <li><b>À Jérusem ou à Édentia</b><span>Au siège du système, ou plus tard, à celui de la constellation <span class="ref">112:7.3</span>.</span></li>
+      <li><b>À Salvington</b><span>Dans certains cas spéciaux, pas avant la capitale de l’univers local <span class="ref">112:7.3</span>.</span></li>
+    </ol>
+    <div class="prose">
+      <p>Une simple cérémonie marque l’union&nbsp;; des messagers proclament <span class="q" data-ref="47:8.4">«&nbsp;Celui-ci est un fils bienaimé en qui j’ai trouvé mon plaisir.&nbsp;»</span> <span class="ref">47:8.4</span>. L’être fusionné reçoit un nouveau nom et quarante jours de retraite <span class="ref">47:8.5</span>. Désormais, sa carrière éternelle ne court plus aucun danger <span class="ref">112:7.4</span>.</p>
+      <blockquote class="cite e-aj" data-ref="112:7.10"><p>«&nbsp;[…] nul évènement du temps ou de l’éternité ne peut plus séparer l’homme et l’Ajusteur […]&nbsp;»</p><span class="ref">112:7.10</span></blockquote>
+    </div>
+    <article class="transf" aria-labelledby="h-transf">
+      <h3 id="h-transf">Un cas particulier&nbsp;: les transférés</h3>
+      <p>Si la fusion a lieu pendant la vie, le corps est consumé instantanément&nbsp;: des témoins verraient simplement la personne disparaitre <span class="q" data-ref="110:7.2">«&nbsp;dans des charriots de feu&nbsp;»</span> <span class="ref">110:7.2</span>. Elle est alors transférée directement aux mondes des maisons <span class="ref">110:5.2</span>.</p>
+      <p>Le texte nomme deux cas sur Urantia&nbsp;: Énoch, <span class="q" data-ref="45:4.13">«&nbsp;le premier homme d’Urantia qui fusionna avec son Ajusteur de Pensée durant la vie de mortel dans la chair&nbsp;»</span>, et Élie, <span class="q" data-ref="45:4.15">«&nbsp;une âme transférée&nbsp;»</span> <span class="ref">45:4.13 ; 45:4.15</span>. Sur les mondes ancrés depuis longtemps dans la lumière et la vie, la mort naturelle devient de moins en moins fréquente <span class="ref">49:6.21</span>.</p>
+    </article>
+  </section>
+
+  <section id="ensuite" aria-labelledby="h-ens">
+    <div class="sec-head">
+      <p class="eyebrow"><b>8</b> · Fascicules 30, 31 et 112</p>
+      <h2 id="h-ens">Et ensuite&nbsp;? La longue ascension</h2>
+      <p>Les mondes des maisons ne sont qu’un début. Le texte décrit sept stades, du mortel planétaire à l’arrivant au Paradis <span class="ref">30:4.1–8</span>, et précise que ce récit vaut pour les mortels qui fusionnent avec leur Ajusteur, ce qui est la destinée des races d’Urantia <span class="ref">30:4.9</span>.</p>
+    </div>
+    <ol class="path" aria-label="Les grandes étapes de la carrière ascendante">
+      <li><span class="pc"><b>Mondes des maisons</b><span>étudiants</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Jérusem</b><span>citoyens du système</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Édentia</b><span>la constellation</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Salvington</b><span>on y devient esprit</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Le superunivers</b><span>pupilles des Anciens des Jours</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Havona</b><span>l’univers central</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc fin"><b>Le Paradis</b><span>Corps de la Finalité</span></span></li>
+    </ol>
+    <p class="sub-p hint">Édentia après la citoyenneté de Jérusem <span class="ref">47:10.6</span>&nbsp;; esprit avant de quitter l’univers local <span class="ref">30:4.20–21</span>&nbsp;; superunivers <span class="ref">30:4.22</span>&nbsp;; Havona <span class="ref">30:4.26</span>&nbsp;; Paradis et Corps de la Finalité <span class="ref">30:4.31 ; 112:7.15</span>.</p>
+    <div class="prose">
+      <blockquote class="cite e-aj" data-ref="30:4.26"><p>«&nbsp;Sur terre, vous étiez une créature de chair et de sang&nbsp;; au cours de votre passage dans l’univers local, vous étiez un être morontiel&nbsp;; dans le superunivers, vous étiez un esprit évoluant […]&nbsp;»</p><span class="ref">30:4.26</span></blockquote>
+      <p>Le texte ne prétend pas tout savoir de la suite&nbsp;: la destinée des finalitaires au-delà du présent âge de l’univers n’est pas révélée <span class="ref">112:7.15 ; 30:4.33</span>. Le fascicule 112 se clôt sur une invitation&nbsp;:</p>
+      <blockquote class="cite e-aj" data-ref="112:7.19"><p>«&nbsp;Mais, si vous le voulez vraiment, si vous le désirez réellement, à coup sûr, l’héritage des âges est à vous […]&nbsp;»</p><span class="ref">112:7.19</span></blockquote>
+    </div>
+    <a class="cta go3d" href="atlas-3d.html#carriere">Voir la carrière ascendante dans la vue 3D <span class="ar" aria-hidden="true">→</span></a>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les fascicules 107 à 112 sont présentés par un Messager Solitaire d’Orvonton, le 47 par une Brillante Étoile du Soir, le 48 par un archange, le 113 par le chef des séraphins d’Urantia <span class="ref">112:7.20 ; 47:10.8 ; 48:8.5 ; 113:7.9</span>. L’auteur du fascicule 112 dit taire bien des détails sur la mort, faute de mots à notre portée et sur le conseil des superviseurs de la planète <span class="ref">112:5.11</span>. Le texte écarte la réincarnation humaine&nbsp;: dans notre univers local, Nébadon, seuls les spornagias, des créatures non humaines, se réincarnent <span class="ref">46:7.5</span>, et jamais un Ajusteur ne revient sur terre avec l’identité de celui qu’il habitait <span class="ref">112:3.7</span>.
+        <blockquote class="cite e-perso" data-ref="164:3.4"><p>«&nbsp;Le Maitre trouva difficile de faire croire aux hommes que leur âme n’avait pas eu d’existences antérieures.&nbsp;»</p><span class="ref">164:3.4</span></blockquote>
+        Il garde le mot <i>résurrection</i>, mais pour un réveil sur un autre monde, dans une forme morontielle&nbsp;; il appelle <span class="q" data-ref="189:2.6">«&nbsp;crédo inexact&nbsp;»</span> l’enseignement selon lequel le corps matériel de Jésus serait sorti de la tombe <span class="ref">189:2.6</span>.
+        <blockquote class="cite e-cor" data-ref="30:4.15"><p>«&nbsp;Le corps physique de chair mortelle ne fait pas partie du réassemblage du survivant endormi&nbsp;; le corps physique est retourné à la poussière.&nbsp;»</p><span class="ref">30:4.15</span></blockquote></li>
+      <li><b>Lecture courante.</b> Les lecteurs n’en font pas tous la même lecture&nbsp;: certains prennent ces descriptions à la lettre, d’autres y voient surtout des images de la croissance spirituelle, d’autres encore y cherchent d’abord une consolation face au deuil, en particulier dans la promesse que les liens d’affection demeurent <span class="ref">112:5.22</span>. Le livre lui-même prévient que ses mots restent en deçà de la réalité&nbsp;: les formes morontielles sont <span class="q" data-ref="112:6.2">«&nbsp;des enveloppes qui dépassent votre compréhension&nbsp;»</span> <span class="ref">112:6.2</span>. Cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Il relit des images bibliques&nbsp;: les <span class="q" data-bible="Jean 14:2">«&nbsp;demeures&nbsp;»</span> de la maison du Père <span class="bref">Jean 14, 2</span> deviennent les mondes des maisons <span class="ref">30:4.17</span>&nbsp;; le <span class="q" data-bible="2 Rois 2:11">«&nbsp;char de feu&nbsp;»</span> d’Élie <span class="bref">2 Rois 2, 11</span>, une fusion pendant la vie <span class="ref">110:7.2</span>&nbsp;; <span class="q" data-bible="Daniel 12:2">«&nbsp;ceux qui dorment dans la poussière&nbsp;»</span> <span class="bref">Daniel 12, 2</span>, les survivants endormis <span class="ref">49:6.2</span>. La foi chrétienne professe <span class="q" data-ext="Symbole des apôtres">«&nbsp;la résurrection de la chair&nbsp;»</span> (Symbole des apôtres), et Paul écrit <span class="q" data-bible="1 Corinthiens 15:44">«&nbsp;semé corps animal, il ressuscite corps spirituel&nbsp;»</span> <span class="bref">1 Corinthiens 15, 44</span>&nbsp;; le livre décrit, lui, une forme morontielle, ni matérielle ni spirituelle. La réincarnation, qu’il écarte, appartient à des traditions anciennes de l’Inde et se retrouve chez Platon&nbsp;; le livre en parle lui-même <span class="ref">94:2.3 ; 164:3.4</span>. Des critiques, dont Martin Gardner (<i lang="en">Urantia: The Great Cult Mystery</i>, 1995), voient dans le sommeil inconscient des morts et l’annihilation des méchants <span class="ref">112:3.7 ; 2:3.2</span> un héritage de l’adventisme, milieu d’où venaient des fondateurs du mouvement, dont William S. Sadler&nbsp;; des lecteurs répondent que le livre transforme ces doctrines, puisque beaucoup s’y réveillent dès la troisième période, et sur un autre monde <span class="ref">30:4.11 ; 49:6.7</span>. Le livre dit lui-même puiser dans la pensée humaine&nbsp;:
+        <blockquote class="cite" data-ref="0:12.12"><p>«&nbsp;En conséquence, pour présenter Dieu et ses associés dans l’univers, nous avons choisi pour base de ces fascicules plus de mille concepts humains […]&nbsp;»</p><span class="ref">0:12.12</span></blockquote></li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Où se trouve la personnalité pendant l’attente.</b> Les archanges en gardent les données, mais son emplacement exact, <span class="q" data-ref="112:5.15">«&nbsp;nous ne le connaissons pas&nbsp;»</span> <span class="ref">112:5.15 ; 37:3.8</span>.</li>
+        <li><b>La durée de la <span class="q" data-ref="30:4.11">«&nbsp;troisième période&nbsp;»</span>.</b> Le texte dit aussi <span class="q" data-ref="49:6.9">«&nbsp;le troisième jour&nbsp;»</span>, sans préciser cette durée <span class="ref">30:4.11 ; 49:6.9</span>.</li>
+        <li><b>Le moment où la personnalité est conférée.</b> Le texte la dit don du Père <span class="ref">0:5.11 ; 112:0.3</span>, sans dater ce don dans la vie de l’enfant.</li>
+        <li><b>Le mécanisme de la résurrection.</b> Même la réunion de l’âme et de l’Ajusteur <span class="q" data-ref="30:4.15">«&nbsp;n’explique pas entièrement la réapparition de la <i>personnalité</i> survivante&nbsp;»</span> <span class="ref">30:4.15</span>. La fusion, elle, reste <span class="q" data-ref="112:7.2">«&nbsp;le secret de la sphère sacrée d’Ascendington&nbsp;»</span> <span class="ref">112:7.2</span>.</li>
+        <li><b>Ce que fait l’Ajusteur sur Divinington.</b> Le texte énumère sept affectations possibles <span class="ref">112:4.4–11</span>&nbsp;; pour le reste, l’auteur écrit <span class="q" data-ref="112:4.13">«&nbsp;D’après les informations que je reçois&nbsp;»</span> <span class="ref">112:4.13</span>, et l’on sait moins de Divinington que des autres sphères du Père <span class="ref">107:3.3</span>.</li>
+        <li><b>Les détails de la mort.</b> L’auteur dit en taire beaucoup, sur le conseil des superviseurs de la planète <span class="ref">112:5.11</span>.</li>
+        <li><b>Le sort de ceux dont le mental n’atteint pas le choix moral.</b> L’Ajusteur vient à <span class="q" data-ref="108:2.3">«&nbsp;tout mental normal ayant statut moral&nbsp;»</span> <span class="ref">108:2.3</span>&nbsp;; pour les autres, le texte parle d’une tutelle séraphique sur terre <span class="ref">113:1.3</span>, sans décrire la suite.</li>
+        <li><b>Les enfants dont aucun parent ne survit.</b> Le texte décrit le cas où l’un des parents au moins survit <span class="ref">45:6.7 ; 47:2.1</span>, pas les autres.</li>
+        <li><b>Où arrivent les transférés.</b> <span class="q" data-ref="110:5.2">«&nbsp;directement aux mondes des maisons&nbsp;»</span>, dit le fascicule 110 <span class="ref">110:5.2</span>&nbsp;; un passage du fascicule 49 sur un ordre d’ascension sans mort parle des <span class="q" data-ref="49:6.19">«&nbsp;salles de résurrection des sphères morontielles supérieures&nbsp;»</span> <span class="ref">49:6.19</span>. Le texte ne dit pas lequel vaut pour Énoch et Élie.</li>
+        <li><b>Le nombre des Ajusteurs et l’époque de leur origine.</b> Inconnus de l’auteur <span class="ref">107:1.3</span>.</li>
+        <li><b>Les schémas.</b> Couleurs, icônes et positions sont des choix de la page&nbsp;: seuls les éléments, les lieux et leurs liens viennent du texte.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-huit citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Le schéma et la figure des mondes des maisons sont des images symboliques&nbsp;: positions, couleurs et icônes sont des choix de présentation.</p>
+    <p>Faits extérieurs au livre (date de parution, doctrines comparées, débats critiques)&nbsp;: résumés prudents, sans prise de position.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  function R(s) { return String(s).replace(/\{([^}]+)\}/g, "<span class=\"ref\">$1</span>"); }
+  function ico(id) { return "<svg class=\"ic\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#" + id + "\"/></svg>"; }
+
+  /* ====================== 1. Moins d’animations ====================== */
+  /* Par défaut : la préférence du système ; le bouton du schéma la remplace, et le choix est gardé si possible. */
+  var CLE = "destinee-humaine-calme";
+  function systeme() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function lire() { try { var v = window.localStorage.getItem(CLE); return v === "1" ? true : (v === "0" ? false : null); } catch (e) { return null; } }
+  function garder(v) { try { window.localStorage.setItem(CLE, v ? "1" : "0"); } catch (e) { /* choix non gardé */ } }
+  var calme = lire();
+  if (calme === null) calme = systeme();
+  var bCalme = document.getElementById("sc-calme");
+  function appliquerCalme() {
+    document.documentElement.classList.toggle("calme", calme);
+    if (bCalme) bCalme.setAttribute("aria-pressed", String(calme));
+  }
+  appliquerCalme();
+  if (bCalme) bCalme.addEventListener("click", function () { calme = !calme; garder(calme); appliquerCalme(); });
+
+  /* ====================== 2. Le schéma ====================== */
+  /* Cinq réalités (et, au réveil, la forme et le mental morontiels) ; à chaque étape, chacune rejoint un lieu.
+     Les textes, citations et références de chaque étape sont dans la version texte (#tv-1 à #tv-7), reprise ici. */
+  var TK = {
+    perso: ["e-perso", "i-perso", "Personnalité"],
+    aj: ["e-aj", "i-aj", "Ajusteur"],
+    ame: ["e-ame", "i-ame", "Âme"],
+    men: ["e-men", "i-men", "Mental"],
+    cor: ["e-cor", "i-cor", "Corps"],
+    mmor: ["e-men", "i-mmor", "Mental morontiel"],
+    forme: ["e-cor", "i-forme", "Forme morontielle"]
+  };
+  var PL = {
+    terre: { c: "p-terre", i: "p-terre", t: "Sur Urantia" },
+    divi: { c: "p-divi", i: "p-divi", t: "Divinington" },
+    inconnu: { c: "p-inconnu", i: null, b: "p-nsp", t: "Lieu non précisé" },
+    garde: { c: "p-garde", i: "p-garde", t: "Le gardien séraphique" },
+    cesse: { c: "p-cesse", i: "p-cesse", t: "Le mental matériel cesse" },
+    elem: { c: "p-elem", i: "p-elem", t: "Le monde élémental" },
+    attente: { c: "p-attente", i: "p-temps", t: "Combien de temps&nbsp;?" },
+    salle: { c: "p-salle", i: "p-salle", t: "Salle de résurrection" },
+    laisse: { c: "p-laisse", i: "p-elem", t: "Ne reviennent pas" },
+    fusion: { c: "p-fusion", i: "p-fusion", t: "La fusion" }
+  };
+  /* pl : lieux de l’étape, dans l’ordre de lecture ; tk : [lieu, état affiché, classe d’état] */
+  var ST = [
+    { lay: "l1",
+      pl: { terre: "l’enfant, avant son premier choix moral {108:2.1}", divi: "l’Ajusteur s’est porté volontaire {108:2.1}" },
+      tk: { perso: ["terre", "don du Père"], men: ["terre", "prêté pour la vie"], cor: ["terre", ""], aj: ["divi", "en attente", "s-attend"] } },
+    { lay: "l2",
+      pl: { terre: "après le premier choix moral, juste avant six ans en moyenne {108:2.1}" },
+      tk: { perso: ["terre", "unifie le tout"], aj: ["terre", "habite le mental"], ame: ["terre", "commence à naitre", "s-germe"], men: ["terre", ""], cor: ["terre", ""] } },
+    { lay: "l2",
+      pl: { terre: "une vie de décisions&nbsp;; des gardiens séraphiques veillent sur des groupes, puis un gardien personnel au troisième cercle {113:1.7–8}" },
+      tk: { perso: ["terre", "décide"], aj: ["terre", "guide"], ame: ["terre", "grandit", "s-grand"], men: ["terre", "cadre des choix"], cor: ["terre", ""] } },
+    { lay: "l4",
+      pl: { divi: "par Uversa {112:3.4}", inconnu: "les archanges en gardent les données {112:5.15}", garde: "garde l’âme {112:3.5}", cesse: "ses valeurs ne périssent pas {112:6.4}", elem: "d’où le corps provenait {112:3.5}" },
+      tk: { perso: ["inconnu", "lieu inconnu", "s-nsp"], aj: ["divi", "emporte la mémoire"], ame: ["garde", "confiée"], men: ["cesse", "cesse", "s-cesse"], cor: ["elem", "à la poussière", "s-cesse"] } },
+    { lay: "l5",
+      pl: { divi: "n’habite aucun autre mental {49:6.5}", inconnu: "{112:5.15}", garde: "l’âme dort, inconsciente {112:5.13}", cesse: "{112:5.14}", elem: "{30:4.15}",
+        attente: "<ul><li><b>Avec un gardien personnel</b>&nbsp;: réveil à la troisième période {30:4.11}</li><li><b>Sinon</b>&nbsp;: sommeil jusqu’à un appel nominal de fin d’âge ou une résurrection spéciale {49:6.2}</li></ul>" },
+      tk: { perso: ["inconnu", "lieu inconnu", "s-nsp"], aj: ["divi", "attend", "s-attend"], ame: ["garde", "inconsciente", "s-dort"], men: ["cesse", "a cessé", "s-cesse"], cor: ["elem", "poussière", "s-cesse"] } },
+    { lay: "l6",
+      pl: { salle: "premier monde des maisons {47:3.2}", laisse: "le corps de chair, le mental matériel {30:4.15 ; 112:6.4}" },
+      tk: { perso: ["salle", "reconstituée"], aj: ["salle", "revient"], ame: ["salle", "réveillée"], mmor: ["salle", "nouveau", "s-new"], forme: ["salle", "nouvelle", "s-new"], men: ["laisse", "a cessé", "s-old"], cor: ["laisse", "poussière", "s-old"] } },
+    { lay: "l7",
+      pl: { fusion: "souvent sur le cinquième ou le sixième monde des maisons {47:8.3}" },
+      tk: { perso: ["fusion", "une seule personnalité"], aj: ["fusion", "", "fu"], ame: ["fusion", "", "fu"], mmor: ["fusion", ""], forme: ["fusion", ""] } }
+  ];
+
+  var sc = document.getElementById("sc"), stage = document.getElementById("stage"), cap = document.getElementById("sc-cap");
+  var stepsEl = document.getElementById("sc-steps"), bar = document.getElementById("sc-bar");
+  var prev = document.getElementById("sc-prev"), next = document.getElementById("sc-next");
+  var statut = document.getElementById("sc-status");
+  var tv = document.getElementById("sc-texte"), lienTv = document.getElementById("sc-tv");
+
+  function titre(i) {
+    var h = document.querySelector("#tv-" + (i + 1) + " .tv-h"), n = h.querySelector(".tv-n");
+    return h.textContent.slice(n ? n.textContent.length : 0).trim();
+  }
+
+  if (sc && stage && cap && stepsEl) {
+    var parking = document.createElement("div");
+    parking.className = "parking";
+    var T = {}, P = {}, SB = [], cur = -1;
+    Object.keys(TK).forEach(function (k) {
+      var d = TK[k], e = document.createElement("span");
+      e.className = "tk " + d[0];
+      e.innerHTML = ico(d[1]) + "<span class=\"tk-l\">" + d[2] + "</span><span class=\"tk-s\"></span>";
+      T[k] = e;
+      parking.appendChild(e);
+    });
+    stage.appendChild(parking);
+
+    var lieu = function (id) {
+      if (P[id]) return P[id];
+      var d = PL[id], e = document.createElement("div");
+      e.className = "pl " + d.c;
+      e.style.gridArea = id;
+      e.innerHTML = "<svg class=\"pl-bg\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#" + (d.b || d.i) + "\"/></svg>" +
+        "<p class=\"pl-h\">" + (d.i ? ico(d.i) : "<span class=\"qm\" aria-hidden=\"true\">?</span>") + "<span>" + d.t + "</span></p>" +
+        "<div class=\"pl-s\"></div><div class=\"pl-tk\"></div>";
+      if (id === "fusion") {
+        e.querySelector(".pl-tk").innerHTML = "<div class=\"fused\"><span class=\"fused-l\">Ajusteur et âme&nbsp;: un seul être</span><div class=\"fused-tk\"></div></div>";
+      }
+      P[id] = e;
+      return e;
+    };
+
+    var show = function (i, annoncer) {
+      i = Math.max(0, Math.min(ST.length - 1, i));
+      var st = ST[i], anim = !calme && cur !== -1 && i !== cur, avant = {};
+      if (anim) Object.keys(T).forEach(function (k) { if (T[k].parentNode !== parking) avant[k] = T[k].getBoundingClientRect(); });
+      stage.setAttribute("data-lay", st.lay);
+      var gardes = {};
+      Object.keys(st.pl).forEach(function (id) {
+        var e = lieu(id), nouveau = e.parentNode !== stage;
+        e.querySelector(".pl-s").innerHTML = R(st.pl[id]);
+        stage.insertBefore(e, parking);
+        e.classList.toggle("in", anim && nouveau);
+        gardes[id] = true;
+      });
+      Object.keys(T).forEach(function (k) {
+        var e = T[k], s = st.tk[k];
+        if (!s) { parking.appendChild(e); return; }
+        var hote = s[2] === "fu" ? P[s[0]].querySelector(".fused-tk") : P[s[0]].querySelector(".pl-tk");
+        hote.appendChild(e);
+        e.className = "tk " + TK[k][0] + (s[2] && s[2] !== "fu" ? " " + s[2] : "");
+        e.querySelector(".tk-s").textContent = s[1];
+      });
+      Object.keys(P).forEach(function (id) { if (!gardes[id] && P[id].parentNode) P[id].parentNode.removeChild(P[id]); });
+      if (anim) {                                   /* FLIP : chaque élément glisse de son ancien lieu vers le nouveau */
+        var bouges = [];
+        Object.keys(T).forEach(function (k) {
+          var e = T[k];
+          if (e.parentNode === parking) return;
+          var b = e.getBoundingClientRect(), a = avant[k];
+          e.style.transition = "none";
+          if (a) e.style.transform = "translate(" + Math.round(a.left - b.left) + "px," + Math.round(a.top - b.top) + "px)";
+          else { e.style.opacity = "0"; e.style.transform = "scale(.8)"; }
+          bouges.push(e);
+        });
+        void stage.offsetWidth;
+        bouges.forEach(function (e) { e.style.transition = ""; e.style.transform = ""; e.style.opacity = ""; });
+      }
+      cur = i;
+      SB.forEach(function (b, j) { if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+      prev.setAttribute("aria-disabled", String(i === 0));
+      next.setAttribute("aria-disabled", String(i === ST.length - 1));
+      var li = document.getElementById("tv-" + (i + 1));
+      cap.innerHTML = "<p class=\"cap-n\">Étape " + (i + 1) + " sur " + ST.length + "</p>";
+      Array.prototype.forEach.call(li.children, function (c) { if (!c.classList.contains("where")) cap.appendChild(c.cloneNode(true)); });
+      var nav = document.createElement("div"), bs = document.createElement("button"), l1 = document.createElement("span"), l2 = document.createElement("span");
+      nav.className = "cap-nav";
+      bs.type = "button";
+      bs.className = "chip" + (i < ST.length - 1 ? " fort" : "");
+      l1.className = "cn-l";
+      l2.className = "cn-t";
+      l1.textContent = i < ST.length - 1 ? "Étape suivante →" : "Fin du schéma";
+      l2.textContent = i < ST.length - 1 ? titre(i + 1) : "Revoir depuis le début ↺";
+      bs.appendChild(l1);
+      bs.appendChild(l2);
+      bs.addEventListener("click", function () { aller(i < ST.length - 1 ? i + 1 : 0); });
+      nav.appendChild(bs);
+      cap.appendChild(nav);
+      if (annoncer) statut.textContent = "Étape " + (i + 1) + " sur " + ST.length + "\u00a0: " + titre(i);
+    };
+
+    ST.forEach(function (st, i) {
+      var li = document.createElement("li"), b = document.createElement("button");
+      b.type = "button";
+      b.textContent = String(i + 1);
+      b.setAttribute("aria-label", "Étape " + (i + 1) + "\u00a0: " + titre(i));
+      b.addEventListener("click", function () { show(i, true); });
+      li.appendChild(b);
+      stepsEl.appendChild(li);
+      SB.push(b);
+    });
+    var aller = function (j) {                    /* depuis le bas de la légende : on remonte voir la scène */
+      show(j, true);
+      if (bar.getBoundingClientRect().top < 0) bar.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      SB[cur].focus({ preventScroll: true });
+    };
+    prev.addEventListener("click", function () { if (cur > 0) show(cur - 1, true); });
+    next.addEventListener("click", function () { if (cur < ST.length - 1) show(cur + 1, true); });
+    bar.addEventListener("keydown", function (ev) {
+      var j = null;
+      if (ev.key === "ArrowRight") j = cur + 1;
+      else if (ev.key === "ArrowLeft") j = cur - 1;
+      else if (ev.key === "Home") j = 0;
+      else if (ev.key === "End") j = ST.length - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      j = Math.max(0, Math.min(ST.length - 1, j));
+      if (j !== cur) show(j, true);
+      if (SB.indexOf(document.activeElement) >= 0) SB[j].focus();
+    });
+    if (lienTv && tv) lienTv.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      tv.open = true;
+      tv.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      var s = tv.querySelector("summary");
+      if (s) s.focus({ preventScroll: true });
+    });
+
+    sc.hidden = false;                              /* sans JavaScript, seule la version texte s’affiche */
+    if (tv && location.hash !== "#sc-texte") tv.open = false;
+    show(0, false);
+  }
+
+  /* ====================== 3. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

@@ -10,18 +10,20 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 
 | Page | Ce qu’on y voit |
 |---|---|
-| [Accueil](index.html) | notre adresse dans l’univers, un parcours de découverte en douze étapes, le plan du livre |
+| [Accueil](index.html) | notre adresse dans l’univers, un parcours de découverte en treize étapes, le plan du livre |
 | [Nébadon dans Orvonton](nebadon-dans-orvonton.html) | la place de notre univers local, et celle de la Voie lactée |
 | [D’Urantia au Paradis (3D)](atlas-3d.html) | zoom de la Terre jusqu’au-delà du maitre univers : vraies étoiles, superunivers en galaxies, Havona, vue en coupe, Déité ; Qui gouverne quoi ; La frise du temps ; La carrière ascendante |
 | [Familles de personnalités](familles-de-personnalites.html) | les êtres de l’univers selon les classifications d’Uversa (30:2) et du Paradis (30:1) |
 | [Concepts en schémas](concepts-en-schemas.html) | personnalité, mental, Ajusteur, âme, adjuvats, cercles psychiques, niveaux de réalité, morontia |
 | [Dieu et la Déité](dieu-et-deite.html) | le JE SUIS et les sept Absolus, la Trinité, les Sept Maitres Esprits, Dieu le Septuple, les Déités expérientielles |
+| [La destinée humaine](destinee-humaine.html) | ce que devient l’être humain à la mort selon le livre : l’Ajusteur de Pensée, l’âme, la personnalité, le réveil sur les mondes des maisons et la fusion, en un schéma de sept étapes |
 | [L’histoire d’Urantia](histoire-d-urantia.html) | frise des époques, de la nébuleuse d’Andronover à la fin des glaces ; carte des migrations humaines en 22 épisodes |
 | [La rébellion de Lucifer](rebellion-de-lucifer.html) | les trois échelles (Jérusem, Dalamatia, le Jardin), pourquoi Urantia est une planète isolée, le manifeste, les loyaux et les rebelles |
 | [La vie de Jésus](vie-de-jesus.html) | frise de 92 étapes, de l’annonce à Marie à la Pentecôte ; cartes de Palestine, de la Méditerranée et de l’Orient |
 | [La Bible et le Livre d’Urantia](bible-et-livre.html) | cent parallèles entre la Bible (Crampon 1923) et le livre, de la Création à l’Apocalypse : ce qui concorde, ce qui diffère, et ce que le livre en dit |
+| [Glossaire](glossaire.html) | les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références ; une ancre par terme (`glossaire.html#ajusteur-de-pensee`) |
 
-Chaque page porte la même barre de navigation ; les pages du parcours de découverte indiquent leur étape et mènent à la précédente et à la suivante. Le pied de chaque page donne le lien du code source, les licences et un lien « Signaler une erreur sur cette page ».
+Chaque page porte la même barre de navigation ; les pages du parcours de découverte indiquent leur étape et mènent à la précédente et à la suivante. Dans le texte des pages, la première occurrence de chaque terme du glossaire est soulignée en pointillé : un clic ou un toucher ouvre sa définition. Le pied de chaque page donne le lien du code source, les licences, le glossaire et un lien « Signaler une erreur sur cette page ».
 
 La vue 3D accepte des liens directs (`atlas-3d.html#…`) :
 
@@ -67,7 +69,8 @@ Pour proposer une correction ou une amélioration au site lui-même, voir [CONTR
 
 Le dossier `sources/` contient de quoi reconstruire tout le site depuis un clone du dépôt, avec la marche à suivre dans `sources/CONSTRUIRE.md` et les dépendances Python dans `sources/requirements.txt` :
 
-- les pages de l’atlas (`accueil.html`, `nebadon-orvonton.html`, `familles-de-personnalites.html`, `concepts.html`, `dieu-et-deite.html`, `histoire-d-urantia.html`, `rebellion-de-lucifer.html`, `vie-de-jesus.html`, `bible-et-livre.html`) ;
+- les pages de l’atlas (`accueil.html`, `nebadon-orvonton.html`, `familles-de-personnalites.html`, `concepts.html`, `dieu-et-deite.html`, `destinee-humaine.html`, `histoire-d-urantia.html`, `rebellion-de-lucifer.html`, `vie-de-jesus.html`, `bible-et-livre.html`, `glossaire.html`) ;
+- le glossaire : `glossaire-atlas.json` (termes, définitions, références et citations vérifiées), `glossaire.js` (le script des définitions dans les pages) et `glossaire.py` (contrôle des données et liste de A à Z de la page) ;
 - le gabarit de la vue 3D (`urantia-paradis-3d.src.html`) et ses données : étoiles (`etoiles.json`), contours terrestres (`geo.json`), textures (`tex.json`) ;
 - les scripts qui les produisent et les assemblent : `polices.py`, `etoiles.py`, `geo.py`, `textures.py`, `assembler.py` ;
 - les références cliquables : `liens_refs.py` fabrique `refs-urantia.js`, le script qui relie chaque référence au passage correspondant sur urantia.org ;

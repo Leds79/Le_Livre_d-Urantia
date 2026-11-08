@@ -29,11 +29,12 @@
 <meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <script src="assets/hors-ligne.js" defer></script>
 <script src="assets/musique.js" defer></script>
+<script src="assets/glossaire.js" defer></script>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Le Livre d’Urantia en images</title>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
 <style>
-/* Mise en page : la page d’entrée d’un atlas céleste. Le titre et une fenêtre sur l’espace, le parcours en dix étapes,
+/* Mise en page : la page d’entrée d’un atlas céleste. Le titre et une fenêtre sur l’espace, le parcours en treize étapes,
    l’adresse d’Urantia en frise, les cartes du parcours, le plan du livre et la manière de lire. Jusqu’à 1100 px. */
 :root {
   --paper: #EEF1F6;    /* fond : papier de carte bleuté */
@@ -143,6 +144,17 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .steps .nm { min-width: 0; font: 600 1.04rem/1.15 var(--font-display); }
 .tag { flex: none; margin-left: auto; padding: 3px 6px; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); font: 500 .68rem/1 var(--font-mono); letter-spacing: .08em; color: var(--muted); }
 .steps .tag { position: absolute; top: -9px; right: 10px; margin: 0; }   /* pastille posée sur le bord : le nom garde toute la largeur */
+/* treize étapes, sans pastille isolée : 5 + 4 + 4 (rangées centrées) jusqu’à 1 099 px, 7 + 6 (seconde rangée centrée)
+   au-delà, quand chaque pastille a la place du mot le plus long ; deux colonnes sur téléphone (voir plus bas) */
+.steps:has(> li:nth-child(13)) { grid-template-columns: repeat(10, minmax(0, 1fr)); }
+.steps:has(> li:nth-child(13)) > li { grid-column: span 2; }
+.steps:has(> li:nth-child(13)) > li:nth-child(6), .steps:has(> li:nth-child(13)) > li:nth-child(10) { grid-column: 2 / span 2; }
+@media (min-width: 1100px) {
+  .steps:has(> li:nth-child(13)) { grid-template-columns: repeat(14, minmax(0, 1fr)); column-gap: 6px; }
+  .steps:has(> li:nth-child(13)) > li:nth-child(6), .steps:has(> li:nth-child(13)) > li:nth-child(10) { grid-column: span 2; }
+  .steps:has(> li:nth-child(13)) > li:nth-child(8) { grid-column: 2 / span 2; }
+  .steps:has(> li:nth-child(13)) a { gap: 8px; padding: 9px 9px 9px 8px; }
+}
 
 /* Sections */
 .sec-head { display: grid; gap: 12px; max-width: 70ch; }
@@ -272,6 +284,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   .hero { grid-template-columns: minmax(0, 1fr); gap: 28px; }
   .window { max-width: 420px; }
   .steps, .steps:has(> li:nth-child(11)) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps:has(> li:nth-child(13)) > li:nth-child(n) { grid-column: auto; }
+  .steps:has(> li:nth-child(13)) > li:nth-child(13) { grid-column: 1 / -1; }   /* deux colonnes : la treizième sur toute la largeur */
   .part { grid-template-columns: minmax(0, 1fr); gap: 6px; }
 }
 @media (max-width: 640px) {
@@ -296,11 +310,11 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   .card:hover, .window:hover .cap span { transform: none; }
   .card:hover .arr { left: 0; }
 }
-</style><style>/* barre commune et parcours de l’atlas (construire_site.py) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;column-gap:16px}.atlas-nav li{margin:0;flex:none}.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}.atlas-nav .musique{margin-left:auto}.atlas-nav .musique+.livre{margin-left:0}.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}.atlas-musique:hover{color:var(--gold-ink)}.atlas-musique:focus-visible{outline:2px solid var(--gold-ink);outline-offset:-2px}.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}.atlas-musique svg{display:block;width:20px;height:20px}@media (max-width:880px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}.atlas-credit{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:.45em}.atlas-credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}.atlas-credit .atlas-note{font-size:.92em}.atlas-droits{margin:0}.atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}a.ref-lien{padding-block:5px}</style><style>/* encadré « Lire hors ligne » (construire_site.py) */.hl{padding:20px 22px;border:1px solid var(--rule);border-radius:14px;background:var(--sheet);display:grid;gap:12px;max-width:84ch}.hl h2{margin:0;font:600 1.45rem/1.15 var(--font-display);color:var(--ink)}.hl p{margin:0}.hl-txt{color:var(--muted);font-size:.98rem;line-height:1.5}.hl-btns{display:flex;flex-wrap:wrap;gap:10px}.hl-btn{appearance:none;display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font:600 .95rem/1.25 var(--font-body);cursor:pointer;text-align:left}.hl-btn:hover{border-color:var(--muted)}.hl-btn:disabled{opacity:.6;cursor:progress}.hl-inst{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}.hl progress{width:100%;height:10px;accent-color:var(--gold)}.hl-etat{font-size:.95rem;color:var(--muted)}.hl-etat:empty{display:none}.hl-etat.ok{color:var(--ink);font-weight:600}.hl-ios{font-size:.92rem;color:var(--muted)}</style>
+</style><style>/* barre commune et parcours de l’atlas (construire_site.py) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.atlas-nav{background:var(--sheet);border-bottom:1px solid var(--rule)}.atlas-nav ul{list-style:none;margin:0 auto;max-width:1100px;padding:0 max(16px,env(safe-area-inset-left,0px));display:flex;flex-wrap:wrap;align-items:center;column-gap:14px}.atlas-nav li{margin:0;flex:none}.atlas-nav a{display:inline-flex;align-items:center;min-height:44px;color:var(--ink);font:500 .9rem/1.2 var(--font-body);text-decoration:none;white-space:nowrap}.atlas-nav a:hover{color:var(--gold-ink);text-decoration:underline;text-underline-offset:4px}.atlas-nav a[aria-current="page"]{color:var(--gold-ink);font-weight:700;box-shadow:inset 0 -3px var(--gold-ui,var(--gold))}.atlas-nav .livre{margin-left:auto}.atlas-nav .livre a{color:var(--muted)}.atlas-nav .musique{margin-left:auto}.atlas-nav .musique+.livre,.atlas-nav .glossaire+.livre{margin-left:0}.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}.atlas-musique:hover{color:var(--gold-ink)}.atlas-musique:focus-visible{outline:2px solid var(--gold-ink);outline-offset:-2px}.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}.atlas-musique svg{display:block;width:20px;height:20px}@media (max-width:1000px){.atlas-nav ul{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 90%,transparent);mask-image:linear-gradient(90deg,#000 90%,transparent)}.atlas-nav ul::-webkit-scrollbar{display:none}.atlas-nav .livre{margin-left:0}.atlas-nav li:last-child{padding-right:28px}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}.atlas-credit{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:.45em}.atlas-credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}.atlas-credit .atlas-note{font-size:.92em}.atlas-droits{margin:0}.atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}a.ref-lien{padding-block:5px}</style><style>/* encadré « Lire hors ligne » (construire_site.py) */.hl{padding:20px 22px;border:1px solid var(--rule);border-radius:14px;background:var(--sheet);display:grid;gap:12px;max-width:84ch}.hl h2{margin:0;font:600 1.45rem/1.15 var(--font-display);color:var(--ink)}.hl p{margin:0}.hl-txt{color:var(--muted);font-size:.98rem;line-height:1.5}.hl-btns{display:flex;flex-wrap:wrap;gap:10px}.hl-btn{appearance:none;display:inline-flex;align-items:center;min-height:44px;padding:10px 18px;border-radius:999px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);font:600 .95rem/1.25 var(--font-body);cursor:pointer;text-align:left}.hl-btn:hover{border-color:var(--muted)}.hl-btn:disabled{opacity:.6;cursor:progress}.hl-inst{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}.hl progress{width:100%;height:10px;accent-color:var(--gold)}.hl-etat{font-size:.95rem;color:var(--muted)}.hl-etat:empty{display:none}.hl-etat.ok{color:var(--ink);font-weight:600}.hl-ios{font-size:.92rem;color:var(--muted)}</style>
 </head>
 <body>
 <a class="aller-contenu" href="#contenu">Aller au contenu</a>
-<nav class="atlas-nav" aria-label="Pages de l’atlas"><ul><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="nebadon-dans-orvonton.html" title="Nébadon dans Orvonton">Nébadon</a></li><li><a href="atlas-3d.html" title="D’Urantia au Paradis (3D)">La 3D</a></li><li><a href="familles-de-personnalites.html" title="Familles de personnalités">Familles</a></li><li><a href="concepts-en-schemas.html" title="Concepts en schémas">Concepts</a></li><li><a href="dieu-et-deite.html">Dieu et la Déité</a></li><li><a href="histoire-d-urantia.html" title="L’histoire d’Urantia">Histoire d’Urantia</a></li><li><a href="rebellion-de-lucifer.html" title="La rébellion de Lucifer">La rébellion</a></li><li><a href="vie-de-jesus.html" title="La vie de Jésus">Vie de Jésus</a></li><li><a href="bible-et-livre.html" title="La Bible et le Livre d’Urantia">La Bible</a></li><li class="musique"><button type="button" class="atlas-musique" data-musique hidden aria-pressed="false" aria-label="Musique douce"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li class="livre"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" title="Lire le livre (urantia.org), nouvel onglet">Lire le livre&nbsp;↗</a></li></ul></nav>
+<nav class="atlas-nav" aria-label="Pages de l’atlas"><ul><li><a href="index.html" aria-current="page">Accueil</a></li><li><a href="nebadon-dans-orvonton.html" title="Nébadon dans Orvonton">Nébadon</a></li><li><a href="atlas-3d.html" title="D’Urantia au Paradis (3D)">La 3D</a></li><li><a href="familles-de-personnalites.html" title="Familles de personnalités">Familles</a></li><li><a href="concepts-en-schemas.html" title="Concepts en schémas">Concepts</a></li><li><a href="dieu-et-deite.html">Dieu et la Déité</a></li><li><a href="destinee-humaine.html" title="La destinée humaine">Destinée</a></li><li><a href="histoire-d-urantia.html" title="L’histoire d’Urantia">Histoire</a></li><li><a href="rebellion-de-lucifer.html" title="La rébellion de Lucifer">La rébellion</a></li><li><a href="vie-de-jesus.html" title="La vie de Jésus">Vie de Jésus</a></li><li><a href="bible-et-livre.html" title="La Bible et le Livre d’Urantia">La Bible</a></li><li class="musique"><button type="button" class="atlas-musique" data-musique hidden aria-pressed="false" aria-label="Musique douce"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></li><li class="glossaire"><a href="glossaire.html" title="Glossaire : les mots du livre, de A à Z">Glossaire</a></li><li class="livre"><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" title="Lire le livre (urantia.org), nouvel onglet">Lire le livre&nbsp;↗</a></li></ul></nav>
 <script>(function(){var u=document.querySelector(".atlas-nav ul"),c=u&&u.querySelector("[aria-current]");if(c&&u.scrollWidth>u.clientWidth){var li=c.parentNode;u.scrollLeft=li.offsetLeft-(u.clientWidth-li.offsetWidth)/2;}})();</script>
 <main id="contenu" class="wrap" lang="fr">
 
@@ -359,7 +373,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 
   <nav class="route" aria-labelledby="h-route">
     <div class="route-head">
-      <h2 id="h-route">Le parcours en 12 étapes</h2>
+      <h2 id="h-route">Le parcours en 13 étapes</h2>
       <a href="#h-path">Le détail de chaque étape</a>
     </div>
     <ol class="steps">
@@ -371,10 +385,11 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
       <li><a href="familles-de-personnalites.html"><span class="num" aria-hidden="true">6</span><span class="nm">Familles de personnalités</span></a></li>
       <li><a href="concepts-en-schemas.html"><span class="num" aria-hidden="true">7</span><span class="nm">Concepts en schémas</span></a></li>
       <li><a href="dieu-et-deite.html"><span class="num" aria-hidden="true">8</span><span class="nm">Dieu et la Déité</span></a></li>
-      <li><a href="histoire-d-urantia.html"><span class="num" aria-hidden="true">9</span><span class="nm">L’histoire d’Urantia</span></a></li>
-      <li><a href="rebellion-de-lucifer.html"><span class="num" aria-hidden="true">10</span><span class="nm">La rébellion de Lucifer</span></a></li>
-      <li><a href="vie-de-jesus.html"><span class="num" aria-hidden="true">11</span><span class="nm">La vie de Jésus</span></a></li>
-      <li><a href="bible-et-livre.html"><span class="num" aria-hidden="true">12</span><span class="nm">La Bible et le Livre d’Urantia</span></a></li>
+      <li><a href="destinee-humaine.html"><span class="num" aria-hidden="true">9</span><span class="nm">La destinée humaine</span></a></li>
+      <li><a href="histoire-d-urantia.html"><span class="num" aria-hidden="true">10</span><span class="nm">L’histoire d’Urantia</span></a></li>
+      <li><a href="rebellion-de-lucifer.html"><span class="num" aria-hidden="true">11</span><span class="nm">La rébellion de Lucifer</span></a></li>
+      <li><a href="vie-de-jesus.html"><span class="num" aria-hidden="true">12</span><span class="nm">La vie de Jésus</span></a></li>
+      <li><a href="bible-et-livre.html"><span class="num" aria-hidden="true">13</span><span class="nm">La Bible et le Livre d’Urantia</span></a></li>
     </ol>
   </nav>
 
@@ -407,7 +422,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   <section aria-labelledby="h-path">
     <div class="sec-head">
       <h2 id="h-path">Parcours de découverte</h2>
-      <p>Douze étapes, dans l’ordre conseillé. Chacune ouvre une page de l’atlas ; tu peux aussi les visiter dans le désordre.</p>
+      <p>Treize étapes, dans l’ordre conseillé. Chacune ouvre une page de l’atlas ; tu peux aussi les visiter dans le désordre.</p>
       <figure class="pull">
         <p>«&nbsp;Sur votre monde, il est naturel de parler du Paradis comme situé <em>vers le haut,</em> mais il serait plus exact de mentionner le but divin de l’ascension comme situé <em>vers l’intérieur.</em>&nbsp;»</p>
         <figcaption class="ref">18:2.4</figcaption>
@@ -537,6 +552,28 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
       </li>
       <li class="card">
         <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
+          <path class="s-th" d="M12 84H148"/>
+          <circle class="s" cx="26" cy="45" r="15"/>
+          <circle class="f-g" cx="22" cy="41" r="3.2"/><circle class="f-core" cx="30.5" cy="49.5" r="3.4"/>
+          <path class="s-g" d="M36 35C49 19 63 12 76 12" stroke-dasharray="3 3"/>
+          <circle class="f-g" cx="80" cy="12" r="3.8"/>
+          <path class="s-c" d="M42 46H74" stroke-dasharray="3 3"/>
+          <path class="s-th" d="M72 41c2-3.6 5-5 8-5s6 1.4 8 5"/>
+          <circle class="f-core" cx="80" cy="46" r="4.2"/>
+          <path class="s-th" d="M34 57C45 70 57 78 70 81" stroke-dasharray="2 3"/>
+          <circle class="f-mut" cx="74" cy="81" r="1.3"/><circle class="f-mut" cx="79" cy="79.6" r="1.1"/><circle class="f-mut" cx="84" cy="81" r="1.3"/>
+          <path class="s-g" d="M84 12C102 12 114 22 123 34" stroke-dasharray="3 3"/>
+          <path class="s-c" d="M86 46H118" stroke-dasharray="3 3"/>
+          <circle class="s" cx="134" cy="45" r="15"/>
+          <circle class="f-g" cx="130" cy="41" r="3.2"/><circle class="f-core" cx="138.5" cy="49.5" r="3.4"/>
+        </svg></div>
+        <div class="top"><span class="num" aria-hidden="true">9</span><h3>La destinée humaine</h3></div>
+        <p>Que devient-on à la mort, selon le livre ? L’âme est confiée à un gardien séraphique, l’Ajusteur part avec la mémoire, et leur réunion, sur le premier monde des maisons, est ce que le texte appelle la résurrection <span class="ref">112:3.5 · 47:3.3</span>.</p>
+        <p class="see"><b>Tu y verras</b> un schéma en sept étapes qui suit chaque élément, de l’arrivée de l’Ajusteur à la fusion, les sept mondes des maisons, et ce que le texte ne précise pas.</p>
+        <a class="go" href="destinee-humaine.html">Ouvrir «&nbsp;La destinée humaine&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
+      </li>
+      <li class="card">
+        <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
           <rect class="f-mut" x="14" y="10" width="46" height="6" rx="2"/><rect class="f-ink" x="62" y="10" width="38" height="6" rx="2"/><rect class="f-g" x="102" y="10" width="44" height="6" rx="2"/>
           <path class="s-th" d="M14 26H146"/>
           <path class="s-th" d="M58 60Q40 46 26 43M58 60Q44 74 30 79M58 60Q90 42 116 38M58 60Q96 72 130 74" stroke-dasharray="3 3"/>
@@ -544,7 +581,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <circle class="f-g" cx="58" cy="60" r="4.5"/>
           <circle class="f-ink" cx="26" cy="43" r="2.6"/><circle class="f-ink" cx="30" cy="79" r="2.6"/><circle class="f-ink" cx="116" cy="38" r="2.6"/><circle class="f-ink" cx="130" cy="74" r="2.6"/>
         </svg></div>
-        <div class="top"><span class="num" aria-hidden="true">9</span><h3>L’histoire d’Urantia</h3></div>
+        <div class="top"><span class="num" aria-hidden="true">10</span><h3>L’histoire d’Urantia</h3></div>
         <p>Une frise suit la Terre de la nébuleuse d’Andronover à la fin des glaces. Puis une carte du monde montre, épisode par épisode, l’apparition des humains et leurs migrations.</p>
         <p class="see"><b>Tu y verras</b> Andon et Fonta, la famille Sangik, Dalamatia, le Jardin d’Éden et les Andites, avec les dates telles que le livre les écrit.</p>
         <a class="go" href="histoire-d-urantia.html">Ouvrir «&nbsp;L’histoire d’Urantia&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
@@ -558,7 +595,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <circle class="s-th" cx="130" cy="71" r="7.5" stroke-dasharray="2 2.5"/><circle class="f-g" cx="130" cy="71" r="3.2"/>
           <path class="s-th" d="M12 82H150"/>
         </svg></div>
-        <div class="top"><span class="num" aria-hidden="true">10</span><h3>La rébellion de Lucifer</h3></div>
+        <div class="top"><span class="num" aria-hidden="true">11</span><h3>La rébellion de Lucifer</h3></div>
         <p>Il y a environ 200&#8239;000 ans, Lucifer, souverain du système, se rebelle ; Caligastia, Prince Planétaire d’Urantia, le suit <span class="ref">53:4.1</span>. Un schéma en trois échelles (Jérusem, Dalamatia, le Jardin) montre qui a suivi qui, et pourquoi notre planète est isolée.</p>
         <p class="see"><b>Tu y verras</b> le manifeste de Lucifer, les loyaux et les rebelles, l’isolement d’Urantia, la défaillance d’Ève, et où en sont les rebelles aujourd’hui.</p>
         <a class="go" href="rebellion-de-lucifer.html">Ouvrir «&nbsp;La rébellion de Lucifer&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
@@ -570,7 +607,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="s" d="M36 20l28 20 18 26 26 6"/>
           <circle class="f-g" cx="36" cy="20" r="4.5"/><circle class="f-ink" cx="64" cy="40" r="3"/><circle class="f-ink" cx="82" cy="66" r="3"/><circle class="f-g" cx="108" cy="72" r="4.5"/>
         </svg></div>
-        <div class="top"><span class="num" aria-hidden="true">11</span><h3>La vie de Jésus</h3></div>
+        <div class="top"><span class="num" aria-hidden="true">12</span><h3>La vie de Jésus</h3></div>
         <p>Une frise de 92 étapes, de l’annonce à Marie à la Pentecôte, guide une carte de Palestine et du monde méditerranéen&nbsp;: à chaque étape, le lieu, le trajet et le passage du livre.</p>
         <p class="see"><b>Tu y verras</b> l’enfance à Nazareth, les grands voyages, le ministère public, la dernière semaine à Jérusalem et les apparitions.</p>
         <a class="go" href="vie-de-jesus.html">Ouvrir «&nbsp;La vie de Jésus&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
@@ -584,7 +621,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <path class="s-g" d="M70 42C80 42 80 52 90 52" stroke-dasharray="3 3"/>
           <circle class="f-g" cx="70" cy="42" r="2.6"/><circle class="f-g" cx="90" cy="52" r="2.6"/>
         </svg></div>
-        <div class="top"><span class="num" aria-hidden="true">12</span><h3>La Bible et le Livre d’Urantia</h3></div>
+        <div class="top"><span class="num" aria-hidden="true">13</span><h3>La Bible et le Livre d’Urantia</h3></div>
         <p>Cent parallèles, de la Création à l’Apocalypse, mettent côte à côte la Bible (traduction Crampon, 1923) et le Livre d’Urantia&nbsp;: ce qui concorde, ce qui diffère, et ce que le livre dit lui-même du récit biblique.</p>
         <p class="see"><b>Tu y verras</b> la Création et Lucifer, Adam et Ève, les patriarches, Moïse et les prophètes, l’enfance de Jésus, ses miracles et ses paraboles, la Passion, la Pentecôte, et 38&nbsp;versets que le Livre d’Urantia cite lui-même.</p>
         <a class="go" href="bible-et-livre.html">Ouvrir «&nbsp;La Bible et le Livre d’Urantia&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
@@ -647,6 +684,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
             <li><a href="atlas-3d.html#frise">La frise du temps</a>, de la nébuleuse d’Andronover à aujourd’hui</li>
             <li><a href="histoire-d-urantia.html">L’histoire d’Urantia</a>, frise des époques et carte des migrations</li>
             <li><a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a> sur Urantia, fascicules 66–67 et 73–76</li>
+            <li><a href="destinee-humaine.html">La destinée humaine</a>, de l’Ajusteur à la fusion, fascicules 107 à 112</li>
             <li><a href="concepts-en-schemas.html">Les concepts en schémas</a>, en partie</li>
           </ul>
         </div>
@@ -702,7 +740,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 <p class="hl-txt">Installe l’atlas comme une application, ou enregistre-le sur cet appareil pour le lire sans réseau. Les liens vers le texte du livre, sur urantia.org, demandent toujours Internet.</p>
 <div class="hl-btns">
 <button type="button" class="hl-btn hl-inst" id="hl-installer" hidden>Installer l’application</button>
-<button type="button" class="hl-btn" id="hl-telecharger">Télécharger pour lire hors ligne (≈&nbsp;4,5&nbsp;Mo)</button>
+<button type="button" class="hl-btn" id="hl-telecharger">Télécharger pour lire hors ligne (≈&nbsp;4,9&nbsp;Mo)</button>
 </div>
 <progress id="hl-barre" max="100" value="0" aria-label="Progression du téléchargement" hidden></progress>
 <p class="hl-etat" id="hl-etat" aria-live="polite"></p>
@@ -726,7 +764,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
     <p>Texte&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Citations courtes ; le reste est paraphrasé, avec ses références.</p>
     <p>Mise à jour&nbsp;: 2026-11-07.</p>
   <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Accueil&amp;page=Accueil%20%28index.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
-<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a></p>
+<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a> <span aria-hidden="true">·</span> <a href="glossaire.html">glossaire des termes</a></p>
 </footer>
 
 </main>
