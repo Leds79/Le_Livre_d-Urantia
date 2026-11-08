@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = 'f377f1b146f2';
+const VERSION = '860033cbb235';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -13,7 +13,7 @@ const FICHIERS = {
   "familles-de-personnalites.html": [122735, "56d7bdc605a52c44"],
   "concepts-en-schemas.html": [109865, "531f4d691bb450c5"],
   "dieu-et-deite.html": [95901, "caaff481abf541da"],
-  "destinee-humaine.html": [137525, "bab02ce085a01e5e"],
+  "destinee-humaine.html": [146740, "4313f1e41b3061b0"],
   "histoire-d-urantia.html": [198554, "89ad2f7654327698"],
   "rebellion-de-lucifer.html": [153662, "8100e8e574a801f0"],
   "vie-de-jesus.html": [121183, "4690515d4e9a1249"],
@@ -32,7 +32,7 @@ const FICHIERS = {
   "enseignements-de-jesus.html": [209101, "d21d4c3be514beec"],
   "histoire-du-livre.html": [136611, "14a3cbf70b100294"],
   "auteurs-et-chiffres.html": [268531, "06bdd6bcfe61635e"],
-  "fascicules.html": [384202, "27958e4d1b4fd06f"],
+  "fascicules.html": [384373, "3ce555c1fc54632d"],
   "parcours-de-lecture.html": [164871, "5de92b74b33fd1e0"],
   "glossaire.html": [197822, "f55053bd82f9eac1"],
   "hors-ligne.html": [7588, "6b8c5c1ceba61b98"],
@@ -58,7 +58,7 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
-  "assets/recherche.js": [1045540, "9a5c705592c57871"],
+  "assets/recherche.js": [1049674, "bd245f8f3f5b067d"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };

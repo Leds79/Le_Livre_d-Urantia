@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Mise en page : un parcours en huit temps, du don de l’Ajusteur à la carrière ascendante, avec au centre le schéma
+/* Mise en page : un parcours en neuf temps, du don de l’Ajusteur à la carrière ascendante, avec au centre le schéma
    « ce qui survit ». Les cinq réalités de l’être humain ont chacune leur couleur et leur icône (choix de la page) ;
    l’or est réservé à l’Ajusteur. Largeur utile : 1100 px. */
 :root {
@@ -208,6 +208,35 @@ blockquote.cite p i { font-style: normal; }
 .transf { margin-top: 22px; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--aj); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 10px; max-width: 84ch; }
 .transf h3 { font-size: 1.36rem; }
 
+/* L’Ajusteur, lui aussi, apprend (fascicule 109) : deux mouvements inverses qui se croisent dans la fusion */
+.aj-fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--aj); border-radius: 12px; padding: 14px 16px 12px; display: grid; gap: 8px; min-width: 0; }
+.aj-fig svg { width: 100%; max-width: 380px; height: auto; display: block; justify-self: center; }
+.aj-fig figcaption { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+.aj-a, .aj-h { fill: none; stroke-width: 3; stroke-linecap: round; }
+.aj-a { stroke: var(--aj); }
+.aj-h { stroke: var(--ame); }
+.aj-pa { fill: var(--aj); }
+.aj-ph { fill: var(--ame); }
+.aj-f1 { fill: var(--gold-soft); stroke: var(--aj); stroke-width: 2; }
+.aj-f2 { fill: var(--ame-soft); fill-opacity: .8; stroke: var(--ame); stroke-width: 2; }
+.aj-pole { fill: var(--ink); font: 600 16px var(--font-display); }
+.aj-lb { font: 700 13px var(--font-body); }
+.aj-lb.a { fill: var(--gold-ink); }
+.aj-lb.h { fill: var(--ame-ink); }
+.aj-sm { fill: var(--muted); font: 500 11px var(--font-body); }
+.series { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.series li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.45; counter-increment: se; }
+.series { counter-reset: se; }
+.series li::before { content: counter(se); width: 1.8rem; height: 1.8rem; border-radius: 50%; display: grid; place-items: center; font: 600 .78rem/1 var(--font-mono); color: var(--gold-ink); border: 1.5px solid var(--aj); background: var(--sheet); }
+.series li.ici::before { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.aj-go { font-size: .9rem; }
+.aj-go a { display: inline-flex; align-items: center; min-height: 44px; }
+.aj-lb.f { fill: var(--ink); }
+.cards.aj-c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 860px) {
+  .cards.aj-c2 { grid-template-columns: minmax(0, 1fr); }
+}
+
 /* Et ensuite */
 .path { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
 .path li { display: inline-flex; align-items: center; gap: 6px; }
@@ -376,6 +405,13 @@ blockquote.cite p i { font-style: normal; }
   .pl { padding: 9px 8px 10px; }
   .tk { padding: 5px 8px 5px 7px; column-gap: 6px; }
 }
+@media (max-width: 420px) {
+  /* les sept cercles psychiques sur deux rangées (7 à 4, puis 3 à 1), pour que leurs légendes tiennent */
+  .circles { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 10px; }
+  /* une liste de références peut passer à la ligne entre deux références, jamais au milieu d’une */
+  .ref { white-space: normal; }
+  .ref a { white-space: nowrap; }
+}
 @media (pointer: coarse) { .sc-steps button { min-height: 44px; height: 44px; } }
 </style>
 <svg class="defs" aria-hidden="true" focusable="false">
@@ -435,8 +471,9 @@ blockquote.cite p i { font-style: normal; }
       <li><a href="#reveil"><span class="nb">5</span><span class="tt">Le réveil</span></a></li>
       <li><a href="#maisons"><span class="nb">6</span><span class="tt">Les sept mondes des maisons</span></a></li>
       <li><a href="#fusion"><span class="nb">7</span><span class="tt">La fusion avec l’Ajusteur</span></a></li>
-      <li><a href="#ensuite"><span class="nb">8</span><span class="tt">Et ensuite&nbsp;?</span></a></li>
-      <li><a href="#registres"><span class="nb">9</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#ajusteurs"><span class="nb">8</span><span class="tt">L’Ajusteur, lui aussi, apprend</span></a></li>
+      <li><a href="#ensuite"><span class="nb">9</span><span class="tt">Et ensuite&nbsp;?</span></a></li>
+      <li><a href="#registres"><span class="nb">10</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
       <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
     </ol>
   </nav>
@@ -455,7 +492,7 @@ blockquote.cite p i { font-style: normal; }
       </div>
       <aside class="fact" aria-labelledby="h-fact">
         <p class="big" id="h-fact"><small>Âge moyen de son arrivée</small>5&nbsp;ans, 10&nbsp;mois et 4&nbsp;jours</p>
-        <p>Soit 2&#8239;134&nbsp;jours de vie, chiffre donné pour <span class="q" data-ref="108:2.1">«&nbsp;la présente génération&nbsp;»</span>&nbsp;; en moyenne, dit le texte, juste avant six ans <span class="ref">108:2.1</span>.</p>
+        <p>Soit 2&nbsp;134&nbsp;jours de vie, chiffre donné pour <span class="q" data-ref="108:2.1">«&nbsp;la présente génération&nbsp;»</span>&nbsp;; en moyenne, dit le texte, juste avant six ans <span class="ref">108:2.1</span>.</p>
         <p>L’Ajusteur s’est porté volontaire, mais il n’est affecté qu’après la <b>première décision morale</b> de l’enfant <span class="ref">108:2.1</span>. Le mental doit y avoir été préparé par les sept esprits-mentaux adjuvats <span class="ref">108:2.2</span>. Depuis la Pentecôte, il vient à <span class="q" data-ref="108:2.3">«&nbsp;tout mental normal ayant statut moral&nbsp;»</span> <span class="ref">108:2.3</span>.</p>
         <ul class="names" aria-label="Ses noms selon l’âge">
           <li><b>Changeur</b><span>jusque vers 20&nbsp;ans</span></li>
@@ -577,7 +614,7 @@ blockquote.cite p i { font-style: normal; }
             <li class="e-men"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-men"/></svg><span><b>Mental</b>&nbsp;: préparé par les sept adjuvats <span class="ref">108:2.2</span></span></li>
             <li class="e-cor"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cor"/></svg><span><b>Corps</b>&nbsp;: sur Urantia</span></li>
           </ul>
-          <blockquote class="cite e-aj" data-ref="108:2.1"><p>«&nbsp;Dans la présente génération, c’est à l’âge de cinq ans, dix mois et quatre jours, c’est-à-dire après 2&#8239;134 jours de la vie terrestre de l’enfant.&nbsp;»</p><span class="ref">108:2.1</span></blockquote>
+          <blockquote class="cite e-aj" data-ref="108:2.1"><p>«&nbsp;Dans la présente génération, c’est à l’âge de cinq ans, dix mois et quatre jours, c’est-à-dire après 2&nbsp;134 jours de la vie terrestre de l’enfant.&nbsp;»</p><span class="ref">108:2.1</span></blockquote>
         </li>
         <li id="tv-3">
           <h3 class="tv-h"><span class="tv-n">3</span>Une vie de décisions</h3>
@@ -805,9 +842,58 @@ blockquote.cite p i { font-style: normal; }
     </article>
   </section>
 
+  <section id="ajusteurs" aria-labelledby="h-ajc">
+    <div class="sec-head">
+      <p class="eyebrow"><b>8</b> · Fascicule 109</p>
+      <h2 id="h-ajc">L’Ajusteur, lui aussi, apprend</h2>
+      <p>Le fascicule 109 regarde le parcours du côté de l’Ajusteur. Les Ajusteurs sont, dit-il, les enfants de la carrière universelle&nbsp;: comme l’enfant se forme par le jeu, l’Ajusteur se prépare pendant la vie mortelle, qui lui sert de période de pratique <span class="ref">109:0.1</span>.</p>
+      <blockquote class="cite e-aj" data-ref="109:0.1"><p>«&nbsp;Les Ajusteurs de Pensée font, aujourd’hui, une sorte de répétition générale des réalités de la carrière universelle dans le mental évoluant des êtres humains.&nbsp;»</p><span class="ref">109:0.1</span></blockquote>
+    </div>
+    <div class="duo">
+      <div class="prose">
+        <p><b>Deux mouvements inverses.</b> Vous évoluez vers l’intérieur et vers le haut, de l’homme à Dieu&nbsp;; l’Ajusteur, vers l’extérieur et vers le bas, de Dieu à l’homme. La fusion avec l’âme survivante est son premier stade d’évolution, et le fruit de cette union sera éternellement <span class="q" data-ref="109:1.5">«&nbsp;le fils de l’homme et le fils de Dieu&nbsp;»</span> <span class="ref">109:1.5</span>.</p>
+        <p><b>Des degrés d’expérience.</b> Le texte distingue des Ajusteurs vierges, avancés et suprêmes, et dit autonomes ceux qui ont acquis certaines expériences&nbsp;: par exemple quand leur sujet a franchi le troisième cercle psychique, ou s’est solennellement engagé envers lui par la décision suprême <span class="ref">109:2.1–4</span>.</p>
+        <p><b>Selon les mondes</b>, son rôle diffère <span class="ref">109:3.1</span>&nbsp;:</p>
+        <ol class="series" aria-label="Trois séries de mondes">
+          <li><span>sur des mondes primitifs, des Ajusteurs vierges s’exercent auprès des humains&nbsp;; beaucoup de ceux qui ne fusionnent pas avec leur Ajusteur survivront par fusion avec l’Esprit <span class="ref">109:3.2</span>&nbsp;;</span></li>
+          <li><span>sur d’autres, l’Ajusteur n’est que prêté pour une vie&nbsp;: il aide davantage, mais ne fusionne jamais <span class="ref">109:3.3</span>&nbsp;;</span></li>
+          <li class="ici"><span>sur des mondes comme Urantia, ce sont de vraies fiançailles, pour la vie et pour la mort&nbsp;: si l’homme survit, l’union sera éternelle <span class="ref">109:3.4</span>.</span></li>
+        </ol>
+      </div>
+      <figure class="aj-fig" aria-labelledby="aj-fig-t">
+        <svg viewBox="0 0 320 220" role="img" aria-labelledby="aj-svg-t" focusable="false"><title id="aj-svg-t">Deux mouvements inverses&nbsp;: l’Ajusteur descend de Dieu vers l’homme, la personne monte de l’homme vers Dieu&nbsp;; ils se croisent dans la fusion.</title><text class="aj-pole" x="160" y="22" text-anchor="middle">Dieu</text><text class="aj-pole" x="160" y="211" text-anchor="middle">l’homme</text><path class="aj-a" d="M110 34C150 70 170 150 210 186"/><path class="aj-h" d="M110 186C150 150 170 70 210 34"/><polygon class="aj-pa" points="215.2,190.7 204.1,188.1 211.5,179.9"/><polygon class="aj-ph" points="215.2,29.3 211.5,40.1 204.1,31.9"/><circle class="aj-f1" cx="153" cy="110" r="13"/><circle class="aj-f2" cx="167" cy="110" r="13"/><text class="aj-lb a" x="16" y="64">l’Ajusteur</text><text class="aj-sm" x="16" y="80">de Dieu vers l’homme</text><text class="aj-lb h" x="16" y="150">vous</text><text class="aj-sm" x="16" y="166">de l’homme vers Dieu</text><text class="aj-lb f" x="188" y="115">la fusion</text></svg>
+        <figcaption id="aj-fig-t">Image symbolique&nbsp;: les deux mouvements que décrit le texte se rejoignent dans la fusion <span class="ref">109:1.5</span>.</figcaption>
+      </figure>
+    </div>
+    <div class="cards aj-c2">
+      <article class="card e-aj">
+        <h3>Un passé, parfois</h3>
+        <p>L’Ajusteur gagne de l’expérience dans chaque mental qu’il habite, que son sujet survive ou non&nbsp;; après une non-survie, il suit un complément de formation sur Divinington <span class="ref">109:1.2–4</span>. Son type pèse beaucoup sur l’expression de la personnalité <span class="ref">109:4.3</span>&nbsp;: l’auteur dit en avoir observé un, sur Urantia, qui avait habité quinze penseurs d’Orvonton. Aucun de ceux qui servent aujourd’hui sur Urantia n’y avait séjourné auparavant <span class="ref">109:4.5–6</span>.</p>
+        <p class="aj-go"><a href="#don">Étape 1&nbsp;: le don du Père</a></p>
+      </article>
+      <article class="card e-men">
+        <h3>Ce qui gêne son travail</h3>
+        <p>Nos attitudes changeantes, nos opinions préconçues et nos préjugés contrarient ses plans et retardent son ministère <span class="ref">109:5.3</span>. Mais, dans un mental normal, aucun handicap héréditaire n’empêche l’accomplissement spirituel final&nbsp;: l’hérédité peut ralentir la conquête, non l’empêcher <span class="ref">109:5.5</span>.</p>
+        <p class="aj-go"><a href="#vie">Étape 3&nbsp;: une suite de décisions</a></p>
+      </article>
+      <article class="card e-ame">
+        <h3>Rien n’est perdu</h3>
+        <p>Si l’humain refuse la survie, l’Ajusteur emporte, à la mort ou avant, tout ce qui avait une valeur de survie, et le confère plus tard à un mental apte à survivre <span class="ref">109:6.1–2</span>.</p>
+        <blockquote class="cite e-aj" data-ref="109:6.1"><p>«&nbsp;Les Ajusteurs n’échouent jamais. Rien de ce qui mérite de survivre n’est jamais perdu.&nbsp;»</p><span class="ref">109:6.1</span></blockquote>
+        <p class="aj-go"><a href="#mort">Étape 4&nbsp;: la mort</a></p>
+      </article>
+      <article class="card e-aj">
+        <h3>Les Ajusteurs Personnalisés</h3>
+        <p>Le Père confère parfois la personnalité à un Ajusteur, souvent après qu’il a habité un Fils d’effusion&nbsp;; les Ajusteurs Personnalisés ont leur foyer sur Divinington <span class="ref">109:6.3&nbsp;; 109:7.1</span>. Celui de Jésus, qui avait servi chez Machiventa Melchizédek au temps d’Abraham, dirige aujourd’hui les Ajusteurs de Nébadon&nbsp;; il guidait un mental qui disait <span class="q" data-ref="109:6.5">«&nbsp;Que ta volonté soit faite, et non la mienne.&nbsp;»</span> <span class="ref">109:6.4–5</span></p>
+        <p>Le texte les dit omnipersonnels&nbsp;; trois d’entre eux apparurent devant le régent Vorondadek d’Urantia, et nul n’ose prédire leurs missions futures <span class="ref">109:7.4&nbsp;; 109:7.7–8</span>.</p>
+        <p class="aj-go"><a href="#fusion">Étape 7&nbsp;: la fusion</a></p>
+      </article>
+    </div>
+  </section>
+
   <section id="ensuite" aria-labelledby="h-ens">
     <div class="sec-head">
-      <p class="eyebrow"><b>8</b> · Fascicules 30, 31 et 112</p>
+      <p class="eyebrow"><b>9</b> · Fascicules 30, 31 et 112</p>
       <h2 id="h-ens">Et ensuite&nbsp;? La longue ascension</h2>
       <p>Les mondes des maisons ne sont qu’un début. Le texte décrit sept stades, du mortel planétaire à l’arrivant au Paradis <span class="ref">30:4.1–8</span>, et précise que ce récit vaut pour les mortels qui fusionnent avec leur Ajusteur, ce qui est la destinée des races d’Urantia <span class="ref">30:4.9</span>.</p>
     </div>
@@ -862,7 +948,7 @@ blockquote.cite p i { font-style: normal; }
   </section>
 
   <footer class="foot">
-    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-huit citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Soixante-deux citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
     <p>Le schéma et la figure des mondes des maisons sont des images symboliques&nbsp;: positions, couleurs et icônes sont des choix de présentation.</p>
     <p>Faits extérieurs au livre (date de parution, doctrines comparées, débats critiques)&nbsp;: résumés prudents, sans prise de position.</p>
   </footer>
