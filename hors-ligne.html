@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="author" content="Sylvain Leduc">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131A2E" media="(prefers-color-scheme: dark)">
+<title>Hors ligne — Le Livre d’Urantia en images</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<script src="assets/musique.js" defer></script>
+<style>
+:root { --paper: #EEF1F6; --sheet: #FFFFFF; --ink: #18213B; --muted: #56607D; --rule: #CBD2E0; --gold-ink: #8A5A00; color-scheme: light;
+  --font-display: "Cormorant Garamond", Georgia, serif; --font-body: "Alegreya Sans", "Segoe UI", Arial, sans-serif; }
+@media (prefers-color-scheme: dark) { :root { --paper: #0C1120; --sheet: #131A2E; --ink: #E6E9F2; --muted: #9AA4C0; --rule: #28314B; --gold-ink: #F4C664; color-scheme: dark; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--font-body); }
+main { max-width: 640px; margin: 0 auto; padding: 56px 16px; display: grid; gap: 16px; }
+h1 { margin: 0; font: 600 2.4rem/1.1 var(--font-display); }
+h2 { margin: 12px 0 0; font: 600 1.4rem/1.2 var(--font-display); }
+p { margin: 0; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.home { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; }
+.pages { margin: 0; padding: 0; list-style: none; display: grid; }
+.pages a { display: inline-flex; align-items: center; min-height: 44px; }
+.pages .etat { color: var(--muted); font-size: .9rem; }
+.foot { margin-top: 8px; border-top: 1px solid var(--rule); padding-top: 14px; font-size: .84rem; color: var(--muted); }
+.atlas-credit { margin: 0; display: flex; flex-wrap: wrap; align-items: center; column-gap: .45em; }
+.atlas-credit a { display: inline-flex; align-items: center; min-height: 44px; }
+.atlas-credit .atlas-note { font-size: .92em; }
+.atlas-droits { margin: 0; }
+.atlas-droits a { padding-block: 12px; }
+</style>
+</head>
+<body>
+<main>
+<p>Le Livre d’Urantia en images</p>
+<h1>Hors ligne</h1>
+<p>Cette page n’est pas encore enregistrée pour la lecture hors ligne.</p>
+<p>Reconnecte-toi pour l’afficher. Pour tout lire sans réseau, ouvre l’accueil avec une connexion et touche « Télécharger pour lire hors ligne ».</p>
+<p><a class="home" href="./">Revenir à l’accueil de l’atlas</a></p>
+<h2>Pages enregistrées sur cet appareil</h2>
+<ul class="pages"><li data-page><a href="./">Accueil</a> <span class="etat"></span></li><li data-page><a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a> <span class="etat"></span></li><li data-page><a href="atlas-3d.html">D’Urantia au Paradis (3D)</a> <span class="etat"></span></li><li data-page><a href="familles-de-personnalites.html">Familles de personnalités</a> <span class="etat"></span></li><li data-page><a href="concepts-en-schemas.html">Concepts en schémas</a> <span class="etat"></span></li><li data-page><a href="dieu-et-deite.html">Dieu et la Déité</a> <span class="etat"></span></li><li data-page><a href="histoire-d-urantia.html">L’histoire d’Urantia</a> <span class="etat"></span></li><li data-page><a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a> <span class="etat"></span></li><li data-page><a href="vie-de-jesus.html">La vie de Jésus</a> <span class="etat"></span></li><li data-page><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a> <span class="etat"></span></li></ul>
+<footer class="foot"><p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Hors%20ligne&amp;page=Hors%20ligne%20%28hors-ligne.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
+<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a></p></footer>
+</main>
+<script>
+(function () {
+  try {
+    if (!window.caches) return;
+    Array.prototype.forEach.call(document.querySelectorAll('[data-page]'), function (li) {
+      var u = new URL(li.querySelector('a').href);
+      if (u.pathname.slice(-1) === '/') u.pathname += 'index.html';
+      caches.match(u.href).then(function (r) {
+        li.className = r ? 'ok' : 'non';
+        li.querySelector('.etat').textContent = r ? '· enregistrée' : '· pas encore enregistrée';
+      });
+    });
+  } catch (e) { /* liste sans état */ }
+})();
+</script>
+</body>
+</html>

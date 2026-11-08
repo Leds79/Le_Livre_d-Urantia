@@ -1,0 +1,47 @@
+name: Signaler une erreur
+description: Une citation, une référence, un fait, un lien ou un affichage à corriger sur le site.
+title: "[Erreur] "
+labels: ["erreur"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci de signaler une erreur ! Indiquez la page, la référence du livre (fascicule:section.paragraphe) et ce qu’il faudrait corriger.
+        Les règles du site et le code de conduite sont dans [CONTRIBUER.md](https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md) : pas de débats de croyances dans les tickets.
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Nom ou adresse de la page concernée.
+      placeholder: "La vie de Jésus (vie-de-jesus.html)"
+    validations:
+      required: true
+  - type: input
+    id: reference
+    attributes:
+      label: Référence du livre
+      description: Au format fascicule:section.paragraphe, si l’erreur porte sur le texte.
+      placeholder: "122:2.6"
+    validations:
+      required: false
+  - type: textarea
+    id: ecrit
+    attributes:
+      label: Ce qui est écrit
+      description: Le passage du site tel qu’il apparait (une courte citation suffit).
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Ce qu’il faudrait
+      description: La correction proposée.
+    validations:
+      required: true
+  - type: textarea
+    id: justification
+    attributes:
+      label: Justification
+      description: Pourquoi cette correction ? Une courte citation exacte du livre avec sa référence, ou une autre source.
+    validations:
+      required: false

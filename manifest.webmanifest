@@ -1,0 +1,37 @@
+{
+ "id": "./",
+ "name": "Le Livre d’Urantia en images",
+ "short_name": "Atlas Urantia",
+ "description": "Atlas visuel du Livre d’Urantia : l’origine et l’organisation de l’univers en cartes, en 3D et en schémas, avec les références du texte. Se lit aussi hors ligne.",
+ "lang": "fr",
+ "dir": "ltr",
+ "start_url": "./",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#0C1120",
+ "theme_color": "#0C1120",
+ "categories": [
+  "education",
+  "books"
+ ],
+ "icons": [
+  {
+   "src": "assets/icone-192.png",
+   "sizes": "192x192",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "assets/icone-512.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "any"
+  },
+  {
+   "src": "assets/icone-512-maskable.png",
+   "sizes": "512x512",
+   "type": "image/png",
+   "purpose": "maskable"
+  }
+ ]
+}

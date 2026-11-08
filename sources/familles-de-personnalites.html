@@ -1,0 +1,1133 @@
+<title>Familles de personnalités</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : un registre céleste annoté. Vue d’ensemble en barres proportionnées,
+   puis l’arbre des ordres, lisible en colonne d’environ 70 caractères, jusqu’à 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des fiches */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --gold-ui: #9E6B00;  /* or des repères d’interface (traits, contours) : 3:1 au moins */
+  --rule-ctl: #7D88A3; /* bordure des commandes */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  /* Couleurs d’origine */
+  --o-trin: #7E5FB5;   /* Trinité */
+  --o-pf: #2F6FB0;     /* Père et Fils */
+  --o-fe: #1F8A84;     /* Fils et Esprit */
+  --o-ei: #B8487A;     /* Esprit Infini */
+  --o-ul: #4E8B3C;     /* Fils Créateur et Esprit-Mère */
+  --o-asc: #C2612C;    /* ascendants */
+  --o-aut: #6F7891;    /* autres */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
+    --o-trin: #B59BE6; --o-pf: #6FA6E8; --o-fe: #4FC4BC; --o-ei: #E486B0; --o-ul: #86C36F; --o-asc: #EE9A63; --o-aut: #9AA3BA;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
+  --o-trin: #B59BE6; --o-pf: #6FA6E8; --o-fe: #4FC4BC; --o-ei: #E486B0; --o-ul: #86C36F; --o-asc: #EE9A63; --o-aut: #9AA3BA;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; }
+.qt { font-family: var(--font-display); font-style: italic; font-size: 1.16em; line-height: 1.38; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 46ch; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .98rem; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.codebox .sample { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); }
+.codebox .sample .nm { font-family: var(--font-display); font-weight: 600; font-size: 1.3rem; line-height: 1.2; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 12px; font-size: .9rem; }
+.codebox dt { font: 500 .82rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Sections */
+.sec-head { display: grid; gap: 12px; max-width: 68ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+
+/* Pastilles et badges */
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; flex: none; background: var(--c, var(--o-aut)); }
+.c-trin { --c: var(--o-trin); } .c-pf { --c: var(--o-pf); } .c-fe { --c: var(--o-fe); } .c-ei { --c: var(--o-ei); }
+.c-ul { --c: var(--o-ul); } .c-asc { --c: var(--o-asc); } .c-aut { --c: var(--o-aut); }
+.code { font: 500 .74rem/1.2 var(--font-mono); color: var(--muted); border: 1px solid var(--rule); border-radius: 5px; padding: 2px 6px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.dbl { font: 500 .74rem/1.2 var(--font-mono); color: var(--gold-ink); background: transparent; border: 1px solid var(--gold-ui); border-radius: 5px; padding: 1px 5px; white-space: nowrap; }
+
+/* Vue d’ensemble */
+.ov { display: grid; gap: 4px; margin-top: 24px; }
+.ov-row { appearance: none; width: 100%; text-align: left; background: transparent; border: 0; border-radius: 10px; color: inherit; font: inherit; cursor: pointer;
+  display: grid; grid-template-columns: 2.6rem minmax(0, 15rem) minmax(0, 1fr) 5.6rem; align-items: center; gap: 4px 14px; padding: 8px 10px; }
+.ov-row:hover { background: var(--tint); }
+.ov-k { font: 500 .8rem/1 var(--font-mono); color: var(--muted); }
+.ov-n { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.15; min-width: 0; }
+.ov-bar { display: block; width: 100%; height: 14px; }
+.ov-c { font: 500 .8rem/1 var(--font-mono); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ov-c::after { content: " ›"; color: var(--gold-ink); font-weight: 700; }
+.ov-row:hover .ov-n { color: var(--gold-ink); }
+#legend.legend-line { margin-top: 18px; }
+.seg { stroke: var(--paper); stroke-width: .6; vector-effect: non-scaling-stroke; }
+.s-trin { fill: var(--o-trin); } .s-pf { fill: var(--o-pf); } .s-fe { fill: var(--o-fe); } .s-ei { fill: var(--o-ei); }
+.s-ul { fill: var(--o-ul); } .s-asc { fill: var(--o-asc); } .s-aut { fill: var(--o-aut); }
+.ov-note { margin-top: 12px; font-size: .86rem; color: var(--muted); max-width: 68ch; }
+
+/* Commandes */
+.controls { display: grid; gap: 16px; margin-top: 24px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; }
+.ctl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; }
+.seg-ctl { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--paper); max-width: 100%; flex-wrap: wrap; }
+.seg-ctl button { appearance: none; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 500 .95rem/1.2 var(--font-body); padding: 8px 14px; cursor: pointer; }
+.seg-ctl button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--rule-ctl); background: var(--paper); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); cursor: pointer; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { border-color: var(--ink); background: var(--tint); box-shadow: inset 0 0 0 1px var(--ink); }
+.field { display: grid; gap: 4px; min-width: 0; }
+.field label, .ctl-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.field select, .field input { font: 400 1rem/1.3 var(--font-body); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 8px 10px; min-width: 0; width: 100%; }
+.grid-fields { display: grid; grid-template-columns: minmax(0, 14rem) minmax(0, 1fr); gap: 12px 16px; align-items: end; }
+.btn { appearance: none; display: inline-flex; align-items: center; gap: 8px; padding: 7px 13px; border-radius: 999px; border: 1px solid var(--rule-ctl); background: var(--sheet); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.status { font-size: .92rem; color: var(--muted); }
+
+/* Arbre */
+.tree, .tree ul { list-style: none; margin: 0; padding: 0; }
+.tree { margin-top: 20px; display: grid; gap: 10px; }
+.tree .panel { min-width: 0; }
+.tg { appearance: none; width: 100%; text-align: left; background: transparent; border: 0; color: inherit; font: inherit; cursor: pointer;
+  display: flex; align-items: center; gap: 10px; border-radius: 8px; }
+.tg:hover { background: var(--tint); }
+.chev { width: 14px; height: 14px; flex: none; color: var(--muted); transition: transform .15s ease; }
+.tg[aria-expanded="true"] > .chev { transform: rotate(90deg); }
+.fam { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 6px; min-width: 0; }
+.fam > .tg { padding: 10px 10px; }
+.fam > .tg .t { font-family: var(--font-display); font-weight: 600; font-size: 1.36rem; line-height: 1.15; min-width: 0; }
+.tg .k { font: 500 .78rem/1 var(--font-mono); color: var(--muted); flex: none; min-width: 2.4rem; }
+.tg .cnt { margin-left: auto; font: 500 .78rem/1 var(--font-mono); color: var(--muted); white-space: nowrap; padding-left: 8px; }
+.fam-note { font-size: .88rem; color: var(--muted); padding: 2px 14px 10px 44px; max-width: 68ch; }
+.sub { margin: 4px 0 4px 18px; border-left: 1px solid var(--rule); padding-left: 8px; }
+.sub > .tg { padding: 7px 8px; }
+.sub > .tg .t { font-weight: 700; font-size: 1rem; min-width: 0; }
+.ords { display: grid; gap: 2px; padding: 2px 0 6px 18px; }
+.ord > .tg { padding: 7px 8px; align-items: flex-start; }
+.ord > .tg .chev { margin-top: 5px; }
+.ord > .tg .dot { margin-top: 7px; }
+.ord .head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; min-width: 0; flex: 1; }
+.ord .nm { font-weight: 500; font-size: 1.02rem; min-width: 0; }
+.ord .ef { font-size: .86rem; color: var(--muted); }
+.badges { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+.card { margin: 2px 0 10px 32px; padding: 14px 16px; border-radius: 10px; background: var(--tint); display: grid; gap: 10px; min-width: 0; }
+.card dl { margin: 0; display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); gap: 6px 14px; font-size: .95rem; }
+.card dt { font: 500 .72rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.card dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.card .alt { font-size: .88rem; color: var(--muted); }
+.card blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold-ui); display: grid; gap: 4px; }
+.card blockquote p { font-family: var(--font-display); font-style: italic; font-size: 1.12rem; line-height: 1.4; }
+.card .subs { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: .93rem; }
+.card .subs .sn { font-weight: 500; }
+.card .dblnote { font-size: .9rem; }
+.card .dblnote b { color: var(--gold-ink); font-weight: 500; }
+.empty { padding: 18px; color: var(--muted); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 80ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.callout li, .unk li { max-width: 72ch; }
+.legend-line { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .9rem; color: var(--muted); }
+.legend-line span { display: inline-flex; align-items: center; gap: 6px; }
+details.unk { max-width: 80ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+details.unk summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+details.unk[open] summary { margin-bottom: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 68ch; display: grid; gap: 6px; }
+
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .ov-row { grid-template-columns: 2.2rem minmax(0, 1fr) auto; }
+  .ov-row .ov-k { grid-column: 1; grid-row: 1; }
+  .ov-row .ov-n { grid-column: 2; grid-row: 1; }
+  .ov-row .ov-c { grid-column: 3; grid-row: 1; }
+  .ov-row .ov-bar { grid-column: 2 / -1; grid-row: 2; }
+  .grid-fields { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .card { margin-left: 0; }
+  .card dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .card dd { margin-bottom: 6px; }
+  .ords { padding-left: 4px; }
+  .sub { margin-left: 6px; }
+  .fam-note { padding-left: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chev { transition: none; }
+}
+@media (pointer: coarse) { .seg-ctl button, .chip, .btn, .field select, .field input { min-height: 44px; } }
+</style>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · fascicules 30 et 16 à 40</p>
+      <h1>Les familles de personnalités</h1>
+      <p class="lede">Le livre range les êtres de l’univers de deux façons : par fonction, comme on les enregistre sur Uversa, et par origine, comme on les classe au Paradis. Cette page met les deux registres côte à côte.</p>
+    </div>
+    <aside class="codebox" aria-label="Lire un code de classement">
+      <span class="label">Lire un code</span>
+      <div class="sample"><span class="nm">Les Fils Lanonandeks</span><span class="code">30:2 IV.A.6</span><span class="code">[P II.A.7]</span></div>
+      <dl>
+        <dt>30:2 IV.A.6</dt><dd>Classification d’Uversa : division IV (Fils de Dieu), groupe A (Fils descendants), 6<sup>e</sup> ordre.</dd>
+        <dt>[P II.A.7]</dt><dd>Classification du Paradis (30:1) : catégorie II (origine duelle), groupe A (ordres descendants), 7<sup>e</sup> rang.</dd>
+        <dt>⇄</dt><dd>L’ordre figure à plusieurs endroits, ou dans des catégories de nature différente d’une classification à l’autre.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <section aria-labelledby="h-ov">
+    <div class="sec-head">
+      <h2 id="h-ov">Vue d’ensemble</h2>
+      <p id="ov-intro">Chaque barre compte les ordres d’une famille et se découpe selon leur origine. Choisis une famille pour l’ouvrir dans l’arbre.</p>
+    </div>
+    <div class="legend-line" id="legend" role="group" aria-label="Légende des couleurs d’origine"></div>
+    <div class="ov" id="ov"></div>
+    <p class="ov-note">La longueur d’une barre donne le nombre d’ordres recensés ici, pas le nombre d’êtres : le texte ne donne d’effectif que pour certains ordres. Les ascendants sont regroupés par statut plutôt que par créateur.</p>
+  </section>
+
+  <aside class="callout" aria-labelledby="h-read">
+    <h2 id="h-read">Comment lire les deux classifications</h2>
+    <ul>
+      <li><b>Uversa (30:2)</b> tient un registre fonctionnel en sept grandes divisions, suivi de groupes composites <span class="ref">30:2.1–8 ; 30:2.129</span>. Il retient surtout les ordres que les mortels rencontreront et laisse de côté de vastes ordres étrangers au plan d’ascension <span class="ref">30:2.9</span>.</li>
+      <li><b>Le Paradis (30:1)</b> classe les êtres d’après leur relation, inhérente ou acquise, avec les Déités : origine trine, duelle ou unique, puis êtres extériorisés, fragments de la Déité, êtres superpersonnels et ordres non classés <span class="ref">30:1.1</span>.</li>
+      <li>Un même ordre peut changer de place. Les Directeurs de Pouvoir forment une division à part sur Uversa, mais appartiennent à la famille de l’Esprit Infini au Paradis. Les médians ont un triple classement, que le texte annonce lui-même <span class="ref">38:9.1</span>.</li>
+      <li>Les Déités ne figurent pas dans 30:1, qui classe les êtres d’après leur relation avec elles. Les ordres recrutés (Conseillers Techniques, Compagnons du Paradis…) n’y figurent pas non plus.</li>
+      <li>Les couleurs sont un choix de présentation : elles suivent le créateur que le texte indique, sauf pour les êtres d’origine évolutionnaire, regroupés sous « ascendants ».</li>
+    </ul>
+  </aside>
+
+  <section aria-labelledby="h-tree">
+    <div class="sec-head">
+      <h2 id="h-tree">Les ordres, famille par famille</h2>
+      <p class="hint">Les familles sont repliées au départ&nbsp;: ouvre celle qui t’intéresse, ou «&nbsp;Tout déplier&nbsp;». Chaque ligne s’ouvre sur une fiche. Au clavier : flèches haut et bas pour se déplacer, droite pour ouvrir, gauche pour refermer.</p>
+    </div>
+
+    <div class="controls">
+      <div class="ctl-row">
+        <span class="ctl-lbl" id="lbl-view">Classement</span>
+        <div class="seg-ctl" role="group" aria-labelledby="lbl-view">
+          <button type="button" id="v-u" aria-pressed="true">Classification d’Uversa (30:2)</button>
+          <button type="button" id="v-p" aria-pressed="false">Classification du Paradis (30:1)</button>
+        </div>
+      </div>
+      <div class="ctl-row">
+        <span class="ctl-lbl" id="lbl-or">Origine</span>
+        <div class="chips" id="chips" role="group" aria-labelledby="lbl-or"></div>
+      </div>
+      <div class="grid-fields">
+        <div class="field">
+          <label for="f-lv">Niveau</label>
+          <select id="f-lv">
+            <option value="">Tous les niveaux</option>
+            <option value="ph">Paradis-Havona</option>
+            <option value="su">Superunivers</option>
+            <option value="ul">Univers local</option>
+            <option value="pl">Planète</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-q">Rechercher</label>
+          <input type="search" id="f-q" placeholder="nom, origine, siège, référence… (accents facultatifs)" autocomplete="off">
+        </div>
+      </div>
+      <div class="ctl-row">
+        <button type="button" class="btn" id="b-open">Tout déplier</button>
+        <button type="button" class="btn" id="b-close">Tout replier</button>
+        <button type="button" class="btn" id="b-reset">Effacer les filtres</button>
+        <p class="status" id="status" aria-live="polite"></p>
+      </div>
+    </div>
+
+    <ul class="tree" id="tree" aria-label="Arbre des familles de personnalités"></ul>
+  </section>
+
+  <details class="unk">
+    <summary>Ce que le texte ne précise pas</summary>
+    <ul>
+      <li><b>Effectifs absents.</b> Aucun chiffre pour les Esprits Inspirés de la Trinité, les Directeurs du Recensement, les Guides de Diplômés, les Fils Trinitisés, les Maitres Organisateurs de Force, les Superviseurs Non Qualifiés du Suprême ou les Vice-Gérants Qualifiés de l’Ultime. Aucun total pour les séraphins ni pour les Esprits Créatifs. Les natifs de Havona dépassent nos conceptions ; les Citoyens du Paradis sont comptés en ordres (plus de 3 000), pas en individus.</li>
+      <li><b>Estimations seulement.</b> Les Fils Créateurs (plus de 700 000 selon l’auteur, 21:1.4) et les Aides Personnels (des billions, estimation prudente, 24:3.1). Les Messagers Solitaires ne sont comptés que pour Orvonton (23:0.2).</li>
+      <li><b>Chiffres d’univers local.</b> Ceux des Melchizédeks, Vorondadeks, Lanonandeks, Porteurs de Vie, archanges et Surveillants Célestes valent pour Nébadon ; le texte précise que leur nombre varie selon les univers locaux (35:2.9 ; 35:5.2).</li>
+      <li><b>Sièges inconnus.</b> Esprits Inspirés, Consommateur de la Destinée, Vice-Gérants Qualifiés, adjuvats dodécuples des circuits de Havona. Les Messagers Solitaires n’ont pas de quartier général connu (24:0.10).</li>
+      <li><b>Noms non révélés.</b> Les Maitres Esprits ont des noms, mais le texte ne donne que leurs numéros (16:3.1). Les noms des Esprits Réflectifs ne sont pas révélés (17:3.2).</li>
+      <li><b>Un décompte à concilier.</b> 17:2.1 annonce cinquante Esprits Réflectifs, 17:3.1 en compte quarante-neuf. Une lecture courante voit dans le cinquantième Majeston, personnalisé juste après le quarante-neuvième (17:2.2) ; le texte ne le dit pas.</li>
+      <li><b>Listes incomplètes.</b> 30:1 réserve plusieurs cases à des ordres non révélés et omet les ordres recrutés. 30:2 omet les spirongas, les Messagers de Gravité, les Transcendantaux, les Ajusteurs et Majeston. Le texte annonce lui-même que bien des ordres restent à révéler (30:1.112).</li>
+    </ul>
+  </details>
+
+  <footer class="foot">
+    <p>Source : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, données entre guillemets ; le reste est paraphrasé, avec ses références.</p>
+    <p>Références : fascicule:section.paragraphe. « 30:2 » renvoie à la classification d’Uversa, « [P …] » à la classification du Paradis (30:1).</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  var ORIG = [
+    ["trin", "Trinité"], ["pf", "Père et Fils"], ["fe", "Fils et Esprit"], ["ei", "Esprit Infini"],
+    ["ul", "Fils Créateur et Esprit-Mère"], ["asc", "Ascendants"], ["aut", "Autres"]
+  ];
+  var ORIG_NAME = {}; ORIG.forEach(function (o) { ORIG_NAME[o[0]] = o[1]; });
+  var LEVELS = { ph: "Paradis-Havona", su: "Superunivers", ul: "Univers local", pl: "Planète" };
+  var ALL = ["ph", "su", "ul", "pl"];
+  var NB = " ";
+
+  /* Familles : classification d’Uversa (30:2) */
+  var UV = [
+    { k: "I", t: "Les Déités du Paradis", r: "30:2.10–13", note: "30:1 ne les range pas : il classe les êtres d’après leur relation avec elles (30:1.1)." },
+    { k: "II", t: "Les Esprits Suprêmes", r: "30:2.14–21" },
+    { k: "III", t: "Les êtres issus de la Trinité", r: "30:2.22–36" },
+    { k: "IV", t: "Les Fils de Dieu", r: "30:2.37–64", subs: [
+      { k: "IV.A", t: "Fils descendants" }, { k: "IV.B", t: "Fils ascendants" }, { k: "IV.C", t: "Fils Trinitisés" } ] },
+    { k: "V", t: "Les personnalités de l’Esprit Infini", r: "30:2.65–89", subs: [
+      { k: "V.A", t: "Personnalités Supérieures de l’Esprit Infini" }, { k: "V.B", t: "Les Armées des Messagers de l’Espace" }, { k: "V.C", t: "Les esprits tutélaires" } ] },
+    { k: "VI", t: "Les Directeurs de Pouvoir d’Univers", r: "30:2.90–115" },
+    { k: "VII", t: "Le Corps de Citoyenneté Permanente", r: "30:2.116–128" },
+    { k: "GC", t: "Groupes de personnalités composites", r: "30:2.130–157", subs: [ { k: "GC.B", t: "Les Aides d’Univers" } ] },
+    { k: "X", t: "Absents de la classification d’Uversa", r: "30:1 ; 31 ; 37", note: "Ordres décrits dans le livre mais absents de 30:2 : classés seulement en 30:1, ou dans aucune des deux listes." }
+  ];
+
+  /* Familles : classification du Paradis (30:1) */
+  var PA = [
+    { k: "I", t: "Êtres d’origine trine", r: "30:1.2–28", subs: [
+      { k: "I.A", t: "Les Esprits Suprêmes" }, { k: "I.B", t: "Les Fils Stationnaires de la Trinité" },
+      { k: "I.C", t: "Êtres d’origine trinitaire et êtres trinitisés", note: "30:1 réserve aussi deux cases à des êtres non révélés (I.C.5–6)." } ] },
+    { k: "II", t: "Êtres d’origine duelle", r: "30:1.29–54", subs: [
+      { k: "II.A", t: "Les ordres descendants", note: "30:1 distingue le Père Melchizédek (II.A.4) des Melchizédeks (II.A.5) et réserve deux cases à des ordres non révélés (II.A.11–12)." },
+      { k: "II.B", t: "Les ordres stationnaires", note: "Plus une case pour des êtres non révélés d’origine duelle (II.B.5)." },
+      { k: "II.C", t: "Les ordres ascendants", note: "Plus une case pour des ascendeurs non révélés (II.C.5)." } ] },
+    { k: "III", t: "Êtres d’origine unique", r: "30:1.55–91", subs: [
+      { k: "III.A", t: "Les Esprits Suprêmes", note: "Plus une case pour des êtres non révélés issus de la Déité (III.A.7)." },
+      { k: "III.B", t: "Les ordres ascendants", note: "Plus une case pour des ascendeurs non révélés (III.B.5)." },
+      { k: "III.C", t: "La famille de l’Esprit Infini", note: "Plus une case pour des êtres non révélés issus de l’Esprit (III.C.17)." } ] },
+    { k: "IV", t: "Êtres transcendantaux extériorisés", r: "30:1.92–99" },
+    { k: "V", t: "Entités fragmentées de la Déité", r: "30:1.100–102", note: "30:1.101–102 évoque aussi les fragments de l’esprit de la Source-Centre Troisième et l’esprit individualisé d’un Fils Créateur, à l’origine des fusions avec l’Esprit et avec le Fils." },
+    { k: "VI", t: "Êtres superpersonnels", r: "30:1.103" },
+    { k: "VII", t: "Ordres non classifiés et non révélés", r: "30:1.104–112" },
+    { k: "Y", t: "Hors de la classification du Paradis", r: "30:2 ; 31 ; 37", note: "Les Déités, les ordres recrutés et les groupes composites n’apparaissent pas dans 30:1." }
+  ];
+
+  /* Ordres. or = origine, ef = effectif, fn = domaine et fonction, si = siège, fa = fascicule,
+     rf = références, u = codes 30:2, p = codes 30:1, dbl = double classement, q = citation exacte. */
+  var ORD = [
+    { id: "pere", n: "Le Père Universel", o: "aut", lv: ["ph"], u: ["I.1"], p: [],
+      or: "Sans origine : Déité existentielle, Source-Centre Première", fn: "Créateur puis contrôleur ; se réserve les décisions finales et délègue tout ce qui peut l’être.",
+      si: "Paradis, au centre de la surface supérieure", fa: "1 à 5", rf: "6:1.2 ; 3:6.1 ; 8:3.2 ; 11:1.1" },
+    { id: "fils", n: "Le Fils Éternel", o: "aut", lv: ["ph"], u: ["I.2"], p: [],
+      or: "Sans origine : Source-Centre Deuxième", fn: "Administrateur du gouvernement spirituel de l’univers des univers.",
+      si: "Paradis, autour de la présence du Père", fa: "6 et 7", rf: "6:1.2 ; 6:0.1" },
+    { id: "esprit", n: "L’Esprit Infini", o: "aut", lv: ["ph"], u: ["I.3"], p: [],
+      or: "Sans origine : Source-Centre Troisième, l’Acteur Conjoint", fn: "Exécutif conjoint du Père et du Fils ; administrateur universel du mental.",
+      si: "Paradis", fa: "8 et 9", rf: "7:4.6 ; 9:1.5" },
+
+    { id: "ms", n: "Les Sept Maitres Esprits", o: "trin", lv: ["ph", "su"], u: ["II.1"], p: ["I.A.1"],
+      or: "Personnalités primaires de l’Esprit Infini ; le Père et le Fils ont participé à leur origine", ef: "7",
+      fn: "Chacun supervise le superunivers de son numéro ; le n° 7 régit Orvonton et préside leur conseil.",
+      si: "Foyer de force sur la périphérie du Paradis ; administration depuis les sphères de l’Esprit", fa: "16", rf: "16:0.1 ; 16:0.10 ; 16:3 ; 13:4.2",
+      q: ["Les Maitres Esprits ont de nombreuses fonctions, mais leur domaine particulier à l’heure actuelle est la supervision centrale des sept superunivers.", "16:0.12"] },
+    { id: "aes", n: "Les Sept Agents Exécutifs Suprêmes", o: "trin", lv: ["ph"], u: ["II.2"], p: ["I.A.2"],
+      or: "Trinitisés par le Père, le Fils et l’Esprit selon les spécifications des Maitres Esprits", ef: "7",
+      fn: "Exécutent les plans des Maitres Esprits sans formuler de politique ; un par superunivers (le n° 7 pour Orvonton). Une fois appelés « Sept Administrateurs Suprêmes » (15:10.1).",
+      si: "Les sept sphères de l’Esprit, anneau extérieur des satellites du Paradis", fa: "17", rf: "17:1.1–5 ; 28:2.2",
+      q: ["Les Sept Agents Exécutifs Suprêmes agissent comme coordinateurs administratifs du grand univers.", "17:1.3"] },
+    { id: "er", n: "Les Sept Groupes d’Esprits Réflectifs", alt: [["Les sept ordres d’Esprits Réflectifs", "30:1 I.A.3"]], o: "trin", lv: ["su"], u: ["II.3"], p: ["I.A.3"],
+      or: "La Trinité du Paradis en liaison avec chacun des Maitres Esprits, par groupes de sept", ef: "49 (17:3.1) ; 17:2.1 dit cinquante",
+      fn: "Réflectivité : nouvelles, décrets et archives vivantes ; relient les gouvernements des Anciens des Jours à Majeston.",
+      si: "Capitales des superunivers, au foyer réflectif", fa: "17", rf: "17:2.1 ; 17:3.1–8 ; 17:8.7",
+      q: ["Pour cette raison, il est nécessaire d’avoir sept de ces Esprits Réflectifs au siège de chaque superunivers.", "17:3.1"] },
+    { id: "air", n: "Les Aides-Images Réflectifs", o: "ei", lv: ["su"], u: ["II.4"], p: ["III.A.4"],
+      or: "Créés par les Esprits Réflectifs, chacun par le sien", ef: "49, sept par siège de superunivers",
+      fn: "Canaux entre les Esprits Réflectifs et les autorités du superunivers ; porte-paroles auprès des Anciens des Jours.",
+      si: "Sièges des superunivers", fa: "17", rf: "17:4.1–3 ; 15:10.20" },
+    { id: "edc", n: "Les Sept Esprits des Circuits", o: "ei", lv: ["ph"], u: ["II.5"], p: ["III.A.2"],
+      or: "Création collective des Sept Maitres Esprits, en réponse à la volonté de l’Être Suprême", ef: "7",
+      fn: "Présence impersonnelle qui imprègne un circuit de Havona ; créent les supernaphins tertiaires.",
+      si: "Les sept circuits de Havona", fa: "17", rf: "17:5.1–5 ; 116:4.5",
+      q: ["Chacun des Sept Esprits des Circuits est limité à imprégner un seul circuit de Havona.", "17:5.2"] },
+    { id: "ecr", n: "Les Esprits Créatifs des univers locaux", alt: [["Les Esprits-Mères des Univers", "30:1 III.A.5"]], o: "ei", lv: ["ul"], u: ["II.6"], p: ["III.A.5"],
+      or: "Individualisation de l’Esprit Infini pour chaque Fils Créateur", ef: "Un par univers local ; aucun total",
+      fn: "Associée créative du Fils Créateur, devenue la Divine Ministre de l’univers local.",
+      si: "Siège de l’univers local (Salvington pour Nébadon)", fa: "17 et 34", rf: "34:0.1 ; 34:1.1 ; 17:0.12" },
+    { id: "adj", n: "Les esprits-mentaux adjuvats", alt: [["Les septuples esprits-mentaux adjuvats", "30:1 III.A.6"]], o: "ei", lv: ["ul", "pl"], u: ["II.7"], p: ["III.A.6"],
+      or: "Don de l’Esprit-Mère de l’univers local", ef: "7",
+      fn: "Don mental aux êtres vivants créés conjointement par le Fils Créateur et l’Esprit Créatif.",
+      si: "Mondes de l’univers local", fa: "17", rf: "17:7.1" },
+
+    { id: "sec", n: "Les Secrets de Suprématie Trinitisés", o: "trin", lv: ["ph"], u: ["III.1"], p: ["I.B.1"],
+      or: "Trinité du Paradis", ef: "70 (dix par monde du Père)", fn: "Dirigent les sept sphères sacrées du Père.",
+      si: "Circuit intérieur des satellites du Paradis", fa: "18", rf: "18:1.1–3 ; 13:1.2" },
+    { id: "etj", n: "Les Éternels des Jours", o: "trin", lv: ["ph"], u: ["III.2"], p: ["I.B.2"],
+      or: "Trinité du Paradis", ef: "1 milliard", fn: "Chacun dirige un monde de Havona et l’aménage selon ses propres idéaux.",
+      si: "Havona, un par monde", fa: "18", rf: "18:2.1–4",
+      q: ["Ces dirigeants sont connus sous le nom d’Éternels des Jours, et il y en a exactement un milliard, un pour chacune des sphères de Havona.", "18:2.1"] },
+    { id: "ancj", n: "Les Anciens des Jours", o: "trin", lv: ["su"], u: ["III.3"], p: ["I.B.3"],
+      or: "Trinité du Paradis, trinitisés en même temps", ef: "21 (trois par superunivers)",
+      fn: "Chefs exécutifs conjoints des supergouvernements ; seuls habilités au jugement exécutoire sur l’extinction des créatures volitives.",
+      si: "Capitale de chaque superunivers (Uversa pour Orvonton), au foyer de polarité spirituelle", fa: "18", rf: "15:10.3 ; 18:3.4–7",
+      q: ["Chaque superunivers est pourvu d’un monde-siège immense et glorieux, et régi par trois Anciens des Jours.", "15:2.8"] },
+    { id: "pej", n: "Les Perfections des Jours", o: "trin", lv: ["su"], u: ["III.4"], p: ["I.B.4"],
+      or: "Trinité du Paradis", ef: "210 (trois par secteur majeur)", fn: "Gouvernent les dix secteurs majeurs de chaque superunivers, en vice-gérants des Anciens des Jours.",
+      si: "Capitales des secteurs majeurs", fa: "18", rf: "18:4.1–2 ; 15:2.7" },
+    { id: "rej", n: "Les Récents des Jours", o: "trin", lv: ["su"], u: ["III.5"], p: ["I.B.5"],
+      or: "Trinité du Paradis", ef: "21" + NB + "000 (trois par secteur mineur)", fn: "Président aux secteurs mineurs, surtout occupés des problèmes physiques ; subordonnés aux Perfections des Jours.",
+      si: "Sièges des secteurs mineurs", fa: "18", rf: "18:5.1–3 ; 15:2.6" },
+    { id: "unj", n: "Les Unions des Jours", o: "trin", lv: ["ul"], u: ["III.6"], p: ["I.B.6"],
+      or: "Trinité du Paradis", ef: "700" + NB + "000, pas tous en mission", fn: "Conseillers et observateurs de la Trinité auprès des Fils Créateurs, un par univers local ; sans rôle administratif.",
+      si: "Sièges des univers locaux ; réserve au Paradis (Conseil Suprême des Ajustements Universels)", fa: "18", rf: "18:6.1–3" },
+    { id: "fij", n: "Les Fidèles des Jours", o: "trin", lv: ["ul"], u: ["III.7"], p: ["I.B.7"],
+      or: "Trinité du Paradis", ef: "70 millions, pas tous en service", fn: "Consultants du Paradis auprès des Très Hauts des constellations ; conseillers seulement.",
+      si: "Sièges des constellations ; réserve au Paradis", fa: "18", rf: "18:7.1–3 ; 15:2.4" },
+    { id: "fit", n: "Les Fils Instructeurs de la Trinité", alt: [["Les Fils Instructeurs de la Trinité — Les Daynals", "30:2 IV.A.3"]], o: "trin", lv: ["ph", "su", "ul", "pl"], u: ["III.8", "IV.A.3"], p: ["I.C.1"],
+      or: "Trinité du Paradis", ef: "21" + NB + "001" + NB + "624" + NB + "821 en service ; plus d’un tiers en réserve au Paradis",
+      fn: "Superéducateurs ; seul ordre révélé de Fils issus de la Trinité, ils relient personnalités trinitaires et duelles.",
+      si: "Univers central, superunivers, univers locaux ; réserves au Paradis", fa: "19 et 20", rf: "19:1.1–3 ; 20:7.1–2 ; 35:0.1",
+      dbl: "Deux fois dans 30:2 : parmi les êtres issus de la Trinité (III.8) et parmi les Fils descendants, sous le nom de Daynals (IV.A.3).",
+      q: ["[…] les archives paradisiaques mentionnaient qu’il y avait 21" + NB + "001" + NB + "624" + NB + "821 de ces Fils en service.", "19:1.2"] },
+    { id: "pdsg", n: "Les Perfecteurs de Sagesse", o: "trin", lv: ["su"], u: ["III.9"], p: ["I.B.8"],
+      or: "Trinité du Paradis", ef: "7 milliards (un milliard par superunivers)", fn: "Personnifient la sagesse de la divinité ; affectés pour toujours au service des Anciens des Jours.",
+      si: "Gouvernements des superunivers", fa: "19", rf: "19:2.1–2" },
+    { id: "cdiv", n: "Les Conseillers Divins", o: "trin", lv: ["su"], u: ["III.10"], p: ["I.B.9"],
+      or: "Trinité du Paradis", ef: "21 milliards (trois milliards par superunivers)", fn: "Sont le conseil de la Déité pour les superunivers.",
+      si: "Gouvernements des superunivers", fa: "19", rf: "19:3.1–2" },
+    { id: "cens", n: "Les Censeurs Universels", o: "trin", lv: ["su", "ph"], u: ["III.11"], p: ["I.B.10"],
+      or: "Trinité du Paradis", ef: "8 milliards", fn: "Sont le jugement de la Trinité ; un est attaché à chaque monde de Havona.",
+      si: "Superunivers ; un par monde de Havona", fa: "19", rf: "19:4.1–2" },
+    { id: "eit", n: "Les Esprits Inspirés de la Trinité", o: "trin", lv: ALL, u: ["III.12"], p: ["I.C.2"],
+      or: "Un acte de la Trinité du Paradis", ef: "Inconnu, peut-être croissant", fn: "Ordre entièrement secret ; l’auteur les croit peut-être superpersonnels.",
+      si: "Non précisé", fa: "19", rf: "19:5.1–2" },
+    { id: "nh", n: "Les natifs de Havona", o: "trin", lv: ["ph"], u: ["III.13", "VII.8"], p: ["I.C.3"],
+      or: "Création directe de la Trinité du Paradis", ef: "Au-delà de nos conceptions", fn: "Peuple de l’univers central ; certains entrent dans le Corps de la Finalité.",
+      si: "Havona", fa: "19", rf: "19:6.1–2 ; 31:1",
+      dbl: "Deux fois dans 30:2 : êtres issus de la Trinité (III.13) et citoyens permanents (VII.8) ; aussi membres du Corps de la Finalité.",
+      q: ["Les natifs de Havona sont la création directe de la Trinité du Paradis, et leur nombre dépasse les conceptions de votre mental limité.", "19:6.1"] },
+    { id: "cp", n: "Les Citoyens du Paradis", alt: [["Les citoyens du Paradis créés", "30:2 VII.11"]], o: "trin", lv: ["ph"], u: ["III.14", "VII.11"], p: ["I.C.4"],
+      or: "Trinité du Paradis (30:1 I)", ef: "Plus de 3" + NB + "000 ordres", fn: "Ne s’occupent pas directement du plan d’ascension des créatures.",
+      si: "Paradis", fa: "19", rf: "19:7.1–2",
+      dbl: "Deux fois dans 30:2 : êtres issus de la Trinité (III.14) et citoyens permanents (VII.11).",
+      q: ["Il y a plus de trois-mille ordres de ces intelligences célestes.", "19:7.1"] },
+
+    { id: "mic", n: "Les Fils Créateurs — Les Micaëls", o: "pf", lv: ["ul"], u: ["IV.A.1"], p: ["II.A.1"],
+      or: "Le Père Universel et le Fils Éternel", ef: "Plus de 700" + NB + "000 selon l’auteur",
+      fn: "Bâtisseurs et souverains des univers locaux ; un seul dans Nébadon, Micaël.",
+      si: "Siège de leur univers local", fa: "21", rf: "21:0.1 ; 21:1.1–4 ; 35:0.1",
+      q: ["[…] les bâtisseurs et les chefs des univers locaux du temps et de l’espace.", "21:0.1"] },
+    { id: "avo", n: "Les Fils Magistraux — Les Avonals", o: "fe", lv: ["ul", "pl"], u: ["IV.A.2"], p: ["II.A.2"],
+      or: "Le Fils Éternel et l’Esprit Infini", ef: "Environ 1 milliard ; 1" + NB + "062 dans Nébadon",
+      fn: "Magistrats et juges planétaires ; missions d’effusion ; servent sous le Fils Créateur de leur univers.",
+      si: "Univers locaux ; conseil suprême au Paradis", fa: "20", rf: "20:2.1–2 ; 35:0.1",
+      q: ["Les Avonals sont des ministres et des juges planétaires, les magistrats des royaumes de l’espace-temps […]", "20:2.1"] },
+    { id: "mel", n: "Les Fils Melchizédeks", alt: [["Les Pères Melchizédeks ; Les Melchizédeks", "30:1 II.A.4–5"]], o: "ul", lv: ["ul", "pl"], u: ["IV.A.4"], p: ["II.A.5"],
+      or: "Le Fils Créateur, l’Esprit Créatif et le Père Melchizédek", ef: "Plus de 10 millions inscrits dans Nébadon",
+      fn: "Éducateurs, premiers à intervenir en cas d’urgence ; ordre autonome. Les 490 mondes du circuit de Salvington portent le nom d’Université Melchizédek.",
+      si: "Monde Melchizédek, près de Salvington", fa: "35", rf: "35:1.1 ; 35:2.2 ; 35:2.9 ; 35:3.1",
+      q: ["Le nombre des Melchizédeks enregistrés sur leur planète-siège de Nébadon dépasse dix-millions.", "35:2.9"] },
+    { id: "vor", n: "Les Fils Vorondadeks", o: "ul", lv: ["ul"], u: ["IV.A.5"], p: ["II.A.6"],
+      or: "Le Fils Créateur et l’Esprit Créatif", ef: "1 million dans Nébadon",
+      fn: "Très Hauts ou Pères des Constellations : au moins trois au gouvernement de chaque constellation.",
+      si: "Sièges des constellations ; mondes Vorondadeks de Salvington", fa: "35", rf: "35:5.1–2 ; 35:6.1" },
+    { id: "lan", n: "Les Fils Lanonandeks", o: "ul", lv: ["ul", "pl"], u: ["IV.A.6"], p: ["II.A.7"],
+      or: "Le Fils Créateur et l’Esprit-Mère de l’Univers", ef: "12 millions au départ dans Nébadon",
+      fn: "Souverains de Systèmes et Princes Planétaires.", si: "Systèmes locaux et mondes habités", fa: "35 et 50", rf: "35:8.1–6",
+      sub: [["Lanonandeks primaires", "709" + NB + "841 : Souverains de Systèmes, conseillers"], ["Lanonandeks secondaires", "10" + NB + "234" + NB + "601 : Princes Planétaires, réserves"], ["Lanonandeks tertiaires", "1" + NB + "055" + NB + "558 : assistants, messagers, conservateurs"]] },
+    { id: "pdv", n: "Les Fils Porteurs de Vie", o: "ul", lv: ["ul", "pl"], u: ["IV.A.7"], p: ["II.A.10"],
+      or: "Le Fils Créateur, l’Esprit-Mère et l’un des Anciens des Jours", ef: "100 millions créés dans Nébadon",
+      fn: "Élaborent la vie et l’implantent sur les mondes, puis y restent pour favoriser son développement.",
+      si: "Quatrième groupe de sphères du circuit de Salvington ; mondes en évolution", fa: "36", rf: "36:0.1 ; 36:1.1–2 ; 36:2.1",
+      q: ["Les Porteurs de Vie sont les descendants de trois personnalités préexistantes : le Fils Créateur, l’Esprit-Mère de l’Univers et, par désignation, l’un des trois Anciens des Jours présidant aux destinées du superunivers intéressé.", "36:1.1"] },
+
+    { id: "mfp", n: "Mortels fusionnés avec le Père", alt: [["Les citoyens mortels du Paradis fusionnés avec leur Ajusteur", "30:2 VII.12"]], o: "asc", lv: ALL, u: ["IV.B.1", "VII.12"], p: ["II.C.1"],
+      or: "Mortels d’origine animale unis pour toujours à leur Ajusteur de Pensée", fn: "Destinée du Paradis ; seuls enrôlés dans le Corps des Mortels de la Finalité.",
+      si: "Du monde natal jusqu’au Paradis", fa: "40, 30 et 31", rf: "40:7 ; 30:4.31",
+      dbl: "Deux fois dans 30:2 : Fils ascendants (IV.B.1) et citoyens permanents, comme citoyens mortels du Paradis (VII.12).",
+      q: ["Parmi toutes les créatures du grand univers, seuls les individus qui ont fusionné avec le Père sont enrôlés dans le Corps des Mortels de la Finalité.", "30:4.31"] },
+    { id: "mff", n: "Mortels fusionnés avec le Fils", alt: [["Les mortels des superunivers fusionnés avec le Fils", "30:2 VII.7"]], o: "asc", lv: ["su"], u: ["IV.B.2", "VII.7"], p: ["II.C.2"],
+      or: "Mortels qui n’ont pu fusionner avec leur Ajusteur, fusionnés avec un don de l’esprit du Fils Créateur", ef: "Moins d’un million dans Orvonton",
+      fn: "Égaux des fusionnés avec l’Ajusteur, mais confinés à leur superunivers natal ; supervisent les abandontaires d’Uversa.",
+      si: "Superunivers natal (Uversa)", fa: "40", rf: "40:8.1–5 ; 37:9.12",
+      dbl: "Deux fois dans 30:2 : Fils ascendants (IV.B.2) et citoyens permanents (VII.7)." },
+    { id: "mfe", n: "Mortels fusionnés avec l’Esprit", alt: [["Les mortels des univers locaux fusionnés avec l’Esprit", "30:2 VII.5"]], o: "asc", lv: ["ul"], u: ["IV.B.3", "VII.5"], p: ["II.C.3"],
+      or: "Mortels dont l’Ajusteur part à la mort ; fusionnés au réveil avec une individualisation de l’esprit de la Divine Ministre",
+      fn: "Citoyens permanents de l’univers local ; ne gardent pas la mémoire humaine ; certains servent comme Hauts Commissaires.",
+      si: "Huitième groupe de mondes autour de Salvington (Nébadon)", fa: "40", rf: "40:9.1–9 ; 37:5.1",
+      dbl: "Deux fois dans 30:2 : Fils ascendants (IV.B.3) et citoyens permanents (VII.5) ; voir aussi les Hauts Commissaires." },
+    { id: "sev", n: "Séraphins évolutionnaires", o: "ei", lv: ["ul", "ph"], u: ["IV.B.4"], p: ["III.B.3"],
+      or: "Séraphins, enfants de l’Esprit-Mère, qui accèdent à la filiation ascendante par leur service",
+      fn: "Montent au Paradis par Séraphington ; beaucoup entrent dans le Corps de la Finalité.",
+      si: "De l’univers local au Paradis", fa: "40", rf: "40:1.1",
+      dbl: "Les séraphins figurent aussi parmi les esprits tutélaires (V.C.5)." },
+    { id: "fma", n: "Fils Matériels ascendants", alt: [["Les Fils Adamiques des systèmes", "30:2 VII.2"]], o: "ul", lv: ["ul", "pl"], u: ["IV.B.5", "VII.2"], p: ["III.B.2"],
+      or: "Créés par le seul Fils Créateur, sous forme duelle (Fils et Filles)",
+      fn: "Adams et Èves : peuplent les capitales des systèmes et partent en mission planétaire ; à la fois descendants et ascendants.",
+      si: "Capitales des systèmes (Jérusem pour Satania)", fa: "37, 40 et 51", rf: "37:9.9–10 ; 37:9.12 ; 40:2.1",
+      dbl: "Deux fois dans 30:2 : Fils ascendants (IV.B.5) et citoyens permanents (VII.2). Le texte les dit « à la fois ascendants et descendants » (37:9.10)." },
+    { id: "med", n: "Les médians", alt: [["Médians transférés", "30:2 IV.B.6"], ["Les médians planétaires", "30:2 VII.1"], ["Médians transférés", "30:1 II.C.4"]], o: "asc", lv: ["pl"], u: ["IV.B.6", "V.C.7", "VII.1"], p: ["II.C.4"],
+      or: "Primaires : mortels modifiés de l’état-major du Prince Planétaire ; secondaires : Adams et Èves ou leur descendance immédiate",
+      ef: "Primaires : toujours 50" + NB + "000 par planète ; secondaires : environ 50" + NB + "000 en moyenne",
+      fn: "Citoyens permanents des mondes habités, associés aux anges ; une fois libérés, inscrits comme Fils ascendants.",
+      si: "Mondes habités", fa: "38 et 77", rf: "38:9.1–4 ; 40:3.1",
+      dbl: "Triple classement, annoncé par le texte : Fils ascendants (IV.B.6), esprits tutélaires (V.C.7), citoyens permanents (VII.1).",
+      q: ["Elles sont classées à juste titre avec les Fils ascendants de Dieu ; elles sont factuellement groupées avec les ordres de citoyenneté permanente, mais fonctionnellement comptées avec les esprits tutélaires du temps […]", "38:9.1"],
+      sub: [["Médians primaires", "groupe le plus spirituel (38:9.3)"], ["Médians secondaires", "groupe le plus matériel ; au moins vingt-quatre techniques d’origine (38:9.4)"]] },
+    { id: "ajp", n: "Ajusteurs Personnalisés", o: "aut", lv: ["ph", "su", "ul"], u: ["IV.B.7"], p: ["III.B.1"],
+      or: "Ajusteurs personnalisés par le Père Universel", fn: "Personnalisés après des services répétés ou une expérience extraordinaire, par exemple auprès d’un Fils d’effusion incarné.",
+      si: "Divinington ; missions dans les univers", fa: "40 et 107 à 112", rf: "40:4.1" },
+
+    { id: "pmes", n: "Les Puissants Messagers", o: "trin", lv: ["su"], u: ["IV.C.1"], p: ["I.C.7"],
+      or: "Mortels fusionnés avec l’Ajusteur, finalitaires embrassés par la Trinité", ef: "Croissant, égal dans chaque superunivers",
+      fn: "Fils d’Aboutissement Trinitisés : ont prouvé leur loyauté face à la rébellion ; membres de l’exécutif des superunivers.",
+      si: "Gouvernements des superunivers", fa: "22", rf: "22:1.10 ; 22:1.13 ; 22:2.1 ; 15:10.8" },
+    { id: "elev", n: "Les Élevés en Autorité", o: "trin", lv: ["su"], u: ["IV.C.2"], p: ["I.C.7"],
+      or: "Mortels fusionnés avec l’Ajusteur, finalitaires embrassés par la Trinité", fn: "Fils d’Aboutissement Trinitisés, membres de l’exécutif des superunivers.",
+      si: "Gouvernements des superunivers", fa: "22", rf: "22:1.10 ; 22:3 ; 15:10.9" },
+    { id: "dnn", n: "Les Dépourvus de Nom et de Nombre", o: "trin", lv: ["su"], u: ["IV.C.3"], p: ["I.C.7"],
+      or: "Mortels fusionnés avec l’Ajusteur, finalitaires embrassés par la Trinité", fn: "Fils d’Aboutissement Trinitisés, membres de l’exécutif des superunivers.",
+      si: "Gouvernements des superunivers", fa: "22", rf: "22:1.10 ; 22:4 ; 15:10.10" },
+    { id: "cont", n: "Les Conservateurs Trinitisés", o: "trin", lv: ["su"], u: ["IV.C.4"], p: ["I.C.8"],
+      or: "Séraphins évolutionnaires, médians transférés et mortels fusionnés avec l’Esprit ou le Fils, parvenus au Paradis puis embrassés par la Trinité",
+      fn: "Fils de Sélection Trinitisés au service des superunivers.", si: "Superunivers", fa: "22", rf: "22:1.11 ; 22:5" },
+    { id: "amb", n: "Les Ambassadeurs Trinitisés", o: "trin", lv: ["su"], u: ["IV.C.5"], p: ["I.C.8"],
+      or: "Même recrutement que les Conservateurs Trinitisés", fn: "Fils de Sélection Trinitisés au service des superunivers.",
+      si: "Superunivers", fa: "22", rf: "22:1.11 ; 22:6" },
+    { id: "gcel", n: "Les Gardiens Célestes", o: "trin", lv: ["su"], u: ["IV.C.6"], p: ["I.C.9"],
+      or: "Fils trinitisés par des créatures, embrassés par la Trinité par classes de 7" + NB + "000",
+      fn: "Fils de Perfection Trinitisés dont les services sont jugés moins remarquables ; ne quittent pas leur superunivers.",
+      si: "Superunivers d’affectation", fa: "22", rf: "22:1.12 ; 22:1.14 ; 22:9.1" },
+    { id: "afe", n: "Les Assistants des Fils Élevés", o: "trin", lv: ["su"], u: ["IV.C.7"], p: ["I.C.9"],
+      or: "Même origine que les Gardiens Célestes", fn: "Secrétaires privés des fils élevés des gouvernements des Anciens des Jours.",
+      si: "Gouvernements des superunivers", fa: "22", rf: "22:9.1 ; 22:10.1" },
+    { id: "fta", n: "Les fils trinitisés par des ascendeurs", o: "trin", lv: ["ph", "ul"], u: ["IV.C.8"], p: ["I.C.10"],
+      or: "Trinitisés par des finalitaires mortels", fn: "Servent d’abord sur les sphères de l’Esprit sous les Agents Exécutifs Suprêmes ; peuvent être adoptés par les Fils Instructeurs.",
+      si: "Sphères de l’Esprit, puis univers locaux", fa: "22", rf: "22:8.1–3" },
+    { id: "ftph", n: "Les fils trinitisés du Paradis-Havona", o: "trin", lv: ["ph", "ul"], u: ["IV.C.9"], p: ["I.C.10"],
+      or: "Trinitisés par des personnalités du Paradis-Havona", fn: "Même formation que les fils trinitisés par des ascendeurs.",
+      si: "Sphères de l’Esprit, puis univers locaux", fa: "22", rf: "22:8.1–2" },
+    { id: "fdt", n: "Les fils de la destinée trinitisés", o: "trin", lv: ["ph"], u: ["IV.C.10"], p: ["I.C.10"],
+      or: "Trinitisés par un finalitaire et un Citoyen du Paradis", fn: "Envoyés sur Vicegerington, chacun accompagné d’un Messager Solitaire.",
+      si: "Vicegerington", fa: "23", rf: "23:4.3–4" },
+
+    { id: "msol", n: "Les Messagers Solitaires", o: "ei", lv: ALL, u: ["V.A.1"], p: ["III.C.1"],
+      or: "L’Esprit Infini, en un seul épisode créatif", ef: "Fixe ; près de 7" + NB + "690 billions opéraient dans Orvonton",
+      fn: "Messagers personnels de l’Esprit Infini ; sans organisation ni gouvernement propre.",
+      si: "Aucun quartier général connu", fa: "23", rf: "23:0.2 ; 23:1.1 ; 23:2.1 ; 24:0.10",
+      q: ["D’après le dernier rapport d’Uversa, j’observe qu’il y avait alors presque 7" + NB + "690 billions de Messagers Solitaires opérant à l’intérieur des frontières d’Orvonton […]", "23:0.2"] },
+    { id: "sci", n: "Les Superviseurs des Circuits Universels", o: "ei", lv: ["ph", "su", "ul"], u: ["V.A.2"], p: ["III.C.2"],
+      or: "Création exclusive de l’Esprit Infini", ef: "7 suprêmes, 7 associés ; 84" + NB + "691 secondaires sur Uversa",
+      fn: "Dirigent les circuits d’énergie spirituelle hors du Paradis ; l’énergie physique relève des Directeurs de Pouvoir.",
+      si: "Mondes-pilotes de Havona, sphères de l’Esprit, capitales des superunivers et des univers locaux", fa: "24", rf: "24:1.1–10",
+      sub: [["Superviseurs suprêmes des circuits", "7, sur les mondes-pilotes de Havona"], ["Superviseurs associés", "7, sur les sphères de l’Esprit"], ["Superviseurs secondaires", "sièges des superunivers"], ["Superviseurs tertiaires", "un par siège d’univers local ; créés par groupes de 700, affectés par les Anciens des Jours"]] },
+    { id: "drec", n: "Les Directeurs du Recensement", o: "ei", lv: ["su", "ph"], u: ["V.A.3"], p: ["III.C.3"],
+      or: "Création de l’Esprit Infini", ef: "Inconnu", fn: "Connaissent le nombre, la nature et l’emplacement des créatures volitives ; n’opèrent pas au Paradis.",
+      si: "Capitales des superunivers ; sept dans Havona", fa: "24", rf: "24:2.2–3 ; 24:0.10" },
+    { id: "aper", n: "Les Aides Personnels de l’Esprit Infini", o: "ei", lv: ["ph"], u: ["V.A.4"], p: ["III.C.4"],
+      or: "L’Esprit Infini ; date et mode de création inconnus", ef: "Absent des archives d’Uversa ; des billions selon l’estimation de l’auteur",
+      fn: "Aides personnels de l’Esprit Infini.", si: "Ile centrale de Lumière", fa: "24", rf: "24:3.1 ; 24:0.10" },
+    { id: "iass", n: "Les Inspecteurs Associés", o: "ei", lv: ["ul"], u: ["V.A.5"], p: ["III.C.5"],
+      or: "Descendants conjoints de l’Esprit Infini et des Sept Maitres Esprits", ef: "700" + NB + "000",
+      fn: "Incarnent l’autorité des Agents Exécutifs Suprêmes auprès des univers locaux.", si: "Siège de chaque univers local ; réserve au Paradis", fa: "24", rf: "24:4.1–2" },
+    { id: "sent", n: "Les Sentinelles Affectées", o: "ei", lv: ["ul"], u: ["V.A.6"], p: ["III.C.6"],
+      or: "Personnalisées au Paradis par l’Esprit Infini", ef: "Une par système local",
+      fn: "Représentent les Agents Exécutifs Suprêmes dans les systèmes ; rendent compte à l’Inspecteur Associé.", si: "Capitales des systèmes", fa: "24", rf: "24:5.1–4" },
+    { id: "gdip", n: "Les Guides de Diplômés", o: "ei", lv: ["ph"], u: ["V.A.7"], p: ["III.C.7"],
+      or: "Origine mystérieuse ; l’auteur les croit issus des Servites de Havona les plus expérimentés", ef: "Innombrables, toujours croissants",
+      fn: "Pilotent chaque pèlerin à travers les sept circuits de Havona.", si: "Havona", fa: "24", rf: "24:6.3–4 ; 24:7.1" },
+
+    { id: "serv", n: "Les Servites de Havona", o: "ei", lv: ["ph"], u: ["V.B.1"], p: ["III.C.8"],
+      or: "Œuvre conjointe des Maitres Esprits et des Directeurs Suprêmes de Pouvoir, par groupes de mille", ef: "Prodigieux, toujours croissant",
+      fn: "Équivalents des médians pour l’univers central ; un sur quatre est de type semi-physique.", si: "Univers central", fa: "25", rf: "25:1.1–3" },
+    { id: "conc", n: "Les Conciliateurs Universels", o: "ei", lv: ["su", "ul"], u: ["V.B.2"], p: ["III.C.9"],
+      or: "Sept apparaissent dans les superunivers, par réflexion, à chaque création d’un servite", ef: "Près de 18 billions de commissions dans Orvonton",
+      fn: "Commissaires réunis en commissions qui jugent les problèmes, des mondes inférieurs jusqu’au superunivers.", si: "Capitale du superunivers ; réserves sur les capitales des univers locaux", fa: "25", rf: "25:2.1–2 ; 25:3.1 ; 25:3.15" },
+    { id: "ctech", n: "Les Conseillers Techniques", o: "ei", lv: ["su", "ul"], u: ["V.B.3"], p: [],
+      or: "Ordre recruté : noyau choisi par l’Esprit Infini parmi les premiers supernaphins et omniaphins", ef: "Un peu plus de 61 billions dans Orvonton",
+      fn: "Penseurs juridiques et techniques ; appliquent les lois de la perfection aux mondes en évolution.", si: "Superunivers et univers locaux", fa: "25", rf: "25:4.1 ; 25:4.10" },
+    { id: "cdar", n: "Les Conservateurs d’Archives au Paradis", o: "ei", lv: ["ph"], u: ["V.B.4"], p: [],
+      or: "Choisis parmi les plus anciens chefs archivistes des supernaphins tertiaires", fn: "Gardiens des archives officielles du Paradis.", si: "Paradis", fa: "25", rf: "25:5.1" },
+    { id: "arc", n: "Les Archivistes Célestes", o: "ei", lv: ["su", "ul"], u: ["V.B.5"], p: [],
+      or: "Séraphins ascendants des univers locaux", ef: "Sur Uversa, un peu moins de 8 millions ont atteint le statut supérieur",
+      fn: "Établissent toutes les archives en double, spirituelle et semi-matérielle.", si: "Formés et affectés depuis les sièges des superunivers", fa: "25", rf: "25:6.1 ; 25:6.4" },
+    { id: "cmor", n: "Les Compagnons de la Morontia", o: "ei", lv: ["ul"], u: ["V.B.6"], p: ["III.C.10"],
+      or: "Enfants des Esprits-Mères des univers locaux", ef: "Plusieurs millions sur les mondes morontiels de Satania",
+      fn: "Hôtes, guides et organisateurs de loisirs des ascendeurs morontiels.", si: "Mondes morontiels de l’univers local", fa: "25 et 47", rf: "25:7.1 ; 47:3.11" },
+    { id: "cpar", n: "Les Compagnons du Paradis", o: "ei", lv: ["ph"], u: ["V.B.7"], p: [],
+      or: "Recrutés parmi les séraphins, seconaphins, supernaphins et omniaphins ; commissionnés par un Maitre Esprit",
+      fn: "Accueillent au Paradis les ascendeurs qui arrivent seuls ; service temporaire.", si: "Paradis", fa: "25", rf: "25:8.1–6" },
+
+    { id: "supn", n: "Les supernaphins", o: "ei", lv: ["ph"], u: ["V.C.1"], p: ["III.C.11"],
+      or: "Primaires : l’Esprit Infini ; secondaires : les Maitres Esprits ; tertiaires : les Esprits des Circuits",
+      fn: "Armée angélique du Paradis et de l’univers central.", si: "Paradis et Havona", fa: "26 et 27", rf: "17:8.2 ; 26:2.7 ; 27:0.1–11 ; 28:0.1",
+      sub: [["Primaires", "Paradis ; sept ordres de service, des conducteurs d’adoration aux instigateurs de repos (27:0.4–10)"], ["Secondaires", "les sept circuits de Havona, des aides des pèlerins aux compléments de repos (26:5–11)"], ["Tertiaires", "issus des Esprits des Circuits (26:2.7)"]] },
+    { id: "secn", n: "Les seconaphins", o: "ei", lv: ["su"], u: ["V.C.2"], p: ["III.C.12"],
+      or: "Issus des sept Esprits Réflectifs de chaque siège de superunivers, par septuors", fn: "Esprits tutélaires des superunivers.",
+      si: "Sièges des superunivers", fa: "28", rf: "28:0.1 ; 28:3.1 ; 28:4.13",
+      sub: [["Primaires", "attachés aux Anciens des Jours"], ["Secondaires", "attachés aux Conseillers Divins, Perfecteurs de Sagesse et Censeurs Universels"], ["Tertiaires", "attachés aux associés trinitisés ascendants : Puissants Messagers, Élevés en Autorité, Dépourvus de Nom et de Nombre"]] },
+    { id: "tert", n: "Les tertiaphins", o: "ei", lv: ["su", "ul"], u: ["V.C.3"], p: ["III.C.13"],
+      or: "Enfants de l’Esprit Infini, personnalisés au Paradis par groupes de mille", fn: "Don de l’Esprit Infini aux Fils Créateurs ; servent dans les créations locales.",
+      si: "Inscrits aux sièges des superunivers", fa: "28", rf: "28:1.1" },
+    { id: "omni", n: "Les omniaphins", o: "ei", lv: ["su", "ph"], u: ["V.C.4"], p: ["III.C.14"],
+      or: "Créés par l’Esprit Infini en liaison avec les Sept Agents Exécutifs Suprêmes", fn: "Serviteurs et messagers exclusifs des Agents Exécutifs Suprêmes.",
+      si: "Superunivers (une colonie sur Uversa)", fa: "28", rf: "28:2.1–2" },
+    { id: "sera", n: "Les séraphins", o: "ei", lv: ["ul", "pl"], u: ["V.C.5"], p: ["III.C.15"],
+      or: "L’Esprit-Mère de l’univers local, par formations de 41" + NB + "472", fn: "Anges des univers locaux, en sept ordres de service.",
+      si: "Univers locaux et mondes habités", fa: "38 et 39", rf: "38:1.1 ; 39:0.1–8",
+      dbl: "Les séraphins devenus ascendants figurent aussi parmi les Fils ascendants (IV.B.4).",
+      q: ["Les séraphins sont créés par l’Esprit-Mère de l’univers.", "38:1.1"],
+      sub: [["Séraphins suprêmes", ""], ["Séraphins supérieurs", ""], ["Séraphins superviseurs", ""], ["Séraphins administrateurs", ""], ["Aides planétaires", ""], ["Ministres de transition", ""], ["Séraphins du futur", ""]] },
+    { id: "cher", n: "Les chérubins et les sanobins", o: "ei", lv: ["ul", "pl"], u: ["V.C.6"], p: ["III.C.16", "III.B.4"],
+      or: "Même origine que les séraphins", fn: "L’ordre angélique le plus humble, le plus proche des humains ; peuvent rehausser leur statut.",
+      si: "Univers locaux et mondes habités", fa: "38", rf: "38:7.1 ; 38:8.1",
+      dbl: "30:1 range aussi les chérubins évolutionnaires parmi les ordres ascendants (III.B.4)." },
+
+    { id: "dsp", n: "Les Sept Directeurs Suprêmes de Pouvoir", o: "ei", lv: ["ph"], u: ["VI.A"], p: ["III.C.18"],
+      or: "Création collective des Sept Maitres Esprits", ef: "7 ; ont créé avec eux plus de dix milliards d’associés",
+      fn: "Chacun est subordonné à un Maitre Esprit ; individuellement pour un superunivers, collectivement pour l’univers central.",
+      si: "Paradis périphérique", fa: "29", rf: "29:0.10 ; 29:1.1–4",
+      dbl: "Division propre en 30:2 ; famille de l’Esprit Infini en 30:1 (III.C).",
+      q: ["Les Sept Directeurs Suprêmes de Pouvoir sont les régulateurs d’énergie physique du grand univers.", "29:1.1"] },
+    { id: "csp", n: "Les Centres Suprêmes de Pouvoir", o: "ei", lv: ALL, u: ["VI.B"], p: ["III.C.19"],
+      or: "Créés par les Directeurs Suprêmes de Pouvoir avec les Maitres Esprits", ef: "Selon le groupe (voir ci-dessous)",
+      fn: "L’intellect du système de pouvoir ; dirigent les contrôleurs physiques.", si: "Du Paradis aux systèmes locaux", fa: "29", rf: "29:2.1–19",
+      dbl: "Division propre en 30:2 ; famille de l’Esprit Infini en 30:1 (III.C).",
+      sub: [["Superviseurs Suprêmes de Centres", "7, sur les sphères des Agents Exécutifs Suprêmes"], ["Centres de Havona", "1 million, chacun pour mille mondes"], ["Centres de superunivers", "1" + NB + "000 sur chaque capitale"], ["Centres d’univers local", "100 par siège"], ["Centres de constellation", "10 par constellation"], ["Centres de système", "1 par système"], ["Centres non classés", "situations locales spéciales"]] },
+    { id: "mcp", n: "Les Maitres Contrôleurs Physiques", o: "ei", lv: ["su", "ul", "pl"], u: ["VI.C"], p: ["III.C.20"],
+      or: "Issus des Centres Suprêmes de Pouvoir", fn: "Subordonnés mobiles des centres ; gouvernés depuis le Paradis jusqu’aux sièges des superunivers, puis par le Conseil d’Équilibre.",
+      si: "Tout le grand univers", fa: "29", rf: "29:4.1–11",
+      dbl: "Division propre en 30:2 ; famille de l’Esprit Infini en 30:1 (III.C).",
+      sub: [["Directeurs de pouvoir adjoints", ""], ["Contrôleurs machinaux", ""], ["Transformateurs d’énergie", ""], ["Transmetteurs d’énergie", ""], ["Associateurs primaires", ""], ["Dissociateurs secondaires", ""], ["Frandalanks et chronoldeks", ""]] },
+    { id: "spm", n: "Les Superviseurs de Pouvoir Morontiel", o: "ei", lv: ["ul"], u: ["VI.D"], p: ["III.C.21"],
+      or: "Progéniture de l’Esprit-Mère de l’univers local, par groupes de mille", fn: "Canaux du pouvoir morontiel des mondes de transition.",
+      si: "Mondes morontiels de l’univers local", fa: "29 et 48", rf: "48:2.1–3",
+      dbl: "Division propre en 30:2 ; famille de l’Esprit Infini en 30:1 (III.C).",
+      sub: [["Régulateurs de circuit", ""], ["Coordinateurs de système", ""], ["Conservateurs planétaires", ""], ["Contrôleurs conjugués", ""], ["Stabilisateurs de liaison", ""], ["Assortisseurs sélectifs", ""], ["Archivistes associés", ""]] },
+
+    { id: "univ", n: "Les univitatias des constellations", o: "ul", lv: ["ul"], u: ["VII.3"], p: ["II.B.3"],
+      or: "Enfants du Fils Créateur et de l’Esprit Créatif", fn: "Population permanente des mondes-sièges des constellations ; ne se reproduisent pas.",
+      si: "Amas des sièges de constellation (Édentia pour Norlatiadek)", fa: "37 et 43", rf: "37:9.8 ; 43:0.4",
+      dbl: "Citoyens permanents en 30:2 ; ordre stationnaire d’origine duelle en 30:1." },
+    { id: "susa", n: "Les susatias des univers locaux", o: "ul", lv: ["ul"], u: ["VII.4"], p: ["II.B.2"],
+      or: "Descendants du Fils Créateur et de l’Esprit Créatif", fn: "Citoyens permanents du siège de l’univers local.",
+      si: "Salvington pour Nébadon", fa: "37", rf: "37:9.7",
+      dbl: "Citoyens permanents en 30:2 ; ordre stationnaire d’origine duelle en 30:1." },
+    { id: "aban", n: "Les abandontaires des superunivers", o: "aut", lv: ["su"], u: ["VII.6"], p: ["II.B.1"],
+      or: "Créés par les agents non révélés des Anciens des Jours et les sept Esprits Réflectifs d’Uversa",
+      fn: "Administrent les affaires courantes de leur monde, sous la supervision des mortels fusionnés avec le Fils.",
+      si: "Mondes-sièges d’Uversa", fa: "37", rf: "37:9.12",
+      dbl: "Citoyens permanents en 30:2 ; ordre stationnaire d’origine duelle en 30:1." },
+    { id: "nse", n: "Les natifs des sphères paradisiaques de l’Esprit", o: "aut", lv: ["ph"], u: ["VII.9"], p: [],
+      or: "Non révélée", fn: "Chaque monde de l’Esprit abrite un type distinct d’habitants permanents.",
+      si: "Les sept sphères de l’Esprit", fa: "13", rf: "13:0.6 ; 13:4.1" },
+    { id: "nsp", n: "Les natifs des sphères paradisiaques du Père", o: "aut", lv: ["ph"], u: ["VII.10"], p: [],
+      or: "Non révélée, sauf pour Divinington", fn: "Les fragments du Père comptent parmi les natifs de Divinington ; les autres ordres ne sont pas révélés.",
+      si: "Les sept sphères du Père", fa: "13", rf: "13:0.6" },
+
+    { id: "cfin", n: "Le Corps Paradisiaque de la Finalité", o: "aut", lv: ["ph", "su", "ul"], u: ["GC.A"], p: [],
+      or: "Composite : sept corps de finalitaires", ef: "Compagnies de mille membres",
+      fn: "Êtres glorifiés à destinée éternelle ; servent dans les univers et sur les mondes ancrés dans la lumière et la vie.",
+      si: "Quartiers généraux au Paradis et sur toutes les capitales divisionnaires", fa: "31", rf: "30:2.131–139 ; 31:0.8–13 ; 31:3.1",
+      sub: [["Le Corps de Mortels Finalitaires", ""], ["Le Corps des Finalitaires du Paradis", ""], ["Le Corps des Finalitaires Trinitisés", ""], ["Le Corps des Finalitaires Trinitisés Conjoints", ""], ["Le Corps des Finalitaires de Havona", ""], ["Le Corps des Finalitaires Transcendantaux", ""], ["Le Corps des Fils Non Révélés de la Destinée", ""]] },
+    { id: "res", n: "Les Radieuses Étoiles du Matin", o: "ul", lv: ["ul"], u: ["GC.B.1"], p: ["II.A.3"],
+      or: "Le Fils Créateur et l’Esprit Créatif ; premier-né de chaque univers local", ef: "Une par univers local (Gabriel pour Nébadon)",
+      fn: "Chef exécutif de l’univers local, représentant personnel du Fils Souverain.", si: "Siège de l’univers local", fa: "37", rf: "37:1.9 ; 25:1.2",
+      dbl: "Aides d’Univers en 30:2 ; ordre descendant d’origine duelle en 30:1." },
+    { id: "bes", n: "Les Brillantes Étoiles du Soir", o: "ul", lv: ["ul"], u: ["GC.B.2"], p: ["II.A.8"],
+      or: "Conçues par les Melchizédeks, créées par le Fils Créateur et l’Esprit Créatif", fn: "Agents de liaison de Gabriel ; le représentent sur les capitales des constellations et des systèmes.",
+      si: "Univers local", fa: "37", rf: "37:2.1–2",
+      dbl: "Aides d’Univers en 30:2 ; ordre descendant d’origine duelle en 30:1." },
+    { id: "arch", n: "Les archanges", o: "ul", lv: ["ul"], u: ["GC.B.3"], p: ["II.A.9"],
+      or: "Progéniture du Fils Créateur et de l’Esprit-Mère de l’Univers", ef: "Près de 800" + NB + "000 dans Nébadon",
+      fn: "Travail de la survie et de la carrière ascendante ; hors de la juridiction ordinaire de Gabriel.", si: "Univers local", fa: "37", rf: "37:3.1–2",
+      dbl: "Aides d’Univers en 30:2 ; ordre descendant d’origine duelle en 30:1." },
+    { id: "tha", n: "Les Très Hauts Assistants", o: "aut", lv: ["ul"], u: ["GC.B.4"], p: [],
+      or: "Volontaires venus de l’extérieur de l’univers local", ef: "Un chiffre considérable de millions, variable",
+      fn: "Observent ou représentent temporairement l’univers central et les superunivers auprès des créations locales.", si: "Univers locaux", fa: "37", rf: "37:4.1" },
+    { id: "hc", n: "Les Hauts Commissaires", o: "asc", lv: ["ul"], u: ["GC.B.5"], p: [],
+      or: "Mortels ascendants fusionnés avec l’Esprit", fn: "Aides d’Univers issus des ascendeurs fusionnés avec l’Esprit.", si: "Univers local", fa: "37", rf: "37:5.1",
+      dbl: "Ce sont des mortels fusionnés avec l’Esprit, ordre classé aussi en IV.B.3 et VII.5." },
+    { id: "sc", n: "Les Surveillants Célestes", o: "aut", lv: ["ul"], u: ["GC.B.6"], p: [],
+      or: "Corps recruté parmi tous les types d’êtres liés à l’éducation des ascendeurs", ef: "Plus de 3 millions dans Nébadon",
+      fn: "Inspecteurs et consultants du système éducatif de l’univers local.", si: "Mondes Melchizédeks de Salvington", fa: "37", rf: "37:6.1" },
+    { id: "emm", n: "Les Éducateurs des Mondes des Maisons", o: "ei", lv: ["ul"], u: ["GC.B.7"], p: [],
+      or: "Chérubins recrutés et glorifiés, commissionnés par les Melchizédeks", ef: "Au-delà de toute compréhension",
+      fn: "Éducateurs morontiels, des mondes des maisons jusqu’à la dernière sphère de l’univers local.", si: "Siège sur le troisième monde des maisons ; mondes morontiels", fa: "37 et 47", rf: "37:7.1 ; 47:5.1" },
+    { id: "colo", n: "Les sept colonies de courtoisie", o: "aut", lv: ["su", "ul"], u: ["GC.C"], p: [],
+      or: "Composite", fn: "Groupes qui séjournent plus ou moins longtemps sur les sphères architecturales pour leurs missions.",
+      si: "Mondes-sièges, des systèmes aux superunivers", fa: "30", rf: "30:2.149–157 ; 30:3",
+      sub: [["Les étudiants d’étoiles", ""], ["Les artisans célestes", ""], ["Les directeurs de la rétrospection", ""], ["Les instructeurs des écoles complémentaires", ""], ["Les divers corps de réserve", ""], ["Les visiteurs estudiantins", ""], ["Les pèlerins ascendants", ""]] },
+
+    { id: "spir", n: "Les spirongas", o: "ul", lv: ["ul"], u: [], p: ["II.B.4"],
+      or: "Descendants spirituels de la Radieuse Étoile du Matin et du Père Melchizédek", fn: "Aides spirituels de l’univers local, ni ascendants ni évolutionnaires.",
+      si: "Univers local ; présents à partir du deuxième monde des maisons", fa: "37", rf: "37:10.2 ; 37:9.6 ; 47:0.4",
+      dbl: "Absents de 30:2 ; le texte dit qu’ils sont classifiés autrement (37:9.6)." },
+    { id: "mgr", n: "Les Messagers de Gravité", o: "aut", lv: ["ph"], u: [], p: ["III.A.1"],
+      or: "Viennent de Divinington : Ajusteurs modifiés et personnalisés", fn: "Messagers du Corps primaire de la Finalité, sous la juridiction de Grandfanda ; franchissent l’espace instantanément.",
+      si: "Divinington ; avec les finalitaires", fa: "31", rf: "31:2.1–2",
+      dbl: "Absents de 30:2 comme ordre, mais rattachés au Corps de la Finalité (31:0.3)." },
+    { id: "adod", n: "Les adjuvats dodécuples des circuits de Havona", o: "ei", lv: ["ph"], u: [], p: ["III.A.3"],
+      or: "Non précisée", fn: "Seulement nommés dans la classification du Paradis.", si: "Circuits de Havona", fa: "30", rf: "30:1.59" },
+    { id: "archi", n: "Les Architectes du Maitre Univers", o: "aut", lv: ["ph"], u: [], p: ["IV.1"],
+      or: "Extériorisés, ni créateurs ni créatures", ef: "28" + NB + "011, sur sept niveaux : 1, 3, 7, 70, 490, 3" + NB + "430, 24" + NB + "010",
+      fn: "Planificateurs d’univers ; corps gouvernant des Transcendantaux ; les Maitres Organisateurs de Force sont à leur service.",
+      si: "Paradis", fa: "31", rf: "31:9.1–14" },
+    { id: "artr", n: "Les Archivistes Transcendantaux", o: "aut", lv: ["ph"], u: [], p: ["IV.2"],
+      or: "Extériorisés", fn: "Seulement nommés dans la classification du Paradis.", si: "Paradis", fa: "30", rf: "30:1.95" },
+    { id: "autr", n: "Les autres Transcendantaux", o: "aut", lv: ["ph"], u: [], p: ["IV.3"],
+      or: "Extériorisés : ni créateurs ni créatures ; soumis à l’Ultime", ef: "Plus de mille groupes",
+      fn: "Superadministration du maitre univers ; n’interviennent ni dans Havona ni dans les superunivers.",
+      si: "Ouest du Paradis, dans une vaste zone réservée", fa: "31", rf: "31:8.1–4 ; 30:1.92–93",
+      q: ["Ces Transcendantaux ne sont ni des créateurs ni des créatures ; ils sont les enfants extériorisés de la divinité, de l’ultimité et de l’éternité.", "30:1.92"] },
+    { id: "mofp", n: "Les Maitres Organisateurs de Force Extériorisés Primaires", o: "aut", lv: ["ph"], u: [], p: ["IV.4"],
+      or: "Extériorisés", fn: "Créateurs de nébuleuses : font passer la force primordiale sous l’emprise de la gravité du Paradis ; supervisés par les Architectes.",
+      si: "Résident au Paradis ; opèrent dans l’espace inorganisé", fa: "29", rf: "29:5.1–5" },
+    { id: "mofa", n: "Les Maitres Organisateurs de Force Transcendantaux Associés", o: "aut", lv: ["ph"], u: [], p: ["IV.5"],
+      or: "Extériorisés", fn: "Poursuivent la transmutation de l’énergie, puis cèdent la place aux directeurs de pouvoir quand arrive un Fils Créateur.",
+      si: "Résident au Paradis ; opèrent dans l’espace inorganisé", fa: "29", rf: "29:5.5–6 ; 29:4.2" },
+    { id: "ajus", n: "Les Ajusteurs de Pensée", o: "aut", lv: ["pl", "ph"], u: [], p: ["V.1"],
+      or: "Fragments du Père Universel, ou Moniteurs de Mystère", fn: "Habitent le mental des mortels ; à la mort, regagnent Divinington.",
+      si: "Divinington ; mental des mortels", fa: "107 à 112", rf: "30:1.100 ; 107:0.1 ; 112:3.4" },
+    { id: "sup", n: "Les êtres superpersonnels", o: "aut", lv: ["ph"], u: [], p: ["VI.1"],
+      or: "Origine divine", fn: "Êtres autres-que-personnels aux services multiples ; la plupart ne sont pas décrits.",
+      si: "Mondes paradisiaques du Fils, entre autres", fa: "30", rf: "30:1.103 ; 13:3.2" },
+    { id: "cons", n: "Le Consommateur de la Destinée de l’Univers", o: "aut", lv: [], u: [], p: ["VII.1"],
+      or: "Non révélée", fn: "Consommerait probablement la destinée ; forme la Trinité Absolue avec le Suprême et l’Ultime.",
+      si: "Non précisé", fa: "106", rf: "30:1.105 ; 106:7.3 ; 106:8.11" },
+    { id: "vgq", n: "Les Vice-Gérants Qualifiés de l’Ultime", o: "aut", lv: ["su"], u: [], p: ["VII.2"],
+      or: "Non révélée", fn: "Représentés dans les gouvernements des superunivers par les Aides-Images Réflectifs ; pas encore pleinement actifs.",
+      si: "Non précisé", fa: "15", rf: "30:1.106 ; 15:10.21" },
+    { id: "snq", n: "Les Superviseurs Non Qualifiés du Suprême", o: "aut", lv: ["su"], u: [], p: ["VII.3"],
+      or: "Non révélée", fn: "Conseillers aujourd’hui ; deviendraient le corps administratif supérieur d’un superunivers ancré dans la lumière et la vie ; n’opèrent pas dans Havona.",
+      si: "Superunivers", fa: "15 et 55", rf: "30:1.107 ; 15:10.21 ; 55:12.3–4" },
+    { id: "acn", n: "Les Agents Créatifs Non Révélés des Anciens des Jours", o: "aut", lv: ["su"], u: [], p: ["VII.4"],
+      or: "Non révélée", fn: "Ont créé les abandontaires avec les Esprits Réflectifs d’Uversa.", si: "Superunivers", fa: "37", rf: "30:1.108 ; 37:9.12" },
+    { id: "maj", n: "Majeston du Paradis", o: "aut", lv: ["ph"], u: [], p: ["VII.5"],
+      or: "Créé par l’Être Suprême en liaison avec l’Absolu de Déité", ef: "1",
+      fn: "Chef de la réflectivité ; ne s’occupe que de ce service.", si: "Paradis, au lieu de rencontre des Maitres Esprits", fa: "17", rf: "17:2.2–4 ; 30:1.109",
+      q: ["Majeston n’est pas inclus dans notre répertoire des personnalités du Paradis parce qu’il est la seule personnalité divine existante créée par l’Être Suprême en liaison fonctionnelle avec l’Absolu de Déité.", "17:2.4"] },
+    { id: "alr", n: "Les Agents de Liaison Réflectifs Non Dénommés de Majeston", o: "aut", lv: ["su"], u: [], p: ["VII.6"],
+      or: "Non révélée", fn: "Représentés dans les gouvernements des superunivers par les Aides-Images Réflectifs.", si: "Superunivers", fa: "15", rf: "30:1.110 ; 15:10.21" },
+    { id: "mids", n: "Les Ordres Midsonites des univers locaux", o: "ul", lv: ["ul"], u: [], p: ["VII.7"],
+      or: "Descendants d’un porteur de vie Melchizédek et d’une Fille Matérielle : les midsonitaires", fn: "Vivent sur un monde midsonite par système ; leur but n’est pas connu.",
+      si: "Mondes midsonites des systèmes ; sphère midsonite de Salvington", fa: "36", rf: "30:1.111 ; 36:4.1–8" },
+    { id: "evl", n: "Les Évanges de Lumière", o: "aut", lv: ["ph"], u: [], p: [],
+      or: "Non précisée", fn: "Membres transitoires du Corps de la Finalité ; leur chef occupe la place vacante de chaque compagnie.", si: "Avec les compagnies finalitaires", fa: "31", rf: "31:7.1" },
+    { id: "spor", n: "Les spornagias", o: "aut", lv: ["ul"], u: [], p: [],
+      or: "Non précisée", fn: "Ordre animal, ni esprits ni personnes ; entretiennent les mondes-sièges, de Jérusem à Salvington.", si: "Mondes-sièges architecturaux", fa: "37", rf: "37:10.3" }
+  ];
+
+  /* Utilitaires */
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function norm(s) {
+    return String(s).toLowerCase().replace(/œ/g, "oe").replace(/æ/g, "ae")
+      .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’‘`]/g, "'").replace(/[  ]/g, " ");
+  }
+  function cmpCode(a, b) {
+    var x = a.split("."), y = b.split("."), i, n = Math.max(x.length, y.length);
+    for (i = 0; i < n; i++) {
+      if (x[i] === undefined) return -1;
+      if (y[i] === undefined) return 1;
+      var nx = /^\d+$/.test(x[i]), ny = /^\d+$/.test(y[i]);
+      if (nx && ny) { var d = parseInt(x[i], 10) - parseInt(y[i], 10); if (d) return d; }
+      else if (x[i] !== y[i]) {
+        var ra = ROMAN[x[i]], rb = ROMAN[y[i]];
+        if (ra !== undefined && rb !== undefined) return ra - rb;
+        return x[i] < y[i] ? -1 : 1;
+      }
+    }
+    return 0;
+  }
+  var ROMAN = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, GC: 8, X: 9, Y: 9 };
+  function nid(s) { return s.replace(/[^A-Za-z0-9]/g, "_"); }
+
+  ORD.forEach(function (o) {
+    var parts = [o.n, o.or, o.ef || "", o.fn, o.si, o.fa, o.rf, ORIG_NAME[o.o], o.dbl || ""];
+    (o.alt || []).forEach(function (a) { parts.push(a[0]); });
+    (o.sub || []).forEach(function (s) { parts.push(s[0], s[1]); });
+    o.u.forEach(function (c) { parts.push("30:2 " + c); });
+    o.p.forEach(function (c) { parts.push("P " + c); });
+    if (o.q) parts.push(o.q[0], o.q[1]);
+    o.idx = norm(parts.join(" | "));
+  });
+
+  /* État */
+  var state = { view: "u", origins: {}, lv: "", q: "" };
+  var open = {};
+  function famDefs() { return state.view === "u" ? UV : PA; }
+  function placements(o) {
+    if (state.view === "u") return o.u.length ? o.u : ["X"];
+    return o.p.length ? o.p : ["Y"];
+  }
+  function anyOrigin() { for (var k in state.origins) if (state.origins[k]) return true; return false; }
+  function filtering() { return anyOrigin() || state.lv !== "" || state.q !== ""; }
+  function matches(o) {
+    if (anyOrigin() && !state.origins[o.o]) return false;
+    if (state.lv && o.lv.indexOf(state.lv) < 0) return false;
+    if (state.q && o.idx.indexOf(state.q) < 0) return false;
+    return true;
+  }
+
+  function buildModel() {
+    var by = {};
+    var fams = famDefs().map(function (f) {
+      var F = { k: f.k, t: f.t, r: f.r, note: f.note || "", items: [], subs: [] };
+      by[f.k] = F;
+      (f.subs || []).forEach(function (s) { var S = { k: s.k, t: s.t, note: s.note || "", items: [] }; F.subs.push(S); by[s.k] = S; });
+      return F;
+    });
+    ORD.forEach(function (o) {
+      placements(o).forEach(function (code) {
+        var seg = code.split(".");
+        var target = by[seg[0]];
+        if (seg.length >= 3 && by[seg[0] + "." + seg[1]]) target = by[seg[0] + "." + seg[1]];
+        if (target) target.items.push({ o: o, code: code });
+      });
+    });
+    fams.forEach(function (F) {
+      F.items.sort(function (a, b) { return cmpCode(a.code, b.code); });
+      F.subs.forEach(function (S) { S.items.sort(function (a, b) { return cmpCode(a.code, b.code); }); });
+    });
+    return fams;
+  }
+  function famItems(F) {
+    var all = F.items.slice();
+    F.subs.forEach(function (S) { all = all.concat(S.items); });
+    return all;
+  }
+
+  /* Pastilles d’origine (filtres et légende) */
+  var chipsEl = document.getElementById("chips");
+  var legendEl = document.getElementById("legend");
+  chipsEl.innerHTML = ORIG.map(function (o) {
+    return '<button type="button" class="chip" id="chip-' + o[0] + '" data-o="' + o[0] + '" aria-pressed="false"><span class="dot c-' + o[0] + '"></span>' + esc(o[1]) + '</button>';
+  }).join("");
+  legendEl.innerHTML = ORIG.map(function (o) { return '<span><span class="dot c-' + o[0] + '"></span>' + esc(o[1]) + '</span>'; }).join("");
+
+  /* Vue d’ensemble */
+  var ovEl = document.getElementById("ov");
+  function renderOverview(model) {
+    var max = 1;
+    model.forEach(function (F) { max = Math.max(max, famItems(F).length); });
+    ovEl.innerHTML = model.map(function (F) {
+      var items = famItems(F);
+      if (!items.length) return "";
+      var counts = {};
+      items.forEach(function (it) { counts[it.o.o] = (counts[it.o.o] || 0) + 1; });
+      var x = 0, rects = "", parts = [];
+      ORIG.forEach(function (o) {
+        var c = counts[o[0]];
+        if (!c) return;
+        var w = c / max * 100;
+        rects += '<rect class="seg s-' + o[0] + '" x="' + x.toFixed(2) + '" y="0" width="' + w.toFixed(2) + '" height="14"></rect>';
+        x += w;
+        parts.push(c + " " + o[1]);
+      });
+      var label = F.t + " : " + items.length + " ordre" + (items.length > 1 ? "s" : "") + " (" + parts.join(", ") + ")";
+      return '<button type="button" class="ov-row" data-fam="' + esc(F.k) + '">' +
+        '<span class="ov-k">' + esc(F.k) + '</span>' +
+        '<span class="ov-n">' + esc(F.t) + '</span>' +
+        '<svg class="ov-bar" viewBox="0 0 100 14" preserveAspectRatio="none" role="img" aria-label="' + esc(label) + '">' + rects + '</svg>' +
+        '<span class="ov-c">' + items.length + ' ordre' + (items.length > 1 ? 's' : '') + '</span></button>';
+    }).join("");
+    document.getElementById("ov-intro").textContent = state.view === "u"
+      ? "Classification d’Uversa (30:2). Chaque barre compte les ordres d’une famille et se découpe selon leur origine. Choisis une famille pour l’ouvrir dans l’arbre."
+      : "Classification du Paradis (30:1). Chaque barre compte les ordres d’une catégorie et se découpe selon leur origine. Choisis une catégorie pour l’ouvrir dans l’arbre.";
+  }
+
+  /* Arbre */
+  var treeEl = document.getElementById("tree");
+  var CHEV = '<svg class="chev" viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></svg>';
+
+  function cardHTML(it) {
+    var o = it.o, h = "";
+    h += "<dl>";
+    h += "<dt>Origine</dt><dd><span class=\"dot c-" + o.o + "\"></span> " + esc(ORIG_NAME[o.o]) + " · " + esc(o.or) + "</dd>";
+    if (o.ef) h += "<dt>Effectif</dt><dd>" + esc(o.ef) + "</dd>";
+    h += "<dt>Domaine et fonction</dt><dd>" + esc(o.fn) + "</dd>";
+    h += "<dt>Siège</dt><dd>" + esc(o.si) + "</dd>";
+    h += "<dt>Niveau</dt><dd>" + (o.lv.length ? o.lv.map(function (l) { return LEVELS[l]; }).join(", ") : "non précisé") + "</dd>";
+    h += "<dt>Fascicule</dt><dd>" + esc(o.fa) + "</dd>";
+    h += "<dt>Références</dt><dd><span class=\"ref\">" + esc(o.rf) + "</span></dd>";
+    h += "<dt>Classements</dt><dd>30:2 : " + (o.u.length ? o.u.map(esc).join(", ") : "absent") + " · 30:1 : " + (o.p.length ? o.p.map(function (c) { return "[P " + esc(c) + "]"; }).join(", ") : "absent") + "</dd>";
+    if (o.alt && o.alt.length) h += "<dt>Autres noms</dt><dd class=\"alt\">" + o.alt.map(function (a) { return esc(a[0]) + " (" + esc(a[1]) + ")"; }).join(" ; ") + "</dd>";
+    h += "</dl>";
+    if (o.dbl) h += "<p class=\"dblnote\"><b>⇄ Double classement.</b> " + esc(o.dbl) + "</p>";
+    if (o.q) h += "<blockquote><p>« " + esc(o.q[0]) + " »</p><span class=\"ref\">" + esc(o.q[1]) + "</span></blockquote>";
+    if (o.sub && o.sub.length) {
+      h += "<div><span class=\"label\">Sous-ordres</span><ul class=\"subs\">" + o.sub.map(function (s) {
+        return "<li><span class=\"sn\">" + esc(s[0]) + "</span>" + (s[1] ? " : " + esc(s[1]) : "") + "</li>";
+      }).join("") + "</ul></div>";
+    }
+    return h;
+  }
+
+  function ordHTML(it) {
+    var o = it.o, id = nid(state.view + "-" + it.code + "-" + o.id), isOpen = !!open[id];
+    var codeTxt = state.view === "u" ? (it.code === "X" ? "hors 30:2" : "30:2 " + it.code) : (it.code === "Y" ? "hors 30:1" : "[P " + it.code + "]");
+    var pBadge = state.view === "u" && o.p.length ? '<span class="code">[P ' + esc(o.p[0]) + (o.p.length > 1 ? "…" : "") + ']</span>' : "";
+    var uBadge = state.view === "p" && o.u.length ? '<span class="code">30:2 ' + esc(o.u[0]) + (o.u.length > 1 ? "…" : "") + '</span>' : "";
+    return '<li class="node ord">' +
+      '<button type="button" class="tg" data-node="' + id + '" aria-expanded="' + isOpen + '" aria-controls="p-' + id + '">' + CHEV +
+      '<span class="dot c-' + o.o + '" title="' + esc(ORIG_NAME[o.o]) + '"></span>' +
+      '<span class="head"><span class="nm">' + esc(o.n) + '</span>' + (o.ef ? '<span class="ef">' + esc(o.ef) + '</span>' : '') +
+      '<span class="badges"><span class="code">' + esc(codeTxt) + '</span>' + pBadge + uBadge + (o.dbl ? '<span class="dbl" title="Double classement">⇄ double classement</span>' : '') + '</span></span>' +
+      '</button><div class="panel card" id="p-' + id + '"' + (isOpen ? '' : ' hidden') + '>' + cardHTML(it) + '</div></li>';
+  }
+
+  function renderTree() {
+    var model = buildModel();
+    renderOverview(model);
+    var f = filtering(), shown = {}, total = 0;
+    var html = model.map(function (F) {
+      var famId = nid(state.view + "-F-" + F.k);
+      var entries = F.items.map(function (it) { return { key: it.code, it: it }; })
+        .concat(F.subs.map(function (S) { return { key: S.k, sub: S }; }));
+      entries.sort(function (a, b) { return cmpCode(a.key, b.key); });
+      var count = 0;
+      var inner = entries.map(function (e) {
+        if (e.it) {
+          if (!matches(e.it.o)) return "";
+          count++; shown[e.it.o.id] = 1;
+          return ordHTML(e.it);
+        }
+        var S = e.sub, sid = nid(state.view + "-S-" + S.k), sc = 0;
+        var lis = S.items.map(function (it) {
+          if (!matches(it.o)) return "";
+          sc++; shown[it.o.id] = 1;
+          return ordHTML(it);
+        }).join("");
+        if (!sc) return "";
+        count += sc;
+        if (f) open[sid] = true;
+        var so = !!open[sid];
+        return '<li class="node sub"><button type="button" class="tg" data-node="' + sid + '" aria-expanded="' + so + '" aria-controls="p-' + sid + '">' + CHEV +
+          '<span class="k">' + esc(S.k) + '</span><span class="t">' + esc(S.t) + '</span><span class="cnt">' + sc + '</span></button>' +
+          '<div class="panel" id="p-' + sid + '"' + (so ? '' : ' hidden') + '>' + (S.note ? '<p class="fam-note">' + esc(S.note) + '</p>' : '') +
+          '<ul class="ords">' + lis + '</ul></div></li>';
+      }).join("");
+      if (!count) return "";
+      if (f) open[famId] = true;
+      var fo = !!open[famId];
+      return '<li class="node fam" id="fam-' + famId + '"><button type="button" class="tg" data-node="' + famId + '" aria-expanded="' + fo + '" aria-controls="p-' + famId + '">' + CHEV +
+        '<span class="k">' + esc(F.k === "X" || F.k === "Y" ? "—" : F.k) + '</span><span class="t">' + esc(F.t) + '</span><span class="cnt">' + count + ' · ' + esc(F.r) + '</span></button>' +
+        '<div class="panel" id="p-' + famId + '"' + (fo ? '' : ' hidden') + '>' + (F.note ? '<p class="fam-note">' + esc(F.note) + '</p>' : '') +
+        '<ul class="ords">' + inner + '</ul></div></li>';
+    }).join("");
+    for (var k in shown) if (shown[k]) total++;
+    treeEl.innerHTML = html || '<li class="empty">Aucun ordre ne correspond à ces filtres. Efface-les pour tout revoir.</li>';
+    document.getElementById("status").textContent = total + " ordre" + (total > 1 ? "s" : "") + " affiché" + (total > 1 ? "s" : "") + " sur " + ORD.length;
+  }
+
+  function initOpen() {
+    // familles repliées au départ (la vue d’ensemble sert de sommaire) ; leurs sous-familles s’ouvrent avec elles
+    [["u", UV], ["p", PA]].forEach(function (pair) {
+      var v = pair[0];
+      pair[1].forEach(function (f) {
+        (f.subs || []).forEach(function (s) { open[nid(v + "-S-" + s.k)] = true; });
+      });
+    });
+  }
+
+  function setNode(btn, val) {
+    var id = btn.getAttribute("data-node");
+    open[id] = val;
+    btn.setAttribute("aria-expanded", String(val));
+    var panel = document.getElementById("p-" + id);
+    if (panel) panel.hidden = !val;
+  }
+
+  treeEl.addEventListener("click", function (ev) {
+    var btn = ev.target.closest(".tg");
+    if (!btn || !treeEl.contains(btn)) return;
+    setNode(btn, btn.getAttribute("aria-expanded") !== "true");
+  });
+
+  function visibleToggles() {
+    return Array.prototype.filter.call(treeEl.querySelectorAll(".tg"), function (b) { return b.offsetParent !== null; });
+  }
+  treeEl.addEventListener("keydown", function (ev) {
+    var btn = ev.target;
+    if (!btn.classList || !btn.classList.contains("tg")) return;
+    var list = visibleToggles(), i = list.indexOf(btn), expanded = btn.getAttribute("aria-expanded") === "true";
+    var key = ev.key, target = null;
+    if (key === "ArrowDown") target = list[i + 1];
+    else if (key === "ArrowUp") target = list[i - 1];
+    else if (key === "Home") target = list[0];
+    else if (key === "End") target = list[list.length - 1];
+    else if (key === "ArrowRight") {
+      if (!expanded) { setNode(btn, true); ev.preventDefault(); return; }
+      var next = list[i + 1], panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (next && panel && panel.contains(next)) target = next;
+    } else if (key === "ArrowLeft") {
+      if (expanded) { setNode(btn, false); ev.preventDefault(); return; }
+      var parentPanel = btn.closest(".node").parentElement.closest(".panel");
+      if (parentPanel) target = parentPanel.parentElement.querySelector(".tg");
+    } else return;
+    ev.preventDefault();
+    if (target) target.focus();
+  });
+
+  /* Commandes */
+  var vu = document.getElementById("v-u"), vp = document.getElementById("v-p");
+  function setView(v) {
+    state.view = v;
+    vu.setAttribute("aria-pressed", String(v === "u"));
+    vp.setAttribute("aria-pressed", String(v === "p"));
+    renderTree();
+  }
+  vu.addEventListener("click", function () { setView("u"); });
+  vp.addEventListener("click", function () { setView("p"); });
+
+  chipsEl.addEventListener("click", function (ev) {
+    var b = ev.target.closest(".chip");
+    if (!b) return;
+    var k = b.getAttribute("data-o");
+    state.origins[k] = !state.origins[k];
+    b.setAttribute("aria-pressed", String(!!state.origins[k]));
+    renderTree();
+  });
+  document.getElementById("f-lv").addEventListener("change", function (ev) { state.lv = ev.target.value; renderTree(); });
+  var qEl = document.getElementById("f-q"), qTimer = null;
+  qEl.addEventListener("input", function () {
+    clearTimeout(qTimer);
+    qTimer = setTimeout(function () { state.q = norm(qEl.value.trim()); renderTree(); }, 120);
+  });
+  function resetFilters() {
+    state.origins = {}; state.lv = ""; state.q = "";
+    Array.prototype.forEach.call(chipsEl.querySelectorAll(".chip"), function (b) { b.setAttribute("aria-pressed", "false"); });
+    document.getElementById("f-lv").value = ""; qEl.value = "";
+  }
+  document.getElementById("b-reset").addEventListener("click", function () { resetFilters(); renderTree(); });
+  document.getElementById("b-open").addEventListener("click", function () {
+    Array.prototype.forEach.call(treeEl.querySelectorAll(".tg"), function (b) { setNode(b, true); });
+  });
+  document.getElementById("b-close").addEventListener("click", function () {
+    Array.prototype.forEach.call(treeEl.querySelectorAll(".tg"), function (b) { setNode(b, false); });
+  });
+
+  ovEl.addEventListener("click", function (ev) {
+    var row = ev.target.closest(".ov-row");
+    if (!row) return;
+    var k = row.getAttribute("data-fam"), famId = nid(state.view + "-F-" + k);
+    if (!document.getElementById("fam-" + famId)) { resetFilters(); }
+    open[famId] = true;
+    var def = famDefs().filter(function (f) { return f.k === k; })[0];
+    if (def && def.subs) def.subs.forEach(function (s) { open[nid(state.view + "-S-" + s.k)] = true; });
+    renderTree();
+    var li = document.getElementById("fam-" + famId);
+    if (li) {
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      li.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+      var b = li.querySelector(".tg");
+      if (b) b.focus({ preventScroll: true });
+    }
+  });
+
+  initOpen();
+  renderTree();
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

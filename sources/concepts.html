@@ -1,0 +1,715 @@
+<title>Concepts en schémas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Étape 7 de l’atlas : sept schémas de mécanisme. Même papier, même encre que la carte de Nébadon ;
+   l’or est la seule couleur porteuse de sens, avec une signification propre à chaque schéma. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier de carte bleuté */
+  --sheet: #FFFFFF;    /* surfaces des figures */
+  --tint: #E4E9F2;     /* survol */
+  --hl: #D9E1F0;       /* élément sélectionné */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* la couleur qui porte le sens */
+  --gold-ink: #8A5A00; /* l’or, en texte */
+  --gold-ui: #9E6B00;  /* l’or des traits et repères (3:1 au moins sur le papier) */
+  --on-gold: #1B1405;
+  --acc-fill: #F8ECD2; /* fond doré des éléments marqués */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --hl: #26314F; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --acc-fill: #392C10; --gold-ui: #EDB03A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --hl: #26314F; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --acc-fill: #392C10; --gold-ui: #EDB03A;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); white-space: nowrap; letter-spacing: 0; }
+.qt { font-family: var(--font-display); font-style: italic; font-size: 1.16em; line-height: 1.38; }
+.qt .ref { font-size: .68em; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 44ch; }
+.pull { margin: 0; display: grid; gap: 6px; max-width: 48ch; }
+.pull p { font-family: var(--font-display); font-style: italic; font-size: 1.42rem; line-height: 1.36; }
+.addr { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 10px; min-width: 0; }
+.addr .lnk { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.25; padding: 7px 0; border-top: 1px solid var(--rule); }
+.addr .lnks { display: grid; gap: 10px; }
+.addr .cat { padding-top: 10px; border-top: 1px solid var(--rule); font-size: .86rem; color: var(--muted); }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+
+/* Sections et schémas */
+.sec-head { display: grid; gap: 12px; max-width: 68ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+.duo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 40px; align-items: start; margin-top: 26px; }
+figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 10px 10px 12px; display: grid; gap: 8px; min-width: 0; }
+.fig figcaption { font-size: .86rem; color: var(--muted); padding: 0 8px; }
+.side { position: sticky; top: 16px; display: grid; gap: 14px; min-width: 0; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-left: 3px solid var(--gold-ui); border-radius: 12px; padding: 16px 18px; display: grid; gap: 10px; min-height: 8em; align-content: start; }
+.panel .ph { color: var(--muted); }
+.panel .ref, .tv .ref { white-space: normal; }
+.tv summary { cursor: pointer; padding-block: 13px; font: 500 .74rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.tv ul { margin: 10px 0 0; padding-left: 1.1em; display: grid; gap: 6px; font-size: .92rem; }
+
+/* Dessin */
+.dg { display: block; width: 100%; max-width: 470px; height: auto; margin: 0 auto; color: var(--ink); overflow: visible; }
+.dg text { font-family: var(--font-body); }
+.dg .box { fill: var(--sheet); stroke: currentColor; stroke-width: 1.2; }
+.dg .box.g { fill: var(--acc-fill); stroke: var(--gold-ui); stroke-width: 1.6; }
+.dg .box.dash { stroke: var(--muted); stroke-dasharray: 4 3; }
+.dg .frame { fill: none; stroke: var(--gold-ui); stroke-width: 1.6; stroke-dasharray: 7 5; }
+.dg .ln { fill: none; stroke: currentColor; stroke-width: 1.3; }
+.dg .ln.g { stroke: var(--gold-ui); stroke-width: 1.8; }
+.dg .ln.d { stroke-dasharray: 5 4; }
+.dg .mk { fill: currentColor; }
+.dg .mk.g { fill: var(--gold-ui); }
+.dg .lbl { font-size: 13px; font-weight: 700; fill: var(--ink); }
+.dg .lbl.s12 { font-size: 12px; }
+.dg .sub { font-size: 11px; fill: var(--muted); }
+.dg .gi { fill: var(--gold-ink); }
+.dg .al { font-size: 11.5px; font-weight: 500; fill: var(--ink); paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+.dg .al.g { fill: var(--gold-ink); }
+.dg .al.m { fill: var(--muted); }
+.dg .al.hf { stroke: var(--acc-fill); }
+.dg .cap2 { font-size: 12px; font-weight: 500; fill: var(--muted); }
+.dg .rg { fill: none; stroke-width: 1.2; }
+.dg .rg.g { stroke: var(--gold-ui); stroke-width: 2; }
+.dg .rg.u { stroke: var(--muted); stroke-dasharray: 3 3; }
+.dg .disk { fill: var(--acc-fill); stroke: var(--gold-ui); stroke-width: 2; }
+.dg .badge { fill: var(--acc-fill); stroke: var(--gold-ui); stroke-width: 1.4; }
+.dg .bdg { font-size: 12px; font-weight: 700; fill: var(--gold-ink); }
+.dg .dot-g { fill: var(--gold-ui); }
+.dg .thr-v { stroke: currentColor; stroke-width: 2; }
+.dg .thr-h { stroke: var(--muted); stroke-width: 2; }
+.dg .hit { cursor: pointer; }
+.dg .hb { fill: transparent; stroke: none; }
+.dg path.hb { fill: none; stroke: transparent; stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+.dg .hbr { fill: none; stroke: transparent; }
+.dg .hit:focus { outline: none; }
+.dg .hit:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+.dg .hit:hover .box, .dg .hit:focus-visible .box { stroke-width: 2.2; }
+.dg .hit:hover .ln, .dg .hit:focus-visible .ln, .dg .hit:hover .rg { stroke-width: 2.4; }
+.dg .hit:hover rect.hb { fill: var(--tint); }
+.dg .hit.sel .box, .dg .hit.sel .disk { stroke-width: 2.8; }
+.dg .hit.sel .ln, .dg .hit.sel .rg { stroke-width: 2.8; }
+.dg .hit.sel rect.hb { fill: var(--hl); }
+.dg .hit.sel path.hb, .dg .hit.sel .hbr { stroke: var(--hl); }
+
+/* Fin de page */
+.np { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; max-width: 80ch; }
+.np summary { cursor: pointer; }
+.np summary h2 { display: inline; font-size: clamp(1.5rem, 3vw, 2rem); }
+.np ul { margin: 14px 0 0; padding-left: 1.1em; display: grid; gap: 10px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 68ch; display: grid; gap: 6px; }
+
+@media (max-width: 860px) {
+  .hero, .duo { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .side { position: static; }
+}
+@media (max-width: 420px) {
+  body { font-size: 16px; }
+  figure.fig { padding: 8px 6px 10px; }
+  .panel { padding: 14px 14px; }
+}
+</style>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · sept schémas</p>
+      <h1>Les concepts en schémas</h1>
+      <p class="lede">Sept schémas pour voir le mécanisme&nbsp;: qui donne quoi, qui habite quoi, ce qui nait de quoi. Chaque flèche porte le verbe du texte. Un clic sur un élément ou une flèche affiche la relation et sa référence.</p>
+      <figure class="pull">
+        <p>«&nbsp;Le mental est votre navire, l’Ajusteur est votre pilote, la volonté humaine est le capitaine.&nbsp;»</p>
+        <figcaption class="ref">111:1.9</figcaption>
+      </figure>
+    </div>
+    <aside class="addr" aria-label="À voir aussi">
+      <span class="label">À voir aussi</span>
+      <a class="lnk" href="dieu-et-deite.html">Dieu et la Déité</a>
+      <a class="lnk" href="familles-de-personnalites.html">Familles de personnalités</a>
+      <p class="cat">Vocabulaire&nbsp;: <em>mental</em> traduit l’anglais <em>mind</em>, <em>esprit</em> traduit <em>spirit</em>. Ici, les deux ne se confondent jamais.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#s1"><span class="nb">1</span><span class="tt">La constitution de l’être humain</span></a></li>
+      <li><a href="#s2"><span class="nb">2</span><span class="tt">Les trois influences d’esprit</span></a></li>
+      <li><a href="#s3"><span class="nb">3</span><span class="tt">L’échelle des sept adjuvats</span></a></li>
+      <li><a href="#s4"><span class="nb">4</span><span class="tt">Les sept cercles et la fusion</span></a></li>
+      <li><a href="#s5"><span class="nb">5</span><span class="tt">Niveaux de réalité et de Déité</span></a></li>
+      <li><a href="#s6"><span class="nb">6</span><span class="tt">Matière, mental, esprit, personnalité</span></a></li>
+      <li><a href="#s7"><span class="nb">7</span><span class="tt">La morontia</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="s1" aria-labelledby="h-s1">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 1</p>
+      <h2 id="h-s1">La constitution de l’être humain</h2>
+      <p>Le texte distingue cinq réalités dans l’expérience humaine&nbsp;: le corps, le mental, l’esprit (l’Ajusteur), l’âme et la personnalité <span class="ref">0:5.6–11</span>. Le schéma montre d’où vient chacune et laquelle nait des autres.</p>
+      <p class="hint">Clique sur un élément ou une flèche. Au clavier&nbsp;: Tab pour entrer dans le schéma, flèches pour passer d’un élément à l’autre, Entrée pour afficher.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="1">
+        <svg class="dg" viewBox="0 0 360 636" role="group" aria-label="Constitution de l’être humain. Le Père confère la personnalité et fragmente sa Déité en Ajusteur. L’Acteur Conjoint étend le mental par l’Esprit-Mère, qui agit par les adjuvats. L’Ajusteur habite le mental. L’âme a l’Ajusteur pour père et le mental pour mère. Le corps maintient le mental et l’esprit en rapport. La personnalité unifie le tout. À la mort, l’âme est gardée par un séraphin et l’Ajusteur garde le mental spirituel ; leur réunion reconstitue la personnalité.">
+          <defs>
+            <marker id="m1" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m1g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="1-pere"><rect class="box" x="16" y="14" width="120" height="34" rx="8"/><text class="lbl" x="76" y="36" text-anchor="middle">Père Universel</text></g>
+          <g class="hit" data-k="1-ac"><rect class="box" x="224" y="14" width="120" height="34" rx="8"/><text class="lbl" x="284" y="36" text-anchor="middle">Acteur Conjoint</text></g>
+          <g class="hit" data-k="1-em"><rect class="box" x="224" y="80" width="120" height="34" rx="8"/><text class="lbl" x="284" y="102" text-anchor="middle">Esprit-Mère</text></g>
+          <g class="hit" data-k="1-etend"><path class="hb" d="M284 48V80"/><path class="ln" d="M284 48V79" marker-end="url(#m1)"/><text class="al" x="276" y="68" text-anchor="end">étend</text></g>
+          <g class="hit" data-k="1-perso"><rect class="hb" x="128" y="146" width="104" height="34" rx="6"/><rect class="frame" x="16" y="138" width="328" height="300" rx="14"/><text class="lbl gi" x="180" y="161" text-anchor="middle">Personnalité</text><text class="sub gi" x="180" y="176" text-anchor="middle">unifie le tout</text></g>
+          <g class="hit" data-k="1-confere"><path class="hb" d="M112 48V138"/><path class="ln g" d="M112 48V137" marker-end="url(#m1g)"/><text class="al g" x="118" y="98">confère</text></g>
+          <g class="hit" data-k="1-fragmente"><path class="hb" d="M52 48V196"/><path class="ln g" d="M52 48V195" marker-end="url(#m1g)"/><text class="al g" x="58" y="187">fragmente</text></g>
+          <g class="hit" data-k="1-adjuvats"><path class="hb" d="M284 114V196"/><path class="ln" d="M284 114V195" marker-end="url(#m1)"/><text class="al" x="278" y="130" text-anchor="end">agit par les adjuvats</text></g>
+          <g class="hit" data-k="1-ajusteur"><rect class="box g" x="28" y="196" width="120" height="34" rx="8"/><text class="lbl" x="88" y="218" text-anchor="middle">Ajusteur</text></g>
+          <g class="hit" data-k="1-mental"><rect class="box" x="212" y="196" width="120" height="34" rx="8"/><text class="lbl" x="272" y="218" text-anchor="middle">Mental</text></g>
+          <g class="hit" data-k="1-habite"><path class="hb" d="M148 213H212"/><path class="ln" d="M148 213H211" marker-end="url(#m1)"/><text class="al" x="180" y="207" text-anchor="middle">habite</text></g>
+          <g class="hit" data-k="1-pere-ame"><path class="hb" d="M100 230L140 282"/><path class="ln" d="M100 230L139.4 281.2" marker-end="url(#m1)"/><text class="al" x="114" y="262" text-anchor="end">père</text></g>
+          <g class="hit" data-k="1-mere-ame"><path class="hb" d="M260 230L220 282"/><path class="ln" d="M260 230L220.6 281.2" marker-end="url(#m1)"/><text class="al" x="246" y="262">mère</text></g>
+          <g class="hit" data-k="1-ame"><rect class="box" x="120" y="282" width="120" height="42" rx="8"/><text class="lbl" x="180" y="300" text-anchor="middle">Âme</text><text class="sub" x="180" y="316" text-anchor="middle">morontielle</text></g>
+          <g class="hit" data-k="1-maintient"><path class="hb" d="M132 368L40 230M228 368L320 230"/><path class="ln" d="M132 368L40.6 230.8" marker-end="url(#m1)"/><path class="ln" d="M228 368L319.4 230.8" marker-end="url(#m1)"/><text class="al" x="64" y="322" text-anchor="middle">maintient</text></g>
+          <g class="hit" data-k="1-corps"><rect class="box" x="120" y="368" width="120" height="34" rx="8"/><text class="lbl" x="180" y="390" text-anchor="middle">Corps</text></g>
+          <text class="cap2" x="16" y="472">À la mort, puis à la résurrection</text>
+          <g class="hit" data-k="1-mort-ame"><rect class="box" x="16" y="486" width="150" height="42" rx="8"/><text class="lbl" x="91" y="504" text-anchor="middle">Âme</text><text class="sub" x="91" y="520" text-anchor="middle">gardée par un séraphin</text></g>
+          <g class="hit" data-k="1-mort-aj"><rect class="box g" x="194" y="486" width="150" height="42" rx="8"/><text class="lbl" x="269" y="504" text-anchor="middle">Ajusteur</text><text class="sub" x="269" y="520" text-anchor="middle">garde le mental spirituel</text></g>
+          <g class="hit" data-k="1-reunion"><path class="hb" d="M91 528L150 578M269 528L210 578"/><path class="ln" d="M91 528L149.2 577.4" marker-end="url(#m1)"/><path class="ln" d="M269 528L210.8 577.4" marker-end="url(#m1)"/><text class="al" x="180" y="556" text-anchor="middle">réunion</text></g>
+          <g class="hit" data-k="1-reunion"><rect class="box" x="90" y="578" width="180" height="42" rx="8"/><text class="lbl" x="180" y="596" text-anchor="middle">Personnalité</text><text class="sub" x="180" y="612" text-anchor="middle">reconstituée : résurrection</text></g>
+        </svg>
+        <figcaption>Le corps vient de l’évolution, le mental de l’Esprit-Mère par les adjuvats, l’Ajusteur et la personnalité viennent du Père. L’âme nait de l’Ajusteur (père) et du mental (mère)&nbsp;; la personnalité unifie le tout. En or&nbsp;: les dons directs du Père.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 1">
+        <div class="panel" id="pan-1" aria-live="polite"><p class="ph">Choisis un élément ou une flèche du schéma pour voir la relation, sa référence et, pour les relations clés, une courte citation.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="1"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s2" aria-labelledby="h-s2">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 2</p>
+      <h2 id="h-s2">Les trois influences d’esprit</h2>
+      <p>Depuis la Pentecôte, trois esprits agissent sur l’homme, un par personne divine <span class="ref">194:2.11</span>. Ils n’agissent pas de la même façon&nbsp;: un seul habite le mental.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="2">
+        <svg class="dg" viewBox="0 0 360 336" role="group" aria-label="Les trois influences d’esprit. Le Père donne l’Ajusteur, le Fils Créateur l’Esprit de Vérité, l’Esprit-Mère le Saint-Esprit. Seul l’Ajusteur habite le mental. L’Esprit de Vérité le prépare et le Saint-Esprit le met en circuit ; ces deux-là agissent en union.">
+          <defs>
+            <marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m2g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="2-pere"><rect class="box" x="12" y="14" width="104" height="34" rx="8"/><text class="lbl" x="64" y="36" text-anchor="middle">Père</text></g>
+          <g class="hit" data-k="2-fils"><rect class="box" x="128" y="14" width="104" height="34" rx="8"/><text class="lbl" x="180" y="36" text-anchor="middle">Fils Créateur</text></g>
+          <g class="hit" data-k="2-em"><rect class="box" x="244" y="14" width="104" height="34" rx="8"/><text class="lbl" x="296" y="36" text-anchor="middle">Esprit-Mère</text></g>
+          <g class="hit" data-k="2-a-pere"><path class="hb" d="M64 48V110"/><path class="ln" d="M64 48V109" marker-end="url(#m2)"/><text class="al" x="64" y="83" text-anchor="middle">esprit du Père</text></g>
+          <g class="hit" data-k="2-a-fils"><path class="hb" d="M180 48V110"/><path class="ln" d="M180 48V109" marker-end="url(#m2)"/><text class="al" x="180" y="83" text-anchor="middle">esprit du Fils</text></g>
+          <g class="hit" data-k="2-a-em"><path class="hb" d="M296 48V110"/><path class="ln" d="M296 48V109" marker-end="url(#m2)"/><text class="al" x="296" y="83" text-anchor="middle">esprit de l’Esprit</text></g>
+          <g class="hit" data-k="2-aj"><rect class="box g" x="12" y="110" width="104" height="42" rx="8"/><text class="lbl" x="64" y="128" text-anchor="middle">Ajusteur</text><text class="sub" x="64" y="144" text-anchor="middle">de Pensée</text></g>
+          <g class="hit" data-k="2-edv"><rect class="box" x="128" y="110" width="104" height="42" rx="8"/><text class="lbl" x="180" y="128" text-anchor="middle">Esprit</text><text class="lbl" x="180" y="145" text-anchor="middle">de Vérité</text></g>
+          <g class="hit" data-k="2-se"><rect class="box" x="244" y="110" width="104" height="42" rx="8"/><text class="lbl" x="296" y="136" text-anchor="middle">Saint-Esprit</text></g>
+          <g class="hit" data-k="2-mental"><rect class="box" x="12" y="236" width="336" height="86" rx="10"/><text class="lbl" x="336" y="262" text-anchor="end">Mental humain</text><text class="sub" x="336" y="279" text-anchor="end">reçoit la triple dotation</text></g>
+          <g class="hit" data-k="2-prepare"><path class="hb" d="M180 152V236"/><path class="ln" d="M180 152V235" marker-end="url(#m2)"/><text class="al" x="174" y="216" text-anchor="end">prépare</text></g>
+          <g class="hit" data-k="2-circuit"><path class="hb" d="M296 152V236"/><path class="ln" d="M296 152V235" marker-end="url(#m2)"/><text class="al" x="290" y="216" text-anchor="end">met en circuit</text></g>
+          <g class="hit" data-k="2-union"><path class="hb" d="M180 182H296"/><path class="ln" d="M183 182H293" marker-start="url(#m2)" marker-end="url(#m2)"/><text class="al" x="238" y="176" text-anchor="middle">en union</text></g>
+          <g class="hit" data-k="2-habite"><path class="hb" d="M64 152V290"/><path class="ln g" d="M64 152V289" marker-end="url(#m2g)"/><text class="al g" x="70" y="216">habite</text><circle class="dot-g" cx="64" cy="296" r="6"/><text class="sub gi" x="78" y="300">présence intérieure</text></g>
+        </svg>
+        <figcaption>Trois sources divines (le Père, le Fils Créateur et l’Esprit-Mère), trois dotations. Seul l’Ajusteur entre dans le mental&nbsp;; l’Esprit de Vérité et le Saint-Esprit agissent sur lui, en union. En or&nbsp;: la seule présence intérieure.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 2">
+        <div class="panel" id="pan-2" aria-live="polite"><p class="ph">Choisis un esprit, une source ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="2"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s3" aria-labelledby="h-s3">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 3</p>
+      <h2 id="h-s3">L’échelle des sept adjuvats</h2>
+      <p>Les sept esprits-mentaux adjuvats sont le ministère de l’Esprit-Mère auprès du mental matériel <span class="ref">36:5.1</span>. Le texte les range de l’instinct à la sagesse <span class="ref">36:5.5–12</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="3">
+        <svg class="dg" viewBox="0 0 360 500" role="group" aria-label="L’échelle des sept adjuvats, de l’intuition à la sagesse. Les cinq premiers donnent l’intellect animal, les sept l’intellect humain, les deux derniers celui des médians. Sous l’échelle, le mental préadjuvat, qui accède aux adjuvats en apprenant par l’expérience ; au-dessus, le supermental. La sagesse coordonne les autres.">
+          <defs>
+            <marker id="m3" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m3g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="3-em"><rect class="hb" x="12" y="4" width="214" height="24" rx="5"/><text class="lbl" x="16" y="21">Ministère de l’Esprit-Mère</text></g>
+          <g class="hit" data-k="3-super"><rect class="box" x="40" y="34" width="180" height="40" rx="8"/><text class="lbl" x="130" y="51" text-anchor="middle">Supermental</text><text class="sub" x="130" y="66" text-anchor="middle">circuits de l’Esprit-Mère</text></g>
+          <g class="hit" data-k="3-devient"><path class="hb" d="M130 96V74"/><path class="ln g" d="M130 96V75" marker-end="url(#m3g)"/><text class="al g" x="136" y="89">devient</text></g>
+          <g class="hit" data-k="3-r7"><rect class="box g" x="40" y="96" width="180" height="40" rx="6"/><text class="lbl" x="52" y="113">7 · Sagesse</text><text class="sub" x="52" y="128">coordonne les six autres</text></g>
+          <g class="hit" data-k="3-r6"><rect class="box g" x="40" y="144" width="180" height="40" rx="6"/><text class="lbl" x="52" y="161">6 · Adoration</text><text class="sub" x="52" y="176">impulsion religieuse</text></g>
+          <g class="hit" data-k="3-r5"><rect class="box" x="40" y="192" width="180" height="40" rx="6"/><text class="lbl" x="52" y="209">5 · Conseil</text><text class="sub" x="52" y="224">impulsion sociale</text></g>
+          <g class="hit" data-k="3-r4"><rect class="box" x="40" y="240" width="180" height="40" rx="6"/><text class="lbl" x="52" y="257">4 · Connaissance</text><text class="sub" x="52" y="272">curiosité, découverte</text></g>
+          <g class="hit" data-k="3-r3"><rect class="box" x="40" y="288" width="180" height="40" rx="6"/><text class="lbl" x="52" y="305">3 · Courage</text><text class="sub" x="52" y="320">fidélité, caractère</text></g>
+          <g class="hit" data-k="3-r2"><rect class="box" x="40" y="336" width="180" height="40" rx="6"/><text class="lbl" x="52" y="353">2 · Compréhension</text><text class="sub" x="52" y="368">association d’idées</text></g>
+          <g class="hit" data-k="3-r1"><rect class="box" x="40" y="384" width="180" height="40" rx="6"/><text class="lbl" x="52" y="401">1 · Intuition</text><text class="sub" x="52" y="416">perception, réflexes</text></g>
+          <g class="hit" data-k="3-coord"><path class="hb" d="M40 116H30V404H40"/><path class="ln" d="M40 116H30V404H39" marker-end="url(#m3)"/><text class="al" x="0" y="0" transform="translate(21 260) rotate(-90)" text-anchor="middle">coordonne</text></g>
+          <g class="hit" data-k="3-median"><rect class="hb" x="226" y="96" width="62" height="90"/><path class="ln" d="M228 98H236V182H228"/><text class="al" x="244" y="137">médian</text><text class="sub" x="244" y="152">6 et 7</text></g>
+          <g class="hit" data-k="3-animal"><rect class="hb" x="226" y="192" width="62" height="232"/><path class="ln" d="M228 194H236V422H228"/><text class="al" x="244" y="305">animal</text><text class="sub" x="244" y="320">1 à 5</text></g>
+          <g class="hit" data-k="3-humain"><rect class="hb" x="290" y="96" width="62" height="328"/><path class="ln" d="M292 98H300V422H292"/><text class="al" x="306" y="257">humain</text><text class="sub" x="306" y="272">1 à 7</text></g>
+          <g class="hit" data-k="3-apprend"><path class="hb" d="M130 446V424"/><path class="ln" d="M130 446V425" marker-end="url(#m3)"/><text class="al" x="136" y="440">apprend par l’expérience</text></g>
+          <g class="hit" data-k="3-pre"><rect class="box dash" x="40" y="446" width="180" height="40" rx="8"/><text class="lbl" x="130" y="463" text-anchor="middle">Mental préadjuvat</text><text class="sub" x="130" y="478" text-anchor="middle">Maitres Contrôleurs Physiques</text></g>
+        </svg>
+        <figcaption>Les sept adjuvats, du plus simple au plus élevé, avec les paliers animal, humain et médian. Sous l’échelle, le mental machinal&nbsp;; au-dessus, le supermental. En or&nbsp;: le seuil spirituel, adoration et sagesse.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 3">
+        <div class="panel" id="pan-3" aria-live="polite"><p class="ph">Choisis un adjuvat, un palier ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="3"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s4" aria-labelledby="h-s4">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 4</p>
+      <h2 id="h-s4">Les sept cercles psychiques et la fusion</h2>
+      <p>La croissance humaine se mesure en sept cercles, que l’on franchit du 7<sup>e</sup> au 1<sup>er</sup> <span class="ref">110:6.1–2</span>. Le texte n’en décrit que trois, et il sépare nettement cette progression de la fusion avec l’Ajusteur <span class="ref">110:7.1</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="4">
+        <svg class="dg" viewBox="0 0 360 580" role="group" aria-label="Les sept cercles psychiques, emboités du 7e, à l’extérieur, au 1er, au centre. Seuls le 7e, le 3e et le 1er sont décrits par le texte ; les autres sont en pointillé. La progression va du 7e vers le 1er. La fusion avec l’Ajusteur demande en plus un choix final de la volonté.">
+          <defs>
+            <marker id="m4g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="4-c7"><circle class="hbr" cx="180" cy="180" r="149" stroke-width="22"/><circle class="rg g" cx="180" cy="180" r="160"/><text class="al g" x="180" y="35" text-anchor="middle">7e</text></g>
+          <g class="hit" data-k="4-c6"><circle class="hbr" cx="180" cy="180" r="127" stroke-width="22"/><circle class="rg u" cx="180" cy="180" r="138"/><text class="al m" x="180" y="57" text-anchor="middle">6e</text></g>
+          <g class="hit" data-k="4-c5"><circle class="hbr" cx="180" cy="180" r="105" stroke-width="22"/><circle class="rg u" cx="180" cy="180" r="116"/><text class="al m" x="180" y="79" text-anchor="middle">5e</text></g>
+          <g class="hit" data-k="4-c4"><circle class="hbr" cx="180" cy="180" r="83" stroke-width="22"/><circle class="rg u" cx="180" cy="180" r="94"/><text class="al m" x="180" y="101" text-anchor="middle">4e</text></g>
+          <g class="hit" data-k="4-c3"><circle class="hbr" cx="180" cy="180" r="61" stroke-width="22"/><circle class="rg g" cx="180" cy="180" r="72"/><text class="al g" x="180" y="123" text-anchor="middle">3e</text></g>
+          <g class="hit" data-k="4-c2"><circle class="hbr" cx="180" cy="180" r="39" stroke-width="22"/><circle class="rg u" cx="180" cy="180" r="50"/><text class="al m" x="180" y="145" text-anchor="middle">2e</text></g>
+          <g class="hit" data-k="4-c1"><circle class="disk" cx="180" cy="180" r="28"/><text class="al g hf" x="180" y="184" text-anchor="middle">1er</text></g>
+          <g class="hit" data-k="4-asc"><path class="hb" d="M22 180H150"/><path class="ln g" d="M22 180H151" marker-end="url(#m4g)"/><text class="al g" x="64" y="174" text-anchor="middle">ascension</text></g>
+          <g class="hit" data-k="4-c7"><rect class="box" x="16" y="352" width="328" height="52" rx="8"/><circle class="badge" cx="36" cy="378" r="11"/><text class="bdg" x="36" y="382" text-anchor="middle">7</text><text class="lbl" x="56" y="370">7e cercle : l’entrée</text><text class="sub" x="56" y="385">adjuvats unifiés, Saint-Esprit,</text><text class="sub" x="56" y="398">Esprit de Vérité, Ajusteur</text></g>
+          <g class="hit" data-k="4-c3"><rect class="box" x="16" y="412" width="328" height="40" rx="8"/><circle class="badge" cx="36" cy="432" r="11"/><text class="bdg" x="36" y="436" text-anchor="middle">3</text><text class="lbl" x="56" y="428">3e cercle : gardien séraphique</text><text class="sub" x="56" y="443">l’Ajusteur rend le mental morontiel</text></g>
+          <g class="hit" data-k="4-c1"><rect class="box" x="16" y="460" width="328" height="40" rx="8"/><circle class="badge" cx="36" cy="480" r="11"/><text class="bdg" x="36" y="484" text-anchor="middle">1</text><text class="lbl" x="56" y="476">1er cercle : communication directe</text><text class="sub" x="56" y="491">maturité mortelle relative</text></g>
+          <g class="hit" data-k="4-choix"><path class="hb" d="M180 500V532"/><path class="ln g d" d="M180 500V531" marker-end="url(#m4g)"/><text class="al g" x="186" y="520">choix final</text></g>
+          <g class="hit" data-k="4-fusion"><rect class="box g" x="60" y="532" width="240" height="40" rx="8"/><text class="lbl" x="180" y="549" text-anchor="middle">Fusion avec l’Ajusteur</text><text class="sub" x="180" y="564" text-anchor="middle">les deux volontés harmonisées</text></g>
+        </svg>
+        <figcaption>On progresse du 7<sup>e</sup> cercle vers le 1<sup>er</sup>&nbsp;; la fusion demande en plus un choix final de la volonté. En or&nbsp;: ce que le texte décrit. En pointillé&nbsp;: les cercles qu’il ne décrit pas.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 4">
+        <div class="panel" id="pan-4" aria-live="polite"><p class="ph">Choisis un cercle, une étape ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="4"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s5" aria-labelledby="h-s5">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 5</p>
+      <h2 id="h-s5">Niveaux de réalité et de Déité</h2>
+      <p>L’Introduction pose trois niveaux de réalité, chacun avec son niveau de Déité, et sept niveaux où la Déité fonctionne <span class="ref">0:1.3–13</span>. Elle distingue aussi l’existentiel, ce qui est de toujours, de l’expérientiel, ce qui émerge <span class="ref">0:4.9</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="5">
+        <svg class="dg" viewBox="0 0 360 496" role="group" aria-label="Trois niveaux de réalité et leur niveau de Déité : l’absolu, atteint par la Trinité, existentielle ; l’absonite, où fonctionne l’Ultimité ; le fini, où fonctionne la Suprématie, toutes deux expérientielles. Dessous, les sept niveaux de fonction de la Déité, du plus élevé au plus simple ; les deux plus élevés sont dits Ultimité et Suprématie.">
+          <defs>
+            <marker id="m5" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m5g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <text class="cap2" x="16" y="20">Réalité</text>
+          <text class="cap2" x="212" y="20">Déité</text>
+          <g class="hit" data-k="5-abs"><rect class="box" x="16" y="30" width="116" height="44" rx="8"/><text class="lbl" x="28" y="49">Absolu</text><text class="sub" x="28" y="65">hors espace-temps</text></g>
+          <g class="hit" data-k="5-trinite"><rect class="box" x="212" y="30" width="120" height="44" rx="8"/><text class="lbl" x="272" y="49" text-anchor="middle">Trinité</text><text class="sub" x="272" y="65" text-anchor="middle">existentiel</text></g>
+          <g class="hit" data-k="5-f-abs"><path class="hb" d="M212 52H133"/><path class="ln" d="M212 52H133" marker-end="url(#m5)"/><text class="al" x="172" y="46" text-anchor="middle">atteint</text></g>
+          <g class="hit" data-k="5-absonite"><rect class="box" x="16" y="82" width="116" height="44" rx="8"/><text class="lbl" x="28" y="101">Absonite</text><text class="sub" x="28" y="117">extériorisé</text></g>
+          <g class="hit" data-k="5-ultimite"><rect class="box g" x="212" y="82" width="120" height="44" rx="8"/><text class="lbl" x="272" y="101" text-anchor="middle">Ultimité</text><text class="sub gi" x="272" y="117" text-anchor="middle">expérientiel</text></g>
+          <g class="hit" data-k="5-f-absonite"><path class="hb" d="M212 104H133"/><path class="ln g" d="M212 104H133" marker-end="url(#m5g)"/><text class="al g" x="172" y="98" text-anchor="middle">fonction</text></g>
+          <g class="hit" data-k="5-fini"><rect class="box" x="16" y="134" width="116" height="44" rx="8"/><text class="lbl" x="28" y="153">Fini</text><text class="sub" x="28" y="169">créé</text></g>
+          <g class="hit" data-k="5-suprematie"><rect class="box g" x="212" y="134" width="120" height="44" rx="8"/><text class="lbl" x="272" y="153" text-anchor="middle">Suprématie</text><text class="sub gi" x="272" y="169" text-anchor="middle">expérientiel</text></g>
+          <g class="hit" data-k="5-f-fini"><path class="hb" d="M212 156H133"/><path class="ln g" d="M212 156H133" marker-end="url(#m5g)"/><text class="al g" x="172" y="150" text-anchor="middle">fonction</text></g>
+          <g class="hit" data-k="5-sept"><rect class="hb" x="12" y="198" width="250" height="20" rx="4"/><text class="cap2" x="16" y="213">Sept niveaux de fonction de la Déité</text></g>
+          <g class="hit" data-k="5-n7"><rect class="box g" x="16" y="222" width="316" height="26" rx="5"/><text class="lbl" x="28" y="239">7 · Ultime</text><text class="sub" x="170" y="239">dit l’Ultimité</text></g>
+          <g class="hit" data-k="5-n6"><rect class="box g" x="16" y="252" width="316" height="26" rx="5"/><text class="lbl" x="28" y="269">6 · Suprême</text><text class="sub" x="170" y="269">dit la Suprématie</text></g>
+          <g class="hit" data-k="5-n5"><rect class="box" x="16" y="282" width="316" height="26" rx="5"/><text class="lbl" x="28" y="299">5 · Évolutionnaire</text><text class="sub" x="170" y="299">s’identifie aux créatures</text></g>
+          <g class="hit" data-k="5-n4"><rect class="box" x="16" y="312" width="316" height="26" rx="5"/><text class="lbl" x="28" y="329">4 · Créatif</text><text class="sub" x="170" y="329">se donne et se révèle</text></g>
+          <g class="hit" data-k="5-n3"><rect class="box" x="16" y="342" width="316" height="26" rx="5"/><text class="lbl" x="28" y="359">3 · Associatif</text><text class="sub" x="170" y="359">personnelle et fraternelle</text></g>
+          <g class="hit" data-k="5-n2"><rect class="box" x="16" y="372" width="316" height="26" rx="5"/><text class="lbl" x="28" y="389">2 · Potentiel</text><text class="sub" x="170" y="389">se veut, porte son but</text></g>
+          <g class="hit" data-k="5-n1"><rect class="box" x="16" y="402" width="316" height="26" rx="5"/><text class="lbl" x="28" y="419">1 · Statique</text><text class="sub" x="170" y="419">existe par soi</text></g>
+          <g class="hit" data-k="5-modes"><rect class="box" x="16" y="444" width="316" height="40" rx="8"/><text class="lbl" x="28" y="461">Quatre modes de la Déité</text><text class="sub" x="28" y="476">existentielle, expérientielle, associative, indivise</text></g>
+        </svg>
+        <figcaption>Chaque niveau de réalité a son niveau de Déité. Les deux plus hauts des sept niveaux de fonction portent les noms de Suprématie et d’Ultimité. En or&nbsp;: l’expérientiel.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 5">
+        <div class="panel" id="pan-5" aria-live="polite"><p class="ph">Choisis un niveau, une Déité ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="5"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s6" aria-labelledby="h-s6">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 6</p>
+      <h2 id="h-s6">Matière, mental, esprit et la personnalité qui les unifie</h2>
+      <p>Le texte définit la matière, le mental, l’esprit et la personnalité par le circuit auquel chacun réagit <span class="ref">0:6.1</span>. Dans la personnalité, le mental se tient entre l’esprit et la matière.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="6">
+        <svg class="dg" viewBox="0 0 360 344" role="group" aria-label="Quatre circuits : le Père pour la personnalité, le Fils Éternel pour l’esprit, l’Acteur Conjoint pour le mental, l’Ile du Paradis pour l’énergie-matière, par la gravité. Dans la personnalité, l’esprit s’efforce de maitriser l’énergie-matière à travers le mental, qui intervient entre les deux ; la personnalité unifie le tout.">
+          <defs>
+            <marker id="m6" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m6g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="6-pere"><rect class="box" x="12" y="40" width="110" height="34" rx="8"/><text class="lbl" x="67" y="62" text-anchor="middle">Père</text></g>
+          <g class="hit" data-k="6-fils"><rect class="box" x="12" y="120" width="110" height="34" rx="8"/><text class="lbl" x="67" y="142" text-anchor="middle">Fils Éternel</text></g>
+          <g class="hit" data-k="6-ac"><rect class="box" x="12" y="200" width="110" height="34" rx="8"/><text class="lbl s12" x="67" y="222" text-anchor="middle">Acteur Conjoint</text></g>
+          <g class="hit" data-k="6-paradis"><rect class="box" x="12" y="280" width="110" height="34" rx="8"/><text class="lbl" x="67" y="302" text-anchor="middle">Ile du Paradis</text></g>
+          <g class="hit" data-k="6-perso"><rect class="hb" x="226" y="32" width="92" height="36" rx="6"/><rect class="frame" x="192" y="24" width="160" height="306" rx="14"/><text class="lbl gi" x="272" y="47" text-anchor="middle">Personnalité</text><text class="sub gi" x="272" y="62" text-anchor="middle">unifie</text></g>
+          <g class="hit" data-k="6-cperso"><path class="hb" d="M122 57H192"/><path class="ln g" d="M122 57H191" marker-end="url(#m6g)"/><text class="al g" x="157" y="51" text-anchor="middle">personnalité</text></g>
+          <g class="hit" data-k="6-cesprit"><path class="hb" d="M122 137H212"/><path class="ln" d="M122 137H211" marker-end="url(#m6)"/><text class="al" x="160" y="131" text-anchor="middle">esprit</text></g>
+          <g class="hit" data-k="6-cmental"><path class="hb" d="M122 217H212"/><path class="ln" d="M122 217H211" marker-end="url(#m6)"/><text class="al" x="160" y="211" text-anchor="middle">mental</text></g>
+          <g class="hit" data-k="6-cgrav"><path class="hb" d="M122 297H212"/><path class="ln" d="M122 297H211" marker-end="url(#m6)"/><text class="al" x="160" y="291" text-anchor="middle">gravité</text></g>
+          <g class="hit" data-k="6-maitrise"><path class="hb" d="M272 154V280"/><path class="ln" d="M272 154V279" marker-end="url(#m6)"/><text class="al" x="278" y="180">s’efforce de</text><text class="al" x="278" y="262">maitriser</text></g>
+          <g class="hit" data-k="6-esprit"><rect class="box" x="212" y="120" width="120" height="34" rx="8"/><text class="lbl" x="272" y="142" text-anchor="middle">Esprit</text></g>
+          <g class="hit" data-k="6-mental"><rect class="box" x="212" y="197" width="120" height="40" rx="8"/><text class="lbl" x="272" y="214" text-anchor="middle">Mental</text><text class="sub" x="272" y="229" text-anchor="middle">intervient entre</text></g>
+          <g class="hit" data-k="6-matiere"><rect class="box" x="212" y="280" width="120" height="34" rx="8"/><text class="lbl" x="272" y="302" text-anchor="middle">Énergie-matière</text></g>
+        </svg>
+        <figcaption>Chaque domaine répond au circuit d’une source. Dans la personnalité, l’esprit s’efforce, à travers le mental, de maitriser l’énergie-matière. En or&nbsp;: la personnalité, qui unifie.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 6">
+        <div class="panel" id="pan-6" aria-live="polite"><p class="ph">Choisis une source, un circuit ou un domaine.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="6"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section id="s7" aria-labelledby="h-s7">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma 7</p>
+      <h2 id="h-s7">La morontia, niveau intermédiaire</h2>
+      <p>Entre l’homme matériel et l’esprit, le texte place un vaste niveau intermédiaire, la morontia <span class="ref">0:5.12</span>, que tout survivant traverse <span class="ref">48:0.3</span>.</p>
+    </div>
+    <div class="duo">
+      <figure class="fig" data-fig="7">
+        <svg class="dg" viewBox="0 0 360 330" role="group" aria-label="La morontia, entre le matériel et le spirituel : un tissu dont la chaine vient du spirituel et la trame du matériel. On y trouve l’âme et le matériau morontiel. L’ascension la traverse en 570 corps morontiels, du système local à la constellation puis à Salvington.">
+          <defs>
+            <marker id="m7" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk"/></marker>
+            <marker id="m7g" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk g"/></marker>
+          </defs>
+          <g class="hit" data-k="7-esprit"><rect class="box" x="16" y="16" width="328" height="42" rx="8"/><text class="lbl" x="28" y="42">Spirituel</text></g>
+          <g class="hit" data-k="7-moron"><rect class="box g" x="16" y="96" width="328" height="136" rx="10"/><text class="lbl gi" x="28" y="118">Morontiel</text><text class="sub gi" x="28" y="134">niveau intermédiaire</text></g>
+          <g class="hit" data-k="7-mat"><rect class="box" x="16" y="270" width="328" height="42" rx="8"/><text class="lbl" x="28" y="296">Matériel</text></g>
+          <g class="hit" data-k="7-ame"><rect class="box" x="28" y="146" width="116" height="36" rx="7"/><text class="lbl" x="86" y="161" text-anchor="middle">Âme</text><text class="sub" x="86" y="175" text-anchor="middle">mental intermédiaire</text></g>
+          <g class="hit" data-k="7-materiau"><rect class="box" x="28" y="188" width="116" height="36" rx="7"/><text class="lbl" x="86" y="203" text-anchor="middle">Matériau</text><text class="sub" x="86" y="217" text-anchor="middle">2 × plus d’éléments</text></g>
+          <g class="hit" data-k="7-tissu"><rect class="box" x="156" y="144" width="72" height="72" rx="4"/><path class="thr-h" d="M156 156H228M156 168H228M156 180H228M156 192H228M156 204H228"/><path class="thr-v" d="M168 144V216M180 144V216M192 144V216M204 144V216M216 144V216"/></g>
+          <g class="hit" data-k="7-chaine"><path class="hb" d="M192 58V144"/><path class="ln" d="M192 58V143" marker-end="url(#m7)"/><text class="al" x="186" y="84" text-anchor="end">chaine</text></g>
+          <g class="hit" data-k="7-trame"><path class="hb" d="M192 270V216"/><path class="ln" d="M192 270V217" marker-end="url(#m7)"/><text class="al" x="186" y="254" text-anchor="end">trame</text></g>
+          <g class="hit" data-k="7-asc"><path class="hb" d="M326 270V58"/><path class="ln g" d="M326 270V59" marker-end="url(#m7g)"/><text class="al g" x="320" y="256" text-anchor="end">570 corps morontiels</text></g>
+          <g class="hit" data-k="7-etapes"><path class="ln" d="M320 214H332M320 170H332M320 126H332"/><text class="al hf" x="314" y="218" text-anchor="end">système local</text><text class="al hf" x="314" y="174" text-anchor="end">constellation</text><text class="al hf" x="314" y="130" text-anchor="end">Salvington</text></g>
+        </svg>
+        <figcaption>La morontia s’interpose entre le matériel et le spirituel&nbsp;: un tissu à chaine spirituelle et trame matérielle, que l’ascension traverse en 570 étapes. En or&nbsp;: le niveau morontiel et la montée qui le traverse.</figcaption>
+      </figure>
+      <aside class="side" aria-label="Détail du schéma 7">
+        <div class="panel" id="pan-7" aria-live="polite"><p class="ph">Choisis un niveau, le tissu ou une flèche.</p></div>
+        <details class="tv"><summary>Version texte du schéma</summary><ul data-tv="7"></ul></details>
+      </aside>
+    </div>
+  </section>
+
+  <section aria-labelledby="h-np">
+    <details class="np">
+      <summary><h2 id="h-np">Ce que le texte ne précise pas</h2></summary>
+      <ul>
+        <li>Seuls les cercles 7, 3 et 1 sont décrits&nbsp;; le texte se borne à suggérer les limites minimum et maximum <span class="ref">110:6.12–15</span>. Il ne donne ni âge ni durée par cercle, ces niveaux étant personnels <span class="ref">110:6.7</span>.</li>
+        <li>La personnalité n’est pas définie&nbsp;: le texte juge présomptueux de le faire et reconnait ne pas en saisir la nature réelle <span class="ref">112:0.2 · 5:6.2</span>. Il affirme qu’elle unifie l’individu, sans décrire comment <span class="ref">0:5.11 · 112:0.7</span>.</li>
+        <li>Les noms des adjuvats ne sont que des équivalents&nbsp;; le texte dit manquer de terminologie pour les désigner <span class="ref">36:5.2 · 36:5.5</span>.</li>
+        <li>Les niveaux 1 à 5 de fonction de la Déité tiennent en une ligne chacun. Seuls les niveaux 6 et 7 sont développés et rattachés à la Suprématie et à l’Ultimité <span class="ref">0:1.4–10</span>.</li>
+        <li>Le lien entre les cercles et l’Être Suprême est dit impossible à expliquer pleinement au mental matériel <span class="ref">110:6.16</span>.</li>
+        <li>L’âme ne se connait que par clairvoyance cosmique et découverte spirituelle&nbsp;; le texte ne lui assigne aucun organe <span class="ref">111:0.1</span>.</li>
+        <li>Le mécanisme de la fusion reste un secret, celui de la sphère d’Ascendington <span class="ref">112:7.2</span>.</li>
+        <li>Les cent formes de matériau morontiel et les 570 corps morontiels ne sont ni nommés ni décrits un à un <span class="ref">48:1.3 · 48:1.5</span>.</li>
+        <li>Les positions, tailles et distances des schémas sont des choix de mise en page&nbsp;: seuls les éléments, les liens et leurs étiquettes viennent du texte.</li>
+      </ul>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <em>Le Livre d’Urantia</em>, traduction française de la Fondation Urantia, édition 2024. Références au format fascicule:section.paragraphe.</p>
+    <p>Dix-neuf citations courtes, vérifiées dans le texte&nbsp;; le reste est paraphrasé avec sa référence. Page d’étude du 2026-11-07.</p>
+  </footer>
+</main>
+
+<script>
+(() => {
+  /* t : titre ; d : paraphrase ; r : références ; q et qr : citation courte exacte, pour les relations clés seulement. */
+  const D = {
+    '1-pere': { t: 'Père Universel', d: 'Il confère la personnalité, fonction qui n’appartient qu’à lui, et il habite le mental humain par un fragment de lui-même, l’Ajusteur.', r: '5:6.4 · 107:1.2' },
+    '1-ac': { t: 'Acteur Conjoint (Esprit Infini)', d: 'Il est la source de l’intelligence et de la raison : le mental universel vient de lui. Son ministère du mental atteint les créatures par l’intermédiaire de l’Esprit-Mère.', r: '0:5.5 · 36:5.1' },
+    '1-em': { t: 'Esprit-Mère', d: 'La Divine Ministre de Salvington. Les sept adjuvats sont ses enfants : par eux, elle sert personnellement le mental matériel.', r: '36:5.1' },
+    '1-etend': { t: 'Acteur Conjoint → Esprit-Mère : étend', d: 'Le ministère du mental de l’Esprit Infini s’étend aux formes inférieures de vie intelligente par l’intermédiaire de l’Esprit-Mère de l’univers local.', r: '36:5.1' },
+    '1-adjuvats': { t: 'Esprit-Mère → mental : agit par les adjuvats', d: 'Le mental humain fonctionne sous le ministère des sept adjuvats. Voir le schéma 3.', r: '36:5.1 · 42:10.4' },
+    '1-confere': { t: 'Père → personnalité : confère', d: 'La personnalité ne nait jamais d’elle-même : c’est un don du Père aux systèmes vivants où matière, mental et esprit sont associés. Elle existe indépendamment de l’Ajusteur, et avant lui.', r: '0:5.4 · 5:6.3 · 16:8.3' },
+    '1-fragmente': { t: 'Père → Ajusteur : fragmente', d: 'Les Ajusteurs émanent directement du Père, qui fragmente sa Déité prépersonnelle.', r: '107:1.2 · 107:1.7', q: 'Ils ne sont pas des êtres créés, mais des entités de fragmentation constituant la présence factuelle du Dieu infini.', qr: '107:1.2' },
+    '1-ajusteur': { t: 'Ajusteur de Pensée', d: 'L’esprit divin qui habite le mental. Immortel et prépersonnel, il n’est pas une personnalité, mais il doit devenir une partie de la personnalité qui survit. Il arrive après le premier choix moral de l’enfant : sur Urantia, vers cinq ans et dix mois en moyenne.', r: '0:5.9 · 108:2.1' },
+    '1-mental': { t: 'Mental', d: 'Ce qui pense, perçoit et ressent. Il est remis à la volonté humaine : c’est par lui que l’on vit ou que l’on meurt. Sans identification avec l’esprit, il ne survit pas.', r: '0:5.8 · 111:1.4 · 36:5.17' },
+    '1-habite': { t: 'Ajusteur → mental : habite', d: 'L’Ajusteur habite le mental comme une partie intégrante de ce mental. Il le manipule, sans jamais le dominer contre la volonté.', r: '34:5.6 · 111:1.8' },
+    '1-ame': { t: 'Âme', d: 'Une acquisition de l’expérience, ni matérielle ni spirituelle : morontielle. Trois facteurs la font naitre : le mental, l’esprit qui l’habite et la relation entre les deux.', r: '0:5.10 · 111:2.4–7' },
+    '1-pere-ame': { t: 'Ajusteur → âme : père', d: 'Quand la créature choisit de faire la volonté du Père, l’esprit qui l’habite devient le père d’une réalité nouvelle, l’âme.', r: '0:5.10', q: '[…] l’esprit qui l’habite devient le père d’une <em>nouvelle réalité</em> dans l’expérience humaine.', qr: '0:5.10' },
+    '1-mere-ame': { t: 'Mental → âme : mère', d: 'Le mental matériel est la mère de l’âme. Image du texte : le mental est le métier qui porte le tissu, et l’Ajusteur y brode les modèles spirituels.', r: '0:5.10 · 111:2.2', q: 'Le mental mortel et matériel est la mère de cette même réalité émergente.', qr: '0:5.10' },
+    '1-corps': { t: 'Corps', d: 'L’organisme physique, mécanisme vivant d’origine animale : une machine à vivre procurée par l’évolution matérielle.', r: '0:5.7 · 111:1.4' },
+    '1-maintient': { t: 'Corps → mental et esprit : maintient en rapport', d: 'La personnalité s’identifie au mental et à l’esprit ; c’est la vie dans un corps matériel qui les tient en relation.', r: '111:2.3' },
+    '1-perso': { t: 'Personnalité', d: 'Elle n’est ni le corps, ni le mental, ni l’esprit, ni l’âme. Elle survit dans l’âme, et l’âme est la relation, toujours changeante, entre deux invariants : l’Ajusteur et la personnalité.', r: '0:5.11 · 112:0.15', q: 'La personnalité est la seule réalité invariante dans l’expérience constamment changeante d’une créature ; et elle unifie tous les autres facteurs associés de l’individualité.', qr: '0:5.11' },
+    '1-mort-ame': { t: 'À la mort : l’âme', d: 'L’âme morontielle, qui contient la matrice mentale et les potentiels d’identité, est confiée aux gardiens séraphiques de la destinée.', r: '47:3.3' },
+    '1-mort-aj': { t: 'À la mort : l’Ajusteur', d: 'Les transcriptions du mental et les modèles de la mémoire, devenus spirituels, appartiennent à l’Ajusteur détaché.', r: '47:3.3' },
+    '1-reunion': { t: 'Réunion : la résurrection', d: 'Réunir l’âme gardée par les séraphins et le mental spirituel gardé par l’Ajusteur reconstitue la personnalité : c’est la résurrection, dans la salle de résurrection du premier monde des maisons.', r: '47:3.3 · 47:3.2' },
+
+    '2-pere': { t: 'Père Universel', d: 'Sa dotation est l’Ajusteur : l’esprit du Père.', r: '194:2.11' },
+    '2-fils': { t: 'Fils Créateur', d: 'Micaël envoie à sa place l’Esprit de Vérité. Dans un certain sens, cet esprit est à la fois celui du Père et celui du Fils Créateur.', r: '194:2.1 · 194:2.3' },
+    '2-em': { t: 'Esprit-Mère (Divine Ministre)', d: 'Le Saint-Esprit des mondes habités est l’esprit de sa présence personnelle.', r: '36:5.16 · 34:5.7' },
+    '2-a-pere': { t: 'Père → Ajusteur : esprit du Père', d: 'Première des trois dotations : l’esprit du Père, l’Ajusteur de Pensée.', r: '194:2.11' },
+    '2-a-fils': { t: 'Fils → Esprit de Vérité : esprit du Fils', d: 'Deuxième dotation, répandue sur toute chair après l’effusion du Fils.', r: '194:2.11 · 34:5.5' },
+    '2-a-em': { t: 'Esprit-Mère → Saint-Esprit : esprit de l’Esprit', d: 'Troisième dotation, et la première dans l’expérience humaine : elle agit bien avant les effusions des Fils et des Ajusteurs.', r: '194:2.11 · 103:0.1' },
+    '2-aj': { t: 'Ajusteur de Pensée', d: 'Une individualisation de la réalité prépersonnelle du Père. Il oriente l’âme vers Dieu comme un compas et fait naitre le désir d’être semblable à Dieu.', r: '34:5.6 · 107:0.5–6' },
+    '2-edv': { t: 'Esprit de Vérité', d: 'Sa première mission : entretenir et personnaliser la vérité ; il ôte aussi au croyant le sentiment d’être orphelin. Son action dépend presque entièrement de la réceptivité de chacun.', r: '194:2.2 · 34:5.5' },
+    '2-se': { t: 'Saint-Esprit', d: 'La première dotation au-delà du mental : la personnalité est mise en circuit dans le Saint-Esprit. Il dépend en partie de la volonté humaine, en partie non.', r: '103:0.1 · 34:5.5' },
+    '2-union': { t: 'Esprit de Vérité ↔ Saint-Esprit : en union', d: 'L’Esprit de Vérité travaille en union complète avec l’esprit de la Divine Ministre. Cette liaison double enseigne la vérité et illumine le mental.', r: '34:5.4' },
+    '2-habite': { t: 'Ajusteur → mental : habite', d: 'Seul l’Ajusteur habite le mental de l’individu. L’esprit du Fils et celui de l’Esprit-Mère n’y entrent pas comme fragments.', r: '34:5.6', q: 'En tant qu’individu, vous ne possédez pas un fragment ou une entité séparée de l’esprit du Fils-Père Créateur ni de l’Esprit-Mère Créatif.', qr: '34:5.6' },
+    '2-prepare': { t: 'Esprit de Vérité → mental : prépare', d: 'L’effusion de l’esprit du Fils a préparé le mental de tous les hommes normaux à l’arrivée de l’Ajusteur.', r: '34:5.4 · 194:2.3', q: 'Mais ce n’est pas avant qu’un Fils d’effusion ait libéré l’Esprit de Vérité pour un ministère planétaire envers tous les mortels, que tout mental normal est automatiquement prêt à recevoir l’Ajusteur de Pensée.', qr: '34:5.4' },
+    '2-circuit': { t: 'Saint-Esprit → mental : met en circuit', d: 'Doué du ministère du Saint-Esprit, le mental peut choisir, consciemment ou non, la présence de l’Ajusteur.', r: '103:0.1 · 34:5.4' },
+    '2-mental': { t: 'Mental humain', d: 'Il reçoit une «&nbsp;symétrie de dotation&nbsp;» de trois sources divines (le Père, le Fils Créateur et l’Esprit-Mère) <span class="ref">34:5.7</span>, qui le qualifie pour se savoir fils de Dieu par la foi. L’Ajusteur y agit en parfait accord avec les adjuvats, le Saint-Esprit et l’Esprit de Vérité.', r: '194:2.11 · 34:5.7 · 108:4.3', q: '[…] l’homme est sujet à l’enseignement et à la gouverne d’une triple dotation spirituelle : l’Esprit du Père, l’Ajusteur de Pensée ; l’esprit du Fils, l’Esprit de Vérité ; et l’esprit de l’Esprit, le Saint-Esprit.', qr: '194:2.11' },
+
+    '3-em': { t: 'Ministère de l’Esprit-Mère', d: 'Les adjuvats sont les enfants de l’Esprit-Mère. Ce ne sont pas des entités, plutôt des circuits, un de ses niveaux de conscience ; ils croissent en expérience sans jamais devenir personnels.', r: '36:5.1 · 36:5.4 · 36:5.13' },
+    '3-r1': { t: '1 · Intuition', d: 'Perception rapide, réflexes physiques, sens de l’orientation, instinct de conservation. Seul adjuvat très actif chez les animaux inférieurs.', r: '36:5.6' },
+    '3-r2': { t: '2 · Compréhension', d: 'Coordination et association des idées : raisonnement vif, jugement et décision rapides.', r: '36:5.7' },
+    '3-r3': { t: '3 · Courage', d: 'Le don de fidélité ; chez les personnes, la base de la formation du caractère.', r: '36:5.8' },
+    '3-r4': { t: '4 · Connaissance', d: 'Curiosité, esprit scientifique ; il guide les esprits de courage et de conseil.', r: '36:5.9' },
+    '3-r5': { t: '5 · Conseil', d: 'Impulsion sociale, coopération avec l’espèce, origine de l’instinct grégaire.', r: '36:5.10' },
+    '3-r6': { t: '6 · Adoration', d: 'L’impulsion religieuse : la première qui sépare deux règnes d’existence mortelle, signe de la candidature à l’ascension spirituelle.', r: '36:5.11', q: 'L’esprit d’adoration distingue à tout jamais l’être animal, auquel il est associé, des créatures sans âmes douées de mental.', qr: '36:5.11' },
+    '3-r7': { t: '7 · Sagesse', d: 'Tendance à progresser dans une évolution ordonnée. C’est chez cet adjuvat qu’est noté le premier choix moral de l’enfant, qui déclenche l’envoi de l’Ajusteur.', r: '36:5.12 · 108:2.1', q: 'Cet adjuvat est le plus élevé des sept ; c’est l’esprit qui coordonne et articule le travail de tous les autres.', qr: '36:5.12' },
+    '3-coord': { t: 'Sagesse → les six autres : coordonne', d: 'L’adjuvat de sagesse coordonne et articule le travail de tous les autres.', r: '36:5.12' },
+    '3-animal': { t: 'Palier animal : adjuvats 1 à 5', d: 'Avec les cinq premiers adjuvats, le mental matériel est un intellect subhumain, animal. Leur fonction chez les animaux prépare l’intellect humain.', r: '42:10.4 · 36:5.13' },
+    '3-humain': { t: 'Palier humain : les sept adjuvats', d: 'Avec les sept adjuvats, le mental est un intellect humain, moral.', r: '42:10.4' },
+    '3-median': { t: 'Palier médian : adjuvats 6 et 7', d: 'Avec les deux derniers adjuvats, il est un intellect surhumain, celui des médians.', r: '42:10.4' },
+    '3-super': { t: 'Supermental', d: 'Quand la sensibilité spirituelle apparait, le mental devient supermental et entre dans les cycles spirituels de l’Esprit-Mère. Les adjuvats préparent ainsi l’apparition du Saint-Esprit, sans y être reliés directement.', r: '36:5.15 · 34:5.3 · 36:5.16' },
+    '3-devient': { t: 'Adoration et sagesse → supermental : devient', d: 'Un mental qui fonctionne avec l’adoration et la sagesse est aussitôt inclus dans les circuits spirituels de la Divine Ministre.', r: '34:5.3 · 36:5.15' },
+    '3-pre': { t: 'Mental préadjuvat', d: 'Mental machinal et non enseignable, servi par les Maitres Contrôleurs Physiques.', r: '36:5.15 · 42:10.3' },
+    '3-apprend': { t: 'Préadjuvat → adjuvats : apprend par l’expérience', d: 'Avant la capacité d’apprendre par l’expérience, le mental vivant relève des Maitres Contrôleurs Physiques ; ensuite, des adjuvats.', r: '36:5.15' },
+
+    '4-c7': { t: '7e cercle : l’entrée', d: 'On y entre en développant le choix personnel, la décision et la responsabilité morale. Il marque l’action unifiée des adjuvats sous la sagesse, la mise en circuit du Saint-Esprit et, sur Urantia, l’Esprit de Vérité et l’arrivée de l’Ajusteur. C’est le début de la vraie personnalité humaine.', r: '110:6.13 · 110:6.1' },
+    '4-c6': { t: '6e cercle', d: 'Non décrit : le texte ne suggère que les limites minimum et maximum des stades, soit le 7e, le 3e et le 1er cercle.', r: '110:6.12' },
+    '4-c5': { t: '5e cercle', d: 'Non décrit : le texte ne suggère que les limites minimum et maximum des stades, soit le 7e, le 3e et le 1er cercle.', r: '110:6.12' },
+    '4-c4': { t: '4e cercle', d: 'Non décrit : le texte ne suggère que les limites minimum et maximum des stades, soit le 7e, le 3e et le 1er cercle.', r: '110:6.12' },
+    '4-c2': { t: '2e cercle', d: 'Non décrit : le texte ne suggère que les limites minimum et maximum des stades, soit le 7e, le 3e et le 1er cercle.', r: '110:6.12' },
+    '4-c3': { t: '3e cercle : le gardien séraphique', d: 'L’ascendeur reçoit un gardien séraphique personnel, et le travail de l’Ajusteur devient bien plus efficace : il cherche à rendre le mental morontiel. Du 7e au 3e cercle, l’action des adjuvats s’accroit ; elle décroit ensuite.', r: '110:6.14 · 110:6.20 · 110:6.22' },
+    '4-c1': { t: '1er cercle : la communication', d: 'Le plus grand rapprochement possible entre le mental et l’Ajusteur dans la vie humaine ; il marque la maturité mortelle relative.', r: '110:6.15 · 110:6.1', q: 'Généralement, l’Ajusteur ne peut parler directement et immédiatement avec vous avant que vous ayez atteint le premier cercle, le cercle final d’accomplissement progressif d’un mortel.', qr: '110:6.15' },
+    '4-asc': { t: 'Ascension du 7e au 1er cercle', d: 'L’Ajusteur fait l’ascension des cercles avec le mortel. La progression se reflète de trois manières : l’accord avec l’Ajusteur, l’évolution de l’âme, la réalité de la personnalité. Elle mesure la croissance quantitative de l’âme.', r: '110:6.2 · 110:6.8–10 · 110:6.18' },
+    '4-choix': { t: '1er cercle → fusion : choix final', d: 'Franchir les cercles n’équivaut pas à la fusion : il faut encore le choix final de la volonté.', r: '110:6.1 · 110:7.2', q: 'Bien que la traversée des sept cercles de croissance cosmique ne soit pas l’équivalent de la fusion avec l’Ajusteur, la maitrise de ces cercles marque le franchissement des étapes préliminaires à cette fusion avec l’Ajusteur.', qr: '110:6.1' },
+    '4-fusion': { t: 'Fusion avec l’Ajusteur', d: 'Elle a lieu habituellement dans le système local, par exemple sur un monde des maisons ; si elle survient pendant la vie physique, le corps est consumé. Elle rend actuelles, pour la personnalité, des réalités éternelles jusque-là potentielles.', r: '110:7.1 · 112:7.3 · 110:7.2 · 112:7.1', q: '[…] il faut arriver à harmoniser d’une manière définitive et complète la volonté humaine avec la volonté de Dieu, telle qu’elle réside dans l’Ajusteur de Pensée.', qr: '110:7.1' },
+
+    '5-abs': { t: 'Niveau absolu', d: 'Ni commencement ni fin, ni temps ni espace : c’est le statut du Paradis. Au Paradis, le mental est absolu.', r: '0:1.13 · 42:10.7' },
+    '5-absonite': { t: 'Niveau absonite', d: 'Choses et êtres sans commencement ni fin, qui dépassent le temps et l’espace. Dans Havona, le mental est absonite.', r: '0:1.12 · 42:10.7', q: 'Les absonitaires ne sont pas créés ; ils sont extériorisés — tout simplement : ils sont.', qr: '0:1.12' },
+    '5-fini': { t: 'Niveau fini', d: 'La vie des créatures, dans les limites de l’espace et du temps : les réalités finies commencent toujours, même si elles ne finissent pas forcément. Dans Orvonton, le mental est fini. La personnalité, elle, joue sur les trois niveaux.', r: '0:1.11 · 42:10.7 · 112:1.3' },
+    '5-trinite': { t: 'Trinité', d: 'La Déité du Paradis existe de toujours : elle est existentielle. La Trinité indivise est l’un des quatre modes de la Déité.', r: '0:4.9 · 0:1.14' },
+    '5-ultimite': { t: 'Ultimité', d: 'Second niveau de divinité unifiante. Dieu l’Ultime émerge : il est expérientiel.', r: '0:1.10 · 0:4.9' },
+    '5-suprematie': { t: 'Suprématie', d: 'Premier niveau où la Déité s’identifie aux créatures. Le Suprême émerge : il est expérientiel.', r: '0:1.9 · 0:4.9' },
+    '5-f-abs': { t: 'Trinité → absolu : atteint', d: 'Le niveau absolu est celui de la Trinité, que les Déités du Paradis atteignent existentiellement ; il n’est pas encore pleinement unifié par l’expérience.', r: '0:1.13' },
+    '5-f-absonite': { t: 'Ultimité → absonite : fonction', d: 'L’Ultimité est le niveau de Déité qui agit en rapport avec les réalités absonites ; partout où le temps et l’espace sont dépassés, c’est un acte de l’Ultimité.', r: '0:1.12' },
+    '5-f-fini': { t: 'Suprématie → fini : fonction', d: 'La Suprématie peut se concevoir comme la fonction de la Déité en rapport avec les existences finies.', r: '0:1.11' },
+    '5-sept': { t: 'Sept niveaux de fonction', d: 'La Déité fonctionne sur les niveaux personnel, prépersonnel et superpersonnel ; la Déité totale fonctionne sur sept niveaux, présentés ici du plus élevé au plus simple.', r: '0:1.3' },
+    '5-n7': { t: '7 · Ultime', d: 'La Déité qui se projette au-delà de l’espace-temps ; on l’appelle parfois l’Ultimité de la Déité.', r: '0:1.10' },
+    '5-n6': { t: '6 · Suprême', d: 'La Déité d’expérience, qui unit la créature au Créateur ; on l’appelle parfois la Suprématie de la Déité.', r: '0:1.9' },
+    '5-n5': { t: '5 · Évolutionnaire', d: 'La Déité qui s’étend et s’identifie aux créatures.', r: '0:1.8' },
+    '5-n4': { t: '4 · Créatif', d: 'La Déité qui se distribue et se révèle.', r: '0:1.7' },
+    '5-n3': { t: '3 · Associatif', d: 'La Déité personnelle et fraternelle.', r: '0:1.6' },
+    '5-n2': { t: '2 · Potentiel', d: 'La Déité qui se veut elle-même et porte son propre but.', r: '0:1.5' },
+    '5-n1': { t: '1 · Statique', d: 'La Déité qui se suffit et existe par elle-même.', r: '0:1.4' },
+    '5-modes': { t: 'Quatre modes de la Déité', d: 'La Déité du Paradis existe de toujours ; le Suprême et l’Ultime, eux, émergent par l’expérience.', r: '0:1.14 · 0:4.9', q: 'La Déité peut être existentielle comme dans le Fils Éternel, expérientielle comme dans l’Être Suprême, associative comme en Dieu le Septuple, indivise comme dans la Trinité du Paradis.', qr: '0:1.14' },
+
+    '6-pere': { t: 'Père Universel', d: 'Il préside aux royaumes de la préénergie, du préesprit et de la personnalité ; la personnalité, son don et sa destinée sont son secret.', r: '9:1.4 · 0:5.5' },
+    '6-fils': { t: 'Fils Éternel', d: 'Il domine les activités spirituelles ; il est la personnalité absolue et le secret de l’énergie spirituelle.', r: '9:1.4 · 0:5.5' },
+    '6-ac': { t: 'Acteur Conjoint', d: 'La source de l’intelligence et du mental universel ; le mental absolu est le sien.', r: '0:5.5 · 9:4.2' },
+    '6-paradis': { t: 'Ile du Paradis', d: 'Non personnelle et extraspirituelle, l’Ile est la source et le centre de la matière physique ; sa présence unifie les domaines de l’énergie physique.', r: '0:5.5 · 9:1.4' },
+    '6-cperso': { t: 'Père → personnalité : circuit de personnalité', d: 'Est dit personnel tout ce qui réagit au circuit de personnalité du Père. La personnalité n’y réagit que qualitativement.', r: '0:6.1 · 112:0.8' },
+    '6-cesprit': { t: 'Fils → esprit : circuit d’esprit', d: 'Est dit esprit tout ce qui réagit au circuit d’esprit du Fils.', r: '0:6.1' },
+    '6-cmental': { t: 'Acteur Conjoint → mental : circuit mental', d: 'Est dit mental tout ce qui réagit au circuit mental de l’Acteur Conjoint.', r: '0:6.1' },
+    '6-cgrav': { t: 'Paradis → énergie-matière : gravité', d: 'Est dite matière, sous toutes ses formes, tout ce qui répond à la gravité matérielle centrée dans le bas Paradis.', r: '0:6.1' },
+    '6-esprit': { t: 'Esprit', d: 'Conscient par nature, l’esprit n’a pas besoin qu’on lui ajoute du mental. Invariant, il dépasse le mental et la matière, qui varient avec l’expérience.', r: '9:4.2 · 12:8.14' },
+    '6-mental': { t: 'Mental', d: 'Le mental n’est pas inhérent à l’énergie : c’est l’énergie qui réagit au mental. Chez l’homme, il fait communiquer le matériel et le spirituel.', r: '9:4.2 · 101:5.8', q: 'Dans la personnalité, le mental intervient toujours entre l’esprit et la matière.', qr: '0:6.8' },
+    '6-matiere': { t: 'Énergie-matière', d: 'Dans le cosmos en évolution, l’énergie-matière domine, sauf dans la personnalité. Matière, mental et esprit sont également réels, mais pas de valeur égale pour qui cherche la divinité.', r: '12:8.14 · 12:8.15' },
+    '6-maitrise': { t: 'Esprit → énergie-matière : s’efforce de maitriser, à travers le mental', d: 'C’est la personnalité qui fait naitre cet effort de l’esprit à travers le mental.', r: '112:0.6 · 12:8.14', q: 'Quand elle est conférée à des créatures matérielles évolutionnaires, elle fait que l’esprit s’efforce de maitriser l’énergie-matière par l’intermédiaire du mental.', qr: '112:0.6' },
+    '6-perso': { t: 'Personnalité', d: 'Don du Père aux systèmes vivants où matière, mental et esprit sont associés. Sans identité propre, elle peut unifier l’identité de tout système énergétique vivant ; elle peut même s’ajouter à l’esprit.', r: '5:6.3 · 112:0.7 · 112:0.14' },
+
+    '7-esprit': { t: 'Spirituel', d: 'Plus on avance vers Salvington, plus on pénètre les niveaux spirituels ; l’ascension de la personnalité va jusqu’à la finalité.', r: '48:1.4 · 0:5.1' },
+    '7-moron': { t: 'Morontiel', d: 'Un vaste niveau entre le matériel et le spirituel, valable pour des réalités personnelles ou non, vivantes ou non. Les mondes morontiels : les 56 demeures transitionnelles du système et les sphères supérieures de la constellation et de l’univers.', r: '0:5.12 · 48:1.2' },
+    '7-mat': { t: 'Matériel', d: 'Dans le système local, la vie morontielle des débuts ressemble beaucoup à la vie du monde matériel.', r: '48:1.4' },
+    '7-ame': { t: 'Âme', d: 'Les médians appellent l’âme mental intermédiaire : c’est un phénomène morontiel. Le mental morontiel est un double mental, matériel et spirituel, sous une seule volonté ; c’est un don de l’Esprit-Mère, en liaison avec le Fils Créateur.', r: '111:2.8 · 110:2.6 · 42:10.5' },
+    '7-materiau': { t: 'Matériau morontiel', d: 'Les mondes architecturaux comptent deux fois plus d’éléments que les planètes nées de l’évolution : cent éléments physiques et cent formes de matériau morontiel.', r: '48:1.3' },
+    '7-tissu': { t: 'Le tissu morontiel', d: 'Les Superviseurs de Pouvoir Morontiel unissent les énergies matérielles et spirituelles en une forme que peut contrôler un esprit.', r: '48:1.5 · 0:5.12', q: 'La chaine du tissu morontiel est spirituelle, sa trame est matérielle.', qr: '0:5.12' },
+    '7-chaine': { t: 'Spirituel → tissu : la chaine', d: 'Dans l’image du texte, la chaine, faite des fils tendus dans la longueur, est spirituelle.', r: '0:5.12' },
+    '7-trame': { t: 'Matériel → tissu : la trame', d: 'La trame, faite des fils passés en travers, est matérielle.', r: '0:5.12' },
+    '7-asc': { t: 'Ascension : 570 corps morontiels', d: 'Les Créateurs ne changent pas d’un coup un mortel en esprit : la vie morontielle est la seule voie vers le seuil spirituel. Les Superviseurs fournissent 570 corps successifs, et l’esprit devient partie intégrante de la personnalité.', r: '48:0.1–3 · 48:1.5–6', q: 'La transition morontielle s’interpose toujours entre l’état mortel et le statut spirituel ultérieur des êtres humains qui survivent.', qr: '48:0.3' },
+    '7-etapes': { t: 'Système, constellation, Salvington', d: 'La vie morontielle devient moins physique sur les mondes de la constellation, puis de plus en plus spirituelle sur les sphères de Salvington.', r: '48:1.4' }
+  };
+
+  const reduced = () => !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  const DEFAUT = { 1: '1-pere-ame', 2: '2-habite', 3: '3-coord', 4: '4-choix', 5: '5-f-fini', 6: '6-maitrise', 7: '7-asc' };   // relation principale, présélectionnée au chargement
+
+  function show(fig, panel, k, defaut) {
+    const it = D[k];
+    if (!it) return;
+    fig.querySelectorAll('.hit.sel').forEach((x) => x.classList.remove('sel'));
+    fig.querySelectorAll('.hit[data-k="' + k + '"]').forEach((x) => x.classList.add('sel'));
+    let h = '<h3>' + it.t + '</h3><p>' + it.d + ' <span class="ref">' + it.r + '</span></p>';
+    if (it.q) h += '<p class="qt">«&nbsp;' + it.q + '&nbsp;» <span class="ref">' + it.qr + '</span></p>';
+    if (defaut) h += '<p class="ph">Choisis un autre élément ou une autre flèche du schéma.</p>';
+    panel.innerHTML = h;
+    if (defaut) return;
+    const r = panel.getBoundingClientRect();                 // sur téléphone, le panneau est sous le schéma
+    if (r.top < 0 || r.bottom > window.innerHeight) {
+      panel.scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'nearest' });
+    }
+  }
+
+  document.querySelectorAll('figure.fig[data-fig]').forEach((fig) => {
+    const n = fig.getAttribute('data-fig');
+    const panel = document.getElementById('pan-' + n);
+    const list = document.querySelector('[data-tv="' + n + '"]');
+    const seen = new Set();
+    fig.querySelectorAll('.hit').forEach((g) => {
+      const k = g.getAttribute('data-k');
+      const it = D[k];
+      if (!it || !panel) return;
+      g.setAttribute('tabindex', '0');
+      g.setAttribute('role', 'button');
+      g.setAttribute('aria-label', it.t);
+      g.addEventListener('click', () => show(fig, panel, k));
+      g.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(fig, panel, k); }
+      });
+      if (list && !seen.has(k)) {
+        seen.add(k);
+        const li = document.createElement('li');
+        li.innerHTML = '<b>' + it.t + '</b> — ' + it.d + ' <span class="ref">' + it.r + '</span>';
+        list.appendChild(li);
+      }
+    });
+    // une seule tabulation par schéma, puis les flèches d’un élément à l’autre
+    const hits = Array.from(fig.querySelectorAll('.hit[tabindex]'));
+    hits.forEach((g, i) => {
+      g.tabIndex = i ? -1 : 0;
+      g.addEventListener('focus', () => { hits.forEach((x) => { x.tabIndex = -1; }); g.tabIndex = 0; });
+    });
+    fig.addEventListener('keydown', (e) => {
+      const i = hits.indexOf(document.activeElement);
+      if (i < 0) return;
+      const j = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: hits.length - 1 }[e.key];
+      if (j === undefined) return;
+      e.preventDefault();
+      hits[(j + hits.length) % hits.length].focus();
+    });
+    if (panel && DEFAUT[n]) show(fig, panel, DEFAUT[n], true);
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

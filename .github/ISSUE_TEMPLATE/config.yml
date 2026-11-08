@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Guide de contribution
+    url: https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md
+    about: Les règles du site et la marche à suivre pour proposer une modification.
+  - name: Lire le Livre d’Urantia (urantia.org)
+    url: https://www.urantia.org/fr/le-livre-durantia/lire
+    about: Le texte intégral, publié par la Fondation Urantia.

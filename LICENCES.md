@@ -20,5 +20,17 @@
 | Continents, lacs et fleuves | Natural Earth, https://www.naturalearthdata.com (GeoJSON du dépôt nvkelso/natural-earth-vector) | domaine public |
 | Citations du livre | *Le Livre d’Urantia*, traduction française, Fondation Urantia, édition 2024 | courtes citations référencées ; le texte appartient à son éditeur et n’est pas couvert par les licences du dépôt |
 | Citations bibliques (page « La Bible et le Livre d’Urantia ») | Bible, traduction Crampon (édition de 1923) | domaine public ; texte numérique de mission-web.com, sous licence CC BY-NC-SA 3.0 ; courtes citations, créditées dans la page |
+| Musique (bouton de la barre) | composition générée en direct par `musique.js`, œuvre originale du projet | sous la même licence que le code (MIT) |
+| Icônes de l’application (`assets/icone-*.png`, `apple-touch-icon.png`) | rendus de `assets/favicon.svg`, dessin du projet | contenu du dépôt, CC BY-SA 4.0 |
 
 Les tailles et empreintes SHA-256 des fichiers de données utilisés figurent dans `sources/CONSTRUIRE.md`.
+
+## Déclaration de droit d’auteur de la Fondation Urantia
+
+Les citations suivent la politique de la Fondation Urantia (« Permission to Quote »). Déclaration, telle que la Fondation la demande :
+
+> This work uses quotations from the French-language translation of The Urantia Book published by Urantia Foundation, © 1960 Urantia Foundation, 533 Diversey Parkway, Chicago, Illinois 60614, USA; +1 (773) 525-3319; www.urantia.org; all rights reserved. The views expressed in this work are those of the author and do not necessarily represent the views of Urantia Foundation or its affiliates.
+
+Traduction française :
+
+> Ce site cite la traduction française du *Livre d’Urantia* publiée par la Fondation Urantia, © 1960 Urantia Foundation, 533 Diversey Parkway, Chicago, Illinois 60614, USA ; +1 (773) 525-3319 ; www.urantia.org ; tous droits réservés. Les opinions exprimées sur ce site sont celles de l’auteur et ne représentent pas nécessairement celles de la Fondation Urantia ou de ses affiliés.

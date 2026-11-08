@@ -7,6 +7,13 @@
 <link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/atlas-3d.html">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#03050C">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas Urantia">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="author" content="Sylvain Leduc">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:site_name" content="Le Livre d’Urantia en images">
@@ -19,6 +26,8 @@
 <meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<script src="assets/hors-ligne.js" defer></script>
+<script src="assets/musique.js" defer></script>
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>D’Urantia au Paradis (3D) — Le Livre d’Urantia en images</title>
 <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -66,7 +75,7 @@ body { margin: 0; background: var(--space); color: var(--ink); font-family: var(
 
 /* Étiquettes de la scène : sous l’interface ; les noms cliquables sont des boutons, utilisables au clavier */
 .labels { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; -webkit-user-select: none; user-select: none; }
-.l3 { position: absolute; left: 0; top: 0; white-space: nowrap; font: 500 12px/1.2 var(--font-mono); color: var(--muted); text-shadow: 0 0 3px var(--space), 0 0 8px var(--space), 0 0 14px var(--space); padding: 0 0 11px; will-change: transform; }
+.l3 { position: absolute; left: 0; top: 0; white-space: normal; text-wrap: balance; text-align: center; max-width: calc(100vw - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)); font: 500 12px/1.2 var(--font-mono); color: var(--muted); text-shadow: 0 0 3px var(--space), 0 0 8px var(--space), 0 0 14px var(--space); padding: 0 0 11px; will-change: transform; }
 button.l3 { appearance: none; margin: 0; border: 0; border-radius: 4px; background: none; text-align: center; }
 .l3::after { content: ""; position: absolute; left: 50%; bottom: 0; width: 1px; height: 8px; background: currentColor; opacity: .5; }
 .l3.below { padding-bottom: 0; padding-top: 11px; }
@@ -79,6 +88,7 @@ button.l3 { appearance: none; margin: 0; border: 0; border-radius: 4px; backgrou
 .l3.star { color: var(--ink); font-size: 11px; }
 .l3.go { pointer-events: auto; cursor: pointer; }
 .l3.go:hover, .l3.go:focus-visible { color: var(--gold-ink); }
+.l3.clamp2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }   /* au plus deux lignes (script) */
 
 /* Interface au-dessus de la scène */
 .ui {
@@ -135,6 +145,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .info-min { appearance: none; cursor: pointer; flex: none; width: 30px; height: 30px; margin: -4px -6px 0 0; padding: 0; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 600 .95rem/1 var(--font-body); }
 .info-min:hover { color: var(--gold-ink); border-color: var(--gold); }
 .info-more, .info-x { display: none; }
+.h-short { display: none; }
 .info.min .info-body, .ui.card-on .info .info-body { display: none; }
 .info.min h2, .ui.card-on .info h2 { margin-bottom: 0; }
 .info-body p { margin: 0; font-size: .95rem; }
@@ -158,9 +169,13 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .hint { flex: none; margin: 0; font-size: .8rem; color: var(--muted); pointer-events: auto; }
 
 /* Sans WebGL ou sans JavaScript : l’en-tête et le menu restent, avec des liens vers les autres pages */
-.fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 24px var(--gut-r) 24px var(--gut-l); }
+.fallback { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 4px; text-align: center; padding: 24px var(--gut-r) 24px var(--gut-l); }
 .fallback p { max-width: 42ch; }
 .fallback a { color: var(--gold-ink); }
+.credit { margin: 10px 0 0; font-size: .8rem; line-height: 1.45; color: var(--muted); }   /* ligne de crédit : menu et repli */
+.menu-panel .credit { padding: 8px 9px 0; border-top: 1px solid var(--panel-line); }
+.menu-panel .credit a, .fallback .credit a { display: inline; padding: 0; border-radius: 0; font-size: inherit; color: var(--gold-ink); text-decoration: underline; text-underline-offset: 2px; white-space: nowrap; }
+.fallback .credit { max-width: none; }
 .ui.no3d .toggles, .ui.no3d .bottom, .ui.no3d .menu-modes { display: none !important; }
 
 /* Qui gouverne quoi */
@@ -193,7 +208,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .dg-t { font: 500 11px var(--font-mono); fill: var(--ink); text-anchor: middle; paint-order: stroke; stroke: var(--space); stroke-width: 3px; }
 
 /* Schéma des trois Absolus (Déité, au-delà du maitre univers) */
-.abs { position: absolute; z-index: 2; top: var(--top-c, 118px); left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); max-height: calc(100% - var(--top-c, 118px) - 150px); overflow: auto; overscroll-behavior: contain; display: grid; gap: 8px; background: var(--panel); border: 1.5px solid var(--frame-a); border-radius: 16px; padding: 12px 46px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.abs { position: absolute; z-index: 2; top: var(--top-c, 118px); left: 50%; transform: translateX(-50%); width: min(640px, calc(100% - 32px)); max-height: calc(100% - var(--top-c, 118px) - var(--bot-c, 150px)); overflow: auto; overscroll-behavior: contain; display: grid; gap: 8px; background: var(--panel); border: 1.5px solid var(--frame-a); border-radius: 16px; padding: 12px 46px; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
 .abs-x { position: absolute; top: 8px; right: 8px; }
 .abs p { margin: 0; }
 .abs-t { font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); text-align: center; }
@@ -210,8 +225,10 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 
 /* Frise du temps et carrière ascendante */
 .tl { pointer-events: auto; width: min(100%, 54rem); max-height: 50vh; overflow: auto; overscroll-behavior: contain; display: grid; gap: 8px; background: var(--panel); border: 1px solid var(--panel-line); border-radius: 12px; padding: 11px 14px 0; -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
-.tl-top { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 2px 12px; }
-.tl-top .meta { margin: 0; flex: 1 1 auto; }
+.tl-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 2px 12px; }   /* le × toujours en colonne 2, en haut */
+.tl-top .tl-x { grid-column: 2; align-self: start; }
+.tl-hd { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; min-width: 0; }
+.tl-hd .meta { margin: 0; flex: 1 1 auto; }
 .tl h2 { margin: 0; font: 700 1.3rem/1.1 var(--font-display); color: var(--gold-ink); }
 .tl-date { margin: 0; font: 500 .8rem/1.35 var(--font-mono); }
 .tl-x { width: 32px; height: 32px; font-size: 1.15rem; }
@@ -273,7 +290,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .bc-nav button:last-child { text-align: right; }
 
 /* Bulle d’aide de la première visite */
-.coach { position: absolute; z-index: 4; left: 50%; top: 30%; transform: translateX(-50%); width: min(30rem, calc(100% - 32px)); margin: 0; padding: 12px 16px; border: 1px solid var(--gold); border-radius: 14px; background: var(--panel-hi); color: var(--ink); text-align: center; font-size: .95rem; line-height: 1.45; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); pointer-events: auto; }
+.coach { position: absolute; z-index: 4; left: 50%; top: 30%; transform: translateX(-50%); width: min(30rem, calc(100% - var(--gut-l) - var(--gut-r))); margin: 0; padding: 12px 16px; border: 1px solid var(--gold); border-radius: 14px; background: var(--panel-hi); color: var(--ink); text-align: center; font-size: .95rem; line-height: 1.45; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); pointer-events: auto; }
 .coach .go-btn { margin-left: 6px; }
 
 /* Panneaux semi-transparents : la scène reste visible ; ils s’opacifient au survol ou au clavier pour la lecture */
@@ -303,8 +320,9 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .menu > summary { min-width: 44px; min-height: 44px; justify-content: center; padding: 0 13px; }
   .mi { display: block; }
   .ml { display: none; }
-  .menu-panel { position: fixed; top: 60px; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: calc(100% - 72px); padding: 12px 14px 14px; }
+  .menu-panel { position: fixed; top: calc(60px + env(safe-area-inset-top, 0px)); left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: calc(100% - 72px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); padding: 12px 14px 14px; }
   .menu-panel a { padding: 11px 10px; font-size: 1rem; }
+  .menu-panel .credit a, .fallback .credit a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; }   /* cible de 44 px */
   .menu-modes { display: block; }
   .menu-modes .chip { min-height: 44px; padding: 0 15px; font-size: .92rem; }
   .bottom { align-items: stretch; gap: 8px; }
@@ -320,6 +338,14 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .go-btn { min-height: 44px; padding: 0 14px; margin: 2px 0; display: inline-flex; align-items: center; }
   .chip, .bc-nav button, .tl-ctrl .chip { min-height: 44px; }
   .asc-steps button { min-width: 44px; height: 44px; }
+  .tl-ctrl .chip { min-width: 44px; }
+  .tl-ctrl label { min-height: 44px; padding-inline: 2px; }
+  .zoombar input[type="range"], .tl-ctrl input[type="range"] { height: 44px; margin-block: 0; }   /* zone de prise de 44 px */
+  .gov .gv-go { min-height: 44px; align-items: center; }
+  .gov details summary, .info .scale summary { min-height: 44px; padding-block: 12px; }
+  .info:not(.open) .h-long { display: none; }
+  .info:not(.open) .h-short { display: inline; }
+  body.menu-open .info.open, body.menu-open .tl, body.menu-open .gov, body.menu-open .bcard, body.menu-open .abs { visibility: hidden; }   /* le menu passe par-dessus sans fermer le tiroir */
   .zoombar { flex-wrap: nowrap; max-width: none; gap: 12px; }
   /* tiroirs : depuis le bas, avec un bouton × ; un seul à la fois (script) */
   .info.open, .tl, .gov, .bcard, .abs { position: fixed; z-index: 6; top: auto; left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); bottom: max(8px, env(safe-area-inset-bottom, 0px)); width: auto; min-height: 0; max-height: 55vh; transform: none; overflow: auto; overscroll-behavior: contain; border-radius: 16px; box-shadow: 0 -10px 34px rgba(0, 0, 0, .4); }
@@ -346,7 +372,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .info { grid-area: info; }
   .ladder { grid-area: ladder; }
   .zoombar { grid-area: zoom; }
-  .info.open, .tl, .gov, .bcard, .abs { left: auto; top: 60px; width: min(54%, 27rem); max-height: none; }   /* sous l’en-tête : le menu reste accessible */
+  .info.open, .tl, .gov, .bcard, .abs { left: auto; top: calc(60px + env(safe-area-inset-top, 0px)); width: min(54%, 27rem); max-height: none; }   /* sous l’en-tête : le menu reste accessible */
   .menu-panel { width: min(26rem, calc(100% - 16px)); right: auto; }
   .coach { top: 26%; }
 }
@@ -386,7 +412,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         <h1>D’Urantia au Paradis</h1>
         <p class="sub">Pars de notre planète, éloigne-toi niveau par niveau, ou déplace-toi librement pour explorer l’univers central et les ceintures de l’espace extérieur.</p>
         <details class="menu" id="menu">
-          <summary aria-label="Menu : pages de l’atlas, modes et réglages"><span class="mi" aria-hidden="true"></span><span class="ml">Pages de l’atlas</span></summary>
+          <summary aria-label="Pages de l’atlas"><span class="mi" aria-hidden="true"></span><span class="ml">Pages de l’atlas</span></summary>
           <div class="menu-panel">
             <h3>Pages de l’atlas</h3>
             <ul>
@@ -401,6 +427,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a></li>
               <li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre (urantia.org)</a></li>
             </ul>
+            <p class="credit">Une gracieuseté de Sylvain Leduc · <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener">Code source sur GitHub<span aria-hidden="true">&nbsp;↗</span></a> · <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20D%E2%80%99Urantia%20au%20Paradis%20%283D%29&amp;page=D%E2%80%99Urantia%20au%20Paradis%20%283D%29%20%28atlas-3d.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire">Signaler une erreur<span aria-hidden="true">&nbsp;↗</span></a> · <a href="index.html#droits" title="Citations du Livre d’Urantia : © 1960 Urantia Foundation">Droits</a></p>
             <div class="menu-modes">
               <h3>Modes</h3>
               <div class="chips">
@@ -415,13 +442,14 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
                 <button type="button" class="chip" data-proxy="t-center">Recentrer</button>
                 <button type="button" class="chip" data-proxy="t-rot" aria-pressed="true">Rotation</button>
                 <button type="button" class="chip" data-proxy="t-lbl" aria-pressed="true">Étiquettes</button>
+                <button type="button" class="chip" data-musique hidden aria-pressed="false">Musique douce</button>
               </div>
             </div>
           </div>
         </details>
       </div>
       <div class="toggles">
-        <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps : de la nébuleuse d’Andronover jusqu’aux années 1934 ; la vue 3D suit chaque évènement">La frise du temps</button>
+        <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps : de la nébuleuse d’Andronover jusqu’en 1934–1935 ; la vue 3D suit chaque évènement">La frise du temps</button>
         <button type="button" class="chip" id="t-asc" aria-pressed="false" title="La carrière ascendante : les étapes après la mort selon le livre, d’Urantia au Paradis">La carrière ascendante</button>
         <button type="button" class="chip" id="t-gov" aria-pressed="false" title="Qui gouverne quoi : de la planète au maitre univers">Qui gouverne quoi</button>
         <button type="button" class="chip" id="t-coupe" aria-pressed="false" title="Vue en coupe : section verticale de l’espace, en forme de croix de Malte">Vue en coupe</button>
@@ -447,8 +475,8 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
       </section>
       <section class="tl" id="tl" aria-label="Frise du temps : Nébadon, Norlatiadek, Satania et Urantia" hidden>
         <div class="tl-top">
-          <p class="meta" id="tl-era">La frise du temps</p>
-          <p class="tl-date" id="tl-d"></p>
+          <div class="tl-hd"><p class="meta" id="tl-era">La frise du temps</p>
+          <p class="tl-date" id="tl-d"></p></div>
           <button type="button" class="bc-x tl-x" data-close="tl" aria-label="Fermer la frise du temps" title="Fermer">×</button>
         </div>
         <h2 id="tl-t">Frise du temps</h2>
@@ -475,8 +503,8 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
       </section>
       <section class="tl" id="asc" aria-label="La carrière ascendante, de la mort au Corps de la Finalité" hidden>
         <div class="tl-top">
-          <p class="meta" id="asc-meta">La carrière ascendante</p>
-          <p class="tl-date" id="asc-lieu"></p>
+          <div class="tl-hd"><p class="meta" id="asc-meta">La carrière ascendante</p>
+          <p class="tl-date" id="asc-lieu"></p></div>
           <button type="button" class="bc-x tl-x" data-close="asc" aria-label="Fermer la carrière ascendante" title="Fermer">×</button>
         </div>
         <h2 id="asc-t">Carrière ascendante</h2>
@@ -520,6 +548,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
           <button type="button" class="chip" id="t-center" title="Revenir au parcours guidé, Urantia au centre">Recentrer</button>
           <button type="button" class="chip" id="t-rot" aria-pressed="true" title="Rotation automatique de la vue">Rotation</button>
           <button type="button" class="chip" id="t-lbl" aria-pressed="true" title="Afficher ou masquer les noms dans la scène">Étiquettes</button>
+          <button type="button" class="chip" data-musique hidden aria-pressed="false" aria-label="Musique douce" title="Écouter une musique douce">♪</button>
         </span>
       </div>
       <p class="hint">Glisser&nbsp;: tourner · Maj + glisser ou clic droit&nbsp;: se déplacer · molette ou curseur&nbsp;: zoomer · clic sur un nom, un point ou un astre&nbsp;: s’en approcher · double-clic&nbsp;: plonger vers ce point</p>
@@ -529,10 +558,11 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   <p class="sr-only" id="sr-live" aria-live="polite"></p>
   <div class="fallback" id="fallback" hidden>
     <p>La vue 3D a besoin de WebGL, que ce navigateur n’active pas ici. Les autres pages de l’atlas restent disponibles&nbsp;: <a href="index.html">l’accueil</a>, <a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, <a href="histoire-d-urantia.html">l’histoire d’Urantia</a> et <a href="vie-de-jesus.html">la vie de Jésus</a>.</p>
+    <p class="credit">Une gracieuseté de Sylvain Leduc · <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener">Code source sur GitHub<span aria-hidden="true">&nbsp;↗</span></a></p>
   </div>
   <noscript>
     <style>.toggles, .bottom, .labels, #c { display: none !important; }</style>
-    <div class="fallback"><p>La vue 3D a besoin de JavaScript. Les autres pages de l’atlas restent disponibles&nbsp;: <a href="index.html">l’accueil</a>, <a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, <a href="histoire-d-urantia.html">l’histoire d’Urantia</a> et <a href="vie-de-jesus.html">la vie de Jésus</a>.</p></div>
+    <div class="fallback"><p>La vue 3D a besoin de JavaScript. Les autres pages de l’atlas restent disponibles&nbsp;: <a href="index.html">l’accueil</a>, <a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a>, <a href="histoire-d-urantia.html">l’histoire d’Urantia</a> et <a href="vie-de-jesus.html">la vie de Jésus</a>.</p><p class="credit">Une gracieuseté de Sylvain Leduc · <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener">Code source sur GitHub<span aria-hidden="true">&nbsp;↗</span></a></p></div>
   </noscript>
 </div>
 
@@ -887,7 +917,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     }
     return new THREE.CanvasTexture(cv);
   }
-  const planetMat = fadeMat(L0, new THREE.MeshPhongMaterial({ map: planetTex(), specularMap: oceanMask(), shininess: 30, specular: 0x4a6684 }), 1, 'planets');
+  const planetMat = fadeMat(L0, new THREE.MeshPhongMaterial({ map: planetTex(), specularMap: oceanMask(), shininess: 18, specular: 0x2c3c4c }), 1, 'planets');
   planetMat.depthWrite = true;
   // lumières des villes : visibles seulement du côté nuit (direction du Soleil passée au shader)
   const sunView = { value: new V3(0, 0, 1) };
@@ -1740,14 +1770,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const REF = (r) => ' <span class="ref">' + r + '</span>';
   const T = {
     paradis: { h: 'L’Ile du Paradis', p: 'Centre de l’univers des univers et seul corps immobile du maitre univers' + REF('12:4.1') + ', l’Ile est un ellipsoïde plat, plus long d’un sixième du nord au sud' + REF('11:2.2') + '. «&nbsp;Le Paradis est non spatial&nbsp;»' + REF('11:2.11') + '. Au centre de la surface supérieure réside la présence du Père, entourée de celle du Fils, tous deux revêtus de la gloire de l’Esprit' + REF('11:1.1') + '&nbsp;; autour s’étendent la Sphère Très Sainte et l’Aire Sainte, en sept zones' + REF('11:3.1–3') + '. Sur le pourtour circulent les sièges focaux des Sept Maitres Esprits, chacun «&nbsp;à l’opposé du superunivers&nbsp;» qu’il supervise' + REF('16:0.12') + '&nbsp;; le schéma comprend «&nbsp;en face de&nbsp;», au point où convergent les lignes radiales de ce superunivers. Sous l’Ile, autour de la Zone de l’Infinité, un centre de force en trois zones elliptiques fait naitre les circuits d’énergie' + REF('11:5.1–5') + '.' },
-    satellites: { h: 'Les sphères sacrées du Paradis', p: 'Entre le Paradis et le premier circuit de Havona tournent trois circuits de sept sphères' + REF('13:0.1') + '. Au plus près, les sept sphères secrètes du Père&nbsp;: Divinington, Sonarington, Spiritington, Vicegerington, Solitarington, Séraphington et Ascendington, la sphère d’accueil des pèlerins du temps' + REF('13:1') + '. Puis les sept mondes du Fils, source de la triple lumière' + REF('13:3.1') + '&nbsp;; enfin les sept sphères de l’Esprit, qui portent les noms des superunivers&nbsp;: la septième s’appelle Orvonton' + REF('17:1.5') + '.' },
+    satellites: { h: 'Les sphères sacrées du Paradis', s: 'Sphères sacrées', p: 'Entre le Paradis et le premier circuit de Havona tournent trois circuits de sept sphères' + REF('13:0.1') + '. Au plus près, les sept sphères secrètes du Père&nbsp;: Divinington, Sonarington, Spiritington, Vicegerington, Solitarington, Séraphington et Ascendington, la sphère d’accueil des pèlerins du temps' + REF('13:1') + '. Puis les sept mondes du Fils, source de la triple lumière' + REF('13:3.1') + '&nbsp;; enfin les sept sphères de l’Esprit, qui portent les noms des superunivers&nbsp;: la septième s’appelle Orvonton' + REF('17:1.5') + '.' },
     havona: { h: 'Havona, l’univers central', p: 'Un univers «&nbsp;sans commencement ni fin&nbsp;» d’un milliard de sphères' + REF('12:1.10') + ', disposées en sept circuits concentriques&nbsp;: plus de 35 millions de mondes sur le circuit le plus proche du Paradis, plus de 245 millions sur le plus éloigné' + REF('14:1.9') + '. Avec les trois circuits du Paradis, ils forment «&nbsp;dix unités concentriques stabilisées&nbsp;» dans un seul plan' + REF('14:1.10') + ', et tournent dans le sens des aiguilles d’une montre' + REF('14:1.3') + '.' },
-    gravite: { h: 'Les corps de gravité obscurs', p: 'Deux ceintures encerclent Havona et le cachent aux univers du temps&nbsp;: ces corps «&nbsp;ne réfléchissent pas la lumière et ne l’absorbent pas non plus&nbsp;»' + REF('14:1.14') + '. La ceinture intérieure forme un tube de trois anneaux concentriques et tourne en sens inverse des aiguilles d’une montre&nbsp;; l’extérieure, verticale, est «&nbsp;d’une hauteur dix-mille fois supérieure à celle du circuit intérieur&nbsp;» et tourne dans le sens des aiguilles' + REF('14:1.5–7 · 14:1.16') + '. À cause d’elles, le contenu massique de l’univers central «&nbsp;dépasse considérablement le total des masses connues&nbsp;» des sept superunivers' + REF('12:1.10') + '. La hauteur est ici très réduite.' },
+    gravite: { h: 'Les corps de gravité obscurs', s: 'Corps de gravité', p: 'Deux ceintures encerclent Havona et le cachent aux univers du temps&nbsp;: ces corps «&nbsp;ne réfléchissent pas la lumière et ne l’absorbent pas non plus&nbsp;»' + REF('14:1.14') + '. La ceinture intérieure forme un tube de trois anneaux concentriques et tourne en sens inverse des aiguilles d’une montre&nbsp;; l’extérieure, verticale, est «&nbsp;d’une hauteur dix-mille fois supérieure à celle du circuit intérieur&nbsp;» et tourne dans le sens des aiguilles' + REF('14:1.5–7 · 14:1.16') + '. À cause d’elles, le contenu massique de l’univers central «&nbsp;dépasse considérablement le total des masses connues&nbsp;» des sept superunivers' + REF('12:1.10') + '. La hauteur est ici très réduite.' },
     uversa: { h: 'Uversa', p: 'Le monde-siège d’Orvonton, autour duquel tournent les dix secteurs majeurs' + REF('15:3.13') + '. La Voie lactée forme le noyau central du superunivers' + REF('15:3.1') + '.' },
     salvington: { h: 'Salvington', p: 'Capitale de Nébadon, située «&nbsp;exactement au centre d’énergie massique de l’univers local&nbsp;»' + REF('32:2.4') + '. C’est le quartier général personnel de Micaël de Nébadon' + REF('32:2.5') + '.' },
     sup: (k) => ({ h: 'Le superunivers n° ' + k, p: 'Chaque superunivers est un amas d’environ un septième de la création organisée au-delà de Havona, et les sept sont à peu près équivalents en univers locaux et en espace' + REF('12:1.12') + '. Chacun est régi par trois Anciens des Jours' + REF('15:2.8') + '. L’ordre des numéros est ici schématique.' }),
     calme: { h: 'La zone de calme', p: 'Entre les sept superunivers et le premier niveau d’espace extérieur s’étend une zone comparativement calme, large en moyenne de 400&#8239;000 années-lumière. Ces zones sont «&nbsp;libres de poussière stellaire&nbsp;»' + REF('12:1.14') + '.' },
-    niveau2: { h: 'Le deuxième niveau d’espace extérieur', p: 'Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent l’organisation du deuxième' + REF('12:1.15') + '. Il semble tourner en sens inverse des aiguilles d’une montre, comme les superunivers' + REF('12:4.15') + '.' }
+    niveau2: { h: 'Le deuxième niveau d’espace extérieur', s: '2e niveau extérieur', p: 'Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent l’organisation du deuxième' + REF('12:1.15') + '. Il semble tourner en sens inverse des aiguilles d’une montre, comme les superunivers' + REF('12:4.15') + '.' }
   };
 
   /* ---------- Interface : textes ---------- */
@@ -1762,7 +1792,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     { h: 'Splandon', p: 'Secteur majeur, le cinquième d’Orvonton&nbsp;: cent secteurs mineurs, capitale Umajor la cinquième' + REF('15:14.7') + '.' },
     { h: 'Orvonton', p: 'Le septième superunivers forme «&nbsp;un groupement ovale allongé à profil de montre&nbsp;»' + REF('15:3.1') + '. La Voie lactée en est le noyau central, autour d’Uversa' + REF('15:3.13') + '. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;»' + REF('32:2.11') + '. Le centre est placé ici dans la direction du Sagittaire, celle du cœur dense de la Voie lactée&nbsp;: c’est un choix de représentation. L’aspect de galaxie spirale en est un autre&nbsp;: le texte compte des «&nbsp;nébuleuses spirales&nbsp;» parmi le contenu d’Orvonton, mais ne dit pas que le superunivers lui-même a des bras' + REF('15:3.1') + '.' },
     { h: 'Le grand univers', p: 'Les sept superunivers «&nbsp;parcourent une grande ellipse&nbsp;»' + REF('15:1.2') + ' autour de Havona, l’univers central d’«&nbsp;un milliard de sphères&nbsp;», entouré des corps de gravité obscurs. Au centre se trouve l’Ile du Paradis' + REF('12:1.10') + '. Selon l’orientation d’Urantia, Orvonton a pris «&nbsp;le tournant sud-est du niveau d’espace des superunivers&nbsp;», entre les numéros un et six' + REF('15:1.4–5') + '. Les sept rayons de la roue sont les radiations des Sept Maitres Esprits' + REF('15:0.1') + '. Notre univers local est «&nbsp;près de cette frontière extérieure&nbsp;»' + REF('12:1.13') + '. Les superunivers sont dessinés comme des galaxies spirales&nbsp;: c’est une image, car le texte dit seulement qu’ils sont «&nbsp;à peu près équivalents&nbsp;» en univers locaux et en espace' + REF('12:1.12') + '. Clique sur Havona pour l’explorer de près.' },
-    { h: 'Le premier niveau d’espace extérieur', p: 'Autour des sept superunivers s’étend une zone de calme relatif, large en moyenne de 400&#8239;000 années-lumière. À environ un demi-million d’années-lumière au-delà du grand univers commence «&nbsp;une ceinture continue d’activité cosmique&nbsp;», qui s’étend sur plus de 25 millions d’années-lumière' + REF('12:1.14') + '. D’innombrables univers y sont «&nbsp;en cours de formation&nbsp;»' + REF('11:7.7') + '. Cette ceinture tourne dans le sens des aiguilles d’une montre, à l’inverse des superunivers' + REF('12:4.15') + '.' },
+    { h: 'Le premier niveau d’espace extérieur', s: '1er niveau extérieur', p: 'Autour des sept superunivers s’étend une zone de calme relatif, large en moyenne de 400&#8239;000 années-lumière. À environ un demi-million d’années-lumière au-delà du grand univers commence «&nbsp;une ceinture continue d’activité cosmique&nbsp;», qui s’étend sur plus de 25 millions d’années-lumière' + REF('12:1.14') + '. D’innombrables univers y sont «&nbsp;en cours de formation&nbsp;»' + REF('11:7.7') + '. Cette ceinture tourne dans le sens des aiguilles d’une montre, à l’inverse des superunivers' + REF('12:4.15') + '.' },
     { h: 'Le maitre univers', p: 'Le maitre univers forme «&nbsp;six ellipses concentriques&nbsp;» autour de l’Ile centrale&nbsp;: Havona, les sept superunivers et quatre niveaux d’espace extérieur' + REF('12:1.3–9') + '. Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent le deuxième' + REF('12:1.15') + ', qui semble tourner en sens inverse, comme les superunivers. Une «&nbsp;troisième ceinture d’espace immensément lointaine&nbsp;» paraît s’orienter dans le sens des aiguilles d’une montre' + REF('12:4.15') + '. Le texte ne donne pas la distance des deux derniers niveaux.' },
     { h: 'Au-delà du maitre univers', p: 'L’espace pénétré s’étend au-delà de la périphérie du maitre univers, «&nbsp;mais de combien au-delà, nous ne le savons pas&nbsp;»' + REF('11:7.4') + '. Le bouton Déité montre comment le texte situe le Suprême, l’Ultime et les trois Absolus.' }
   ];
@@ -1771,7 +1801,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const TYPES = ['Planète', 'Système solaire', 'Système local', 'Constellation', 'Univers local', 'Secteur mineur', 'Secteur majeur', 'Superunivers', 'Havona et les sept superunivers', 'Espace extérieur', 'Six ellipses concentriques', 'Au-delà'];
   function deityText(V) {
     if (V < 4e5) return '<b>Déité.</b> Ce niveau appartient au grand univers, que l’Être Suprême «&nbsp;englobe&nbsp;»' + REF('0:9.1') + '.';
-    if (V < 2e7) return '<b>Dieu le Suprême.</b> L’Être Suprême se développe à partir du potentiel du grand univers «&nbsp;qu’il englobe&nbsp;»' + REF('0:9.1') + '. C’est «&nbsp;sur le niveau fini&nbsp;» que l’actuel et le potentiel se manifestent en conjonction avec lui' + REF('115:4.5') + '. Le halo doré marque le grand univers.';
+    if (V < 2e7) return '<b>Dieu le Suprême.</b> L’Être Suprême se développe à partir du potentiel du grand univers «&nbsp;qu’il englobe&nbsp;»' + REF('0:9.1') + '. C’est «&nbsp;sur le niveau fini&nbsp;» que les triodités, qui englobent l’actuel et le potentiel, se manifestent en conjonction avec lui' + REF('115:4.5') + '. Le halo doré marque le grand univers.';
     if (V < 1e9) return '<b>Dieu l’Ultime.</b> Il émerge des potentiels du maitre univers' + REF('0:9.1') + ' et est présent dans l’espace, ou le sera, «&nbsp;jusqu’aux bordures extérieures du quatrième niveau d’espace extérieur&nbsp;»' + REF('12:6.13') + '. Le halo violet marque cette limite.';
     return '<b>Les trois Absolus.</b> «&nbsp;L’Absolu Non Qualifié pénètre tout l’espace.&nbsp;» L’Absolu de Déité «&nbsp;ne peut guère être présent dans l’espace&nbsp;»' + REF('12:6.13') + '. Les deux Absolus sont «&nbsp;coordonnés et unifiés par l’Absolu Universel et en lui&nbsp;»' + REF('0:3.18') + '. Le schéma en haut de l’écran montre leurs relations&nbsp;; le voile violet et le cadre lumineux sont des images symboliques, pas des lieux.';
   }
@@ -1785,18 +1815,19 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     { info: T.gravite, ring: [PAR, 0.235 * R8, 0.32 * R8], vmax: 1.4e6 },
     { info: T.havona, c: PAR, r: 0.32 * R8, vmax: 7e5 },                                    // vue d’ensemble de Havona (#havona)
     { info: T.uversa, c: L7.P.clone().negate(), r: 30000, vmax: 1.6e5 },
-    { info: T.salvington, c: L4.P.clone().negate(), r: 700, vmax: 7000 },
-    { info: INFO[1], c: L1.P.clone().negate(), r: 40 * AU, vmax: 1e-3 },
-    { info: INFO[2], c: L2.P.clone().negate(), r: 1.6 * L2.R, vmax: 300 },
-    { info: INFO[5], c: L5.P.clone().negate(), r: 0.2 * L5.R, vmax: 3e4 },
-    { info: INFO[4], c: L4.P.clone().negate(), r: L4.R, vmin: 600, vmax: 2e4 }
+    { info: T.salvington, c: L4.P.clone().negate(), r: 700, vmax: 7000 }
   ].concat(SUPC.filter((s) => s.k !== 7).map((s) => ({ info: T.sup(s.k), c: at8(s.c), r: 0.25 * R8, vmax: 3e6 }))).concat([
-    { info: INFO[7], c: L7.P.clone().negate(), r: L7.R, vmax: 3e6 },
-    { info: INFO[8], c: PAR, r: R8, vmax: 1e7 },
     { info: T.calme, ring: [PAR, 1.0e6, 1.5e6], vmax: 3e7 },
     { info: INFO[9], ring: [PAR, 1.5e6, 2.65e7], vmax: 3e8 },
     { info: T.niveau2, ring: [PAR, 7.75e7, 1.1e8], vmax: 2e9 }
   ]);
+  // exploration libre : le niveau du parcours guidé qui correspond à la hauteur du champ, s’il contient le point visé
+  // (sinon le premier niveau plus vaste qui le contient) ; au-delà des niveaux construits, le maitre univers puis l’au-delà
+  function levelAt(f, u) {
+    const n = clamp(Math.round(u), 0, INFO.length - 1);
+    for (let k = n; k < LV.length; k++) if (f.distanceTo(LV[k].P.clone().negate()) < (k === 0 ? 80 : 1.5) * LV[k].R) return k;
+    return n >= LV.length ? n : -1;
+  }
   function placeAt(f, V) {
     for (let i = 0; i < PLACES.length; i++) {
       const p = PLACES[i];
@@ -1827,7 +1858,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       note: '«&nbsp;Quant au gouvernement de l’univers central, il n’y en a pas.&nbsp;»' + REF('14:3.1') + ' Sept Superviseurs Suprêmes des circuits siègent sur les mondes-pilotes, et sept Esprits des Circuits, impersonnels, imprègnent chacun un circuit' + REF('24:1.7 · 17:5.1') + '.' },
     { lvl: 'Le grand univers', seat: 'depuis le Paradis', u: 8, rulers: [
       { n: 'les Sept Maitres Esprits', o: 'esprit', r: 'chacun supervise le superunivers qui porte son numéro, depuis un siège focal sur le pourtour du Paradis&nbsp;; hors du Paradis et de Havona, l’Esprit Infini ne parle que par eux', ref: '16:0.12 · 16:3 · 16:2.2' },
-      { n: 'les Sept Agents Exécutifs Suprêmes', o: 'esprit', r: 'coordinateurs administratifs du grand univers, un par superunivers&nbsp;; ils nomment tous les autres dirigeants mais ne formulent aucune politique', ref: '17:1.3–8' },
+      { n: 'les Sept Agents Exécutifs Suprêmes', o: 'esprit', r: 'coordinateurs administratifs du grand univers, un par superunivers&nbsp;; ils nomment les dirigeants de leur administration, hors de leurs deux cabinets consultatifs, mais ne formulent aucune politique', ref: '17:1.3–8' },
       { n: 'Majeston et les Esprits Réflectifs', o: 'autre', r: 'le service de réflectivité, qui relie le Paradis aux gouvernements des superunivers', ref: '17:2.3 · 17:8.7' },
       { n: 'les Sept Directeurs Suprêmes de Pouvoir', o: 'esprit', r: 'chacun associé à un Maitre Esprit, ils règlent l’énergie-pouvoir des superunivers', ref: '29:1.2–3' },
       { n: 'l’Être Suprême', o: 'deite', r: 'Déité en évolution du grand univers, «&nbsp;qu’il englobe&nbsp;»', ref: '0:9.1' }],
@@ -1947,6 +1978,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     l.el.style.display = 'none';
     // priorité au désencombrement : repères, titres de niveau, lieux en or, autres lieux, étoiles
     if (l.prio == null) l.prio = l.cls.indexOf('core') >= 0 ? 1 : l.cls.indexOf('gold') >= 0 ? 2 : l.cls.indexOf('star') >= 0 ? 4 : 3;
+    // secondaire (étoile, annotation) : masquée si elle déborde de l’écran ; importante (niveau, lieu) : ramenée dans l’écran
+    l.minor = l.cls.indexOf('star') >= 0 || (l.cls.indexOf('small') >= 0 && l.cls.indexOf('gold') < 0);
     if (!go) l.el.setAttribute('aria-hidden', 'true');
     else {
       l.el.type = 'button';
@@ -1954,7 +1987,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       l.el.title = 'S’en approcher';
       l.el.addEventListener('click', () => {
         if (!l.wp || coupe) return;
-        if (l.body && (BODY_BY[l.body] || CARD_AT[l.body] || l.body === 'lune')) goBody(l.body);   // un astre : on vole jusqu’à lui et sa fiche s’ouvre
+        if (l.body && (BODY_BY[l.body] || CARD_AT[l.body] || l.body === 'lune' || l.body === 'urantia')) goBody(l.body);   // un astre : on vole jusqu’à lui et sa fiche s’ouvre
         else { goWorld(l.wp, l.zoomV); if (l.body) openCard(l.body); }
       });
     }
@@ -1970,9 +2003,30 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     let x = (tmp2.x * 0.5 + 0.5) * w;
     const y = (-tmp2.y * 0.5 + 0.5) * h + (l.dy || 0);
     if (x < -80 || x > w + 80 || y < -30 || y > h + 30) return false;
-    if (l.w && x >= 0 && x <= w) x = clamp(x, l.w / 2 + 4, w - l.w / 2 - 4);   // ancre à l’écran : l’étiquette n’en déborde pas
-    l.px = x; l.py = y;
-    l.el.style.transform = 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) translate(-50%,' + (l.below ? '0' : '-100%') + ')';
+    l.ax = x; l.ay = y; l.px = x; l.py = y;          // point d’ancrage à l’écran, avant recadrage
+    if (l.w) return fit(l, w, h);                    // déjà mesurée : gardée dans l’écran, ou masquée si secondaire
+    setXY(l);
+    return true;
+  }
+  function setXY(l) { l.el.style.transform = 'translate(' + l.px.toFixed(1) + 'px,' + l.py.toFixed(1) + 'px) translate(-50%,' + (l.below ? '0' : '-100%') + ')'; }
+  // l’étiquette entière dans l’écran, zones sûres comprises : une importante est ramenée vers l’intérieur, une secondaire est masquée
+  let edgeL = 12, edgeR = 12;
+  const insetProbe = document.createElement('div');
+  insetProbe.style.cssText = 'position:fixed;left:0;top:0;width:0;height:0;visibility:hidden;pointer-events:none;padding:env(safe-area-inset-top,0px) env(safe-area-inset-right,0px) env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px)';
+  document.body.appendChild(insetProbe);
+  function readInsets() {
+    if (!window.getComputedStyle) return;
+    const cs = getComputedStyle(insetProbe);
+    edgeL = Math.max(12, (parseFloat(cs.paddingLeft) || 0) + 4); edgeR = Math.max(12, (parseFloat(cs.paddingRight) || 0) + 4);
+  }
+  function fit(l, w, h) {
+    const hw = l.w / 2, x0 = l.ax - hw, x1 = l.ax + hw, y0 = l.below ? l.ay : l.ay - l.hh, y1 = l.below ? l.ay + l.hh : l.ay;
+    if (x0 < edgeL || x1 > w - edgeR || y0 < 2 || y1 > h - 2) {
+      if (l.minor) return false;
+      l.px = clamp(l.ax, edgeL + hw, Math.max(edgeL + hw, w - edgeR - hw));
+      l.py = l.below ? clamp(l.ay, 2, Math.max(2, h - 2 - l.hh)) : clamp(l.ay, 2 + l.hh, Math.max(2 + l.hh, h - 2));
+    } else { l.px = l.ax; l.py = l.ay; }
+    setXY(l);
     return true;
   }
 
@@ -2093,7 +2147,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (au < 5000) return '≈ ' + nf(au) + ' UA';
     return '≈ ' + nf(ly) + ' a.-l.';
   }
-  let shownKey = '', shownMeta = '', shownDeity = '', absShown = false, centerOn = false;
+  let shownKey = '', shownMeta = '', shownDeity = '', absShown = false, absFolded = false, centerOn = false;
   const absEl = document.getElementById('abs'), tCenter = document.getElementById('t-center');
   // annonce pour les lecteurs d’écran : le seul titre du niveau, après 700 ms de stabilité
   const srLive = document.getElementById('sr-live');
@@ -2123,13 +2177,15 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (free && !coupe) {
       const nb0 = nearBody(focusPhys), nb = nb0 && V < 400 * nb0.rly ? nb0 : null;   // l’astre seulement tant qu’on en est proche
       const p = nb ? null : placeAt(focusPhys, V);
+      const lv = nb || p ? -1 : levelAt(focusPhys, uCur);                              // sinon le niveau à cette hauteur, comme sur le parcours guidé
       if (nb) { t = { h: CARDS[nb.key].n, p: HUDB(nb.key) }; key = 'b' + nb.key; }
       else if (p) { t = p.info; key = 'p' + PLACES.indexOf(p); }
+      else if (lv >= 0) { t = INFO[lv]; key = 's' + lv; }
       else { t = { h: 'Exploration libre', p: 'Rien de particulier n’est décrit à cet endroit. Éloigne-toi, déplace-toi ou clique sur «&nbsp;Recentrer&nbsp;» pour revenir à Urantia.' }; key = 'vide'; }
     }
     if (key !== shownKey) {
       shownKey = key;
-      infoH.textContent = t.h;
+      infoH.innerHTML = t.s ? '<span class="h-long">' + t.h + '</span><span class="h-short">' + t.s + '</span>' : t.h;   // titre court sur téléphone
       infoP.innerHTML = t.p;
       announce(t.h);
     }
@@ -2149,8 +2205,13 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const dt = deity ? deityText(V) : '';
     if (dt !== shownDeity) { shownDeity = dt; infoD.hidden = !deity; infoD.innerHTML = dt; }
     // schéma des trois Absolus, au-delà du maitre univers ; jamais par-dessus « Qui gouverne quoi » ni un autre tiroir
-    const sa = deity && !coupe && !govOn && !drawerOpen() && V >= 1e9;
-    if (sa !== absShown) { absShown = sa; absEl.hidden = !sa; }
+    const sa = deity && !coupe && !govOn && !tlOn && !ascOn && !drawerOpen() && V >= 1e9;
+    if (sa !== absShown) {
+      absShown = sa; absEl.hidden = !sa;
+      // au bureau, le texte du niveau se replie à l’ouverture du schéma, et se déplie à sa fermeture s’il avait été replié ainsi
+      if (sa && !isMobile() && !infoEl.classList.contains('min')) { setInfoMin(true); absFolded = true; }
+      else if (!sa && absFolded) { absFolded = false; setInfoMin(false); }
+    }
     // bien au-delà du système solaire, la fiche se referme (pas pendant la descente vers l’astre)
     if (!bcard.hidden && !fly && (coupe || Math.min(V, uToV(uTarget)) > 4e-3)) closeCard();
     if (!sliderActive) slider.value = uCur.toFixed(2);
@@ -2646,7 +2707,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       b: BR('Le livre la cite pour son atmosphère, en classant les êtres des mondes habités selon l’air qu’ils respirent&nbsp;:') +
         Q("Si des créatures intelligentes existaient sur une planète ayant une atmosphère semblable à celle de Vénus, votre plus proche voisine, elles appartiendraient au groupe superrespirateur […]", "49:2.13") +
         BR('Comme les autres planètes intérieures, elle se forma «&nbsp;en miniature&nbsp;» à une extrémité de la colonne de gaz arrachée au Soleil {57:5.9}.'),
-      s: '<p>Son atmosphère de gaz carbonique est environ 90 fois plus dense que celle de la Terre. On n’en voit que le sommet des nuages, ici en image générée d’après les photographies.</p>',
+      s: '<p>Son atmosphère de gaz carbonique exerce au sol une pression environ 90 fois plus forte que sur la Terre. On n’en voit que le sommet des nuages, ici en image générée d’après les photographies.</p>',
       f: [['Diamètre', '12' + NB + '104 km'], ['Distance au Soleil', '0,72 UA'], ['Année', '225 jours'], ['Rotation', '243 jours, à rebours']] },
     urantia: { n: 'Urantia', k: 'Urantia', e: 'Notre monde, la Terre',
       b: BR('C’est le nom que le livre donne à la Terre&nbsp;: le monde n°&nbsp;606 du système de Satania {15:14.5}.') +
@@ -2675,7 +2736,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
         Q("[…] ils furent en réalité des soleils secondaires durant une brève période qui suivit leur formation en tant que corps spatiaux distincts.", "57:5.10") +
         BR('L’une de ses lunes s’approche dangereusement de la zone où les marées la disloqueraient&nbsp;: d’ici quelques millions d’années, elle sera captée par la planète ou désintégrée. Le texte ne dit pas laquelle {57:6.5}.') +
         Q("Or, le 29 mai du même an 7, il y avait eu une extraordinaire conjonction de Jupiter et de Saturne dans la constellation des Poissons.", "122:8.7") +
-        BR('Selon le livre, cette conjonction de l’an 7 av. J.-C., année de la naissance de Jésus, est à l’origine de la légende de l’étoile de Bethléem {122:8.7}.'),
+        BR('Deux autres conjonctions suivirent la même année, le 29 septembre et le 5 décembre. Selon le livre, ces évènements de l’an 7 av. J.-C., année de la naissance de Jésus, sont à l’origine de la légende de l’étoile de Bethléem {122:8.7}.'),
       s: '<p>Onze fois plus large que la Terre, Jupiter porte la Grande Tache rouge, une tempête plus vaste que notre planète. La carte vient de la sonde Cassini (décembre 2000).</p>',
       f: [['Diamètre', '142' + NB + '984 km'], ['Distance au Soleil', '5,20 UA'], ['Année', '11,9 ans'], ['Rotation', '9 h 56 min']] },
     saturne: { n: 'Saturne', k: 'Saturne', e: 'La planète aux anneaux',
@@ -2690,7 +2751,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       s: '<p>Découverte en 1781 par William Herschel. Son axe est presque couché sur le plan de son orbite (98°)&nbsp;; ses anneaux, étroits et sombres, ont été découverts en 1977.</p>',
       f: [['Diamètre', '51' + NB + '118 km'], ['Distance au Soleil', '19,2 UA'], ['Année', '84 ans'], ['Rotation', '17 h 14 min, à rebours']] },
     neptune: { n: 'Neptune', k: 'Neptune', e: 'Une planète extérieure',
-      b: BR('Le livre ne nomme pas Neptune. Il décrit douze planètes nées de la colonne de gaz arrachée au Soleil {57:5.7}, dont cinq planètes extérieures formées «&nbsp;en miniature&nbsp;» {57:5.9}.') +
+      b: BR('Le livre ne nomme pas la planète Neptune. Il décrit douze planètes nées de la colonne de gaz arrachée au Soleil {57:5.7}, dont cinq planètes extérieures formées «&nbsp;en miniature&nbsp;» {57:5.9}.') +
         '<p class="bc-none">Par déduction, Neptune serait l’une de ces planètes extérieures&nbsp;; le texte ne le précise pas.</p>',
       s: '<p>Découverte en 1846 grâce aux calculs d’Urbain Le Verrier. Ses vents, les plus rapides du système solaire, dépassent 2' + NB + '000 km/h. Bandes, nuages et tache sombre sont ici illustratifs.</p>',
       f: [['Diamètre', '49' + NB + '528 km'], ['Distance au Soleil', '30,1 UA'], ['Année', '165 ans'], ['Rotation', '16 h 7 min']] },
@@ -2901,6 +2962,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     camera.updateProjectionMatrix();
     allPts.forEach((p) => { p.material.uniforms.uPR.value = renderer.getPixelRatio(); });
     measureTop();
+    readInsets();
+    ALL.concat([hereLabel, ascLabel]).forEach((l) => { l.w = 0; if (l.el && l.el.classList) l.el.classList.remove('clamp2'); });   // largeur changée : nouvelle mesure
   }
   // les panneaux de droite se placent sous les boutons des modes, quelle que soit leur hauteur (polices, largeur)
   function measureTop() {
@@ -2921,6 +2984,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const out = [];
     UI_ZONES.forEach((e) => {
       if (e.hidden || !e.getClientRects || !e.getClientRects().length) return;
+      const dt = e.closest ? e.closest('details') : null;
+      if (dt && !dt.open && e.tagName !== 'SUMMARY') return;   // contenu d’un details fermé : Chrome lui garde une boîte invisible
       const r = e.getBoundingClientRect();
       if (r.width > 0 && r.height > 0) out.push([r.left - cr.left - 4, r.top - cr.top - 4, r.left + r.width - cr.left + 4, r.top + r.height - cr.top + 4]);
     });
@@ -2933,6 +2998,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const fresh = cand.filter((l) => !l.w);
     fresh.forEach((l) => { l.el.style.display = ''; });
     fresh.forEach((l) => { l.w = l.el.offsetWidth || 7 * String(l.text || '').length + 8; l.hh = l.el.offsetHeight || 26; });
+    // plus de deux lignes (écran étroit) : coupe à deux lignes, puis nouvelle mesure
+    const tall = window.getComputedStyle ? fresh.filter((l) => { const lh = parseFloat(getComputedStyle(l.el).lineHeight); return lh > 0 && l.hh - 11 > 2.5 * lh; }) : [];
+    tall.forEach((l) => { l.el.classList.add('clamp2'); });
+    tall.forEach((l) => { l.w = l.el.offsetWidth || l.w; l.hh = l.el.offsetHeight || l.hh; });
+    // étiquettes tout juste mesurées : ramenées dans l’écran, ou masquées si secondaires et débordantes
+    const drop = new Set();
+    fresh.forEach((l) => { if (!fit(l, w, h)) { drop.add(l); l.el.style.display = 'none'; l.was = false; } });
+    if (drop.size) cand = cand.filter((l) => !drop.has(l));
     const pad = mob ? 6 : 2, max = mob ? 7 : 1e9;
     const rank = (l) => l.prio * 1e9 + (l.was ? 0 : 4e8) + (l.px - w / 2) * (l.px - w / 2) + (l.py - h / 2) * (l.py - h / 2);
     cand.sort((a, b) => rank(a) - rank(b));
@@ -2949,6 +3022,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   function updateLabels(w, h, V) {
     const cr = canvas.getBoundingClientRect(), occ = uiBoxes(cr), cand = [], mob = isMobile();
     const nearPar = PAR.distanceTo(focusPhys) < 1.2 * V;     // regarde-t-on l’univers central ?
+    // disques des astres à l’écran : le nom d’une étoile qui passe derrière n’est pas affiché
+    const discs = [];
+    if (labelsOn) {
+      const kpx = h / (2 * Math.tan(25 * DEG));
+      const disc = (rad) => { const d = pv.distanceTo(camera.position); if (d <= rad) return; pv.project(camera); if (pv.z <= 1) discs.push([(pv.x * 0.5 + 0.5) * w, (-pv.y * 0.5 + 0.5) * h, rad / d * kpx]); };
+      if (PLN.group.visible) BODIES.forEach((B) => { if (B.tilt.visible) { B.tilt.getWorldPosition(pv); disc(B.rau * PLN.group.scale.x); } });
+      if (L0.group.visible && FACT.planets > 0.5) { planet.getWorldPosition(pv); disc(1.07 * L0.group.scale.x); if (moonMesh) { moonMesh.getWorldPosition(pv); disc(0.273 * L0.group.scale.x); } }
+    }
     ALL.forEach((l) => {
       const L = l.L;
       let show = labelsOn && L.group.visible && L.a > 0.55;
@@ -2975,6 +3056,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
         } else if (L === SKY) tmp.copy(l.local).add(SKY.group.position);         // le ciel suit la caméra
         else tmp.copy(l.local).applyQuaternion(L.group.quaternion).multiplyScalar(L.group.scale.x).add(L.group.position);
         if (show) show = place(l, tmp, w, h);
+        if (show && discs.length && l.cls.indexOf('star') >= 0) show = !discs.some((d) => (l.ax - d[0]) * (l.ax - d[0]) + (l.ay - d[1]) * (l.ay - d[1]) < d[2] * d[2]);
         if (show) (l.wp || (l.wp = new V3())).copy(tmp);
       }
       if (show) cand.push(l); else l.el.style.display = 'none';
@@ -2990,6 +3072,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   // Décalage de la vue : le point visé se place au centre de la zone que les panneaux laissent libre
   const topEl = document.querySelector('.top'), bottomEl = document.querySelector('.bottom');
   const viewOff = { x: 0, y: 0, on: false };
+  let botC = -1;
   function freeArea(dt) {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
@@ -2997,6 +3080,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     const box = (e) => { const r = e.getBoundingClientRect(); return { l: r.left - cr.left, t: r.top - cr.top, b: r.top + r.height - cr.top }; };
     let tx = 0, ty = 0, bottom = h;
     const top = Math.max(0, box(topEl).b);
+    const bc = Math.round(h - box(bottomEl).t + 10), de = document.documentElement;   // le schéma des Absolus s’arrête au-dessus de la barre du bas
+    if (bc !== botC && de && de.style && de.style.setProperty) { botC = bc; de.style.setProperty('--bot-c', bc + 'px'); }
     if (mob) bottom = box(bottomEl).t;                         // téléphone : au-dessus du niveau, de l’échelle et du zoom
     [tlEl, ascEl, bcard, govEl, absEl, infoOpen ? infoEl : null].forEach((p) => {
       if (!p || p.hidden || (p === absEl && !mob)) return;
@@ -3155,7 +3240,17 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     });
   }
   proxies.forEach((p) => p.addEventListener('click', () => { menuEl.open = false; document.getElementById(p.dataset.proxy).click(); }));
-  menuEl.addEventListener('toggle', () => { if (menuEl.open) onlyDrawer('menu'); });
+  // téléphone : le menu passe par-dessus le tiroir ouvert sans le fermer ; refermé sans choix de mode, le tiroir réapparait
+  menuEl.addEventListener('toggle', () => {
+    document.body.classList.toggle('menu-open', menuEl.open);
+    if (menuEl.open && !coach.hidden) coach.hidden = true;
+  });
+  // 12. libellé du menu : au bureau, les pages seules ; sur téléphone, le tiroir porte aussi les modes et les réglages
+  function setMenuLabel() { menuSum.setAttribute('aria-label', isMobile() ? 'Menu : pages de l’atlas, modes et réglages' : 'Pages de l’atlas'); }
+  setMenuLabel();
+  if (mqMobile && mqMobile.addEventListener) mqMobile.addEventListener('change', setMenuLabel);
+  // toucher la scène referme le menu (sur écran tactile, les contrôles 3D annulent le clic qui suivrait le toucher)
+  canvas.addEventListener('pointerdown', () => { if (menuEl.open) menuEl.open = false; });
   document.addEventListener('click', (e) => {
     const tg = e.target;
     // un lien du menu, ou un clic hors du menu, le referme
@@ -3184,14 +3279,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
   infoMore.addEventListener('click', openInfo);
   infoX.addEventListener('click', () => closeInfo(true));
-  infoMin.addEventListener('click', () => {
-    const m = !infoEl.classList.contains('min');
+  function setInfoMin(m) {
     infoEl.classList.toggle('min', m);
     infoMin.textContent = m ? '▸' : '▾';
     infoMin.title = m ? 'Déplier le texte' : 'Replier le texte';
     infoMin.setAttribute('aria-label', infoMin.title);
     infoMin.setAttribute('aria-expanded', String(!m));
-  });
+  }
+  infoMin.addEventListener('click', () => { absFolded = false; setInfoMin(!infoEl.classList.contains('min')); });
   // boutons × de la frise, de la carrière et du schéma des Absolus
   Array.prototype.forEach.call(document.querySelectorAll('[data-close]'), (b) => b.addEventListener('click', () => { if (b.dataset.close === 'tl') setTimeline(false); else setAsc(false); }));
   document.getElementById('abs-x').addEventListener('click', () => { if (deity) tDeite.click(); });

@@ -1,22 +1,42 @@
 # Reconstruire le site
 
-Ce dossier contient les scripts et les données intermédiaires qui produisent « Le Livre d’Urantia en images ». Les étapes s’enchaînent dans cet ordre : **polices → étoiles → contours → textures → assemblage → références → site**. Les données intermédiaires (`etoiles.json`, `geo.json`, `tex.json`, `refs-urantia.js`) sont fournies : pour reconstruire le site seul, la dernière étape suffit.
+Ce dossier contient les pages, les scripts et les données intermédiaires qui produisent « Le Livre d’Urantia en images ». Les étapes s’enchaînent dans cet ordre : **polices → étoiles → contours → textures → assemblage → références → site**. Les données intermédiaires (`etoiles.json`, `geo.json`, `tex.json`, `refs-urantia.js`) sont fournies : pour reconstruire le site, la dernière étape suffit.
 
-## Ce qu’il faut
+## Reconstruire le site depuis un clone du dépôt
+
+Depuis la racine du dépôt, dans un **autre** dossier (le script refuse d’écrire sur ses propres sources) :
+
+```
+python -I sources/construire_site.py sources ../atlas-site
+```
+
+Python 3.11 ou plus récent suffit ; aucun paquet n’est nécessaire pour cette étape. Le script trouve les pages dans `sources/`, les ressources dans le site publié (polices et Three.js dans `assets/`, README, licences et `.github/` à la racine) et assemble la vue 3D à la volée à partir de `urantia-paradis-3d.src.html` et de ses données, comme l’étape 5. Le dossier obtenu est le site complet : on peut l’ouvrir (`index.html`) ou le publier, par exemple en le copiant à la racine du dépôt.
+
+Pour modifier une page : éditer `sources/<page>.html`, reconstruire, vérifier dans un navigateur, puis proposer la modification (voir `CONTRIBUER.md`).
+
+## Note pour le mainteneur : les sources maîtresses
+
+La copie de travail de l’auteur garde, hors du dépôt, les **sources maîtresses** des pages (`visuels/source/*.html`) : elles contiennent les adresses des versions publiées sur claude.ai (`artefacts.json`) et les rangées de liens `data-artefact` propres à ces versions. La construction en tire les copies nettoyées de `sources/` (adresses rendues relatives, rangées et balises `claude:` retirées). **Une contribution acceptée sur `sources/*.html` doit donc être reportée dans la source maîtresse**, sans quoi la construction suivante l’effacerait. Une page remplacée (par exemple une nouvelle version de `bible-et-livre.html`) est reprise telle quelle à la construction suivante : il suffit de remplacer la source maîtresse.
+
+## Toute la chaîne : ce qu’il faut
 
 - Python 3.11 ou plus récent (essayé avec 3.13), avec les paquets de `requirements.txt` : `python -m pip install -r requirements.txt` (NumPy et Pillow, pour `textures.py` seulement) ;
 - Node.js 18 ou plus récent, pour le test facultatif `smoke3d.js` ;
-- un dossier de travail organisé ainsi :
+- un dossier de travail organisé ainsi (copie de travail de l’auteur) :
 
 ```
 visuels/
   lib/                three.min.js et OrbitControls.js (Three.js r128), LICENSE-three.txt
-  source/             ce dossier : pages de l’atlas, scripts, données intermédiaires
+  source/             ce dossier : pages maîtresses de l’atlas, scripts, données intermédiaires,
+                      hors-ligne.js et musique.js (copiés dans assets/)
     polices/          fonts.css, fichiers WOFF2 et licences OFL (produits par polices.py)
-    site/             README.md, LICENCES.md, LICENSE, LICENSE-CONTENU.md, favicon.svg,
-                      apercu.png, apple-touch-icon.png
+    site/             README.md, LICENCES.md, LICENSE, LICENSE-CONTENU.md, CONTRIBUER.md, .github/
+                      (formulaires de tickets, modèle de demande), favicon.svg, apercu.png,
+                      apple-touch-icon.png, icone-192.png, icone-512.png, icone-512-maskable.png
     artefacts.json    facultatif, non publié : adresses claude.ai des pages, rendues relatives
 ```
+
+Les icônes de l’application (`icone-*.png`) et `apple-touch-icon.png` sont des rendus de `favicon.svg` par Chrome sans interface ; la version `maskable` place le dessin dans la zone sûre (80 % du diamètre) sur fond plein `#0C1120`.
 
 Three.js r128 : https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js et https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js.
 
@@ -30,7 +50,14 @@ Commandes lancées depuis `visuels/source/`.
 4. **Textures** : `python -I textures.py <dossier des images> tex.json` ; le dossier contient `terre-jour.jpg`, `terre-nuit.jpg`, `lune.jpg` et `planetes/` (`jupiter.jpg`, `mars.jpg`, `mercure.jpg`, `pluton.jpg`).
 5. **Assemblage de la vue 3D** : `python -I assembler.py urantia-paradis-3d.src.html etoiles.json urantia-paradis-3d.html geo.json tex.json`, puis, pour tester : `node smoke3d.js urantia-paradis-3d.html ../lib/three.min.js ../lib/OrbitControls.js`.
 6. **Références** : `python -I liens_refs.py table <table des matières enregistrée> refs-urantia.js` fabrique le script à partir de la table des matières de https://www.urantia.org/fr/le-livre-durantia/lire ; `python -I liens_refs.py injecte refs-urantia.js <pages…>` le place en fin de page (bloc `<script id="refs-urantia">`, gardé dans les pages publiées sur claude.ai ; dans le site, il devient le fichier partagé `assets/refs-urantia.js`).
-7. **Site** : depuis le dossier qui contient `erudit/` et `site/` : `python -I erudit/visuels/source/construire_site.py erudit/visuels/source site`. Le script ajoute à chaque page la barre commune, le parcours de découverte, les métadonnées et la typographie française, copie les ressources, écrit `404.html` et vérifie les liens internes.
+7. **Site** : dans la copie de travail de l’auteur, depuis le dossier qui contient `erudit/` et `site/` : `python -I erudit/visuels/source/construire_site.py erudit/visuels/source site` ; depuis un clone du dépôt : voir plus haut. Le script ajoute à chaque page la barre commune, le parcours de découverte, le pied commun (crédit, code source, licences, « Signaler une erreur sur cette page »), les métadonnées et la typographie française ; il copie les ressources, écrit `404.html`, `hors-ligne.html`, `manifest.webmanifest` et le service worker `sw.js`, puis vérifie les liens internes.
+
+## Application installable et lecture hors ligne
+
+- `manifest.webmanifest` (nom, icônes, couleurs) et les balises d’installation sont écrits par `construire_site.py` ; `assets/hors-ligne.js` (source : `hors-ligne.js`) enregistre le service worker, seulement en http(s), et anime l’encadré « Lire hors ligne » de l’accueil.
+- `assets/musique.js` (source : `musique.js`) est chargé par chaque page : il pilote le bouton ♪ de la barre commune (attribut `data-musique`), qu’il ne démasque que si le navigateur produit le son.
+- `sw.js` est **réécrit à chaque construction**. `VERSION` est l’empreinte du contenu des fichiers de l’atlas (pages, polices, Three.js, scripts, icônes, manifeste ; ni `sources/`, ni README, ni licences, ni `.git`) : dès qu’un fichier change, la version change, l’ancien cache est supprimé à l’activation, et les fichiers déjà enregistrés sont repris (copiés s’ils n’ont pas changé, téléchargés de nouveau sinon).
+- À l’installation, un noyau léger est enregistré (accueil, page hors ligne, polices, scripts communs, icônes, manifeste). Les pages consultées le sont ensuite au fil de la lecture ; le bouton « Télécharger pour lire hors ligne » enregistre tout le reste. Navigations : le réseau d’abord (3 s au plus), puis la copie enregistrée, puis `hors-ligne.html`. Les autres sites (urantia.org) ne sont jamais mis en cache.
 
 ## Données d’entrée
 

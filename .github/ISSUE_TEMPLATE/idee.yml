@@ -1,0 +1,33 @@
+name: Proposer une idée
+description: Une page, un schéma, une amélioration ou un rapprochement à ajouter à l’atlas.
+title: "[Idée] "
+labels: ["idée"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Merci pour votre idée ! Décrivez ce qui aiderait la lecture ou l’étude du livre.
+        Les règles du site sont dans [CONTRIBUER.md](https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md).
+  - type: textarea
+    id: idee
+    attributes:
+      label: Votre idée
+      description: Ce que vous proposez, et ce que le lecteur y gagnerait.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Page concernée
+      description: Une page existante, ou « nouvelle page ».
+      placeholder: "Concepts en schémas (concepts-en-schemas.html)"
+    validations:
+      required: false
+  - type: textarea
+    id: references
+    attributes:
+      label: Références du livre
+      description: Les passages utiles, au format fascicule:section.paragraphe.
+      placeholder: "111:1.9 ; 112:5.4"
+    validations:
+      required: false

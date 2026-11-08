@@ -1,0 +1,1236 @@
+<title>La rébellion de Lucifer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : un dossier d’enquête. Le schéma des trois échelles et sa fiche en regard, puis la question
+   de l’isolement, la frise segmentée, le manifeste, les camps en chiffres. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  /* Camps : or pour les loyaux, rouge sobre pour les rebelles, ardoise pour les autres */
+  --loy: #C28410; --loy-ink: #8A5A00; --loy-soft: #FBF4E4;
+  --reb: #A8352F; --reb-ink: #9A2E27; --reb-soft: #FBEDEB; --on-reb: #FFFFFF;
+  --neu: #6F7891; --neu-ink: #4D566F; --neu-soft: #EEF0F5;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+    --loy: #EDB03A; --loy-ink: #F4C664; --loy-soft: #221F17;
+    --reb: #E8695D; --reb-ink: #F49488; --reb-soft: #2A1820; --on-reb: #1B0C0A;
+    --neu: #9AA3BA; --neu-ink: #BAC1D3; --neu-soft: #1A2136;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405;
+  --loy: #EDB03A; --loy-ink: #F4C664; --loy-soft: #221F17;
+  --reb: #E8695D; --reb-ink: #F49488; --reb-soft: #2A1820; --on-reb: #1B0C0A;
+  --neu: #9AA3BA; --neu-ink: #BAC1D3; --neu-soft: #1A2136;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* Icônes des camps */
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; }
+.c-loy { color: var(--loy); } .c-reb { color: var(--reb); } .c-neu { color: var(--neu); } .c-evt { color: var(--muted); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 52ch; }
+.links { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: .98rem; }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { padding-block: 6px; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; }
+.cta:hover { background: var(--reb-ink); color: var(--on-reb); }
+.cta .ar { font-family: var(--font-mono); }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.keys { list-style: none; margin: 0; padding: 0 0 10px; display: grid; gap: 9px; border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.35; }
+.keys .ic { width: 1.3rem; height: 1.3rem; margin-top: 1px; grid-row: span 2; }
+.keys .kd { color: var(--muted); font-size: .86rem; }
+.codebox .note { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.ded { font: 500 .7rem/1.2 var(--font-mono); color: var(--gold-ink); border: 1px solid var(--gold); border-radius: 5px; padding: 1px 6px; white-space: nowrap; }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .nb, .toc a.hot .tt { color: var(--reb-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 72ch; }
+.hint { color: var(--muted); font-size: .96rem; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite.r { border-left-color: var(--reb); }
+
+/* Schéma des trois échelles */
+.ctl-row { margin-top: 22px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.ctl-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.seg-ctl { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 18px; padding: 3px; background: var(--sheet); max-width: 100%; gap: 2px; }
+.seg-ctl button { appearance: none; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 500 .92rem/1.2 var(--font-body); padding: 7px 13px 7px 9px; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; }
+.seg-ctl button:hover { background: var(--tint); }
+.seg-ctl button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+.seg-ctl svg { width: 22px; height: 22px; flex: none; }
+.seg-ctl svg circle { fill: none; stroke: currentColor; stroke-width: 1.4; opacity: .45; }
+.seg-ctl svg circle.on { opacity: 1; stroke-width: 2.4; }
+.schema { margin-top: 16px; display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+.scale { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 16px; min-width: 0; }
+.scale-head { display: grid; gap: 6px; max-width: 64ch; }
+.scale-head h3 { font-size: 1.6rem; }
+.scale-head p:not(.eyebrow) { color: var(--muted); font-size: .95rem; }
+.arena { display: grid; gap: 12px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.arena.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.arena-mid { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; padding: 4px 0 14px; border-bottom: 1px dashed var(--rule); }
+.arena-mid .mid-lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.camp { min-width: 0; display: grid; gap: 8px; align-content: start; padding: 10px; border-radius: 10px; border-top: 3px solid var(--c); background: var(--soft); }
+.camp-reb { --c: var(--reb); --soft: var(--reb-soft); }
+.camp-loy { --c: var(--loy); --soft: var(--loy-soft); }
+.camp-neu { --c: var(--neu); --soft: var(--neu-soft); }
+.camp-h { display: flex; align-items: center; gap: 8px; font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.camp-h .ic { width: 1.2rem; height: 1.2rem; }
+.nodes { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.node { appearance: none; width: 100%; min-height: 44px; text-align: left; display: grid; grid-template-columns: 1.3rem minmax(0, 1fr); gap: 0 10px; align-items: center;
+  padding: 7px 10px; border: 1px solid var(--rule); border-radius: 9px; background: var(--sheet); color: var(--ink); font: inherit; cursor: pointer; }
+.node .ic { width: 1.3rem; height: 1.3rem; grid-row: span 2; align-self: center; }
+.node .nm { font-weight: 700; font-size: .98rem; line-height: 1.2; }
+.node .rl { font-size: .82rem; color: var(--muted); line-height: 1.25; }
+.node:hover { border-color: var(--muted); }
+.node[aria-current="true"] { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.node.evt { width: auto; max-width: 100%; border-style: dashed; }
+.scale-foot { font-size: .88rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.chip { appearance: none; border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); color: var(--ink); font: 500 .86rem/1.2 var(--font-body); padding: 6px 12px; cursor: pointer; max-width: 100%; text-align: left; }
+.chip:hover { border-color: var(--muted); }
+.fiche { position: sticky; top: 12px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 12px; min-width: 0; }
+.fiche h3 { font-size: 1.7rem; }
+.f-top { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.badge { display: inline-flex; align-items: center; gap: 6px; font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px 4px 6px; border-radius: 999px; border: 1px solid var(--c); color: var(--ink); background: var(--soft); }
+.badge.b-reb { --c: var(--reb); --soft: var(--reb-soft); } .badge.b-loy { --c: var(--loy); --soft: var(--loy-soft); }
+.badge.b-neu { --c: var(--neu); --soft: var(--neu-soft); } .badge.b-evt { --c: var(--rule); --soft: var(--tint); }
+.badge .ic { width: 1.05rem; height: 1.05rem; }
+.f-role { color: var(--muted); font-size: 1rem; margin-top: -4px; }
+.f-dl { margin: 0; display: grid; grid-template-columns: 4.9rem minmax(0, 1fr); gap: 9px 12px; font-size: .95rem; }
+.f-dl dt { font: 500 .72rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.f-dl dd { margin: 0; min-width: 0; overflow-wrap: break-word; line-height: 1.55; }
+.see { font-size: .9rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: center; }
+.back { display: none; }
+
+/* Isolement */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--reb); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 28px; }
+.bannieres { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 28px; margin: 4px 0 26px; max-width: 760px; }
+.bannieres figure { margin: 0; display: grid; gap: 10px; align-content: start; }
+.bannieres svg { width: 100%; max-width: 240px; height: auto; border: 1px solid var(--rule); border-radius: 6px; background: #FFFFFF; box-shadow: 0 6px 18px -12px rgba(24, 33, 59, .5); }
+.bannieres figcaption { font-size: .95rem; color: var(--muted); }
+.bannieres figcaption b { color: var(--ink); font-weight: 600; }
+.bannieres .note { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 520px) { .bannieres { grid-template-columns: minmax(0, 1fr); } }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.iso-top { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 30px; align-items: center; }
+.iso-fig { margin: 0; display: grid; gap: 8px; }
+.iso-fig svg { width: 100%; height: auto; display: block; }
+.iso-fig figcaption { font-size: .82rem; color: var(--muted); line-height: 1.4; }
+.ring { fill: none; stroke: var(--rule); stroke-width: 1.5; }
+.ring.sat { stroke: var(--reb); stroke-dasharray: 5 4; stroke-width: 1.6; }
+.ring.ura { stroke: var(--reb); stroke-width: 3; }
+.ura-core { fill: var(--tint); stroke: var(--muted); stroke-width: 1; }
+.ring-lbl { fill: var(--muted); font: 500 11px var(--font-mono); letter-spacing: .06em; }
+.ura-lbl { fill: var(--ink); font: 700 12px var(--font-body); }
+.pass { stroke: var(--loy); stroke-width: 2; fill: none; stroke-linecap: round; }
+.pass-head { fill: var(--loy); }
+.cut { stroke: var(--reb); stroke-width: 2.6; stroke-linecap: round; }
+.node-dot { fill: var(--sheet); stroke: var(--muted); stroke-width: 1.4; }
+.node-lbl { fill: var(--ink); font: 500 11px var(--font-body); }
+.ledger { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 22px; }
+.ledger h3 { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; display: flex; gap: 8px; align-items: center; }
+.ledger .lc h3 { color: var(--reb-ink); } .ledger .lp h3 { color: var(--loy-ink); }
+.ledger ul { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 9px; font-size: .94rem; line-height: 1.4; }
+.ledger li { display: grid; grid-template-columns: 1.05rem minmax(0, 1fr); gap: 9px; }
+.ledger li svg { width: 1.05rem; height: 1.05rem; margin-top: 2px; }
+.qa { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.qa article { border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 11px; align-content: start; background: var(--paper); min-width: 0; }
+.qa h3 { font-size: 1.4rem; }
+.qa p { font-size: .97rem; }
+.qa .q-n { font: 500 .74rem/1.2 var(--font-mono); color: var(--reb-ink); letter-spacing: .1em; }
+.perks { border-left: 3px solid var(--loy); padding: 4px 0 4px 18px; display: grid; gap: 12px; max-width: 78ch; }
+.perks h3 { font-size: 1.5rem; }
+.verdict { font-weight: 700; }
+
+/* Frise */
+.ribbon { margin-top: 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; }
+.seg { position: relative; display: grid; gap: 6px; align-content: start; padding: 10px 10px 11px; border: 1px solid var(--rule); border-radius: 10px; background: var(--sheet); color: var(--ink); text-decoration: none; min-width: 0; }
+.seg:hover { border-color: var(--muted); }
+.seg + .seg::before { content: "⫽"; position: absolute; left: -7px; top: 58px; transform: translateX(-50%); font: 500 .9rem/1 var(--font-mono); color: var(--muted); }
+.seg-k { font: 600 .78rem/1 var(--font-mono); color: var(--muted); }
+.seg-t { font-family: var(--font-display); font-weight: 600; font-size: 1.08rem; line-height: 1.12; min-height: 2.25em; }
+.seg-bar { position: relative; height: 16px; border-bottom: 1.5px solid var(--muted); margin: 0 4px; }
+.seg-bar i { position: absolute; bottom: 0; width: 9px; height: 9px; border-radius: 50%; transform: translate(-50%, 50%); background: var(--c); box-shadow: 0 0 0 2px var(--sheet); }
+.seg-bar i.reb { --c: var(--reb); } .seg-bar i.loy { --c: var(--loy); } .seg-bar i.neu { --c: var(--neu); } .seg-bar i.evt { --c: var(--muted); }
+.seg-ends { display: flex; justify-content: space-between; gap: 6px; font: 400 .66rem/1.2 var(--font-mono); color: var(--muted); }
+.seg-s { font: 400 .7rem/1.3 var(--font-mono); color: var(--muted); }
+.frise-cap { font-size: .86rem; color: var(--muted); margin-top: 10px; max-width: 80ch; }
+.tl-groups { margin-top: 28px; display: grid; gap: 30px; }
+.seg-group { display: grid; gap: 14px; }
+.seg-group h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; font-size: 1.5rem; }
+.seg-group h3 .seg-k { font-size: .9rem; color: var(--gold-ink); }
+.seg-group h3 .sp { font: 400 .8rem/1.3 var(--font-mono); color: var(--muted); }
+.tl { list-style: none; margin: 0 0 0 10px; padding: 0; border-left: 2px solid var(--rule); display: grid; }
+.tl li { position: relative; padding: 0 0 18px 24px; display: grid; gap: 4px; max-width: 80ch; }
+.tl li:last-child { padding-bottom: 2px; }
+.tl li > .ic { position: absolute; left: -12px; top: 1px; width: 22px; height: 22px; padding: 2px; background: var(--paper); border-radius: 50%; }
+.ev-d { font-size: .94rem; color: var(--muted); }
+.f-date { font-family: var(--font-display); font-style: italic; font-weight: 600; font-size: 1.08rem; color: var(--ink); }
+.ev-t { font-weight: 700; font-size: 1.04rem; }
+.ev-t .ev-n { font: 500 .74rem/1 var(--font-mono); color: var(--muted); margin-right: 6px; }
+.ev-x { font-size: .96rem; }
+.tl blockquote.cite { margin-top: 6px; }
+
+/* Manifeste */
+.cards3 { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card .num { font: 600 .76rem/1 var(--font-mono); color: var(--reb-ink); letter-spacing: .1em; text-transform: uppercase; }
+.card h3 { font-size: 1.36rem; }
+.card p.x { font-size: .95rem; }
+.after { margin-top: 18px; max-width: 78ch; }
+
+/* Camps en chiffres */
+.duo2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; margin-top: 24px; align-items: start; }
+.panel { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 20px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.panel h3 { font-size: 1.45rem; }
+.panel .cap { font-size: .86rem; color: var(--muted); line-height: 1.45; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .86rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.sw { width: 12px; height: 12px; border-radius: 2px; background: var(--c); flex: none; }
+.sw.reb { --c: var(--reb); } .sw.loy { --c: var(--loy); } .sw.oth { --c: var(--neu); opacity: .4; }
+.sw.ring { background: transparent; border: 1.5px solid var(--muted); border-radius: 50%; }
+.waffle { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.wf { display: grid; grid-template-columns: minmax(0, 1fr) auto 2.6rem; gap: 10px; align-items: center; font-size: .88rem; line-height: 1.25; }
+.wf-n { min-width: 0; } .wf-n b { font-weight: 700; }
+.sqs { display: grid; grid-template-columns: repeat(10, 12px); gap: 2px; }
+.sqs i { width: 12px; height: 12px; border-radius: 2px; background: var(--reb); }
+.sqs i.l { background: var(--loy); }
+.wf-c { font: 500 .76rem/1.2 var(--font-mono); color: var(--muted); text-align: right; white-space: nowrap; }
+.dots svg { width: 100%; max-width: 330px; height: auto; display: block; }
+.dots .w { fill: var(--neu); opacity: .38; } .dots .r { fill: var(--reb); }
+.dots .later { fill: none; stroke: var(--muted); stroke-width: 1.1; } .dots .ura { fill: none; stroke: var(--ink); stroke-width: 1.8; }
+.bars-wrap { margin-top: 22px; }
+.bars-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 30px; }
+.bars { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.bars-col { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.bars-col h4 { font-size: 1.2rem; }
+.bar-l { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 10px; font-size: .9rem; line-height: 1.3; }
+.bar-l .v { font: 500 .78rem/1.3 var(--font-mono); color: var(--muted); }
+.bar { display: flex; height: 14px; gap: 2px; margin-top: 5px; }
+.bar span { border-radius: 3px; min-width: 3px; }
+.bar .r { background: var(--reb); } .bar .l { background: var(--loy); } .bar .o { background: var(--neu); opacity: .4; }
+.bar.ap .r { background: repeating-linear-gradient(135deg, var(--reb) 0 6px, var(--reb-soft) 6px 8px); }
+.allloyal { margin-top: 22px; display: grid; gap: 10px; }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.chips li { border: 1px solid var(--loy); background: var(--loy-soft); border-radius: 999px; padding: 4px 11px; font-size: .88rem; display: inline-flex; gap: 6px; align-items: center; }
+.chips li .ic { width: 1rem; height: 1rem; }
+.chips.r li { border-color: var(--reb); background: var(--reb-soft); }
+
+/* Cartes génériques */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 14px; margin-top: 24px; }
+.cards article { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cards h3 { font-size: 1.36rem; display: flex; gap: 8px; align-items: baseline; }
+.cards h3 .ic { width: 1.1rem; height: 1.1rem; align-self: center; }
+.cards p:not(.st) { font-size: .96rem; }
+.st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.callout li, .unk li { max-width: 78ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+@media (max-width: 960px) {
+  .schema { grid-template-columns: minmax(0, 1fr); }
+  .fiche { position: static; }
+  .back { display: flex; }
+  .iso-top { grid-template-columns: minmax(0, 1fr); }
+  .iso-fig { max-width: 340px; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .cards3, .duo2, .bars-cols { grid-template-columns: minmax(0, 1fr); }
+  .ribbon { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .seg + .seg::before { display: none; }
+}
+@media (max-width: 640px) {
+  .arena, .arena.three { grid-template-columns: minmax(0, 1fr); }
+  .qa, .ledger { grid-template-columns: minmax(0, 1fr); }
+  .feature { padding: 22px 16px 24px; }
+  .ribbon { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .f-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .f-dl dd { margin-bottom: 8px; }
+  .fiche, .scale, .panel { padding: 16px 14px; }
+  .callout { padding: 20px 16px; }
+  .wf { grid-template-columns: minmax(0, 1fr) auto; }
+  .wf-n { grid-column: 1 / -1; }
+  .wf-c { text-align: left; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chev { transition: none; }
+}
+@media (pointer: coarse) { .seg-ctl button { min-height: 44px; } }
+</style>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-loy" viewBox="0 0 20 20"><circle cx="10" cy="10" r="8.6" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="10" r="5.4" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="10" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="i-reb" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.7" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="10" cy="10" r="3.5" fill="currentColor"/></symbol>
+  <symbol id="i-neu" viewBox="0 0 20 20"><path d="M10 1.6 18.4 10 10 18.4 1.6 10Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></symbol>
+  <symbol id="i-evt" viewBox="0 0 20 20"><rect x="3" y="3" width="14" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 10h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-cut" viewBox="0 0 20 20"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-pass" viewBox="0 0 20 20"><path d="M3 10h11M10 5l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · surtout les fascicules 53, 54, 67 et 75</p>
+      <h1>La rébellion de Lucifer</h1>
+      <p class="lede">Il y a environ 200&nbsp;000 ans, d’après le livre, Lucifer, souverain du système de Satania, rejeta l’autorité du Père Universel et de Micaël, le Fils Créateur de notre univers. Trente-sept Princes Planétaires le suivirent, dont Caligastia, qui gouvernait Urantia, notre Terre. Coupée depuis des circuits du système, la planète est restée isolée&nbsp;: l’effusion de Micaël en a, selon le texte, atténué les effets sans les supprimer.</p>
+      <a class="cta" href="#isolement">Pourquoi Urantia est-elle une planète isolée&nbsp;? <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">La rébellion dans le temps&nbsp;: <a href="atlas-3d.html#frise">La frise du temps</a>, dans la vue 3D</p>
+    </div>
+    <aside class="codebox" aria-label="Lire cette page">
+      <span class="label">Lire cette page</span>
+      <ul class="keys">
+        <li><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg><b>Camp rebelle</b><span class="kd">a suivi Lucifer</span></li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg><b>Camp loyal</b><span class="kd">est resté fidèle à Micaël</span></li>
+        <li><svg class="ic c-neu" aria-hidden="true" focusable="false"><use href="#i-neu"/></svg><b>Hors des deux camps</b><span class="kd">faute ou méprise sans rébellion, au Jardin</span></li>
+      </ul>
+      <p class="note">Les deux premières icônes reprennent la forme des bannières que décrit le texte&nbsp;: trois cercles concentriques pour Micaël, un cercle autour d’un disque pour Lucifer <span class="ref">53:5.4–5</span>. Les couleurs sont un choix de la page&nbsp;: le texte décrit la bannière de Micaël bleu d’azur sur fond blanc.</p>
+      <dl>
+        <dt>il y a N ans</dt><dd>Compté en remontant le temps depuis les premières décennies du XX<sup>e</sup> siècle <span class="ref">57:0.2</span>.</dd>
+        <dt><i>en italique</i></dt><dd>Date reprise telle qu’écrite.</dd>
+        <dt><span class="ded">déduit</span></dt><dd>Calcul de la page, que le texte ne donne pas.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#echelles"><span class="nb">1</span><span class="tt">Trois échelles, une même crise</span></a></li>
+      <li><a href="#isolement" class="hot"><span class="nb">2</span><span class="tt">Pourquoi Urantia est-elle isolée&nbsp;?</span></a></li>
+      <li><a href="#frise"><span class="nb">3</span><span class="tt">La frise des évènements</span></a></li>
+      <li><a href="#manifeste"><span class="nb">4</span><span class="tt">Le manifeste en trois points</span></a></li>
+      <li><a href="#camps"><span class="nb">5</span><span class="tt">Qui a suivi, qui est resté loyal</span></a></li>
+      <li><a href="#consequences"><span class="nb">6</span><span class="tt">Les conséquences pour Urantia</span></a></li>
+      <li><a href="#toleree"><span class="nb">7</span><span class="tt">Pourquoi la rébellion fut-elle tolérée&nbsp;?</span></a></li>
+      <li><a href="#statut"><span class="nb">8</span><span class="tt">Où en sont-ils&nbsp;?</span></a></li>
+      <li><a href="#registres"><span class="nb">9</span><span class="tt">Trois manières de lire ce récit</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="echelles" aria-labelledby="h-ech">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif</p>
+      <h2 id="h-ech">Trois échelles, une même crise</h2>
+      <p>La rébellion se joue sur trois scènes emboitées&nbsp;: le système de Satania, dont la capitale est Jérusem&nbsp;; la planète Urantia, gouvernée depuis Dalamatia&nbsp;; puis, bien plus tard, le Jardin d’Éden. Choisis une échelle, puis clique sur une personne ou un groupe pour ouvrir sa fiche.</p>
+      <p class="hint">Au clavier&nbsp;: Tab pour passer d’un nom à l’autre, Entrée pour ouvrir la fiche. La couleur, l’icône et le titre de chaque colonne indiquent le camp.</p>
+    </div>
+    <div class="ctl-row">
+      <span class="ctl-lbl" id="lbl-scales">Échelle</span>
+      <div class="seg-ctl" id="scales" role="group" aria-labelledby="lbl-scales">
+        <button type="button" data-scale="systeme" aria-pressed="true"><svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><circle class="on" cx="11" cy="11" r="9.5"/><circle cx="11" cy="11" r="6"/><circle cx="11" cy="11" r="2.6"/></svg>1 · Le système</button>
+        <button type="button" data-scale="planete" aria-pressed="false"><svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="9.5"/><circle class="on" cx="11" cy="11" r="6"/><circle cx="11" cy="11" r="2.6"/></svg>2 · La planète</button>
+        <button type="button" data-scale="jardin" aria-pressed="false"><svg viewBox="0 0 22 22" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="9.5"/><circle cx="11" cy="11" r="6"/><circle class="on" cx="11" cy="11" r="2.6"/></svg>3 · Le Jardin</button>
+      </div>
+    </div>
+    <div class="schema">
+      <div class="scales-box">
+        <div class="scale" id="sc-systeme" data-scale="systeme">
+          <div class="scale-head">
+            <p class="eyebrow">Échelle 1 · le système</p>
+            <h3>Jérusem, capitale de Satania</h3>
+            <p>Lucifer administre 607 mondes habités <span class="ref">53:1.1</span>. Son manifeste est proclamé sur la mer de verre <span class="ref">53:4.1</span>&nbsp;; la lutte qui suit, une guerre dans le ciel sans combat physique, dure plus de deux ans du temps systémique <span class="ref">53:5.6 ; 53:7.12</span>.</p>
+          </div>
+          <div class="arena" data-arena="systeme"></div>
+        </div>
+        <div class="scale" id="sc-planete" data-scale="planete" hidden>
+          <div class="scale-head">
+            <p class="eyebrow">Échelle 2 · la planète</p>
+            <h3>Urantia, depuis Dalamatia</h3>
+            <p>Caligastia a la charge d’Urantia depuis trois-cent-mille ans quand il trahit <span class="ref">67:1.1</span>. Coupés de l’extérieur, tous les êtres présents sur la planète doivent choisir&nbsp;; la lutte dure plus de sept ans <span class="ref">67:2.3 ; 67:2.6</span>.</p>
+          </div>
+          <div class="arena" data-arena="planete"></div>
+        </div>
+        <div class="scale" id="sc-jardin" data-scale="jardin" hidden>
+          <div class="scale-head">
+            <p class="eyebrow">Échelle 3 · le Jardin</p>
+            <h3>Éden, 37&nbsp;848 ans avant 1934</h3>
+            <p>Adam et Ève arrivent sur une planète toujours isolée, où Caligastia, déposé, est encore présent <span class="ref">75:1.1 ; 74:5.5</span>. Après cent-dix-sept ans, ils s’écartent du plan prévu <span class="ref">74:8.14</span>.</p>
+          </div>
+          <div class="arena three" data-arena="jardin"></div>
+        </div>
+      </div>
+      <article class="fiche" id="fiche" aria-labelledby="f-title" tabindex="-1"></article>
+    </div>
+    <p class="sr-only" id="f-status" aria-live="polite"></p>
+  </section>
+
+  <section id="isolement" class="feature" aria-labelledby="h-iso">
+    <div class="sec-head">
+      <p class="eyebrow">Question clé</p>
+      <h2 id="h-iso">Pourquoi Urantia est-elle une planète habitée isolée&nbsp;?</h2>
+      <p>Parce qu’elle a suivi son Prince dans la rébellion. Le texte décrit une coupure réelle des communications, décidée pour contenir la rébellion, que l’effusion de Micaël a rendue beaucoup moins pesante sans la lever tout à fait.</p>
+    </div>
+    <div class="iso-top">
+      <figure class="iso-fig">
+        <svg viewBox="0 0 320 320" role="img" aria-labelledby="iso-t">
+          <title id="iso-t">Schéma symbolique de l’isolement. Quatre cercles emboités&nbsp;: l’univers de Nébadon, la constellation de Norlatiadek, le système de Satania en pointillé, soumis à une quarantaine, et Urantia au centre, entourée d’un anneau rouge plein&nbsp;: son isolement. Le lien entre Urantia et Jérusem est coupé. Six flèches dorées atteignent pourtant Urantia&nbsp;: ce qui passe encore, détaillé dans la liste voisine.</title>
+          <circle class="ring" cx="160" cy="160" r="150"/>
+          <circle class="ring" cx="160" cy="160" r="118"/>
+          <circle class="ring sat" cx="160" cy="160" r="86"/>
+          <text class="ring-lbl" x="160" y="24" text-anchor="middle">NÉBADON</text>
+          <text class="ring-lbl" x="160" y="56" text-anchor="middle">NORLATIADEK</text>
+          <text class="ring-lbl" x="160" y="88" text-anchor="middle">SATANIA</text>
+          <circle class="node-dot" cx="221" cy="99" r="5"/>
+          <text class="node-lbl" x="229" y="96">Jérusem</text>
+          <line class="cut" x1="205" y1="115" x2="187" y2="133" stroke-dasharray="4 5"/>
+          <path class="cut" d="M191 118l10 10M201 118l-10 10"/>
+          <circle class="ring ura" cx="160" cy="160" r="38"/>
+          <circle class="ura-core" cx="160" cy="160" r="26"/>
+          <text class="ura-lbl" x="160" y="164" text-anchor="middle">Urantia</text>
+          <g>
+            <path class="pass" d="M30 236 L120 182"/><path class="pass-head" d="M126 178.4l-11.3.9 4.9 8.3z"/>
+            <path class="pass" d="M14 160 L118 160"/><path class="pass-head" d="M126 160l-9.5-5v10z"/>
+            <path class="pass" d="M44 74 L124 132"/><path class="pass-head" d="M130 136.4l-5.2-10-5.6 7.7z"/>
+            <path class="pass" d="M160 306 L160 202"/><path class="pass-head" d="M160 194l-5 9.5h10z"/>
+            <path class="pass" d="M292 248 L198 186"/><path class="pass-head" d="M191.5 181.8l5.6 9.9 5.4-8.2z"/>
+            <path class="pass" d="M300 160 L202 160"/><path class="pass-head" d="M194 160l9.5 5v-10z"/>
+          </g>
+          <g class="ring-lbl" font-size="11">
+            <text x="22" y="252">1</text><text x="6" y="156">2</text><text x="34" y="70">3</text>
+            <text x="164" y="314">4</text><text x="296" y="262">5</text><text x="304" y="156">6</text>
+          </g>
+        </svg>
+        <figcaption>Image symbolique&nbsp;: les cercles figurent des niveaux d’administration, pas des distances. Les numéros renvoient à la colonne <i>Passe encore</i>.</figcaption>
+      </figure>
+      <div class="ledger">
+        <div class="lc">
+          <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg>Coupé ou limité</h3>
+          <ul>
+            <li><svg class="c-reb" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg><span>Les circuits entre Urantia et Jérusem, capitale du système <span class="ref">67:2.3 ; 53:9.6</span></span></li>
+            <li><svg class="c-reb" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg><span>Les intercommunications planétaires, refusées aux mondes en quarantaine spirituelle <span class="ref">33:6.5</span></span></li>
+            <li><svg class="c-reb" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg><span>Pour tout Satania, une quarantaine de la constellation de Norlatiadek <span class="ref">67:3.1 ; 46:8.2</span></span></li>
+            <li><svg class="c-reb" aria-hidden="true" focusable="false"><use href="#i-cut"/></svg><span>Certains circuits dont ont besoin les anges réflectifs <span class="ref">28:7.4</span></span></li>
+          </ul>
+        </div>
+        <div class="lp">
+          <h3><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg>Passe encore</h3>
+          <ul>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>1. Les Ajusteurs de Pensée, qui communiquent avec tout l’univers <span class="ref">108:4.4</span></span></li>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>2. La gravité d’esprit du Fils Éternel <span class="ref">7:1.7</span></span></li>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>3. Les messagers personnels&nbsp;: agents séraphiques, Messagers Solitaires <span class="ref">53:7.3 ; 108:4.4</span></span></li>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>4. La télédiffusion universelle, étendue à tous les mondes <span class="ref">33:6.5</span></span></li>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>5. Le circuit des archanges, installé récemment <span class="ref">108:4.4 ; 114:5.4</span></span></li>
+            <li><svg class="c-loy" aria-hidden="true" focusable="false"><use href="#i-pass"/></svg><span>6. L’Esprit de Vérité, répandu depuis la Pentecôte <span class="ref">114:5.4</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="qa">
+      <article>
+        <p class="q-n">1 · CE QUE C’EST</p>
+        <h3>Ce que veut dire <i>isolée</i></h3>
+        <p>Dès que l’insurrection éclate, tout Satania est coupé des circuits de la constellation et de l’univers, et les circuits qui mènent aux mondes déchus sont coupés à leur tour <span class="ref">53:7.3</span>. Sur Urantia, cela survient au cœur de la crise&nbsp;:</p>
+        <blockquote class="cite r" data-ref="67:2.3"><p>«&nbsp;Entretemps, les circuits du système avaient été coupés&nbsp;; Urantia était isolée.&nbsp;»</p><span class="ref">67:2.3</span></blockquote>
+        <p>Les êtres célestes présents se retrouvent sans préavis privés de tout conseil extérieur, et ceux qui étaient là par hasard restent bloqués <span class="ref">67:2.3 ; 67:2.5</span>. Un exemple&nbsp;: la décision d’Édentia qui donnait raison à Van ne lui est jamais parvenue. Restée bloquée chez un transmetteur-relais d’énergie depuis l’isolement, elle n’a été retrouvée que récemment, grâce aux recherches des médians <span class="ref">67:6.9</span>.</p>
+      </article>
+      <article>
+        <p class="q-n">2 · POURQUOI</p>
+        <h3>Pourquoi cette coupure&nbsp;?</h3>
+        <p>D’abord pour empêcher Lucifer de se servir des circuits pour propager son plan <span class="ref">53:7.3</span>&nbsp;; les Pères de la Constellation limitent aussitôt au seul système l’action des rebelles <span class="ref">53:4.7</span>. Ensuite pour protéger le reste de la création&nbsp;: le texte présente la mise en quarantaine des mondes plongés dans les ténèbres spirituelles comme une réaction défensive de la majorité des mondes, qui cherchent à préserver la présence de Dieu dans les unités plus vastes <span class="ref">3:1.10</span>.</p>
+        <p>Urantia n’est pas seule&nbsp;: trente-six autres mondes de Satania sont isolés par la rébellion <span class="ref">114:2.4</span>. Chaque monde isolé héberge un observateur, un Fils Vorondadek, présent sur Urantia depuis la trahison de Caligastia <span class="ref">43:5.17</span>.</p>
+      </article>
+      <article>
+        <p class="q-n">3 · POUR LES HABITANTS</p>
+        <h3>Ce que cela a changé</h3>
+        <p>Le texte reconnait que ces mondes sont privés de la présence bienfaisante d’un Prince Planétaire et d’un Fils et d’une Fille Matériels <span class="ref">50:7.1</span>. Adam et Ève trouvent les télédiffusions silencieuses et ne communiquent avec l’extérieur que par les anges <span class="ref">74:3.1 ; 75:1.4</span>. Avant Micaël, les morts dormaient jusqu’aux résurrections dispensationnelles au lieu de passer directement aux mondes des maisons <span class="ref">52:5.5</span>. La révélation s’est souvent mêlée de cosmologies passagères <span class="ref">102:1.3</span>.</p>
+        <p>En revanche, l’isolement ne touche ni les Ajusteurs de Pensée <span class="ref">108:4.4</span> ni la gravité d’esprit du Fils Éternel <span class="ref">7:1.7</span>&nbsp;; et, selon le texte, personne ne subit de privation spirituelle essentielle à cause du péché d’autrui <span class="ref">67:7.7</span>.</p>
+      </article>
+      <article>
+        <p class="q-n">4 · ET AUJOURD’HUI</p>
+        <h3>L’isolement a-t-il été levé&nbsp;?</h3>
+        <p><span class="verdict">En partie seulement.</span> Après son effusion, Micaël est proclamé Prince Planétaire d’Urantia, ce qui fixe en principe le statut de la planète&nbsp;; il en confie la gestion à vingt-quatre anciens Urantiens, dont un gouverneur général résident <span class="ref">114:1.1</span>. Depuis la Pentecôte, les mortels passent de nouveau directement aux sphères morontielles <span class="ref">52:5.5</span>, et le circuit des archanges permet de contourner l’isolement en cas d’urgence <span class="ref">114:5.4</span>.</p>
+        <blockquote class="cite" data-ref="114:5.4"><p>«&nbsp;Bien entendu, l’isolement planétaire a peu d’importance pour les mortels individuels depuis que l’Esprit de Vérité a été répandu sur toute chair, il y a dix-neuf-cents ans.&nbsp;»</p><span class="ref">114:5.4</span></blockquote>
+        <p>Mais la planète reste techniquement isolée dans les circuits de Norlatiadek <span class="ref">114:5.4</span>, en quarantaine spirituelle partielle <span class="ref">28:7.4</span>, et le texte lie la fin de la coupure au sort de Lucifer&nbsp;:</p>
+        <blockquote class="cite r" data-ref="53:7.3"><p>«&nbsp;Et ces circuits ne seront pas rétablis tant que l’archirebelle vivra dans Satania.&nbsp;»</p><span class="ref">53:7.3</span></blockquote>
+        <p>Même alors, tout Satania resterait sous une quarantaine de Norlatiadek <span class="ref">46:8.2</span>. Quand l’isolement spirituel prendra fin, le texte ne le précise pas <span class="ref">20:8.4</span>.</p>
+      </article>
+    </div>
+    <div class="perks">
+      <p class="eyebrow">Le revers de la médaille</p>
+      <h3>Les avantages de l’isolement, selon le texte</h3>
+      <p>Le fascicule 50 consacre une section à ce qu’il appelle <i>les récompenses de l’isolement</i> <span class="ref">50:7</span>. Être privé de guides visibles oblige à une confiance d’un autre ordre&nbsp;:</p>
+      <blockquote class="cite" data-ref="50:7.1"><p>«&nbsp;Mais l’isolement de ces sphères offre à leurs races une occasion unique d’exercer leur foi et de développer une qualité particulière de confiance dans la sécurité cosmique, qui ne dépend ni de la vue ni d’aucune autre considération matérielle.&nbsp;»</p><span class="ref">50:7.1</span></blockquote>
+      <p>Sur Jérusem, les ascendeurs venus des mondes isolés forment un groupe à part, les <i>agondontaires</i>&nbsp;: des êtres capables de croire sans voir et de persévérer seuls&nbsp;; ce groupe se retrouve jusque dans le Corps de la Finalité <span class="ref">50:7.2</span>. Ils reçoivent très tôt des missions où la foi est essentielle <span class="ref">50:7.1</span>. Le texte en donne un exemple humain&nbsp;: la fidélité d’Amadon et de ses 143 compagnons pèse plus, selon l’auteur, que tout le mal de la rébellion <span class="ref">67:8.4</span>. Il invite enfin les Urantiens à ne pas se sentir abandonnés&nbsp;: une supervision suprahumaine réelle veille sur la planète <span class="ref">114:7.14</span>.</p>
+    </div>
+  </section>
+
+  <section id="frise" aria-labelledby="h-frise">
+    <div class="sec-head">
+      <h2 id="h-frise">La frise des évènements</h2>
+      <p>De l’arrivée de Caligastia, il y a 500&nbsp;000 ans, à l’ouverture du procès, vers 1934&nbsp;: près d’un demi-million d’années, dont certains moments se comptent en jours. Une seule échelle écraserait tout&nbsp;; la frise est donc coupée en six segments, chacun avec sa propre échelle. Clique sur un segment pour lire ses évènements. La version animée, avec le gouvernement de la planète, se trouve dans la <a href="atlas-3d.html#frise">frise de l’atlas 3D</a>.</p>
+    </div>
+    <div class="ribbon" id="ribbon"></div>
+    <p class="frise-cap">Chaque segment a sa propre échelle&nbsp;: 300&nbsp;000 ans pour le premier, 162 ans pour le deuxième. Les segments B et D utilisent une échelle logarithmique pour séparer les premières années, très chargées&nbsp;; les repères trop proches sont légèrement écartés. Le signe ⫽ marque un changement d’échelle. Les points ont la couleur du camp concerné&nbsp;; gris pour un fait de contexte.</p>
+    <div class="tl-groups" id="tl-groups"></div>
+  </section>
+
+  <section id="manifeste" aria-labelledby="h-man">
+    <div class="sec-head">
+      <h2 id="h-man">Le manifeste en trois points</h2>
+      <p>Le texte appelle ce manifeste la <i>Déclaration Luciférienne de Liberté</i> et en résume la cause sous trois rubriques <span class="ref">53:3.1</span>. Son cri de ralliement&nbsp;: l’affirmation de soi <span class="ref">53:4.2</span>.</p>
+    </div>
+    <div class="cards3">
+      <article class="card">
+        <p class="num">Rubrique 1</p>
+        <h3>La réalité du Père Universel</h3>
+        <blockquote class="cite r" data-ref="53:3.2"><p>«&nbsp;Lucifer prétendit que le Père Universel n’existait pas réellement, que la gravité physique et l’énergie d’espace étaient inhérentes à l’univers, et que le Père était un mythe inventé par les Fils du Paradis […]&nbsp;»</p><span class="ref">53:3.2</span></blockquote>
+        <p class="x">Il nie aussi que la personnalité soit un don du Père et accuse les finalitaires de complicité. Selon le texte, c’est cette attaque voilée qui affermit les citoyens ascendants de Jérusem dans leur refus <span class="ref">53:3.2</span>.</p>
+      </article>
+      <article class="card">
+        <p class="num">Rubrique 2</p>
+        <h3>Le gouvernement de Micaël</h3>
+        <blockquote class="cite r" data-ref="53:3.3"><p>«&nbsp;Lucifer soutint que les systèmes locaux devaient être autonomes. […] Il accepta de reconnaitre Micaël comme son père-Créateur, mais non comme son Dieu et son chef légitime.&nbsp;»</p><span class="ref">53:3.3</span></blockquote>
+        <p class="x">Il conteste l’intervention des Anciens des Jours, qu’il traite de tyrans et d’usurpateurs, et soutient que l’immortalité serait inhérente aux personnalités et la résurrection automatique <span class="ref">53:3.4–5</span>.</p>
+      </article>
+      <article class="card">
+        <p class="num">Rubrique 3</p>
+        <h3>Le plan d’ascension des mortels</h3>
+        <blockquote class="cite r" data-ref="53:3.6"><p>«&nbsp;Il soutint que les ascendeurs devaient jouir de la liberté de déterminer leur sort eux-mêmes.&nbsp;»</p><span class="ref">53:3.6</span></blockquote>
+        <p class="x">Il juge trop longue la formation donnée aux mortels ascendants et se moque des finalitaires, renvoyés, dit-il, sur d’humbles sphères semblables à celles de leur origine <span class="ref">53:3.6</span>.</p>
+      </article>
+    </div>
+    <p class="after">Le programme est aussi politique&nbsp;: Lucifer promet aux Princes Planétaires qu’ils gouverneront leurs mondes en exécutifs suprêmes, veut concentrer le gouvernement dans les capitales des systèmes et soutient que les majorités gouvernent <span class="ref">53:4.2 ; 53:4.4</span>. Gabriel, présent à tous les débats, annonce que le choix de chacun sera libre <span class="ref">53:4.6</span>.</p>
+  </section>
+
+  <section id="camps" aria-labelledby="h-camps">
+    <div class="sec-head">
+      <h2 id="h-camps">Qui a suivi, qui est resté loyal</h2>
+      <p>Le texte donne des chiffres exacts pour certains groupes et seulement des proportions pour d’autres. Les graphiques suivent cette précision&nbsp;: une barre hachurée signale une proportion approximative.</p>
+      <div class="legend" aria-hidden="true"><span><i class="sw loy"></i>loyaux</span><span><i class="sw reb"></i>rebelles</span><span><i class="sw oth"></i>autres</span></div>
+    </div>
+    <div class="bannieres">
+      <figure>
+        <svg viewBox="0 0 120 80" role="img" aria-label="Bannière de Micaël : trois cercles concentriques bleu d’azur sur fond blanc">
+          <rect width="120" height="80" fill="#FFFFFF"/>
+          <g fill="none" stroke="#1F7AE0" stroke-width="4.6"><circle cx="60" cy="40" r="30"/><circle cx="60" cy="40" r="21"/><circle cx="60" cy="40" r="12"/></g>
+        </svg>
+        <figcaption><b>La bannière de Micaël</b>, que Gabriel déploie devant les foules loyales&nbsp;: «&nbsp;les trois cercles concentriques bleu d’azur sur fond blanc&nbsp;» <span class="ref">53:5.4</span>.</figcaption>
+      </figure>
+      <figure>
+        <svg viewBox="0 0 120 80" role="img" aria-label="Emblème de Lucifer : une bannière blanche avec un cercle rouge et un disque noir au centre">
+          <rect width="120" height="80" fill="#FFFFFF"/>
+          <circle cx="60" cy="40" r="22" fill="none" stroke="#C62828" stroke-width="7"/><circle cx="60" cy="40" r="10" fill="#141414"/>
+        </svg>
+        <figcaption><b>L’emblème de Lucifer</b>&nbsp;: «&nbsp;une bannière blanche avec un cercle rouge au centre duquel se trouvait un disque noir&nbsp;» <span class="ref">53:5.5</span>.</figcaption>
+      </figure>
+      <p class="note">Dessins d’après les descriptions du texte. Les trois cercles concentriques sont aujourd’hui une marque déposée de la Fondation Urantia&nbsp;; ils sont montrés ici tels que le livre décrit la bannière de Micaël. Ce site n’a aucun lien officiel avec la Fondation.</p>
+    </div>
+    <div class="duo2">
+      <div class="panel">
+        <p class="eyebrow">Sur Urantia</p>
+        <h3>Les cent de l’état-major&nbsp;: 40 loyaux, 60 rebelles</h3>
+        <ol class="waffle" id="waffle" aria-label="Les cent membres corporels de l’état-major, conseil par conseil"></ol>
+        <p class="cap">Chaque carré est un membre corporel de l’état-major du Prince&nbsp;; chaque ligne, l’un des dix conseils de dix membres <span class="ref">66:5.1</span>, avec son chef. Répartition d’après l’appel nominal final <span class="ref">67:4.1</span>. Les soixante rebelles choisissent Nod pour chef <span class="ref">67:4.2</span>.</p>
+      </div>
+      <div class="panel">
+        <p class="eyebrow">Dans le système</p>
+        <h3>37 mondes sur 607</h3>
+        <div class="dots" id="dots"></div>
+        <div class="legend" aria-hidden="true"><span><i class="sw reb"></i>les 37 mondes rebelles</span><span><i class="sw oth"></i>570 autres mondes</span><span><i class="sw ring"></i>Urantia, n°&nbsp;606</span></div>
+        <p class="cap">Lucifer administrait 607 mondes habités <span class="ref">53:1.1</span>&nbsp;; trente-sept Princes Planétaires firent sécession <span class="ref">53:7.1</span>. Les mondes sont numérotés dans l’ordre de leur inscription, et Urantia porte le numéro 606 <span class="ref">49:0.3</span>. Les points rouges sont regroupés pour montrer la proportion, soit 6&nbsp;% <span class="ded">déduit</span>&nbsp;: le texte ne dit pas quels numéros portent les 36 autres. Les 12 cercles vides sont les mondes peuplés depuis, pour atteindre les 619 actuels <span class="ref">32:2.10</span> <span class="ded">déduit</span>&nbsp;; aucun n’a été perdu <span class="ref">53:7.15</span>.</p>
+      </div>
+    </div>
+    <div class="panel bars-wrap">
+      <h3>D’autres proportions</h3>
+      <div class="bars-cols">
+        <div class="bars-col"><h4>Dans le système</h4>
+        <ul class="bars">
+          <li><div class="bar-l"><span>Séraphins administrateurs de Jérusem <span class="ref">53:7.6</span></span><span class="v">un peu plus du tiers</span></div><div class="bar ap" aria-hidden="true"><span class="r" style="flex:35"></span><span class="l" style="flex:65"></span></div></li>
+          <li><div class="bar-l"><span>Chérubins attachés à ces séraphins <span class="ref">53:7.6</span></span><span class="v">un tiers</span></div><div class="bar" aria-hidden="true"><span class="r" style="flex:1"></span><span class="l" style="flex:2"></span></div></li>
+          <li><div class="bar-l"><span>Aides angéliques des Fils Matériels <span class="ref">53:7.7</span></span><span class="v">environ un tiers</span></div><div class="bar ap" aria-hidden="true"><span class="r" style="flex:33"></span><span class="l" style="flex:67"></span></div></li>
+          <li><div class="bar-l"><span>Ministres de transition <span class="ref">53:7.7</span></span><span class="v">presque dix pour cent</span></div><div class="bar ap" aria-hidden="true"><span class="r" style="flex:10"></span><span class="l" style="flex:90"></span></div></li>
+          <li><div class="bar-l"><span>Part de la rébellion dans les 681&nbsp;217 Fils Matériels perdus dans Satania <span class="ref">53:7.8</span></span><span class="v">95 %</span></div><div class="bar" aria-hidden="true"><span class="r" style="flex:95"></span><span class="o" style="flex:5"></span></div></li>
+        </ul></div>
+        <div class="bars-col"><h4>Sur Urantia</h4>
+        <ul class="bars">
+          <li><div class="bar-l"><span>Médians primaires <span class="ref">67:3.2 ; 77:7.1</span></span><span class="v">40 119 sur 50 000</span></div><div class="bar" aria-hidden="true"><span class="r" style="flex:40119"></span><span class="l" style="flex:9881"></span></div></li>
+          <li><div class="bar-l"><span>Séraphins administratifs et séraphins attachés à la planète <span class="ref">67:3.2</span></span><span class="v">près de la moitié</span></div><div class="bar ap" aria-hidden="true"><span class="r" style="flex:48"></span><span class="l" style="flex:52"></span></div></li>
+          <li><div class="bar-l"><span>Andonites modifiés associés à l’état-major <span class="ref">67:3.5 ; 67:4.2</span></span><span class="v">44 rebelles, 56 avec Van</span></div><div class="bar" aria-hidden="true"><span class="r" style="flex:44"></span><span class="l" style="flex:56"></span></div></li>
+          <li><p class="cap">Parmi les 56 Andonites restés avec Van, seize assistants de membres déloyaux avaient refusé de suivre leurs maitres <span class="ref">67:3.5</span>. Le groupe loyal d’Amadon comptait 144 personnes, trente-neuf hommes et cent-cinq femmes <span class="ref">67:6.3</span>.</p></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="allloyal">
+      <h3>Aucune défection dans ces groupes</h3>
+      <ul class="chips" aria-label="Groupes restés entièrement loyaux">
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les êtres originaires du Paradis</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les Fils Trinitisés</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les Melchizédeks</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les archanges</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les Brillantes Étoiles du Soir</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les conciliateurs</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les Archivistes Célestes</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>l’ordre suprême des séraphins</li>
+        <li><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>les citoyens ascendants résidant sur Jérusem&nbsp;: 187&nbsp;432&nbsp;811 mortels fidèles</li>
+      </ul>
+      <p class="hint">Références&nbsp;: <span class="ref">53:7.4–6 ; 53:7.10 ; 53:7.12</span>. Le texte parle de défections sans les chiffrer chez les Compagnons de la Morontia et les Instructeurs des Mondes des Maisons, un fort contingent <span class="ref">53:7.5</span>&nbsp;; dans l’ordre supérieur des séraphins, un groupe considérable <span class="ref">53:7.6</span>&nbsp;; chez des mortels des premiers mondes des maisons non encore fusionnés avec leur Ajusteur <span class="ref">53:7.10</span>&nbsp;; et un petit nombre de Porteurs de Vie fut quelque peu influencé <span class="ref">53:7.4</span>.</p>
+    </div>
+  </section>
+
+  <section id="consequences" aria-labelledby="h-cons">
+    <div class="sec-head">
+      <h2 id="h-cons">Les conséquences pour Urantia</h2>
+      <p>Le texte résume l’enjeu dès l’ouverture du fascicule 67&nbsp;: la rébellion eut peu d’effet sur l’évolution organique, mais modifia beaucoup l’évolution sociale et le développement spirituel <span class="ref">67:0.1</span>.</p>
+    </div>
+    <div class="cards">
+      <article>
+        <p class="st">1 · L’isolement</p>
+        <h3>Une planète à part</h3>
+        <p>Coupée des circuits du système, Urantia vit à l’écart du reste de Satania <span class="ref">67:2.3</span>. Ce que cela signifie, et ce qui en reste aujourd’hui&nbsp;: <a href="#isolement">voir la section dédiée</a>.</p>
+      </article>
+      <article>
+        <p class="st">2 · Dalamatia</p>
+        <h3>Une culture perdue</h3>
+        <p>Pendant près de cinquante ans, on veut imposer la révolution à la place de l’évolution&nbsp;; la société retombe vite à son ancien niveau <span class="ref">67:5.1 ; 67:5.3</span>. Cent-soixante-deux ans après la rébellion, un raz de marée engloutit la cité, dont le temple était devenu un sanctuaire de Nog, faux dieu de la lumière et du feu <span class="ref">67:5.4–5</span>.</p>
+      </article>
+      <article>
+        <p class="st">3 · Un long recul</p>
+        <h3>Sauf pour la biologie</h3>
+        <p>Cinquante-mille ans après l’effondrement de l’administration planétaire, l’humanité a très peu progressé <span class="ref">67:7.3</span>. Le péché a peu retardé l’évolution biologique, mais énormément le progrès intellectuel, moral, social et spirituel des masses <span class="ref">67:7.6</span>. Van et Amadon entretiennent des foyers de civilisation <span class="ref">67:6.6–7</span>.</p>
+      </article>
+      <article>
+        <p class="st">4 · Le Jardin</p>
+        <h3>La défaillance adamique</h3>
+        <p>Sur ce monde isolé et confus, Adam et Ève échouent par impatience, et le plan du don de la race violette avorte <span class="ref">75:1.6 ; 75:8.1</span>. Le texte refuse pourtant d’en tirer la doctrine traditionnelle&nbsp;:</p>
+        <blockquote class="cite" data-ref="75:8.2"><p>«&nbsp;Il n’y a pas eu de “chute de l’homme”.&nbsp;»</p><span class="ref">75:8.2</span></blockquote>
+        <p>Les races humaines ont même tiré un grand profit de l’apport limité d’Adam et de ses descendants <span class="ref">75:8.1</span>.</p>
+      </article>
+      <article>
+        <p class="st">5 · L’effusion</p>
+        <h3>Urantia choisie par Micaël</h3>
+        <p>Peu après la défaillance, Micaël annonce qu’Urantia sera le monde de son effusion finale, choisi après un rapport des Melchizédeks sur les mondes isolés <span class="ref">119:7.2 ; 122:0.2</span>. Emmanuel lui conseille d’y mettre fin techniquement à la rébellion, en tant que Fils de l’Homme <span class="ref">120:2.2</span>. L’effusion met fin à la rébellion dans tout Satania, sauf sur les planètes des princes apostats <span class="ref">53:8.3</span>, et Micaël devient Prince Planétaire d’Urantia <span class="ref">114:0.8</span>.</p>
+      </article>
+      <article>
+        <p class="st">6 · Pour chacun</p>
+        <h3>Pénalisés dans le temps seulement</h3>
+        <p>Tous les mortels nés depuis ont été quelque peu pénalisés dans le temps, mais, selon le texte, le bienêtre futur de leurs âmes n’a jamais été compromis&nbsp;: le péché reste personnel quant à ses conséquences spirituelles <span class="ref">67:7.7</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="toleree" aria-labelledby="h-tol">
+    <div class="sec-head">
+      <h2 id="h-tol">Pourquoi la rébellion fut-elle tolérée&nbsp;?</h2>
+      <p>Le fascicule 54 pose franchement la question&nbsp;: pourquoi avoir laissé Lucifer, Satan et les princes déchus semer si longtemps la discorde&nbsp;? <span class="ref">54:4.1</span> Son auteur, un Puissant Messager qui dit avoir survécu à la première rébellion systémique des univers du temps <span class="ref">54:6.11</span>, expose douze raisons <span class="ref">54:5.2–13</span> et précise qu’on en enseigne quarante-huit sur Uversa <span class="ref">54:5.14</span>. Trois idées dominent.</p>
+    </div>
+    <div class="cards">
+      <article>
+        <p class="st">Idée 1</p>
+        <h3>Le temps de la miséricorde</h3>
+        <p>La possibilité même de choisir le mal prouve le libre arbitre et justifie de longs délais, s’ils peuvent mener au repentir <span class="ref">54:4.3</span>. Le texte compare Micaël au père de la parabole du fils prodigue, qui attend longtemps son enfant égaré <span class="ref">54:4.2</span>.</p>
+        <blockquote class="cite" data-ref="54:5.3"><p>«&nbsp;La justice suprême est dominée par un amour de Père, et c’est pourquoi la justice ne détruira jamais ce que la miséricorde peut sauver.&nbsp;»</p><span class="ref">54:5.3</span></blockquote>
+      </article>
+      <article>
+        <p class="st">Idée 2</p>
+        <h3>Laisser chacun choisir</h3>
+        <p>Il fallait laisser la rébellion se développer pleinement pour que chaque être fasse un choix murement pesé <span class="ref">54:5.10</span> et que le vrai visage du péché soit révélé <span class="ref">54:5.11</span>. Un comité d’anciens mortels avertit Gabriel qu’une répression sommaire égarerait au moins trois fois plus d’êtres <span class="ref">54:5.12</span>. Micaël, qui n’avait pas encore achevé ses effusions, n’avait d’ailleurs pas à juger sommairement Lucifer <span class="ref">54:5.6</span>.</p>
+      </article>
+      <article>
+        <p class="st">Idée 3</p>
+        <h3>Un mal dont sort un bien</h3>
+        <p>Au début, la rébellion parut une pure catastrophe&nbsp;; après vingt-mille ans d’Urantia, le bien qui en résultait égalait déjà le mal subi <span class="ref">54:6.6</span>.</p>
+        <blockquote class="cite" data-ref="54:6.6"><p>«&nbsp;Aujourd’hui, les Melchizédeks enseignent que le bien résultant de la rébellion de Satania équivaut à plus de mille fois la somme de tout son mal.&nbsp;»</p><span class="ref">54:6.6</span></blockquote>
+        <p>Les épreuves subies à cause du péché d’autrui restent, dit le texte, des afflictions temporaires, qui ne retirent à personne le droit d’atteindre Dieu <span class="ref">54:6.4</span>.</p>
+      </article>
+    </div>
+    <p class="after hint">Le texte ajoute que le temps est relatif&nbsp;: vu d’Uversa, la justice a été saisie du crime de Lucifer deux secondes et demie après qu’il fut commis <span class="ref">54:5.13</span>.</p>
+  </section>
+
+  <section id="statut" aria-labelledby="h-stat">
+    <div class="sec-head">
+      <h2 id="h-stat">Où en sont-ils&nbsp;?</h2>
+      <p>La situation décrite est celle du temps où les fascicules ont été rédigés, en 1934 et 1935 <span class="ref">56:10.23 ; 119:8.9</span>. Le livre ne dit évidemment rien des années suivantes.</p>
+    </div>
+    <div class="cards">
+      <article>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg>Lucifer</h3>
+        <p class="st">prisonnier, inactif</p>
+        <p>Quand Micaël devient le chef confirmé de Nébadon, les agents des Anciens des Jours emprisonnent Lucifer sur le satellite n°&nbsp;1 des sphères du Père qui entourent Jérusem&nbsp;; les dirigeants des autres mondes peuvent y voir sa fin <span class="ref">53:9.2</span>. Il est complètement inactif <span class="ref">53:9.6</span>.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg>Satan</h3>
+        <p class="st">détenu</p>
+        <blockquote class="cite r" data-ref="53:9.4"><p>«&nbsp;Satan est maintenant détenu inconditionnellement sur les mondes-prisons de Jérusem.&nbsp;»</p><span class="ref">53:9.4</span></blockquote>
+        <p>Ses visites aux princes déchus ont pris fin avec la première audience du procès <span class="ref">53:9.3 ; 54:4.8</span>.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg>Caligastia</h3>
+        <p class="st">libre, mais sans pouvoir sur le mental</p>
+        <blockquote class="cite r" data-ref="53:8.6"><p>«&nbsp;Caligastia, votre Prince Planétaire apostat, est encore libre de poursuivre ses desseins néfastes sur Urantia, mais n’a absolument pas le pouvoir de pénétrer dans le mental des hommes ni d’aborder leur âme pour les tenter ou les corrompre, à moins que les hommes ne désirent réellement être maudits par sa présence perverse.&nbsp;»</p><span class="ref">53:8.6</span></blockquote>
+        <p>Depuis la Pentecôte, il est servile devant les Ajusteurs et l’Esprit de Vérité <span class="ref">53:8.7</span>&nbsp;; dépouillé de tout pouvoir de nuire à ses anciens sujets, il attend le jugement d’Uversa <span class="ref">66:8.7</span>.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg>Daligastia</h3>
+        <p class="st">non précisé</p>
+        <p>Il a refusé avec Caligastia le pardon offert par Micaël, et il est lui aussi servile depuis la Pentecôte <span class="ref">53:8.6–7</span>. Le texte ne précise pas où il se trouve.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-reb"/></svg>Les autres rebelles</h3>
+        <p class="st">internés ou disparus</p>
+        <p>Les rebelles de la capitale du système sont internés à la demande de Micaël <span class="ref">53:9.3</span>. Tous les médians rebelles sont en prison par ordre des Très Hauts d’Édentia <span class="ref">77:7.8</span>. Les soixante de l’état-major sont morts de mort naturelle&nbsp;; leur sort reste inconnu, et leurs Ajusteurs attendent sur Jérusem <span class="ref">67:4.4–5</span>.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>Les repentis</h3>
+        <p class="st">réhabilités, en attente</p>
+        <p>Des milliers d’anges et d’êtres célestes, dont des centaines de Fils et de Filles Matériels, ont accepté la miséricorde. Réhabilités à la résurrection de Jésus, ils attendent le verdict sur les mondes du Père, et l’auteur ne doute pas qu’ils seront épargnés <span class="ref">53:9.1</span>. La grande majorité des victimes de la rébellion se sont repenties depuis longtemps <span class="ref">67:4.7</span>.</p>
+      </article>
+      <article>
+        <h3><svg class="ic c-evt" aria-hidden="true" focusable="false"><use href="#i-evt"/></svg>Le procès</h3>
+        <p class="st">ouvert vers 1934 <span class="ded">déduit</span></p>
+        <p>L’affaire de Gabriel contre Lucifer est pendante devant Uversa depuis près de deux-cent-mille ans <span class="ref">53:9.3</span>&nbsp;; sa première audience coïncide avec la rédaction des fascicules <span class="ref">53:9.4 ; 54:4.8</span>. Les auteurs attendent un verdict d’annihilation <span class="ref">53:9.7</span> et n’excluent pas que le jugement dure encore cent-mille ans <span class="ref">54:5.13</span>.</p>
+        <blockquote class="cite" data-ref="53:9.7"><p>«&nbsp;Tout le monde attend le décret d’Uversa.&nbsp;»</p><span class="ref">53:9.7</span></blockquote>
+      </article>
+      <article>
+        <h3><svg class="ic c-loy" aria-hidden="true" focusable="false"><use href="#i-loy"/></svg>Machiventa Melchizédek</h3>
+        <p class="st">Prince Planétaire vice-gérant</p>
+        <p>Proclamé Prince Planétaire vice-gérant d’Urantia, avec quartier général sur Jérusem <span class="ref">45:4.16 ; 53:9.4</span>, il n’a rien changé au régime des gouverneurs généraux résidents. Les auteurs ignorent quand il viendra en personne&nbsp;; certains l’attendent à tout moment <span class="ref">114:1.2–4</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ce récit</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Le récit est confié à des auteurs célestes qui se disent témoins&nbsp;: Manovandet Melchizédek, jadis attaché à l’administration provisoire d’Urantia, pour le fascicule 53, un Puissant Messager pour le 54, Solonia, la voix séraphique du Jardin, pour le 75 <span class="ref">53:9.9 ; 54:6.11 ; 75:8.8</span>. Ils signalent leurs limites&nbsp;: la cause exacte de la rébellion est très difficile à établir, et le délai a sans doute d’autres raisons qu’ils ignorent <span class="ref">53:2.5 ; 54:4.5</span>. Ils précisent aussi le sens de certaines images&nbsp;:
+        <blockquote class="cite" data-ref="53:5.6"><p>«&nbsp;Cette “guerre dans le ciel” ne fut pas une bataille physique, un conflit comme on les conçoit sur Urantia.&nbsp;»</p><span class="ref">53:5.6</span></blockquote></li>
+      <li><b>Lecture courante.</b> Le livre relit plusieurs figures bibliques. Le diable y devient une personne précise&nbsp;:
+        <blockquote class="cite r" data-ref="53:1.4"><p>«&nbsp;Le “diable” n’est autre que Caligastia, le Prince Planétaire déposé d’Urantia et Fils de l’ordre secondaire des Lanonandeks.&nbsp;»</p><span class="ref">53:1.4</span></blockquote>
+        Le dragon devient le symbole de Lucifer, de Satan et de Caligastia <span class="ref">53:1.6</span>&nbsp;; l’appel de Dieu à Adam dans le Jardin devient l’entretien de Solonia avec le couple <span class="ref">75:4.8</span>. Le serpent de la Genèse, lui, n’apparait pas&nbsp;: dans le récit, la tentation passe par Sérapatatia et Cano, où des lecteurs voient son équivalent. Parmi les lecteurs, certains reçoivent ces fascicules comme une histoire littérale du cosmos, d’autres surtout comme une réponse au problème du mal, d’autres encore comme une relecture symbolique. Depuis la fin du XX<sup>e</sup> siècle, des courants nés parmi eux, comme le <i>Teaching Mission</i>, affirment, sur la foi de messages qu’ils disent avoir reçus, que la rébellion a été jugée depuis et que la quarantaine de la planète se lève. Le livre n’en dit rien&nbsp;; cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Ces fascicules citent ou paraphrasent de nombreux versets&nbsp;: Ézéchiel 28 et Isaïe 14 pour Lucifer <span class="ref">53:1.1 ; 53:1.3</span>, l’Apocalypse pour la guerre dans le ciel et le dragon <span class="ref">53:5.6 ; 53:7.7</span>, Job, Luc et Jean pour Satan et le prince de ce monde <span class="ref">53:8.2–5</span>. Dans la Bible hébraïque, Isaïe 14 vise le roi de Babylone, et <i>Lucifer</i>, porteur de lumière, est le mot latin de la Vulgate pour l’astre du matin&nbsp;; la tradition chrétienne, depuis les Pères de l’Église, a lu ces textes comme la chute de Satan et fait de Lucifer, Satan et le diable un seul être. Le livre en fait trois personnages. Là où l’Apocalypse nomme Michel, le texte parle du lieutenant de Micaël, rôle que tient Gabriel dans son récit <span class="ref">53:5.4–6</span>. Des critiques, comme Martin Gardner dans <i>Urantia: The Great Cult Mystery</i> (1995), rapprochent plusieurs traits de ces fascicules de doctrines adventistes, milieu d’où venaient des fondateurs du mouvement, dont William S. Sadler&nbsp;: l’identification de Jésus à Michel, le sommeil des morts jusqu’à la résurrection <span class="ref">52:5.5</span>, l’annihilation finale des rebelles plutôt qu’un châtiment éternel <span class="ref">53:9.7</span>. D’autres lecteurs répondent que le livre transforme ces doctrines. Le livre dit lui-même puiser dans la pensée humaine&nbsp;:
+        <blockquote class="cite" data-ref="0:12.12"><p>«&nbsp;En conséquence, pour présenter Dieu et ses associés dans l’univers, nous avons choisi pour base de ces fascicules plus de mille concepts humains […]&nbsp;»</p><span class="ref">0:12.12</span></blockquote></li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Les autres mondes rebelles.</b> Ni leurs noms ni leurs numéros, sauf Urantia. Le texte cite Panoptia, dont le Prince fit sécession sans entrainer son peuple, mais ne dit pas si elle est comptée parmi les trente-sept <span class="ref">53:7.1</span>.</li>
+        <li><b>La durée de la guerre dans le ciel en années d’Urantia.</b> Le texte dit plus de deux ans du temps systémique <span class="ref">53:7.12</span>. Une équivalence donnée ailleurs, vingt-cinq-mille ans systémiques pour vingt-mille ans d’Urantia <span class="ref">54:6.6</span>, donnerait un peu plus d’un an et demi <span class="ded">déduit</span>.</li>
+        <li><b>Les motifs exacts de Lucifer.</b> L’auteur juge très difficile de citer la ou les causes exactes&nbsp;; il ne sait avec certitude qu’une chose&nbsp;: tout commença dans le mental de Lucifer <span class="ref">53:2.5</span>.</li>
+        <li><b>Plusieurs dates.</b> L’arrivée des administrateurs Melchizédeks n’est datée que par rapport à la rébellion, après plus de sept ans <span class="ref">67:2.6 ; 67:3.10</span>. La résurrection d’Adam et Ève n’est située qu’après sa mort, à 530 ans <span class="ref">76:5.5 ; 76:6.2</span>&nbsp;: sa place sur la frise est déduite. L’ouverture du procès n’est datée que par la rédaction des fascicules.</li>
+        <li><b>Le sort de plusieurs groupes.</b> Celui des soixante rebelles de l’état-major <span class="ref">67:4.5</span>&nbsp;; celui des enfants d’Adam et Ève emmenés sur Édentia, que l’auteur dit ignorer <span class="ref">75:6.3</span>&nbsp;; celui des médians secondaires rebelles <span class="ref">77:7.2</span>.</li>
+        <li><b>La suite pour Caligastia et Daligastia.</b> Le texte les décrit encore présents vers 1934 et n’annonce ni leur internement ni sa date. Le verdict d’Uversa n’est pas daté non plus <span class="ref">53:9.7 ; 54:5.13</span>.</li>
+        <li><b>La fin de l’isolement.</b> Elle dépend du sort de Lucifer <span class="ref">53:9.6</span> et du retour de Satania dans la constellation <span class="ref">46:8.2</span>, sans calendrier.</li>
+        <li><b>Les quarante-huit raisons.</b> L’auteur du fascicule 54 dit qu’on les enseigne sur Uversa, mais n’est pas autorisé à les exposer toutes <span class="ref">54:5.14</span>.</li>
+        <li><b>Le serpent.</b> Le texte ne mentionne pas le serpent de la Genèse dans son récit du Jardin.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Vingt citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Les dates en italique sont reprises telles qu’écrites&nbsp;; <span class="ded">déduit</span> signale un calcul de la page.</p>
+    <p>Les schémas sont des images symboliques&nbsp;: la disposition des camps, des cercles, des carrés et des points ne reproduit ni une géographie ni une chronologie exacte. Les icônes reprennent la forme des deux bannières décrites par le texte <span class="ref">53:5.4–5</span>&nbsp;; l’or, le rouge et l’ardoise sont des choix de présentation.</p>
+    <p>Faits extérieurs au livre (date de parution, sources bibliques, débats critiques, courants ultérieurs)&nbsp;: résumés prudents, sans prise de position.</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  function R(s) { return String(s).replace(/\{([^}]+)\}/g, "<span class=\"ref\">$1</span>"); }
+  function reduceMotion() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function icon(k, cls) { return "<svg class=\"ic c-" + k + (cls ? " " + cls : "") + "\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#i-" + k + "\"/></svg>"; }
+  function quote(q, k) { return "<blockquote class=\"cite" + (k === "reb" ? " r" : "") + "\" data-ref=\"" + q.ref + "\"><p>«&nbsp;" + q.cite + "&nbsp;»</p><span class=\"ref\">" + q.ref + "</span></blockquote>"; }
+  var CAMP = { reb: "camp rebelle", loy: "camp loyal", neu: "hors des deux camps", evt: "évènement" };
+  var SCALE = { systeme: "Le système", planete: "La planète", jardin: "Le Jardin" };
+
+  /* ====================== 1. Les fiches ====================== */
+  /* c : camp · n : nom · r : rôle court · a, b, e : les trois rubriques de la fiche · q : citation · go : lien vers une section */
+  var N = {
+    lucifer: { c: "reb", n: "Lucifer", r: "Souverain du système de Satania",
+      a: "Fils Lanonandek primaire, n°&nbsp;37 de son ordre, choisi parmi plus de sept-cent-mille de ses pareils comme l’un des cent plus capables {53:0.1}. Fils créé de l’univers local, il administrait depuis Jérusem un système de 607 mondes habités {53:1.1}.",
+      b: "Après plus de cinq-cent-mille ans de règne avec Satan, il se dresse contre le Père Universel et contre Micaël {53:2.1}. Le texte insiste&nbsp;: personne ne lui suggéra de se rebeller, l’idée naquit dans son propre mental {53:2.3}. Il proclame la Déclaration de Liberté {53:3.1} et rejette toutes les offres de pardon {53:2.5}. Son emblème&nbsp;: une bannière blanche portant un cercle rouge autour d’un disque noir {53:5.5}.",
+      e: "Déposé à l’arrivée de Lanaforge, il reste libre de circuler {53:7.13} jusqu’à l’effusion de Micaël {53:8.1}. Il est depuis prisonnier sur le satellite n°&nbsp;1 des sphères du Père, autour de Jérusem {53:9.2}, et complètement inactif {53:9.6}.",
+      q: { cite: "Il venait immédiatement après les Très Hauts Pères des constellations dans la hiérarchie de l’autorité universelle.", ref: "53:1.2" }, go: ["#statut", "Où en est-il&nbsp;?"] },
+    satan: { c: "reb", n: "Satan", r: "Premier lieutenant de Lucifer",
+      a: "Lanonandek du même groupe primaire que Lucifer, il n’avait jamais été Souverain Systémique {53:1.4}.",
+      b: "Il fallut plusieurs mois à Lucifer pour le convaincre&nbsp;; il devint ensuite un partisan audacieux {53:2.2}. Au conclave, il proclame qu’on ne doit obéissance qu’à Lucifer {53:4.1}. C’est lui qui plaide la cause rebelle sur Urantia {53:1.4}&nbsp;: lors d’une inspection, il informe Caligastia du projet {67:1.1–2}. Avec Lucifer, il tente de faire échouer la mission de Micaël {53:8.1}.",
+      e: "Autorisé à visiter les princes déchus jusqu’à l’ouverture du procès {53:9.3}, il est maintenant détenu sur les mondes-prisons de Jérusem {53:9.4 ; 54:4.8}.", go: ["#statut", "Où en est-il&nbsp;?"] },
+    cabinet: { c: "reb", n: "Le cabinet de Lucifer", r: "L’administration du système",
+      a: "Les membres du cabinet administratif du Souverain de Satania.",
+      b: "Tout le cabinet passe en bloc dans le camp de Lucifer&nbsp;; ses membres prêtent publiquement serment au nouveau chef {53:4.3}. Lucifer organise sa propre assemblée législative et ses tribunaux, sous la juridiction de Satan {53:4.2}.",
+      e: "Après l’effusion, Micaël obtient des Anciens des Jours l’internement des rebelles de la capitale du système {53:9.3}." },
+    chefsera: { c: "reb", n: "Le chef des séraphins", r: "Il entraine une partie des anges",
+      a: "Le chef des armées séraphiques du quartier général de Satania.",
+      b: "Ébloui par Lucifer, il épouse sa cause&nbsp;: c’est pourquoi tant de séraphins administrateurs s’égarent {53:6.2}. Un peu plus du tiers d’entre eux le suivent {53:7.6}.",
+      e: "Le texte ne dit pas ce qu’il est devenu&nbsp;; il mentionne des séraphins et des chérubins rebelles confinés sur les mondes d’isolement de Jérusem {45:1.10}." },
+    princes: { c: "reb", n: "Trente-sept Princes Planétaires", r: "Les mondes séparatistes",
+      a: "Des Fils Lanonandeks qui gouvernaient chacun un monde habité de Satania.",
+      b: "Lucifer leur promet qu’ils gouverneront leurs mondes en exécutifs suprêmes {53:4.2}. Trente-sept font passer leurs administrations dans son camp, dont Caligastia sur Urantia {53:7.1 ; 53:6.5}. Sur Panoptia seulement, le Prince ne parvient pas à entrainer son peuple {53:7.1}.",
+      e: "Aucun monde de Satania n’a été perdu depuis la chute des trente-sept {53:7.15}. L’ouverture du procès a donné le signal de régimes planétaires temporaires sur tous les mondes isolés {53:9.4}.", go: ["#camps", "Voir les 37 mondes sur 607"] },
+    micael: { c: "loy", n: "Micaël", r: "Fils Créateur de Nébadon",
+      a: "Le Fils Créateur de l’univers local. À l’époque, il le gouverne comme vice-gérant du Père, sans avoir encore achevé ses effusions ni reçu la souveraineté personnelle {53:2.1 ; 53:5.2}.",
+      b: "Sur le conseil d’Emmanuel, il choisit la non-intervention et laisse la rébellion suivre son cours pendant presque deux-cent-mille ans {53:5.1 ; 53:5.3}. Il offre dès le début le pardon aux rebelles repentants {53:9.1}. Sa bannière&nbsp;: trois cercles concentriques bleu d’azur sur fond blanc {53:5.4}.",
+      e: "Son effusion sur Urantia met fin à la rébellion dans tout Satania, sauf sur les planètes des princes apostats {53:8.3}. Il est proclamé Prince Planétaire d’Urantia {114:1.1}.", go: ["#consequences", "Le choix d’Urantia pour l’effusion"] },
+    gabriel: { c: "loy", n: "Gabriel", r: "Commandant des armées loyales",
+      a: "Le chef exécutif de l’univers de Nébadon, à Salvington {33:4.5}.",
+      b: "Lors d’une visite à Jérusem, il pressent la révolte et va conférer sur Édentia {53:2.4}. Présent pendant tous les débats, il annonce que le choix de chacun sera libre {53:4.6}. Comme Micaël reste à l’écart, il prend le commandement des armées loyales et déploie la bannière de Micaël sur la sphère du Père {53:5.4}&nbsp;; de là, il réfute sans relâche les arguments de Lucifer {53:5.6}.",
+      e: "Il a porté l’affaire devant les tribunaux d’Uversa&nbsp;: c’est le procès de Gabriel contre Lucifer, dont la première audience se tient au temps des fascicules {53:9.3 ; 54:4.8}.", go: ["#statut", "Le procès"] },
+    manotia: { c: "loy", n: "Manotia", r: "Commandant en second des séraphins",
+      a: "Le second des séraphins du quartier général de Satania.",
+      b: "Il refuse d’insulter Micaël et prend le commandement des anges de Jérusem quand son supérieur fait défaut {53:6.3–4}. Coupé des circuits de la constellation, il fait appeler à l’aide depuis le système voisin de Rantulia {53:6.5}. Il sauve presque les deux tiers des séraphins administrateurs {53:7.6}.",
+      e: "Affecté ensuite à l’administration provisoire d’Urantia, il y sert encore comme chef adjoint des séraphins {53:6.5–6}." },
+    melchis: { c: "loy", n: "Les Melchizédeks", r: "Le soutien des loyaux",
+      a: "Un ordre de Fils de l’univers local, les premiers à intervenir dans tous les cas d’urgence {35:4.4}.",
+      b: "Tous restent loyaux {53:7.4}. Ils soutiennent Manotia et dirigent la résistance des mortels ascendants {53:6.4 ; 53:7.11}. Sur Panoptia, le peuple se rallie à Micaël sous leur direction {53:7.1}.",
+      e: "Sur Urantia, douze Melchizédeks administreront la planète après la rébellion {67:6.5}." },
+    ascend: { c: "loy", n: "Les mortels ascendants", r: "Aucune défection sur Jérusem",
+      a: "D’anciens mortels en cours d’ascension, citoyens de Jérusem.",
+      b: "L’attaque voilée de Lucifer contre les finalitaires les rend inébranlables {53:3.2}. Aucun citoyen ascendant résidant sur Jérusem ne participe à la rébellion&nbsp;; des mortels des premiers mondes des maisons, non encore fusionnés avec leur Ajusteur, tombent cependant {53:7.10}.",
+      e: "Ils sont exactement 187&nbsp;432&nbsp;811 mortels fidèles {53:7.12}. Selon le texte, leur résistance a rehaussé leur carrière {54:6.5}." },
+    lanaforge: { c: "loy", n: "Lanaforge", r: "Le successeur de Lucifer",
+      a: "Lanonandek primaire n°&nbsp;2&nbsp;709 {45:3.2}, déjà resté fidèle à Micaël lors d’une rébellion antérieure, dans un autre système {45:2.3}.",
+      b: "Il arrive plus de deux ans du temps systémique après le début de la guerre dans le ciel&nbsp;; les archirebelles sont alors détrônés {53:7.12–13}.",
+      e: "Toujours Souverain de Satania, il visite souvent Urantia {45:2.4}. C’est lui qui ordonnera la résurrection d’Adam et Ève {76:6.2}.",
+      q: { cite: "Aucun citoyen de Jérusem n’a été perdu.", ref: "53:7.12" } },
+    panoptia: { c: "loy", n: "Panoptia et Éllanora", r: "Le monde qui n’a pas suivi",
+      a: "Panoptia est un monde habité de Satania&nbsp;; Éllanora, une jeune femme de ce monde.",
+      b: "Le Prince de Panoptia passe à Lucifer, mais pas son peuple&nbsp;: sous la direction des Melchizédeks, il se rallie à Micaël, et Éllanora prend la tête des races humaines. Pas une âme ne s’enrôle sous la bannière de Lucifer {53:7.1}.",
+      e: "Les Panoptiens gardent aujourd’hui la sphère du Père et les sept mondes de détention qui l’entourent {53:7.1}. Ce sont eux qui proclamèrent la miséricorde offerte aux rebelles {53:9.1}." },
+    manifeste: { c: "evt", n: "Le manifeste", r: "Sur la mer de verre", la: ["Quoi", "Contenu", "Suite"],
+      a: "La Déclaration Luciférienne de Liberté, proclamée au conclave annuel de Satania, il y a environ deux-cent-mille ans {53:3.1 ; 53:4.1}.",
+      b: "Trois rubriques&nbsp;: la réalité du Père Universel, le gouvernement de Micaël, le plan d’ascension des mortels {53:3.2–6}.",
+      e: "Tout le cabinet de Lucifer passe dans son camp {53:4.3}, et la guerre dans le ciel commence {53:5.6}.", go: ["#manifeste", "Lire les trois points"] },
+
+    caligastia: { c: "reb", n: "Caligastia", r: "Prince Planétaire d’Urantia",
+      a: "Lanonandek secondaire n°&nbsp;9&nbsp;344 {66:1.1}, promu par Lucifer dans son état-major personnel {66:1.2}, arrivé sur Urantia il y a un demi-million d’années {66:1.5}.",
+      b: "Après trois-cent-mille ans de charge, il accepte, lors d’une visite de Satan, de trahir la planète {67:1.1–2}. Il se proclame souverain absolu&nbsp;; Daligastia le proclame Dieu d’Urantia {67:2.1 ; 67:2.4}. Son projet de rebâtir d’un coup la société humaine échoue {67:5.3}. Plus tard, il cherche à faire échouer la mission d’Adam et Ève {75:2.1–3}.",
+      e: "Déposé, mais laissé sur la planète {74:5.5}, il reste Prince en titre jusqu’à la venue de Micaël {75:2.2}. Il refuse le pardon que Micaël lui offre {53:8.6}. Le texte l’identifie au diable {53:1.4}.", go: ["#statut", "Où en est-il&nbsp;?"] },
+    daligastia: { c: "reb", n: "Daligastia", r: "Adjoint-associé du Prince",
+      a: "Lanonandek secondaire n°&nbsp;319&nbsp;407 {66:2.2}&nbsp;; la cité de Dalamatia porte son nom {66:3.3}.",
+      b: "Il convoque les dix conseils pour exiger leur abdication {67:2.1}, proclame Caligastia Dieu d’Urantia {67:2.4}, puis ordonne aux rebelles de l’état-major de recourir à la reproduction sexuée {67:4.2}.",
+      e: "Il refuse lui aussi le pardon de Micaël&nbsp;; depuis la Pentecôte, il est servile devant les Ajusteurs et l’Esprit de Vérité {53:8.6–7}." },
+    soixante: { c: "reb", n: "Les soixante de l’état-major", r: "Leur chef&nbsp;: Nod",
+      a: "Soixante des cent membres corporels de l’état-major du Prince&nbsp;: sept conseils sur dix perdent tout ou partie de leurs membres {67:4.1}.",
+      b: "Ils choisissent Nod pour chef {67:4.2}. Privés des circuits vitaux du système, ils deviennent mortels&nbsp;; leurs descendants sont les Nodites, et leur pays le pays de Nod {67:4.2}. Leur souvenir est, selon le texte, à l’origine de légendes de dieux unis aux mortels {67:4.3}.",
+      e: "Ils meurent de mort naturelle {67:4.4}. Leur sort reste inconnu, et leurs Ajusteurs attendent sur Jérusem {67:4.5}.", go: ["#camps", "Voir les cent, conseil par conseil"] },
+    abaddon: { c: "reb", n: "Abaddon", r: "Chef d’état-major de Caligastia",
+      a: "Le chef d’état-major du Prince Planétaire.",
+      b: "Il suit son maitre dans la rébellion et agit depuis comme chef administratif des rebelles d’Urantia {53:1.5}.",
+      e: "Le texte n’en dit pas plus." },
+    medreb: { c: "reb", n: "Les médians rebelles", r: "40&nbsp;119 sur 50&nbsp;000",
+      a: "Les médians primaires sont nés de l’état-major du Prince&nbsp;; il y en eut 50&nbsp;000 {66:4.10}.",
+      b: "40&nbsp;119 d’entre eux se rallient à Caligastia {67:3.2 ; 77:7.1}, soit un peu plus des quatre cinquièmes {77:1.7}. Bien plus tard, 873 des 1&nbsp;984 médians secondaires, sous Belzébuth, refusent à leur tour la direction de Micaël {77:7.2 ; 77:7.4}.",
+      e: "Tous les médians rebelles sont en prison par ordre des Très Hauts d’Édentia&nbsp;; selon le texte, depuis la Pentecôte, la possession démoniaque ne peut plus exister {77:7.8}." },
+    serafreb: { c: "reb", n: "Les séraphins déloyaux", r: "Près de la moitié",
+      a: "Les séraphins administratifs et ceux qui étaient provisoirement attachés à la planète.",
+      b: "Près de la moitié d’entre eux font cause commune avec leur chef et avec Daligastia {67:3.2}.",
+      e: "Selon le texte, des chérubins et séraphins rebelles vécurent sur terre jusqu’à la mort et la résurrection du Christ {77:7.4}." },
+    van: { c: "loy", n: "Van", r: "Président de la cour suprême de coordination",
+      a: "Membre de l’état-major du Prince, à la tête du conseil suprême qui servait de cour d’appel aux neuf autres {66:5.31}.",
+      b: "Il dénonce l’exigence de Caligastia, fait appel à Lucifer, puis, devant sa réponse, prononce un discours de sept heures et en appelle aux Très Hauts d’Édentia {67:2.2}. Pendant les sept années de lutte, il rassemble les loyaux, hommes, médians et anges {67:3.3 ; 67:3.6}.",
+      e: "Avec ses partisans, il se retire dans les hautes terres à l’ouest de l’Inde {67:6.1}. Soutenu avec Amadon par l’arbre de vie {67:6.4}, il garde plus de cent-cinquante-mille ans une autorité nominale, puis proclame Adam et Ève dirigeants {74:2.6} et rejoint Jérusem {67:6.8}. La décision d’Édentia en sa faveur, bloquée par l’isolement, n’a été retrouvée que récemment {67:6.9}." },
+    amadon: { c: "loy", n: "Amadon", r: "Associé humain de Van",
+      a: "Descendant d’Andon et Fonta, l’un des cent mortels qui avaient fourni leur plasma vital à l’état-major {67:3.8}.",
+      b: "Il reste aux côtés de Van pendant les sept années, insensible aux arguments de Daligastia {67:3.8}. Le texte oppose Caligastia, qui avait le maximum d’intelligence et d’expérience, à Amadon, qui n’en avait presque pas et resta fidèle {67:3.9}.",
+      e: "Les annales de Salvington le décrivent comme le caractère le plus remarquable de tout le système {67:8.1}. Il quitte la Terre avec Van peu après l’arrivée d’Adam et Ève {67:6.8}.",
+      q: { cite: "Amadon est le héros humain le plus remarquable de la rébellion de Lucifer.", ref: "67:3.8" } },
+    quarante: { c: "loy", n: "Les quarante loyaux", r: "Dont Van, Ang, Fad et Hap",
+      a: "Quarante des cent membres corporels de l’état-major {67:3.2}.",
+      b: "Trois conseils restent fidèles en entier&nbsp;: la cour de coordination de Van, le collège de la religion révélée de Hap, le conseil des arts et des sciences {67:4.1}. Les loyaux s’installent dans un établissement sans remparts à l’est de Dalamatia, gardé par les médians loyaux, avec l’arbre de vie {67:3.4–5}.",
+      e: "Transférés sur Jérusem, ils sont réunis à leurs Ajusteurs et reprennent leur route vers le Paradis&nbsp;; Van seul reste sur Urantia {67:4.1 ; 67:4.5}.", go: ["#camps", "Voir les cent, conseil par conseil"] },
+    andonites: { c: "loy", n: "Les Andonites loyaux", r: "144 personnes, les Amadonites",
+      a: "Des descendants d’Andon et Fonta associés à l’état-major, dont Amadon.",
+      b: "Cinquante-six Andonites modifiés restent avec Van, dont seize assistants des membres déloyaux qui refusent de suivre leurs maitres {67:3.5}. Le groupe loyal d’Amadon compte 144 personnes, trente-neuf hommes et cent-cinq femmes {67:6.3}.",
+      e: "Leurs descendants, les Amadonites, assurent la direction du monde pendant les âges sombres qui suivent {67:6.3}." },
+    medloy: { c: "loy", n: "Les médians loyaux", r: "9&nbsp;881 sur 50&nbsp;000 (déduit)",
+      a: "Les médians primaires restés fidèles, un peu moins d’un cinquième du corps {77:1.7}.",
+      b: "Ils gardent jour et nuit le camp des loyalistes&nbsp;; trois d’entre eux veillent sur l’arbre de vie avec les anges {67:3.4–5}. Ils servent ensuite les administrateurs Melchizédeks, sous le commandement nominal de Van {77:1.7}.",
+      e: "Ce sont des médians d’Urantia qui, par leurs recherches, ont retrouvé la décision d’Édentia bloquée depuis l’isolement {67:6.9}." },
+    douze: { c: "loy", n: "Les douze Melchizédeks", r: "Administrateurs provisoires",
+      a: "Douze Melchizédeks confirmés par le Très Haut Père de Norlatiadek {67:6.5}.",
+      b: "Quand la dernière personnalité a fait son choix, un Très Haut d’Édentia arrive avec les Melchizédeks d’urgence pour prendre l’autorité {67:3.10}. Ils préservent les restes de la civilisation, avec Van pour exécuter leur politique {67:6.6}. Ils avertissent Ève de ne jamais agir en secret {75:2.4}.",
+      e: "Ils remettent la planète à Adam et Ève, repartent près de sept ans plus tard, puis reviennent soixante-dix jours après la défaillance&nbsp;; ils refusent alors de conseiller Adam {74:2.6 ; 74:5.1 ; 75:5.8 ; 75:6.1}." },
+    vorondadek: { c: "loy", n: "Le Très Haut observateur", r: "Un Fils Vorondadek",
+      a: "Un Fils Vorondadek, présent sur tout monde isolé {43:5.17}.",
+      b: "Il se trouve sur Urantia depuis la trahison de Caligastia. Il ne participe pas à l’administration, sauf sur ordre du Père de la Constellation {43:5.17}&nbsp;; en cas de crise, il pourrait exercer une autorité absolue {35:5.6}.",
+      e: "Le texte lui applique la formule biblique du Très Haut qui règne dans les royaumes des hommes {43:5.17}." },
+    coupure: { c: "evt", n: "Urantia isolée", r: "Les circuits sont coupés", la: ["Quoi", "Effet", "Suite"],
+      a: "Pendant la crise, les circuits du système sont coupés {67:2.3}.",
+      b: "Tous les êtres célestes présents sur la planète se retrouvent sans préavis privés de conseils extérieurs&nbsp;; chacun doit choisir {67:2.3–5}.",
+      e: "La coupure dure encore au temps des fascicules, adoucie par l’effusion de Micaël {114:5.4}.", go: ["#isolement", "Pourquoi Urantia est-elle isolée&nbsp;?"] },
+
+    caldal: { c: "reb", n: "Caligastia et Daligastia", r: "Le complot",
+      a: "Le Prince déchu et son associé, toujours présents sur la planète {74:5.5}.",
+      b: "Caligastia visite souvent le Jardin, mais trouve Adam et Ève intransigeants {75:2.1}. Il décide alors d’atteindre Ève de flanc, par des Nodites de haut rang, descendants de son ancien état-major {75:2.3}. Le texte précise que ni lui ni son associé ne pouvaient influencer quiconque contre sa volonté {75:2.1}.",
+      e: "Voir leurs fiches à l’échelle de la planète." },
+    adam: { c: "neu", n: "Adam", r: "Fils Matériel",
+      a: "Fils Matériel envoyé avec Ève pour élever biologiquement les races&nbsp;; ils arrivent 37&nbsp;848 ans avant l’an 1934 {74:0.1}.",
+      b: "Isolé, sans pouvoir consulter Jérusem ni Édentia {75:1.1 ; 75:1.4}, il résiste aux suggestions de Caligastia {75:2.1}. Le lendemain de la faute d’Ève, il commet délibérément la même avec Laotta, une Nodite&nbsp;: il ne fut pas séduit, précise le texte, mais choisit de partager le sort d’Ève {75:5.2}. Il quitte le Jardin sans combattre, avec douze cents partisans {75:6.2}.",
+      e: "Il vit 530 ans {76:5.5}, puis est repersonnalisé avec Ève sur les mondes des maisons {76:6.2}. Le texte refuse d’en faire une source de malédiction pour la race humaine {75:8.3}." },
+    eve: { c: "neu", n: "Ève", r: "Fille Matérielle",
+      a: "Fille Matérielle, compagne d’Adam {74:0.1}.",
+      b: "Avertie par les Melchizédeks de ne jamais agir en secret, elle suit leurs instructions plus de cent ans {75:2.4}. Sérapatatia la convainc peu à peu&nbsp;; après plus de cinq ans de plans secrets, elle rencontre Cano {75:3.5–9}. Le texte qualifie ce projet de mal, bien que conçu avec une entière sincérité&nbsp;: une mauvaise façon d’atteindre de justes fins {75:4.6}.",
+      e: "Elle meurt dix-neuf ans avant Adam {76:5.5}, puis est repersonnalisée avec lui {76:6.2}." },
+    serapatatia: { c: "neu", n: "Sérapatatia", r: "Chef des Nodites syriens",
+      a: "Descendant de l’ancien chef de la commission de la santé de Dalamatia {75:3.1}.",
+      b: "Il devient l’un des meilleurs lieutenants d’Adam {75:3.3}, puis propose qu’un chef nodite naisse avec une part de sang violet {75:3.5}. Le texte insiste&nbsp;: il était honnête et sincère, et ne soupçonna jamais qu’il jouait le jeu de Caligastia et de Daligastia {75:3.6}.",
+      e: "Comprenant ce qui est arrivé, il se noie le lendemain dans le grand fleuve {75:5.4}." },
+    cano: { c: "neu", n: "Cano", r: "Chef des Nodites voisins",
+      a: "Penseur brillant, chef spirituel sincère des Nodites voisins favorables au Jardin {75:3.7}.",
+      b: "Il croit lui aussi à la droiture du projet de Sérapatatia {75:3.8}. Il assure à Ève qu’elle ne mourra pas, mais revivra dans leur enfant {75:4.5}.",
+      e: "Il périt quand les gens du Jardin, furieux, détruisent la colonie nodite&nbsp;; il était le père de Caïn, encore à naitre {75:5.3}." },
+    solonia: { c: "loy", n: "Solonia", r: "La voix séraphique du Jardin",
+      a: "Un être séraphique, auteur du fascicule 75 {75:8.8}.",
+      b: "Cet être séraphique annonce au couple qu’il a transgressé le pacte du Jardin et désobéi aux Melchizédeks, puis écoute son récit et le conseille {75:4.2 ; 75:4.8}.",
+      e: "Le texte voit dans cet entretien l’origine du récit biblique où Dieu appelle Adam et Ève dans le Jardin {75:4.8}." },
+    defaillance: { c: "evt", n: "La défaillance", r: "Après cent-dix-sept ans", la: ["Quoi", "Jugement", "Suite"],
+      a: "Ève rencontre Cano en secret&nbsp;; le lendemain, Adam commet la même faute, en connaissance de cause {75:3.9 ; 75:5.2}.",
+      b: "Une mauvaise manière d’atteindre de justes fins&nbsp;: le texte y voit un mal, non une rébellion {75:4.6}.",
+      e: "Les Melchizédeks reviennent&nbsp;; Adam quitte le premier jardin {75:5.8 ; 75:6.2}. Peu après, Micaël choisit Urantia pour son effusion finale {119:7.2}.", go: ["#consequences", "Les conséquences"] }
+  };
+  var LAYOUT = {
+    systeme: { mid: ["manifeste"], reb: ["lucifer", "satan", "cabinet", "chefsera", "princes"], loy: ["micael", "gabriel", "manotia", "melchis", "ascend", "lanaforge", "panoptia"] },
+    planete: { mid: ["coupure"], reb: ["caligastia", "daligastia", "satan", "soixante", "abaddon", "medreb", "serafreb"], loy: ["van", "amadon", "quarante", "andonites", "medloy", "douze", "vorondadek"] },
+    jardin: { mid: ["defaillance"], reb: ["caldal"], neu: ["adam", "eve", "serapatatia", "cano"], loy: ["douze", "solonia", "van", "amadon", "micael"] }
+  };
+  var CAMPH = { reb: "Camp rebelle", neu: "Hors des deux camps", loy: "Camp loyal" };
+  var ROLE_OVERRIDE = { "jardin:micael": "Il choisit Urantia", "planete:satan": "En visite d’inspection", "jardin:douze": "Avertissement, puis retour", "jardin:van": "Il accueille Adam et Ève", "jardin:amadon": "Encore présent à l’arrivée" };
+
+  function scalesOf(id) { return Object.keys(LAYOUT).filter(function (s) { var L = LAYOUT[s]; return ["mid", "reb", "neu", "loy"].some(function (k) { return (L[k] || []).indexOf(id) >= 0; }); }); }
+  function nodeBtn(id, sc) {
+    var d = N[id], role = ROLE_OVERRIDE[sc + ":" + id] || d.r;
+    return "<button type=\"button\" class=\"node" + (d.c === "evt" ? " evt" : "") + "\" data-id=\"" + id + "\" aria-controls=\"fiche\">" + icon(d.c) +
+      "<span class=\"nm\">" + d.n + "<span class=\"sr-only\"> (" + CAMP[d.c] + ")</span></span><span class=\"rl\">" + role + "</span></button>";
+  }
+  Object.keys(LAYOUT).forEach(function (sc) {
+    var L = LAYOUT[sc], h = "<div class=\"arena-mid\"><span class=\"mid-lbl\">L’enjeu</span>" + L.mid.map(function (id) { return nodeBtn(id, sc); }).join("") + "</div>";
+    ["reb", "neu", "loy"].forEach(function (k) {
+      if (!L[k]) return;
+      h += "<div class=\"camp camp-" + k + "\"><h4 class=\"camp-h\">" + icon(k) + CAMPH[k] + "</h4><ul class=\"nodes\">" +
+        L[k].map(function (id) { return "<li>" + nodeBtn(id, sc) + "</li>"; }).join("") + "</ul></div>";
+    });
+    document.querySelector("[data-arena=\"" + sc + "\"]").innerHTML = h;
+  });
+
+  var fiche = document.getElementById("fiche"), status = document.getElementById("f-status");
+  var state = { scale: "systeme", id: "lucifer" };
+  function renderFiche() {
+    var id = state.id, d = N[id], la = d.la || ["Qui", "Action", "Ensuite"];
+    var other = scalesOf(id).filter(function (s) { return s !== state.scale; });
+    var h = "<div class=\"f-top\"><span class=\"eyebrow\">" + SCALE[state.scale] + "</span><span class=\"badge b-" + d.c + "\">" + icon(d.c) + CAMP[d.c] + "</span></div>" +
+      "<h3 id=\"f-title\">" + d.n + "</h3><p class=\"f-role\">" + (ROLE_OVERRIDE[state.scale + ":" + id] || d.r) + "</p>" +
+      "<dl class=\"f-dl\"><dt>" + la[0] + "</dt><dd>" + R(d.a) + "</dd><dt>" + la[1] + "</dt><dd>" + R(d.b) + "</dd><dt>" + la[2] + "</dt><dd>" + R(d.e) + "</dd></dl>";
+    if (d.q) h += quote(d.q, d.c);
+    var see = "";
+    if (other.length) see += "<span>Aussi à l’échelle&nbsp;:</span>" + other.map(function (s) { return "<button type=\"button\" class=\"chip\" data-goto=\"" + s + "\" data-id=\"" + id + "\">" + SCALE[s] + "</button>"; }).join("");
+    if (id === "caldal") see += "<button type=\"button\" class=\"chip\" data-goto=\"planete\" data-id=\"caligastia\">Caligastia</button><button type=\"button\" class=\"chip\" data-goto=\"planete\" data-id=\"daligastia\">Daligastia</button>";
+    if (d.go) see += "<a href=\"" + d.go[0] + "\">" + d.go[1] + "</a>";
+    if (see) h += "<p class=\"see\">" + see + "</p>";
+    h += "<p class=\"see back\"><button type=\"button\" class=\"chip\" data-back=\"1\">↑ Revenir au schéma</button></p>";
+    fiche.innerHTML = h;
+  }
+  function markCurrent() {
+    Array.prototype.forEach.call(document.querySelectorAll(".node"), function (b) {
+      if (b.getAttribute("data-id") === state.id) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+    });
+  }
+  function select(id, announce) {
+    state.id = id; renderFiche(); markCurrent();
+    if (announce) status.textContent = "Fiche ouverte : " + N[id].n.replace(/&nbsp;/g, " ") + ", " + CAMP[N[id].c] + ".";
+  }
+  var scaleBtns = document.querySelectorAll("#scales button");
+  function setScale(sc) {
+    state.scale = sc;
+    Array.prototype.forEach.call(scaleBtns, function (b) { b.setAttribute("aria-pressed", String(b.getAttribute("data-scale") === sc)); });
+    Array.prototype.forEach.call(document.querySelectorAll(".scale"), function (p) { p.hidden = p.getAttribute("data-scale") !== sc; });
+  }
+  Array.prototype.forEach.call(scaleBtns, function (b) {
+    b.addEventListener("click", function () {
+      var sc = b.getAttribute("data-scale");
+      setScale(sc);
+      select(scalesOf(state.id).indexOf(sc) >= 0 ? state.id : LAYOUT[sc].mid[0], true);
+    });
+  });
+  function visibleBtn(id) { return document.querySelector(".scale:not([hidden]) .node[data-id=\"" + id + "\"]"); }
+  document.querySelector(".scales-box").addEventListener("click", function (ev) {
+    var b = ev.target.closest(".node");
+    if (!b) return;
+    select(b.getAttribute("data-id"), true);
+    var r = fiche.getBoundingClientRect();
+    if (r.top > window.innerHeight - 40) fiche.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "start" });
+  });
+  fiche.addEventListener("click", function (ev) {
+    var g = ev.target.closest("[data-goto]");
+    if (g) { setScale(g.getAttribute("data-goto")); select(g.getAttribute("data-id"), true); var nb = visibleBtn(state.id); if (nb) nb.focus(); return; }
+    if (ev.target.closest("[data-back]")) {
+      var vb = visibleBtn(state.id) || document.querySelector(".scale:not([hidden]) .node");
+      if (vb) { vb.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth", block: "center" }); vb.focus({ preventScroll: true }); }
+    }
+  });
+  setScale("systeme");
+  select("lucifer", false);
+
+  /* ====================== 2. La frise segmentée ====================== */
+  function lg(v, max) { return Math.log(1 + v) / Math.log(1 + max); }
+  var SEGS = [
+    { id: "A", t: "Le règne de Caligastia", s: "il y a 500 000 → 200 000 ans", l: "500 000", r: "200 000", sc: "échelle linéaire", f: function (v) { return (500000 - v) / 300000; } },
+    { id: "B", t: "La crise", s: "0 → 162 ans après le manifeste", l: "0", r: "162 ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 162); } },
+    { id: "C", t: "La longue attente", s: "≈ 200 000 → 38 000 ans", l: "≈ 200 000", r: "≈ 38 000", sc: "échelle linéaire", f: function (v) { return (199838 - v) / 161990; } },
+    { id: "D", t: "Le Jardin", s: "530 ans après l’arrivée d’Adam", l: "0", r: "530 ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 530); } },
+    { id: "E", t: "L’effusion de Micaël", s: "an 25 → an 30", l: "an 25", r: "an 30", sc: "échelle linéaire", f: function (v) { return (v - 25) / 5.8; } },
+    { id: "F", t: "Le temps des fascicules", s: "vers 1934 (déduit)", l: "", r: "", sc: "un seul repère", f: function () { return 0.5; } }
+  ];
+  /* g : segment · v : position dans l’échelle du segment · k : camp · d : date (italique = telle qu’écrite) · r : référence de la date */
+  var EVS = [
+    { g: "A", v: 500000, k: "evt", d: "<span class=\"f-date\">Il y a 500 000 ans</span>", r: "61:7.4", t: "Arrivée du Prince Planétaire Caligastia",
+      x: "Caligastia, Lanonandek secondaire, arrive avec Daligastia et un état-major de cent membres corporels {66:1.1 ; 66:2.2–3}. Leur cité, Dalamatia, porte le nom de Daligastia {66:3.3}." },
+    { g: "A", v: 200000, k: "reb", d: "Caligastia a la charge d’Urantia <span class=\"f-date\">depuis trois-cent-mille ans</span>", r: "67:1.1", t: "La visite de Satan",
+      x: "Lors d’une inspection, Satan informe Caligastia de la Déclaration que prépare Lucifer&nbsp;; le Prince accepte de trahir la planète dès que la rébellion sera annoncée {67:1.2}." },
+    { g: "B", v: 0, k: "reb", d: "<span class=\"f-date\">il y a environ deux-cent-mille ans</span>, <span class=\"f-date\">le dernier jour de l’année</span>", r: "53:4.1 ; 61:7.8", t: "Le manifeste de Lucifer",
+      x: "Satan y annonce qu’on ne doit obéissance qu’à Lucifer&nbsp;; tout le cabinet administratif passe dans son camp {53:4.1 ; 53:4.3}.",
+      q: { cite: "Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre, en présence des foules assemblées de Jérusem, le dernier jour de l’année, il y a environ deux-cent-mille ans du temps d’Urantia.", ref: "53:4.1" } },
+    { g: "B", v: 0.05, k: "reb", d: "<span class=\"f-date\">Peu après l’inspection de Satan</span>", r: "67:2.1", t: "Caligastia rallie la rébellion&nbsp;; Urantia est isolée",
+      x: "Daligastia convoque les dix conseils&nbsp;: Caligastia veut se proclamer souverain absolu {67:2.1}. Van fait appel à Lucifer, qui confirme Caligastia&nbsp;; Van en appelle alors aux Très Hauts d’Édentia {67:2.2}. Entretemps, les circuits du système sont coupés {67:2.3}." },
+    { g: "B", v: 2, k: "loy", d: "<span class=\"f-date\">plus de deux ans du temps systémique</span> après le début de la guerre dans le ciel", r: "53:7.12", t: "Lanaforge, nouveau souverain de Satania",
+      x: "Les archirebelles sont détrônés et dépouillés de tout pouvoir de gouvernement, mais restent libres de circuler {53:7.13}." },
+    { g: "B", v: 7, k: "loy", d: "après une lutte de <span class=\"f-date\">plus de sept ans</span>", r: "67:2.6", t: "Fin de la lutte sur Urantia",
+      x: "Quand la dernière personnalité a fait son choix, un Très Haut d’Édentia arrive avec les Melchizédeks pour prendre l’autorité&nbsp;; les annales du règne de Caligastia sont effacées sur Jérusem {67:3.10}. Douze Melchizédeks administreront la planète {67:6.5}." },
+    { g: "B", v: 50, k: "evt", d: "<span class=\"f-date\">pendant près de cinquante ans</span>", r: "67:5.1", t: "Confusion à Dalamatia",
+      x: "La révolution prend la place de l’évolution&nbsp;; des tribus mal instruites assiègent la cité et chassent vers le nord l’état-major rebelle {67:5.1–2}." },
+    { g: "B", v: 162, k: "evt", d: "<span class=\"f-date\">Cent-soixante-deux ans après la rébellion</span>", r: "67:5.4", t: "Dalamatia engloutie",
+      x: "Un raz de marée submerge le premier quartier général planétaire {67:5.4}." },
+    { g: "C", v: 199000, k: "loy", d: "<span class=\"f-date\">Moins de mille ans après la rébellion</span>", r: "67:6.6", t: "Les avant-postes de Van",
+      x: "Sous la direction des Melchizédeks, Van a disséminé plus de trois-cent-cinquante groupes pionniers dans le monde {67:6.6}." },
+    { g: "C", v: 180000, k: "loy", d: "<span class=\"f-date\">Après vingt-cinq-mille ans du temps systémique (vingt-mille ans d’Urantia)</span>", r: "54:6.6", t: "Le bien égale le mal",
+      x: "Les Melchizédeks commencent à enseigner que le bien issu de la rébellion égale le mal subi {54:6.6}." },
+    { g: "C", v: 150000, k: "evt", d: "<span class=\"f-date\">Cinquante-mille ans après l’effondrement de l’administration planétaire</span>", r: "67:7.3", t: "Un long recul",
+      x: "L’humanité n’a presque rien gagné depuis l’arrivée de Caligastia {67:7.3}, même si l’évolution biologique n’a guère été retardée {67:7.6}." },
+    { g: "C", v: 40000, k: "loy", d: "<span class=\"f-date\">Il y a presque quarante-mille ans</span>", r: "73:0.1", t: "On demande un Fils et une Fille Matériels",
+      x: "Les Porteurs de Vie et les administrateurs Melchizédeks demandent aux Très Hauts d’Édentia de faire inspecter la planète {73:0.1}." },
+    { g: "D", v: 0, k: "loy", d: "<span class=\"f-date\">37 848 ans avant l’an 1934 de l’ère chrétienne</span>", r: "74:0.1", t: "Arrivée d’Adam et Ève",
+      x: "Ils arrivent sur une planète isolée {75:1.1}. Van, qui détenait l’autorité nominale depuis plus de cent-cinquante-mille ans, les proclame dirigeants {74:2.6}." },
+    { g: "D", v: 7, k: "evt", d: "<span class=\"f-date\">près de sept ans après l’arrivée d’Adam</span>", r: "74:5.1", t: "Les Melchizédeks repartent",
+      x: "Les administrateurs provisoires transmettent les affaires du monde à Adam et retournent à Jérusem {74:5.1}&nbsp;; Adam et Ève restent seuls {75:1.4}." },
+    { g: "D", v: 117, k: "neu", d: "après <span class=\"f-date\">cent-dix-sept ans</span> dans le Jardin", r: "74:8.14", t: "La défaillance",
+      x: "Après plus de cinq ans de plans secrets avec Sérapatatia, Ève rencontre Cano&nbsp;; le lendemain, Adam choisit délibérément la même faute {75:3.7–9 ; 75:5.2}." },
+    { g: "D", v: 117.2, k: "loy", d: "<span class=\"f-date\">soixante-dix jours après la défaillance d’Ève</span>", r: "75:5.8", t: "Le retour des administrateurs provisoires",
+      x: "Les Melchizédeks reprennent la juridiction&nbsp;; Adam quitte le Jardin sans combattre, avec douze cents partisans {75:5.8 ; 75:6.2}." },
+    { g: "D", v: 117.4, k: "loy", d: "<span class=\"f-date\">peu après la nouvelle de la défaillance d’Adam et d’Ève</span>", r: "119:7.2", t: "Urantia choisie pour l’effusion finale",
+      x: "Micaël annonce qu’Urantia sera le monde de son effusion finale {119:7.2}. Un autre passage date cette annonce d’il y a presque quarante-mille ans {43:1.6}." },
+    { g: "D", v: 530, k: "loy", d: "<span class=\"f-date\">Le troisième jour après la mort d’Adam</span>, qui vécut 530 ans <span class=\"ded\">position déduite</span>", r: "76:6.2 ; 76:5.5", t: "Résurrection d’Adam et Ève",
+      x: "Sur ordre de Lanaforge, Adam et Ève sont repersonnalisés sur les mondes des maisons avec 1&nbsp;316 compagnons du premier jardin {76:6.2}." },
+    { g: "E", v: 25.71, k: "loy", d: "<span class=\"f-date\">Durant la dernière semaine sur le mont Hermon</span>, à la fin de l’été de l’an 25", r: "134:8.6", t: "Le mont Hermon",
+      x: "Satan, qui représente Lucifer, et Caligastia se présentent devant Jésus&nbsp;; quand il descend de la montagne, la rébellion est pratiquement réglée {134:8.6 ; 134:8.9}." },
+    { g: "E", v: 30.27, k: "loy", d: "<span class=\"f-date\">dimanche 9 avril de l’an 30</span>", r: "189:1.1", t: "La résurrection de Jésus",
+      x: "Des milliers d’anges et d’êtres célestes repentis, dont des centaines de Fils et de Filles Matériels, sont réhabilités {53:9.1}." },
+    { g: "E", v: 30.38, k: "reb", d: "avant le départ de Micaël, le <span class=\"f-date\">jeudi 18 mai</span> de l’an 30", r: "193:5.1", t: "Le pardon refusé",
+      x: "Le dernier acte de Micaël avant de quitter Urantia est d’offrir son pardon à Caligastia et Daligastia, qui le dédaignent {53:8.6}." },
+    { g: "E", v: 30.41, k: "loy", d: "à la Pentecôte qui suit", r: "194:1.1", t: "L’Esprit de Vérité",
+      x: "Depuis ce jour, Caligastia et Daligastia sont serviles devant les Ajusteurs et l’Esprit de Vérité {53:8.7}, et les mortels d’Urantia passent de nouveau directement aux mondes des maisons {52:5.5}." },
+    { g: "E", v: 30.6, k: "loy", d: "<span class=\"f-date\">il y a dix-neuf-cents ans</span>", r: "45:4.1", t: "Lucifer emprisonné&nbsp;; les vingt-quatre sièges",
+      x: "Quand Micaël devient le chef confirmé de Nébadon, les agents des Anciens des Jours emprisonnent Lucifer {53:9.2}. Les vingt-quatre conseillers d’Urantia prennent place sur Jérusem {45:4.1}." },
+    { g: "F", v: 0, k: "loy", d: "<span class=\"f-date\">jusqu’au moment des présentes révélations</span>, vers 1934 <span class=\"ded\">déduit</span>", r: "53:9.4 ; 56:10.23", t: "Le procès s’ouvre",
+      x: "La première audience du procès de Gabriel contre Lucifer se tient sur Uversa&nbsp;; les Anciens des Jours ordonnent d’enfermer Satan avec Lucifer {54:4.8}. Machiventa Melchizédek est proclamé Prince Planétaire vice-gérant d’Urantia {53:9.4 ; 93:10.5}." }
+  ];
+  var ribbon = document.getElementById("ribbon"), groups = document.getElementById("tl-groups");
+  var num = 0, rh = "", gh = "";
+  SEGS.forEach(function (sg) {
+    var evs = EVS.filter(function (e) { return e.g === sg.id; });
+    var xs = evs.map(function (e) { return Math.max(0, Math.min(1, sg.f(e.v))); });
+    var gap = 0.075, i;                       /* écarter les repères trop proches, sans sortir du segment */
+    for (i = 1; i < xs.length; i++) xs[i] = Math.max(xs[i], xs[i - 1] + gap);
+    if (xs.length && xs[xs.length - 1] > 1) {
+      xs[xs.length - 1] = 1;
+      for (i = xs.length - 2; i >= 0; i--) xs[i] = Math.min(xs[i], xs[i + 1] - gap);
+    }
+    xs = xs.map(function (x) { return Math.max(0, Math.min(1, x)); });
+    rh += "<a class=\"seg\" href=\"#seg-" + sg.id + "\" aria-label=\"Segment " + sg.id + ", " + sg.t + ", " + sg.s.replace("→", "à") + ", " + evs.length + " évènement" + (evs.length > 1 ? "s" : "") + "\">" +
+      "<span class=\"seg-k\" aria-hidden=\"true\">" + sg.id + "</span><span class=\"seg-t\" aria-hidden=\"true\">" + sg.t + "</span>" +
+      "<span class=\"seg-bar\" aria-hidden=\"true\">" + xs.map(function (x, j) { return "<i class=\"" + evs[j].k + "\" style=\"left:" + (4 + x * 92).toFixed(1) + "%\"></i>"; }).join("") + "</span>" +
+      "<span class=\"seg-ends\" aria-hidden=\"true\"><span>" + sg.l + "</span><span>" + sg.r + "</span></span><span class=\"seg-s\" aria-hidden=\"true\">" + sg.sc + "</span></a>";
+    gh += "<section class=\"seg-group\" id=\"seg-" + sg.id + "\" aria-labelledby=\"sg-" + sg.id + "\"><h3 id=\"sg-" + sg.id + "\"><span class=\"seg-k\">" + sg.id + "</span>" + sg.t + "<span class=\"sp\">" + sg.s + "</span></h3><ol class=\"tl\">" +
+      evs.map(function (e) {
+        num++;
+        return "<li>" + icon(e.k) + "<p class=\"ev-d\">" + e.d + " <span class=\"ref\">" + e.r + "</span></p><p class=\"ev-t\"><span class=\"ev-n\">" + num + "</span>" + e.t +
+          "<span class=\"sr-only\"> (" + CAMP[e.k] + ")</span></p><p class=\"ev-x\">" + R(e.x) + "</p>" + (e.q ? quote(e.q, e.k) : "") + "</li>";
+      }).join("") + "</ol></section>";
+  });
+  ribbon.innerHTML = rh;
+  groups.innerHTML = gh;
+
+  /* ====================== 3. Les camps en chiffres ====================== */
+  /* Les dix conseils de l’état-major (66:5) et l’appel nominal final (67:4.1) : [conseil, chef, membres restés loyaux] */
+  var COUNCILS = [
+    ["Alimentation et bienêtre matériel", "Ang", 4], ["Domestication des animaux", "Bon", 0], ["Protection contre les bêtes de proie", "Dan", 0],
+    ["Propagation de la connaissance", "Fad", 6], ["Industrie et commerce", "Nod", 0], ["Religion révélée", "Hap", 10],
+    ["Santé et vie", "Lut", 0], ["Arts et sciences", "Mek", 10], ["Relations tribales", "Tut", 0], ["Cour suprême de coordination", "Van", 10]
+  ];
+  document.getElementById("waffle").innerHTML = COUNCILS.map(function (c, i) {
+    var sq = "", j;
+    for (j = 0; j < 10; j++) sq += "<i" + (j < c[2] ? " class=\"l\"" : "") + "></i>";
+    return "<li class=\"wf\"><span class=\"wf-n\">" + (i + 1) + ". " + c[0] + " · <b>" + c[1] + "</b></span><span class=\"sqs\" aria-hidden=\"true\">" + sq +
+      "</span><span class=\"wf-c\"><span aria-hidden=\"true\">" + c[2] + "/10</span><span class=\"sr-only\">" + c[2] + " loyal" + (c[2] > 1 ? "s" : "") + " sur 10</span></span></li>";
+  }).join("");
+
+  (function () {                                 /* 607 mondes + 12 mondes peuplés depuis */
+    var NS = "http://www.w3.org/2000/svg", cols = 25, p = 13, rr = 4.6, total = 619;
+    var svg = document.createElementNS(NS, "svg");
+    svg.setAttribute("viewBox", "0 0 " + (cols * p) + " " + (Math.ceil(total / cols) * p));
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "607 mondes habités à l’époque de la rébellion, un point par monde : 37 en rouge, regroupés à la fin pour montrer la proportion, dont Urantia, numéro 606, cerclée ; 570 autres en gris. Puis 12 cercles vides : les mondes peuplés depuis. Disposition symbolique.");
+    for (var n = 1; n <= total; n++) {
+      var i = n - 1, cx = (i % cols) * p + p / 2, cy = Math.floor(i / cols) * p + p / 2;
+      var c = document.createElementNS(NS, "circle");
+      c.setAttribute("cx", cx); c.setAttribute("cy", cy); c.setAttribute("r", rr);
+      c.setAttribute("class", n > 607 ? "later" : (n > 570 ? "r" : "w"));
+      svg.appendChild(c);
+      if (n === 606) {
+        var u = document.createElementNS(NS, "circle");
+        u.setAttribute("cx", cx); u.setAttribute("cy", cy); u.setAttribute("r", rr + 2.4); u.setAttribute("class", "ura");
+        svg.appendChild(u);
+      }
+    }
+    document.getElementById("dots").appendChild(svg);
+  })();
+
+  /* ====================== 4. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), body = document.getElementById("unk-body");
+  ub.setAttribute("aria-expanded", "false"); body.hidden = true;
+  ub.addEventListener("click", function () {
+    var open = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(open)); body.hidden = !open;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

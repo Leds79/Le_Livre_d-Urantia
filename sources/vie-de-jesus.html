@@ -1,0 +1,955 @@
+<title>La vie de Jésus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : un carnet de route. La carte et la fiche côte à côte, la frise du temps
+   dessous, qui pilote les deux. Largeur utile : 1180 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --water-ink: #4B5472; /* libellés des mers, contraste renforcé */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : lieu courant */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --gold-ui: #9E6B00;  /* or des repères d’interface (traits, contours) : 3:1 au moins */
+  --rule-ctl: #7D88A3; /* bordure des commandes */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --core: #5F78CF;     /* lieux déjà parcourus */
+  --land: #E9EDF3;     /* terres */
+  --sea: #CBD8EB;      /* mers et lacs */
+  --water: #6A8BC0;    /* rivières, rivages */
+  /* Périodes de la frise */
+  --p0: #8E7CC3; --p1: #4C86C6; --p2: #2E9A8F; --p3: #5E9E4A; --p4: #C08A2E; --p5: #C4573E; --p6: #B9679E;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0; --water-ink: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
+    --land: #182138; --sea: #173254; --water: #5F82C2;
+    --p0: #A898DD; --p1: #6FA3DE; --p2: #4FC0B4; --p3: #84C26F; --p4: #DDA94F; --p5: #E57D63; --p6: #D88CC0;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0; --water-ink: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --core: #7A90DE; --gold-ui: #EDB03A; --rule-ctl: #6A769C;
+  --land: #182138; --sea: #173254; --water: #5F82C2;
+  --p0: #A898DD; --p1: #6FA3DE; --p2: #4FC0B4; --p3: #84C26F; --p4: #DDA94F; --p5: #E57D63; --p6: #D88CC0;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 56px;
+  display: grid; gap: 56px; grid-template-columns: minmax(0, 1fr);
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+
+/* En-tête */
+.top { display: grid; gap: 16px; max-width: 76ch; }
+.lede { font-size: 1.16rem; line-height: 1.5; }
+.links { display: flex; flex-wrap: wrap; gap: 6px 20px; font-size: .95rem; }
+
+/* Atelier : carte + fiche */
+.atelier { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.mapcol { display: grid; gap: 10px; min-width: 0; }
+.viewsel { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--sheet); justify-self: start; max-width: 100%; }
+.viewsel button { appearance: none; border: 0; border-radius: 999px; background: transparent; color: var(--ink); font: 500 .92rem/1.2 var(--font-body); padding: 7px 14px; cursor: pointer; }
+.viewsel button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+.mapbox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 8px; min-width: 0; }
+.mapbox svg { display: block; width: 100%; height: auto; }
+.mapbox svg.cache { display: none; }
+.mapnote { font-size: .84rem; color: var(--muted); max-width: 68ch; }
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend svg { width: 16px; height: 16px; flex: none; }
+
+/* Éléments de carte */
+.m-land { fill: var(--land); }
+.m-sea { fill: var(--sea); }
+.m-lake { fill: var(--sea); stroke: var(--water); stroke-width: .9; }
+.m-riv { fill: none; stroke: var(--water); stroke-width: 1.2; stroke-linecap: round; stroke-linejoin: round; }
+.m-coast { fill: none; stroke: var(--water); stroke-width: .9; stroke-opacity: .8; }
+.m-land-ne { fill: var(--land); stroke: var(--water); stroke-width: .7; stroke-opacity: .7; fill-rule: evenodd; }
+.m-region { font: 500 12px var(--font-mono); letter-spacing: .14em; fill: var(--muted); }
+.m-water { font: italic 500 14px var(--font-display); fill: var(--water-ink); }
+.m-lbl { font: 500 12.5px var(--font-body); fill: var(--ink); paint-order: stroke; stroke: var(--sheet); stroke-width: 3px; stroke-linejoin: round; }
+.m-lbl.cur { font-weight: 700; fill: var(--gold-ink); }
+.m-box { fill: none; stroke: var(--muted); stroke-width: .8; stroke-dasharray: 3 3; }
+.m-inset { fill: var(--land); stroke: var(--muted); stroke-width: 1; }
+.m-inset-t { font: 500 11.5px var(--font-mono); fill: var(--muted); letter-spacing: .04em; paint-order: stroke; stroke: var(--sheet); stroke-width: 3px; stroke-linejoin: round; }
+.m-box.on { stroke: var(--gold-ink); stroke-width: 1.4; }
+.mk { fill: var(--ink); stroke: var(--land); stroke-width: 1.2; }
+.mk.ap { fill: var(--land); stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 2 1.6; }
+.mk.vis { fill: var(--core); }
+.mk.ap.vis { fill: var(--land); stroke: var(--core); }
+.mk.aux { fill: var(--sheet); stroke: var(--gold-ui); stroke-width: 2; stroke-dasharray: none; }
+.mk.cur { fill: var(--gold); stroke: var(--ink); stroke-dasharray: none; }
+.pulse { fill: none; stroke: var(--gold-ui); stroke-width: 2; transform-box: fill-box; transform-origin: center; animation: pulse 1.6s ease-out infinite; pointer-events: none; }
+@keyframes pulse { from { transform: scale(1); opacity: .95; } to { transform: scale(3.2); opacity: 0; } }
+.rt { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 4 4; stroke-opacity: .55; stroke-linecap: round; stroke-linejoin: round; }
+.rt.done { stroke: var(--core); stroke-opacity: .85; stroke-dasharray: 5 3; }
+.rt.now, .trace { fill: none; stroke: var(--gold-ui); stroke-width: 2.6; stroke-dasharray: none; stroke-opacity: 1; stroke-linecap: round; stroke-linejoin: round; }
+.anim { transition: stroke-dashoffset 1.1s ease-in-out; }
+
+/* Fiche */
+.fiche { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 20px 22px; display: grid; gap: 14px; min-width: 0; }
+.f-per { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.f-per .sw { width: 12px; height: 12px; border-radius: 3px; flex: none; background: var(--sw, var(--muted)); }
+.f-date { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.15; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; }
+.ded { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--gold-ui); color: var(--gold-ink); }
+.f-sum { font-size: 1.04rem; }
+.fiche dl { margin: 0; display: grid; grid-template-columns: 7.2rem minmax(0, 1fr); gap: 6px 14px; font-size: .95rem; }
+.fiche dt { font: 500 .72rem/1.9 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fiche dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.fiche blockquote { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold-ui); display: grid; gap: 4px; }
+.fiche blockquote p { font-family: var(--font-display); font-style: italic; font-size: 1.16rem; line-height: 1.4; }
+.ap-mark { color: var(--gold-ink); font-weight: 700; }
+.f-count { font: 500 .78rem/1.2 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; margin-left: auto; }
+
+/* Frise */
+.frise { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px 20px 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; }
+.fr-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.fr-head h2 { font-size: 1.5rem; }
+.track { position: relative; height: 46px; border-radius: 8px; overflow: hidden; background: var(--tint); cursor: pointer; }
+.band { position: absolute; top: 0; bottom: 0; background: var(--b); opacity: .45; }
+.band.on { opacity: .72; }
+.tick { position: absolute; top: 12px; width: 2px; height: 22px; margin-left: -1px; background: var(--ink); opacity: .45; border-radius: 1px; }
+.tick.seen { opacity: .8; }
+.tick.on { background: var(--gold-ui); opacity: 1; width: 4px; margin-left: -2px; top: 6px; height: 34px; }
+/* les commandes restent collées au bas de l’écran tant que la frise, la carte ou la fiche sont visibles */
+.lecteur { display: flow-root; }
+.lecteur > .atelier { margin-top: 24px; }
+.fr-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; position: sticky; bottom: 0; z-index: 5; margin-top: 20px;
+  padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px;
+  box-shadow: 0 -12px 28px -18px rgba(24, 33, 59, .55); }
+html { scroll-padding-bottom: 84px; }
+.fr-cpt { font: 500 .8rem/1.2 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.fr-ctl input[type="range"] { flex: 1 1 240px; min-width: 0; accent-color: var(--gold); }
+.btn { appearance: none; display: inline-flex; align-items: center; gap: 7px; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--rule-ctl); background: var(--paper); color: var(--ink); font: 500 .92rem/1.2 var(--font-body); cursor: pointer; }
+.btn:hover { border-color: var(--muted); }
+.btn svg { width: 14px; height: 14px; flex: none; }
+.btn[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.fr-per { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .84rem; color: var(--muted); }
+.fr-per span { display: inline-flex; align-items: center; gap: 6px; }
+.fr-per i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; background: var(--b); flex: none; }
+.field { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: .9rem; min-width: 0; max-width: 100%; }
+.field select { flex: 1 1 12rem; min-width: 0; max-width: 100%; font: 400 .92rem/1.3 var(--font-body); color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 6px 8px; }
+.fr-help { margin: 0; font-size: .95rem; color: var(--muted); max-width: 68ch; }
+.fr-now { margin: 0; font-size: 1rem; line-height: 1.4; min-height: 2.8em; }
+.fr-now .fr-n { font: 500 .78rem/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.fr-now b { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; }
+
+/* Notes */
+.notes { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+.regs { display: grid; gap: 12px; }
+.reg { display: grid; gap: 4px; }
+.reg .label { display: flex; align-items: center; gap: 8px; }
+.reg .label::before { content: ""; width: 10px; height: 10px; border-radius: 2px; background: var(--mark); flex: none; }
+.r-text { --mark: var(--gold); } .r-read { --mark: var(--core); } .r-hist { --mark: var(--muted); }
+details.unk { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 12px; }
+details.unk summary { cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+details.unk[open] summary { margin-bottom: 12px; }
+details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 16px; font-size: .84rem; color: var(--muted); display: grid; gap: 6px; max-width: 68ch; }
+
+@media (max-width: 920px) {
+  .atelier, .notes { grid-template-columns: minmax(0, 1fr); }
+}
+@media (min-width: 921px) {
+  .fr-now .fr-s { display: none; }                 /* le résumé est dans la fiche, juste à côté */
+  .fiche { position: sticky; top: 16px; }
+  .mapbox svg { max-height: calc(100vh - 300px); }  /* la carte entière reste visible au-dessus des commandes */
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .fiche { padding: 16px; }
+  .fiche dl { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .fiche dd { margin-bottom: 6px; }
+  /* sur téléphone, la carte est réduite de moitié : on grossit ses textes */
+  .m-lbl { font-size: 17px; } .m-region { font-size: 15px; } .m-water { font-size: 17px; } .m-inset-t { font-size: 14px; }
+  .fr-ctl input[type="range"] { display: none; }    /* la frise du haut et les boutons suffisent ; le curseur serait trop fin au doigt */
+  .fr-ctl .btn .bt { display: none; }
+  .fr-cpt { margin-left: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; opacity: .8; transform: scale(1.8); }
+  .anim { transition: none; }
+}
+@media (pointer: coarse) { .btn, .viewsel button, .field select { min-height: 44px; } .btn { min-width: 44px; justify-content: center; } }
+</style>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="top">
+    <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · quatrième partie · fascicules 120 à 196</p>
+    <h1>La vie de Jésus</h1>
+    <p class="lede">Une carte et une frise pour suivre la vie de Jésus telle que le livre la raconte, de l’annonce faite à Marie jusqu’à la Pentecôte. Choisis une entrée sur la frise : la carte montre le lieu, le trajet récent et les lieux déjà parcourus. Pour situer cette vie dans l’histoire de Nébadon&nbsp;: <a href="atlas-3d.html#frise">La frise du temps</a>, dans la vue 3D.</p>
+  </header>
+
+  <div class="lecteur">
+    <section class="frise" aria-labelledby="h-frise">
+      <div class="fr-head">
+        <h2 id="h-frise">Frise du temps</h2>
+        <label class="field" for="per">Aller à
+          <select id="per"></select>
+        </label>
+      </div>
+      <p class="fr-help">Chaque trait est une étape de la vie de Jésus, dans l’ordre du récit (les traits sont espacés régulièrement, pas à l’échelle du temps). Clique sur un trait, ou sur «&nbsp;Suivant&nbsp;» en bas de l’écran&nbsp;: la carte et la fiche suivent l’étape choisie. Au clavier&nbsp;: flèches gauche et droite.</p>
+      <p class="fr-now" id="fr-now"></p>
+      <div class="track" id="track" aria-hidden="true"></div>
+      <p class="fr-per" id="fr-per"></p>
+    </section>
+
+    <section class="atelier" aria-label="Carte et fiche de l’étape choisie">
+      <div class="mapcol">
+        <div class="viewsel" role="group" aria-label="Choix de la carte">
+          <button type="button" id="v-pal" aria-pressed="true">Palestine</button>
+          <button type="button" id="v-med" aria-pressed="false">Méditerranée</button>
+          <button type="button" id="v-ori" aria-pressed="false">Orient</button>
+        </div>
+        <div class="mapbox">
+          <svg id="map-pal" role="img" aria-label="Carte de la Palestine"></svg>
+          <svg id="map-med" class="cache" role="img" aria-label="Carte de la Méditerranée : le voyage des ans 22 et 23"></svg>
+          <svg id="map-ori" class="cache" role="img" aria-label="Carte de l’Orient : fin du voyage de l’an 23 et caravane de l’an 24"></svg>
+        </div>
+        <p class="legend">
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" class="mk"/></svg>site bien identifié</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" class="mk ap"/></svg>position approximative ou débattue</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" class="mk vis"/></svg>lieu déjà parcouru</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" class="mk cur"/></svg>lieu courant</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="4" class="mk aux"/></svg>autre lieu nommé</span>
+          <span><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 8H15" class="trace"/></svg>trajet récent</span>
+        </p>
+        <p class="mapnote">Fond de carte moderne et positions approximatives : le livre ne donne que des situations relatives, par exemple la ville de Juda à sept kilomètres à l’ouest de Jérusalem (122:2.6) ou Magadan près de Bethsaïde-Julias (158:7.1). Les traits relient les étapes nommées en ligne droite. Homonymes : Béthanie, près de Jérusalem, et le gué de Béthanie, sur le Jourdain ; Bethléem de Judée et Bethléem de Galilée (138:9.3) ; Bethsaïde, port de Capharnaüm, et Bethsaïde-Julias ; Césarée, sur la côte, et Césarée de Philippe.</p>
+      </div>
+
+      <article class="fiche" id="fiche">
+        <div class="f-per"><span class="sw" id="f-sw"></span><span class="label" id="f-per"></span><span class="f-count" id="f-count"></span></div>
+        <div class="f-date"><span id="f-date"></span><span class="ded" id="f-ded" hidden>déduit</span></div>
+        <p class="f-sum" id="f-sum"></p>
+        <dl>
+          <dt>Lieux</dt><dd id="f-pl"></dd>
+          <dt>Personnes</dt><dd id="f-who"></dd>
+          <dt>Références</dt><dd><span class="ref" id="f-ref"></span></dd>
+        </dl>
+        <blockquote id="f-q" hidden><p id="f-qt"></p><span class="ref" id="f-qr"></span></blockquote>
+      </article>
+    </section>
+      <div class="fr-ctl" role="group" aria-label="Parcourir la frise">
+        <button type="button" class="btn" id="prev" aria-label="Étape précédente"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2.5 4.5 7 9 11.5"/></svg><span class="bt">Précédent</span></button>
+        <button type="button" class="btn" id="play" aria-pressed="false"><svg viewBox="0 0 14 14" aria-hidden="true" fill="currentColor"><path id="play-ico" d="M4 2.5v9l7.5-4.5z"/></svg><span id="play-t">Lecture</span></button>
+        <button type="button" class="btn" id="next" aria-label="Étape suivante"><span class="bt">Suivant</span><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5 9.5 7 5 11.5"/></svg></button>
+        <input type="range" id="tl" min="0" max="1" step="1" value="0" aria-label="Étape de la frise">
+        <span class="fr-cpt" id="fr-cpt" aria-hidden="true"></span>
+      </div>
+  </div>
+  <p class="sr-only" id="vie-status" aria-live="polite"></p>
+
+
+  <section class="notes" aria-label="Comment lire cette page">
+    <div class="regs">
+      <h2>Trois registres</h2>
+      <div class="reg r-text"><p class="label">Le texte dit</p><p>Les dates et les lieux viennent du livre, avec leur référence. Quand le livre ne donne que le jour de la semaine ou une durée, la date est calculée et marquée « déduit ».</p></div>
+      <div class="reg r-read"><p class="label">Lecture courante</p><p>Les emplacements sur la carte suivent les identifications usuelles des sites anciens. Pour plusieurs lieux, elles sont débattues ou inconnues : le marqueur en pointillé le signale.</p></div>
+      <div class="reg r-hist"><p class="label">Regard historique</p><p>Les historiens débattent de la chronologie de la vie de Jésus. Cette page suit les dates du livre sans les discuter.</p></div>
+    </div>
+    <details class="unk">
+      <summary>Ce que le texte ne précise pas</summary>
+      <ul>
+        <li><b>Des jours exacts.</b> Pour les noces de Cana, le ravitaillement des cinq mille et la résurrection de Lazare, le texte donne le jour de la semaine sans la date (pour Lazare, « ce jeudi »). La confession de Pierre est située six jours avant le 15 aout ; l’apparition où Thomas est présent, le jour qui suit le samedi 15 avril. Les dates marquées « déduit » sont calculées à partir de ces indications. La fête de la Dédicace n’est pas datée.</li>
+        <li><b>La dernière semaine.</b> Le 31 mars, le 4, le 7 et le 9 avril sont datés en clair ; les autres jours sont désignés par leur nom (ce dimanche, ce lundi, ce mercredi-là, ce jeudi soir).</li>
+        <li><b>Le voyage des ans 22 et 23.</b> Le texte date le départ (26 avril de l’an 22) et les adieux à Charax (10 décembre de l’an 23). Pour les étapes, il donne des noms de lieux et quelques durées (six mois à Rome, un long séjour à Chypre), pas les routes suivies.</li>
+        <li><b>La caravane de l’an 24.</b> Le texte nomme Damas, le lac Urmia, l’Assyrie, la Médie et la Parthie, sans décrire l’itinéraire entre ces étapes. Sur la carte, l’ordre est géographique et schématique.</li>
+        <li><b>Des lieux mal situés.</b> Pour Beth-Jenn, Beit Adis, Ragaba, Magadan, Khérésa et le mont de l’ordination, le texte ne donne qu’une situation relative : sur les premières hauteurs de l’Hermon, dans les collines de Pérée, en Pérée du Nord, près de Bethsaïde-Julias, sur la rive orientale du lac, dans les hautes terres au nord de Capharnaüm. Leur place sur la carte est une estimation. Le lieu de l’arrivée de l’Ajusteur n’est pas indiqué.</li>
+        <li><b>Peu de distances.</b> Le livre place Sepphoris à 5 km au nord-ouest de Nazareth (124:1.12), la ville de Juda à sept kilomètres à l’ouest de Jérusalem (122:2.6), Béthanie à environ trois kilomètres du temple (172:3.1) et Emmaüs à une douzaine de kilomètres à l’ouest de Jérusalem (190:5.1). Le relevé n’a trouvé aucune distance entre Bethléem et Jérusalem, ni entre Nazareth et Capharnaüm.</li>
+      </ul>
+    </details>
+  </section>
+
+  <footer class="foot">
+    <p>Texte : <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Les citations sont courtes et exactes ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe).</p>
+    <p>Fonds de carte : côtes et eaux de Palestine tracées d’après des coordonnées usuelles ; Méditerranée et Orient d’après Natural Earth (domaine public).</p>
+    <p>Mise à jour : 2026-11-07.</p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Projections ---------- */
+  var VIEWS = {
+    pal: { lon0: 34.2, lon1: 36.6, lat0: 30.9, lat1: 33.6, W: 600, name: "Palestine" },
+    med: { lon0: 8, lon1: 37, lat0: 29, lat1: 44.5, W: 900, name: "Méditerranée" },
+    ori: { lon0: 33, lon1: 56, lat0: 28, lat1: 44.5, W: 780, name: "Orient" }
+  };
+  Object.keys(VIEWS).forEach(function (k) {
+    var v = VIEWS[k];
+    v.c = Math.cos((v.lat0 + v.lat1) / 2 * Math.PI / 180);
+    v.k = v.W / ((v.lon1 - v.lon0) * v.c);
+    v.H = Math.round((v.lat1 - v.lat0) * v.k);
+  });
+  function pj(vk, lat, lon) { var v = VIEWS[vk]; return [(lon - v.lon0) * v.c * v.k, (v.lat1 - lat) * v.k]; }
+
+  /* Médaillons agrandis, posés sur la mer et le Néguev */
+  var INSETS = {
+    lac: { lon0: 35.46, lon1: 35.72, lat0: 32.69, lat1: 32.93, s: 2.8, x: 8, y: 20, t: "Lac de Galilée, agrandi", from: "tl", to: "rm" },
+    jer: { lon0: 35.08, lon1: 35.32, lat0: 31.68, lat1: 31.86, s: 3, x: 8, y: 610, t: "Jérusalem, agrandi", from: "bl", to: "tr" }
+  };
+  function pi(ik, lat, lon) {
+    var v = VIEWS.pal, I = INSETS[ik];
+    return [I.x + (lon - I.lon0) * v.c * v.k * I.s, I.y + (I.lat1 - lat) * v.k * I.s];
+  }
+
+  /* ---------- Lieux (coordonnées modernes usuelles) ----------
+     a : 1 = position approximative ou débattue ; note : précision affichée dans la fiche ;
+     lb : étiquette par vue [dx, dy, ancre] ; ins : médaillon ; il : étiquette dans le médaillon [dx, dy, ancre, texte] */
+  var P = {
+    nazareth: { lat: 32.702, lon: 35.297, n: "Nazareth", lb: { pal: [0, 15, "middle"], ori: [-6, 14, "end"] } },
+    sepphoris: { lat: 32.753, lon: 35.279, n: "Sepphoris", note: "à 5 km au nord-ouest de Nazareth (124:1.12)", lb: { pal: [-7, -2, "end"] } },
+    cana: { lat: 32.746, lon: 35.342, n: "Cana", a: 1, note: "site débattu", lb: { pal: [7, -2, "start"] } },
+    tiberiade: { lat: 32.794, lon: 35.532, n: "Tibériade", ins: "lac", il: [6, 4, "start"] },
+    magdala: { lat: 32.826, lon: 35.517, n: "Magdala", ins: "lac", il: [6, 4, "start"] },
+    capharnaum: { lat: 32.881, lon: 35.575, n: "Capharnaüm", ins: "lac", il: [-5, 14, "end"], lb: { ori: [-6, -4, "end"] } },
+    bethsaide: { lat: 32.884, lon: 35.594, n: "Bethsaïde", a: 1, note: "le port de pêche de Capharnaüm (139:1.1) ; à ne pas confondre avec Bethsaïde-Julias", ins: "lac", il: [5, 14, "start"] },
+    julias: { lat: 32.910, lon: 35.631, n: "Bethsaïde-Julias", a: 1, note: "site débattu", ins: "lac", il: [0, -7, "middle"] },
+    magadan: { lat: 32.897, lon: 35.648, n: "Magadan", a: 1, note: "parc près de Bethsaïde-Julias (158:7.1) ; non situé plus précisément", ins: "lac", il: [6, 4, "start"] },
+    kheresa: { lat: 32.826, lon: 35.651, n: "Khérésa", a: 1, note: "petit village de la rive orientale (151:6.1–2) ; site débattu", ins: "lac", il: [6, 4, "start"] },
+    ordination: { lat: 32.900, lon: 35.556, n: "Mont de l’ordination", a: 1, note: "hautes terres au nord de Capharnaüm (140:0.2) ; non situé", ins: "lac", il: [-6, 0, "end", "mont de|l’ordination"] },
+    cesphil: { lat: 33.248, lon: 35.694, n: "Césarée de Philippe", note: "à ne pas confondre avec Césarée, sur la côte", lb: { pal: [7, 4, "start"] } },
+    hermon: { lat: 33.416, lon: 35.857, n: "Mont Hermon", lb: { pal: [8, 4, "start"] } },
+    bethjenn: { lat: 33.31, lon: 35.88, n: "Beth-Jenn", a: 1, note: "village sur les premières hauteurs du mont Hermon (134:8.1) ; position estimée", lb: { pal: [8, 4, "start"] } },
+    gilboa: { lat: 32.45, lon: 35.41, n: "Mont Gilboa", lb: { pal: [-7, 4, "end"] } },
+    scythopolis: { lat: 32.497, lon: 35.497, n: "Scythopolis", lb: { pal: [-6, 4, "end"] } },
+    sychar: { lat: 32.213, lon: 35.287, n: "Sychar (puits de Jacob)", a: 1, note: "position approximative", lb: { pal: [-7, 4, "end"] } },
+    pella: { lat: 32.449, lon: 35.617, n: "Pella", lb: { pal: [7, 4, "start"] } },
+    beitadis: { lat: 32.36, lon: 35.72, n: "Beit Adis", a: 1, note: "village des collines de Pérée (136:3.2 ; 136:4.14) ; position inconnue", lb: { pal: [7, 4, "start"] } },
+    ragaba: { lat: 32.24, lon: 35.76, n: "Ragaba", a: 1, note: "en Pérée du Nord (166:0.1 ; 166:1.1) ; position inconnue", lb: { pal: [7, 4, "start"] } },
+    gue: { lat: 31.838, lon: 35.552, n: "Gué de Béthanie", a: 1, note: "sur le Jourdain (135:10.2) ; à ne pas confondre avec Béthanie, près de Jérusalem", lb: { pal: [7, 4, "start"] } },
+    jericho: { lat: 31.871, lon: 35.444, n: "Jéricho", lb: { pal: [-7, -4, "end"] } },
+    philadelphie: { lat: 31.954, lon: 35.934, n: "Philadelphie", note: "l’actuelle Amman", lb: { pal: [7, 4, "start"] } },
+    lydda: { lat: 31.951, lon: 34.888, n: "Lydda", lb: { pal: [-6, 4, "end"] } },
+    jerusalem: { lat: 31.778, lon: 35.235, n: "Jérusalem", ins: "jer", main: 1, il: [-6, 4, "end"], lb: { pal: [0, -9, "middle"], med: [0, 16, "middle"], ori: [-6, 10, "end"] } },
+    olivet: { lat: 31.779, lon: 35.245, n: "Mont Olivet (Gethsémani)", ins: "jer", il: [0, -9, "middle", "mont Olivet"] },
+    bethanie: { lat: 31.771, lon: 35.262, n: "Béthanie", note: "à environ trois kilomètres du temple (172:3.1) ; à ne pas confondre avec le gué de Béthanie", ins: "jer", il: [0, 15, "middle"] },
+    bethleem: { lat: 31.705, lon: 35.200, n: "Bethléem", note: "de Judée ; à ne pas confondre avec Bethléem de Galilée (138:9.3)", ins: "jer", il: [0, 15, "middle"] },
+    juda: { lat: 31.768, lon: 35.160, n: "Ville de Juda", a: 1, note: "dans les collines, à sept kilomètres à l’ouest de Jérusalem (122:2.6) ; site débattu", ins: "jer", il: [0, 15, "middle"] },
+    emmaus: { lat: 31.835, lon: 35.125, n: "Emmaüs", a: 1, note: "à une douzaine de kilomètres à l’ouest de Jérusalem (190:5.1) ; site débattu", ins: "jer", il: [7, 4, "start"] },
+    engaddi: { lat: 31.461, lon: 35.392, n: "Engaddi", lb: { pal: [-7, 4, "end"] } },
+    macharee: { lat: 31.561, lon: 35.627, n: "Macharée", note: "forteresse où Jean fut emprisonné (135:12.1)", lb: { pal: [7, 4, "start"] } },
+    joppe: { lat: 32.054, lon: 34.752, n: "Joppé", lb: { pal: [-7, 4, "end"], med: [-6, -4, "end"] } },
+    cesaree: { lat: 32.500, lon: 34.892, n: "Césarée", note: "port ; à ne pas confondre avec Césarée de Philippe", lb: { pal: [-7, 4, "end"], med: [-6, -2, "end"] } },
+    sidon: { lat: 33.563, lon: 35.371, n: "Sidon", lb: { pal: [7, 4, "start"], med: [-6, 8, "end"], ori: [-6, -6, "end"] } },
+    sarepta: { lat: 33.457, lon: 35.296, n: "Sarepta", lb: { pal: [-6, 4, "end"] } },
+    tyr: { lat: 33.271, lon: 35.196, n: "Tyr", lb: { pal: [7, 4, "start"] } },
+    damas: { lat: 33.513, lon: 36.292, n: "Damas", lb: { pal: [-7, 4, "end"], med: [0, -8, "middle"], ori: [7, 4, "start"] } },
+    alexandrie: { lat: 31.200, lon: 29.918, n: "Alexandrie", lb: { med: [0, 16, "middle"] } },
+    lasaia: { lat: 34.93, lon: 24.83, n: "Lasaïa (Crète)", a: 1, note: "position approximative", lb: { med: [0, 16, "middle"] } },
+    cyrene: { lat: 32.82, lon: 21.86, n: "Cyrène", lb: { med: [0, 16, "middle"] } },
+    carthage: { lat: 36.853, lon: 10.323, n: "Carthage", lb: { med: [0, 16, "middle"] } },
+    malte: { lat: 35.90, lon: 14.51, n: "Malte", lb: { med: [-6, 4, "end"] } },
+    syracuse: { lat: 37.075, lon: 15.29, n: "Syracuse", lb: { med: [7, 6, "start"] } },
+    messine: { lat: 38.193, lon: 15.554, n: "Messine", lb: { med: [7, 4, "start"] } },
+    naples: { lat: 40.852, lon: 14.268, n: "Naples", lb: { med: [7, 8, "start"] } },
+    capoue: { lat: 41.08, lon: 14.25, n: "Capoue", lb: { med: [6, -5, "start"] } },
+    rome: { lat: 41.902, lon: 12.496, n: "Rome", lb: { med: [-7, -5, "end"] } },
+    tarente: { lat: 40.464, lon: 17.247, n: "Tarente", lb: { med: [7, 4, "start"] } },
+    nicopolis: { lat: 39.01, lon: 20.73, n: "Nicopolis", lb: { med: [-7, 4, "end"] } },
+    corinthe: { lat: 37.906, lon: 22.88, n: "Corinthe", lb: { med: [-7, 8, "end"] } },
+    athenes: { lat: 37.983, lon: 23.727, n: "Athènes", lb: { med: [7, 0, "start"] } },
+    troas: { lat: 39.75, lon: 26.16, n: "Troas", a: 1, note: "position approximative", lb: { med: [7, 4, "start"] } },
+    ephese: { lat: 37.94, lon: 27.34, n: "Éphèse", lb: { med: [7, 4, "start"] } },
+    rhodes: { lat: 36.434, lon: 28.217, n: "Rhodes", lb: { med: [0, 15, "middle"] } },
+    chypre: { lat: 35.0, lon: 33.2, n: "Chypre", a: 1, note: "l’ile ; le texte ne nomme pas de ville", lb: { med: [0, -9, "middle"] } },
+    antioche: { lat: 36.202, lon: 36.16, n: "Antioche", lb: { med: [-6, 4, "end"], ori: [-6, 4, "end"] } },
+    thapsacus: { lat: 36.0, lon: 38.3, n: "Thapsacus", a: 1, note: "site débattu", lb: { ori: [0, 15, "middle"] } },
+    larissa: { lat: 36.1, lon: 43.33, n: "Larissa", a: 1, note: "site débattu", lb: { ori: [7, 4, "start"] } },
+    babylone: { lat: 32.536, lon: 44.421, n: "Babylone", lb: { ori: [-6, 4, "end"] } },
+    ur: { lat: 30.962, lon: 46.103, n: "Ur", lb: { ori: [-6, 4, "end"] } },
+    suse: { lat: 32.19, lon: 48.257, n: "Suse", lb: { ori: [7, 4, "start"] } },
+    charax: { lat: 30.50, lon: 47.80, n: "Charax", a: 1, note: "sur le golfe Persique (130:0.1) ; position approximative", lb: { ori: [7, 4, "start"] } },
+    urmia: { lat: 37.70, lon: 45.30, n: "Lac Urmia", lb: { ori: [22, 4, "start"] } },
+    assyrie: { lat: 36.4, lon: 42.0, n: "Assyrie", a: 1, note: "région traversée ; point schématique" },
+    medie: { lat: 34.8, lon: 48.6, n: "Médie", a: 1, note: "région traversée ; point schématique" },
+    caspienne: { lat: 36.9, lon: 54.1, n: "Sud-est de la Caspienne", a: 1, note: "région au sud-est de la mer Caspienne (134:2.1) ; point schématique", lb: { ori: [-6, 16, "end"] } }
+  };
+  var PV = {
+    pal: ["nazareth", "sepphoris", "cana", "tiberiade", "magdala", "capharnaum", "bethsaide", "julias", "magadan", "kheresa", "ordination", "cesphil", "hermon", "bethjenn", "gilboa", "scythopolis", "sychar", "pella", "beitadis", "ragaba", "gue", "jericho", "philadelphie", "lydda", "jerusalem", "olivet", "bethanie", "bethleem", "juda", "emmaus", "engaddi", "macharee", "joppe", "cesaree", "sidon", "sarepta", "tyr", "damas"],
+    med: ["bethleem", "jerusalem", "joppe", "cesaree", "alexandrie", "lasaia", "cyrene", "carthage", "malte", "syracuse", "messine", "naples", "capoue", "rome", "tarente", "nicopolis", "corinthe", "athenes", "troas", "ephese", "rhodes", "chypre", "antioche", "sidon", "damas"],
+    ori: ["nazareth", "capharnaum", "jerusalem", "sidon", "damas", "antioche", "thapsacus", "larissa", "babylone", "ur", "suse", "charax", "urmia", "assyrie", "medie", "caspienne"]
+  };
+
+  /* Itinéraires des voyages lointains (étapes nommées par le texte) */
+  var ROUTES = {
+    fuite: { v: "med", p: ["bethleem", "alexandrie"] },
+    retour4: { v: "med", p: ["alexandrie", "joppe"] },
+    aller22: { v: "med", p: ["jerusalem", "joppe", "cesaree", "alexandrie", "lasaia", "cyrene", "carthage", "malte", "syracuse", "messine", "naples", "capoue", "rome"] },
+    retour22: { v: "med", p: ["rome", "tarente", "nicopolis", "corinthe", "athenes", "troas", "ephese", "rhodes", "chypre", "antioche", "sidon", "damas"] },
+    orient23: { v: "ori", p: ["damas", "thapsacus", "larissa", "babylone", "ur", "suse", "charax"] },
+    retour23: { v: "ori", p: ["charax", "ur", "babylone", "damas", "capharnaum", "nazareth"] },
+    caravane24: { v: "ori", p: ["nazareth", "jerusalem", "damas", "assyrie", "urmia", "medie", "caspienne"] },
+    retour25: { v: "ori", p: ["caspienne", "urmia", "damas", "capharnaum"] }
+  };
+
+  var PERIODS = [
+    { n: "Naissance et enfance", s: "an 8 av. J.-C. – an 8" },
+    { n: "Jeunesse et voyages", s: "an 21 – an 25" },
+    { n: "Jean le Baptiste, le baptême, les premiers apôtres", s: "an 25 – an 26" },
+    { n: "Ministère public", s: "an 27 – an 29" },
+    { n: "Magadan, Pella, Pérée, Lazare", s: "novembre an 29 – mars an 30" },
+    { n: "Dernière semaine", s: "31 mars – 9 avril an 30" },
+    { n: "Apparitions, ascension, Pentecôte", s: "9 avril – 18 mai an 30" }
+  ];
+
+  /* ---------- Citations exactes ---------- */
+  var Q = [
+    ["Ce fut vers la mi-novembre de l’an huit av. J.-C. que Gabriel apparut à Marie tandis qu’elle travaillait dans sa maison de Nazareth.", "122:2.6"],
+    ["[…] à midi le 21 aout de l’an 7 av. J.-C., avec l’aide et la généreuse assistance de compagnes de voyage, Marie accoucha d’un enfant mâle.", "122:8.1"],
+    ["Cet évènement survint le 11 février de l’an 2 av. J.-C.", "123:2.1"],
+    ["Avec les deux natifs des Indes — Gonod et son fils Ganid — Jésus quitta Jérusalem le dimanche matin 26 avril de l’an 22.", "130:0.1"],
+    ["Ce fut au premier avril de l’an 24 que Jésus quitta Nazareth pour le voyage en caravane qui devait le mener jusqu’à la région de la mer Caspienne.", "134:2.1"],
+    ["Jean tremblait d’émotion en se préparant à baptiser Jésus de Nazareth dans le Jourdain, à midi, ce 14 janvier de l’an 26.", "135:8.6"],
+    ["Du fait que Jean œuvrait en Pérée méridionale lors de son arrestation, il fut immédiatement emmené dans la prison de la forteresse de Macharée, où il resta incarcéré jusqu’à son exécution.", "135:12.1"],
+    ["[…] le dimanche 12 janvier de l’an 27, Jésus réunit les apôtres pour leur ordination comme prédicateurs publics de l’évangile du royaume.", "140:0.1"],
+    ["Jean le Baptiste fut exécuté, par ordre d’Hérode Antipas, le soir du 10 janvier de l’an 28.", "144:9.1"],
+    ["À Jérusalem, le dimanche 8 mai de l’an 29, le sanhédrin adopta un décret fermant toutes les synagogues de Palestine à Jésus et à ses partisans.", "154:2.1"],
+    ["Et, après avoir prié, il cria d’une voix forte : « Lazare, viens dehors ! »", "168:2.2"],
+    ["[…] peu après six heures du matin, Jésus fut amené devant Pilate, le procurateur romain qui gouvernait la Judée, la Samarie et l’Idumée […]", "185:0.1"],
+    ["Ce fut juste avant trois heures que Jésus, d’une voix forte, s’écria : « C’est fini ! Père, je remets mon esprit entre tes mains. »", "187:5.5"],
+    ["[…] à trois heures deux minutes, ce dimanche 9 avril de l’an 30, la forme et la personnalité morontielles ressuscitées de Jésus de Nazareth sortirent du tombeau.", "189:1.1"],
+    ["Il était environ sept heures quarante-cinq le matin où Jésus, sous forme morontielle, disparut du champ d’observation de ses onze apôtres […]", "193:5.5"],
+    ["[…] tandis que les cent-vingt croyants étaient en prière, ils se rendirent tous compte d’une étrange présence dans la salle.", "194:0.1"]
+  ];
+
+  /* ---------- Entrées de la frise ----------
+     p : période ; d : date telle qu’écrite ; x : 1 = date déduite ; pl : lieux (le dernier est le lieu courant) ;
+     via : étapes intermédiaires du trajet (lieux ou [lat, lon] schématiques) ; ax : autres lieux nommés ;
+     v : vue ; r : itinéraire lointain ; np : apparition, sans trajet ; nv : Jésus n’est pas sur les lieux ;
+     w : personnes ; s : résumé (paraphrase) ; rf : références ; q : numéro de citation */
+  var JOURDAIN = [32.40, 35.555];
+  var E = [
+    { p: 0, d: "Mi-novembre de l’an 8 av. J.-C.", pl: ["nazareth"], w: "Gabriel, Marie", s: "Gabriel apparait à Marie, qui travaille dans sa maison de Nazareth. Marie ira ensuite passer trois semaines chez Élisabeth, sa cousine lointaine, dans la ville de Juda.", rf: "122:2.6 ; 122:3.1", q: 0 },
+    { p: 0, d: "25 mars de l’an 7 av. J.-C.", pl: ["juda"], nv: 1, w: "Zacharie, Élisabeth, Jean", s: "Naissance de Jean, fils de Zacharie et d’Élisabeth, dans la ville de Juda, dans les collines à l’ouest de Jérusalem.", rf: "122:2.7 ; 122:2.6" },
+    { p: 0, d: "18 aout de l’an 7 av. J.-C.", pl: ["nazareth"], w: "Joseph, Marie", s: "Au matin, Joseph et Marie quittent leur humble logis et prennent la route de Bethléem : Marie, enceinte, sur leur unique bête de somme, Joseph à pied.", rf: "122:7.4" },
+    { p: 0, d: "21 aout de l’an 7 av. J.-C., à midi", pl: ["bethleem"], via: ["gilboa", JOURDAIN, "jericho", "jerusalem"], w: "Marie, Joseph", s: "Par les contreforts du Gilboa, la vallée du Jourdain, Jéricho et Jérusalem, le couple arrive à Bethléem le 20 aout. L’auberge est pleine : il loge dans les étables pour caravanes taillées dans le rocher, sous l’auberge, où Jésus nait. Le livre rattache la légende de l’étoile de Bethléem à une conjonction de Jupiter et de Saturne, le 29 mai de cette année-là.", rf: "122:7.5–7 ; 122:8.1 ; 122:8.7", q: 1 },
+    { p: 0, d: "Vers le milieu d’octobre de l’an 6 av. J.-C.", pl: ["alexandrie"], v: "med", r: "fuite", w: "Joseph, Marie, Zacharie", s: "Massacre des enfants mâles de Bethléem. Prévenus par un messager de Zacharie, Joseph et Marie sont partis avec l’enfant la nuit précédente pour Alexandrie, où ils séjourneront deux ans.", rf: "122:10.4" },
+    { p: 0, d: "Fin d’aout de l’an 4 av. J.-C.", pl: ["joppe"], v: "med", r: "retour4", w: "Joseph, Marie", s: "Retour d’Alexandrie par bateau jusqu’à Joppé.", rf: "123:0.4" },
+    { p: 0, d: "Septembre de l’an 4 av. J.-C.", pl: ["bethleem"], w: "Joseph, Marie", s: "La famille passe le mois de septembre à Bethléem.", rf: "123:0.4" },
+    { p: 0, d: "Début d’octobre de l’an 4 av. J.-C.", pl: ["nazareth"], via: ["lydda", "scythopolis"], w: "Joseph, Marie, cinq parents de Joseph", s: "Joseph a convaincu Marie de retourner à Nazareth. Partis de bonne heure un dimanche matin, ils prennent la route de Lydda et de Scythopolis, accompagnés de cinq parents.", rf: "123:0.6" },
+    { p: 0, d: "11 février de l’an 2 av. J.-C.", pl: [], s: "Arrivée de l’Ajusteur de Pensée. Le texte ne dit pas où se trouvait Jésus ce jour-là.", rf: "123:2.1", q: 2 },
+    { p: 0, d: "Samedi 9 avril de l’an 7 (Pâque)", pl: ["jerusalem"], via: ["gilboa", JOURDAIN, "jericho"], w: "Joseph, Marie", s: "Première Pâque de Jésus à Jérusalem. Le groupe de 103 personnes, parti de Nazareth le lundi 4 avril, contourne le mont Gilboa par la vallée du Jourdain et passe la nuit à Jéricho. Au temple, Jésus assiste seul aux discussions.", rf: "124:6.1–7 ; 125:0.1" },
+    { p: 0, d: "Mardi 25 septembre (an 8)", pl: ["nazareth"], ax: ["sepphoris"], w: "Joseph, Marie, Jacques", s: "Un messager apporte la nouvelle : Joseph a été grièvement blessé à Sepphoris par la chute d’un mât de charge. Il meurt avant l’arrivée de Marie ; on le ramène à Nazareth, où il est mis au tombeau le lendemain.", rf: "126:2.1 ; 126:1.1" },
+
+    { p: 1, d: "Janvier de l’an 21", pl: ["tiberiade", "magdala", "bethsaide", "capharnaum"], w: "Zébédée", s: "Un dimanche matin pluvieux, Jésus quitte sa famille. Après une semaine à Tibériade, il passe par Magdala et Bethsaïde jusqu’à Capharnaüm, où il s’associe à Zébédée, constructeur de bateaux.", rf: "129:1.1–2" },
+    { p: 1, d: "Mars de l’an 22", pl: ["jerusalem"], w: "Zébédée", s: "Jésus prend congé de Zébédée et de Capharnaüm, et se rend à Jérusalem.", rf: "129:2.1" },
+    { p: 1, d: "Dimanche 26 avril de l’an 22", pl: ["rome"], v: "med", r: "aller22", w: "Gonod, Ganid", s: "Départ de Jérusalem avec Gonod et son fils Ganid, natifs des Indes : Joppé, Césarée, Alexandrie, la Crète, Cyrène, Carthage, Malte, Syracuse, Messine, Naples, Capoue, puis Rome par la Voie Appienne.", rf: "130:0.1–2", q: 3 },
+    { p: 1, d: "Pendant six mois (date non écrite)", pl: ["rome"], v: "med", w: "Tibère, Gonod, Ganid", s: "Séjour de six mois à Rome. Le troisième jour après leur arrivée, les trois voyageurs se présentent devant l’empereur Tibère.", rf: "132:0.1 ; 132:0.4" },
+    { p: 1, d: "Date non écrite", pl: ["damas"], v: "med", r: "retour22", w: "Gonod, Ganid", s: "Retour vers l’Orient : par terre jusqu’à Tarente, puis par mer avec escales à Nicopolis et Corinthe jusqu’à Athènes ; Troas, Éphèse, Rhodes, un long séjour à Chypre, Antioche, Sidon et Damas.", rf: "130:0.3" },
+    { p: 1, d: "10 décembre de l’an 23", pl: ["charax"], v: "ori", r: "orient23", w: "Gonod, Ganid", s: "De Damas, en caravane par Thapsacus et Larissa jusqu’en Mésopotamie ; séjour à Babylone, visite d’Ur, puis Suse et Charax, sur le golfe Persique. Jésus y fait ses adieux à Gonod et Ganid, qui s’embarquent pour les Indes.", rf: "130:0.1 ; 130:0.3" },
+    { p: 1, d: "Après décembre de l’an 23 (date non écrite)", pl: ["nazareth"], v: "ori", r: "retour23", w: "Jacques, Jude", s: "Retour par Ur jusqu’à Babylone, puis avec une caravane du désert jusqu’à Damas. Quelques heures à Capharnaüm chez les Zébédée, où Jésus revoit ses frères Jacques et Jude, puis Nazareth.", rf: "134:1.1" },
+    { p: 1, d: "Premier avril de l’an 24", pl: ["caspienne"], v: "ori", r: "caravane24", s: "Jésus quitte Nazareth et rejoint, comme conducteur, une caravane partie de Jérusalem : par Damas et le lac Urmia, à travers l’Assyrie, la Médie et la Parthie, jusqu’à la région au sud-est de la mer Caspienne. L’expédition dure une année entière. Sur la carte, l’ordre des régions est schématique.", rf: "134:2.1", q: 4 },
+    { p: 1, d: "1er avril de l’an 25", pl: ["capharnaum"], v: "ori", r: "retour25", w: "les Zébédée", s: "Au retour, Jésus quitte la direction de la caravane au lac Urmia, où il s’arrête un peu plus de deux semaines, puis rejoint Damas et Capharnaüm. Capharnaüm est désormais son foyer ; il y loge chez les Zébédée.", rf: "134:2.5" },
+    { p: 1, d: "Un peu avant le milieu d’aout de l’an 25", pl: ["cesphil", "bethjenn", "hermon"], w: "Tiglath", s: "Après un séjour près de Césarée de Philippe, Jésus engage un garçon nommé Tiglath et établit son quartier général à Beth-Jenn, sur les premières hauteurs du mont Hermon. Tiglath garde les provisions pendant que Jésus monte sur la montagne.", rf: "134:8.1" },
+
+    { p: 2, d: "Un jour de mars de l’an 25", pl: ["engaddi"], nv: 1, w: "Jean le Baptiste", s: "Jean quitte Engaddi pour commencer sa carrière de prédicateur public.", rf: "135:4.6" },
+    { p: 2, d: "14 janvier de l’an 26, à midi", pl: ["pella"], via: ["capharnaum"], w: "Jean le Baptiste, Jacques, Jude", s: "Le dimanche 13 janvier, Jésus pose ses outils : son heure est venue. Il part pour Pella avec ses frères Jacques et Jude. Le lendemain à midi, Jean les baptise tous les trois dans le Jourdain.", rf: "135:8.3 ; 135:8.6 ; 141:1.2", q: 5 },
+    { p: 2, d: "Les quarante jours suivants", pl: ["beitadis"], s: "Retraite de quarante jours dans les collines de Pérée ; Jésus vit dans une ancienne caverne, près d’un village autrefois appelé Beit Adis.", rf: "136:3.2 ; 136:4.14" },
+    { p: 2, d: "Samedi 23 février de l’an 26", pl: ["pella"], w: "André, Simon", s: "Jésus descend des collines et rejoint les compagnons de Jean qui campent à Pella. André décide de le suivre et invite son frère Simon à faire de même.", rf: "137:0.1 ; 137:1.1–3" },
+    { p: 2, d: "Dimanche 24 février de l’an 26", pl: ["pella"], w: "Jean le Baptiste, Philippe, Nathanael", s: "Jésus prend congé de Jean au bord du fleuve, près de Pella ; il ne le reverra plus de son vivant. En route vers la Galilée, il rencontre Philippe de Bethsaïde et son ami Nathanael, de Cana.", rf: "137:2.1–3" },
+    { p: 2, d: "Mercredi 27 février (an 26)", x: 1, pl: ["cana"], s: "Noces de Cana : vers midi, près d’un millier de convives sont arrivés, plus de quatre fois le nombre des invités. Le texte dit seulement le mercredi ; la date se déduit du récit, entre le 24 février et le sabbat du 2 mars.", rf: "137:3.1 ; 137:4.1" },
+    { p: 2, d: "Sabbat 2 mars de l’an 26", pl: ["capharnaum"], w: "les six apôtres, Jacques, Jude, Marie", s: "Première apparition en public de Jésus après son baptême, dans la synagogue de Capharnaüm, bondée.", rf: "137:6.1" },
+    { p: 2, d: "12 juin (an 26)", pl: ["gue", "macharee"], nv: 1, w: "Jean le Baptiste, Hérode Antipas", s: "Jean prêche de nouveau au gué de Béthanie. Très tôt le matin du 12 juin, les agents d’Hérode Antipas l’arrêtent ; il est emmené à la forteresse de Macharée.", rf: "135:10.2–3 ; 135:12.1", q: 6 },
+    { p: 2, d: "Mardi 18 juin de l’an 26", pl: ["bethsaide"], w: "Pierre", s: "Dernier jour où Jésus travaille à un établi de charpentier. Il revient tard le soir à la maison de Zébédée.", rf: "137:8.3" },
+    { p: 2, d: "Dimanche 23 juin de l’an 26", pl: ["kheresa", "capharnaum"], nv: 1, w: "les six premiers apôtres", s: "Jésus envoie les six deux par deux : Jacques et Jean à Khérésa, André et Pierre à Capharnaüm, Philippe et Nathanael à Tarichée.", rf: "138:1.1" },
+    { p: 2, d: "Vers le milieu d’aout de l’an 26", pl: [], w: "André", s: "Les apôtres partent deux par deux dans les régions assignées par André.", rf: "138:8.1" },
+
+    { p: 3, d: "Dimanche 12 janvier de l’an 27", pl: ["ordination"], w: "les douze", s: "Jésus réunit les douze au bord du lac et les conduit dans les hautes terres au nord de Capharnaüm pour leur ordination.", rf: "140:0.1–2", q: 7 },
+    { p: 3, d: "19 janvier de l’an 27", pl: ["bethsaide", "pella"], w: "les douze", s: "Départ, vers midi, de la maison de Zébédée, quartier général de Bethsaïde. Après une nuit à Tarichée, halte de plus de deux semaines sur le Jourdain près de Pella, là où Jésus avait été baptisé.", rf: "141:0.1 ; 141:1.2" },
+    { p: 3, d: "Avril (an 27)", pl: ["jerusalem", "bethanie"], w: "Nicodème, Flavius", s: "Jésus et les apôtres travaillent à Jérusalem et passent la nuit à Béthanie. Un soir, chez Flavius, Nicodème, membre du sanhédrin, vient voir Jésus.", rf: "142:0.1 ; 142:6.1" },
+    { p: 3, d: "Fin de juin de l’an 27", pl: ["sychar"], s: "En raison de l’opposition croissante des dirigeants religieux, Jésus et les douze quittent Jérusalem vers le nord, en Samarie ; halte au puits de Jacob, près de Sychar.", rf: "143:0.1 ; 143:5.1" },
+    { p: 3, d: "Septembre et octobre (an 27)", pl: ["gilboa"], s: "Camp isolé sur les pentes du mont Gilboa, où Jésus instruit ses apôtres. Le camp est levé le 2 novembre de l’an 27.", rf: "144:0.1 ; 144:6.13" },
+    { p: 3, d: "Soir du 10 janvier de l’an 28", pl: ["macharee"], nv: 1, w: "Jean le Baptiste, Hérode Antipas", s: "Exécution de Jean le Baptiste à Macharée, sur l’ordre d’Hérode Antipas.", rf: "144:9.1", q: 8 },
+    { p: 3, d: "Mardi 13 janvier (an 28) ; sabbat 17 janvier", x: 1, pl: ["capharnaum", "bethsaide"], w: "Zébédée", s: "Arrivée à Capharnaüm ; quartier général chez Zébédée, à Bethsaïde. À la fin du sabbat suivant, au coucher du soleil, les malades affluent : c’est la guérison au coucher du soleil, à Bethsaïde, le port de Capharnaüm. La date du sabbat est déduite.", rf: "145:0.1 ; 145:2.1 ; 145:3.1 ; 145:3.12" },
+    { p: 3, d: "Du dimanche 18 janvier au 17 mars de l’an 28", pl: ["capharnaum"], s: "Première tournée de prédication publique en Galilée, environ deux mois : Rimmon, Jotapata, Rama, Zabulon, Iron, Gischala, Chorazin, Madon, Cana, Naïn et Endor. Retour à Capharnaüm le 17 mars.", rf: "146:0.1" },
+    { p: 3, d: "Mardi 30 mars (an 28)", pl: ["jericho", "bethanie", "jerusalem"], via: [JOURDAIN], s: "Départ pour la Pâque par la vallée du Jourdain, avec une pause à Jéricho ; arrivée le vendredi 2 avril et quartier général à Béthanie. À Jérusalem, de nombreux malades attendent à la piscine de Béthesda, aux cinq porches.", rf: "147:2.1 ; 147:3.1" },
+    { p: 3, d: "Du 3 mai au 3 octobre de l’an 28", pl: ["bethsaide"], w: "Zébédée", s: "Jésus et le groupe apostolique résident chez Zébédée à Bethsaïde ; un vaste camp est entretenu au bord du lac.", rf: "148:0.1" },
+    { p: 3, d: "Du dimanche 3 octobre au 30 décembre de l’an 28", pl: [], w: "les douze, 117 évangélistes", s: "Deuxième tournée de prédication publique en Galilée, près de trois mois, notamment à Gadara, Ptolémaïs, Japhia, Dabaritta, Méguiddo, Jizréel et Scythopolis.", rf: "149:0.1" },
+    { p: 3, d: "Soir du 16 janvier (an 29)", pl: ["bethsaide"], s: "Jésus annonce qu’il choisira dès le lendemain matin dix femmes pour le ministère du royaume ; elles sont convoquées à Bethsaïde.", rf: "150:1.1" },
+    { p: 3, d: "Vendredi 4 mars ; sabbat 5 mars (an 29)", x: 1, pl: ["nazareth"], s: "Les apôtres, les évangélistes et le groupe des femmes se rassemblent à Nazareth. Le sabbat, Jésus parle dans la synagogue de son ancienne ville : c’est le rejet par Nazareth. La date du sabbat est déduite.", rf: "150:6.3 ; 150:8.1 ; 150:9" },
+    { p: 3, d: "10 mars (an 29)", pl: ["bethsaide"], s: "Tous les groupes de prédicateurs et d’instructeurs sont rassemblés à Bethsaïde.", rf: "151:0.1" },
+    { p: 3, d: "Vers la mi-mars de l’an 29 (date non écrite)", pl: ["kheresa"], s: "Fatigué de la foule, Jésus traverse le lac. Sur la rive orientale, près du cimetière du petit village de Khérésa, un aliéné qui vivait dans les tombeaux accourt vers lui.", rf: "151:5.1 ; 151:6.1–2" },
+    { p: 3, d: "Un mercredi à midi (an 29)", pl: ["julias"], w: "près de cinq mille personnes", s: "Dans un parc au sud de Bethsaïde-Julias, près de cinq mille hommes, femmes et enfants, dont des centaines en route pour la Pâque, sont rassemblés : c’est le ravitaillement des cinq mille.", rf: "152:2.4 ; 152:3.1" },
+    { p: 3, d: "Samedi 30 avril (an 29)", pl: ["capharnaum"], w: "Jaïre", s: "À trois heures de l’après-midi, dans la nouvelle synagogue de Capharnaüm présidée par Jaïre, Jésus parle devant des pharisiens et des sadducéens venus de Jérusalem et des observateurs d’Hérode Antipas.", rf: "153:1.1 ; 154:0.1" },
+    { p: 3, d: "Dimanche 8 mai de l’an 29", pl: ["jerusalem"], nv: 1, s: "À Jérusalem, le sanhédrin ferme toutes les synagogues de Palestine à Jésus et à ses partisans.", rf: "154:2.1", q: 9 },
+    { p: 3, d: "Dimanche 22 mai (an 29)", pl: ["kheresa", "julias"], w: "les douze apôtres, les douze évangélistes", s: "Fuite précipitée devant les officiers du sanhédrin, porteurs d’un mandat d’Hérode Antipas. On rame vers la rive orientale, on accoste près de Khérésa, et l’on passe la nuit dans le parc au sud de Bethsaïde-Julias.", rf: "154:7.1 ; 155:0.1" },
+    { p: 3, d: "Vendredi 10 juin (an 29)", pl: ["sidon"], s: "Arrivée près de Sidon, chez une femme riche autrefois soignée à l’hôpital de Bethsaïde ; près de deux semaines et demie à Sidon et aux environs.", rf: "156:0.1" },
+    { p: 3, d: "Du 11 au 24 juillet (an 29)", pl: ["tyr"], via: ["sarepta"], s: "Descente de la côte par Sarepta jusqu’à Tyr, où le groupe enseigne dans la ville et aux environs ; Jésus loge chez un croyant nommé Joseph, au sud de Tyr.", rf: "156:3.2 ; 156:4.1" },
+    { p: 3, d: "9 aout (an 29)", x: 1, pl: ["cesphil"], via: ["magadan"], w: "Pierre", s: "Parti du parc de Magadan, le groupe gagne Césarée de Philippe. À midi, au bord de la route sous les muriers, Pierre confesse sa foi. Le texte place cette confession six jours avant le 15 aout.", rf: "157:3.1–5 ; 158:1.1" },
+    { p: 3, d: "Lundi 15 aout (an 29)", pl: ["hermon"], w: "trois apôtres", s: "De bonne heure, Jésus et trois apôtres commencent l’ascension du mont Hermon : c’est la transfiguration.", rf: "158:1.1–3" },
+    { p: 3, d: "Vendredi 16 septembre (an 29)", pl: ["magadan"], s: "Après la tournée de la Décapole, tout le corps évangélique se rassemble au parc de Magadan.", rf: "159:0.1 ; 159:6.2" },
+    { p: 3, d: "Dimanche 25 septembre de l’an 29", pl: ["magadan"], w: "Nathanael, Thomas, Rodan", s: "Rassemblement à Magadan. Jésus annonce son départ pour Jérusalem et la fête des Tabernacles ; Nathanael et Thomas restent quelques jours avec Rodan d’Alexandrie.", rf: "161:0.1–2" },
+    { p: 3, d: "Octobre (an 29)", pl: ["jerusalem", "bethleem"], w: "Abner", s: "Jésus et les douze restent aux environs de Jérusalem. Jésus n’entre dans la ville que brièvement, pendant la fête des Tabernacles, et passe une grande partie du mois à Bethléem, avec Abner.", rf: "162:0.4" },
+
+    { p: 4, d: "Sabbat 19 novembre (an 29)", pl: ["magadan"], w: "Abner, les soixante-dix", s: "Ordination des soixante-dix au camp de Magadan ; Abner est placé à leur tête.", rf: "163:1.1" },
+    { p: 4, d: "Mardi 6 décembre (an 29)", pl: ["pella"], s: "Au lever du jour, près de trois cents personnes quittent Magadan pour le dernier quartier général, près de Pella, à l’endroit même où Jean avait campé.", rf: "163:5.1" },
+    { p: 4, d: "Fête de la Dédicace (date non écrite)", pl: ["gue", "jerusalem"], w: "Nathanael, Thomas", s: "Pendant l’installation du camp de Pella, Jésus se rend secrètement à Jérusalem pour la fête de la Dédicace, avec Nathanael et Thomas ; ils traversent le Jourdain au gué de Béthanie.", rf: "164:0.1" },
+    { p: 4, d: "Mardi 3 janvier de l’an 30", pl: ["pella"], w: "Abner, les soixante-dix", s: "Abner envoie les soixante-dix dans toutes les villes et tous les villages de Pérée ; la mission dure près de trois mois. Jésus, revenu à Pella, partage son temps entre le camp et des déplacements avec les douze.", rf: "164:5.6 ; 165:0.1 ; 165:0.4" },
+    { p: 4, d: "Du 11 au 20 février (an 30)", pl: ["ragaba"], w: "Nathanael, pharisien de Ragaba", s: "Tournée en Pérée du Nord ; le sabbat 18 février, Jésus est à Ragaba, chez un riche pharisien nommé Nathanael.", rf: "166:0.1 ; 166:1.1" },
+    { p: 4, d: "Mercredi 22 février (an 30)", pl: ["philadelphie"], w: "les dix apôtres", s: "Arrivée à Philadelphie ; le jeudi et le vendredi sont consacrés au repos.", rf: "167:0.3" },
+    { p: 4, d: "Dimanche 26 février (an 30)", pl: ["philadelphie"], w: "Marthe, Marie", s: "Très tard le soir, un coureur arrive de Béthanie avec un message de Marthe et Marie : leur frère Lazare est très malade.", rf: "167:4.1" },
+    { p: 4, d: "Jeudi 2 mars (an 30)", x: 1, pl: ["bethanie"], w: "Marthe, Marie, Lazare", s: "Lazare est mort depuis quatre jours ; il a été mis au caveau familial le dimanche. Vers deux heures et demie de l’après-midi, à Béthanie, Jésus le rappelle à la vie. Le texte dit « ce jeudi ».", rf: "168:0.1 ; 168:1.9 ; 168:2.2–5", q: 10 },
+    { p: 4, d: "Lundi 6 mars (an 30)", pl: ["pella"], w: "les dix apôtres", s: "Retour au camp de Pella, tard dans la soirée ; Jésus y passe sa dernière semaine.", rf: "169:0.1" },
+    { p: 4, d: "Fin mars (an 30), date non écrite", pl: ["jericho"], w: "Zachée", s: "En route pour la Pâque par la Pérée méridionale, Jésus entre à Jéricho au coucher du soleil ; le chef publicain Zachée cherche à le voir.", rf: "171:0.1 ; 171:6.1" },
+
+    { p: 5, d: "Vendredi 31 mars de l’an 30", pl: ["bethanie"], w: "Lazare, Marthe, Marie, Simon", s: "Arrivée à Béthanie un peu après quatre heures de l’après-midi ; Jésus loge chez Simon, notable du village.", rf: "172:0.1" },
+    { p: 5, d: "Dimanche 2 avril (an 30)", x: 1, pl: ["jerusalem"], s: "Vers une heure et demie de l’après-midi, Jésus part de Béthanie, à environ trois kilomètres du temple, pour entrer à Jérusalem.", rf: "172:3.1" },
+    { p: 5, d: "Lundi 3 avril (an 30)", x: 1, pl: ["jerusalem"], s: "Réunis de bonne heure chez Simon à Béthanie, Jésus et les apôtres montent au temple ; Jésus chasse les animaux de la cour du temple.", rf: "173:0.1 ; 173:1.7" },
+    { p: 5, d: "Mardi 4 avril de l’an 30", pl: ["jerusalem", "olivet"], s: "Au temple, ultime appel de Jésus aux dirigeants juifs ; l’après-midi, Jésus et les apôtres sortent vers Olivet et le camp de Gethsémani. Un peu avant minuit, le sanhédrin vote la mort de Jésus et de Lazare.", rf: "176:0.1 ; 175:3.1" },
+    { p: 5, d: "Mercredi 5 avril (an 30)", x: 1, pl: ["jerusalem"], nv: 1, w: "Judas Iscariot, Caïphe", s: "Jour de repos au camp. Judas s’éclipse et rejoint les ennemis de Jésus chez le grand-prêtre Caïphe.", rf: "177:0.1 ; 177:4.1" },
+    { p: 5, d: "Jeudi 6 avril (an 30)", x: 1, pl: ["jerusalem"], w: "Élie et Marie Marc, Jean Marc", s: "Dernier souper dans la salle du haut, chez les parents de Jean Marc, Élie et Marie Marc. Vers dix heures du soir, Jésus ramène les onze au camp de Gethsémani.", rf: "179:0.4 ; 182:0.1" },
+    { p: 5, d: "Nuit du jeudi au vendredi", pl: ["olivet", "jerusalem"], w: "Judas, Annas, Caïphe", s: "Arrestation à Gethsémani. Jésus est conduit chez Annas, puis devant le tribunal réuni par Caïphe vers trois heures et demie du matin.", rf: "183:2.3 ; 184:0.1 ; 184:3.1" },
+    { p: 5, d: "Vendredi 7 avril de l’an 30, peu après six heures du matin", pl: ["jerusalem"], w: "Pilate, Hérode Antipas", s: "Jésus est amené devant Pilate, puis devant Hérode Antipas, qui loge à l’ancien palais macchabéen.", rf: "185:0.1 ; 185:4.1", q: 11 },
+    { p: 5, d: "7 avril, juste avant neuf heures", pl: ["jerusalem"], s: "Les soldats emmènent Jésus du prétoire vers le Golgotha, par le chemin le plus court, la porte de Damas.", rf: "187:0.4 ; 187:1.4" },
+    { p: 5, d: "7 avril, juste avant trois heures", pl: ["jerusalem"], s: "La mort de Jésus.", rf: "187:5.5", q: 12 },
+    { p: 5, d: "7 avril, vers quatre heures et demie", pl: ["jerusalem"], w: "Joseph, Nicodème, Jean, le centurion", s: "Le cortège funèbre part du Golgotha pour le tombeau de Joseph, de l’autre côté de la route.", rf: "188:1.3" },
+    { p: 5, d: "Dimanche 9 avril de l’an 30, trois heures deux", pl: ["jerusalem"], s: "Résurrection : la forme morontielle de Jésus sort du tombeau.", rf: "189:1.1", q: 13 },
+
+    { p: 6, d: "Dimanche 9 avril (an 30)", pl: ["jerusalem", "emmaus"], np: 1, w: "les cinq femmes, Marie-Madeleine, Cléopas et Jacob, les dix", s: "Premières apparitions : aux cinq femmes près du tombeau, puis à Marie-Madeleine ; sur la route d’Emmaüs, à Cléopas et à son frère Jacob ; le soir, aux dix apôtres réunis dans la chambre du haut.", rf: "190:2.1 ; 190:5.1–2 ; 191:2.1" },
+    { p: 6, d: "Mardi 11 avril (an 30)", pl: ["philadelphie"], np: 1, w: "Abner, Lazare", s: "Dixième apparition, dans la synagogue de Philadelphie, devant Abner, Lazare et environ 150 de leurs associés.", rf: "191:4.1" },
+    { p: 6, d: "Dimanche 16 avril (an 30)", x: 1, pl: ["jerusalem"], np: 1, w: "Thomas, les onze", s: "Thomas, retrouvé le samedi 15 au soir, est ramené chez les Marc. Le jour suivant, au repas du soir, Jésus apparait aux onze, Thomas présent.", rf: "191:5.1–2" },
+    { p: 6, d: "Mardi 18 avril (an 30)", pl: ["alexandrie"], v: "med", np: 1, w: "Rodan", s: "Douzième apparition, à Alexandrie, devant Rodan et environ quatre-vingts croyants.", rf: "191:6.1" },
+    { p: 6, d: "Vendredi 21 avril (an 30), vers six heures", pl: ["bethsaide"], np: 1, w: "les dix apôtres", s: "Treizième apparition, la première en Galilée : aux dix apôtres, dont le bateau approche de l’embarcadère de Bethsaïde.", rf: "192:1.1" },
+    { p: 6, d: "Samedi 22 avril (an 30), à midi", pl: ["ordination"], np: 1, w: "les onze", s: "Quatorzième apparition, aux onze, sur la colline proche de Capharnaüm où ils avaient été mis à part comme apôtres.", rf: "192:3.1" },
+    { p: 6, d: "Samedi 29 avril (an 30)", pl: ["bethsaide"], nv: 1, w: "Pierre", s: "À trois heures, plus de cinq cents croyants se rassemblent à Bethsaïde pour le premier sermon de Pierre depuis la résurrection.", rf: "192:4.2" },
+    { p: 6, d: "Vendredi 5 mai (an 30)", pl: ["jerusalem"], np: 1, w: "Nicodème", s: "Apparition vers neuf heures du soir, dans la cour de Nicodème.", rf: "193:0.1" },
+    { p: 6, d: "Sabbat 13 mai (an 30)", pl: ["sychar"], np: 1, w: "Nalda", s: "Apparition à Sychar, vers quatre heures, à Nalda et à environ soixante-quinze croyants samaritains.", rf: "193:1.1" },
+    { p: 6, d: "Mardi 16 mai (an 30)", pl: ["tyr"], np: 1, s: "Dix-huitième apparition, à Tyr, un peu avant neuf heures du soir, à la fin d’une réunion de croyants.", rf: "193:2.1" },
+    { p: 6, d: "Jeudi 18 mai (an 30), vers sept heures quarante-cinq", pl: ["olivet"], np: 1, w: "les onze", s: "Dernière apparition : au repas du matin, dans la salle du haut de la maison de Marie Marc, puis sur le versant ouest du mont Olivet, où Jésus disparait aux yeux des onze.", rf: "193:3.1 ; 193:5.1 ; 193:5.5", q: 14 },
+    { p: 6, d: "18 mai, vers une heure de l’après-midi", pl: ["jerusalem"], nv: 1, w: "cent-vingt disciples", s: "Pentecôte : vers dix heures et demie, cent-vingt disciples se sont réunis chez Marie Marc ; vers une heure, pendant leur prière, ils perçoivent une présence nouvelle.", rf: "193:6.1 ; 194:0.1", q: 15 }
+  ];
+  E.forEach(function (e, i) { e.i = i; e.v = e.v || "pal"; });
+
+  /* ---------- Fonds de carte ---------- */
+  var COAST = [[31.26, 34.20], [31.32, 34.24], [31.42, 34.33], [31.52, 34.43], [31.60, 34.49], [31.67, 34.55], [31.80, 34.63], [31.93, 34.70], [32.05, 34.75], [32.17, 34.80], [32.33, 34.85], [32.50, 34.89], [32.62, 34.92], [32.69, 34.94], [32.76, 34.95], [32.83, 34.96], [32.81, 35.03], [32.86, 35.07], [32.92, 35.07], [33.01, 35.09], [33.09, 35.10], [33.12, 35.14], [33.20, 35.19], [33.27, 35.19], [33.30, 35.22], [33.38, 35.25], [33.46, 35.29], [33.53, 35.35], [33.56, 35.37], [33.60, 35.39]];
+  var LAKE = [[32.888, 35.590], [32.890, 35.610], [32.885, 35.625], [32.870, 35.640], [32.850, 35.647], [32.826, 35.650], [32.800, 35.646], [32.775, 35.640], [32.750, 35.632], [32.725, 35.612], [32.708, 35.590], [32.705, 35.572], [32.715, 35.558], [32.740, 35.548], [32.765, 35.540], [32.790, 35.536], [32.812, 35.523], [32.830, 35.517], [32.850, 35.522], [32.866, 35.536], [32.875, 35.548], [32.880, 35.565], [32.883, 35.578]];
+  var HULEH = [[33.10, 35.605], [33.09, 35.625], [33.06, 35.625], [33.05, 35.608], [33.07, 35.598]];
+  var JORDAN_UP = [[33.25, 35.66], [33.15, 35.62], [33.10, 35.612], [33.05, 35.616], [33.00, 35.62], [32.93, 35.625], [32.889, 35.62]];
+  var JORDAN_LOW = [[32.707, 35.572], [32.67, 35.570], [32.62, 35.565], [32.55, 35.555], [32.50, 35.560], [32.45, 35.575], [32.40, 35.570], [32.33, 35.560], [32.25, 35.548], [32.17, 35.540], [32.10, 35.535], [32.03, 35.530], [31.96, 35.525], [31.90, 35.535], [31.84, 35.550], [31.78, 35.555]];
+  var DEADSEA = [[31.78, 35.555], [31.76, 35.50], [31.73, 35.47], [31.66, 35.45], [31.58, 35.42], [31.50, 35.40], [31.40, 35.39], [31.30, 35.40], [31.20, 35.41], [31.10, 35.42], [31.03, 35.44], [31.05, 35.49], [31.12, 35.52], [31.20, 35.53], [31.26, 35.51], [31.30, 35.55], [31.40, 35.57], [31.50, 35.58], [31.60, 35.59], [31.70, 35.585], [31.76, 35.575]];
+  var URMIA = [[38.25, 45.45], [38.10, 45.75], [37.80, 45.85], [37.45, 45.75], [37.15, 45.50], [37.20, 45.25], [37.60, 45.15], [38.00, 45.15]];
+  var LAND_MED = "M493 349 503 345 500 349 509 352 518 352 543 356 549 356 552 364 568 356 565 368 521 372 518 364 512 360 484 356 484 349 487 349 487 341 493 349ZM478 213 481 221 500 229 506 244 515 248 515 252 509 252 497 236 487 236 475 221 462 217 475 213 478 213ZM822 345 804 356 804 360 810 368 798 368 788 376 779 380 776 383 757 380 754 368 754 364 773 360 773 352 794 352 826 341 822 345ZM50 139 56 155 50 163 53 174 50 205 34 205 31 213 19 217 12 205 12 194 16 182 12 178 16 163 6 147 6 139 19 139 37 124 50 136 50 139ZM47 66 50 93 37 120 25 112 28 108 22 105 22 101 19 101 22 93 19 89 22 85 19 81 25 74 40 70 43 58 47 58 47 66ZM236 244 220 271 227 287 220 298 220 302 202 298 196 290 180 287 152 267 143 267 137 260 140 248 146 244 152 252 164 244 180 252 220 244 233 240 236 240 236 244ZM906 -6 906 606 832 606 838 577 829 589 825 606 780 606 779 600 767 581 763 562 760 565 757 577 763 589 767 604 768 606 -6 606 -6 293 -3 294 25 290 34 283 53 279 56 279 56 287 59 279 68 283 71 298 74 302 93 287 96 287 96 294 78 318 81 333 93 345 96 360 84 380 65 399 62 403 71 418 84 418 84 426 93 422 102 434 99 438 118 442 133 449 149 453 164 449 192 457 202 465 223 469 230 476 233 496 239 507 251 511 273 515 304 527 338 550 351 550 360 546 372 531 376 515 369 492 376 476 391 461 407 453 416 453 422 449 441 449 469 461 469 473 475 476 490 476 500 484 524 484 534 504 556 500 583 504 621 519 636 519 655 531 664 527 680 515 689 511 695 504 711 500 701 507 714 504 717 500 729 504 742 504 748 511 742 504 739 511 745 515 748 519 754 515 754 511 763 519 804 515 822 500 857 399 869 387 866 352 863 345 869 329 863 318 875 302 875 298 869 294 850 306 829 298 798 321 770 329 757 321 745 310 720 298 701 294 695 318 689 318 673 321 658 318 652 302 646 302 630 298 624 306 621 306 624 298 605 302 621 298 627 290 599 290 599 287 605 283 596 275 593 263 596 263 596 252 568 240 571 236 571 229 577 229 580 240 580 236 593 232 587 232 583 225 590 217 583 213 587 209 580 201 587 194 562 194 565 174 580 159 599 155 605 163 611 163 614 159 611 155 618 155 621 155 621 159 652 159 646 155 677 143 664 143 655 139 652 136 655 128 723 132 729 124 754 108 788 97 832 97 838 93 844 97 841 101 847 108 857 112 872 108 875 120 881 124 894 120 903 128 906 129 906 -6 821 -6 816 0 804 4 791 -4 792 -6 646 -6 646 -4 649 -4 639 8 639 39 636 43 624 43 618 50 618 70 605 77 621 97 621 101 627 112 655 128 652 136 627 132 605 136 599 147 583 155 565 170 568 163 583 151 562 151 556 143 531 136 521 139 512 139 500 147 490 147 493 159 503 163 506 170 493 159 487 163 497 170 493 174 487 167 478 163 478 170 484 178 478 174 475 167 462 159 462 151 453 155 453 174 475 205 472 209 472 201 462 201 459 201 462 205 466 213 469 213 453 217 475 225 487 236 497 240 497 248 497 263 481 252 466 256 472 267 478 267 481 275 472 279 466 271 456 271 472 314 456 298 453 298 450 314 447 310 447 302 438 290 434 290 431 302 422 287 425 275 407 256 416 244 425 244 428 240 462 252 462 248 469 248 469 244 447 236 444 236 434 236 419 240 413 232 413 236 410 240 397 217 407 217 407 213 397 213 382 201 369 174 354 163 351 159 357 159 351 147 357 139 354 120 360 105 348 101 329 81 279 58 301 62 276 43 261 39 248 39 245 31 223 12 220 8 233 8 217 -4 217 -6 131 -6 137 12 174 35 186 70 202 89 223 101 254 101 254 105 245 112 245 116 310 147 326 167 320 182 313 178 307 163 292 163 286 155 276 155 270 170 264 186 282 198 286 213 267 221 264 236 258 244 251 256 239 256 236 252 236 244 245 232 245 229 254 221 254 217 239 174 217 167 214 155 211 147 196 151 202 147 186 143 177 128 158 128 143 116 112 85 102 81 96 81 99 77 84 62 78 58 78 50 68 23 40 8 25 4 19 8 0 23 -6 25 -6 -6Z";
+  var LAND_ORI = "M51 374 31 387 31 391 37 399 24 399 14 408 3 412 0 416 -6 415 -6 392 -3 391 -3 383 20 383 54 370 51 374ZM786 -6 786 700 637 700 631 698 621 690 614 664 607 656 607 648 600 648 597 635 583 614 580 601 563 610 543 593 549 593 549 589 543 589 536 610 526 614 509 610 512 627 509 627 499 635 512 635 536 698 536 700 78 700 75 694 58 690 54 690 68 627 58 639 47 694 43 700 37 700 27 694 7 669 3 652 -6 637 -6 662 17 698 17 700 -6 700 -6 563 31 559 51 542 88 433 102 421 98 383 95 374 102 357 95 345 109 328 109 324 102 320 81 332 58 324 24 349 -6 357 -6 112 14 105 61 105 68 101 75 105 71 109 78 118 88 122 105 118 109 130 115 135 129 130 139 139 183 151 217 143 248 147 285 130 295 118 298 105 285 76 234 42 193 8 176 4 168 -6 49 -6 44 0 31 4 17 -4 17 -6ZM467 -6 465 0 475 8 485 17 492 38 495 25 492 63 499 71 499 76 522 105 536 122 560 156 570 164 583 168 590 177 573 177 563 181 553 206 556 219 549 231 543 227 539 240 539 257 546 286 556 294 580 299 587 311 607 324 638 332 705 320 709 320 702 320 712 324 712 315 705 278 709 235 702 223 688 219 685 219 682 214 685 206 699 210 695 202 695 193 678 189 678 198 671 185 668 172 675 147 682 156 699 156 709 164 726 160 722 156 736 151 736 143 716 126 705 101 685 101 678 105 671 118 675 118 675 139 661 109 665 80 665 71 641 67 631 55 621 55 621 42 604 13 587 4 587 -4 590 -4 627 0 621 -4 619 -6Z";
+  var RIV_MED = "M720 573 720 523 714 504M850 511 857 492M857 449 857 457M850 511 850 515M857 457 857 492M866 422 860 430 857 438 857 449";
+  var RIV_ORI = "M81 555 88 534M88 488 88 496M424 555 424 559 444 564 458 572 492 568M271 425 278 425 298 421 305 425 309 429 319 429 319 437 326 446 329 446 329 450 336 458 359 467 376 479 383 492 383 505 390 542 400 547 424 555M81 555 81 559M88 496 88 534M98 458 92 467 88 475 88 488M319 311 326 324 336 328 332 336 346 345 349 349 349 362 349 378 359 399 356 399 370 433 373 437 387 442 387 454 383 463 387 471 397 484 414 492 421 500 434 505 444 500 465 509 465 521 471 530 478 534 488 547 488 555 488 568";
+
+  function f1(n) { return Math.round(n * 10) / 10; }
+  function each(list, fn) { Array.prototype.forEach.call(list, fn); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function pathOf(proj, pts, close) {
+    return "M" + pts.map(function (q) { var xy = proj(q[0], q[1]); return f1(xy[0]) + " " + f1(xy[1]); }).join(" ") + (close ? "Z" : "");
+  }
+  function projV(vk) { return function (lat, lon) { return pj(vk, lat, lon); }; }
+  function projI(ik) { return function (lat, lon) { return pi(ik, lat, lon); }; }
+  function txt(x, y, s, cls, anchor, attrs) {
+    return '<text x="' + f1(x) + '" y="' + f1(y) + '" class="' + cls + '"' + (anchor && anchor !== "start" ? ' text-anchor="' + anchor + '"' : "") + (attrs || "") + ">" + esc(s) + "</text>";
+  }
+  function marker(id, x, y, r) {
+    var p = P[id];
+    return '<circle class="mk' + (p.a ? " ap" : "") + '" data-p="' + id + '" cx="' + f1(x) + '" cy="' + f1(y) + '" r="' + r + '"><title>' + esc(p.n + (p.note ? " — " + p.note : "")) + "</title></circle>";
+  }
+  function label(id, xy, L) {
+    var t = L[3] || P[id].n, parts = t.split("|");
+    if (parts.length === 1) return txt(xy[0] + L[0], xy[1] + L[1], t, "m-lbl", L[2], ' data-l="' + id + '"');
+    var x = f1(xy[0] + L[0]), y0 = xy[1] + L[1] - 6 * (parts.length - 1);
+    return '<text data-l="' + id + '" class="m-lbl"' + (L[2] !== "start" ? ' text-anchor="' + L[2] + '"' : "") + ' x="' + x + '" y="' + f1(y0) + '">' +
+      parts.map(function (s, k) { return k ? '<tspan x="' + x + '" dy="12">' + esc(s) + "</tspan>" : esc(s); }).join("") + "</text>";
+  }
+
+  var svgs = {};
+  function buildPal() {
+    var v = VIEWS.pal, W = v.W, H = v.H, h = "", P0 = projV("pal");
+    h += '<rect class="m-land" x="0" y="0" width="' + W + '" height="' + H + '"/>';
+    h += '<path class="m-sea" d="' + pathOf(P0, COAST.concat([[33.60, 34.20], [31.26, 34.20]]), true) + '"/>';
+    h += '<path class="m-coast" d="' + pathOf(P0, COAST, false) + '"/>';
+    h += '<path class="m-lake" d="' + pathOf(P0, HULEH, true) + '"/>';
+    h += '<path class="m-riv" d="' + pathOf(P0, JORDAN_UP, false) + '"/>';
+    h += '<path class="m-riv" d="' + pathOf(P0, JORDAN_LOW, false) + '"/>';
+    h += '<path class="m-lake" d="' + pathOf(P0, LAKE, true) + '"/>';
+    h += '<path class="m-lake" d="' + pathOf(P0, DEADSEA, true) + '"/>';
+    [[33.36, 35.42, "PHÉNICIE"], [32.86, 35.20, "GALILÉE"], [32.30, 35.02, "SAMARIE"], [31.50, 35.10, "JUDÉE"], [32.08, 35.80, "PÉRÉE"], [32.56, 35.86, "DÉCAPOLE"]].forEach(function (r) {
+      var xy = pj("pal", r[0], r[1]); h += txt(xy[0], xy[1], r[2], "m-region", "middle");
+    });
+    var a = pj("pal", 32.18, 34.30); h += txt(a[0], a[1], "Méditerranée", "m-water");
+    a = pj("pal", 32.80, 35.646); h += txt(a[0] + 24, a[1] + 4, "lac de Galilée", "m-water");
+    a = pj("pal", 32.18, 35.565); h += txt(a[0] + 6, a[1], "Jourdain", "m-water");
+    a = pj("pal", 31.33, 35.60); h += txt(a[0] + 4, a[1], "mer Morte", "m-water");
+    // cadres des médaillons et traits de rappel
+    Object.keys(INSETS).forEach(function (k) {
+      var I = INSETS[k], b0 = pj("pal", I.lat1, I.lon0), b1 = pj("pal", I.lat0, I.lon1);
+      I.w = (I.lon1 - I.lon0) * v.c * v.k * I.s; I.h = (I.lat1 - I.lat0) * v.k * I.s;
+      h += '<rect class="m-box" data-box="' + k + '" x="' + f1(b0[0]) + '" y="' + f1(b0[1]) + '" width="' + f1(b1[0] - b0[0]) + '" height="' + f1(b1[1] - b0[1]) + '"/>';
+      var from = I.from === "tl" ? [b0[0], b0[1]] : [b0[0], b1[1]];
+      var to = I.to === "rm" ? [I.x + I.w, I.y + I.h / 2] : [I.x + I.w, I.y];
+      h += '<path class="m-box" data-box="' + k + '" d="M' + f1(from[0]) + " " + f1(from[1]) + "L" + f1(to[0]) + " " + f1(to[1]) + '"/>';
+    });
+    h += '<g class="g-trace"></g>';
+    var mk = "", lb = "";
+    PV.pal.forEach(function (id) {
+      var p = P[id], xy = pj("pal", p.lat, p.lon);
+      if (p.ins && !p.main) return; // ces lieux ne figurent que dans leur médaillon
+      mk += marker(id, xy[0], xy[1], p.ins ? 2.8 : 3.8);
+      if (p.lb && p.lb.pal) lb += label(id, xy, p.lb.pal);
+    });
+    h += '<g class="g-mk">' + mk + "</g>" + lb;
+    // médaillons
+    Object.keys(INSETS).forEach(function (k) {
+      var I = INSETS[k], PI = projI(k);
+      h += '<clipPath id="clip-' + k + '"><rect x="' + f1(I.x) + '" y="' + f1(I.y) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/></clipPath>';
+      h += '<rect class="m-inset" x="' + f1(I.x) + '" y="' + f1(I.y) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/>';
+      h += txt(I.x, I.y - 6, I.t, "m-inset-t");
+      var g = '<g clip-path="url(#clip-' + k + ')">';
+      if (k === "lac") {
+        g += '<path class="m-riv" d="' + pathOf(PI, JORDAN_UP, false) + '"/>';
+        g += '<path class="m-riv" d="' + pathOf(PI, JORDAN_LOW, false) + '"/>';
+        g += '<path class="m-lake" d="' + pathOf(PI, LAKE, true) + '"/>';
+      }
+      g += '<g class="g-trace" data-ins="' + k + '"></g>';
+      var lbi = "";
+      PV.pal.forEach(function (id) {
+        var p = P[id];
+        if (p.ins !== k) return;
+        var xy = pi(k, p.lat, p.lon);
+        g += marker(id, xy[0], xy[1], 4);
+        if (p.il) lbi += label(id, xy, p.il);
+      });
+      h += g + "</g>" + lbi;
+    });
+    h += '<g class="g-pulse"></g>';
+    return h;
+  }
+  function buildWide(vk, land, riv) {
+    var v = VIEWS[vk], h = "";
+    h += '<rect class="m-sea" x="0" y="0" width="' + v.W + '" height="' + v.H + '"/>';
+    h += '<path class="m-land-ne" d="' + land + '"/>';
+    if (riv) h += '<path class="m-riv" d="' + riv + '"/>';
+    if (vk === "ori") h += '<path class="m-lake" d="' + pathOf(projV("ori"), URMIA, true) + '"/>';
+    var labels = vk === "med"
+      ? [[34.3, 18.5, "mer Méditerranée", "m-water"], [42.6, 15.5, "mer Adriatique", "m-water"], [37.3, 25.0, "mer Égée", "m-water"], [43.0, 12.6, "ITALIE", "m-region"], [39.3, 22.0, "GRÈCE", "m-region"], [38.8, 32.5, "ASIE", "m-region"], [30.0, 26.0, "ÉGYPTE", "m-region"], [31.4, 13.0, "AFRIQUE", "m-region"]]
+      : [[43.4, 36.2, "mer Noire", "m-water"], [41.0, 50.6, "mer Caspienne", "m-water"], [28.8, 51.2, "golfe Persique", "m-water"], [34.0, 33.1, "Méditerranée", "m-water", "start"], [36.55, 41.2, "ASSYRIE", "m-region"], [34.4, 49.6, "MÉDIE", "m-region"], [35.3, 53.0, "PARTHIE", "m-region"], [33.2, 43.6, "MÉSOPOTAMIE", "m-region"], [32.9, 36.9, "SYRIE", "m-region"]];
+    labels.forEach(function (r) { var xy = pj(vk, r[0], r[1]); h += txt(xy[0], xy[1], r[2], r[3], r[4] || "middle"); });
+    var rt = "";
+    Object.keys(ROUTES).forEach(function (rk) {
+      var R = ROUTES[rk];
+      if (R.v !== vk) return;
+      rt += '<path class="rt" data-r="' + rk + '" d="M' + R.p.map(function (id) { var xy = pj(vk, P[id].lat, P[id].lon); return f1(xy[0]) + " " + f1(xy[1]); }).join(" ") + '"/>';
+    });
+    h += '<g class="g-rt">' + rt + '</g><g class="g-trace"></g>';
+    var mk = "", lb = "";
+    PV[vk].forEach(function (id) {
+      var p = P[id], xy = pj(vk, p.lat, p.lon);
+      mk += marker(id, xy[0], xy[1], 3.6);
+      if (p.lb && p.lb[vk]) lb += label(id, xy, p.lb[vk]);
+    });
+    h += '<g class="g-mk">' + mk + "</g>" + lb + '<g class="g-pulse"></g>';
+    return h;
+  }
+
+  ["pal", "med", "ori"].forEach(function (vk) {
+    var s = document.getElementById("map-" + vk), v = VIEWS[vk];
+    s.setAttribute("viewBox", "0 0 " + v.W + " " + v.H);
+    s.innerHTML = vk === "pal" ? buildPal() : buildWide(vk, vk === "med" ? LAND_MED : LAND_ORI, vk === "med" ? RIV_MED : RIV_ORI);
+    svgs[vk] = s;
+  });
+
+  /* ---------- État ---------- */
+  var cur = 0, timer = null, annonce = false;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function setView(vk) {
+    ["pal", "med", "ori"].forEach(function (k) {
+      svgs[k].classList.toggle("cache", k !== vk);
+      document.getElementById("v-" + k).setAttribute("aria-pressed", String(k === vk));
+    });
+  }
+  ["pal", "med", "ori"].forEach(function (k) {
+    document.getElementById("v-" + k).addEventListener("click", function () { setView(k); });
+  });
+
+  function prevEnd(i) {
+    for (var j = i - 1; j >= 0; j--) {
+      var e = E[j];
+      if (e.np || e.nv) continue;
+      if (e.r) return ROUTES[e.r].p[ROUTES[e.r].p.length - 1];
+      if (e.pl.length) return e.pl[e.pl.length - 1];
+    }
+    return null;
+  }
+  function animate(path) {
+    if (reduce || !path) return;
+    try {
+      var L = path.getTotalLength();
+      if (!L) return;
+      path.style.strokeDasharray = L + " " + L;
+      path.style.strokeDashoffset = String(L);
+      path.getBoundingClientRect();
+      path.classList.add("anim");
+      requestAnimationFrame(function () { path.style.strokeDashoffset = "0"; });
+    } catch (err) { /* tracé affiché sans animation */ }
+  }
+  function ptPal(q) { return typeof q === "string" ? pj("pal", P[q].lat, P[q].lon) : pj("pal", q[0], q[1]); }
+
+  function render() {
+    var e = E[cur];
+    setView(e.v);
+    // lieux parcourus (toutes vues confondues) et itinéraires déjà suivis
+    var visited = {}, doneR = {};
+    for (var j = 0; j <= cur; j++) {
+      var ej = E[j];
+      if (ej.r) { doneR[ej.r] = 1; ROUTES[ej.r].p.forEach(function (id) { visited[id] = 1; }); }
+      if (!ej.nv) {
+        ej.pl.forEach(function (id) { visited[id] = 1; });
+        (ej.via || []).forEach(function (q) { if (typeof q === "string") visited[q] = 1; });
+      }
+    }
+    var curIds = (e.np || e.nv) ? e.pl.slice() : (e.pl.length ? [e.pl[e.pl.length - 1]] : []);
+    var axIds = e.ax || [];
+    ["pal", "med", "ori"].forEach(function (vk) {
+      var s = svgs[vk], here = vk === e.v;
+      each(s.querySelectorAll(".mk"), function (m) {
+        var id = m.getAttribute("data-p"), isCur = here && curIds.indexOf(id) >= 0, isAux = here && !isCur && axIds.indexOf(id) >= 0;
+        m.classList.toggle("cur", isCur);
+        m.classList.toggle("aux", isAux);
+        m.classList.toggle("vis", !isCur && !isAux && !!visited[id]);
+      });
+      each(s.querySelectorAll("[data-l]"), function (t) {
+        var id = t.getAttribute("data-l");
+        t.classList.toggle("cur", here && (curIds.indexOf(id) >= 0 || axIds.indexOf(id) >= 0));
+      });
+      each(s.querySelectorAll(".rt"), function (p) {
+        var rk = p.getAttribute("data-r");
+        p.classList.remove("anim"); p.style.strokeDasharray = ""; p.style.strokeDashoffset = "";
+        p.classList.toggle("done", !!doneR[rk] && rk !== e.r);
+        p.classList.toggle("now", rk === e.r);
+      });
+      each(s.querySelectorAll(".g-trace"), function (g) { g.innerHTML = ""; });
+      var ph = "";
+      if (here) each(s.querySelectorAll(".mk.cur"), function (m) {
+        ph += '<circle class="pulse" cx="' + m.getAttribute("cx") + '" cy="' + m.getAttribute("cy") + '" r="' + m.getAttribute("r") + '"/>';
+      });
+      s.querySelector(".g-pulse").innerHTML = ph;
+    });
+    // cadre du médaillon allumé quand le lieu courant s’y trouve
+    each(svgs.pal.querySelectorAll("[data-box]"), function (b) {
+      var k = b.getAttribute("data-box");
+      b.classList.toggle("on", e.v === "pal" && curIds.concat(axIds).some(function (id) { return P[id] && P[id].ins === k; }));
+    });
+    // trajet récent
+    if (e.r) {
+      animate(svgs[e.v].querySelector('.rt[data-r="' + e.r + '"]'));
+    } else if (!e.np && !e.nv && e.v === "pal" && e.pl.length) {
+      var start = prevEnd(cur), seq = [];
+      if (start) seq.push(start);
+      (e.via || []).forEach(function (q) { seq.push(q); });
+      e.pl.forEach(function (id) { seq.push(id); });
+      seq = seq.filter(function (q) { return typeof q !== "string" || (P[q] && PV.pal.indexOf(q) >= 0); });
+      seq = seq.filter(function (q, k, arr) { return k === 0 || q !== arr[k - 1]; });
+      if (seq.length > 1) {
+        var d = "M" + seq.map(function (q) { var xy = ptPal(q); return f1(xy[0]) + " " + f1(xy[1]); }).join(" ");
+        var gMain = svgs.pal.querySelector(".g-trace:not([data-ins])");
+        gMain.innerHTML = '<path class="trace" d="' + d + '"/>';
+        animate(gMain.firstChild);
+        each(svgs.pal.querySelectorAll(".g-trace[data-ins]"), function (g) {
+          var k = g.getAttribute("data-ins"), segs = "";
+          for (var n = 1; n < seq.length; n++) {
+            var A = seq[n - 1], B = seq[n];
+            if (typeof A === "string" && typeof B === "string" && P[A].ins === k && P[B].ins === k) {
+              var a = pi(k, P[A].lat, P[A].lon), b = pi(k, P[B].lat, P[B].lon);
+              segs += "M" + f1(a[0]) + " " + f1(a[1]) + "L" + f1(b[0]) + " " + f1(b[1]);
+            }
+          }
+          if (segs) { g.innerHTML = '<path class="trace" d="' + segs + '"/>'; animate(g.firstChild); }
+        });
+      }
+    }
+    // fiche
+    var per = PERIODS[e.p];
+    document.getElementById("f-sw").style.setProperty("--sw", "var(--p" + e.p + ")");
+    document.getElementById("f-per").textContent = per.n;
+    document.getElementById("f-count").textContent = (cur + 1) + " / " + E.length;
+    document.getElementById("fr-now").innerHTML = '<span class="fr-n">Étape ' + (cur + 1) + ' sur ' + E.length + '</span> · <b>' + esc(e.d) + '</b><span class="fr-s"> · ' + esc(e.s) + '</span>';
+    document.getElementById("fr-cpt").textContent = (cur + 1) + " / " + E.length;
+    if (annonce && !timer) document.getElementById("vie-status").textContent = "Étape " + (cur + 1) + " sur " + E.length + " : " + e.d + " — " + e.s;
+    document.getElementById("f-date").textContent = e.d;
+    document.getElementById("f-ded").hidden = !e.x;
+    document.getElementById("f-sum").textContent = e.s;
+    var ids = e.pl.concat(axIds).filter(function (id, k, arr) { return arr.indexOf(id) === k; });
+    var places = ids.map(function (id) {
+      var p = P[id];
+      return (p.a ? '<span class="ap-mark" title="position approximative ou débattue">≈ </span>' : "") + esc(p.n) + (p.note ? ' <span class="ref">(' + esc(p.note) + ")</span>" : "");
+    });
+    if (e.r) places.push('<span class="ref">itinéraire : ' + esc(ROUTES[e.r].p.map(function (id) { return P[id].n; }).join(" → ")) + "</span>");
+    document.getElementById("f-pl").innerHTML = places.length ? places.join("<br>") : "Lieu non précisé";
+    document.getElementById("f-who").textContent = e.w || "—";
+    document.getElementById("f-ref").textContent = e.rf;
+    var qb = document.getElementById("f-q");
+    if (typeof e.q === "number") {
+      qb.hidden = false;
+      document.getElementById("f-qt").textContent = "« " + Q[e.q][0] + " »";
+      document.getElementById("f-qr").textContent = Q[e.q][1];
+    } else { qb.hidden = true; }
+    // frise
+    var tl = document.getElementById("tl");
+    tl.value = String(cur);
+    tl.setAttribute("aria-valuetext", e.d + " : " + e.s);
+    each(document.querySelectorAll(".tick"), function (t, k) { t.classList.toggle("on", k === cur); t.classList.toggle("seen", k < cur); });
+    each(document.querySelectorAll(".band"), function (b) { b.classList.toggle("on", Number(b.getAttribute("data-p")) === e.p); });
+    document.getElementById("per").value = String(e.p);
+    var here = curIds.length ? curIds.filter(function (id, k, arr) { return arr.indexOf(id) === k; }).map(function (id) { return P[id].n; }).join(", ") : "lieu non précisé";
+    svgs[e.v].setAttribute("aria-label", "Carte : " + VIEWS[e.v].name + ". " + e.d + ". Lieu : " + here + ".");
+  }
+
+  function go(i) {
+    cur = Math.max(0, Math.min(E.length - 1, i));
+    render();
+  }
+
+  /* ---------- Frise ---------- */
+  var track = document.getElementById("track"), N = E.length, th = "", starts = [];
+  PERIODS.forEach(function (per, k) {
+    var idx = E.filter(function (e) { return e.p === k; }).map(function (e) { return e.i; });
+    var a = idx[0], b = idx[idx.length - 1];
+    starts.push(a);
+    th += '<span class="band" data-p="' + k + '" style="left:' + (a / N * 100).toFixed(3) + "%;width:" + ((b - a + 1) / N * 100).toFixed(3) + "%;--b:var(--p" + k + ')"></span>';
+  });
+  E.forEach(function (e, i) { th += '<span class="tick" style="left:' + ((i + 0.5) / N * 100).toFixed(3) + '%"></span>'; });
+  track.innerHTML = th;
+  track.addEventListener("click", function (ev) {
+    var r = track.getBoundingClientRect();
+    stop(); go(Math.floor((ev.clientX - r.left) / r.width * N));
+  });
+  document.getElementById("fr-per").innerHTML = PERIODS.map(function (per, k) {
+    return '<span><i style="--b:var(--p' + k + ')"></i>' + esc(per.n) + " · " + esc(per.s) + "</span>";
+  }).join("");
+  var sel = document.getElementById("per");
+  sel.innerHTML = PERIODS.map(function (per, k) { return '<option value="' + k + '">' + esc(per.n) + "</option>"; }).join("");
+  sel.addEventListener("change", function () { stop(); go(starts[Number(sel.value)]); });
+  var tl = document.getElementById("tl");
+  tl.max = String(N - 1);
+  tl.addEventListener("input", function () { stop(); go(Number(tl.value)); });
+  document.getElementById("prev").addEventListener("click", function () { stop(); go(cur - 1); });
+  document.getElementById("next").addEventListener("click", function () { stop(); go(cur + 1); });
+  var playBtn = document.getElementById("play"), fiche = document.getElementById("fiche");
+  function stop() {
+    if (timer) { clearInterval(timer); timer = null; }
+    playBtn.setAttribute("aria-pressed", "false");
+    document.getElementById("play-t").textContent = "Lecture";
+    document.getElementById("play-ico").setAttribute("d", "M4 2.5v9l7.5-4.5z");
+  }
+  playBtn.addEventListener("click", function () {
+    if (timer) { stop(); return; }
+    if (cur >= N - 1) go(0);
+    playBtn.setAttribute("aria-pressed", "true");
+    document.getElementById("play-t").textContent = "Pause";
+    document.getElementById("play-ico").setAttribute("d", "M3.5 2.5h2.5v9H3.5zM8 2.5h2.5v9H8z");
+    timer = setInterval(function () { if (cur >= N - 1) { stop(); return; } go(cur + 1); }, 2600);
+  });
+  document.addEventListener("keydown", function (ev) {
+    var t = ev.target;
+    if (t && t.closest && t.closest("input, select, textarea, [contenteditable]")) return;
+    if (t !== document.body && !(t.closest && t.closest(".lecteur"))) return;   // ailleurs, les flèches gardent leur rôle habituel
+    if (ev.altKey || ev.ctrlKey || ev.metaKey) return;
+    if (ev.key === "ArrowRight") { stop(); go(cur + 1); ev.preventDefault(); }
+    else if (ev.key === "ArrowLeft") { stop(); go(cur - 1); ev.preventDefault(); }
+  });
+
+  go(0);
+  annonce = true;
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
