@@ -323,10 +323,10 @@ blockquote.cite p i { font-style: normal; }
 .go { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; }
 
 /* Encadrés */
-.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 90ch; }
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; max-width: 90ch; }
 .callout h2 { font-size: 1.7rem; }
 .callout > ul { margin: 0; padding-left: 20px; display: grid; gap: 14px; }
-.callout li { max-width: 82ch; }
+.callout li { max-width: 82ch; min-width: 0; overflow-wrap: break-word; }
 .callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
 .cmp { display: grid; gap: 0; margin: 12px 0 6px; }
 .cmp article { display: grid; grid-template-columns: 8.5rem minmax(0, 1fr) minmax(0, 1fr); gap: 6px 18px; border-top: 1px solid var(--rule); padding: 11px 0; }
@@ -345,7 +345,7 @@ blockquote.cite p i { font-style: normal; }
 .unk-body { margin-top: 14px; }
 .unk-body ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
 .unk-body li { max-width: 82ch; }
-.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 90ch; display: grid; gap: 6px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 90ch; display: grid; grid-template-columns: minmax(0, 1fr); gap: 6px; overflow-wrap: break-word; }
 
 /* Moins d’animations : préférence du système ou bouton du schéma */
 .calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
@@ -854,7 +854,7 @@ blockquote.cite p i { font-style: normal; }
         </div>
         Le livre relit aussi d’autres passages&nbsp;:
         <ul class="rel">
-          <li>La formule <span class="q" data-ref="119:3.7">«&nbsp;en tous points tenté et éprouvé&nbsp;»</span>, qu’il applique à plusieurs effusions <span class="ref">119:3.7 ; 119:4.4 ; 119:5.2 ; 119:6.6</span>, rappelle l’épitre aux Hébreux&nbsp;: <span class="q" data-bible="Hébreux 4:15">«&nbsp;pour nous ressembler, il les a toutes éprouvées hormis le péché&nbsp;»</span> <span class="bref">Hébreux 4, 15</span>.</li>
+          <li>La formule <span class="q" data-ref="119:3.7">«&nbsp;en tous points tenté et éprouvé&nbsp;»</span>, qu’il applique à plusieurs effusions <span class="ref">119:3.7 ; 119:4.4</span> ; <span class="ref">119:5.2 ; 119:6.6</span>, rappelle l’épitre aux Hébreux&nbsp;: <span class="q" data-bible="Hébreux 4:15">«&nbsp;pour nous ressembler, il les a toutes éprouvées hormis le péché&nbsp;»</span> <span class="bref">Hébreux 4, 15</span>.</li>
           <li><span class="q" data-bible="Matthieu 28:18">«&nbsp;Toute puissance m’a été donnée dans le ciel et sur la terre&nbsp;»</span> <span class="bref">Matthieu 28, 18</span> devient la souveraineté acquise sur Nébadon <span class="ref">21:4.5 ; 33:2.3</span>, et le <span class="q" data-bible="Jean 19:30">«&nbsp;Tout est consommé&nbsp;»</span> de la croix <span class="bref">Jean 19, 30</span>, la fin littérale de la carrière d’effusion <span class="ref">21:4.5</span>.</li>
           <li><span class="q" data-bible="Jude 9">«&nbsp;L’archange Michel&nbsp;»</span> de l’épitre de Jude <span class="bref">Jude 9</span> devient <span class="q" data-ref="53:1.2">«&nbsp;l’archange de Micaël&nbsp;»</span> <span class="ref">53:1.2</span>&nbsp;: pour le livre, les archanges sont les enfants du Fils Créateur et de l’Esprit-Mère <span class="ref">37:3.1</span>.</li>
           <li>Melchisédech, <span class="q" data-bible="Hébreux 5:6">«&nbsp;prêtre pour toujours&nbsp;»</span> <span class="bref">Hébreux 5, 6</span>&nbsp;: le livre dit de Micaël qu’il est devenu pour l’éternité un ministre de nature Melchizédek <span class="ref">119:1.5</span>. Ce rapprochement est de la page&nbsp;: le texte ne cite pas l’épitre.</li>

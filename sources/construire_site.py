@@ -168,18 +168,22 @@ DEPOT_LICENCES = DEPOT + '/blob/main/LICENCES.md'
 # musique. Un menu : (clé, titre, nom du groupe, entrées). Le nom du groupe remplace « Étape N sur 13 » dans le bandeau
 # d'une page hors parcours. Une entrée : (adresse d'une page de PAGES, aide) ou (adresse, libellé, aide) pour un autre
 # lien ; un lien externe s'ouvre dans un nouvel onglet ; SIGNALER : le formulaire pré-rempli pour la page affichée.
-# Une page absente (source pas encore là) est omise du menu. Pas plus de quinze entrées à plat : tout est rangé ici.
+# Une chaîne seule ouvre un sous-groupe titré (colonnes côte à côte au bureau, intertitres dans le tiroir). Une page
+# absente (source pas encore là) est omise du menu, un sous-groupe vide aussi. Pas plus de quinze entrées à plat.
 SIGNALER = '#signaler'
 MENUS = [
-    ('themes', 'Thèmes', 'Thème', [                  # du centre de l'univers à la vie de Jésus
+    ('themes', 'Thèmes', 'Thème', [                  # trois sous-groupes : trois colonnes au bureau, intertitres dans le tiroir
+        'L’univers',
         ('paradis-et-havona.html', 'L’ile centrale et l’univers parfait'),
         ('etre-supreme.html', 'Un Dieu qui grandit avec l’expérience'),
         ('jerusem-et-edentia.html', 'Les premiers mondes de l’ascension'),
         ('les-anges.html', 'Séraphins, chérubins et anges gardiens'),
+        'Urantia et l’humanité',
         ('avenir-d-une-planete.html', 'Vers l’ère de lumière et de vie'),
         ('institutions-humaines.html', 'Civilisation, gouvernement, mariage'),
         ('evolution-religion.html', 'De la peur à la foi, en huit étapes'),
         ('melchizedek-et-religions.html', 'Son enseignement et les grandes religions'),
+        'Micaël et Jésus',
         ('effusions-de-micael.html', 'Sept fois la vie de ses créatures'),
         ('douze-apotres.html', 'Qui ils étaient, ce qu’ils devinrent'),
         ('enseignements-de-jesus.html', 'Quinze enseignements, rangés par thème'),
@@ -253,6 +257,10 @@ html.an-bloque main *,html.an-bloque main *::before,html.an-bloque main *::after
 .an-items a[aria-current="page"],.an-etapes a[aria-current="page"]{background:var(--tint);background:color-mix(in srgb,var(--gold) 15%,transparent)}
 .an-items a[aria-current="page"] .an-nom,.an-etapes a[aria-current="page"] .an-et{color:var(--gold-ink)}
 .an-p-parcours{width:640px}
+.an-p-groupes{display:grid;grid-template-columns:repeat(var(--an-cols,3),minmax(0,1fr));width:min(880px,calc(100vw - 24px));padding:10px 6px}
+.an-sg{min-width:0;padding:0 6px}
+.an-sg+.an-sg{border-left:1px solid var(--rule)}
+.an-sg-t{margin:6px 12px 6px;font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .an-etapes{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(var(--an-rangs,7),auto);grid-auto-flow:column;gap:2px 8px}
 .an-etapes a{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 10px;border-radius:10px}
 .an-num{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--gold-ui,var(--gold));border-radius:50%;font:500 .8rem/1 var(--font-mono);color:var(--gold-ink)}
@@ -307,6 +315,10 @@ html.an-js .an-g-btn::after{display:none}
 html.an-js .an-ici>.an-g-btn>span::after{content:"";display:inline-block;width:7px;height:7px;margin-left:10px;border-radius:50%;background:var(--gold-ui,var(--gold));vertical-align:2px}
 html.an-js .an-panneau{position:static;width:auto;min-width:0;margin:0;padding:0 10px 12px;border:0;border-radius:0;background:none;box-shadow:none}
 html.an-js .an-p-tete{display:none}
+html.an-js .an-p-groupes{display:block;width:auto;padding:0 10px 12px}
+html.an-js .an-sg{padding:0}
+html.an-js .an-sg+.an-sg{border-left:0;margin-top:4px;padding-top:4px;border-top:1px dashed var(--rule)}
+html.an-js .an-sg-t{margin:12px 12px 4px}
 html.an-js .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}
 html.an-js .an-items a,html.an-js .an-etapes a{padding-left:12px}
 html.an-js .an-t-pied{display:grid;gap:10px;margin-top:auto;padding:14px 16px 18px;border-top:1px solid var(--rule)}
@@ -314,6 +326,8 @@ html:not(.an-js) .an-barre{flex-wrap:wrap;position:relative;padding-block:4px}
 html:not(.an-js) .an-tiroir,html:not(.an-js) .an-liste{flex-wrap:wrap}
 html:not(.an-js) .an-g{position:static}
 html:not(.an-js) .an-panneau{left:8px;right:8px;width:auto;min-width:0}
+html:not(.an-js) .an-p-groupes{display:block}
+html:not(.an-js) .an-sg+.an-sg{border-left:0}
 html:not(.an-js) .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}
 }
 @media (prefers-reduced-motion:reduce){.an-tiroir,.an-tiroir.ouvert,.an-voile,.an-chev{transition:none!important}}
@@ -548,11 +562,38 @@ I_MUSIQUE = ('<svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">'
              'stroke-linecap="round" stroke-linejoin="round"/></svg>')
 
 
-def menu_groupe(cle, titre, contenu, ici, cls=''):
+def menu_groupe(cle, titre, contenu, ici, cls='', style=''):
     """Un menu de la barre : details/summary (utilisable sans JavaScript), que navigation.js remplace par un bouton
     « disclosure » (aria-expanded) suivi de son panneau."""
+    style = f' style="{style}"' if style else ''
     return (f'<li class="an-g{" an-ici" if ici else ""}"><details class="an-d"><summary class="an-g-btn"><span>{titre}</span>{I_CHEVRON}</summary>'
-            f'<div class="an-panneau{cls}" id="an-p-{cle}">{contenu}</div></details></li>')
+            f'<div class="an-panneau{cls}" id="an-p-{cle}"{style}>{contenu}</div></details></li>')
+
+
+def contenu_menu(cle, entrees, name, nom, par_nom):
+    """Panneau d'un menu de MENUS : (html, page affichée dedans ?, nombre de sous-groupes titrés). Une chaîne ouvre un
+    sous-groupe : intertitre, et liste nommée par lui (aria-labelledby) ; les sous-groupes vides sont omis."""
+    blocs, bloc = [], [None, [], False]
+    for e in entrees:
+        if isinstance(e, str):
+            blocs.append(bloc)
+            bloc = [e, [], False]
+            continue
+        h, ici = entree_menu(e, name, nom, par_nom)
+        if h:
+            bloc[1].append(h)
+            bloc[2] = bloc[2] or ici
+    blocs = [b for b in blocs + [bloc] if b[1]]
+    ici = any(b[2] for b in blocs)
+    if not any(b[0] for b in blocs):
+        return ''.join(f'<ul class="an-items">{"".join(b[1])}</ul>' for b in blocs), ici, 0
+    html = ''
+    for k, (titre, items, _) in enumerate(blocs, 1):
+        ident = f'an-sg-{cle}-{k}'
+        tete = f'<p class="an-sg-t" id="{ident}">{typo(titre)}</p>' if titre else ''
+        nomme = f' aria-labelledby="{ident}"' if titre else ''
+        html += f'<div class="an-sg">{tete}<ul class="an-items"{nomme}>{"".join(items)}</ul></div>'
+    return html, ici, len(blocs)
 
 
 def entree_menu(e, name, nom, par_nom):
@@ -595,10 +636,10 @@ def barre(name, nom, court, pages):
                            f'<ol class="an-etapes" style="--an-rangs:{(len(etapes) + 1) // 2}">{"".join(lis)}</ol>',
                            any(a == name for a, _ in etapes), ' an-p-parcours')]
     for cle, titre, _, entrees in MENUS:
-        items = [entree_menu(e, name, nom, par_nom) for e in entrees]
-        html_items = ''.join(h for h, _ in items)
-        if html_items:
-            groupes.append(menu_groupe(cle, titre, f'<ul class="an-items">{html_items}</ul>', any(i for _, i in items)))
+        contenu, ici, colonnes = contenu_menu(cle, entrees, name, nom, par_nom)
+        if contenu:
+            groupes.append(menu_groupe(cle, titre, contenu, ici, ' an-p-groupes' if colonnes else '',
+                                       f'--an-cols:{colonnes}' if colonnes else ''))
     cur = ' aria-current="page"' if name == 'index.html' else ''
     return ('<a class="aller-contenu" href="#contenu">Aller au contenu</a>\n'
             '<nav class="atlas-nav" aria-label="Atlas"><div class="an-barre">'
@@ -625,7 +666,7 @@ def barre(name, nom, court, pages):
 def groupe_de(name):
     """Groupe d'une page hors parcours, d'après MENUS (« Thème », « Le livre », « Outil »), ou None."""
     for _, _, groupe, entrees in MENUS:
-        if any(e[0] == name for e in entrees):
+        if any(not isinstance(e, str) and e[0] == name for e in entrees):
             return groupe
     return None
 
