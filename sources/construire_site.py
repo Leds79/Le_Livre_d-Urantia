@@ -1625,6 +1625,15 @@ if QZ_ACTIF:                                     # quiz : le script, avec ses do
 else:
     problems.append(f'quiz : {QUIZ_JS} ou {QUIZ_JSON} absent, quiz non posés')
 ix_stats = ecrire_index(construites)              # assets/recherche.js
+
+# Plan du site pour les moteurs de recherche (sitemap.xml) ; sans date de modification, pour un fichier stable d'une
+# construction à l'autre. On peut le déclarer dans Google Search Console ou Bing Webmaster Tools.
+plan_site = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+for _nom_page in [c[0] for c in construites]:
+    plan_site.append(f'  <url><loc>{esc(BASE if _nom_page == "index.html" else BASE + _nom_page)}</loc></url>')
+plan_site.append('</urlset>')
+(OUT / 'sitemap.xml').write_text(chr(10).join(plan_site) + chr(10), encoding='utf-8', newline=chr(10))
+print(f'plan du site : sitemap.xml, {len(plan_site) - 3} adresses')
 print(f'recherche : {ix_stats[0]} pages, {ix_stats[1]} sections, {ix_stats[2]} textes, {ix_stats[3] / 1024:.0f} Ko')
 for f in RACINE + GITHUB:                        # le dossier .git du site n'est jamais touché
     if (ENTREES / f).exists():
