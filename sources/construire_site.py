@@ -1776,4 +1776,30 @@ for p in OUT.rglob('*'):
     if p.is_file() and p.suffix in ('.html', '.js', '.py', '.md', '.txt', '.css', '.yml', '.webmanifest') and '.git' not in p.parts:
         if 'claude.ai/' + 'artifact' in p.read_text(encoding='utf-8', errors='ignore'):   # écrit en deux morceaux pour ne pas se signaler lui-même
             problems.append(f'{p.relative_to(OUT)} : contient encore une adresse d’artefact claude.ai')
+# Budget de citations. La déclaration « Permission to Quote » de la Fondation Urantia permet de citer sa traduction
+# jusqu'à 25 000 mots dans une même œuvre (avec au moins autant de mots propres et 5 000 mots consécutifs au plus).
+# Par prudence, le site entier compte comme une seule œuvre. On compte chaque passage distinct placé entre « » et
+# suivi de près d'une référence p:s.a ; au-delà de 24 000 mots, la construction le signale.
+PLAFOND_CITATIONS, ALERTE_CITATIONS = 25000, 24000
+
+
+def mots_cites_du_livre():
+    mot, refp, vus = re.compile(r"[A-Za-zÀ-ÿœŒ0-9’'-]+"), re.compile(r'\b\d{1,3}:\d{1,2}\.\d{1,3}'), {}
+    for p in OUT.glob('*.html'):
+        if p.name in ('404.html', 'hors-ligne.html'):
+            continue
+        t = re.sub(r'<style.*?</style>', ' ', p.read_text(encoding='utf-8'), flags=re.S)
+        txt = html_lib.unescape(re.sub(r'<[^>]+>', ' ', t)).replace('\u00a0', ' ')
+        for m in re.finditer(r'«\s*(.*?)\s*»', txt, flags=re.S):
+            q = m.group(1)
+            if len(q) <= 4000 and refp.search(txt[m.end():m.end() + 90]):
+                vus[re.sub(r'\W+', ' ', q.lower()).strip()] = len(mot.findall(q))
+    return sum(vus.values()), len(vus)
+
+
+cites, n_cites = mots_cites_du_livre()
+print(f'citations du livre : {cites} mots en {n_cites} passages distincts (plafond {PLAFOND_CITATIONS} mots)')
+if cites > ALERTE_CITATIONS:
+    problems.append(f'citations : {cites} mots du livre cités, proche ou au-delà du plafond de {PLAFOND_CITATIONS} mots '
+                    '(« Permission to Quote ») ; raccourcir des citations ou demander une permission écrite')
 print('\n'.join(problems) if problems else 'vérification : aucune adresse externe à remplacer, aucun lien interne cassé')

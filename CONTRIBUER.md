@@ -22,6 +22,7 @@ Une petite correction de texte peut aussi se faire directement dans l’interfac
 
 - **Citations exactes et vérifiées.** Toute citation reproduit le texte de la traduction française de la Fondation Urantia (édition 2024) mot pour mot, suivie de sa référence au format `fascicule:section.paragraphe` (par exemple `196:3.34`). Une paraphrase est présentée comme telle, avec sa référence.
 - **Citations courtes.** Trois phrases au plus par citation, coupes marquées par « […] » : le texte reste sous le droit d’auteur de la Fondation Urantia, et le site n’en reproduit que de courts extraits. Le texte intégral se lit sur urantia.org.
+- **Budget de citations.** La permission de citer de la Fondation (« Permission to Quote ») plafonne l’ensemble des citations à 25 000 mots. Le site en cite environ 22 000 : la construction affiche le total (« citations du livre : … mots ») et le signale au-delà de 24 000. Une nouvelle citation doit donc se justifier ; souvent, la référence seule suffit.
 - **Orthographe rectifiée conservée.** La traduction applique l’orthographe rectifiée de 1990 (*connaitre, maitre, ile, évènement*) : on la garde dans les citations, sans la « corriger ».
 - **Neutralité.** Le site explique sans prêcher : ni prosélytisme ni dénigrement. Ce que le livre ne précise pas est dit comme tel.
 - **Trois registres distincts** : *le texte dit* (ce qui est écrit, avec la référence), *lecture courante* (interprétations répandues, présentées comme telles), *regard historique* (origines du livre, contexte, sources humaines).
