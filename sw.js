@@ -2,29 +2,42 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = 'd1916a1107b4';
+const VERSION = '928d4b4b18b4';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
 const FICHIERS = {
-  "index.html": [72273, "11cab9b4a6536ea3"],
-  "nebadon-dans-orvonton.html": [52817, "76e8fd10a0256add"],
-  "atlas-3d.html": [2381620, "6c5261a7339c6618"],
-  "familles-de-personnalites.html": [102539, "1450ac3bed5c2790"],
-  "concepts-en-schemas.html": [89601, "3a1b831badcbd9cc"],
-  "dieu-et-deite.html": [75637, "100a2ca2847cf4a6"],
-  "destinee-humaine.html": [117321, "b3e82e2c2efaef7c"],
-  "histoire-d-urantia.html": [164886, "2ba3d4c24d5d8a91"],
-  "rebellion-de-lucifer.html": [133428, "1d0d47e232fffa63"],
-  "vie-de-jesus.html": [100960, "14604065784a80d4"],
-  "bible-et-livre.html": [430353, "e265c5a7769670da"],
-  "glossaire.html": [177464, "903b1dd15915344b"],
-  "hors-ligne.html": [5806, "3dcc0cd29f066266"],
+  "index.html": [130819, "f2fafcb1d8989c39"],
+  "nebadon-dans-orvonton.html": [70699, "0b96ec3599a314b6"],
+  "atlas-3d.html": [2516689, "4dab2a2d4b0081f1"],
+  "familles-de-personnalites.html": [120346, "a45d6005aebea695"],
+  "concepts-en-schemas.html": [107476, "bfd5209f18c87400"],
+  "dieu-et-deite.html": [93512, "ee9008721bcebb71"],
+  "destinee-humaine.html": [135136, "ffcb04159eda98f3"],
+  "histoire-d-urantia.html": [182774, "fc834367e3023612"],
+  "rebellion-de-lucifer.html": [151273, "991c916e0c19ca38"],
+  "vie-de-jesus.html": [118794, "ea5e507283b7c9f1"],
+  "bible-et-livre.html": [447661, "728fe204ea16ac76"],
+  "paradis-et-havona.html": [167003, "40ff0a19a99292d4"],
+  "etre-supreme.html": [174595, "641e515f41a73057"],
+  "effusions-de-micael.html": [145517, "c1cc286f62b26f13"],
+  "les-anges.html": [160512, "6ce135e02833d4af"],
+  "evolution-religion.html": [118317, "ee60ecc6b4c4ae3b"],
+  "douze-apotres.html": [142435, "4151d934c3eed3a2"],
+  "enseignements-de-jesus.html": [170583, "2f548de713305790"],
+  "histoire-du-livre.html": [134222, "2e57b96798fce65b"],
+  "auteurs-et-chiffres.html": [266142, "929e832a98295a97"],
+  "parcours-de-lecture.html": [162482, "9854e295bada36f2"],
+  "glossaire.html": [195433, "316e0db3118a52b6"],
+  "hors-ligne.html": [6871, "e36c6a9acdb8ebb3"],
   "manifest.webmanifest": [840, "3d1ea890c7f7d469"],
   "assets/refs-urantia.js": [11858, "1e90f999f912766f"],
   "assets/hors-ligne.js": [5241, "d9b44df9a17c61f0"],
   "assets/musique.js": [8725, "036b5f1d0e719ff8"],
-  "assets/glossaire.js": [102097, "b839c8e7878791cb"],
+  "assets/navigation.js": [44684, "9cae9174583c9213"],
+  "assets/ecouter.js": [19700, "f6926356d7817b21"],
+  "assets/glossaire.js": [101975, "6010fd2a8185216c"],
+  "assets/quiz.js": [58585, "ecc6029cadf6aed1"],
   "assets/favicon.svg": [440, "272fe83973cfb82d"],
   "assets/apple-touch-icon.png": [8093, "bb9210212b2e3f22"],
   "assets/icone-192.png": [9405, "208d49b2cf6fc956"],
@@ -39,11 +52,12 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
+  "assets/recherche.js": [748910, "c2b733e7602571f7"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };
 // enregistrés dès l’installation : accueil, page hors ligne, manifeste, scripts communs, icônes, polices
-const NOYAU = ["index.html", "hors-ligne.html", "manifest.webmanifest", "assets/refs-urantia.js", "assets/hors-ligne.js", "assets/musique.js", "assets/glossaire.js", "assets/favicon.svg", "assets/apple-touch-icon.png", "assets/icone-192.png", "assets/icone-512.png", "assets/icone-512-maskable.png", "assets/fonts/alegreya-sans-400-italic.woff2", "assets/fonts/alegreya-sans-400.woff2", "assets/fonts/alegreya-sans-500.woff2", "assets/fonts/alegreya-sans-700.woff2", "assets/fonts/cormorant-garamond-500-600-italic.woff2", "assets/fonts/cormorant-garamond-500-700.woff2", "assets/fonts/fonts.css", "assets/fonts/ibm-plex-mono-400.woff2", "assets/fonts/ibm-plex-mono-500.woff2"];
+const NOYAU = ["index.html", "hors-ligne.html", "manifest.webmanifest", "assets/refs-urantia.js", "assets/hors-ligne.js", "assets/musique.js", "assets/navigation.js", "assets/ecouter.js", "assets/glossaire.js", "assets/quiz.js", "assets/favicon.svg", "assets/apple-touch-icon.png", "assets/icone-192.png", "assets/icone-512.png", "assets/icone-512-maskable.png", "assets/fonts/alegreya-sans-400-italic.woff2", "assets/fonts/alegreya-sans-400.woff2", "assets/fonts/alegreya-sans-500.woff2", "assets/fonts/alegreya-sans-700.woff2", "assets/fonts/cormorant-garamond-500-600-italic.woff2", "assets/fonts/cormorant-garamond-500-700.woff2", "assets/fonts/fonts.css", "assets/fonts/ibm-plex-mono-400.woff2", "assets/fonts/ibm-plex-mono-500.woff2"];
 const HORS_LIGNE = 'hors-ligne.html';
 const DELAI_RESEAU = 3000;                 // navigations : au-delà, la copie enregistrée est servie
 const PORTEE = new URL('./', self.location.href).href;

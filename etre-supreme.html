@@ -1,0 +1,1361 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(d,w){var c=d.documentElement.classList;c.add("an-js");if(w.speechSynthesis&&w.SpeechSynthesisUtterance)c.add("an-tts");if(w.AudioContext||w.webkitAudioContext)c.add("an-son")})(document,window)</script>
+<meta name="description" content="L’Être Suprême selon le Livre d’Urantia : un Dieu qui évolue, qui tient sa personne de la Trinité et grandit avec l’expérience des créateurs et des créatures, en schémas, avec ce que le texte laisse ouvert.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/etre-supreme.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131A2E" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas Urantia">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="author" content="Sylvain Leduc">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="L’Être Suprême — Le Livre d’Urantia en images">
+<meta property="og:description" content="L’Être Suprême selon le Livre d’Urantia : un Dieu qui évolue, qui tient sa personne de la Trinité et grandit avec l’expérience des créateurs et des créatures, en schémas, avec ce que le texte laisse ouvert.">
+<meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/etre-supreme.html">
+<meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<script src="assets/hors-ligne.js" defer></script>
+<script src="assets/musique.js" defer></script>
+<script src="assets/navigation.js" defer></script>
+<script src="assets/ecouter.js" defer></script>
+<script src="assets/glossaire.js" defer></script>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>L’Être Suprême — Le Livre d’Urantia en images</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : qui est le Suprême, ses trois composantes, puis trois schémas (sa croissance, ce qui y contribue, sa place
+   parmi les niveaux de la Déité), la part de l'homme, la recherche du Suprême, les trois registres et ce que le texte ne
+   précise pas. Couleurs (choix de la page) : or pour le Suprême, violet pour sa personne-esprit, cuivre pour son pouvoir,
+   bleu pour son mental, sarcelle pour les créatures, indigo pour l'Ultime, ardoise pour l'Absolu. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* le Suprême ; accent de sélection */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --gold-ui: #9E6B00;  /* or des traits (3:1 au moins) */
+  --on-gold: #1B1405;  /* texte posé sur l'or */
+  --gold-soft: #FBF4E4;
+  --per: #6A4BC0; --per-soft: #F1EDFA;                    /* personne-esprit : violet */
+  --pou: #A9532B; --pou-soft: #F7E8E0;                    /* pouvoir, le Tout-Puissant : cuivre */
+  --men: #2F62A8; --men-soft: #E7EEF8;                    /* mental, le Mental Suprême : bleu */
+  --cre: #13837A; --cre-ink: #0B655E; --cre-soft: #E2F3EF; /* créatures, expérience : sarcelle */
+  --ult: #4E4FB0; --ult-soft: #ECECFA;                    /* l'Ultime : indigo */
+  --abs: #5B6275; --abs-soft: #EEF0F4;                    /* l'Absolu : ardoise */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --per: #B6A0F5; --per-soft: #211B37;
+    --pou: #F0956A; --pou-soft: #2C1A14;
+    --men: #8CB4F2; --men-soft: #15213A;
+    --cre: #52CFC0; --cre-ink: #7FDCD0; --cre-soft: #102928;
+    --ult: #A7A9F2; --ult-soft: #1B1C3A;
+    --abs: #A3ABC3; --abs-soft: #1A1F30;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --per: #B6A0F5; --per-soft: #211B37;
+  --pou: #F0956A; --pou-soft: #2C1A14;
+  --men: #8CB4F2; --men-soft: #15213A;
+  --cre: #52CFC0; --cre-ink: #7FDCD0; --cre-soft: #102928;
+  --ult: #A7A9F2; --ult-soft: #1B1C3A;
+  --abs: #A3ABC3; --abs-soft: #1A1F30;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref, .bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; }
+.ref a, .bref { white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); flex: none; }
+.q i { font-style: italic; }
+
+/* Couleurs des réalités (choix de la page) */
+.e-sup { --c: var(--gold-ui); --ck: var(--gold-ink); --soft: var(--gold-soft); }
+.e-per { --c: var(--per); --soft: var(--per-soft); }
+.e-pou { --c: var(--pou); --soft: var(--pou-soft); }
+.e-men { --c: var(--men); --soft: var(--men-soft); }
+.e-cre { --c: var(--cre); --ck: var(--cre-ink); --soft: var(--cre-soft); }
+.e-ult { --c: var(--ult); --soft: var(--ult-soft); }
+.e-abs { --c: var(--abs); --soft: var(--abs-soft); }
+.e-nsp { --c: var(--muted); --soft: var(--tint); }
+.e-ex { --c: var(--ink); --soft: var(--tint); }
+.dot { display: inline-block; width: .78rem; height: .78rem; border-radius: 50%; background: var(--c); vertical-align: -0.04em; margin-right: 5px; flex: none; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 56ch; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { display: inline-flex; align-items: center; min-height: 44px; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.cb-top { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; align-items: center; }
+.em { width: 92px; height: 92px; display: block; }
+.em-halo { fill: none; stroke: #F3B949; stroke-width: 1.2; stroke-dasharray: .1 3.2; stroke-linecap: round; opacity: .9; }
+.em-su { fill: #A9C6FF; opacity: .85; }
+.em-a { fill: none; stroke-width: 5; stroke-linecap: round; }
+.em-per { stroke: #B9A2F7; } .em-pou { stroke: #F0956A; } .em-men { stroke: #8CB4F2; }
+.em-c { fill: #F6C453; stroke: #FFE6A3; stroke-width: 1; }
+.keys { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 9px; border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: 0 10px; align-items: baseline; font-size: .95rem; line-height: 1.35; }
+.keys li .dot { grid-row: span 2; width: .9rem; height: .9rem; margin: 0; align-self: start; margin-top: .28em; }
+.keys .kd { color: var(--muted); font-size: .86rem; }
+.codebox .note { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; align-items: baseline; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: center; min-height: 44px; padding: 7px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+.prose.flat { margin-top: 0; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.more { font-size: .98rem; margin-top: 18px; }
+.more > a { display: inline-flex; align-items: center; min-height: 44px; }
+.sub-h { margin-top: 34px; font-size: 1.55rem; }
+.sub-p { margin-top: 12px; max-width: 74ch; }
+
+/* Cartes */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.5rem), 1fr)); gap: 14px; margin-top: 24px; }
+.cards.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.cards.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 1.36rem; display: flex; gap: 10px; align-items: center; }
+.card p, .card li { font-size: .97rem; }
+.card ul { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.card .st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.card .from { font-size: .9rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; }
+.card .from b { color: var(--ink); }
+.card.whole { --c: var(--gold-ui); background: linear-gradient(135deg, var(--gold-soft), var(--sheet) 70%); }
+
+/* Deux sortes de Déité */
+.duree { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; max-width: 900px; }
+.duree li { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: 8px 18px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; }
+.duree .dn b { display: block; font-family: var(--font-display); font-size: 1.24rem; line-height: 1.15; }
+.duree .dn span { font-size: .88rem; color: var(--muted); }
+.barre { position: relative; height: 34px; }
+.barre::before { content: ""; position: absolute; left: 10px; right: 12px; top: 50%; height: 4px; margin-top: -2px; border-radius: 2px; background: var(--c); }
+.barre.exi::before { left: 12px; }
+.barre .fl { position: absolute; top: 50%; width: 0; height: 0; margin-top: -7px; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.barre .fl.d { right: 0; border-left: 12px solid var(--c); }
+.barre .fl.g { left: 0; border-right: 12px solid var(--c); }
+.barre .debut { position: absolute; left: 34%; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; border-radius: 50%; background: var(--sheet); border: 3px solid var(--c); }
+.barre.exp::before { left: 34%; }
+.barre .avant { position: absolute; left: 10px; right: 66%; top: 50%; border-top: 2px dashed var(--rule); }
+.barre .tag { position: absolute; top: -2px; font: 500 .7rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.barre .tag.t1 { left: 34%; transform: translateX(-50%); }
+.barre .tag.t2 { right: 14px; }
+.duree-cap { font-size: .86rem; color: var(--muted); margin-top: 10px; max-width: 80ch; }
+
+/* Figures communes */
+.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 18px 18px 16px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.fig figcaption { font-size: .86rem; color: var(--muted); line-height: 1.45; }
+
+/* ==================== Schémas : éléments communs ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 22px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.ui { display: grid; gap: 12px; }
+.opts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .88rem/1.2 var(--font-body); padding: 8px 13px; min-height: 44px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip .tg { width: 30px; height: 16px; border-radius: 999px; border: 1.5px solid currentColor; position: relative; flex: none; }
+.chip .tg::after { content: ""; position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform .2s ease; }
+.chip[aria-pressed="true"] .tg::after { transform: translateX(13px); }
+.sc-bar { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "prev steps next"; align-items: center; gap: 10px; }
+.sc-nav { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px 16px; min-height: 44px; font: 500 .98rem/1.1 var(--font-body); cursor: pointer; white-space: nowrap; }
+.sc-nav:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.sc-nav[aria-disabled="true"] { opacity: .38; cursor: default; }
+.sc-nav[aria-disabled="true"]:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.sc-prev { grid-area: prev; } .sc-next { grid-area: next; }
+.sc-steps { grid-area: steps; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; }
+.sc-steps button { appearance: none; min-width: 44px; height: 44px; padding: 0 6px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 500 .92rem/1 var(--font-mono); cursor: pointer; }
+.sc-steps button:hover { border-color: var(--muted); }
+.sc-steps button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tb { appearance: none; min-height: 44px; padding: 0 13px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 500 .93rem/1.15 var(--font-body); cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-align: left; }
+.tb:hover { border-color: var(--muted); }
+.tb[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.tb .dot { margin: 0; }
+.tb[aria-selected="true"] .dot { box-shadow: 0 0 0 2px var(--sheet); }
+.main2 { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-items: start; }
+.main2.on { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+.pn { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.pn:focus { outline: none; }
+.pn:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
+.pn-k { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); }
+.pn .tv-h { font-size: 1.5rem; }
+.pn .tv-h .tv-n { display: none; }
+.pn p, .pn li { font-size: .97rem; }
+.pn-nav { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 2px; }
+.pn-nav .chip { display: inline-grid; gap: 2px; justify-items: start; padding: 8px 14px 9px; border-radius: 12px; text-align: left; max-width: 100%; }
+.pn-nav .cn-l { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
+.pn-nav .cn-t { font-weight: 700; font-size: .95rem; }
+.pn-nav .chip.fort { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.pn-nav .chip.fort:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.nsp-n { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+.nsp-n b { color: var(--ink); font-weight: 600; }
+.etat { list-style: none; margin: 0; padding: 10px 0 0; border-top: 1px dashed var(--rule); display: grid; gap: 6px; font-size: .92rem; line-height: 1.35; }
+.etat li { display: grid; grid-template-columns: 1.1rem minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.etat li .dot { margin: 0; }
+.etat b { font-weight: 700; }
+
+/* Version texte */
+.tv { border-top: 1px solid var(--rule); padding-top: 12px; }
+.tv summary { cursor: pointer; font: 600 1.2rem/1.3 var(--font-display); padding-block: 8px; min-height: 44px; display: flex; align-items: center; gap: 10px; list-style: none; }
+.tv summary::-webkit-details-marker { display: none; }
+.tv summary::before { content: ""; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform .15s ease; flex: none; margin-left: 2px; }
+.tv[open] summary::before { transform: rotate(45deg); }
+.tv-intro { margin-top: 10px; max-width: 80ch; font-size: .97rem; }
+.tv-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 22px; max-width: 80ch; }
+.tv-list > li { display: grid; gap: 8px; }
+.tv-h { font-size: 1.3rem; display: flex; gap: 10px; align-items: baseline; }
+.tv-n { font: 600 .85rem/1 var(--font-mono); color: var(--gold-ink); }
+.apporte { font: 500 .78rem/1.35 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ck, var(--c, var(--gold-ink))); }
+
+/* ==================== Schéma 1 : la croissance (ciel nocturne) ==================== */
+.ciel { margin: 0; border-radius: 14px; overflow: hidden; background: #070B1A; border: 1px solid #1E2744; display: grid; max-width: 620px; width: 100%; }
+.main2.on .ciel { max-width: none; }
+.ciel svg { width: 100%; height: auto; display: block; }
+.ciel figcaption { color: #B4BED8; font-size: .82rem; line-height: 1.45; padding: 10px 14px 12px; background: #0B1124; border-top: 1px solid #1E2744; }
+.ciel figcaption .ref { color: #A9B6D8; }
+.ciel .ref a.ref-lien:hover, .ciel .ref a.ref-lien:focus-visible { color: #FFD36B; }
+.ciel :focus-visible { outline-color: #FFD36B; }
+.cr-et circle { fill: #C9D4F2; opacity: .55; }
+.cr-ext { opacity: 0; transition: opacity .8s ease; }
+.cr-ext-r { fill: none; stroke: #5D63B8; stroke-width: 1.2; stroke-dasharray: 3 6; }
+.cr-ext-r.b { stroke-dasharray: 2 9; opacity: .7; }
+.cr-voile { opacity: 0; transition: opacity .9s ease; }
+.cr-piste { fill: none; stroke: #2A2F4A; stroke-width: 7; }
+.cr-halo { fill: none; stroke: #F3B949; stroke-width: 7; stroke-linecap: round; stroke-dasharray: 0 100; transition: stroke-dasharray 1.1s cubic-bezier(.3, .7, .2, 1), filter .6s ease; }
+.su-e { fill: #1A2448; stroke: #3B4A7E; stroke-width: 1.2; transition: fill .8s ease, stroke .8s ease, opacity .6s ease; }
+.su-g { fill: #F3B949; opacity: 0; transition: opacity .9s ease; }
+.su-d circle { fill: #C9D4F2; opacity: .75; }
+.su-lu circle { fill: #FFD36B; opacity: 0; transition: opacity .6s ease; }
+.cr-fl { fill: none; stroke: #F0956A; stroke-width: 1.8; stroke-dasharray: 3 5; opacity: 0; transition: opacity .6s ease; }
+.cr-xps { opacity: 0; transition: opacity .6s ease; }
+.cr-xp { fill: #52CFC0; }
+.cr-hv { fill: none; stroke: #A9C6FF; stroke-width: 1.6; stroke-dasharray: .01 4.6; stroke-linecap: round; opacity: .9; }
+.cr-ile { fill: #F6C453; stroke: #FFE6A3; stroke-width: 1; }
+.cr-per { fill: #B9A2F7; }
+.cr-pou { fill: none; stroke: #F0956A; stroke-width: 2.4; opacity: 0; transition: opacity .6s ease; }
+.cr-men { fill: none; stroke: #8CB4F2; stroke-width: 1.8; stroke-dasharray: 2.5 2.5; opacity: 0; transition: opacity .6s ease; }
+.cr-un { fill: #FFE6A3; opacity: 0; transition: opacity .8s ease; }
+.cr-lbl { fill: #C2CCE6; font: 600 16px var(--font-body); }
+.cr-lbl-sup { fill: #FFD36B; font-size: 17px; }
+.cr-lbl-p { font-size: 15px; fill: #9AA6C8; }
+.cr-lbl-ext { fill: #A7A9F2; font-size: 15px; opacity: 0; transition: opacity .8s ease; }
+.cr-svg[data-step="1"] .cr-halo { stroke-dasharray: 2 100; }
+.cr-svg[data-step="1"] .su-e { opacity: .35; }
+.cr-svg[data-step="1"] .su-d { opacity: .2; }
+.cr-svg[data-step="2"] .cr-halo { stroke-dasharray: 14 100; }
+.cr-svg[data-step="3"] .cr-halo { stroke-dasharray: 38 100; }
+.cr-svg[data-step="4"] .cr-halo { stroke-dasharray: 62 100; }
+.cr-svg[data-step="5"] .cr-halo, .cr-svg[data-step="6"] .cr-halo { stroke-dasharray: 100 100; filter: drop-shadow(0 0 5px rgba(243, 185, 73, .75)); }
+.cr-svg:is([data-step="2"], [data-step="3"], [data-step="4"]) .cr-fl { opacity: .9; }
+.cr-svg:is([data-step="3"], [data-step="4"]) .cr-xps { opacity: 1; }
+.cr-svg:not([data-step="1"]) .cr-pou, .cr-svg:not([data-step="1"]) .cr-men { opacity: 1; }
+.cr-svg[data-step="4"] .su-lu circle { opacity: 1; }
+.cr-svg:is([data-step="5"], [data-step="6"]) .su-g { opacity: .62; }
+.cr-svg:is([data-step="5"], [data-step="6"]) .su-e { fill: #3A3320; stroke: #F3B949; }
+.cr-svg:is([data-step="5"], [data-step="6"]) .cr-un { opacity: 1; }
+.cr-svg:is([data-step="5"], [data-step="6"]) .cr-voile { opacity: 1; }
+.cr-svg[data-step="6"] .cr-ext, .cr-svg[data-step="6"] .cr-lbl-ext { opacity: 1; }
+.anime .cr-fl { animation: cr-flux 1.6s linear infinite; }
+.anime .cr-xp { animation: cr-monte 3.3s linear infinite; }
+.anime .cr-svg:is([data-step="5"], [data-step="6"]) .cr-un { animation: cr-pulse 3.6s ease-in-out infinite; }
+@keyframes cr-flux { to { stroke-dashoffset: -16; } }
+@keyframes cr-monte { 0% { transform: translateY(0); opacity: 0; } 25% { opacity: .95; } 100% { transform: translateY(-26px); opacity: 0; } }
+@keyframes cr-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .55; } }
+.cr-meter { display: flex; gap: 6px; align-items: center; }
+
+/* ==================== Schéma 2 : ce qui contribue ==================== */
+.co-fig { margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 12px 10px 10px; display: grid; gap: 8px; max-width: 560px; width: 100%; }
+.main2.on .co-fig { max-width: none; }
+.co-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.co-fig figcaption { font-size: .82rem; color: var(--muted); line-height: 1.45; padding: 0 6px 2px; }
+.co-svg .k-per { --k: var(--per); } .co-svg .k-men { --k: var(--men); } .co-svg .k-pou { --k: var(--pou); }
+.co-svg .k-gold { --k: var(--gold-ui); } .co-svg .k-cre { --k: var(--cre); }
+.co-ln { fill: none; stroke: var(--k); stroke-width: 2.4; opacity: .55; transition: opacity .3s ease, stroke-width .3s ease; }
+.co-fl { fill: none; stroke: var(--k); stroke-width: 3.6; stroke-dasharray: 2 9; stroke-linecap: round; opacity: 0; transition: opacity .3s ease; }
+.co-hit { fill: transparent; cursor: pointer; }
+.co-c { fill: var(--sheet); stroke: var(--k); stroke-width: 2.2; transition: fill .3s ease, stroke-width .3s ease; }
+.co-i { fill: none; stroke: var(--k); stroke-width: 1.8; stroke-linejoin: round; stroke-linecap: round; pointer-events: none; }
+.co-n[data-k="triodites"] .co-i, .co-n[data-k="ajusteurs"] .co-i, .co-n[data-k="createurs"] .co-i, .co-n[data-k="creatures"] .co-i { fill: var(--k); fill-opacity: .22; }
+.co-l { fill: var(--ink); font: 700 15px var(--font-body); pointer-events: none; transition: fill .3s ease; }
+.co-sup { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 2; transition: stroke-width .3s ease; }
+.co-a { fill: none; stroke: var(--k); stroke-width: 7; stroke-linecap: round; transition: opacity .3s ease; }
+.co-t { fill: var(--ink); font: 600 15px var(--font-display); pointer-events: none; }
+.co-boucle { fill: none; stroke: var(--gold-ui); stroke-width: 1.6; stroke-dasharray: 4 4; opacity: .7; transition: opacity .3s ease, stroke-width .3s ease; }
+.co-boucle-h { fill: var(--gold-ui); opacity: .7; }
+.co-svg[data-sel] .co-ln { opacity: .3; }
+.co-svg[data-sel] .co-n .co-c, .co-svg[data-sel] .co-n .co-i { opacity: .45; }
+.co-svg[data-sel] .co-n .co-l { fill: var(--muted); }
+.co-svg[data-sel] .co-a { opacity: .35; }
+.co-svg[data-sel="trinite"] .co-ln[data-k="trinite"], .co-svg[data-sel="acteur"] .co-ln[data-k="acteur"],
+.co-svg[data-sel="triodites"] .co-ln[data-k="triodites"], .co-svg[data-sel="ajusteurs"] .co-ln[data-k="ajusteurs"],
+.co-svg[data-sel="creatures"] .co-ln[data-k="creatures"], .co-svg[data-sel="fils"] .co-ln[data-k="fils"],
+.co-svg[data-sel="createurs"] .co-ln[data-k="createurs"] { opacity: 1; stroke-width: 3.4; }
+.co-svg[data-sel="trinite"] .co-fl[data-k="trinite"], .co-svg[data-sel="acteur"] .co-fl[data-k="acteur"],
+.co-svg[data-sel="triodites"] .co-fl[data-k="triodites"], .co-svg[data-sel="ajusteurs"] .co-fl[data-k="ajusteurs"],
+.co-svg[data-sel="creatures"] .co-fl[data-k="creatures"], .co-svg[data-sel="fils"] .co-fl[data-k="fils"],
+.co-svg[data-sel="createurs"] .co-fl[data-k="createurs"] { opacity: 1; }
+.co-svg[data-sel="trinite"] .co-n[data-k="trinite"] *, .co-svg[data-sel="acteur"] .co-n[data-k="acteur"] *,
+.co-svg[data-sel="triodites"] .co-n[data-k="triodites"] *, .co-svg[data-sel="ajusteurs"] .co-n[data-k="ajusteurs"] *,
+.co-svg[data-sel="creatures"] .co-n[data-k="creatures"] *, .co-svg[data-sel="fils"] .co-n[data-k="fils"] *,
+.co-svg[data-sel="createurs"] .co-n[data-k="createurs"] * { opacity: 1; }
+.co-svg[data-sel="trinite"] .co-n[data-k="trinite"] .co-l, .co-svg[data-sel="acteur"] .co-n[data-k="acteur"] .co-l,
+.co-svg[data-sel="triodites"] .co-n[data-k="triodites"] .co-l, .co-svg[data-sel="ajusteurs"] .co-n[data-k="ajusteurs"] .co-l,
+.co-svg[data-sel="creatures"] .co-n[data-k="creatures"] .co-l, .co-svg[data-sel="fils"] .co-n[data-k="fils"] .co-l,
+.co-svg[data-sel="createurs"] .co-n[data-k="createurs"] .co-l { fill: var(--ink); }
+.co-svg[data-sel="trinite"] .co-n[data-k="trinite"] .co-c, .co-svg[data-sel="acteur"] .co-n[data-k="acteur"] .co-c,
+.co-svg[data-sel="triodites"] .co-n[data-k="triodites"] .co-c, .co-svg[data-sel="ajusteurs"] .co-n[data-k="ajusteurs"] .co-c,
+.co-svg[data-sel="creatures"] .co-n[data-k="creatures"] .co-c, .co-svg[data-sel="fils"] .co-n[data-k="fils"] .co-c,
+.co-svg[data-sel="createurs"] .co-n[data-k="createurs"] .co-c { fill: var(--soft-k, var(--sheet)); stroke-width: 3.4; }
+.co-svg[data-sel="trinite"] .co-a.k-per, .co-svg[data-sel="acteur"] .co-a.k-men, .co-svg[data-sel="createurs"] .co-a.k-pou { opacity: 1; }
+.co-svg:is([data-sel="triodites"], [data-sel="ajusteurs"], [data-sel="creatures"], [data-sel="fils"], [data-sel="lui"]) .co-a { opacity: 1; }
+.co-svg[data-sel="lui"] .co-boucle { opacity: 1; stroke-width: 2.6; }
+.co-svg[data-sel="lui"] .co-boucle-h { opacity: 1; }
+.co-svg[data-sel="lui"] .co-sup { stroke-width: 3.4; }
+.anime .co-svg[data-sel] .co-fl { animation: co-flux 1.2s linear infinite; }
+.anime .co-svg[data-sel="lui"] .co-boucle { animation: co-tour 2.4s linear infinite; }
+@keyframes co-flux { to { stroke-dashoffset: -11; } }
+@keyframes co-tour { to { stroke-dashoffset: -16; } }
+.reste { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 4px; }
+.reste article { background: var(--paper); border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.reste h3 { font-size: 1.24rem; }
+.reste p { font-size: .95rem; }
+
+/* La part de l'homme */
+.chemins { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.chemins article { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.chemins h3 { font-size: 1.36rem; }
+.chemins ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.chemins li { font-size: .96rem; }
+.chemins .refus { --c: var(--abs); }
+.commun { margin-top: 14px; background: var(--gold-soft); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 18px; max-width: 84ch; display: grid; gap: 8px; }
+.miroir { margin-top: 18px; width: 100%; max-width: 900px; border-collapse: separate; border-spacing: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; font-size: .95rem; line-height: 1.4; }
+.miroir th, .miroir td { text-align: left; vertical-align: top; padding: 10px 14px 11px; border-top: 1px solid var(--rule); }
+.miroir thead th, .miroir thead td { border-top: 0; font: 600 1.2rem/1.2 var(--font-display); }
+.miroir thead .h1 { background: var(--cre-soft); }
+.miroir thead .h2 { background: var(--gold-soft); }
+.miroir tbody th { font: 500 .72rem/1.35 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); width: 11rem; }
+.miroir td + td { border-left: 1px solid var(--rule); }
+.miroir-cap { font-size: .86rem; color: var(--muted); margin-top: 10px; max-width: 84ch; }
+
+/* Chercher le Suprême : le chemin */
+.path { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
+.path li { display: inline-flex; align-items: center; gap: 6px; }
+.path .pc { display: inline-grid; gap: 1px; border: 1px solid var(--rule); background: var(--sheet); border-radius: 10px; padding: 7px 11px; line-height: 1.2; }
+.path .pc b { font-weight: 700; font-size: .95rem; }
+.path .pc span { font-size: .78rem; color: var(--muted); }
+.path .pc.hav { border-color: var(--men); background: var(--men-soft); }
+.path .pc.fin { border-color: var(--gold); background: var(--gold-soft); }
+.path .arr { color: var(--muted); font-family: var(--font-mono); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; margin-top: 24px; }
+
+/* ==================== Schéma 3 : les niveaux ==================== */
+.nv-fig { margin: 0; background: var(--paper); border: 1px solid var(--rule); border-radius: 14px; padding: 12px; display: grid; gap: 8px; max-width: 560px; width: 100%; }
+.main2.on .nv-fig { max-width: none; }
+.nv-svg { width: 100%; height: auto; display: block; }
+.nv-fig figcaption { font-size: .82rem; color: var(--muted); line-height: 1.45; padding: 0 4px 2px; }
+.nv-b { cursor: pointer; transition: opacity .3s ease; }
+.nv-abs { fill: var(--abs-soft); stroke: var(--abs); stroke-width: 1.4; stroke-dasharray: 5 5; }
+.nv-abs-h { stroke: none; }
+.nv-hach { stroke: var(--abs); stroke-width: 1; opacity: .18; }
+.nv-ult { fill: var(--ult-soft); stroke: var(--ult); stroke-width: 1.6; }
+.nv-ext { fill: none; stroke: var(--ult); stroke-width: 1; stroke-dasharray: 2 5; opacity: .6; }
+.nv-sup { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 2; }
+.nv-su ellipse { fill: var(--gold); opacity: .45; }
+.nv-hv { fill: var(--sheet); stroke: var(--men); stroke-width: 1.4; stroke-dasharray: .01 4.2; stroke-linecap: round; }
+.nv-hv2 { fill: none; stroke: var(--men); stroke-width: 1; opacity: .35; }
+.nv-lueur { fill: var(--gold); opacity: .18; }
+.nv-ile { fill: var(--gold); stroke: var(--gold-ui); stroke-width: 1; }
+.nv-tri path { fill: none; stroke: var(--per); stroke-width: 2; stroke-linejoin: round; opacity: 0; transition: opacity .3s ease; }
+.nv-l { font: 700 15.5px var(--font-body); fill: var(--ink); paint-order: stroke; stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
+.nv-l-abs { stroke: var(--abs-soft); } .nv-l-ult { stroke: var(--ult-soft); } .nv-l-sup { stroke: var(--gold-soft); } .nv-l-ex { stroke: var(--sheet); font-size: 13px; }
+.nv-s { font: 500 13px var(--font-mono); fill: var(--muted); letter-spacing: .08em; pointer-events: none; }
+.nv-svg[data-sel] .nv-b { opacity: .38; }
+.nv-svg[data-sel="exist"] .nv-b[data-k="exist"], .nv-svg[data-sel="sup"] .nv-b[data-k="sup"],
+.nv-svg[data-sel="ult"] .nv-b[data-k="ult"], .nv-svg[data-sel="abs"] .nv-b[data-k="abs"] { opacity: 1; }
+.nv-svg[data-sel="sup"] .nv-b[data-k="exist"], .nv-svg[data-sel="ult"] .nv-b[data-k="sup"], .nv-svg[data-sel="ult"] .nv-b[data-k="exist"],
+.nv-svg[data-sel="abs"] .nv-b { opacity: .62; }
+.nv-svg[data-sel="abs"] .nv-b[data-k="abs"] { opacity: 1; }
+.nv-svg[data-sel="sup"] .nv-sup { stroke-width: 3.4; }
+.nv-svg[data-sel="ult"] .nv-ult { stroke-width: 3; }
+.nv-svg[data-sel="abs"] .nv-abs { stroke-width: 2.6; }
+.nv-svg[data-sel="tri"] .nv-b { opacity: .7; }
+.nv-svg[data-sel="tri"] .nv-tri path { opacity: 1; }
+.septuple { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 6px; max-width: 640px; counter-reset: sp; }
+.septuple li { display: grid; grid-template-columns: 2.2rem minmax(0, 1fr) auto; gap: 10px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--c, var(--rule)); border-radius: 10px; padding: 8px 12px; font-size: .95rem; line-height: 1.3; }
+.septuple li::before { counter-increment: sp; content: counter(sp); width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--soft, var(--tint)); border: 1.5px solid var(--c, var(--rule)); font: 600 .9rem/1 var(--font-mono); color: var(--ink); }
+.septuple li span { font: 500 .7rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: right; }
+.septuple li.moi { background: var(--gold-soft); }
+.septuple li.moi b { font-size: 1.05rem; }
+.septuple-cap { font-size: .86rem; color: var(--muted); margin-top: 10px; max-width: 80ch; }
+.absolus { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.1fr) minmax(0, 1.1fr); gap: 14px; margin-top: 20px; max-width: 1000px; }
+.absolus article { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.absolus .st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.absolus ul { margin: 0; padding-left: 18px; display: grid; gap: 3px; font-size: .95rem; font-weight: 700; }
+.absolus p { font-size: .95rem; }
+.niv-t { margin-top: 24px; border-collapse: collapse; width: 100%; max-width: 900px; font-size: .93rem; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; overflow: hidden; }
+.niv-t th, .niv-t td { text-align: left; padding: 9px 12px; border-top: 1px solid var(--rule); vertical-align: top; }
+.niv-t thead th { border-top: 0; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); background: var(--tint); }
+.niv-t tbody th { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; white-space: nowrap; }
+.niv-t tr.moi th, .niv-t tr.moi td { background: var(--gold-soft); }
+.tbl-wrap { overflow-x: auto; max-width: 100%; }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.callout li, .unk li { max-width: 78ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.callout li ul { margin-top: 10px; gap: 10px; list-style: circle; }
+.callout li li b { font-weight: 700; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+/* Moins d'animations : préférence du système ou bouton des schémas ; les mouvements n'existent qu'avec la classe anime */
+.calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .chev, .chip .tg::after, .tv summary::before { transition: none; } }
+
+@media (max-width: 960px) {
+  .main2.on { grid-template-columns: minmax(0, 1fr); }
+  .main2.on .ciel, .main2.on .co-fig, .main2.on .nv-fig { max-width: 560px; }
+  .cards.c3 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .reste, .chemins, .two, .cards.c2, .absolus { grid-template-columns: minmax(0, 1fr); }
+  .duree li { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 719px) {
+  .sc-bar { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "steps steps" "prev next"; }
+  .sc-nav { width: 100%; }
+  .tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tb { width: 100%; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 14px 24px; }
+  .miroir thead { display: none; }
+  .miroir, .miroir tbody, .miroir tr, .miroir th, .miroir td { display: block; width: auto; }
+  .miroir tbody tr + tr { border-top: 1px solid var(--rule); }
+  .miroir tbody th { border-top: 0; padding-bottom: 2px; width: auto; color: var(--gold-ink); }
+  .miroir td { border-top: 0; padding-top: 4px; padding-bottom: 6px; }
+  .miroir td + td { border-left: 0; }
+  .miroir td::before { content: attr(data-l); display: block; font: 600 .95rem/1.2 var(--font-display); font-size: 1.05rem; color: var(--muted); }
+  .septuple li { grid-template-columns: 2.2rem minmax(0, 1fr); }
+  .septuple li span { grid-column: 2; text-align: left; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .codebox { padding: 16px 14px 14px; }
+}
+</style><style>/* barre commune, menus, tiroir, bandeau et pied de l’atlas (construire_site.py ; comportement : assets/navigation.js) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:1100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.an-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}html.an-bloque,html.an-bloque body{overflow:hidden}html.an-bloque main *,html.an-bloque main *::before,html.an-bloque main *::after{animation-play-state:paused!important}.atlas-nav{position:relative;z-index:100;background:var(--sheet);border-bottom:1px solid var(--rule);color:var(--ink);font:500 1rem/1.25 var(--font-body)}.an-barre{display:flex;align-items:center;gap:2px;max-width:1100px;min-height:64px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}.atlas-nav ul,.atlas-nav ol{list-style:none;margin:0;padding:0}.atlas-nav li,.atlas-nav p{margin:0}.atlas-nav a{color:inherit;text-decoration:none}.atlas-nav svg{display:block;flex:none}.atlas-nav :focus-visible{outline:2px solid var(--gold-ink);outline-offset:2px;border-radius:10px}.an-ic{width:20px;height:20px}.an-emb{width:28px;height:28px;border-radius:8px}.an-accueil,.an-g-btn,.an-ecouter,.an-menu{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ink);font:600 1rem/1 var(--font-body);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}.an-accueil{padding-left:6px;margin-right:4px}.an-g-btn{list-style:none}.an-g-btn::-webkit-details-marker{display:none}.an-g-btn::marker{content:""}.an-accueil:hover,.an-g-btn:hover,.an-ecouter:hover,.an-menu:hover{background:var(--tint)}.an-g-btn[aria-expanded="true"],.an-d[open]>.an-g-btn{background:var(--tint)}.an-chev{width:12px;height:12px;color:var(--muted);transition:transform .2s ease}.an-g-btn[aria-expanded="true"] .an-chev,.an-d[open]>.an-g-btn .an-chev{transform:rotate(180deg)}.an-accueil[aria-current="page"]::after,.an-ici>.an-g-btn::after,.an-ici>.an-d>.an-g-btn::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:2px;background:var(--gold-ui,var(--gold))}.an-accueil[aria-current="page"]::after{left:42px}.an-tiroir{display:flex;align-items:center;min-width:0}.an-liste{display:flex;align-items:center;gap:2px}.an-g{position:relative}.an-l-accueil,.an-t-tete,.an-t-pied,.an-page,.an-menu{display:none}.an-panneau{position:absolute;top:calc(100% + 10px);left:0;z-index:110;min-width:340px;padding:8px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;box-shadow:0 26px 56px -18px rgba(8,13,30,.36),0 4px 14px rgba(8,13,30,.1)}.an-p-tete{display:flex;justify-content:space-between;gap:16px;margin:6px 10px 8px;font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.an-items{display:grid;gap:2px}.an-items a{display:grid;gap:3px;min-height:44px;padding:10px 12px;border-radius:10px}.an-items a:hover,.an-etapes a:hover{background:var(--tint)}.an-nom{font:600 1rem/1.25 var(--font-body);color:var(--ink)}.an-aide{font:400 .87rem/1.3 var(--font-body);color:var(--muted)}.an-ext{margin-left:.35em;font-weight:500;color:var(--muted)}.an-items a[aria-current="page"],.an-etapes a[aria-current="page"]{background:var(--tint);background:color-mix(in srgb,var(--gold) 15%,transparent)}.an-items a[aria-current="page"] .an-nom,.an-etapes a[aria-current="page"] .an-et{color:var(--gold-ink)}.an-p-parcours{width:640px}.an-etapes{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(var(--an-rangs,7),auto);grid-auto-flow:column;gap:2px 8px}.an-etapes a{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 10px;border-radius:10px}.an-num{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--gold-ui,var(--gold));border-radius:50%;font:500 .8rem/1 var(--font-mono);color:var(--gold-ink)}.an-etapes a[aria-current="page"] .an-num{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}.an-et{font:500 .98rem/1.25 var(--font-body);color:var(--ink)}.an-3d{margin-left:auto;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;font:500 .68rem/1.3 var(--font-mono);letter-spacing:.06em;color:var(--muted)}.an-actions{display:flex;align-items:center;gap:4px;margin-left:auto;padding-left:8px}.an-chercher{display:none;align-items:center;gap:10px;min-width:210px;min-height:44px;margin:0 4px 0 0;padding:0 8px 0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--muted);font:500 .97rem/1 var(--font-body);cursor:pointer;-webkit-tap-highlight-color:transparent}html.an-js .an-chercher{display:inline-flex}.an-chercher:hover{border-color:var(--muted);color:var(--ink)}.an-chercher .an-ic{width:18px;height:18px;color:var(--gold-ink)}.an-chercher kbd{margin-left:auto;padding:2px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);font:500 .78rem/1.3 var(--font-mono);color:var(--muted)}.an-ecouter{display:none}html.an-tts .an-ecouter{display:inline-flex}.an-ecouter .an-ic{color:var(--gold-ink)}.an-ecouter[data-etat="lecture"],.an-ecouter[data-etat="pause"]{background:var(--tint);color:var(--gold-ink)}.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}html:not(.an-son) .atlas-musique{display:none}.atlas-musique:hover{color:var(--gold-ink);background:var(--tint)}.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}.atlas-musique svg{width:20px;height:20px}.an-voile{position:fixed;inset:0;z-index:1000;background:rgba(6,10,22,.5);opacity:0;transition:opacity .26s ease}.an-voile.ouvert{opacity:1}.an-t-titre{flex:1;display:flex;align-items:center;gap:10px;font:600 1.22rem/1.15 var(--font-display);color:var(--ink)}.an-fermer{flex:none;display:inline-grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:none;color:var(--ink);cursor:pointer}.an-fermer:hover{background:var(--tint)}.an-t-btn{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;margin:0;padding:0 16px;border:1px solid var(--rule);border-radius:12px;background:var(--paper);color:var(--ink);font:600 1rem/1.2 var(--font-body);text-align:left;cursor:pointer}.an-t-btn .an-ic,.an-t-btn svg{width:20px;height:20px;color:var(--gold-ink)}.an-t-btn[aria-pressed="true"],.an-t-btn[data-etat="lecture"],.an-t-btn[data-etat="pause"]{border-color:var(--gold-ui,var(--gold));color:var(--gold-ink)}html:not(.an-tts) .an-t-ecouter,html:not(.an-son) .atlas-musique-t{display:none}@media (max-width:999.98px){html.an-js .an-barre{min-height:56px;gap:4px;padding-left:max(6px,env(safe-area-inset-left,0px));padding-right:max(6px,env(safe-area-inset-right,0px))}html.an-js .an-menu{display:inline-flex;padding:0 14px 0 10px}html.an-js .an-accueil{display:none}html.an-js .an-page{display:block;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 1.04rem/1.2 var(--font-body);color:var(--ink);text-align:center}html.an-js .an-actions{margin-left:0;padding-left:0}html.an-js .an-actions .an-ecouter,html.an-js .an-actions .atlas-musique{display:none}html.an-js .an-chercher{min-width:0;margin:0;padding:0 12px;border-color:transparent;background:none;color:var(--ink)}html.an-js .an-chercher .an-lbl,html.an-js .an-chercher kbd{display:none}html.an-js .an-chercher .an-ic{width:22px;height:22px;color:var(--ink)}html.an-js .an-tiroir{position:fixed;top:0;bottom:0;left:0;z-index:1001;display:flex;flex-direction:column;align-items:stretch;width:min(88vw,400px);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);background:var(--sheet);box-shadow:24px 0 60px -20px rgba(4,8,20,.5);overflow-y:auto;overscroll-behavior:contain;transform:translateX(-104%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s linear .26s}html.an-js .an-tiroir.ouvert{transform:none;visibility:visible;transition:transform .26s cubic-bezier(.2,.8,.2,1)}html.an-js .an-t-tete{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}html.an-js .an-liste{display:block;padding:6px 0 10px}html.an-js .an-l-accueil{display:block}html.an-js .an-l-accueil a{display:flex;align-items:center;min-height:52px;padding:0 22px;font:600 1.06rem/1.2 var(--font-body)}html.an-js .an-l-accueil a[aria-current="page"]{color:var(--gold-ink);box-shadow:inset 3px 0 0 var(--gold-ui,var(--gold))}html.an-js .an-g{position:static;border-top:1px solid var(--rule)}html.an-js .an-g-btn{display:flex;width:100%;justify-content:space-between;min-height:54px;padding:0 22px;border-radius:0;font-size:1.06rem}html.an-js .an-g-btn:hover{background:var(--tint)}html.an-js .an-g-btn::after{display:none}html.an-js .an-ici>.an-g-btn>span::after{content:"";display:inline-block;width:7px;height:7px;margin-left:10px;border-radius:50%;background:var(--gold-ui,var(--gold));vertical-align:2px}html.an-js .an-panneau{position:static;width:auto;min-width:0;margin:0;padding:0 10px 12px;border:0;border-radius:0;background:none;box-shadow:none}html.an-js .an-p-tete{display:none}html.an-js .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}html.an-js .an-items a,html.an-js .an-etapes a{padding-left:12px}html.an-js .an-t-pied{display:grid;gap:10px;margin-top:auto;padding:14px 16px 18px;border-top:1px solid var(--rule)}html:not(.an-js) .an-barre{flex-wrap:wrap;position:relative;padding-block:4px}html:not(.an-js) .an-tiroir,html:not(.an-js) .an-liste{flex-wrap:wrap}html:not(.an-js) .an-g{position:static}html:not(.an-js) .an-panneau{left:8px;right:8px;width:auto;min-width:0}html:not(.an-js) .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}@media (prefers-reduced-motion:reduce){.an-tiroir,.an-tiroir.ouvert,.an-voile,.an-chev{transition:none!important}}@media print{.atlas-nav,.aller-contenu{display:none!important}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}.atlas-suite-seule{grid-template-columns:minmax(0,1fr)}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}.atlas-credit{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:.45em}.atlas-credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}.atlas-credit .atlas-note{font-size:.92em}.atlas-droits{margin:0}.atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}a.ref-lien{padding-block:5px}</style>
+</head>
+<body>
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Atlas"><div class="an-barre"><button type="button" class="an-menu" aria-expanded="false" aria-controls="an-tiroir"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Menu</span></button><a class="an-accueil" href="index.html"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Accueil</span></a><p class="an-page" aria-hidden="true">L’Être Suprême</p><div class="an-tiroir" id="an-tiroir"><div class="an-t-tete"><p class="an-t-titre"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Le Livre d’Urantia en images</span></p><button type="button" class="an-fermer" aria-label="Fermer le menu"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="an-liste"><li class="an-l-accueil"><a href="index.html">Accueil</a></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Parcours</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau an-p-parcours" id="an-p-parcours"><p class="an-p-tete"><span>Parcours de découverte</span><span>13 étapes</span></p><ol class="an-etapes" style="--an-rangs:7"><li><a href="nebadon-dans-orvonton.html"><span class="an-num">1</span><span class="an-et">Nébadon dans Orvonton</span></a></li><li><a href="atlas-3d.html"><span class="an-num">2</span><span class="an-et">D’Urantia au Paradis (3D)</span></a></li><li><a href="atlas-3d.html#gouvernement"><span class="an-num">3</span><span class="an-et">Qui gouverne quoi</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#frise"><span class="an-num">4</span><span class="an-et">La frise du temps</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#carriere"><span class="an-num">5</span><span class="an-et">La carrière ascendante</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="familles-de-personnalites.html"><span class="an-num">6</span><span class="an-et">Familles de personnalités</span></a></li><li><a href="concepts-en-schemas.html"><span class="an-num">7</span><span class="an-et">Concepts en schémas</span></a></li><li><a href="dieu-et-deite.html"><span class="an-num">8</span><span class="an-et">Dieu et la Déité</span></a></li><li><a href="destinee-humaine.html"><span class="an-num">9</span><span class="an-et">La destinée humaine</span></a></li><li><a href="histoire-d-urantia.html"><span class="an-num">10</span><span class="an-et">L’histoire d’Urantia</span></a></li><li><a href="rebellion-de-lucifer.html"><span class="an-num">11</span><span class="an-et">La rébellion de Lucifer</span></a></li><li><a href="vie-de-jesus.html"><span class="an-num">12</span><span class="an-et">La vie de Jésus</span></a></li><li><a href="bible-et-livre.html"><span class="an-num">13</span><span class="an-et">La Bible et le Livre d’Urantia</span></a></li></ol></div></details></li><li class="an-g an-ici"><details class="an-d"><summary class="an-g-btn"><span>Thèmes</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-themes"><ul class="an-items"><li><a href="paradis-et-havona.html"><span class="an-nom">Le Paradis et Havona</span><span class="an-aide">L’ile centrale et l’univers parfait</span></a></li><li><a href="etre-supreme.html" aria-current="page"><span class="an-nom">L’Être Suprême</span><span class="an-aide">Un Dieu qui grandit avec l’expérience</span></a></li><li><a href="les-anges.html"><span class="an-nom">Les anges</span><span class="an-aide">Séraphins, chérubins et anges gardiens</span></a></li><li><a href="evolution-religion.html"><span class="an-nom">L’évolution de la religion</span><span class="an-aide">De la peur à la foi, en huit étapes</span></a></li><li><a href="effusions-de-micael.html"><span class="an-nom">Les sept effusions de Micaël</span><span class="an-aide">Sept fois la vie de ses créatures</span></a></li><li><a href="douze-apotres.html"><span class="an-nom">Les douze apôtres</span><span class="an-aide">Qui ils étaient, ce qu’ils devinrent</span></a></li><li><a href="enseignements-de-jesus.html"><span class="an-nom">Les enseignements de Jésus</span><span class="an-aide">Quinze enseignements, rangés par thème</span></a></li></ul></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Le livre</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-livre"><ul class="an-items"><li><a href="histoire-du-livre.html"><span class="an-nom">D’où vient ce livre ?</span><span class="an-aide">Son origine, ses témoins, ses critiques</span></a></li><li><a href="auteurs-et-chiffres.html"><span class="an-nom">Les auteurs déclarés et le livre en chiffres</span><span class="an-aide">Qui présente chaque fascicule ; le livre mesuré</span></a></li><li><a href="bible-et-livre.html"><span class="an-nom">La Bible et le Livre d’Urantia</span><span class="an-aide">Cent parallèles, de la Genèse à l’Apocalypse</span></a></li><li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener"><span class="an-nom">Lire le livre sur urantia.org<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Le texte intégral, sur le site de la Fondation Urantia</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Outils</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-outils"><ul class="an-items"><li><a href="parcours-de-lecture.html"><span class="an-nom">Parcours de lecture</span><span class="an-aide">Cinq itinéraires, fascicule par fascicule</span></a></li><li><a href="glossaire.html"><span class="an-nom">Glossaire</span><span class="an-aide">Les mots du livre, de A à Z</span></a></li><li><a href="index.html#hors-ligne"><span class="an-nom">Lire hors ligne</span><span class="an-aide">Installer l’atlas ou l’enregistrer sur l’appareil</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20L%E2%80%99%C3%8Atre%20Supr%C3%AAme&amp;page=L%E2%80%99%C3%8Atre%20Supr%C3%AAme%20%28etre-supreme.html%29" target="_blank" rel="noopener"><span class="an-nom">Signaler une erreur<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Sur cette page ; un compte GitHub est nécessaire</span><span class="an-sr"> (nouvel onglet)</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md" target="_blank" rel="noopener"><span class="an-nom">Contribuer sur GitHub<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Proposer une correction ou une idée</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li></ul><div class="an-t-pied"><button type="button" class="an-t-btn an-t-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter cette page</span></button><button type="button" class="an-t-btn atlas-musique-t" data-musique aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Musique douce</span></button></div></div><div class="an-actions"><button type="button" class="an-chercher" data-chercher aria-keyshortcuts="/ Control+K" aria-label="Rechercher dans l’atlas"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.6" cy="8.6" r="5.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="an-lbl" aria-hidden="true">Rechercher</span><kbd aria-hidden="true">/</kbd></button><button type="button" class="an-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter</span></button><button type="button" class="atlas-musique" data-musique aria-pressed="false" aria-label="Musique douce"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div></nav>
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape>Thème · </span>Le Livre d’Urantia · fascicules 115 à 117 et Introduction</p>
+      <h1>L’Être Suprême</h1>
+      <p class="lede">Le livre parle d’un Dieu qui n’est pas encore achevé. Le Père, le Fils et l’Esprit existent de toute éternité ; l’Être Suprême, lui, évolue. Il tient sa personne de la Trinité du Paradis, mais il grandit avec l’expérience des créateurs et des créatures du grand univers, et le texte lie son achèvement au jour où ce grand univers sera ancré dans la lumière et la vie. Voici, en schémas, ce que le texte en dit, et ce qu’il laisse ouvert.</p>
+      <a class="cta" href="#croissance">Voir le Suprême grandir, étape par étape <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">Dans la vue 3D&nbsp;: <a href="atlas-3d.html#deite">où le texte situe le Suprême, l’Ultime et les Absolus</a>.</p>
+    </div>
+    <aside class="codebox" aria-label="Repères">
+      <div class="cb-top"><svg class="em" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><radialGradient id="em-ciel"><stop offset="0" stop-color="#18234A"/><stop offset="1" stop-color="#080C1C"/></radialGradient><radialGradient id="em-lueur"><stop offset="0" stop-color="#FFE7A0" stop-opacity=".95"/><stop offset=".45" stop-color="#F3B949" stop-opacity=".45"/><stop offset="1" stop-color="#F3B949" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="60" r="58" fill="url(#em-ciel)"/><circle class="em-halo" cx="60" cy="60" r="52"/><circle class="em-su" cx="60" cy="15" r="2.6"/><circle class="em-su" cx="95.2" cy="31.9" r="2.6"/><circle class="em-su" cx="103.9" cy="70" r="2.6"/><circle class="em-su" cx="79.5" cy="100.5" r="2.6"/><circle class="em-su" cx="40.5" cy="100.5" r="2.6"/><circle class="em-su" cx="16.1" cy="70" r="2.6"/><circle class="em-su" cx="24.8" cy="31.9" r="2.6"/><path class="em-a em-per" d="M36.4 41.5A30 30 0 0 1 83.6 41.5"/><path class="em-a em-men" d="M87.8 48.8A30 30 0 0 1 64.2 89.7"/><path class="em-a em-pou" d="M55.8 89.7A30 30 0 0 1 32.2 48.8"/><circle cx="60" cy="60" r="19" fill="url(#em-lueur)"/><circle class="em-c" cx="60" cy="60" r="7.5"/></svg><span class="label">Le Suprême en cinq traits</span></div>
+      <ul class="keys">
+        <li class="e-sup"><span class="dot" aria-hidden="true"></span><b>le Dieu du temps et de l’espace</b><span class="kd">une Déité qui évolue <span class="ref">0:2.15</span></span></li>
+        <li class="e-sup"><span class="dot" aria-hidden="true"></span><b>expérientiel</b><span class="kd">un commencement, pas de fin <span class="ref">0:9.5</span></span></li>
+        <li class="e-per"><span class="dot" aria-hidden="true"></span><b>une personne-esprit</b><span class="kd">issue de la Trinité du Paradis <span class="ref">115:4.2</span></span></li>
+        <li class="e-pou"><span class="dot" aria-hidden="true"></span><b>un pouvoir qui grandit</b><span class="kd">le Tout-Puissant, par les Créateurs Suprêmes <span class="ref">116:2.2</span></span></li>
+        <li class="e-men"><span class="dot" aria-hidden="true"></span><b>un mental qui les unit</b><span class="kd">le Mental Suprême <span class="ref">116:1.2</span></span></li>
+      </ul>
+      <dl>
+        <dt><span class="qm" aria-hidden="true">?</span></dt><dd>Ce que le texte ne précise pas.</dd>
+        <dt>fini</dt><dd>Le Suprême n’est pas infini <span class="ref">117:6.19</span>. Ne pas le confondre avec l’Ultime, Déité de l’absonite <span class="ref">0:9.2</span>.</dd>
+        <dt>mental</dt><dd>traduit l’anglais <i lang="en">mind</i> ; <i>esprit</i> traduit <i lang="en">spirit</i>.</dd>
+      </dl>
+      <p class="note">Couleurs, choix de la page&nbsp;: <span class="dot e-sup" aria-hidden="true"></span>or pour le Suprême, <span class="dot e-per" aria-hidden="true"></span>violet pour sa personne-esprit, <span class="dot e-pou" aria-hidden="true"></span>cuivre pour son pouvoir, <span class="dot e-men" aria-hidden="true"></span>bleu pour son mental, <span class="dot e-cre" aria-hidden="true"></span>sarcelle pour les créatures.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#qui"><span class="nb">1</span><span class="tt">Un Dieu qui se fait</span></a></li>
+      <li><a href="#aspects"><span class="nb">2</span><span class="tt">Une personne, un pouvoir, un mental</span></a></li>
+      <li><a href="#croissance" class="hot"><span class="nb">★</span><span class="tt">Schéma&nbsp;: le Suprême grandit</span></a></li>
+      <li><a href="#contributions" class="hot"><span class="nb">★</span><span class="tt">Schéma&nbsp;: ce qui le fait grandir</span></a></li>
+      <li><a href="#choix"><span class="nb">3</span><span class="tt">Ce que fait chaque choix humain</span></a></li>
+      <li><a href="#chercher"><span class="nb">4</span><span class="tt">Où trouver le Suprême ?</span></a></li>
+      <li><a href="#niveaux" class="hot"><span class="nb">★</span><span class="tt">Schéma&nbsp;: les niveaux de la Déité</span></a></li>
+      <li><a href="#septuple"><span class="nb">5</span><span class="tt">Dans Dieu le Septuple, parmi les sept Absolus</span></a></li>
+      <li><a href="#registres"><span class="nb">6</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="qui" aria-labelledby="h-qui">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Introduction, fascicules 115 à 117</p>
+      <h2 id="h-qui">Un Dieu qui se fait</h2>
+      <p>Le livre distingue deux sortes de Déité <span class="ref">0:7.2–4</span>. Le Père, le Fils et l’Esprit sont <i>existentiels</i>&nbsp;: ils sont de toute éternité. Le Suprême, l’Ultime et l’Absolu sont <i>expérientiels</i>&nbsp;: ils s’actualisent par l’expérience <span class="ref">0:7.1 ; 0:7.5</span>. Le premier d’entre eux, Dieu le Suprême, est <span class="q" data-ref="0:2.15">«&nbsp;le Dieu du temps et de l’espace, s’actualisant ou évoluant&nbsp;»</span> <span class="ref">0:2.15</span>.</p>
+      <blockquote class="cite e-sup" data-ref="115:0.1"><p>«&nbsp;Avec Dieu le Suprême, l’accomplissement est la condition préalable au statut — il faut faire quelque chose aussi bien qu’être quelque chose.&nbsp;»</p><span class="ref">115:0.1</span></blockquote>
+    </div>
+    <ul class="duree" aria-label="Deux sortes de Déité, sur la ligne du temps">
+      <li class="e-ex"><div class="dn"><b>Existentiels</b><span>le Père, le Fils, l’Esprit&nbsp;: sans commencement ni fin</span></div><div class="barre exi" aria-hidden="true"><i class="fl g"></i><i class="fl d"></i></div></li>
+      <li class="e-sup"><div class="dn"><b>Expérientiels</b><span>le Suprême, l’Ultime, peut-être l’Absolu&nbsp;: un commencement, pas de fin</span></div><div class="barre exp" aria-hidden="true"><i class="avant"></i><i class="debut"></i><i class="fl d"></i><span class="tag t1">origine</span><span class="tag t2">sans fin</span></div></li>
+    </ul>
+    <p class="duree-cap">Les premiers sont <span class="q" data-ref="0:7.3">«&nbsp;Des êtres d’existence éternelle, passée, présente et future.&nbsp;»</span> <span class="ref">0:7.3</span> Le Suprême et l’Ultime, eux, ont connu des origines historiques&nbsp;: <span class="q" data-ref="0:9.5">«&nbsp;Ils n’auront jamais de fin, mais leur personnalité a eu un commencement.&nbsp;»</span> <span class="ref">0:9.5</span> Pour l’Absolu, le texte écrit <span class="q" data-ref="0:9.4">«&nbsp;peut-être Dieu l’Absolu&nbsp;»</span> <span class="ref">0:9.4</span>. Le dessin ne date rien&nbsp;: le texte ne donne pas de date.</p>
+    <div class="cards">
+      <article class="card e-sup">
+        <p class="st">D’où il vient</p>
+        <h3>De la Trinité, par l’expérience</h3>
+        <p>Toute réflexion sur ses origines commence par la Trinité du Paradis&nbsp;: elle est la Déité originelle, le Suprême une Déité dérivée <span class="ref">115:4.1</span>. Il est potentiel dans la Trinité, dont il tire sa personnalité et ses attributs d’esprit ; son pouvoir de Tout-Puissant, il le tire des Fils Créateurs, des Anciens des Jours et des Maitres Esprits <span class="ref">0:8.10</span>.</p>
+      </article>
+      <article class="card e-sup">
+        <p class="st">Ce qu’il est</p>
+        <h3>La Trinité, vue du fini</h3>
+        <p><span class="q" data-ref="0:9.2">«&nbsp;Le Suprême est l’unification de la Trinité comprise par les êtres finis.&nbsp;»</span> <span class="ref">0:9.2</span></p>
+        <p>Le texte l’appelle aussi <span class="q" data-ref="117:2.1">«&nbsp;Dieu-dans-le-temps&nbsp;»</span> <span class="ref">117:2.1</span>, <span class="q" data-ref="117:1.1">«&nbsp;la surâme du grand univers, la conscience du cosmos fini&nbsp;»</span> <span class="ref">117:1.1</span> ; il <i>est</i>, dit-il, la vérité, la beauté et la bonté, maxima finis de l’expérience <span class="ref">117:1.7</span>.</p>
+      </article>
+      <article class="card e-nsp">
+        <p class="st">Ce qu’il n’est pas</p>
+        <h3>Ni la Trinité, ni un infini</h3>
+        <ul>
+          <li>Ni la Trinité du Paradis, ni l’un des Créateurs, ni leur ensemble <span class="ref">116:2.14</span>&nbsp;: <span class="q" data-ref="10:7.3">«&nbsp;quelque chose de moins et quelque chose d’autre que la Trinité&nbsp;»</span> <span class="ref">10:7.3</span>.</li>
+          <li>Ni infini, ni éternel dans le passé <span class="ref">117:6.19 ; 0:9.5</span>.</li>
+          <li>Ni un créateur direct, sauf de Majeston, le chef de la réflectivité <span class="ref">0:7.9 ; 17:2.4</span>.</li>
+        </ul>
+      </article>
+    </div>
+    <h3 class="sub-h">Pourquoi un Dieu inachevé ?</h3>
+    <div class="prose">
+      <p>Le fascicule 116 s’ouvre sur cette question. Si l’homme reconnaissait que ses Créateurs immédiats sont finis tout en étant divins, et <span class="q" data-ref="116:0.1">«&nbsp;que le Dieu du temps et de l’espace est une Déité évoluante et non absolue&nbsp;»</span>, les inégalités de ce monde cesseraient d’être de profonds paradoxes religieux <span class="ref">116:0.1</span>&nbsp;: un monde aussi imparfait qu’Urantia, observe le texte, n’a pas été fait par un Créateur absolu, mais par des Créateurs subabsolus <span class="ref">116:0.2</span>. Le plan du Père, ajoute-t-il, fonde le progrès fini sur l’effort, l’accomplissement sur la persévérance et le développement de la personnalité sur la foi <span class="ref">115:7.2</span>. L’inachèvement du Suprême devient même une chance pour les créatures&nbsp;:</p>
+      <blockquote class="cite e-sup" data-ref="117:2.8"><p>«&nbsp;Le vide a sa vertu, car il peut être rempli par l’expérience.&nbsp;»</p><span class="ref">117:2.8</span></blockquote>
+      <p>Le texte lui donne trois noms pour une même réalité, Être Suprême, Dieu le Suprême et Tout-Puissant Suprême <span class="ref">117:3.1</span>, et bien des images&nbsp;: une Mère divine <span class="ref">117:6.2</span>, le <span class="q" data-ref="117:4.13">«&nbsp;grand frère de toutes les créatures&nbsp;»</span> <span class="ref">117:4.13</span>, la route même du voyageur <span class="ref">117:6.27</span>.</p>
+    </div>
+  </section>
+
+  <section id="aspects" aria-labelledby="h-asp">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Fascicules 106, 115 et 116</p>
+      <h2 id="h-asp">Une personne, un pouvoir, un mental</h2>
+      <p>Le texte distingue dans le Suprême trois réalités, de sources différentes, qui ne font qu’un <span class="ref">106:5.2 ; 115:4.7</span>. Il ne leur donne pas de noms fixes&nbsp;: il parle surtout de la personne spirituelle, ou personne-esprit, du Tout-Puissant et du Mental Suprême ; une fois, à son sujet, d’<span class="q" data-ref="118:9.4">«&nbsp;un Mental Suprême, se coordonnant avec un Esprit Suprême&nbsp;»</span> <span class="ref">118:9.4</span>.</p>
+    </div>
+    <div class="cards c3">
+      <article class="card e-per">
+        <p class="st">De la Trinité du Paradis</p>
+        <h3><span class="dot" aria-hidden="true"></span>La personne-esprit</h3>
+        <p>Le Suprême est <span class="q" data-ref="115:4.2">«&nbsp;avant tout une personne-esprit&nbsp;»</span>, <span class="q" data-ref="115:4.2">«&nbsp;une branche issue de la Trinité&nbsp;»</span> <span class="ref">115:4.2</span>. Cette personne existait dans Havona avant les superunivers, mais n’y opérait que sur des niveaux spirituels <span class="ref">56:6.2</span>.</p>
+        <p class="from"><b>Au plus près d’elle&nbsp;:</b> le Maitre Esprit Numéro Sept, qui décrit l’attitude spirituelle de l’Être Suprême et parle pour lui <span class="ref">16:3.15 ; 116:4.2</span>.</p>
+      </article>
+      <article class="card e-pou">
+        <p class="st">Des Créateurs Suprêmes</p>
+        <h3><span class="dot" aria-hidden="true"></span>Le pouvoir&nbsp;: le Tout-Puissant</h3>
+        <p><span class="q" data-ref="116:0.4">«&nbsp;Le Tout-Puissant Suprême est une Déité vivante et évoluante de pouvoir et de personnalité.&nbsp;»</span> <span class="ref">116:0.4</span> Son pouvoir s’actualise dans les actes des Fils Créateurs, des Anciens des Jours et des Maitres Esprits <span class="ref">116:2.2</span> ; pendant les âges d’évolution, son potentiel de pouvoir physique est confié aux Sept Directeurs Suprêmes de Pouvoir <span class="ref">116:1.3</span>.</p>
+        <p class="from"><b>Son contrôle physique</b> sera parachevé, conjecture le texte, avec l’équilibre matériel final des sept superunivers <span class="ref">116:5.12</span>.</p>
+      </article>
+      <article class="card e-men">
+        <p class="st">De l’Acteur Conjoint</p>
+        <h3><span class="dot" aria-hidden="true"></span>Le mental&nbsp;: le Mental Suprême</h3>
+        <p><span class="q" data-ref="116:1.2">«&nbsp;Le Mental Suprême a pour fonction d’unir les attributs de pouvoir et de personnalité de la Suprématie.&nbsp;»</span> <span class="ref">116:1.2</span> L’Acteur Conjoint en a fait don <span class="ref">115:4.7</span> ; son potentiel repose chez les Sept Maitres Esprits <span class="ref">116:1.3</span>.</p>
+        <p class="from"><b>Le moins connu&nbsp;:</b> <span class="q" data-ref="116:1.5">«&nbsp;Nous en savons réellement moins sur le mental de la Suprématie que sur tout autre aspect de cette Déité évoluante.&nbsp;»</span> <span class="ref">116:1.5</span></p>
+      </article>
+    </div>
+    <div class="cards c2">
+      <article class="card whole">
+        <p class="st">Les trois ensemble</p>
+        <h3>L’Être Suprême</h3>
+        <blockquote class="cite e-sup" data-ref="0:8.10"><p>«&nbsp;Le Tout-Puissant Suprême évoluant au niveau de valeur des activités non personnelles et la personne spirituelle de Dieu le Suprême sont <i>une seule réalité —</i> l’Être Suprême.&nbsp;»</p><span class="ref">0:8.10</span></blockquote>
+        <p>Le texte situe leur jonction sur le monde-pilote du circuit extérieur de Havona <span class="ref">56:6.2 ; 106:2.4</span>, et conjecture leur pleine unification, dans et par le Mental Suprême, à une époque extrêmement lointaine <span class="ref">117:7.14</span>. Sa croissance, elle, dérive des triodités, deux associations des Absolus présentées plus bas <span class="ref">115:4.7</span>.</p>
+      </article>
+      <article class="card e-nsp">
+        <p class="st">Trois fonctions, dont une inconnue</p>
+        <h3>Havona, le grand univers, et après</h3>
+        <ul>
+          <li><b>Dans Havona</b>, l’univers central&nbsp;: une personnalité spirituelle.</li>
+          <li><b>Dans le grand univers</b>&nbsp;: Dieu le Tout-Puissant, une personnalité de pouvoir.</li>
+          <li><b>Dans le maitre univers</b>&nbsp;: une fonction latente, <span class="q" data-ref="116:0.5">«&nbsp;un potentiel mental inconnu&nbsp;»</span>.</li>
+        </ul>
+        <p>Sur ce troisième développement, les avis divergent, et l’auteur conclut&nbsp;: <span class="q" data-ref="116:0.5">«&nbsp;En réalité, aucun de nous n’en sait rien.&nbsp;»</span> <span class="ref">116:0.5</span></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="croissance" class="feature" aria-labelledby="h-cr">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · fascicules 56, 116 et 117</p>
+      <h2 id="h-cr">Le Suprême grandit, étape par étape</h2>
+      <p>De l’âge de Havona, avant la création des superunivers, jusqu’au grand univers ancré dans la lumière et la vie, suis l’actualisation du Suprême en six étapes. L’anneau d’or figure la part du Suprême devenue actuelle&nbsp;: c’est une image, le texte ne donne aucun chiffre.</p>
+      <p class="hint" id="cr-aide">Avance avec <b>Suivant</b> et <b>Précédent</b>, ou choisis une étape. Au clavier&nbsp;: Tab jusqu’aux boutons, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="ui" id="cr-ui" hidden>
+      <div class="sc-bar" id="cr-bar" role="group" aria-label="Étapes de la croissance du Suprême" aria-describedby="cr-aide">
+        <button type="button" class="sc-nav sc-prev" id="cr-prev">← Précédent</button>
+        <ol class="sc-steps" id="cr-steps"></ol>
+        <button type="button" class="sc-nav sc-next" id="cr-next">Suivant →</button>
+      </div>
+      <div class="opts">
+        <button type="button" class="chip calme-b" aria-pressed="false"><span class="tg" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip tv-lien" href="#cr-texte">Version texte</a>
+      </div>
+    </div>
+    <div class="main2" id="cr-main">
+      <figure class="ciel">
+        <svg class="cr-svg" id="cr-svg" viewBox="0 0 400 400" data-step="5" role="img" aria-label="Le grand univers vu de dessus, sans échelle : au centre le Paradis et Havona, autour les sept superunivers ; un anneau d’or figure l’actualisation du Suprême, qui s’achève quand le grand univers est ancré dans la lumière et la vie." focusable="false">
+<defs>
+<radialGradient id="cr-ciel" cx="50%" cy="50%" r="72%"><stop offset="0" stop-color="#16213F"/><stop offset=".62" stop-color="#0D1430"/><stop offset="1" stop-color="#070B1A"/></radialGradient>
+<radialGradient id="cr-lueur"><stop offset="0" stop-color="#FFE7A0" stop-opacity=".95"/><stop offset=".35" stop-color="#F3B949" stop-opacity=".5"/><stop offset="1" stop-color="#F3B949" stop-opacity="0"/></radialGradient>
+<radialGradient id="cr-voile"><stop offset=".7" stop-color="#F3B949" stop-opacity="0"/><stop offset=".86" stop-color="#F3B949" stop-opacity=".16"/><stop offset="1" stop-color="#F3B949" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="400" height="400" fill="url(#cr-ciel)"/>
+<g class="cr-et"><circle cx="355.2" cy="81.2" r="0.5"/><circle cx="118.5" cy="363.5" r="0.7"/><circle cx="20.4" cy="344.4" r="0.5"/><circle cx="382.2" cy="294.1" r="0.9"/><circle cx="61" cy="89.4" r="0.5"/><circle cx="242.9" cy="385.7" r="0.9"/><circle cx="299.4" cy="377.6" r="0.9"/><circle cx="375.6" cy="77.8" r="0.9"/><circle cx="258.8" cy="366.7" r="0.7"/><circle cx="108.2" cy="18" r="0.5"/><circle cx="378.8" cy="357" r="0.7"/><circle cx="111.7" cy="366.8" r="0.7"/><circle cx="375" cy="71" r="0.5"/><circle cx="393.5" cy="132" r="0.5"/><circle cx="320.3" cy="331.7" r="0.9"/><circle cx="382" cy="215.9" r="0.9"/><circle cx="354.5" cy="312.4" r="0.7"/><circle cx="351.2" cy="376.7" r="0.5"/><circle cx="17.6" cy="59.6" r="0.9"/><circle cx="315.6" cy="38.8" r="0.9"/><circle cx="35.2" cy="332.9" r="0.5"/><circle cx="339.1" cy="383.3" r="0.9"/><circle cx="229.1" cy="14.1" r="0.7"/><circle cx="8.6" cy="294.2" r="0.5"/><circle cx="384" cy="309.8" r="0.9"/><circle cx="378.2" cy="287.7" r="0.5"/><circle cx="139.9" cy="36.3" r="0.5"/><circle cx="371.3" cy="245.7" r="0.7"/><circle cx="378.2" cy="119.3" r="0.7"/><circle cx="394" cy="58.8" r="0.5"/><circle cx="392.3" cy="341.4" r="0.5"/><circle cx="336.7" cy="9.8" r="0.7"/><circle cx="376.2" cy="223.2" r="0.9"/><circle cx="23.9" cy="229" r="0.7"/><circle cx="372.5" cy="128.1" r="0.9"/><circle cx="382.1" cy="250.7" r="0.7"/><circle cx="300.8" cy="343.9" r="0.9"/><circle cx="18.4" cy="188.3" r="0.7"/><circle cx="395.6" cy="220.3" r="0.9"/><circle cx="50.2" cy="317.4" r="0.7"/><circle cx="135.4" cy="16.1" r="0.9"/><circle cx="228.3" cy="25.7" r="0.9"/><circle cx="170.1" cy="377.5" r="0.9"/><circle cx="22.8" cy="354.4" r="0.7"/><circle cx="13.1" cy="109.1" r="0.9"/><circle cx="17.6" cy="292.7" r="0.9"/><circle cx="34.2" cy="285.6" r="0.9"/><circle cx="347" cy="22.2" r="0.5"/><circle cx="319.7" cy="22.3" r="0.5"/><circle cx="376.6" cy="226.8" r="0.5"/><circle cx="67.8" cy="62.3" r="0.5"/><circle cx="389.1" cy="320.1" r="0.9"/><circle cx="381" cy="39.5" r="0.7"/><circle cx="24.7" cy="260" r="0.5"/><circle cx="291.4" cy="391.6" r="0.5"/><circle cx="69.1" cy="352.7" r="0.9"/><circle cx="364.1" cy="38.6" r="0.9"/><circle cx="386" cy="325.7" r="0.7"/><circle cx="86.8" cy="11.7" r="0.7"/><circle cx="84.8" cy="51.6" r="0.7"/><circle cx="96.8" cy="26.9" r="0.9"/><circle cx="129.8" cy="368.4" r="0.7"/><circle cx="354.5" cy="84.7" r="0.9"/><circle cx="105.8" cy="16" r="0.9"/><circle cx="330.6" cy="72.8" r="0.5"/><circle cx="178.2" cy="381.4" r="0.7"/><circle cx="386.8" cy="191.1" r="0.9"/><circle cx="124.4" cy="37.3" r="0.7"/><circle cx="18.4" cy="375.9" r="0.5"/><circle cx="79" cy="355.7" r="0.9"/></g>
+<g class="cr-ext"><circle class="cr-ext-r" cx="200" cy="200" r="186"/><circle class="cr-ext-r b" cx="200" cy="200" r="196"/><text class="cr-lbl cr-lbl-ext" x="392" y="392" text-anchor="end">espace extérieur</text></g>
+<circle class="cr-voile" cx="200" cy="200" r="176" fill="url(#cr-voile)"/>
+<circle class="cr-piste" cx="200" cy="200" r="164"/>
+<circle class="cr-halo" cx="200" cy="200" r="164" pathLength="100" transform="rotate(-90 200 200)"/>
+<g class="cr-su"><g class="su" data-su="1"><ellipse class="su-e" cx="250.3" cy="95.5" rx="27" ry="14" transform="rotate(25.7 250.3 95.5)"/><ellipse class="su-g" cx="250.3" cy="95.5" rx="27" ry="14" transform="rotate(25.7 250.3 95.5)"/><g class="su-d" transform="rotate(25.7 250.3 95.5)"><circle cx="236.4" cy="90" r="1"/><circle cx="242.4" cy="92" r="0.8"/><circle cx="255.9" cy="94.5" r="0.8"/><circle cx="264.3" cy="95.1" r="1.2"/><circle cx="252.9" cy="92.5" r="1.2"/><circle cx="247.9" cy="95.4" r="1.2"/><circle cx="260.2" cy="97.2" r="1.2"/><circle cx="258" cy="90.9" r="0.8"/><circle cx="264.9" cy="98.8" r="1"/></g><g class="su-lu"><circle cx="258.9" cy="90.4" r="2.6"/></g></g><g class="su" data-su="2"><ellipse class="su-e" cx="313.1" cy="174.2" rx="27" ry="14" transform="rotate(77.1 313.1 174.2)"/><ellipse class="su-g" cx="313.1" cy="174.2" rx="27" ry="14" transform="rotate(77.1 313.1 174.2)"/><g class="su-d" transform="rotate(77.1 313.1 174.2)"><circle cx="312.8" cy="176.7" r="1.2"/><circle cx="307.4" cy="176.6" r="1.2"/><circle cx="301.6" cy="174.3" r="0.8"/><circle cx="326" cy="171.5" r="1"/><circle cx="297.9" cy="170.6" r="1"/><circle cx="326.2" cy="169.1" r="1"/><circle cx="321.6" cy="180.5" r="1"/><circle cx="306.2" cy="175.9" r="1.2"/><circle cx="322.1" cy="174" r="1"/></g><g class="su-lu"><circle cx="320.2" cy="167.2" r="2.6"/><circle cx="307" cy="182.1" r="2.6"/></g></g><g class="su" data-su="3"><ellipse class="su-e" cx="290.7" cy="272.3" rx="27" ry="14" transform="rotate(128.6 290.7 272.3)"/><ellipse class="su-g" cx="290.7" cy="272.3" rx="27" ry="14" transform="rotate(128.6 290.7 272.3)"/><g class="su-d" transform="rotate(128.6 290.7 272.3)"><circle cx="302.3" cy="270" r="1"/><circle cx="299.5" cy="266.4" r="1.2"/><circle cx="304.2" cy="269.8" r="0.8"/><circle cx="307.1" cy="276.5" r="0.8"/><circle cx="305.2" cy="269.9" r="1"/><circle cx="294.4" cy="265.7" r="0.8"/><circle cx="280" cy="275.5" r="1.2"/><circle cx="281.9" cy="270.5" r="1.2"/><circle cx="301" cy="267.7" r="1.2"/></g><g class="su-lu"><circle cx="295.4" cy="263.5" r="2.6"/></g></g><g class="su" data-su="4"><ellipse class="su-e" cx="200" cy="316" rx="27" ry="14" transform="rotate(180 200 316)"/><ellipse class="su-g" cx="200" cy="316" rx="27" ry="14" transform="rotate(180 200 316)"/><g class="su-d" transform="rotate(180 200 316)"><circle cx="185.4" cy="321.2" r="1"/><circle cx="187.3" cy="312.8" r="0.8"/><circle cx="187.4" cy="313.6" r="1.2"/><circle cx="199.8" cy="316.1" r="1.2"/><circle cx="212.1" cy="320" r="1.2"/><circle cx="209.5" cy="315.9" r="1.2"/><circle cx="205.6" cy="317.6" r="1.2"/><circle cx="190.5" cy="322.3" r="1.2"/><circle cx="208.4" cy="309.1" r="0.8"/></g><g class="su-lu"><circle cx="192.1" cy="309.8" r="2.6"/><circle cx="206.3" cy="323.7" r="2.6"/></g></g><g class="su" data-su="5"><ellipse class="su-e" cx="109.3" cy="272.3" rx="27" ry="14" transform="rotate(231.4 109.3 272.3)"/><ellipse class="su-g" cx="109.3" cy="272.3" rx="27" ry="14" transform="rotate(231.4 109.3 272.3)"/><g class="su-d" transform="rotate(231.4 109.3 272.3)"><circle cx="120.8" cy="269.5" r="0.8"/><circle cx="104.7" cy="273.8" r="1.2"/><circle cx="109.8" cy="273.3" r="1"/><circle cx="98.8" cy="274.8" r="0.8"/><circle cx="95.5" cy="276.9" r="0.8"/><circle cx="97.4" cy="277.2" r="1.2"/><circle cx="123.5" cy="272.8" r="1"/><circle cx="124.1" cy="276.6" r="0.8"/><circle cx="114.2" cy="276.1" r="1.2"/></g><g class="su-lu"><circle cx="119" cy="274.7" r="2.6"/></g></g><g class="su" data-su="6"><ellipse class="su-e" cx="86.9" cy="174.2" rx="27" ry="14" transform="rotate(282.9 86.9 174.2)"/><ellipse class="su-g" cx="86.9" cy="174.2" rx="27" ry="14" transform="rotate(282.9 86.9 174.2)"/><g class="su-d" transform="rotate(282.9 86.9 174.2)"><circle cx="95.9" cy="180.8" r="1.2"/><circle cx="79.6" cy="172.6" r="1"/><circle cx="87.7" cy="172.9" r="0.8"/><circle cx="83.5" cy="173.1" r="1.2"/><circle cx="76.6" cy="174.3" r="1.2"/><circle cx="76.2" cy="175.8" r="0.8"/><circle cx="73.5" cy="168.2" r="0.8"/><circle cx="80.4" cy="176.9" r="0.8"/><circle cx="76" cy="180.9" r="1.2"/></g><g class="su-lu"><circle cx="96.8" cy="175.4" r="2.6"/><circle cx="80.4" cy="166.6" r="2.6"/></g></g><g class="su" data-su="7"><ellipse class="su-e" cx="149.7" cy="95.5" rx="27" ry="14" transform="rotate(334.3 149.7 95.5)"/><ellipse class="su-g" cx="149.7" cy="95.5" rx="27" ry="14" transform="rotate(334.3 149.7 95.5)"/><g class="su-d" transform="rotate(334.3 149.7 95.5)"><circle cx="144.8" cy="101.5" r="1"/><circle cx="166.6" cy="92.4" r="0.8"/><circle cx="160.1" cy="101.6" r="0.8"/><circle cx="133.2" cy="91" r="0.8"/><circle cx="154.1" cy="91.9" r="1"/><circle cx="165.9" cy="101.7" r="0.8"/><circle cx="144.7" cy="101.7" r="0.8"/><circle cx="139.9" cy="98.6" r="1.2"/><circle cx="138" cy="89.2" r="1.2"/></g><g class="su-lu"><circle cx="158.6" cy="100" r="2.6"/></g></g></g>
+<g class="cr-flux"><path class="cr-fl" d="M242.5 111.7L218.2 162.2"/><path class="cr-fl" d="M295.5 178.2L240.9 190.7"/><path class="cr-fl" d="M276.6 261.1L232.8 226.2"/><path class="cr-fl" d="M200 298L200 242"/><path class="cr-fl" d="M123.4 261.1L167.2 226.2"/><path class="cr-fl" d="M104.5 178.2L159.1 190.7"/><path class="cr-fl" d="M157.5 111.7L181.8 162.2"/></g>
+<g class="cr-xps"><g transform="rotate(25.7 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(25.7 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(25.7 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(77.1 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(77.1 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(77.1 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(128.6 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(128.6 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(128.6 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(180 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(180 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(180 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(231.4 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(231.4 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(231.4 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(282.9 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(282.9 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(282.9 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(334.3 200 200)"><circle class="cr-xp" style="animation-delay:-0s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(334.3 200 200)"><circle class="cr-xp" style="animation-delay:-1.1s" cx="200" cy="64" r="2.2"/></g><g transform="rotate(334.3 200 200)"><circle class="cr-xp" style="animation-delay:-2.2s" cx="200" cy="64" r="2.2"/></g></g>
+<circle class="cr-hv" cx="200" cy="200" r="24"/><circle class="cr-hv" cx="200" cy="200" r="30"/><circle class="cr-hv" cx="200" cy="200" r="36"/>
+<circle cx="200" cy="200" r="26" fill="url(#cr-lueur)"/>
+<ellipse class="cr-ile" cx="200" cy="200" rx="7" ry="8.2"/>
+<g class="cr-tri">
+<circle class="cr-men" cx="200" cy="164" r="11.5"/>
+<circle class="cr-pou" cx="200" cy="164" r="7.5"/>
+<circle class="cr-per" cx="200" cy="164" r="4"/>
+<path class="cr-un" d="M200 155l2.2 6.8 6.8 2.2-6.8 2.2-2.2 6.8-2.2-6.8-6.8-2.2 6.8-2.2z"/>
+</g>
+<text class="cr-lbl cr-lbl-sup" x="200" y="24" text-anchor="middle">le Suprême</text>
+<text class="cr-lbl cr-lbl-p" x="200" y="256" text-anchor="middle">Paradis et Havona</text>
+</svg>
+        <figcaption>Vu de dessus, sans échelle&nbsp;: positions, tailles et couleurs sont des choix du dessin. Le petit astre juste au-dessus du Paradis figure le monde-pilote du circuit extérieur de Havona, où le texte situe la jonction de la personne et du pouvoir du Suprême <span class="ref">56:6.2</span>.<span class="sans-js"> Sans script, le dessin montre l’étape 5.</span></figcaption>
+      </figure>
+      <div class="pn" id="cr-pn" hidden></div>
+    </div>
+    <p class="sr-only" id="cr-status" aria-live="polite"></p>
+
+    <details class="tv" id="cr-texte" open>
+      <summary>Version texte du schéma</summary>
+      <ol class="tv-list">
+        <li id="cr-1">
+          <h3 class="tv-h"><span class="tv-n">1</span>L’âge de Havona&nbsp;: une personne d’esprit</h3>
+          <p>Havona, l’univers central, est parfait et ne grandit pas&nbsp;: c’est un univers existentiel, comme les Dieux éternels qui sont sa source <span class="ref">116:0.3</span>. Le Suprême y est déjà présent, mais seulement comme personne d’esprit.</p>
+          <ul class="etat">
+            <li class="e-per"><span class="dot" aria-hidden="true"></span><span><b>Personne-esprit</b>&nbsp;: présente dans Havona <span class="ref">106:1.1</span></span></li>
+            <li class="e-pou"><span class="dot" aria-hidden="true"></span><span><b>Pouvoir</b>&nbsp;: pas encore ; il viendra des Créateurs des superunivers <span class="ref">116:2.1</span></span></li>
+            <li class="e-men"><span class="dot" aria-hidden="true"></span><span><b>Mental</b>&nbsp;: un potentiel, dans le mental infini de l’Esprit Infini <span class="ref">56:6.2</span></span></li>
+          </ul>
+          <blockquote class="cite e-per" data-ref="56:6.2"><p>«&nbsp;En tant que personne, Dieu le Suprême existait dans Havona avant la création des sept superunivers, mais il n’y opérait que sur des niveaux spirituels.&nbsp;»</p><span class="ref">56:6.2</span></blockquote>
+        </li>
+        <li id="cr-2">
+          <h3 class="tv-h"><span class="tv-n">2</span>Les superunivers s’organisent&nbsp;: le Tout-Puissant apparait</h3>
+          <p>La présence du pouvoir du Tout-Puissant apparait avec les hauts créateurs et contrôleurs des superunivers <span class="ref">116:2.1</span>. Quand les Maitres Esprits créent ensemble pour la première fois, apparaissent les Sept Directeurs de Pouvoir Suprême, et le mental cosmique devient un nouveau facteur qui coordonne la matière et l’esprit <span class="ref">116:5.10</span>. Ce pouvoir nouveau se coordonne, dans Havona, avec la personne d’esprit, au moyen du Mental Suprême, qui devient alors actif <span class="ref">56:6.2</span>.</p>
+          <ul class="etat">
+            <li class="e-per"><span class="dot" aria-hidden="true"></span><span><b>Personne-esprit</b>&nbsp;: dans Havona <span class="ref">56:6.2</span></span></li>
+            <li class="e-pou"><span class="dot" aria-hidden="true"></span><span><b>Pouvoir</b>&nbsp;: naissant, par les Créateurs Suprêmes <span class="ref">116:2.2</span></span></li>
+            <li class="e-men"><span class="dot" aria-hidden="true"></span><span><b>Mental</b>&nbsp;: devenu fonctionnel <span class="ref">56:6.2</span></span></li>
+          </ul>
+          <blockquote class="cite e-pou" data-ref="17:2.2"><p>«&nbsp;Cette union du pouvoir créatif des Créateurs Suprêmes avec les potentiels créatifs de la Trinité est la source même de l’actualité de l’Être Suprême.&nbsp;»</p><span class="ref">17:2.2</span></blockquote>
+        </li>
+        <li id="cr-3">
+          <h3 class="tv-h"><span class="tv-n">3</span>Créateurs et créatures&nbsp;: l’expérience s’accumule</h3>
+          <p>Le Suprême grandit à mesure que Créateurs et créatures en viennent à ressembler à Dieu, et à mesure qu’ils maitrisent les possibilités finies du grand univers <span class="ref">115:6.4</span>. Les univers locaux en sont les vrais laboratoires <span class="ref">116:4.7</span>. Chaque fois qu’un mortel s’accorde avec son Ajusteur, le Suprême devient plus réel d’un degré <span class="ref">117:0.3</span> ; chaque refus le retarde d’autant <span class="ref">117:4.11</span>.</p>
+          <ul class="etat">
+            <li class="e-pou"><span class="dot" aria-hidden="true"></span><span><b>Pouvoir</b>&nbsp;: croît par les actes des Créateurs Suprêmes <span class="ref">117:3.7</span></span></li>
+            <li class="e-men"><span class="dot" aria-hidden="true"></span><span><b>Mental</b>&nbsp;: le mental cosmique des sept superunivers est coordonné en lui <span class="ref">116:1.4</span></span></li>
+            <li class="e-cre"><span class="dot" aria-hidden="true"></span><span><b>Créatures</b>&nbsp;: leurs valeurs lui sont transmises <span class="ref">117:5.8</span></span></li>
+          </ul>
+          <blockquote class="cite e-cre" data-ref="117:5.6"><p>«&nbsp;Quand l’homme agit, le Suprême réagit, et cette opération constitue le fait de la progression.&nbsp;»</p><span class="ref">117:5.6</span></blockquote>
+        </li>
+        <li id="cr-4">
+          <h3 class="tv-h"><span class="tv-n">4</span>Par endroits, la lumière et la vie</h3>
+          <p>Quand un monde, un système, puis un univers local s’ancrent dans la lumière et la vie, Dieu le Septuple devient plus manifeste ; avec l’achèvement d’un univers local commencent la révélation et la réalisation toujours croissantes de Dieu le Suprême <span class="ref">56:7.2</span>. Les Superviseurs Non Qualifiés du Suprême exercent déjà, de manière limitée, sa souveraineté sur les univers ancrés <span class="ref">117:7.3</span>.</p>
+          <ul class="etat">
+            <li class="e-pou"><span class="dot" aria-hidden="true"></span><span><b>Pouvoir</b>&nbsp;: sa souveraineté émergente se reflète dans les gouvernements des créations ancrées <span class="ref">117:7.7</span></span></li>
+            <li class="e-sup"><span class="dot" aria-hidden="true"></span><span><b>Ensemble</b>&nbsp;: il émerge comme corrélateur de tout ce qui se passe <span class="ref">118:10.11</span></span></li>
+          </ul>
+          <blockquote class="cite e-sup" data-ref="56:7.6"><p>«&nbsp;[…] on observe un fonctionnement nouveau et plus complet de Dieu le Suprême, coïncidant avec le retrait correspondant des trois premières manifestations de Dieu le Septuple.&nbsp;»</p><span class="ref">56:7.6</span></blockquote>
+        </li>
+        <li id="cr-5">
+          <h3 class="tv-h"><span class="tv-n">5</span>Le grand univers ancré&nbsp;: le Suprême actualisé</h3>
+          <p>Si tous les habitants du grand univers vivaient pleinement la volonté de Dieu, les sept superunivers s’ancreraient dans la lumière et la vie, et la personnalité divine de Dieu le Suprême émergerait <span class="ref">117:0.2</span>. Le texte conjecture qu’alors la personne d’esprit et le pouvoir du Tout-Puissant, unifiés dans et par le Mental Suprême, deviendront une actualité observable par toutes les créatures <span class="ref">117:7.14</span>. C’est alors seulement que toutes, ensemble, le trouveront <span class="ref">117:6.16</span>, et que sa croissance prendra fin <span class="ref">117:2.6</span>.</p>
+          <ul class="etat">
+            <li class="e-sup"><span class="dot" aria-hidden="true"></span><span><b>Personne, pouvoir et mental</b>&nbsp;: unifiés en l’Être Suprême <span class="ref">117:7.14</span></span></li>
+            <li class="e-nsp"><span class="dot" aria-hidden="true"></span><span><b>Où ?</b> Peut-être sur Uversa, mais <span class="q" data-ref="117:7.16">«&nbsp;ce n’est qu’une hypothèse&nbsp;»</span> <span class="ref">117:7.16</span></span></li>
+          </ul>
+          <blockquote class="cite e-sup" data-ref="117:6.23"><p>«&nbsp;[…] quand toutes les créatures révèleront parfaitement l’amour du Suprême, il deviendra alors pour elles une actualité de l’univers. Et ceci est simplement une autre manière de dire que les univers seront ancrés dans la lumière et la vie.&nbsp;»</p><span class="ref">117:6.23</span></blockquote>
+        </li>
+        <li id="cr-6">
+          <h3 class="tv-h"><span class="tv-n">6</span>Ensuite&nbsp;: l’espace extérieur et l’Ultime</h3>
+          <p>L’achèvement du Suprême ouvre un autre âge. Le texte annonce que sa fonction encore non révélée se dévoilera dans l’espace extérieur, où d’immenses galaxies s’organisent déjà <span class="ref">112:7.16</span> ; les univers de cet âge bénéficieront de son ministère, mais ne participeront pas à son évolution <span class="ref">31:10.11</span>. L’apparition du Tout-Puissant à la fin du présent âge conduira au plein fonctionnement de la première Trinité expérientielle <span class="ref">106:3.2</span>, et, au-delà, à la recherche de Dieu l’Ultime.</p>
+          <ul class="etat">
+            <li class="e-sup"><span class="dot" aria-hidden="true"></span><span><b>Le Suprême</b>&nbsp;: souverain expérientiel du grand univers <span class="ref">117:2.7</span></span></li>
+            <li class="e-ult"><span class="dot" aria-hidden="true"></span><span><b>L’Ultime</b>&nbsp;: la nouvelle énigme des univers devenus parfaits <span class="ref">117:7.17</span></span></li>
+          </ul>
+          <blockquote class="cite e-ult" data-ref="117:7.17"><p>«&nbsp;Certainement, surement et inexorablement, l’énigme de la Déité émergente de Dieu l’Ultime mettra au défi les citoyens devenus parfaits des univers établis […]&nbsp;»</p><span class="ref">117:7.17</span></blockquote>
+        </li>
+      </ol>
+    </details>
+  </section>
+
+  <section id="contributions" class="feature" aria-labelledby="h-co">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · fascicules 115 à 117</p>
+      <h2 id="h-co">Ce qui fait grandir le Suprême</h2>
+      <p>Le Suprême ne grandit pas seul. Sa personne vient de la Trinité, son pouvoir des Créateurs Suprêmes, son mental de l’Acteur Conjoint, sa croissance des triodités <span class="ref">115:4.7</span> ; l’expérience de toute la création s’y ajoute <span class="ref">117:5.12</span>. Choisis une source pour voir ce qu’elle apporte.</p>
+      <p class="hint" id="co-aide">Touche un cercle du schéma ou un bouton. Au clavier&nbsp;: Tab jusqu’aux boutons, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="ui" id="co-ui" hidden>
+      <div class="tabs" id="co-tabs" role="tablist" aria-label="Ce qui contribue au Suprême" aria-describedby="co-aide">
+        <button type="button" class="tb e-per" role="tab" id="co-t-trinite" data-k="trinite" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>La Trinité du Paradis</button>
+        <button type="button" class="tb e-pou" role="tab" id="co-t-createurs" data-k="createurs" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les Créateurs Suprêmes</button>
+        <button type="button" class="tb e-men" role="tab" id="co-t-acteur" data-k="acteur" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>L’Acteur Conjoint</button>
+        <button type="button" class="tb e-sup" role="tab" id="co-t-triodites" data-k="triodites" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les triodités</button>
+        <button type="button" class="tb e-cre" role="tab" id="co-t-creatures" data-k="creatures" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les créatures</button>
+        <button type="button" class="tb e-sup" role="tab" id="co-t-ajusteurs" data-k="ajusteurs" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les Ajusteurs</button>
+        <button type="button" class="tb e-cre" role="tab" id="co-t-fils" data-k="fils" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les Fils descendants</button>
+        <button type="button" class="tb e-sup" role="tab" id="co-t-lui" data-k="lui" aria-controls="co-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Le Suprême lui-même</button>
+      </div>
+      <div class="opts">
+        <button type="button" class="chip calme-b" aria-pressed="false"><span class="tg" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip tv-lien" href="#co-texte">Version texte</a>
+      </div>
+    </div>
+    <div class="main2" id="co-main">
+      <figure class="co-fig">
+        <svg class="co-svg" id="co-svg" viewBox="0 0 400 352" role="img" aria-label="Ce qui contribue au Suprême : au centre l’Être Suprême, avec sa personne-esprit, son pouvoir et son mental ; autour, la Trinité du Paradis, l’Acteur Conjoint, les triodités, les Ajusteurs, les créatures, les Fils descendants et les Créateurs Suprêmes, chacun relié au centre ; une boucle rappelle que le Suprême participe lui-même à sa croissance." focusable="false">
+<g class="co-lns"><path class="co-ln k-per" data-k="trinite" d="M200 78L200 121"/><path class="co-fl k-per" data-k="trinite" d="M200 78L200 121"/><path class="co-ln k-men" data-k="acteur" d="M295.7 113.1L246 145.8"/><path class="co-fl k-men" data-k="acteur" d="M295.7 113.1L246 145.8"/><path class="co-ln k-gold" data-k="triodites" d="M320.7 198.7L254.1 186.2"/><path class="co-fl k-gold" data-k="triodites" d="M320.7 198.7L254.1 186.2"/><path class="co-ln k-gold" data-k="ajusteurs" d="M252.1 265.2L227.7 223.5"/><path class="co-fl k-gold" data-k="ajusteurs" d="M252.1 265.2L227.7 223.5"/><path class="co-ln k-cre" data-k="creatures" d="M147.9 265.2L172.3 223.5"/><path class="co-fl k-cre" data-k="creatures" d="M147.9 265.2L172.3 223.5"/><path class="co-ln k-cre" data-k="fils" d="M79.3 198.7L145.9 186.2"/><path class="co-fl k-cre" data-k="fils" d="M79.3 198.7L145.9 186.2"/><path class="co-ln k-pou" data-k="createurs" d="M104.3 113.1L154 145.8"/><path class="co-fl k-pou" data-k="createurs" d="M104.3 113.1L154 145.8"/></g>
+<g class="co-moi" data-k="lui"><path class="co-boucle" d="M141.7 154.8A62 62 0 1 1 152.5 215.9"/><path class="co-boucle-h" d="M152.5 215.9l-7.5 -2.5 2 7.5z"/></g>
+<g class="co-centre" data-k="lui"><circle class="co-hit" cx="200" cy="176" r="52"/><circle class="co-sup" cx="200" cy="176" r="52"/><path class="co-a k-per" d="M165.2 150.7A43 43 0 0 1 234.8 150.7"/><path class="co-a k-men" d="M239.3 158.5A43 43 0 0 1 204.5 218.8"/><path class="co-a k-pou" d="M195.5 218.8A43 43 0 0 1 160.7 158.5"/>
+<text class="co-t" x="200" y="173" text-anchor="middle">l’Être</text><text class="co-t" x="200" y="190" text-anchor="middle">Suprême</text></g>
+<g class="co-ns"><g class="co-n k-per" data-k="trinite"><circle class="co-hit" cx="200" cy="54" r="30"/><circle class="co-c" cx="200" cy="54" r="21"/><path class="co-i" transform="translate(200 54)" d="M0 -9L8.5 6H-8.5Z"/><text class="co-l" x="200" y="6" text-anchor="middle"><tspan x="200" dy="0">Trinité</tspan><tspan x="200" dy="16">du Paradis</tspan></text></g><g class="co-n k-men" data-k="acteur"><circle class="co-hit" cx="315.7" cy="99.9" r="30"/><circle class="co-c" cx="315.7" cy="99.9" r="21"/><path class="co-i" transform="translate(315.7 99.9)" d="M-8 -4c2.7-2.2 5.3-2.2 8 0s5.3 2.2 8 0M-8 1c2.7-2.2 5.3-2.2 8 0s5.3 2.2 8 0M-8 6c2.7-2.2 5.3-2.2 8 0s5.3 2.2 8 0"/><text class="co-l" x="315.7" y="51.9" text-anchor="middle"><tspan x="315.7" dy="0">Acteur</tspan><tspan x="315.7" dy="16">Conjoint</tspan></text></g><g class="co-n k-gold" data-k="triodites"><circle class="co-hit" cx="344.3" cy="203.1" r="30"/><circle class="co-c" cx="344.3" cy="203.1" r="21"/><path class="co-i" transform="translate(344.3 203.1)" d="M0 -9L7.8 4.5H-7.8ZM0 9L-7.8 -4.5H7.8Z"/><text class="co-l" x="344.3" y="242.1" text-anchor="middle"><tspan x="344.3" dy="0">Triodités</tspan></text></g><g class="co-n k-gold" data-k="ajusteurs"><circle class="co-hit" cx="264.2" cy="285.9" r="30"/><circle class="co-c" cx="264.2" cy="285.9" r="21"/><path class="co-i" transform="translate(264.2 285.9)" d="M0 -9.5c.8 4.9 3.9 8 8.8 8.8-4.9.8-8 3.9-8.8 8.8-.8-4.9-3.9-8-8.8-8.8 4.9-.8 8-3.9 8.8-8.8Z"/><text class="co-l" x="264.2" y="324.9" text-anchor="middle"><tspan x="264.2" dy="0">Ajusteurs</tspan></text></g><g class="co-n k-cre" data-k="creatures"><circle class="co-hit" cx="135.8" cy="285.9" r="30"/><circle class="co-c" cx="135.8" cy="285.9" r="21"/><path class="co-i" transform="translate(135.8 285.9)" d="M0 -9.5a3.4 3.4 0 1 1 0 6.8a3.4 3.4 0 1 1 0-6.8ZM-6.8 9.5c0-4.6 3-8 6.8-8s6.8 3.4 6.8 8Z"/><text class="co-l" x="135.8" y="324.9" text-anchor="middle"><tspan x="135.8" dy="0">Créatures</tspan></text></g><g class="co-n k-cre" data-k="fils"><circle class="co-hit" cx="55.7" cy="203.1" r="30"/><circle class="co-c" cx="55.7" cy="203.1" r="21"/><path class="co-i" transform="translate(55.7 203.1)" d="M0 -9V5M-5.5 0L0 6L5.5 0M-7 9.5H7"/><text class="co-l" x="55.7" y="242.1" text-anchor="middle"><tspan x="55.7" dy="0">Fils</tspan><tspan x="55.7" dy="16">descendants</tspan></text></g><g class="co-n k-pou" data-k="createurs"><circle class="co-hit" cx="84.3" cy="99.9" r="30"/><circle class="co-c" cx="84.3" cy="99.9" r="21"/><path class="co-i" transform="translate(84.3 99.9)" d="M0 -9.5L2.4 -2.8L9 -2.6L3.8 1.6L5.6 8.4L0 4.4L-5.6 8.4L-3.8 1.6L-9 -2.6L-2.4 -2.8Z"/><text class="co-l" x="84.3" y="51.9" text-anchor="middle"><tspan x="84.3" dy="0">Créateurs</tspan><tspan x="84.3" dy="16">Suprêmes</tspan></text></g></g>
+</svg>
+        <figcaption>Chaque trait relie une source au Suprême ; les arcs du centre figurent sa personne (violet), son pouvoir (cuivre) et son mental (bleu). Positions et couleurs sont des choix de la page.</figcaption>
+      </figure>
+      <div class="pn" id="co-pn" role="tabpanel" aria-labelledby="co-t-trinite" tabindex="-1" hidden></div>
+    </div>
+    <p class="sr-only" id="co-status" aria-live="polite"></p>
+
+    <details class="tv" id="co-texte" open>
+      <summary>Version texte du schéma</summary>
+      <ol class="tv-list">
+        <li id="co-trinite" class="e-per">
+          <p class="apporte">Apporte&nbsp;: la personne-esprit</p>
+          <h3 class="tv-h">La Trinité du Paradis</h3>
+          <p>La source du Suprême se trouve dans la Trinité, Déité éternelle, actuelle et indivise ; sa personne-esprit en est une branche <span class="ref">115:4.2</span>. La Trinité reste le centre de stabilité autour duquel sa croissance se développe <span class="ref">115:5.1</span>. Le Père, le Fils et l’Esprit n’agissent pas personnellement avec l’Être Suprême, mais collaborent avec lui en tant que Trinité <span class="ref">10:7.3</span>.</p>
+          <blockquote class="cite e-per" data-ref="115:5.1"><p>«&nbsp;L’Être Suprême dépend absolument de l’existence et de l’action de la Trinité du Paradis pour la réalité de sa nature personnelle et spirituelle.&nbsp;»</p><span class="ref">115:5.1</span></blockquote>
+        </li>
+        <li id="co-createurs" class="e-pou">
+          <p class="apporte">Apporte&nbsp;: le pouvoir</p>
+          <h3 class="tv-h">Les Créateurs Suprêmes</h3>
+          <p>Ce sont les trois premiers niveaux de Dieu le Septuple&nbsp;: les Fils Créateurs avec les Esprits Créatifs, les Anciens des Jours et les Sept Maitres Esprits <span class="ref">116:2.5–7 ; 116:2.12</span>. Leurs actes collectifs sont la source du pouvoir croissant du Tout-Puissant <span class="ref">116:2.2</span> ; pourtant, le Suprême n’est ni l’un d’eux ni leur ensemble <span class="ref">116:2.14</span>.</p>
+          <blockquote class="cite e-pou" data-ref="116:2.2"><p>«&nbsp;Dieu le Suprême tient de la Trinité du Paradis ses attributs d’esprit et de personnalité, mais il actualise son pouvoir dans les agissements des Fils Créateurs, des Anciens des Jours et des Maitres Esprits […]&nbsp;»</p><span class="ref">116:2.2</span></blockquote>
+        </li>
+        <li id="co-acteur" class="e-men">
+          <p class="apporte">Apporte&nbsp;: le mental</p>
+          <h3 class="tv-h">L’Acteur Conjoint</h3>
+          <p>L’Esprit Infini, en tant qu’Acteur Conjoint, a fait don du mental du Suprême, qui joint son pouvoir à sa personne <span class="ref">115:4.7</span>. Il compense aussi, sous bien des formes, l’inachèvement de cette Déité évolutionnaire, et entretient avec elle des relations très étroites <span class="ref">116:4.2</span>.</p>
+          <blockquote class="cite e-men" data-ref="116:3.2"><p>«&nbsp;L’effusion mentale de la Source-Centre Troisième unifie la personne spirituelle de Dieu le Suprême avec le pouvoir expérientiel du Tout-Puissant évolutionnaire.&nbsp;»</p><span class="ref">116:3.2</span></blockquote>
+        </li>
+        <li id="co-triodites" class="e-sup">
+          <p class="apporte">Apporte&nbsp;: la croissance</p>
+          <h3 class="tv-h">Les triodités</h3>
+          <p>Ce sont deux associations des Absolus&nbsp;: la triodité d’actualité, formée du Fils Éternel, de l’Esprit Infini et de l’Ile du Paradis, et la triodité de potentialité, formée de l’Absolu de Déité, de l’Absolu Non Qualifié et de l’Absolu Universel <span class="ref">115:3.7–8</span>. La personne du Suprême vient de la Trinité, mais sa croissance dérive de ces deux triodités, qui englobent toute l’actualité et toute la potentialité <span class="ref">115:4.1–2</span>.</p>
+          <blockquote class="cite e-sup" data-ref="115:6.4"><p>«&nbsp;Le mouvement du Suprême est double&nbsp;: en intension vers le Paradis et la Déité, et en extension vers l’illimité des Absolus de potentiel.&nbsp;»</p><span class="ref">115:6.4</span></blockquote>
+        </li>
+        <li id="co-creatures" class="e-cre">
+          <p class="apporte">Apporte&nbsp;: l’expérience</p>
+          <h3 class="tv-h">Les créatures</h3>
+          <p>Ce que vivent les créatures ne se perd pas. Les esprits-mentaux adjuvats, du moins ceux d’adoration et de sagesse, transmettent au Suprême, par Dieu le Septuple, les répercussions impersonnelles des décisions <span class="ref">117:5.7</span> ; l’Esprit de Vérité, le Saint-Esprit et les présences spirituelles du superunivers lui transmettent les valeurs qui émergent chez une personnalité ascendante <span class="ref">117:5.8</span>. Sur la manière dont tout cela s’enregistre en lui, l’auteur avance une hypothèse, sans en être tout à fait certain&nbsp;: par les Créateurs Suprêmes, et notamment par l’Esprit Créatif de chaque univers local <span class="ref">117:5.10</span>.</p>
+          <blockquote class="cite e-cre" data-ref="117:5.12"><p>«&nbsp;De cette manière, les multiples expériences de toute la création deviennent une partie de l’évolution de la Suprématie.&nbsp;»</p><span class="ref">117:5.12</span></blockquote>
+        </li>
+        <li id="co-ajusteurs" class="e-sup">
+          <p class="apporte">Apporte&nbsp;: l’expérience de l’esprit</p>
+          <h3 class="tv-h">Les Ajusteurs de Pensée</h3>
+          <p>Semblables au Père par nature, les Ajusteurs deviennent semblables au Suprême quand ils font l’expérience des opérations du temps <span class="ref">117:6.3</span>. Quand un Ajusteur rend spirituelle et éternelle une personnalité humaine, ses progrès étendent directement la souveraineté du Suprême <span class="ref">117:4.9</span>.</p>
+          <blockquote class="cite e-sup" data-ref="117:5.11"><p>«&nbsp;Même l’expérience de l’homme et de l’Ajusteur doit trouver un écho dans la divinité de Dieu le Suprême.&nbsp;»</p><span class="ref">117:5.11</span></blockquote>
+        </li>
+        <li id="co-fils" class="e-cre">
+          <p class="apporte">Apporte&nbsp;: l’expérience des descendants</p>
+          <h3 class="tv-h">Les Fils descendants</h3>
+          <p>Les Fils du Paradis qui s’effusent sous forme de créatures, Micaëls et Avonals, ajoutent à leur nature divine celle des créatures dont ils ont vécu la vie&nbsp;: en eux se révèle la possibilité, pour le Suprême, d’être à la fois créature et créateur <span class="ref">116:3.3</span>.</p>
+          <blockquote class="cite e-cre" data-ref="117:3.4"><p>«&nbsp;Même les expériences dans le grand univers des personnalités descendantes du Paradis forment la fraction expérientielle du Suprême complémentaire de sa totalisation des expériences ascendantes des pèlerins du temps.&nbsp;»</p><span class="ref">117:3.4</span></blockquote>
+        </li>
+        <li id="co-lui" class="e-sup">
+          <p class="apporte">Apporte&nbsp;: sa propre volonté</p>
+          <h3 class="tv-h">Le Suprême lui-même</h3>
+          <p>Il n’évolue pas seulement par les Créateurs et à partir de la Trinité&nbsp;: il évolue aussi par lui-même, comme l’âme humaine est cocréatrice de sa propre immortalisation <span class="ref">117:3.7</span>. Le texte le décrit comme paraissant être le catalyseur de toute croissance de l’univers, sans pouvoir, apparemment, déclencher une cause originelle <span class="ref">117:3.13</span>.</p>
+          <blockquote class="cite e-sup" data-ref="117:3.7"><p>«&nbsp;Dieu le Suprême est lui-même un participant volitif et créateur de l’actualisation de sa propre déité.&nbsp;»</p><span class="ref">117:3.7</span></blockquote>
+        </li>
+      </ol>
+    </details>
+
+    <div class="reste">
+      <article class="e-sup">
+        <h3>Ce qui reste au Suprême</h3>
+        <p>Les grands circuits d’énergie, de mental et d’esprit ne deviennent jamais la propriété de la personnalité qui monte&nbsp;: ils restent pour toujours une partie de la Suprématie <span class="ref">117:5.7</span>. Les conséquences impersonnelles de leur usage demeurent dans le cosmos vivant, la personne Suprême <span class="ref">117:5.12</span>.</p>
+      </article>
+      <article class="e-cre">
+        <h3>Ce que l’homme emporte</h3>
+        <p>Les conséquences sur son caractère de l’expérience acquise en employant ces circuits&nbsp;: les significations et les valeurs de chacune de ses décisions mises en acte font pour toujours partie de son caractère <span class="ref">117:5.13</span>.</p>
+        <blockquote class="cite e-cre" data-ref="117:5.13"><p>«&nbsp;Un caractère cosmiquement moral et divinement spirituel représente le capital accumulé des décisions personnelles de la créature […]&nbsp;»</p><span class="ref">117:5.13</span></blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section id="choix" aria-labelledby="h-ch">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicules 116 et 117</p>
+      <h2 id="h-ch">Ce que fait chaque choix humain</h2>
+      <p>Le texte donne à chaque décision humaine une portée cosmique. La mesure de l’évolution du Suprême repose en partie sur l’action de sagesse de chaque personnalité <span class="ref">117:4.2</span>, et l’homme a reçu en garde <span class="q" data-ref="117:4.12">«&nbsp;une fraction infinitésimale de l’avenir du Suprême&nbsp;»</span> <span class="ref">117:4.12</span>.</p>
+      <blockquote class="cite e-cre" data-ref="117:4.9"><p>«&nbsp;La grande responsabilité cosmique des personnalités conscientes d’elles-mêmes réside dans le fait que la Déité Suprême dépend, dans un certain sens, du choix de la volonté des mortels.&nbsp;»</p><span class="ref">117:4.9</span></blockquote>
+    </div>
+    <div class="chemins">
+      <article class="e-cre">
+        <p class="apporte">Un premier chemin</p>
+        <h3>S’il choisit la survie</h3>
+        <ul>
+          <li><span class="q" data-ref="117:4.2">«&nbsp;Quand un être humain choisit la survie éternelle, il cocrée la destinée&nbsp;»</span>, et le Dieu fini trouve en lui une réalisation de soi accrue <span class="ref">117:4.2</span>.</li>
+          <li>Sa personnalité demeure&nbsp;: l’homme ne fond pas son identité dans le Suprême <span class="ref">117:5.5</span>, et grandit en prenant part à cette aventure <span class="ref">117:5.2</span>.</li>
+          <li>Il emporte son caractère <span class="ref">117:5.13</span> et deviendra un jour l’un des finalitaires, que le texte appelle les enfants expérientiels du Suprême <span class="ref">112:7.16</span>.</li>
+        </ul>
+      </article>
+      <article class="refus e-abs">
+        <p class="apporte">Un second chemin</p>
+        <h3>S’il la refuse</h3>
+        <ul>
+          <li>La part du Suprême qui dépendait de ce choix subit un retard, compensé par une expérience substitutive ou collatérale <span class="ref">117:4.2</span>.</li>
+          <li>Sa personnalité est absorbée dans la surâme de la création et devient une partie de la Déité du Suprême ; elle ne réapparait jamais comme personnalité <span class="ref">117:4.2 ; 2:3.4</span>.</li>
+          <li>Tout ce qui était valable persiste, mais plus jamais sous la forme de cette personne <span class="ref">117:4.4</span> ; chez un être habité par un Ajusteur, les valeurs spirituelles survivent dans l’Ajusteur <span class="ref">2:3.4</span>.</li>
+        </ul>
+        <blockquote class="cite e-abs" data-ref="117:4.4"><p>«&nbsp;[…] la personnalité unique d’un non-ascendeur retourne au Suprême comme une goutte d’eau retourne à la mer.&nbsp;»</p><span class="ref">117:4.4</span></blockquote>
+      </article>
+    </div>
+    <div class="commun">
+      <p><b>Dans les deux cas</b>, chaque personnalité est <span class="q" data-ref="117:4.5">«&nbsp;une valeur significative irremplaçable dans le fini&nbsp;»</span> <span class="ref">117:4.5</span>, et le choix reste réel&nbsp;:</p>
+      <blockquote class="cite e-sup" data-ref="117:4.11"><p>«&nbsp;Un mortel ne peut détruire les valeurs suprêmes de l’existence humaine, mais il peut très nettement empêcher l’évolution de ces valeurs dans sa propre expérience personnelle.&nbsp;»</p><span class="ref">117:4.11</span></blockquote>
+    </div>
+    <h3 class="sub-h">Une morale du devoir et de l’amour</h3>
+    <div class="prose">
+      <p>Pour le texte, cette relation fonde une morale&nbsp;: <span class="q" data-ref="117:4.8">«&nbsp;La relation temporelle de l’homme avec le Suprême est le fondement de la moralité cosmique, la sensibilité universelle au devoir, et son acceptation.&nbsp;»</span> <span class="ref">117:4.8</span> Le grand circuit de l’amour part du Père, passe par les fils vers leurs frères, et se dirige vers le Suprême <span class="ref">117:6.10</span>&nbsp;: l’homme peut trouver le Père dans son cœur, mais il lui faut chercher le Suprême dans le cœur de tous les autres <span class="ref">117:6.23</span>. Le texte va jusqu’à dire que, quand le royaume de Dieu devient actuel dans le cœur de chaque individu d’un monde, c’est <span class="q" data-ref="118:10.17">«&nbsp;l’accès de l’Être Suprême à la souveraineté&nbsp;»</span> <span class="ref">118:10.17</span>.</p>
+      <p>Le fascicule 117 cite une maxime que le livre range ailleurs parmi celles de la vie morontielle <span class="ref">48:7.13</span>&nbsp;: <span class="q" data-ref="117:5.5">«&nbsp;L’acte est à nous, les conséquences sont à Dieu.&nbsp;»</span> <span class="ref">117:5.5</span> Le texte dit aussi que chaque décision humaine actualise une réalité nouvelle et ouvre une nouvelle capacité de croissance <span class="ref">115:3.16</span>.</p>
+    </div>
+    <h3 class="sub-h">L’homme et le Suprême, deux croissances semblables</h3>
+    <p class="sub-p">Le texte compare la croissance de l’homme à celle du Suprême, en précisant que l’homme, créature, ne lui est pas exactement semblable <span class="ref">117:3.6</span>&nbsp;:</p>
+    <table class="miroir">
+      <caption class="sr-only">L’homme et le Suprême, comparés par le texte</caption>
+      <thead><tr><td></td><th scope="col" class="h1"><span class="dot e-cre" aria-hidden="true"></span>L’homme</th><th scope="col" class="h2"><span class="dot e-sup" aria-hidden="true"></span>Le Suprême</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Un fondement absolu</th><td data-l="L’homme">l’Ajusteur de Pensée, fragment du Père</td><td data-l="Le Suprême">la Trinité du Paradis <span class="ref">116:3.4 ; 117:3.10</span></td></tr>
+        <tr><th scope="row">Ce qui grandit</th><td data-l="L’homme">l’âme morontielle</td><td data-l="Le Suprême">sa Déité <span class="ref">117:3.6–7</span></td></tr>
+        <tr><th scope="row">Par quoi</th><td data-l="L’homme">ses propres décisions, et l’Ajusteur</td><td data-l="Le Suprême">les actes des Créateurs Suprêmes, et lui-même <span class="ref">117:3.7</span></td></tr>
+        <tr><th scope="row">Ce qui en résulte</th><td data-l="L’homme">une nature de finalitaire</td><td data-l="Le Suprême">une nature de Déité <span class="ref">116:3.4</span></td></tr>
+      </tbody>
+    </table>
+    <div class="prose">
+      <blockquote class="cite e-sup" data-ref="117:3.10"><p>«&nbsp;Ce que la Trinité est pour Dieu le Suprême, l’Ajusteur de Pensée l’est pour l’homme en évolution.&nbsp;»</p><span class="ref">117:3.10</span></blockquote>
+    </div>
+    <p class="more">Le chemin de l’homme, de l’arrivée de l’Ajusteur à la fusion et à la carrière ascendante&nbsp;: <a href="destinee-humaine.html">La destinée humaine</a>.</p>
+  </section>
+
+  <section id="chercher" aria-labelledby="h-che">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · Fascicules 26, 56, 117 et 118</p>
+      <h2 id="h-che">Où trouver le Suprême ?</h2>
+      <p>On ne trouve pas le Suprême comme on trouve le Père. Un individu qui atteint la ressemblance divine peut trouver le Père ; mais aucune créature ne trouvera personnellement le Suprême avant l’époque, très lointaine, où toutes le trouveront ensemble <span class="ref">117:6.16 ; 117:6.21</span>.</p>
+    </div>
+    <ol class="path" aria-label="La découverte du Suprême, selon le texte">
+      <li><span class="pc"><b>Dans la vie humaine</b><span>les fruits de l’esprit</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Les capitales des superunivers</b><span>son pouvoir se comprend</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Les circuits extérieurs de Havona</b><span>sa personnalité se comprend</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Le sixième circuit</b><span>les guides de suprématie</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Les finalitaires du septième stade</b><span>une révélation, soupçonne l’auteur</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc fin"><b>Toutes les créatures ensemble</b><span>la lumière et la vie</span></span></li>
+    </ol>
+    <p class="sub-p hint">Fruits de l’esprit <span class="ref">117:6.17</span> ; superunivers et Havona <span class="ref">56:6.4 ; 118:2.2</span> ; sixième circuit <span class="ref">26:6.1–4</span> ; septième stade <span class="ref">117:6.18</span> ; toutes ensemble <span class="ref">117:6.16 ; 117:6.23</span>.</p>
+    <div class="two">
+      <div class="prose flat">
+        <p><b>Dans Havona.</b> Sur le sixième circuit, les ascendeurs sont tout près de la réalité spirituelle de Dieu le Suprême, et pourtant <span class="q" data-ref="26:6.3">«&nbsp;Nulle présence personnalisée de la Suprématie n’y est perceptible pour les ascendeurs.&nbsp;»</span> <span class="ref">26:6.2–3</span> Voir <a href="paradis-et-havona.html#circuits">les sept circuits de Havona</a>.</p>
+        <p><b>Même les finalitaires</b>, esprits du sixième stade, ne l’ont pas trouvé ; ils n’ont pas de chances de le trouver avant le septième stade <span class="ref">56:6.4</span>. L’auteur soupçonne que les Ajusteurs révèleront alors aux finalitaires la nature de Dieu le Suprême <span class="ref">117:6.18</span>.</p>
+      </div>
+      <div class="prose flat">
+        <p><b>Une Mère divine.</b> <span class="q" data-ref="117:6.2">«&nbsp;De même que Dieu est votre Père divin, de même le Suprême est votre Mère divine, en qui vous êtes nourri pendant toute votre vie de créature de l’univers.&nbsp;»</span> <span class="ref">117:6.2</span> L’âme morontielle est l’enfant de l’action du Père, par l’Ajusteur, et de la réaction du Suprême <span class="ref">117:6.5</span>.</p>
+        <p><b>Dès maintenant.</b> <span class="q" data-ref="117:6.17">«&nbsp;Les fruits de l’esprit sont la substance du Suprême tel qu’il est réalisable dans l’expérience humaine.&nbsp;»</span> <span class="ref">117:6.17</span></p>
+      </div>
+    </div>
+    <div class="prose">
+      <p><b>Dans les évènements ?</b> Le livre y voit, en partie, la main du Suprême&nbsp;: <span class="q" data-ref="118:10.20">«&nbsp;La providence est en partie le supercontrôle du Suprême inachevé, manifesté dans les univers inachevés.&nbsp;»</span> Elle reste donc partielle, parce que son actualisation est incomplète, et imprévisible, parce que l’attitude des créatures varie <span class="ref">118:10.20–22</span> ; et la plupart des évènements que les hommes appellent providentiels, ajoute-t-il, ne le sont pas <span class="ref">118:10.9</span>.</p>
+      <blockquote class="cite e-sup" data-ref="117:6.25"><p>«&nbsp;Les hommes ne trouvent pas le Suprême d’une façon soudaine et spectaculaire, comme un tremblement de terre ouvre des abimes dans les roches ; mais ils le trouvent lentement et patiemment, comme une rivière qui érode doucement le sol où elle coule.&nbsp;»</p><span class="ref">117:6.25</span></blockquote>
+      <p>Et le texte conclut&nbsp;: nul mortel connaissant Dieu n’est seul, car le Père marche à ses côtés, <span class="q" data-ref="117:6.27">«&nbsp;tandis que la route même qu’il poursuit est la présence du Suprême&nbsp;»</span> <span class="ref">117:6.27</span>.</p>
+    </div>
+  </section>
+
+  <section id="niveaux" class="feature" aria-labelledby="h-nv">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · Introduction, fascicules 106 et 117</p>
+      <h2 id="h-nv">Le Suprême parmi les niveaux de la Déité</h2>
+      <p>Le livre distingue trois niveaux de réalité&nbsp;: le fini, l’absonite et l’absolu <span class="ref">115:1.3</span>. À chacun correspond une Déité expérientielle&nbsp;: le Suprême pour le fini, l’Ultime pour l’absonite, l’Absolu pour l’absolu <span class="ref">0:2.15–18 ; 0:9.2</span>. Toutes trois étaient potentielles dans la Trinité du Paradis, existentielle <span class="ref">0:12.4</span>. Choisis un niveau.</p>
+      <p class="hint" id="nv-aide">Touche un cercle du schéma ou un bouton. Au clavier&nbsp;: Tab jusqu’aux boutons, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="ui" id="nv-ui" hidden>
+      <div class="tabs" id="nv-tabs" role="tablist" aria-label="Les niveaux de la Déité" aria-describedby="nv-aide">
+        <button type="button" class="tb e-ex" role="tab" id="nv-t-exist" data-k="exist" aria-controls="nv-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>La Trinité du Paradis</button>
+        <button type="button" class="tb e-sup" role="tab" id="nv-t-sup" data-k="sup" aria-controls="nv-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Le Suprême</button>
+        <button type="button" class="tb e-ult" role="tab" id="nv-t-ult" data-k="ult" aria-controls="nv-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>L’Ultime</button>
+        <button type="button" class="tb e-abs" role="tab" id="nv-t-abs" data-k="abs" aria-controls="nv-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>L’Absolu</button>
+        <button type="button" class="tb e-per" role="tab" id="nv-t-tri" data-k="tri" aria-controls="nv-pn" aria-selected="false" tabindex="-1"><span class="dot" aria-hidden="true"></span>Les Trinités</button>
+      </div>
+    </div>
+    <div class="main2" id="nv-main">
+      <figure class="nv-fig">
+        <svg class="nv-svg" id="nv-svg" viewBox="0 0 400 400" role="img" aria-label="Les niveaux de la Déité, en cercles emboités et sans échelle : au centre, le Paradis et la Trinité, existentiels ; autour, le grand univers, domaine fini du Suprême ; puis le maitre univers et ses niveaux d’espace extérieur, domaine absonite de l’Ultime ; au-delà, l’absolu." focusable="false">
+<defs><pattern id="nv-hach" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><path class="nv-hach" d="M0 0V7"/></pattern></defs>
+<g class="nv-b" data-k="abs"><circle class="nv-abs" cx="200" cy="200" r="194"/><circle class="nv-abs-h" cx="200" cy="200" r="194" fill="url(#nv-hach)"/></g>
+<g class="nv-b" data-k="ult"><circle class="nv-ult" cx="200" cy="200" r="152"/><circle class="nv-ext" cx="200" cy="200" r="119"/><circle class="nv-ext" cx="200" cy="200" r="128"/><circle class="nv-ext" cx="200" cy="200" r="137"/><circle class="nv-ext" cx="200" cy="200" r="146"/></g>
+<g class="nv-b" data-k="sup"><circle class="nv-sup" cx="200" cy="200" r="110"/><g class="nv-su"><ellipse cx="235.6" cy="126.1" rx="12" ry="7" transform="rotate(25.7 235.6 126.1)"/><ellipse cx="279.9" cy="181.8" rx="12" ry="7" transform="rotate(77.1 279.9 181.8)"/><ellipse cx="264.1" cy="251.1" rx="12" ry="7" transform="rotate(128.6 264.1 251.1)"/><ellipse cx="200" cy="282" rx="12" ry="7" transform="rotate(180 200 282)"/><ellipse cx="135.9" cy="251.1" rx="12" ry="7" transform="rotate(231.4 135.9 251.1)"/><ellipse cx="120.1" cy="181.8" rx="12" ry="7" transform="rotate(282.9 120.1 181.8)"/><ellipse cx="164.4" cy="126.1" rx="12" ry="7" transform="rotate(334.3 164.4 126.1)"/></g></g>
+<g class="nv-b" data-k="exist"><circle class="nv-hv" cx="200" cy="200" r="50"/><circle class="nv-hv2" cx="200" cy="200" r="40"/><circle class="nv-lueur" cx="200" cy="200" r="24"/>
+<ellipse class="nv-ile" cx="200" cy="200" rx="9" ry="10.5"/></g>
+<g class="nv-tri"><path d="M200 184L213.1 206.5H186.9Z"/><path d="M311.1 119.6L320.7 136.1H301.5Z"/><path d="M334.7 83.7L344.3 100.2H325.2Z"/></g>
+<text class="nv-l nv-l-abs" x="200" y="30" text-anchor="middle">l’Absolu · absolu</text>
+<text class="nv-l nv-l-ult" x="200" y="72" text-anchor="middle">l’Ultime · absonite</text>
+<text class="nv-l nv-l-sup" x="200" y="111" text-anchor="middle">le Suprême · fini</text>
+<text class="nv-l nv-l-ex" x="200" y="236" text-anchor="middle">Trinité</text>
+<text class="nv-s" x="200" y="386" text-anchor="middle">infinité</text>
+</svg>
+        <figcaption>Cercles emboités, sans échelle&nbsp;: le dessin figure des niveaux de réalité, pas des distances. Le grand univers, l’univers central et les sept superunivers, fait partie du maitre univers, qui embrasse aussi l’espace extérieur <span class="ref">0:0.6</span>.</figcaption>
+      </figure>
+      <div class="pn" id="nv-pn" role="tabpanel" aria-labelledby="nv-t-sup" tabindex="-1" hidden></div>
+    </div>
+    <p class="sr-only" id="nv-status" aria-live="polite"></p>
+
+    <details class="tv" id="nv-texte" open>
+      <summary>Version texte du schéma</summary>
+      <ol class="tv-list">
+        <li id="nv-exist" class="e-ex">
+          <p class="apporte">Existentiel · éternel</p>
+          <h3 class="tv-h">La Trinité du Paradis</h3>
+          <p>Le Père, le Fils et l’Esprit sont existentiels&nbsp;: ils sont de toute éternité <span class="ref">0:7.5</span>. Unis en Déité, ils forment la Trinité du Paradis, existentielle et infinie <span class="ref">0:12.2 ; 106:6.5</span> ; c’est pourquoi, dit le texte, se produit l’actualisation du Suprême, de l’Ultime et de l’Absolu <span class="ref">0:12.2</span>.</p>
+          <blockquote class="cite e-ex" data-ref="0:7.1"><p>«&nbsp;Dieu le Père, Dieu le Fils et Dieu l’Esprit sont éternels — sont des êtres existentiels — tandis que Dieu le Suprême, Dieu l’Ultime et Dieu l’Absolu sont des personnalités de Déité <i>en voie d’actualisation.</i>&nbsp;»</p><span class="ref">0:7.1</span></blockquote>
+        </li>
+        <li id="nv-sup" class="e-sup">
+          <p class="apporte">Fini · le grand univers</p>
+          <h3 class="tv-h">Le Suprême</h3>
+          <p>La Déité finie <span class="ref">117:4.1</span>, Dieu du temps et de l’espace <span class="ref">0:2.15</span>, dont le domaine est le grand univers, qu’il englobe <span class="ref">0:9.1</span>. Il est <span class="q" data-ref="106:5.1">«&nbsp;la pierre de couronnement de la réalité expérientielle-évolutionnaire&nbsp;»</span> <span class="ref">106:5.1</span>. Pour l’intelligence humaine, c’est aussi une limite&nbsp;: elle ne dépasse pas la conception de l’Être Suprême <span class="ref">115:3.4</span>.</p>
+          <blockquote class="cite e-sup" data-ref="117:6.19"><p>«&nbsp;Le Suprême n’est pas infini, mais il englobe probablement toute la fraction d’infinité qu’une créature finie pourra jamais réellement saisir. Comprendre plus que le Suprême, c’est être plus que fini !&nbsp;»</p><span class="ref">117:6.19</span></blockquote>
+        </li>
+        <li id="nv-ult" class="e-ult">
+          <p class="apporte">Absonite · le maitre univers</p>
+          <h3 class="tv-h">L’Ultime</h3>
+          <p>Dieu l’Ultime fonctionne sur les niveaux de l’absonite, dans le supertemps et l’espace transcendé <span class="ref">0:9.2</span> ; les quatre niveaux d’espace extérieur sont destinés à l’ultimité de la création <span class="ref">12:1.16</span>. Il émerge des potentiels du maitre univers, comme le Suprême se développe à partir de ceux du grand univers <span class="ref">0:9.1</span>, et le Suprême est indispensable à son émergence <span class="ref">118:0.9</span>. Les deux ne se confondent pas&nbsp;:</p>
+          <blockquote class="cite e-ult" data-ref="106:8.15"><p>«&nbsp;L’Ultime et le Suprême sont comparables, mais non identiques, et l’Ultime n’est pas simplement une amplification du Suprême.&nbsp;»</p><span class="ref">106:8.15</span></blockquote>
+        </li>
+        <li id="nv-abs" class="e-abs">
+          <p class="apporte">Absolu · au-delà du maitre univers</p>
+          <h3 class="tv-h">L’Absolu</h3>
+          <p>Le troisième niveau&nbsp;: Dieu l’Absolu, aujourd’hui existentiel en tant qu’Absolu de Déité <span class="ref">0:2.18</span>, expérientiel en actualisation mais existentiel en potentialité <span class="ref">0:7.5</span>. Le texte n’écrit que <span class="q" data-ref="0:9.4">«&nbsp;peut-être Dieu l’Absolu&nbsp;»</span> <span class="ref">0:9.4</span>, et la pleine fonction de la Trinité Absolue paraît déborder le maitre univers lui-même <span class="ref">106:6.2</span>.</p>
+          <blockquote class="cite e-abs" data-ref="106:7.5"><p>«&nbsp;La recherche de Dieu n’a pas de fin !&nbsp;»</p><span class="ref">106:7.5</span></blockquote>
+        </li>
+        <li id="nv-tri" class="e-per">
+          <p class="apporte">Trois Trinités</p>
+          <h3 class="tv-h">Les Trinités et le Suprême</h3>
+          <p>Le Suprême a son origine dans la Trinité du Paradis <span class="ref">116:2.14</span>. Il fera partie de la Trinité Ultime, avec les Personnalités Créatrices Suprêmes et les Architectes du Maitre Univers <span class="ref">0:12.6</span>, puis de la Trinité Absolue, avec Dieu l’Ultime et le Consommateur non révélé de la Destinée de l’Univers <span class="ref">0:12.7</span>. Le texte évoque encore une participation à la Trinité des Trinités, <span class="q" data-ref="117:7.11">«&nbsp;mais nous ne concevons pas d’une manière satisfaisante ce que cela signifie en réalité&nbsp;»</span> <span class="ref">117:7.11</span>.</p>
+          <p>Ni le Suprême ni l’Ultime ne représentent totalement la Trinité du Paradis ; chacun parait la représenter, pour son niveau <span class="ref">10:5.5</span>.</p>
+        </li>
+      </ol>
+    </details>
+
+    <a class="cta" href="atlas-3d.html#deite">Voir les niveaux de la Déité dans la vue 3D <span class="ar" aria-hidden="true">→</span></a>
+  </section>
+
+  <section id="septuple" aria-labelledby="h-sep">
+    <div class="sec-head">
+      <p class="eyebrow"><b>5</b> · Introduction, fascicules 56, 104 à 106 et 115 à 118</p>
+      <h2 id="h-sep">Dans Dieu le Septuple, parmi les sept Absolus</h2>
+      <p>Deux autres notions du livre éclairent la place du Suprême&nbsp;: Dieu le Septuple, l’approche de la Déité en sept niveaux, dont il est le niveau qui unifie, et les sept Absolus de l’Infinité, réalités éternelles dont il procède sans en faire partie.</p>
+    </div>
+    <h3 class="sub-h">Dieu le Septuple&nbsp;: le niveau qui unifie</h3>
+    <div class="prose">
+      <p>Pour compenser les limites des créatures, le Père a établi une approche de la Déité en sept niveaux <span class="ref">0:8.1–8</span>. Le Suprême en occupe le quatrième, entre les trois Créateurs Suprêmes et les trois Déités du Paradis <span class="ref">116:2.4–12</span> ; mais il n’est pas un échelon parmi d’autres&nbsp;:</p>
+      <blockquote class="cite e-sup" data-ref="0:7.8"><p>«&nbsp;Même à présent, l’Être Suprême évolue en tant qu’unification de personnalité subéternelle de la septuple manifestation de la Déité dans les segments d’espace-temps du grand univers.&nbsp;»</p><span class="ref">0:7.8</span></blockquote>
+    </div>
+    <ol class="septuple" aria-label="Les sept niveaux de Dieu le Septuple, dans l’ordre où l’homme les rencontre">
+      <li class="e-pou"><b>Les Fils Créateurs et les Esprits Créatifs</b><span>Créateurs Suprêmes</span></li>
+      <li class="e-pou"><b>Les Anciens des Jours</b><span>Créateurs Suprêmes</span></li>
+      <li class="e-pou"><b>Les Sept Maitres Esprits</b><span>Créateurs Suprêmes</span></li>
+      <li class="e-sup moi"><b>L’Être Suprême</b><span>il unifie le Septuple</span></li>
+      <li class="e-ex"><b>L’Acteur Conjoint</b><span>Déités du Paradis</span></li>
+      <li class="e-ex"><b>Le Fils Éternel</b><span>Déités du Paradis</span></li>
+      <li class="e-ex"><b>Le Père Universel</b><span>Déités du Paradis</span></li>
+    </ol>
+    <div class="prose">
+      <p>Cette Déité septuple <span class="q" data-ref="0:8.9">«&nbsp;personnalisera en son temps le pouvoir dans l’Être Suprême&nbsp;»</span> <span class="ref">0:8.9</span> ; ses phases, aujourd’hui diversement intégrées, <span class="q" data-ref="106:1.4">«&nbsp;sont également destinées à être unifiées dans le Suprême&nbsp;»</span> <span class="ref">106:1.4</span>, et l’approche progressive du Père par le Septuple est unifiée expérientiellement en Dieu le Suprême <span class="ref">56:7.8</span>. En retour, le Septuple est indispensable à l’aboutissement du Suprême <span class="ref">118:0.9</span>&nbsp;: c’est par lui que les valeurs de l’expérience lui sont transmises <span class="ref">117:5.7–8</span>. Et l’homme y a sa part&nbsp;: il <span class="q" data-ref="116:4.12">«&nbsp;parait nécessaire à la pleine fonction de Dieu le Septuple, dans la mesure où ce groupement de divinité culmine dans le Suprême en voie d’actualisation&nbsp;»</span> <span class="ref">116:4.12</span>.</p>
+    </div>
+    <p class="more">Dieu le Septuple en schéma, niveau par niveau&nbsp;: <a href="dieu-et-deite.html#s5">Dieu et la Déité</a>.</p>
+
+    <h3 class="sub-h" id="absolus">Le JE SUIS et les sept Absolus</h3>
+    <div class="prose">
+      <p>Le livre décrit la réalité totale comme existentielle en sept phases, sous l’aspect de sept Absolus coordonnés <span class="ref">0:3.1–8</span>, éternels et sans commencement&nbsp;: les sept relations primordiales à l’intérieur du JE SUIS <span class="ref">105:3.1</span>, concept qu’il dit être une concession philosophique au mental fini <span class="ref">0:3.23</span>. Le Suprême n’est pas l’un d’eux&nbsp;:</p>
+      <blockquote class="cite e-ex" data-ref="0:3.20"><p>«&nbsp;Le maximum de réalité de la Déité pleinement compréhensible aux créatures évolutionnaires finies est contenu dans l’Être Suprême. Toutefois, il y a des réalités antécédentes et éternelles, des réalités superfinies, qui sont ancestrales par rapport à cette Déité Suprême des créatures évolutionnaires de l’espace-temps.&nbsp;»</p><span class="ref">0:3.20</span></blockquote>
+      <p>Le fascicule 115 regroupe ces sept Absolus en trois phases, l’Originel, l’Actuel et le Potentiel <span class="ref">115:3.5–8</span>, et montre ce que chacune apporte au Suprême&nbsp;:</p>
+    </div>
+    <div class="absolus">
+      <article class="e-ex">
+        <p class="st">L’Originel</p>
+        <ul><li>la Source-Centre Première, le Père Universel</li></ul>
+        <p>Ce qui d’abord cause, puis équilibre le cycle de la réalité <span class="ref">115:3.12</span> ; de lui, le texte dit seulement&nbsp;: <span class="q" data-ref="115:3.10">«&nbsp;le Père est.&nbsp;»</span> <span class="ref">115:3.10</span></p>
+      </article>
+      <article class="e-per">
+        <p class="st">L’Actuel · triodité d’actualité</p>
+        <ul><li>la Source-Centre Deuxième, le Fils Éternel</li><li>la Source-Centre Troisième, l’Esprit Infini</li><li>l’Ile du Paradis</li></ul>
+        <p>Ils fondent le <i>fait</i> de la Suprématie&nbsp;: <span class="q" data-ref="115:7.3">«&nbsp;le pouvoir du Paradis, la personnalité du Fils et l’action du Conjoint&nbsp;»</span> <span class="ref">115:3.7 ; 115:7.3</span>.</p>
+      </article>
+      <article class="e-abs">
+        <p class="st">Le Potentiel · triodité de potentialité</p>
+        <ul><li>l’Absolu de Déité</li><li>l’Absolu Non Qualifié</li><li>l’Absolu Universel</li></ul>
+        <p>À eux est liée la <i>croissance</i> du Suprême <span class="ref">115:3.8 ; 115:7.3</span>.</p>
+      </article>
+    </div>
+    <div class="prose">
+      <p>Le Père, le Fils et l’Esprit, unis en Déité, forment la Trinité, d’où procède la personne du Suprême <span class="ref">115:4.2</span> ; et le Suprême est, dans le fini, la totalisation des qualifications de l’Absolu actuel et de l’Absolu potentiel <span class="ref">115:7.4</span>. Dans sa Déité, dit le texte, le Père-JE SUIS s’est libéré relativement complètement des limitations de l’infinité, de l’éternité et de l’absoluité <span class="ref">115:7.1</span>, si bien que, <span class="q" data-ref="104:5.12">«&nbsp;pour les créatures temporelles de l’espace, l’Être Suprême est une révélation de l’unité du JE SUIS&nbsp;»</span> <span class="ref">104:5.12</span>. Plus loin encore, l’union du Suprême, de l’Ultime et de l’Absolu pourrait, conjecture le texte, reconstituer fonctionnellement ce que le JE SUIS avait différencié en sept Absolus, une probabilité qu’il dit extrêmement lointaine <span class="ref">106:8.22</span>.</p>
+    </div>
+    <p class="more">Le JE SUIS et les sept Absolus en schéma&nbsp;: <a href="dieu-et-deite.html#s1">Dieu et la Déité</a>.</p>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les fascicules 115 à 117 sont présentés par un Puissant Messager en séjour temporaire sur Urantia <span class="ref">115:7.9 ; 116:7.7 ; 117:7.18</span> ; selon le livre, les Puissants Messagers sont des mortels qui ont achevé leur ascension, puis ont été embrassés par la Trinité <span class="ref">22:2.1–2</span>. Détail notable&nbsp;: l’auteur dit ne plus participer lui-même à la croissance qu’il décrit.
+        <blockquote class="cite" data-ref="117:2.4"><p>«&nbsp;[…] notre statut est fixé par l’embrassement de la Trinité, et notre expérience a cessé de se traduire par une croissance.&nbsp;»</p><span class="ref">117:2.4</span></blockquote>
+        Il marque souvent ses limites&nbsp;: <span class="q" data-ref="115:6.8">«&nbsp;Sans en être certains, nous croyons&nbsp;»</span> <span class="ref">115:6.8</span>. Le livre rapproche aussi le Suprême de traditions humaines&nbsp;: la Surâme universelle de la philosophie indienne a mené ses penseurs <span class="q" data-ref="94:3.4">«&nbsp;très près de la vérité de l’Être Suprême&nbsp;»</span>, sans laisser survivre la personne <span class="ref">94:3.4 ; 94:3.7</span> ; et, dans le résumé du taoïsme qu’il attribue à Ganid, le divin s’appelle justement <i>le Suprême</i>, <span class="q" data-ref="131:8.4">«&nbsp;la mère du monde&nbsp;»</span> <span class="ref">131:8.2–5</span>.</li>
+      <li><b>Lecture courante.</b> Ces fascicules sont réputés parmi les plus ardus du livre, et leurs lecteurs les abordent diversement. Pour certains, le Suprême donne un sens cosmique à la vie ordinaire&nbsp;: chaque choix compte, puisque le texte fonde sur cette relation une morale du devoir <span class="ref">117:4.8</span>. D’autres retiennent surtout l’image maternelle <span class="ref">117:6.2</span>, ou celle d’un Dieu qui dépend de ses créatures <span class="ref">117:4.13</span>. D’autres encore y voient une tension avec l’idée d’un Dieu immuable et tout-puissant ; le livre y répond en distinguant le Père, qui ne change pas <span class="ref">4:4.2</span>, du Suprême, Déité dérivée qui évolue <span class="ref">115:4.1</span>. Le sort des non-survivants, absorbés dans la surâme <span class="ref">117:4.2</span>, est lu tantôt comme une miséricorde, rien de valable n’étant perdu <span class="ref">117:4.4</span>, tantôt comme l’une des idées les plus déroutantes du livre. Dans le mouvement lui-même, plusieurs lecteurs ont rapproché le Suprême de la théologie du processus&nbsp;: Meredith Sprunger associe la nature <i>conséquente</i> de Dieu, chez Whitehead, au Suprême, et sa nature <i>primordiale</i> au JE SUIS, à la Trinité et aux Absolus ; James C. Mills voit cette nature conséquente pleinement exprimée dans l’Être Suprême ; Byron Belitsos parle d’une forte affinité (textes non datés, publiés par la <i lang="en">Urantia Book Fellowship</i>). Cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955 ; il dit ces fascicules rédigés en 1935 <span class="ref">119:8.9</span>.
+        <ul>
+          <li><b>Une idée de l’époque.</b> L’idée d’une divinité qui se fait avec le monde était alors discutée par des philosophes anglais et américains. Samuel Alexander, dans <i lang="en">Space, Time and Deity</i> (1920), voyait dans la déité la prochaine qualité que l’univers s’emploie à faire naitre. Alfred North Whitehead, dans <i lang="en">Process and Reality</i> (1929 ; en français <i>Procès et réalité</i>, Gallimard, 1995), donne à Dieu une nature primordiale et une nature conséquente, qui se complète par l’expérience du monde, et va jusqu’à écrire <span class="q" data-ext="Whitehead, Process and Reality, 1929">«&nbsp;<i lang="en">It is as true to say that God creates the World, as that the World creates God.</i>&nbsp;»</span> Le livre dit, de son côté&nbsp;: <span class="q" data-ref="31:10.12">«&nbsp;Nous évoluons en lui, et il évolue en nous.&nbsp;»</span> <span class="ref">31:10.12</span> La différence est nette&nbsp;: chez Whitehead, c’est Dieu lui-même qui a deux natures ; dans le livre, le Père ne change pas <span class="ref">4:4.2</span>, et c’est une Déité distincte, dérivée, qui évolue. Ces ressemblances sont des rapprochements&nbsp;: aucun emprunt à Whitehead ou à Alexander n’a été établi.</li>
+          <li><b>Un emprunt établi&nbsp;: Hartshorne.</b> Matthew Block, qui recense depuis 1992 les livres que le texte semble suivre, montre que la liste des sept types de perfection de l’Introduction <span class="ref">0:1.19–26</span> et l’ouverture du fascicule 116, sur une foi qui conforte les privilégiés et résigne les démunis <span class="ref">116:0.1</span>, suivent de près <i lang="en">Man’s Vision of God</i> (1941) de Charles Hartshorne, l’une des grandes figures de la théologie du processus. Il juge les sources beaucoup plus rares dans les fascicules 113 à 117, et ne publie aucun tableau de sources pour les fascicules 115 et 117. L’ouvrage de Hartshorne est postérieur aux dates que le livre se donne, 1934 et 1935 <span class="ref">31:10.22 ; 119:8.9</span>. Le critique Martin Gardner, ancien élève de Hartshorne à l’université de Chicago, reprend ce constat dans son livre de 1995.</li>
+          <li><b>D’autres échos.</b> Trois phrases que le fascicule 117 met entre guillemets, sans en indiquer la source <span class="ref">117:6.1–2</span>, rappellent la Bhagavad-Gita (13, 16) et le <i>Tao-tö-king</i> (14 et 34) ; or l’anthologie de Robert Ernest Hume (1931), source établie du résumé du taoïsme du fascicule 131, rendait déjà le Tao par <i lang="en">Supreme</i>. Le mot <i>surâme</i> (<i lang="en">oversoul</i>) rappelle l’essai d’Emerson, <i lang="en">The Over-Soul</i> (1841). Enfin, la phrase de Paul à Athènes, <span class="q" data-bible="Actes 17:28">«&nbsp;c’est en lui que nous avons la vie, le mouvement et l’être&nbsp;»</span> <span class="bref">Actes 17, 28</span>, devient dans le livre une phrase sur l’immanence du Suprême <span class="ref">117:3.12</span>.</li>
+          <li><b>Ce que le livre en dit.</b> Il annonce lui-même avoir pris pour base plus de mille concepts humains, et ne recourir à la révélation pure qu’à défaut <span class="ref">0:12.11–12</span>.</li>
+        </ul></li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Quand le Suprême sera achevé.</b> Aucune date&nbsp;: <span class="q" data-ref="117:7.14">«&nbsp;à cette époque extrêmement lointaine&nbsp;»</span> <span class="ref">117:7.14</span>, quand toutes les créatures le trouveront ensemble <span class="ref">117:6.16</span>.</li>
+        <li><b>Quand sa personnalité a commencé.</b> Des origines historiques, sans date <span class="ref">0:9.5</span> ; on sait seulement qu’il existait dans Havona avant la création des superunivers <span class="ref">56:6.2</span>.</li>
+        <li><b>Sa troisième fonction</b>, dans le maitre univers&nbsp;: les hypothèses divergent <span class="ref">116:0.5</span>.</li>
+        <li><b>Le fonctionnement de son mental.</b> Le mental cosmique est coordonné en lui <span class="q" data-ref="116:1.4">«&nbsp;par une technique inconnue d’association&nbsp;»</span> <span class="ref">116:1.4 ; 116:1.5</span>.</li>
+        <li><b>Comment l’expérience s’enregistre en lui.</b> Une hypothèse, que l’auteur avance sans en être tout à fait certain <span class="ref">117:5.10</span>.</li>
+        <li><b>Qui entraine l’autre.</b> Le Suprême s’actualise-t-il en réponse à l’évolution du grand univers, ou l’inverse ? Le texte laisse la question ouverte, certain seulement que créatures et univers évoluent dans le Suprême <span class="ref">117:2.9</span>.</li>
+        <li><b>Où il résidera.</b> Peut-être sur Uversa&nbsp;: <span class="q" data-ref="117:7.16">«&nbsp;ce n’est qu’une hypothèse&nbsp;»</span> <span class="ref">117:7.16 ; 55:12.5</span>.</li>
+        <li><b>Ses relations futures avec les Déités du Paradis</b>, une fois son évolution achevée&nbsp;: <span class="q" data-ref="10:7.3">«&nbsp;en réalité nous ne le savons pas&nbsp;»</span> <span class="ref">10:7.3</span>.</li>
+        <li><b>Le rôle futur des Fils Créateurs</b>, si le Suprême prend le contrôle direct des créations du temps <span class="ref">56:7.6</span>.</li>
+        <li><b>La croissance dans l’espace extérieur</b>&nbsp;: <span class="q" data-ref="117:2.6">«&nbsp;nous n’en savons rien&nbsp;»</span> <span class="ref">117:2.6</span>.</li>
+        <li><b>Comment une personnalité non survivante est absorbée</b> dans la surâme&nbsp;: le texte en dit l’issue, pas le mécanisme <span class="ref">117:4.2 ; 2:3.4</span>.</li>
+        <li><b>Les schémas.</b> Couleurs, positions, anneau d’or et animations sont des choix de la page ; le texte ne chiffre pas la croissance du Suprême.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="atlas-suite atlas-suite-seule"><div class="etape"><p>Thème</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div></div>
+<footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Soixante-dix-huit&nbsp;citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Les schémas sont des images symboliques&nbsp;: positions, couleurs et mouvements sont des choix de présentation, et l’anneau d’or de la croissance n’est pas une mesure.</p>
+    <p>Faits extérieurs au livre (philosophie du processus, sources humaines, interprétations de lecteurs)&nbsp;: résumés prudents, avec leur degré de certitude, sans prise de position.</p>
+    <p>Sources extérieures, consultées le 2026-11-08&nbsp;: A.&nbsp;N. Whitehead, <i lang="en">Process and Reality</i> (1929) ; S. Alexander, <i lang="en">Space, Time and Deity</i> (1920) ; tableaux de parallèles de Matthew Block (urantiabooksources.com) ; textes de lecteurs publiés par la <i lang="en">Urantia Book Fellowship</i> ; M. Gardner, <i lang="en">Urantia: The Great Cult Mystery</i> (1995).</p>
+  <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20L%E2%80%99%C3%8Atre%20Supr%C3%AAme&amp;page=L%E2%80%99%C3%8Atre%20Supr%C3%AAme%20%28etre-supreme.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
+<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a> <span aria-hidden="true">·</span> <a href="glossaire.html">glossaire des termes</a></p>
+</footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  /* ====================== 1. Moins d’animations ====================== */
+  /* Par défaut : la préférence du système ; les boutons des schémas la remplacent, et le choix est gardé si possible.
+     Les mouvements n’existent qu’avec la classe anime, posée ici : sans script, rien ne bouge. */
+  var CLE = "etre-supreme-calme";
+  function systeme() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function lire() { try { var v = window.localStorage.getItem(CLE); return v === "1" ? true : (v === "0" ? false : null); } catch (e) { return null; } }
+  function garder(v) { try { window.localStorage.setItem(CLE, v ? "1" : "0"); } catch (e) { /* choix non gardé */ } }
+  var calme = lire();
+  if (calme === null) calme = systeme();
+  var boutonsCalme = Array.prototype.slice.call(document.querySelectorAll(".calme-b"));
+  function appliquerCalme() {
+    var r = document.documentElement;
+    r.classList.toggle("calme", calme);
+    r.classList.toggle("anime", !calme);
+    boutonsCalme.forEach(function (b) { b.setAttribute("aria-pressed", String(calme)); });
+  }
+  appliquerCalme();
+  boutonsCalme.forEach(function (b) { b.addEventListener("click", function () { calme = !calme; garder(calme); appliquerCalme(); }); });
+
+  function defiler(el, bloc) { el.scrollIntoView({ block: bloc || "start", behavior: calme ? "auto" : "smooth" }); }
+  function titreDe(li) {
+    var h = li.querySelector(".tv-h"), n = h.querySelector(".tv-n");
+    return h.textContent.slice(n ? n.textContent.length : 0).trim();
+  }
+  function chipNav(classe, l1, l2, action) {
+    var b = document.createElement("button"), a = document.createElement("span"), c = document.createElement("span");
+    b.type = "button";
+    b.className = classe;
+    a.className = "cn-l";
+    c.className = "cn-t";
+    a.textContent = l1;
+    c.textContent = l2;
+    b.appendChild(a);
+    b.appendChild(c);
+    b.addEventListener("click", action);
+    return b;
+  }
+  function lienVersionTexte(lien, details) {
+    if (!lien || !details) return;
+    lien.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      details.open = true;
+      defiler(details);
+      var s = details.querySelector("summary");
+      if (s) s.focus({ preventScroll: true });
+    });
+  }
+
+  /* ====================== 2. Schéma 1 : la croissance, en six étapes ====================== */
+  /* Les textes de chaque étape sont dans la version texte (#cr-1 à #cr-6) : le panneau les reprend.
+     Le dessin change selon l’attribut data-step du SVG (règles CSS). */
+  (function () {
+    var ui = document.getElementById("cr-ui"), main = document.getElementById("cr-main"), svg = document.getElementById("cr-svg");
+    var pn = document.getElementById("cr-pn"), stepsEl = document.getElementById("cr-steps"), bar = document.getElementById("cr-bar");
+    var prev = document.getElementById("cr-prev"), next = document.getElementById("cr-next"), statut = document.getElementById("cr-status");
+    var tv = document.getElementById("cr-texte");
+    if (!ui || !main || !svg || !pn || !stepsEl) return;
+    var items = Array.prototype.slice.call(tv.querySelectorAll(".tv-list > li"));
+    var N = items.length, cur = -1, SB = [];
+
+    var show = function (i, annoncer) {
+      i = Math.max(0, Math.min(N - 1, i));
+      cur = i;
+      svg.setAttribute("data-step", String(i + 1));
+      SB.forEach(function (b, j) { if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+      prev.setAttribute("aria-disabled", String(i === 0));
+      next.setAttribute("aria-disabled", String(i === N - 1));
+      pn.textContent = "";
+      var k = document.createElement("p");
+      k.className = "pn-k";
+      k.textContent = "Étape " + (i + 1) + " sur " + N;
+      pn.appendChild(k);
+      Array.prototype.forEach.call(items[i].children, function (c) { pn.appendChild(c.cloneNode(true)); });
+      var nav = document.createElement("div");
+      nav.className = "pn-nav";
+      if (i < N - 1) nav.appendChild(chipNav("chip fort", "Étape suivante →", titreDe(items[i + 1]), function () { aller(i + 1); }));
+      else nav.appendChild(chipNav("chip", "Fin du schéma", "Revoir depuis le début ↺", function () { aller(0); }));
+      pn.appendChild(nav);
+      if (annoncer && statut) statut.textContent = "Étape " + (i + 1) + " sur " + N + " : " + titreDe(items[i]);
+    };
+    var aller = function (j) {                    /* depuis le bas du panneau : on remonte voir le dessin */
+      show(j, true);
+      if (bar.getBoundingClientRect().top < 0) defiler(bar);
+      SB[cur].focus({ preventScroll: true });
+    };
+
+    items.forEach(function (li, i) {
+      var l = document.createElement("li"), b = document.createElement("button");
+      b.type = "button";
+      b.textContent = String(i + 1);
+      b.setAttribute("aria-label", "Étape " + (i + 1) + " : " + titreDe(li));
+      b.addEventListener("click", function () { show(i, true); });
+      l.appendChild(b);
+      stepsEl.appendChild(l);
+      SB.push(b);
+    });
+    prev.addEventListener("click", function () { if (cur > 0) show(cur - 1, true); });
+    next.addEventListener("click", function () { if (cur < N - 1) show(cur + 1, true); });
+    bar.addEventListener("keydown", function (ev) {
+      var j = null;
+      if (ev.key === "ArrowRight") j = cur + 1;
+      else if (ev.key === "ArrowLeft") j = cur - 1;
+      else if (ev.key === "Home") j = 0;
+      else if (ev.key === "End") j = N - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      j = Math.max(0, Math.min(N - 1, j));
+      if (j !== cur) show(j, true);
+      if (SB.indexOf(document.activeElement) >= 0) SB[j].focus();
+    });
+    lienVersionTexte(ui.querySelector(".tv-lien"), tv);
+
+    ui.hidden = false;                              /* sans JavaScript : le dessin (étape 5) et la version texte */
+    Array.prototype.forEach.call(document.querySelectorAll("#croissance .sans-js"), function (e) { e.hidden = true; });
+    pn.hidden = false;
+    main.classList.add("on");
+    if (tv && location.hash !== "#cr-texte") tv.open = false;
+    show(0, false);
+  })();
+
+  /* ====================== 3. Schémas 2 et 3 : onglets ====================== */
+  /* Chaque onglet reprend dans le panneau le contenu de l’élément correspondant de la version texte
+     (#co-trinite…, #nv-exist…) ; le dessin suit l’attribut data-sel du SVG. */
+  function onglets(o) {
+    var ui = document.getElementById(o.ui), main = document.getElementById(o.main), svg = document.getElementById(o.svg);
+    var pn = document.getElementById(o.pn), tabsEl = document.getElementById(o.tabs), statut = document.getElementById(o.status);
+    var tv = document.getElementById(o.texte);
+    if (!ui || !main || !svg || !pn || !tabsEl || !tv) return;
+    var tabs = Array.prototype.slice.call(tabsEl.querySelectorAll("[role=\"tab\"]"));
+    var ordre = tabs.map(function (t) { return t.getAttribute("data-k"); });
+    var cur = -1;
+    var li = function (k) { return document.getElementById(o.prefixe + k); };
+
+    var choisir = function (i, opt) {
+      opt = opt || {};
+      i = Math.max(0, Math.min(ordre.length - 1, i));
+      var k = ordre[i], el = li(k);
+      if (!el) return;
+      cur = i;
+      tabs.forEach(function (t, j) {
+        t.setAttribute("aria-selected", String(j === i));
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      svg.setAttribute("data-sel", k);
+      pn.setAttribute("aria-labelledby", tabs[i].id);
+      pn.textContent = "";
+      var kick = document.createElement("p");
+      kick.className = "pn-k";
+      kick.textContent = (i + 1) + " sur " + ordre.length;
+      pn.appendChild(kick);
+      Array.prototype.forEach.call(el.children, function (c) { pn.appendChild(c.cloneNode(true)); });
+      pn.className = "pn " + (el.className || "");
+      var nav = document.createElement("div");
+      nav.className = "pn-nav";
+      var suiv = i < ordre.length - 1 ? i + 1 : 0;
+      nav.appendChild(chipNav("chip fort", i < ordre.length - 1 ? "Suivant →" : "Revenir au début ↺", titreDe(li(ordre[suiv])), function () {
+        choisir(suiv, { annoncer: true });
+        pn.focus({ preventScroll: true });
+        if (pn.getBoundingClientRect().top < 0) defiler(pn);
+      }));
+      pn.appendChild(nav);
+      if (opt.annoncer && statut) statut.textContent = titreDe(el) + ", " + (i + 1) + " sur " + ordre.length;
+      if (opt.focus) tabs[i].focus();
+      if (opt.defiler) {                            /* sur téléphone, le panneau est sous le dessin */
+        var r = pn.getBoundingClientRect();
+        if (r.top > window.innerHeight - 120) defiler(pn, "nearest");
+      }
+    };
+
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { choisir(i); }); });
+    tabsEl.addEventListener("keydown", function (ev) {
+      var j = null;
+      if (ev.key === "ArrowRight" || ev.key === "ArrowDown") j = cur + 1;
+      else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") j = cur - 1;
+      else if (ev.key === "Home") j = 0;
+      else if (ev.key === "End") j = ordre.length - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      choisir(j, { focus: true });
+    });
+    svg.addEventListener("click", function (ev) {
+      var e = ev.target && ev.target.closest ? ev.target.closest("[data-k]") : null;
+      if (!e) return;
+      var i = ordre.indexOf(e.getAttribute("data-k"));
+      if (i >= 0) choisir(i, { annoncer: true, defiler: true });
+    });
+    lienVersionTexte(ui.querySelector(".tv-lien"), tv);
+
+    ui.hidden = false;                              /* sans JavaScript : le dessin et la version texte seulement */
+    pn.hidden = false;
+    main.classList.add("on");
+    if (location.hash !== "#" + o.texte) tv.open = false;
+    choisir(Math.max(0, ordre.indexOf(o.depart)));
+  }
+  onglets({ ui: "co-ui", main: "co-main", svg: "co-svg", pn: "co-pn", tabs: "co-tabs", status: "co-status", texte: "co-texte", prefixe: "co-", depart: "trinite" });
+  onglets({ ui: "nv-ui", main: "nv-main", svg: "nv-svg", pn: "nv-pn", tabs: "nv-tabs", status: "nv-status", texte: "nv-texte", prefixe: "nv-", depart: "sup" });
+
+  /* ====================== 4. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script src="assets/refs-urantia.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,966 @@
+<title>L'évolution de la religion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : une frise en huit étapes (fascicules 85 à 92), de la peur à l’amour, puis deux schémas.
+   Le dégradé des étapes, de l’indigo à l’or, reprend la formule du texte (90:0.3) : sa répartition est un choix
+   de la page. Terre : religion évolutionnaire ; or : religion révélée. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* l’amour, la révélation ; accent de sélection */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --gold-ui: #9E6B00;  /* or des repères d’interface : 3:1 au moins */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  /* Les huit étapes de la frise : de la peur (indigo) à l’amour (or) */
+  --s1: #3E4C8A; --s2: #4F4796; --s3: #64429A; --s4: #7C3F8E;
+  --s5: #93406F; --s6: #A2493F; --s7: #9C5A12; --s8: #8A6500;
+  --on-s: #FFFFFF;     /* icône posée sur une étape active */
+  /* Religion évolutionnaire (terre) et révélée (or) */
+  --evo: #8C5A36; --evo-ink: #7A4B2A; --evo-soft: #F6EDE5;
+  --rev: #A8740C; --rev-ink: #8A5A00; --rev-soft: #FBF4E4;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --s1: #8FA2F0; --s2: #A39AF2; --s3: #BA98F0; --s4: #D494E0; --s5: #EE93BC; --s6: #F5A08E; --s7: #F2B163; --s8: #EDC34F;
+    --on-s: #0C1120;
+    --evo: #D9A47C; --evo-ink: #E2B48F; --evo-soft: #2A1E17;
+    --rev: #EDB03A; --rev-ink: #F4C664; --rev-soft: #221F17;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --s1: #8FA2F0; --s2: #A39AF2; --s3: #BA98F0; --s4: #D494E0; --s5: #EE93BC; --s6: #F5A08E; --s7: #F2B163; --s8: #EDC34F;
+  --on-s: #0C1120;
+  --evo: #D9A47C; --evo-ink: #E2B48F; --evo-soft: #2A1E17;
+  --rev: #EDB03A; --rev-ink: #F4C664; --rev-soft: #221F17;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; }
+.ref a.ref-lien { white-space: nowrap; }
+blockquote.cite > .ref a.ref-lien { padding-block: 14px; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; color: var(--c, currentColor); }
+.ext::after { content: " ↗"; font-size: .85em; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); flex: none; }
+
+/* Les étapes : couleur (--c) et fond doux (--soft) */
+.s1 { --c: var(--s1); } .s2 { --c: var(--s2); } .s3 { --c: var(--s3); } .s4 { --c: var(--s4); }
+.s5 { --c: var(--s5); } .s6 { --c: var(--s6); } .s7 { --c: var(--s7); } .s8 { --c: var(--s8); }
+.s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .t1, .t2, .t3 { --soft: var(--tint); }
+@supports (color: color-mix(in srgb, red 50%, blue)) {
+  .s1, .s2, .s3, .s4, .s5, .s6, .s7, .s8, .t1, .t2, .t3 { --soft: color-mix(in srgb, var(--c) 13%, var(--sheet)); }
+}
+.e-evo { --c: var(--evo); --soft: var(--evo-soft); }
+.e-rev { --c: var(--rev); --soft: var(--rev-soft); }
+.grad { height: 8px; border-radius: 999px; background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6), var(--s7), var(--s8), var(--gold)); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 56ch; }
+.hero blockquote.cite { max-width: 60ch; }
+.ctx-link { font-size: .98rem; color: var(--muted); }
+.ctx-link a { padding-block: 12px; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.codebox .ends { display: flex; justify-content: space-between; gap: 10px; font: 500 .74rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: -4px; }
+.codebox .ends .ic { width: .95rem; height: .95rem; vertical-align: -0.18em; }
+.codebox .ends .pe { --c: var(--s1); }
+.codebox .ends .am { --c: var(--gold-ui); }
+.codebox .kd { color: var(--muted); font-size: .86rem; line-height: 1.4; }
+.keys { list-style: none; margin: 0; padding: 12px 0; display: grid; gap: 10px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.35; }
+.keys .dot { grid-row: span 2; width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--soft); border: 1.5px solid var(--c); }
+.keys .dot .ic { width: 1.05rem; height: 1.05rem; }
+.keys .kd2 { color: var(--muted); font-size: .86rem; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; align-items: baseline; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15.5rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; min-height: 44px; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.q i { font-style: italic; }
+.sub-h { margin-top: 34px; font-size: 1.55rem; }
+.sub-p { margin-top: 10px; max-width: 74ch; }
+
+/* ==================== La frise ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 22px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.fr { display: grid; gap: 16px; }
+.fr-top { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "prev opts next"; align-items: center; gap: 10px; }
+.sc-nav { appearance: none; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); border-radius: 999px; padding: 9px 16px; min-height: 44px; font: 500 .98rem/1.1 var(--font-body); cursor: pointer; white-space: nowrap; }
+.sc-nav:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.sc-nav[aria-disabled="true"] { opacity: .38; cursor: default; }
+.sc-nav[aria-disabled="true"]:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+#fr-prev { grid-area: prev; } #fr-next { grid-area: next; }
+.fr-opts { grid-area: opts; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 8px 10px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .88rem/1.2 var(--font-body); padding: 8px 13px; min-height: 44px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip .sw { width: 30px; height: 16px; border-radius: 999px; border: 1.5px solid currentColor; position: relative; flex: none; }
+.chip .sw::after { content: ""; position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform .2s ease; }
+.chip[aria-pressed="true"] .sw::after { transform: translateX(13px); }
+
+.rail-box { display: grid; gap: 12px; padding: 16px 14px 14px; border: 1px solid var(--rule); border-radius: 12px; background: var(--paper); }
+.rail-ends { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 .74rem/1.2 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.rail-ends span { display: inline-flex; align-items: center; gap: 6px; }
+.rail-ends .ic { width: 1rem; height: 1rem; }
+.rail-ends .pe { --c: var(--s1); }
+.rail-ends .am { --c: var(--gold-ui); }
+.rail-grad { position: relative; height: 8px; margin: 0 10px; }
+.rail-grad .grad { height: 100%; }
+.rail-mark { position: absolute; top: 50%; left: calc(var(--p, 0) * 100%); width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--sheet); border: 3px solid var(--ink); transition: left .55s cubic-bezier(.22, .7, .2, 1); }
+.rail-wrap { position: relative; }
+.rail { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0 4px; position: relative; }
+.rail-line, .rail-fill { position: absolute; top: 22px; left: 6.25%; height: 3px; margin-top: -1.5px; border-radius: 3px; pointer-events: none; }
+.rail-line { right: 6.25%; background: var(--rule); }
+.rail-fill { width: calc(87.5% * var(--p, 0)); background: linear-gradient(90deg, var(--s1), var(--s2), var(--s3), var(--s4), var(--s5), var(--s6), var(--s7), var(--s8)); background-size: calc(100% / max(var(--p, 0), .001)) 100%; transition: width .55s cubic-bezier(.22, .7, .2, 1); }
+.rail li { position: relative; z-index: 1; display: flex; justify-content: center; min-width: 0; }
+.st { appearance: none; border: 0; background: none; padding: 0 2px 4px; margin: 0; color: var(--ink); font: inherit; cursor: pointer; display: grid; justify-items: center; align-content: start; gap: 8px; min-width: 44px; max-width: 100%; text-align: center; border-radius: 10px; }
+.st-dot { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--c); color: var(--c); transition: transform .3s ease, background-color .3s ease, box-shadow .3s ease; }
+.st-dot .ic { width: 22px; height: 22px; color: inherit; }
+.st-n { font: 500 .72rem/1 var(--font-mono); color: var(--muted); letter-spacing: .04em; }
+.st-l { font-size: .84rem; line-height: 1.2; font-weight: 500; overflow-wrap: anywhere; hyphens: auto; }
+.st:hover .st-dot { box-shadow: 0 0 0 4px var(--soft); }
+.st[aria-current="step"] .st-dot { background: var(--c); color: var(--on-s); transform: scale(1.08); box-shadow: 0 0 0 4px var(--soft); }
+.st[aria-current="step"] .st-l { font-weight: 700; }
+.st[aria-current="step"] .st-n { color: var(--ink); }
+.st:focus-visible { outline-offset: 2px; }
+.rail-note { font-size: .84rem; color: var(--muted); line-height: 1.4; }
+
+.fr-panel { --c: var(--s1); background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 12px; padding: 18px 20px 20px; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 14px 26px; align-items: start; }
+.fr-panel.in { animation: fr-in .4s ease both; }
+@keyframes fr-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.fp-main, .fp-side { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.fp-n { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.fp-n b { color: var(--ink); font-weight: 500; }
+.fr-panel .tv-h { font-size: 1.62rem; align-items: center; }
+.fr-panel .tv-h .tv-n { display: none; }
+.fr-panel .tv-h .ic { width: 1.6rem; height: 1.6rem; color: var(--c); }
+.fp-nav { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.fp-nav .chip { min-height: 44px; text-align: left; display: inline-grid; gap: 2px; justify-items: start; padding: 8px 14px 9px; border-radius: 12px; max-width: 100%; }
+.fp-nav .cn-l { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
+.fp-nav .cn-t { font-weight: 700; font-size: .95rem; }
+.fp-nav .chip.fort { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.fp-nav .chip.fort:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+
+/* Contenu d’une étape (version texte et légende) */
+.tv-meta { font-size: .86rem; color: var(--muted); }
+.trace { font-size: .92rem; border-top: 1px dashed var(--rule); padding-top: 10px; }
+.trace b { font-weight: 700; }
+.voir { font-size: .92rem; }
+.voir a:not(.ref-lien) { padding-block: 12px; }
+.fr-horizon { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 14px; align-items: start; background: var(--gold-soft); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 12px; padding: 14px 18px 16px; }
+.fr-horizon .hz-ic { --c: var(--gold-ui); width: 2.2rem; height: 2.2rem; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--gold-ui); grid-row: span 2; }
+.fr-horizon .hz-ic .ic { width: 1.2rem; height: 1.2rem; }
+.fr-horizon h3 { font-size: 1.3rem; }
+.fr-horizon p { font-size: .96rem; }
+
+/* Version texte */
+.tv { border-top: 1px solid var(--rule); padding-top: 12px; }
+.tv summary { cursor: pointer; font: 600 1.2rem/1.3 var(--font-display); padding-block: 8px; min-height: 44px; display: flex; align-items: center; }
+.tv-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 26px; max-width: 80ch; }
+.tv-list > li { display: grid; gap: 8px; padding-left: 14px; border-left: 3px solid var(--c); }
+.tv-h { font-size: 1.3rem; display: flex; gap: 10px; align-items: baseline; }
+.tv-n { font: 600 .85rem/1 var(--font-mono); color: var(--gold-ink); }
+
+/* ==================== Religion évolutionnaire et religion révélée ==================== */
+.flux { margin: 24px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .9fr) minmax(0, 1fr); gap: 0; align-items: stretch; }
+.fx-col { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 12px; padding: 16px 16px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.fx-k { display: flex; align-items: center; gap: 9px; font: 600 1.32rem/1.15 var(--font-display); }
+.fx-k .ic { width: 1.3rem; height: 1.3rem; }
+.fx-s { font-size: .93rem; }
+.fx-list { margin: 0; padding-left: 18px; display: grid; gap: 4px; font-size: .9rem; }
+.revs { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: rv; }
+.revs li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 0 8px; align-items: start; font-size: .9rem; line-height: 1.35; }
+.revs li::before { counter-increment: rv; content: counter(rv); width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; background: var(--rev-soft); border: 1.5px solid var(--rev); font: 600 .8rem/1 var(--font-mono); color: var(--ink); }
+.revs li.cinq::before { background: var(--rev); color: var(--on-gold); }
+.revs b { font-weight: 700; }
+.fx-mid { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 4px; padding: 0 6px; }
+.fx-ar { font: 500 1.5rem/1 var(--font-mono); color: var(--muted); text-align: center; }
+.fx-ar.v { display: none; }
+.fx-meet { background: linear-gradient(135deg, var(--evo-soft), var(--rev-soft)); border: 2px solid var(--rule); border-radius: 14px; padding: 14px 14px 16px; display: grid; gap: 8px; text-align: center; }
+.fx-meet b { font-family: var(--font-display); font-size: 1.22rem; line-height: 1.2; }
+.fx-meet p { font-size: .9rem; }
+.fx-meet ol { margin: 0; padding: 0; list-style: decimal inside; display: grid; gap: 3px; font-size: .84rem; color: var(--muted); }
+.flux-cap { grid-column: 1 / -1; margin-top: 10px; font-size: .84rem; color: var(--muted); max-width: 80ch; }
+
+.cmp-wrap { margin-top: 28px; }
+table.cmp { width: 100%; border-collapse: separate; border-spacing: 0 6px; table-layout: fixed; font-size: .93rem; line-height: 1.4; }
+.cmp caption { text-align: left; font: 600 1.4rem/1.2 var(--font-display); padding-bottom: 6px; caption-side: top; }
+.cmp thead th { font: 600 1.05rem/1.2 var(--font-display); text-align: left; padding: 8px 12px; border-bottom: 3px solid var(--c); }
+.cmp thead th .ic { width: 1.1rem; height: 1.1rem; margin-right: 6px; }
+.cmp th.asp { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 10px 2px 0; }
+.cmp td { vertical-align: top; padding: 9px 12px 10px; background: var(--soft); border-left: 3px solid var(--c); }
+.cmp td + td { border-left-width: 3px; }
+.cmp .commun td { background: var(--sheet); border: 1px dashed var(--rule); text-align: center; }
+
+.formes { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.formes li { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c); border-radius: 10px; padding: 12px 14px 14px; display: grid; gap: 6px; align-content: start; font-size: .93rem; line-height: 1.4; min-width: 0; }
+.formes b { font-family: var(--font-display); font-size: 1.18rem; font-weight: 600; line-height: 1.15; }
+.formes .f1 { --c: var(--s2); } .formes .f2 { --c: var(--s5); } .formes .f3 { --c: var(--gold-ui); }
+
+/* ==================== La religion vécue ==================== */
+.vecue { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; margin-top: 24px; align-items: start; }
+.nest { margin: 0; display: grid; gap: 10px; }
+.n1, .n2, .n3 { border-radius: 14px; padding: 14px 14px 16px; display: grid; gap: 8px; }
+.n1 { background: var(--sheet); border: 1px solid var(--rule); }
+.n2 { background: var(--tint); border: 1px solid var(--rule); }
+.n3 { background: var(--gold-soft); border: 2px solid var(--gold-ui); }
+.n-k { font: 600 1.2rem/1.15 var(--font-display); }
+.n-s { font-size: .9rem; color: var(--muted); }
+.n3 .n-s { color: var(--ink); }
+.n-g { font: 500 .7rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.nest figcaption { font-size: .84rem; color: var(--muted); line-height: 1.4; }
+.v-side { display: grid; gap: 14px; }
+.v-card { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 10px; min-width: 0; }
+.v-card h3 { font-size: 1.3rem; }
+.v-card p { font-size: .95rem; }
+.duo-fc { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 8px; align-items: stretch; }
+.duo-fc > div { border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; display: grid; gap: 4px; align-content: start; font-size: .88rem; line-height: 1.35; background: var(--paper); }
+.duo-fc > div b { font-family: var(--font-display); font-size: 1.12rem; font-weight: 600; }
+.duo-fc .foi { border-color: var(--gold-ui); background: var(--gold-soft); }
+.duo-fc .fl { align-self: center; font: 500 1.3rem/1 var(--font-mono); color: var(--muted); }
+.trois { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; counter-reset: tr; }
+.trois li { display: grid; grid-template-columns: 1.7rem minmax(0, 1fr); gap: 0 10px; align-items: center; font-size: .93rem; }
+.trois li::before { counter-increment: tr; content: counter(tr); width: 1.7rem; height: 1.7rem; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--c); background: var(--soft); font: 600 .82rem/1 var(--font-mono); color: var(--ink); }
+.trois .t1 { --c: var(--s3); } .trois .t2 { --c: var(--s6); } .trois .t3 { --c: var(--gold-ui); }
+.arc { margin-top: 26px; display: grid; gap: 8px; max-width: 84ch; }
+.arc .ends { display: flex; justify-content: space-between; gap: 10px; font: 500 .74rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.arc p { font-size: .96rem; }
+.triade { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.triade li { border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px 12px; background: var(--sheet); display: grid; gap: 3px; font-size: .9rem; line-height: 1.35; min-width: 0; }
+.triade b { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+.triade .tr-r { border-color: var(--gold-ui); background: var(--gold-soft); }
+
+/* ==================== Les religions du monde ==================== */
+.ganid { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; counter-reset: gd; }
+.ganid li { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 9px 10px 10px; display: grid; gap: 2px; font-size: .9rem; line-height: 1.25; min-width: 0; }
+.ganid li::before { counter-increment: gd; content: counter(gd); font: 500 .72rem/1 var(--font-mono); color: var(--gold-ink); }
+.ganid b { font-weight: 700; overflow-wrap: anywhere; }
+.ganid .nr { border-color: var(--gold-ui); background: var(--gold-soft); }
+.onze { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.onze li { border: 1px solid var(--rule); border-radius: 999px; padding: 4px 11px; font-size: .86rem; background: var(--sheet); }
+blockquote.monde-q { margin-top: 22px; max-width: 74ch; }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 88ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout > ul { margin: 0; padding-left: 20px; display: grid; gap: 14px; }
+.callout li { max-width: 80ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.hist { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 10px; }
+.hist > li { border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px 13px; background: var(--paper); display: grid; gap: 6px; }
+.hist h3 { font-size: 1.15rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 10px; }
+.hist h3 > span:first-child { flex: 0 1 auto; }
+.cert { font: 500 .7rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--rule); color: var(--muted); white-space: nowrap; }
+.cert.haute { border-color: var(--gold-ui); color: var(--gold-ink); }
+.hist p { font-size: .95rem; }
+.src { font-size: .84rem; color: var(--muted); }
+.src a { overflow-wrap: anywhere; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.loin { max-width: 84ch; display: grid; gap: 10px; }
+.loin h2 { font-size: 1.5rem; }
+.loin ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+/* Moins d’animations : préférence du système ou bouton de la frise */
+.calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
+/* sans choix explicite (classe « anime » posée par le bouton), la préférence du système s’applique */
+@media (prefers-reduced-motion: reduce) {
+  :root:not(.anime) .st-dot, :root:not(.anime) .rail-fill, :root:not(.anime) .rail-mark, :root:not(.anime) .chev, :root:not(.anime) .chip .sw::after { transition: none; }
+  :root:not(.anime) .fr-panel.in { animation: none; }
+}
+
+@media (max-width: 960px) {
+  .flux { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .fx-mid { grid-template-columns: minmax(0, 1fr); padding: 6px 0; justify-items: center; }
+  .fx-ar.h { display: none; }
+  .fx-ar.v { display: block; }
+  .fx-meet { max-width: 520px; width: 100%; }
+  .vecue { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .fr-panel { grid-template-columns: minmax(0, 1fr); }
+  .ganid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 719px) {
+  .rail { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 12px; }
+  .rail-line, .rail-fill { display: none; }
+  .fr-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "opts opts" "prev next"; }
+  .sc-nav { width: 100%; }
+  .fr-opts { justify-content: flex-start; }
+  .formes, .triade { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 16px 24px; }
+  .rail-box { padding: 14px 8px 12px; }
+  .fr-panel { padding: 16px 14px 18px; }
+  .ganid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cmp thead th { padding: 8px 8px; font-size: .98rem; }
+  .cmp td { padding: 8px 8px 9px; font-size: .88rem; }
+  .duo-fc { grid-template-columns: minmax(0, 1fr); }
+  .duo-fc .fl { justify-self: center; transform: rotate(90deg); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .st-l { font-size: .78rem; }
+}
+</style>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-peur" viewBox="0 0 20 20"><path d="M11.6 1.6 4.6 11h4.6L7.8 18.4 15.4 8.6h-4.6Z" fill="currentColor"/></symbol>
+  <symbol id="i-amour" viewBox="0 0 20 20"><path d="M10 17.2S3.2 12.9 3.2 8.2a3.7 3.7 0 0 1 6.8-2.1 3.7 3.7 0 0 1 6.8 2.1c0 4.7-6.8 9-6.8 9Z" fill="currentColor"/></symbol>
+  <symbol id="i-s1" viewBox="0 0 20 20"><path d="M6.2 17.6V9.2c0-2.9 1.7-5 3.8-5s3.8 2.1 3.8 5v8.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M2.4 17.6h15.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="16" cy="3.6" r="1.7" fill="currentColor"/><path d="M8.6 10.4h2.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".7"/></symbol>
+  <symbol id="i-s2" viewBox="0 0 20 20"><rect x="3.1" y="3.1" width="13.8" height="13.8" rx="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/><circle cx="6.9" cy="6.9" r="1.35" fill="currentColor"/><circle cx="10" cy="10" r="1.35" fill="currentColor"/><circle cx="13.1" cy="13.1" r="1.35" fill="currentColor"/></symbol>
+  <symbol id="i-s3" viewBox="0 0 20 20"><path d="M4.8 17.8V9.4a5.2 5.2 0 0 1 10.4 0v8.4l-1.75-1.45-1.72 1.45-1.73-1.45-1.73 1.45-1.72-1.45Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="8.1" cy="9.6" r="1" fill="currentColor"/><circle cx="11.9" cy="9.6" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-s4" viewBox="0 0 20 20"><path d="M3.6 2.8c0 4.7 2.9 7.6 6.4 7.6s6.4-2.9 6.4-7.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="m10 10.4 3.2 3.6-3.2 3.9-3.2-3.9Z" fill="currentColor"/><circle cx="5.2" cy="6.4" r=".9" fill="currentColor"/><circle cx="14.8" cy="6.4" r=".9" fill="currentColor"/></symbol>
+  <symbol id="i-s5" viewBox="0 0 20 20"><path d="M3.4 17.8h13.2M5.2 17.8v-5.4h9.6v5.4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/><path d="M10 2.4c2.5 2.4 3.4 4.2 3.4 5.7a3.4 3.4 0 0 1-6.8 0c0-1.2.6-2.1 1.5-3 .2 1.1.8 1.6 1.5 1.7-.4-1.5 0-2.9.4-4.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-s6" viewBox="0 0 20 20"><ellipse cx="8.4" cy="12" rx="6.2" ry="5.6" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M4.6 10.2a4.4 4.4 0 0 1 3.2-2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity=".7"/><path d="M2.4 13.4h1.2M13.2 13.4h1.2M8.4 17.6v1" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="m13.4 7.2 3.9-4.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="17.6" cy="2.4" r="1.5" fill="currentColor"/></symbol>
+  <symbol id="i-s7" viewBox="0 0 20 20"><circle cx="10" cy="5.3" r="2.2" fill="currentColor"/><path d="M7.3 10.1 4.4 3.2M12.7 10.1l2.9-6.9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M7.1 9.1h5.8l1.6 9.1H5.5Z" fill="currentColor"/></symbol>
+  <symbol id="i-s8" viewBox="0 0 20 20"><path d="M2.6 16h14.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M5.6 16a4.4 4.4 0 0 1 8.8 0Z" fill="currentColor"/><path d="M10 3.4v2.8M4 6.4l1.9 1.9M16 6.4l-1.9 1.9M1.9 11.4h2.6M15.5 11.4h2.6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-evo" viewBox="0 0 20 20"><path d="M10 18.2V9.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M10 11.6C6.1 11.6 4.2 9.4 4.2 5.8c3.7 0 5.8 2.1 5.8 5.8Zm0-2.4c0-3.6 2.1-5.8 5.8-5.8 0 3.6-2.1 5.8-5.8 5.8Z" fill="currentColor"/><path d="M4 18.2h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-rev" viewBox="0 0 20 20"><circle cx="10" cy="4.2" r="2.6" fill="currentColor"/><path d="M10 8.6v4.2M6.2 7.6 4.6 11.4M13.8 7.6l1.6 3.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3 15.4h14M5.6 18.2h8.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+</svg>
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · fascicules 85 à 92, 100 à 103 et 131</p>
+      <h1>L’évolution de la religion</h1>
+      <p class="lede">D’où vient la religion&nbsp;? Selon le livre, d’un besoin d’adorer et de la peur&nbsp;: peur du hasard, de la mort, des fantômes. Elle a traversé la magie, le sacrifice et l’âge des prêtres, puis la révélation l’a épurée, par étapes, jusqu’à la foi en un Père qui aime. Voici ce parcours en huit étapes, puis la religion telle que le livre la décrit dans une vie.</p>
+      <blockquote class="cite" data-ref="90:0.3"><p>«&nbsp;La religion évolutionnaire nait d’une peur simple et toute-puissante, la peur qui surgit dans le mental humain confronté à l’inconnu, l’inexplicable et l’incompréhensible. La religion aboutit finalement à la réalisation profondément simple d’un amour tout-puissant […]&nbsp;»</p><span class="ref">90:0.3</span></blockquote>
+      <a class="cta" href="#frise">Parcourir la frise, de la peur à l’amour <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">Le décor de cette évolution&nbsp;: <a href="histoire-d-urantia.html">L’histoire d’Urantia</a>. Les récits bibliques comparés&nbsp;: <a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a>.</p>
+    </div>
+    <aside class="codebox" aria-label="Lire cette page">
+      <span class="label">Lire cette page</span>
+      <div class="grad" aria-hidden="true"></div>
+      <p class="ends" aria-hidden="true"><span class="pe"><svg class="ic" focusable="false"><use href="#i-peur"/></svg> La peur</span><span class="am">L’amour <svg class="ic" focusable="false"><use href="#i-amour"/></svg></span></p>
+      <p class="kd">Le dégradé suit le mouvement que décrit le texte, de la peur à l’amour <span class="ref">90:0.3</span>&nbsp;; sa répartition sur les huit étapes est un choix de la page.</p>
+      <ul class="keys">
+        <li class="e-evo"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-evo"/></svg></span><b>Religion évolutionnaire</b><span class="kd2">née du mental, de l’adoration primitive <span class="ref">101:5.3</span></span></li>
+        <li class="e-rev"><span class="dot" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-rev"/></svg></span><b>Religion révélée</b><span class="kd2">venue de l’esprit, par révélations successives <span class="ref">101:5.4 ; 92:4.1</span></span></li>
+      </ul>
+      <dl>
+        <dt><span class="qm" aria-hidden="true">?</span><span class="sr-only">Le signe point d’interrogation</span></dt><dd>Ce que le texte ne précise pas.</dd>
+        <dt>mental</dt><dd>traduit l’anglais <i lang="en">mind</i>&nbsp;; <i>esprit</i> traduit <i lang="en">spirit</i>. Le texte ne les confond jamais.</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#frise" class="hot"><span class="nb">★</span><span class="tt">La frise&nbsp;: de la peur à l’amour</span></a></li>
+      <li><a href="#deux"><span class="nb">1</span><span class="tt">Religion évolutionnaire, religion révélée</span></a></li>
+      <li><a href="#vecue"><span class="nb">2</span><span class="tt">La religion dans l’expérience humaine</span></a></li>
+      <li><a href="#monde"><span class="nb">3</span><span class="tt">Les religions du monde</span></a></li>
+      <li><a href="#registres"><span class="nb">4</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+      <li><a href="#plus-loin"><span class="nb">+</span><span class="tt">Pour aller plus loin</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="frise" class="feature" aria-labelledby="h-fr">
+    <div class="sec-head">
+      <p class="eyebrow">Frise interactive · fascicules 85 à 92</p>
+      <h2 id="h-fr">De la peur à l’amour, en huit étapes</h2>
+      <p>Les fascicules 85 à 92 retracent, dit le texte, l’évolution de la religion <span class="q" data-ref="92:1.1">«&nbsp;depuis la peur primitive et la croyance aux fantômes, à travers de nombreux stades successifs de développement&nbsp;»</span> <span class="ref">92:1.1</span>. Chaque étape reprend un fascicule&nbsp;: ce qu’il décrit, une citation, et ce qui en reste aujourd’hui selon le livre.</p>
+      <p class="hint" id="fr-aide">Choisis une étape sur la frise, ou avance avec <b>Suivant</b> et <b>Précédent</b>. Au clavier&nbsp;: Tab jusqu’aux étapes, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="fr" id="fr" hidden>
+      <div class="fr-top">
+        <button type="button" class="sc-nav" id="fr-prev">← Précédent</button>
+        <div class="fr-opts">
+          <button type="button" class="chip" id="fr-calme" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Moins d’animations</button>
+          <a class="chip" href="#fr-texte" id="fr-tv">Version texte</a>
+        </div>
+        <button type="button" class="sc-nav" id="fr-next">Suivant →</button>
+      </div>
+      <div class="rail-box" id="rail-box">
+        <div class="rail-ends" aria-hidden="true"><span class="pe"><svg class="ic" focusable="false"><use href="#i-peur"/></svg>La peur</span><span class="am">L’amour<svg class="ic" focusable="false"><use href="#i-amour"/></svg></span></div>
+        <div class="rail-grad" aria-hidden="true"><div class="grad"></div><span class="rail-mark"></span></div>
+        <div class="rail-wrap" id="rail-wrap" role="group" aria-label="Les huit étapes de la frise" aria-describedby="fr-aide">
+          <span class="rail-line" aria-hidden="true"></span><span class="rail-fill" aria-hidden="true"></span>
+          <ol class="rail" id="rail"></ol>
+        </div>
+        <p class="rail-note">L’ordre est celui des fascicules. Le texte ne date pas ces étapes, et certaines se recouvrent <span class="ref">89:0.2 ; 91:8.1</span>.</p>
+      </div>
+      <div class="fr-panel" id="fr-panel"></div>
+      <p class="sr-only" id="fr-status" aria-live="polite"></p>
+    </div>
+
+    <aside class="fr-horizon" aria-labelledby="h-hz">
+      <span class="hz-ic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-amour"/></svg></span>
+      <h3 id="h-hz">Au bout de la frise&nbsp;: l’amour</h3>
+      <p>Pour le livre, la peur n’a pas le dernier mot. Depuis toujours, les Ajusteurs de Pensée, l’esprit divin qui habite le mental <span class="ref">0:5.9</span>, travaillent à <span class="q" data-ref="86:7.6">«&nbsp;transmuer la peur de Dieu en amour pour Dieu&nbsp;»</span> <span class="ref">86:7.6</span>, et la révélation épure, par étapes, les religions nées de l’évolution <span class="ref">92:4.1</span>. Sur l’Ajusteur, voir <a href="destinee-humaine.html">La destinée humaine</a>&nbsp;; sur la révélation, <a href="#deux">la suite de cette page</a>.</p>
+    </aside>
+
+    <details class="tv" id="fr-texte" open>
+      <summary>Version texte de la frise</summary>
+      <ol class="tv-list">
+        <li id="tv-1" class="s1" data-court="Adoration" data-ico="i-s1" data-fasc="85">
+          <h3 class="tv-h"><span class="tv-n">1</span>Les origines de l’adoration</h3>
+          <p class="tv-meta">Fascicule 85 · présenté par une Brillante Étoile du Soir <span class="ref">85:7.4</span></p>
+          <p>Pour le livre, la religion primitive a une origine biologique, sans influence spirituelle <span class="ref">85:0.1</span>. Les humains adorent d’abord ce qui les impressionne&nbsp;: pierres et collines, plantes et arbres, animaux, éléments, astres, et jusqu’à l’homme lui-même <span class="ref">85:1.1 ; 85:5.1 ; 85:6.1</span>. Le texte voit à l’œuvre deux esprits-mentaux adjuvats&nbsp;: l’esprit d’adoration, puis l’esprit de sagesse, qui tourne l’adoration vers le Dieu de la nature <span class="ref">85:7.1–3</span>.</p>
+          <blockquote class="cite" data-ref="85:0.1"><p>«&nbsp;Les hommes créent leurs religions primitives avec leurs craintes et par leurs illusions.&nbsp;»</p><span class="ref">85:0.1</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> une vénération atténuée des pierres, nos bijoux <span class="ref">85:1.3</span>&nbsp;; le nom de spiritueux donné aux alcools <span class="ref">85:2.1</span>.</p>
+          <p class="voir">Le décor&nbsp;: <a href="histoire-d-urantia.html">L’histoire d’Urantia</a>, des premiers humains aux migrations.</p>
+        </li>
+        <li id="tv-2" class="s2" data-court="Hasard et mort" data-ico="i-s2" data-fasc="86">
+          <h3 class="tv-h"><span class="tv-n">2</span>Le hasard, la chance et la mort</h3>
+          <p class="tv-meta">Fascicule 86, L’évolution primitive de la religion · présenté par une Étoile du Soir <span class="ref">86:7.7</span></p>
+          <p>À côté du besoin d’adorer, le texte place une autre racine&nbsp;: l’expérience du hasard. Chance et malchance pèsent sur les chasseurs, puis sur les éleveurs et les paysans <span class="ref">86:1.1–5</span>&nbsp;; faute de causes visibles, on accuse les esprits <span class="ref">86:2.2–3</span>. La mort, <span class="q" data-ref="86:3.1">«&nbsp;le choc suprême&nbsp;»</span>, pousse à chercher du secours dans un monde invisible <span class="ref">86:3.1 ; 86:3.4</span>. Les rêves où reviennent les morts et l’observation du souffle font naitre l’idée d’une âme-fantôme qui survit <span class="ref">86:4.1–3</span>.</p>
+          <blockquote class="cite" data-ref="86:2.2"><p>«&nbsp;La religion naquit ainsi de la peur du mystère, de la crainte respectueuse de l’invisible et de la terreur de l’inconnu.&nbsp;»</p><span class="ref">86:2.2</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> le gout des jeux de hasard <span class="ref">86:1.4</span>&nbsp;; l’assurance, qui a pris le relais des primes versées aux prêtres contre la malchance <span class="ref">86:7.1–2</span>.</p>
+          <p class="voir">Dans la Bible&nbsp;: <a href="bible-et-livre.html#p-ecclesiaste">L’Ecclésiaste, le temps et le hasard</a>, que cite ce fascicule <span class="ref">86:1.6</span>.</p>
+        </li>
+        <li id="tv-3" class="s3" data-court="Fantômes" data-ico="i-s3" data-fasc="87">
+          <h3 class="tv-h"><span class="tv-n">3</span>Les cultes des fantômes</h3>
+          <p class="tv-meta">Fascicule 87 · présenté par une Brillante Étoile du Soir <span class="ref">87:7.11</span></p>
+          <p>La peur des morts devient un culte. Ses premiers rites sont défensifs&nbsp;: éviter, chasser ou contraindre les fantômes <span class="ref">87:0.1 ; 87:2.1</span>. Le culte des ancêtres relie ensuite les fantômes ordinaires à des esprits supérieurs, et les premiers dieux sont, pour le texte, des morts glorifiés <span class="ref">87:3.1</span>. Il en fait une thèse générale&nbsp;: <span class="q" data-ref="87:4.1">«&nbsp;La peur des fantômes fut la source de toutes les religions du monde.&nbsp;»</span> <span class="ref">87:4.1</span></p>
+          <blockquote class="cite" data-ref="87:0.2"><p>«&nbsp;Avec la naissance de cette peur, l’humanité démarre sur la route ascendante de l’évolution religieuse.&nbsp;»</p><span class="ref">87:0.2</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> le culte lui-même, symbolisme qui entretient les fidélités religieuses&nbsp;; le texte souhaite un culte nouveau, fondé sur l’amour <span class="ref">87:7.1 ; 87:7.7</span>.</p>
+          <p class="voir">Les sacrifices offerts, par précaution, à des dieux inconnus <span class="ref">87:5.1</span>&nbsp;: voir <a href="bible-et-livre.html#p-paul">Paul et le Dieu inconnu</a>.</p>
+        </li>
+        <li id="tv-4" class="s4" data-court="Fétiches et magie" data-ico="i-s4" data-fasc="88">
+          <h3 class="tv-h"><span class="tv-n">4</span>Fétiches, charmes et magie</h3>
+          <p class="tv-meta">Fascicule 88 · présenté par une Brillante Étoile du Soir <span class="ref">88:6.9</span></p>
+          <p>On croit qu’un esprit peut habiter un objet, un animal ou une personne&nbsp;: c’est le fétichisme <span class="ref">88:0.1</span>. Il mène aux idoles et aux reliques <span class="ref">88:2.1 ; 88:2.4</span>, et au totem, à la fois emblème et dieu du clan <span class="ref">88:3.2</span>. La magie cherche à manipuler ce monde d’esprits <span class="ref">88:4.1</span>&nbsp;; le texte en fait pourtant la branche qui porta la science&nbsp;: l’astrologie mena à l’astronomie, la magie des nombres aux mathématiques <span class="ref">88:6.5</span>.</p>
+          <blockquote class="cite" data-ref="88:6.8"><p>«&nbsp;La magie ancienne fut la chrysalide de la science moderne, indispensable en son temps, mais désormais inutile.&nbsp;»</p><span class="ref">88:6.8</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> les reliques et les pèlerinages <span class="ref">88:2.1</span>&nbsp;; le drapeau, héritier du totem <span class="ref">88:3.2</span>&nbsp;; la croyance à la chance et à l’astrologie <span class="ref">88:6.7</span>.</p>
+          <p class="voir">Moïse et l’interdit des images taillées, contre l’adoration des fétiches <span class="ref">88:2.5</span>&nbsp;: voir <a href="bible-et-livre.html#p-veau-d-or">Le veau d’or</a>.</p>
+        </li>
+        <li id="tv-5" class="s5" data-court="Péché et sacrifice" data-ico="i-s5" data-fasc="89">
+          <h3 class="tv-h"><span class="tv-n">5</span>Péché, sacrifice et expiation</h3>
+          <p class="tv-meta">Fascicule 89 · présenté par une Brillante Étoile du Soir <span class="ref">89:10.7</span></p>
+          <p>Pour éviter la malchance, on s’abstient&nbsp;: le tabou est la première règle de la vie sociale <span class="ref">89:1.1</span>. Quand il reçoit la sanction de la religion, nait l’idée du péché, transgression du tabou <span class="ref">89:2.2</span>, puis celle du sacrifice, offrande de gratitude ou paiement d’une dette <span class="ref">89:4.2</span>. Les sacrifices humains reculent peu à peu devant la rançon et les offrandes de substitution <span class="ref">89:7.1 ; 89:8.2</span>. Le texte, lui, redéfinit le péché comme une déloyauté consciente envers Dieu, et le pardon comme une relation rétablie, que l’on reçoit <span class="ref">89:10.3 ; 89:10.6</span>.</p>
+          <blockquote class="cite" data-ref="89:10.2"><p>«&nbsp;Il faut redéfinir le péché comme une déloyauté délibérée envers la Déité.&nbsp;»</p><span class="ref">89:10.2</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> le jeûne <span class="ref">89:3.1</span>&nbsp;; et les sacrements, qu’il présente comme les successeurs, devenus symboliques, des anciens rites de sacrifice <span class="ref">89:9.4</span>.</p>
+          <p class="voir">Dans la Bible&nbsp;: <a href="bible-et-livre.html#p-sacrifice-isaac">Le sacrifice d’Isaac</a>, que le livre commente dans ce fascicule <span class="ref">89:6.8</span>.</p>
+        </li>
+        <li id="tv-6" class="s6" data-court="Chamans et prêtres" data-ico="i-s6" data-fasc="90">
+          <h3 class="tv-h"><span class="tv-n">6</span>Le chamanisme, sorciers-guérisseurs et prêtres</h3>
+          <p class="tv-meta">Fascicule 90 · présenté par un Melchizédek <span class="ref">90:5.9</span></p>
+          <p>Les esprits semblant n’écouter que des êtres d’exception, la religion passe par des intermédiaires&nbsp;: sorciers-guérisseurs, chamans, puis prêtres <span class="ref">90:0.2</span>. Le chaman explique la maladie par les esprits et la combat par des rites <span class="ref">90:3.1 ; 90:4.1</span>&nbsp;; le rite devant être parfait, une prêtrise se forme pour le diriger <span class="ref">90:5.1 ; 90:5.4</span>. Entre la peur du début et l’amour de la fin, le texte place ces longs âges d’intermédiaires <span class="ref">90:0.3</span>. Il reproche aux prêtrises d’avoir retardé la science, tout en reconnaissant qu’elles ont stabilisé la civilisation <span class="ref">90:5.7</span>.</p>
+          <blockquote class="cite" data-ref="90:5.6"><p>«&nbsp;Le grand danger, dans tout cela, est que le rituel tend à devenir un substitut de la religion.&nbsp;»</p><span class="ref">90:5.6</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> les mots amen et sélah, les pèlerinages, les prières, chants et répons des cultes <span class="ref">90:5.3</span>.</p>
+        </li>
+        <li id="tv-7" class="s7" data-court="Prière" data-ico="i-s7" data-fasc="91">
+          <h3 class="tv-h"><span class="tv-n">7</span>L’évolution de la prière</h3>
+          <p class="tv-meta">Fascicule 91 · présenté par le chef des médians d’Urantia <span class="ref">91:9.9</span></p>
+          <p>La prière commence avant toute idée claire de Dieu&nbsp;: des souhaits dits à voix haute, puis des demandes adressées aux esprits, enfin aux dieux <span class="ref">91:0.2–3 ; 91:8.1</span>. Elle aide le groupe à conserver ses valeurs <span class="ref">91:1.1</span>. Pour le texte, prière et magie ont des origines distinctes, même si des formules magiques sont devenues des prières <span class="ref">88:6.3 ; 92:1.1</span>&nbsp;: la magie fut <span class="q" data-ref="91:8.2">«&nbsp;une tentative pour adapter la Déité aux circonstances&nbsp;»</span>, la prière est <span class="q" data-ref="91:8.2">«&nbsp;l’effort pour adapter la personnalité à la volonté de la Déité&nbsp;»</span> <span class="ref">91:8.2</span>. Une prière qui cherche un avantage sur autrui n’est pas éthique <span class="ref">91:4.1</span>.</p>
+          <blockquote class="cite" data-ref="91:2.3"><p>«&nbsp;Mais la prière la plus authentique est en réalité une communion entre l’homme et son Créateur.&nbsp;»</p><span class="ref">91:2.3</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> les jours fériés religieux, que la prière empêche de devenir de simples vacances <span class="ref">91:1.1</span>.</p>
+          <p class="voir">Dans la Bible&nbsp;: <a href="bible-et-livre.html#p-notre-pere">Le Notre Père</a>.</p>
+        </li>
+        <li id="tv-8" class="s8" data-court="Évolution ultérieure" data-ico="i-s8" data-fasc="92">
+          <h3 class="tv-h"><span class="tv-n">8</span>L’évolution ultérieure de la religion</h3>
+          <p class="tv-meta">Fascicule 92 · présenté par un Melchizédek <span class="ref">92:7.16</span></p>
+          <p>Le dernier fascicule de la série fait le bilan. C’est la peur, dit-il, qui modèle les dieux de la religion évolutionnaire <span class="ref">92:1.4</span>&nbsp;; cette religion a maintenu la morale et la cohésion des sociétés, mais elle ne prévoit pas sa propre correction <span class="ref">92:3.4 ; 92:3.7</span>. La révélation l’épure par étapes, sans s’éloigner de ce que chaque âge peut recevoir <span class="ref">92:4.1</span>. Les deux se mêlent dans les religions du monde <span class="ref">92:6.2</span>, que le texte dit toutes bonnes dans la mesure où elles mènent à Dieu <span class="ref">92:7.3</span>.</p>
+          <blockquote class="cite" data-ref="92:1.5"><p>«&nbsp;Un peuple asiatique a enseigné que “Dieu est une grande crainte”&nbsp;; c’est le résultat de la religion purement évolutionnaire. Jésus, la révélation du type le plus élevé de vie religieuse, proclama que “Dieu est amour”.&nbsp;»</p><span class="ref">92:1.5</span></blockquote>
+          <p class="trace"><b>Ce qui en reste, selon le livre&nbsp;:</b> la circoncision, d’abord sacrifice, devenue mesure d’hygiène&nbsp;; des formules magiques devenues prières <span class="ref">92:1.1</span>.</p>
+          <p class="voir">Dans la Bible&nbsp;: <a href="bible-et-livre.html#p-dieu-amour">Dieu est amour</a>.</p>
+        </li>
+      </ol>
+    </details>
+  </section>
+
+  <section id="deux" aria-labelledby="h-deux">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Fascicules 92, 101 et 103, et ailleurs</p>
+      <h2 id="h-deux">Religion évolutionnaire, religion révélée</h2>
+      <p>Le livre distingue deux origines de la religion. L’une monte de l’expérience humaine, l’autre vient de l’esprit&nbsp;; dans les religions réelles, elles se rencontrent.</p>
+      <blockquote class="cite e-rev" data-ref="92:4.3"><p>«&nbsp;La religion évolutionnaire décrit les tâtonnements de l’humanité qui tourne en rond à la recherche de la vérité&nbsp;; la religion révélée <i>est</i> cette vérité même.&nbsp;»</p><span class="ref">92:4.3</span></blockquote>
+    </div>
+    <figure class="flux" aria-labelledby="flux-cap">
+      <div class="fx-col e-evo">
+        <p class="fx-k"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-evo"/></svg>Religion évolutionnaire</p>
+        <p class="fx-s">Elle nait du mental, sous l’influence de l’adjuvat d’adoration, de l’adjuvat de sagesse et du Saint-Esprit <span class="ref">92:0.2–5</span>. C’est la frise ci-dessus&nbsp;:</p>
+        <ol class="fx-list">
+          <li>l’adoration de la nature, la peur du hasard et de la mort <span class="ref">85:0.4 ; 86:2.2</span></li>
+          <li>les fantômes, les fétiches et la magie <span class="ref">87:0.1 ; 88:0.1</span></li>
+          <li>le tabou, le sacrifice, les prêtres <span class="ref">89:1.1 ; 90:0.2</span></li>
+          <li>la prière, puis la morale et l’éthique <span class="ref">91:1.1 ; 92:7.5</span></li>
+        </ol>
+      </div>
+      <div class="fx-mid">
+        <span class="fx-ar h" aria-hidden="true">→</span><span class="fx-ar v" aria-hidden="true">↓</span>
+        <div class="fx-meet">
+          <b>Les religions vécues&nbsp;: un mélange</b>
+          <p>Sur Urantia, les deux progressent côte à côte et se fondent dans les systèmes théologiques <span class="ref">92:6.2</span>. Le texte compte quatre sortes de religions <span class="ref">103:0.3–7</span>&nbsp;:</p>
+          <ol>
+            <li>naturelle ou évolutionnaire&nbsp;;</li>
+            <li>surnaturelle ou révélatoire&nbsp;;</li>
+            <li>courante, mélange des deux&nbsp;;</li>
+            <li>philosophique, œuvre de la raison.</li>
+          </ol>
+        </div>
+        <span class="fx-ar h" aria-hidden="true">←</span><span class="fx-ar v" aria-hidden="true">↑</span>
+      </div>
+      <div class="fx-col e-rev">
+        <p class="fx-k"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-rev"/></svg>Religion révélée</p>
+        <p class="fx-s">Elle vient de l’esprit et progresse par révélations successives, limitées par la capacité des hommes de les recevoir <span class="ref">101:5.4 ; 92:4.1</span>. Le texte en compte cinq qui font époque <span class="ref">92:4.4</span>&nbsp;:</p>
+        <ol class="revs">
+          <li><span><b>Dalamatia</b>&nbsp;: l’état-major du Prince Planétaire <span class="ref">92:4.5</span></span></li>
+          <li><span><b>Éden</b>&nbsp;: Adam et Ève <span class="ref">92:4.6</span></span></li>
+          <li><span><b>Melchizédek de Salem</b>&nbsp;: la confiance et la foi <span class="ref">92:4.7</span></span></li>
+          <li><span><b>Jésus de Nazareth</b>&nbsp;: l’amour et le service <span class="ref">92:4.8</span></span></li>
+          <li class="cinq"><span><b>Les Fascicules d’Urantia</b>&nbsp;: le livre lui-même, selon ce qu’il dit de lui <span class="ref">92:4.9</span></span></li>
+        </ol>
+      </div>
+      <figcaption class="flux-cap" id="flux-cap">Schéma de la page&nbsp;: les deux sources de la religion et leur rencontre. Positions et couleurs sont des choix de présentation&nbsp;; les éléments et leurs liens viennent du texte.</figcaption>
+    </figure>
+
+    <div class="cmp-wrap">
+      <table class="cmp">
+        <caption>En regard, selon le texte</caption>
+        <thead><tr><th scope="col" id="c-evo" class="e-evo"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-evo"/></svg>Religion évolutionnaire</th><th scope="col" id="c-rev" class="e-rev"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-rev"/></svg>Religion révélée</th></tr></thead>
+        <tbody>
+          <tr><th colspan="2" id="a1" class="asp">D’où elle vient</th></tr>
+          <tr><td headers="a1 c-evo" class="e-evo"><span class="q" data-ref="101:5.3">«&nbsp;la religion qui découle du mental&nbsp;»</span> <span class="ref">101:5.3</span></td><td headers="a1 c-rev" class="e-rev"><span class="q" data-ref="101:5.4">«&nbsp;L’attitude universelle qui découle de l’esprit&nbsp;»</span> <span class="ref">101:5.4</span></td></tr>
+          <tr><th colspan="2" id="a2" class="asp">Son ressort</th></tr>
+          <tr><td headers="a2 c-evo" class="e-evo">La peur, <span class="q" data-ref="92:1.4">«&nbsp;le stimulus religieux fondamental&nbsp;»</span> <span class="ref">92:1.4</span></td><td headers="a2 c-rev" class="e-rev">L’amour&nbsp;: pour Jésus, <span class="q" data-ref="92:1.5">«&nbsp;Dieu est amour&nbsp;»</span> <span class="ref">92:1.5</span></td></tr>
+          <tr><th colspan="2" id="a3" class="asp">Ce qu’elle cultive</th></tr>
+          <tr><td headers="a3 c-evo" class="e-evo">Le devoir personnel, la conscience <span class="ref">101:5.10–11</span></td><td headers="a3 c-rev" class="e-rev">L’amour, la règle d’or <span class="ref">101:5.11</span></td></tr>
+          <tr><th colspan="2" id="a4" class="asp">Ses dieux</th></tr>
+          <tr><td headers="a4 c-evo" class="e-evo">Conçus à l’image de l’homme <span class="ref">92:5.1</span></td><td headers="a4 c-rev" class="e-rev">L’homme, fils de Dieu, façonné à l’image de la divinité <span class="ref">92:5.1</span></td></tr>
+          <tr><th colspan="2" id="a5" class="asp">Face au changement</th></tr>
+          <tr><td headers="a5 c-evo" class="e-evo">Elle ne prévoit pas sa propre correction <span class="ref">92:3.4</span></td><td headers="a5 c-rev" class="e-rev">Progressive, mais adaptée à ce que chaque âge peut recevoir <span class="ref">92:4.1</span></td></tr>
+          <tr><th colspan="2" id="a6" class="asp">Ce qu’elle assure</th></tr>
+          <tr><td headers="a6 c-evo" class="e-evo">La foi et la confirmation de la conscience <span class="ref">101:5.13</span></td><td headers="a6 c-rev" class="e-rev">La foi, plus la vérité d’une expérience vivante <span class="ref">101:5.13</span></td></tr>
+          <tr class="commun"><td colspan="2">En commun, pour le texte&nbsp;: <span class="q" data-ref="100:6.1">«&nbsp;une grande similitude dans leurs intentions&nbsp;»</span> <span class="ref">100:6.1</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="sub-h">Trois formes de religion, dans un discours de Jésus</h3>
+    <p class="sub-p">Le texte rapporte un discours où Jésus distingue trois formes de dévotion, que l’on retrouve chez n’importe quel peuple <span class="ref">155:5.2</span>. Il y refuse de minimiser la religion primitive <span class="ref">155:5.6</span>.</p>
+    <ol class="formes">
+      <li class="f1"><b>La religion primitive</b><span>craindre des énergies mystérieuses, adorer des forces supérieures&nbsp;: <span class="q" data-ref="155:5.3">«&nbsp;la religion de la peur&nbsp;»</span> <span class="ref">155:5.3</span></span></li>
+      <li class="f2"><b>La religion de la civilisation</b><span>une théologie appuyée sur l’autorité de la tradition&nbsp;: <span class="q" data-ref="155:5.4">«&nbsp;la religion du mental&nbsp;»</span> <span class="ref">155:5.4</span></span></li>
+      <li class="f3"><b>La vraie religion, celle de la révélation</b><span>un aperçu de la bonté et de la beauté du Père&nbsp;: <span class="q" data-ref="155:5.5">«&nbsp;la religion de l’esprit&nbsp;»</span> <span class="ref">155:5.5</span></span></li>
+    </ol>
+  </section>
+
+  <section id="vecue" aria-labelledby="h-vec">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Fascicules 100 à 103</p>
+      <h2 id="h-vec">La religion dans l’expérience humaine</h2>
+      <p>Après l’histoire, la vie d’une personne. Pour le livre, la religion n’est pas d’abord un ensemble d’idées&nbsp;: <span class="q" data-ref="100:6.1">«&nbsp;La religion n’est pas une fonction spécifique de la vie, c’est plutôt un mode de vie.&nbsp;»</span> <span class="ref">100:6.1</span></p>
+    </div>
+    <div class="vecue">
+      <figure class="nest" aria-labelledby="nest-cap">
+        <div class="n1">
+          <p class="n-g">Ce que l’on pense</p>
+          <p class="n-k">La théologie</p>
+          <p class="n-s">le contenu intellectuel de la religion <span class="ref">103:9.1</span></p>
+          <div class="n2">
+            <p class="n-g">Ce que l’on comprend</p>
+            <p class="n-k">La métaphysique, ou la révélation</p>
+            <p class="n-s">ses aspects philosophiques <span class="ref">103:9.1</span></p>
+            <div class="n3">
+              <p class="n-g">Ce que l’on vit</p>
+              <p class="n-k">L’expérience religieuse</p>
+              <p class="n-s"><span class="q" data-ref="103:9.1">«&nbsp;L’expérience religieuse <i>est</i> le contenu spirituel de la religion.&nbsp;»</span> <span class="ref">103:9.1</span> Elle reste authentique malgré les erreurs des idées qui l’entourent <span class="ref">103:9.1–2</span>.</p>
+            </div>
+          </div>
+        </div>
+        <figcaption id="nest-cap">Les trois niveaux que distingue le texte, du plus extérieur au plus intime. Les repères en capitales (penser, comprendre, vivre) sont ceux de la page.</figcaption>
+      </figure>
+      <div class="v-side">
+        <article class="v-card">
+          <h3>Croire et avoir foi</h3>
+          <div class="duo-fc">
+            <div><b>La croyance</b><span>accepter un enseignement comme vrai <span class="ref">101:8.1</span></span></div>
+            <span class="fl" aria-hidden="true">→</span>
+            <div class="foi"><b>La foi</b><span>la croyance devient foi <span class="q" data-ref="101:8.1">«&nbsp;quand elle motive la vie et façonne la manière de vivre&nbsp;»</span> <span class="ref">101:8.1</span></span></div>
+          </div>
+          <blockquote class="cite" data-ref="101:8.2"><p>«&nbsp;La croyance limite et enchaine toujours&nbsp;; la foi se déploie et libère.&nbsp;»</p><span class="ref">101:8.2</span></blockquote>
+          <p>Les croyances peuvent appartenir à un groupe&nbsp;; la foi, elle, est toujours personnelle <span class="ref">101:8.2</span>.</p>
+        </article>
+        <article class="v-card">
+          <h3>Une croissance en trois temps</h3>
+          <ol class="trois">
+            <li class="t1"><span class="q" data-ref="100:2.2">«&nbsp;un éveil aux besoins&nbsp;»</span></li>
+            <li class="t2"><span class="q" data-ref="100:2.2">«&nbsp;un discernement des significations&nbsp;»</span></li>
+            <li class="t3"><span class="q" data-ref="100:2.2">«&nbsp;une découverte des valeurs&nbsp;»</span></li>
+          </ol>
+          <p>Le signe d’une vraie croissance, selon le texte&nbsp;: une personne motivée par l’amour et le service désintéressé <span class="ref">100:2.2</span>.</p>
+        </article>
+      </div>
+    </div>
+    <div class="arc">
+      <div class="grad" aria-hidden="true"></div>
+      <p class="ends" aria-hidden="true"><span>La peur</span><span>La liberté des fils</span></p>
+      <p>Le mouvement de la frise se retrouve à l’échelle d’une vie&nbsp;: la croissance religieuse mène, dit le texte, <span class="q" data-ref="100:5.2">«&nbsp;de l’esclavage de la peur à la liberté de la filiation divine&nbsp;»</span> <span class="ref">100:5.2 ; 101:0.1</span>.</p>
+    </div>
+    <ul class="triade" aria-label="Trois méthodes, selon le texte">
+      <li><b>La science</b><span>la raison&nbsp;; elle traite des faits <span class="ref">101:2.2 ; 101:5.2</span></span></li>
+      <li><b>La philosophie</b><span>la logique, qui unit faits et valeurs <span class="ref">101:2.2 ; 101:5.2</span></span></li>
+      <li class="tr-r"><b>La religion</b><span>la foi&nbsp;; elle s’occupe des valeurs <span class="ref">101:2.2 ; 101:5.2</span></span></li>
+    </ul>
+    <blockquote class="cite e-rev monde-q" data-ref="103:9.6"><p>«&nbsp;Quand la théologie domine la religion, la religion meurt&nbsp;; elle devient une doctrine au lieu d’être une vie.&nbsp;»</p><span class="ref">103:9.6</span></blockquote>
+  </section>
+
+  <section id="monde" aria-labelledby="h-monde">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicules 131 et 92</p>
+      <h2 id="h-monde">Les religions du monde</h2>
+      <p>Le fascicule 131, dans le récit de la vie de Jésus, rapporte un travail fait à Alexandrie pendant le voyage vers Rome&nbsp;: le jeune Ganid, un Indien qui voyageait avec son père Gonod <span class="ref">130:0.1</span>, y réunit ce que les religions du monde enseignaient sur Dieu et sur ses relations avec l’homme <span class="ref">131:0.1</span>. Il emploie plus de soixante traducteurs et range les extraits sous dix titres <span class="ref">131:0.1–2</span>.</p>
+    </div>
+    <ol class="ganid" aria-label="Les dix titres du recueil de Ganid">
+      <li><b>Le cynisme</b><span class="ref">131:1.1</span></li>
+      <li><b>Le judaïsme</b><span class="ref">131:2.1</span></li>
+      <li><b>Le bouddhisme</b><span class="ref">131:3.1</span></li>
+      <li><b>L’hindouisme</b><span class="ref">131:4.1</span></li>
+      <li><b>Le zoroastrisme</b><span class="ref">131:5.1</span></li>
+      <li><b>Le soudouanisme, ou jaïnisme</b><span class="ref">131:6.1</span></li>
+      <li><b>Le shintoïsme</b><span class="ref">131:7.1</span></li>
+      <li><b>Le taoïsme</b><span class="ref">131:8.1</span></li>
+      <li><b>Le confucianisme</b><span class="ref">131:9.1</span></li>
+      <li class="nr"><b>Notre religion</b><span class="ref">131:10.1</span></li>
+    </ol>
+    <div class="prose">
+      <p>Le dixième titre est la synthèse de Ganid lui-même, ce qu’il appelait <span class="q" data-ref="131:10.1">«&nbsp;notre religion&nbsp;»</span>, après l’enseignement de Jésus <span class="ref">131:10.1</span>. Le texte attribue l’essentiel du monothéisme de ces traditions aux missionnaires de Melchizédek, partis de Salem <span class="ref">131:0.1</span>. Le fascicule 92 énumère, de son côté, onze religions du vingtième siècle, de la plus ancienne à la plus récente <span class="ref">92:6.3–13</span>&nbsp;:</p>
+    </div>
+    <ol class="onze" aria-label="Les onze religions du vingtième siècle, selon le fascicule 92">
+      <li>l’hindouisme</li><li>la religion hébraïque</li><li>le bouddhisme</li><li>les enseignements de Confucius</li><li>les croyances taoïstes</li><li>le zoroastrisme</li><li>le shinto</li><li>le jaïnisme</li><li>le christianisme</li><li>l’islam</li><li>le sikhisme</li>
+    </ol>
+    <blockquote class="cite e-rev monde-q" data-ref="92:7.3"><p>«&nbsp;Les nombreuses religions d’Urantia sont toutes bonnes dans la mesure où elles amènent l’homme à Dieu et où elles apportent à l’homme la réalisation du Père.&nbsp;»</p><span class="ref">92:7.3</span></blockquote>
+    <p class="sub-p hint">Le texte porte ses propres appréciations sur chacune de ces traditions&nbsp;; cette page les signale sans les classer. Il invite aussi chaque religion à étudier le meilleur des autres <span class="ref">92:7.3</span>. Le voyage vers Rome est raconté dans <a href="vie-de-jesus.html">La vie de Jésus</a>.</p>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les fascicules 85 à 89 sont présentés par des Étoiles du Soir <span class="ref">85:7.4 ; 86:7.7</span>, les fascicules 90 et 92 par un Melchizédek <span class="ref">90:5.9 ; 92:7.16</span>, le 91 par le chef des médians d’Urantia <span class="ref">91:9.9</span>, et les fascicules 100 à 103 par un Melchizédek <span class="ref">103:9.13</span>. Le texte présente cette évolution comme un fait d’histoire, et il met en garde contre le mépris&nbsp;:
+        <blockquote class="cite e-evo" data-ref="92:3.3"><p>«&nbsp;Mais, si vous êtes tentés de critiquer la religion évolutionnaire, faites attention. Rappelez-vous qu’elle représente ce qui <i>est arrivé</i>&nbsp;; c’est un fait historique.&nbsp;»</p><span class="ref">92:3.3</span></blockquote>
+        Pour lui, l’origine magique et mythologique de la religion naturelle n’invalide pas la vérité des religions révélées <span class="ref">103:9.4</span>. Il distingue enfin ses notions de science, qu’il annonce dépassées sous peu, de ses faits historiques et de ses vérités religieuses, qui doivent subsister <span class="ref">101:4.1–2</span>.</li>
+      <li><b>Lecture courante.</b> Les lecteurs n’en font pas tous la même lecture. Pour certains, c’est l’histoire réelle de la religion, au même titre que les autres faits historiques du livre <span class="ref">101:4.2</span>. D’autres y voient une mise en ordre du savoir de l’époque, choisie par les auteurs comme le livre dit le faire pour d’autres sujets <span class="ref">0:12.11</span>, et donc révisable. Beaucoup retiennent surtout le mouvement d’ensemble, de la peur à l’amour, et l’appel à apprendre des autres religions <span class="ref">92:7.3</span>. Les jugements portés sur des peuples de l’époque <span class="ref">92:6.1</span> en gênent certains&nbsp;; d’autres y lisent le vocabulaire d’un temps. Cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Ses fascicules sur l’évolution de la religion ont de fortes parentés avec l’anthropologie de leur temps. Voici ce qui est établi, et avec quelle certitude.
+        <ul class="hist">
+          <li>
+            <h3><span>Sumner et Keller, <i lang="en">The Science of Society</i> (1927)</span> <span class="cert haute">Certitude élevée</span></h3>
+            <p>Ce manuel de Yale en quatre volumes, tiré des notes du sociologue William Graham Sumner (mort en 1910) et publié par Albert G. Keller, est, selon Matthew Block, <span class="q" data-ext="block-part3"><span lang="en">«&nbsp;the predominant source for the papers dealing with the evolution of government, marriage and religion&nbsp;»</span></span> (la source principale des fascicules sur l’évolution du gouvernement, du mariage et de la religion). Ses tableaux de 2020 et 2022 mettent les fascicules 86 à 90 et une partie du 92 en regard des volumes II et IV, passage par passage&nbsp;: les trois environnements de l’homme, naturel, social et imaginaire <span class="ref">86:6.1</span>, répondent à la section sur l’environnement imaginaire (p. 786), et la religion comme assurance contre la malchance <span class="ref">86:7.1</span>, aux pages 746 à 750.</p>
+            <p class="src">Sources&nbsp;: <a class="ext" href="https://urantiabooksources.com/part-iii/" target="_blank" rel="noopener">urantiabooksources.com, Part III</a>&nbsp;; tableaux des fascicules <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2020/08/086.pdf" target="_blank" rel="noopener">86</a> et <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2022/06/092.pdf" target="_blank" rel="noopener">92</a>&nbsp;; <a class="ext" href="https://www.britannica.com/biography/William-Graham-Sumner" target="_blank" rel="noopener">Britannica, William Graham Sumner</a>.</p>
+          </li>
+          <li>
+            <h3><span>D’autres livres des années 1920 et 1930</span> <span class="cert haute">Certitude élevée</span></h3>
+            <p>Pour le fascicule 85, Block relève <i lang="en">Origin and Evolution of Religion</i> d’E. Washburn Hopkins (1923), <span class="q" data-ext="block-accueil"><span lang="en">«&nbsp;clearly the template for Paper 85&nbsp;»</span></span> (clairement le modèle du fascicule 85)&nbsp;: la météorite tombée au Bengale en 1880 <span class="ref">85:1.2</span> s’y trouve déjà. Le fascicule 91 s’appuie sur W. K. Wright et H. N. Wieman (1935), le 92 mêle notamment L. Browne (1926), R. E. Hume (1924) et Sumner et Keller. Les jugements du fascicule 92 sur des peuples de son temps <span class="ref">92:6.1</span> suivent, eux aussi, Sumner et Keller (p. 1422 à 1424, d’après Block).</p>
+            <p class="src">Sources&nbsp;: <a class="ext" href="https://urantiabooksources.com/" target="_blank" rel="noopener">urantiabooksources.com</a>&nbsp;; tableaux des fascicules <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2020/08/085.pdf" target="_blank" rel="noopener">85</a>, <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2020/08/091.pdf" target="_blank" rel="noopener">91</a> et <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2022/06/092.pdf" target="_blank" rel="noopener">92</a>.</p>
+          </li>
+          <li>
+            <h3><span>Une parenté avec l’anthropologie du XIX<sup>e</sup> siècle</span> <span class="cert haute">Certitude élevée, lien indirect</span></h3>
+            <p>Les idées du livre rappellent trois classiques. Edward B. Tylor (<i lang="en">Primitive Culture</i>, 1871) pensait que les rêves de proches disparus avaient convaincu les premiers humains de l’existence des âmes&nbsp;; le livre fait naitre de tels rêves la croyance en la survie <span class="ref">86:4.1–2</span>. Herbert Spencer expliquait l’origine de la religion par le culte des ancêtres&nbsp;; le livre écrit&nbsp;: <span class="q" data-ref="87:3.1">«&nbsp;Les dieux primitifs étaient simplement des humains trépassés et glorifiés.&nbsp;»</span> <span class="ref">87:3.1</span> James G. Frazer (<i lang="en">The Golden Bough</i>, 1890) faisait passer l’humanité de la magie à la religion, puis à la science&nbsp;; le livre fait lui aussi de la magie la chrysalide de la science <span class="ref">88:6.8</span>, mais il tient que la prière n’est pas issue de la magie <span class="ref">91:8.2</span>. Le lien passe par Sumner et Keller, qui citent eux-mêmes Spencer, Tylor et Frazer&nbsp;: aucun des trois ne figure parmi les sources directes que Block relève pour ces fascicules.</p>
+            <p class="src">Sources&nbsp;: <a class="ext" href="https://www.britannica.com/topic/animism" target="_blank" rel="noopener">Britannica, Animism</a>&nbsp;; Wikipédia en anglais, <a class="ext" href="https://en.wikipedia.org/wiki/Euhemerism" target="_blank" rel="noopener">Euhemerism</a> et <a class="ext" href="https://en.wikipedia.org/wiki/The_Golden_Bough" target="_blank" rel="noopener">The Golden Bough</a>&nbsp;; tableaux de Block pour les fascicules <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2020/08/088.pdf" target="_blank" rel="noopener">88</a>, <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2020/08/090.pdf" target="_blank" rel="noopener">90</a> et <a class="ext" href="https://urantiabooksources.com/wp-content/uploads/2022/06/092.pdf" target="_blank" rel="noopener">92</a>.</p>
+          </li>
+          <li>
+            <h3><span>Ce qu’en pensent les anthropologues aujourd’hui</span> <span class="cert haute">Abandon des schémas&nbsp;: consensus</span> <span class="cert">Origines&nbsp;: débat ouvert</span></h3>
+            <p>Les grands schémas en étapes de Tylor, Spencer ou Frazer ont été abandonnés au cours du XX<sup>e</sup> siècle&nbsp;: Franz Boas et d’autres les jugeaient spéculatifs et rejetaient le classement des peuples en primitifs et civilisés, et les théories de Frazer sont aujourd’hui largement rejetées. E. E. Evans-Pritchard (<i lang="en">Theories of Primitive Religion</i>, 1965) reprochait à ces auteurs de prêter aux peuples étudiés des motivations qui étaient surtout les leurs. Le mot animisme a été repris depuis dans un autre sens, centré sur les relations avec les êtres non humains. La question des origines reste pourtant ouverte&nbsp;: l’archéologie relève des traitements rituels des morts dès le Paléolithique moyen, sans pouvoir dater les débuts de la religion, et les sciences cognitives de la religion proposent des hypothèses, comme une tendance spontanée à déceler partout des agents doués d’intentions, qui restent débattues.</p>
+            <p class="src">Sources&nbsp;: Wikipédia en anglais, <a class="ext" href="https://en.wikipedia.org/wiki/Unilineal_evolution" target="_blank" rel="noopener">Unilineal evolution</a>, <a class="ext" href="https://en.wikipedia.org/wiki/E._E._Evans-Pritchard" target="_blank" rel="noopener">E. E. Evans-Pritchard</a>, <a class="ext" href="https://en.wikipedia.org/wiki/Animism" target="_blank" rel="noopener">Animism</a>, <a class="ext" href="https://en.wikipedia.org/wiki/Evolutionary_origin_of_religion" target="_blank" rel="noopener">Evolutionary origin of religion</a>, <a class="ext" href="https://en.wikipedia.org/wiki/Cognitive_science_of_religion" target="_blank" rel="noopener">Cognitive science of religion</a>&nbsp;; <a class="ext" href="https://iep.utm.edu/animism/" target="_blank" rel="noopener">Internet Encyclopedia of Philosophy, Animism</a>.</p>
+          </li>
+          <li>
+            <h3><span>Deux interprétations</span> <span class="cert">Débattu</span></h3>
+            <p>Pour Block, ces tableaux servent à analyser comment le livre a été écrit, à partir de sources humaines. Les lecteurs qui le reçoivent comme une révélation y voient plutôt l’application d’une méthode que le livre annonce lui-même, pour ses premiers fascicules comme pour la vie de Jésus <span class="ref">121:8.12–14</span>&nbsp;:</p>
+            <blockquote class="cite e-rev" data-ref="0:12.11"><p>«&nbsp;[…] ils nous commandent de donner la préférence aux concepts humains les plus élevés qui existent dans le domaine des sujets à présenter.&nbsp;»</p><span class="ref">0:12.11</span></blockquote>
+            <p>Cette page ne tranche pas.</p>
+          </li>
+        </ul></li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Des dates.</b> Les fascicules 85 à 91 ne datent aucune de ces étapes&nbsp;; seuls quelques repères ponctuels y figurent, comme une météorite tombée au Bengale en 1880 <span class="ref">85:1.2</span>.</li>
+        <li><b>Un ordre unique.</b> Le texte donne des enchainements <span class="ref">89:2.1 ; 90:0.1 ; 92:1.2</span>, mais pas une chronologie valable pour tous les peuples&nbsp;: des rituels <span class="q" data-ref="89:0.2">«&nbsp;se fondent tous les uns dans les autres&nbsp;»</span>, le sacrifice n’a pas eu <span class="q" data-ref="89:4.1">«&nbsp;une origine simple et unique&nbsp;»</span>, et l’on a prié bien avant de concevoir clairement un Dieu <span class="ref">89:0.2 ; 89:4.1 ; 91:8.1</span>. L’ordre de la frise est celui des fascicules.</li>
+        <li><b>Ses sources humaines pour ces fascicules.</b> Ses deux remerciements portent, selon leur contexte, sur les fascicules consacrés à Dieu, au Paradis et aux superunivers <span class="ref">0:12.11–12</span>, et sur la vie de Jésus <span class="ref">121:8.12–14</span>. Pour les fascicules 85 à 92, il ne nomme aucune source.</li>
+        <li><b>Ce que sont devenus les peuples cités.</b> Ses observations datent de la rédaction des fascicules <span class="ref">92:6.2</span>&nbsp;; il ne dit rien des changements survenus depuis.</li>
+        <li><b>Les schémas.</b> La frise, son dégradé, ses icônes et les schémas sont des choix de la page&nbsp;: l’espacement des étapes ne mesure pas le temps, et seuls les éléments et leurs liens viennent du texte.</li>
+      </ul>
+    </div>
+  </section>
+
+  <aside class="loin" id="plus-loin" aria-labelledby="h-loin">
+    <h2 id="h-loin">Pour aller plus loin</h2>
+    <ul>
+      <li>Le don de la révélation et les cinq révélations d’époque <span class="ref">92:4.1–9</span></li>
+      <li>L’expansion de la religion par la révélation <span class="ref">101:5.1–14</span></li>
+      <li>Les deux discours de Jésus sur la religion <span class="ref">155:5.1–16 ; 155:6.1–19</span></li>
+      <li>Les problèmes sociaux de la religion <span class="ref">99:0.1–3</span></li>
+    </ul>
+  </aside>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Quarante citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe).</p>
+    <p>La frise et les schémas sont des images de la page&nbsp;: positions, couleurs et icônes sont des choix de présentation.</p>
+    <p>Faits extérieurs au livre (sources humaines, histoire de l’anthropologie)&nbsp;: résumés prudents, avec leurs sources et leur degré de certitude, sans prise de position. Pages consultées le 2026-11-08&nbsp;; deux courtes citations en anglais de Matthew Block (urantiabooksources.com).</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  function ico(id) { return "<svg class=\"ic\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#" + id + "\"/></svg>"; }
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt) e.textContent = txt; return e; }
+
+  /* ====================== 1. Moins d’animations ====================== */
+  /* Par défaut : la préférence du système ; le bouton de la frise la remplace, et le choix est gardé si possible. */
+  var CLE = "evolution-religion-calme";
+  function systeme() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function lire() { try { var v = window.localStorage.getItem(CLE); return v === "1" ? true : (v === "0" ? false : null); } catch (e) { return null; } }
+  function garder(v) { try { window.localStorage.setItem(CLE, v ? "1" : "0"); } catch (e) { /* choix non gardé */ } }
+  var calme = lire();
+  if (calme === null) calme = systeme();
+  var bCalme = document.getElementById("fr-calme");
+  function appliquerCalme() {
+    document.documentElement.classList.toggle("calme", calme);
+    document.documentElement.classList.toggle("anime", !calme);   /* choix explicite : il prime sur le système */
+    if (bCalme) bCalme.setAttribute("aria-pressed", String(calme));
+  }
+  appliquerCalme();
+  if (bCalme) bCalme.addEventListener("click", function () { calme = !calme; garder(calme); appliquerCalme(); });
+
+  /* ====================== 2. La frise ====================== */
+  /* Les textes, citations et références de chaque étape sont dans la version texte (#tv-1 à #tv-8) : la frise
+     en tire ses boutons (data-court, data-fasc, data-ico) et recopie l’étape choisie dans la légende. */
+  var fr = document.getElementById("fr"), rail = document.getElementById("rail"), groupe = document.getElementById("rail-wrap");
+  var boite = document.getElementById("rail-box"), panneau = document.getElementById("fr-panel");
+  var prec = document.getElementById("fr-prev"), suiv = document.getElementById("fr-next");
+  var statut = document.getElementById("fr-status");
+  var tv = document.getElementById("fr-texte"), lienTv = document.getElementById("fr-tv");
+  var items = tv ? Array.prototype.slice.call(tv.querySelectorAll(".tv-list > li")) : [];
+  var N = items.length;
+
+  function titre(li) {
+    var h = li.querySelector(".tv-h"), n = h.querySelector(".tv-n");
+    return h.textContent.slice(n ? n.textContent.length : 0).trim();
+  }
+
+  if (fr && rail && groupe && boite && panneau && N) {
+    var SB = [], cur = -1;
+
+    items.forEach(function (li, i) {
+      var l = el("li"), b = el("button", "st " + li.className), dot = el("span", "st-dot");
+      b.type = "button";
+      dot.setAttribute("aria-hidden", "true");
+      dot.innerHTML = ico(li.getAttribute("data-ico"));
+      b.appendChild(dot);
+      b.appendChild(el("span", "sr-only", "Étape " + (i + 1) + " sur " + N + ", fascicule "));
+      b.appendChild(el("span", "st-n", li.getAttribute("data-fasc")));
+      b.appendChild(el("span", "sr-only", " : "));
+      b.appendChild(el("span", "st-l", li.getAttribute("data-court")));
+      b.title = titre(li);
+      b.addEventListener("click", function () { show(i, true); });
+      l.appendChild(b);
+      rail.appendChild(l);
+      SB.push(b);
+    });
+
+    var show = function (i, annoncer) {
+      i = Math.max(0, Math.min(N - 1, i));
+      var li = items[i], anim = !calme && cur !== -1 && i !== cur;
+      SB.forEach(function (b, j) { if (j === i) b.setAttribute("aria-current", "step"); else b.removeAttribute("aria-current"); });
+      boite.style.setProperty("--p", String(N > 1 ? i / (N - 1) : 0));
+      prec.setAttribute("aria-disabled", String(i === 0));
+      suiv.setAttribute("aria-disabled", String(i === N - 1));
+
+      /* La légende : l’étape, recopiée de la version texte (texte à gauche, citation et suites à droite) */
+      var principal = el("div", "fp-main"), cote = el("div", "fp-side"), n = el("p", "fp-n");
+      n.appendChild(el("b", "", "Étape " + (i + 1) + " sur " + N));
+      principal.appendChild(n);
+      Array.prototype.forEach.call(li.children, function (c) {
+        var k = c.cloneNode(true);
+        if (k.classList.contains("tv-h")) k.insertAdjacentHTML("afterbegin", ico(li.getAttribute("data-ico")));
+        var aCote = k.tagName === "BLOCKQUOTE" || k.classList.contains("trace") || k.classList.contains("voir");
+        (aCote ? cote : principal).appendChild(k);
+      });
+      var nav = el("div", "fp-nav"), bs = el("button", "chip" + (i < N - 1 ? " fort" : ""));
+      bs.type = "button";
+      bs.appendChild(el("span", "cn-l", i < N - 1 ? "Étape suivante →" : "Fin de la frise"));
+      bs.appendChild(el("span", "cn-t", i < N - 1 ? titre(items[i + 1]) : "Revoir depuis le début ↺"));
+      bs.addEventListener("click", function () { aller(i < N - 1 ? i + 1 : 0); });
+      nav.appendChild(bs);
+      panneau.className = "fr-panel " + li.className;
+      panneau.textContent = "";
+      panneau.appendChild(principal);
+      panneau.appendChild(cote);
+      panneau.appendChild(nav);
+      if (anim) { void panneau.offsetWidth; panneau.classList.add("in"); }
+      cur = i;
+      if (annoncer) statut.textContent = "Étape " + (i + 1) + " sur " + N + " : " + titre(li);
+    };
+
+    var aller = function (j) {                   /* depuis le bas de la légende : on remonte voir la frise */
+      show(j, true);
+      if (boite.getBoundingClientRect().top < 0) boite.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      SB[cur].focus({ preventScroll: true });
+    };
+    prec.addEventListener("click", function () { if (cur > 0) show(cur - 1, true); });
+    suiv.addEventListener("click", function () { if (cur < N - 1) show(cur + 1, true); });
+    groupe.addEventListener("keydown", function (ev) {
+      var j = null;
+      if (ev.key === "ArrowRight" || ev.key === "ArrowDown") j = cur + 1;
+      else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") j = cur - 1;
+      else if (ev.key === "Home") j = 0;
+      else if (ev.key === "End") j = N - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      j = Math.max(0, Math.min(N - 1, j));
+      if (j !== cur) show(j, true);
+      SB[j].focus();
+    });
+    if (lienTv && tv) lienTv.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      tv.open = true;
+      tv.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      var s = tv.querySelector("summary");
+      if (s) s.focus({ preventScroll: true });
+    });
+
+    fr.hidden = false;                             /* sans JavaScript, seule la version texte s’affiche */
+    var m = /^#tv-(\d+)$/.exec(location.hash);
+    if (tv && location.hash !== "#fr-texte" && !m) tv.open = false;
+    show(m ? +m[1] - 1 : 0, false);
+  }
+
+  /* ====================== 3. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

@@ -11,6 +11,7 @@
 | Terre de jour (vue 3D) | NASA, Blue Marble Next Generation, fichier Wikimedia Commons « Whole world - land and oceans.jpg » | domaine public |
 | Terre de nuit (vue 3D) | NASA, fichier Wikimedia Commons « The earth at night.jpg » | domaine public |
 | Lune (vue 3D) | NASA Scientific Visualization Studio, CGI Moon Kit (LRO), https://svs.gsfc.nasa.gov/4720/ | domaine public |
+| Voie lactée (vue 3D) | NASA/Goddard Space Flight Center Scientific Visualization Studio, Deep Star Maps 2020, carte « milkyway_2020_4k_gal », https://svs.gsfc.nasa.gov/4851 ; données Gaia DR2 : ESA/Gaia/DPAC | domaine public (FAQ du SVS) ; image débruitée et réduite (WebP, 77 Ko) |
 | Jupiter (vue 3D) | Cassini, PIA07782, fichier Commons « Jupiter Cylindrical Map - Dec 2000 PIA07782.jpg » | domaine public ; crédit : NASA/JPL/Space Science Institute |
 | Mars (vue 3D) | mosaïque Viking MDIM 2.1 (USGS), fichier Commons « Mars Viking MDIM21 ClrMosaic 1km.jpg » | domaine public ; crédit : NASA/JPL/USGS |
 | Mercure (vue 3D) | MESSENGER, PIA15063, fichier Commons « Mercury Global View.jpg » | domaine public ; crédit : NASA/JHUAPL/Carnegie Institution of Washington |

@@ -1,0 +1,1385 @@
+<title>Le Paradis et Havona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : du centre vers le dehors, comme le texte (l'Ile, ses surfaces, ses satellites, les sept circuits de
+   Havona, les corps de gravité obscurs), puis du dehors vers le centre, comme le pèlerin. Au milieu, le schéma interactif
+   des circuits, sur un fond de nuit. Couleurs : or pour le Père, blanc pour le Fils, violet pour l'Esprit (comme dans la
+   vue 3D), bleu pour Havona, ardoise pour les corps obscurs, cuivre pour les zones de force. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* le Paradis, le Père ; accent de sélection */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --gold-ui: #9E6B00;  /* or des traits (3:1 au moins) */
+  --on-gold: #1B1405;  /* texte posé sur l'or */
+  --gold-soft: #FBF4E4;
+  --fils: #5A6A8E; --fils-fill: #FFFFFF; --fils-soft: #EEF1F7;   /* le Fils : blanc, cerné de gris bleu */
+  --esprit: #6A4BC0; --on-esprit: #FFFFFF; --esprit-soft: #F1EDFA; /* l'Esprit : violet */
+  --hav: #2F62A8; --hav-soft: #E7EEF8;                            /* Havona : bleu */
+  --obs: #3E4560; --obs-dot: #A3ABC3;                             /* corps de gravité obscurs : ardoise */
+  --force: #A9532B; --force-soft: #F7E8E0;                        /* zones de force du bas Paradis : cuivre */
+  --f-ext: #C9713F; --f-med: #F1D3C2; --f-int: #9E4521;
+  --anon: #E7EAF1; --infini: #2B3045; --on-infini: #E6E9F2;
+  --peri: #E5EAF3; --peri-line: #7A86A3;
+  --z1: #F3E3BC; --z2: #F8EDD5; --zts: #FBEBC6; --zts2: #F7DC98;
+  --mid: #F0EDF6; --res: #DCEEEA; --res-line: #256B62; --pen: #DCE7F7;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --fils: #C3CCE2; --fils-fill: #E9EEF8; --fils-soft: #1C2438;
+    --esprit: #B6A0F5; --on-esprit: #170F2E; --esprit-soft: #211B37;
+    --hav: #8CB4F2; --hav-soft: #15213A;
+    --obs: #04060D; --obs-dot: #6A7393;
+    --force: #F0956A; --force-soft: #2C1A14;
+    --f-ext: #A35532; --f-med: #4A2C1F; --f-int: #E58A5C;
+    --anon: #1E2537; --infini: #03050B; --on-infini: #E6E9F2;
+    --peri: #1C2438; --peri-line: #5A6688;
+    --z1: #3D3115; --z2: #2D2614; --zts: #46371A; --zts2: #6A511C;
+    --mid: #161A2C; --res: #0F2826; --res-line: #6CC5B9; --pen: #16274A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --fils: #C3CCE2; --fils-fill: #E9EEF8; --fils-soft: #1C2438;
+  --esprit: #B6A0F5; --on-esprit: #170F2E; --esprit-soft: #211B37;
+  --hav: #8CB4F2; --hav-soft: #15213A;
+  --obs: #04060D; --obs-dot: #6A7393;
+  --force: #F0956A; --force-soft: #2C1A14;
+  --f-ext: #A35532; --f-med: #4A2C1F; --f-int: #E58A5C;
+  --anon: #1E2537; --infini: #03050B; --on-infini: #E6E9F2;
+  --peri: #1C2438; --peri-line: #5A6688;
+  --z1: #3D3115; --z2: #2D2614; --zts: #46371A; --zts2: #6A511C;
+  --mid: #161A2C; --res: #0F2826; --res-line: #6CC5B9; --pen: #16274A;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref, .bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; }
+.ref a, .bref { white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); flex: none; }
+.q i { font-style: italic; }
+
+/* Couleurs des réalités (choix de la page) */
+.e-pere { --c: var(--gold-ui); --soft: var(--gold-soft); }
+.e-fils { --c: var(--fils); --soft: var(--fils-soft); }
+.e-esprit { --c: var(--esprit); --soft: var(--esprit-soft); }
+.e-hav { --c: var(--hav); --soft: var(--hav-soft); }
+.e-obs { --c: var(--obs); --soft: var(--tint); }
+.e-force { --c: var(--force); --soft: var(--force-soft); }
+.e-nsp { --c: var(--muted); --soft: var(--tint); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 56ch; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { display: inline-flex; align-items: center; min-height: 44px; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.cb-top { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; align-items: center; }
+.em { width: 92px; height: 92px; display: block; }
+.em-ring { fill: none; stroke: #A9C6FF; stroke-width: 1.3; stroke-dasharray: .1 2.4; stroke-linecap: round; opacity: .95; }
+.em-p { fill: #F3BE4A; } .em-f { fill: #F4F6FB; } .em-e { fill: #B9A2F7; }
+.em-belt { fill: none; stroke: #2A3150; stroke-width: 3; }
+.em-ile { fill: #F6C453; stroke: #FFE6A3; stroke-width: .8; }
+.keys { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 9px; border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.35; }
+.keys .nbx sup { font-size: .68em; line-height: 0; }
+.keys .nbx { grid-row: span 2; min-width: 2.6rem; height: 2rem; border-radius: 999px; display: grid; place-items: center; background: var(--soft, var(--tint)); border: 1.5px solid var(--c, var(--rule)); font: 600 .84rem/1 var(--font-mono); color: var(--ink); padding: 0 4px; }
+.keys .kd { color: var(--muted); font-size: .86rem; }
+.codebox .note { font-size: .84rem; color: var(--muted); line-height: 1.45; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; align-items: baseline; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.sw { display: inline-block; width: .8rem; height: .8rem; border-radius: 50%; background: var(--c); border: 1.5px solid var(--c); vertical-align: -0.05em; margin-right: 4px; }
+.sw.e-fils { background: var(--fils-fill); }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: center; min-height: 44px; padding: 7px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.more { font-size: .98rem; margin-top: 18px; }
+.more > a { display: inline-flex; align-items: center; min-height: 44px; }
+.prose.flat { margin-top: 0; }
+.sub-h { margin-top: 34px; font-size: 1.55rem; }
+.sub-p { margin-top: 12px; max-width: 74ch; }
+
+/* Cartes */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.5rem), 1fr)); gap: 14px; margin-top: 24px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 1.36rem; display: flex; gap: 10px; align-items: center; }
+.card p, .card li { font-size: .97rem; }
+.card ul, .card ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.cards.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card .st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.mi { width: 64px; height: 24px; flex: none; }
+.mi-ile { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 1; }
+.mi-hl { fill: none; stroke: var(--gold-ui); stroke-width: 3; stroke-linecap: round; }
+.mi-f { stroke: var(--force); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+
+/* Figures */
+.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 18px 18px 16px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.fig svg { width: 100%; height: auto; display: block; max-width: 460px; margin-inline: auto; }
+.fig figcaption { font-size: .86rem; color: var(--muted); line-height: 1.45; }
+.fig h3 { font-size: 1.36rem; }
+.figs2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 24px; align-items: start; }
+.forme-figs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: center; }
+.forme-figs > div { display: grid; gap: 6px; min-width: 0; }
+.forme-figs .lbl { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); text-align: center; }
+.fig .ech { font: 500 .76rem/1.4 var(--font-mono); color: var(--gold-ink); }
+.leg { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.leg li { display: grid; grid-template-columns: 1.6rem minmax(0, 1fr); gap: 10px; align-items: start; font-size: .94rem; line-height: 1.45; }
+.bd { width: 1.45rem; height: 1.45rem; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font: 700 .78rem/1 var(--font-body); margin-top: 1px; }
+.leg li.nsp .bd { background: transparent; color: var(--muted); border: 1.5px dashed var(--muted); }
+.leg b { font-weight: 700; }
+.fig .cite { margin-top: 2px; }
+.fig-forme, .fig-large { margin-top: 24px; }
+.fig-in { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; align-items: center; }
+.fig-in svg { max-width: 480px; }
+.sat-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 18px; align-items: start; margin-top: 24px; }
+.sat-fig { position: sticky; top: 12px; }
+.sat-cards { display: grid; gap: 14px; }
+.spheres { margin: 0; padding-left: 22px; display: grid; gap: 6px; }
+.spheres li { font-size: .95rem; line-height: 1.4; }
+.spheres li::marker { font: 600 .85rem var(--font-mono); color: var(--gold-ink); }
+.fact-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+.fact { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--c, var(--gold)); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.fact .big { font-family: var(--font-display); font-weight: 600; font-size: 1.9rem; line-height: 1.05; font-variant-numeric: lining-nums; }
+.fact p { font-size: .93rem; }
+
+/* Dessins : classes communes */
+.fg { overflow: visible; }
+.fg text { font-family: var(--font-body); }
+.t11 { font-size: 11px; font-weight: 700; fill: var(--gold-ink); }
+.t11m { font-size: 11.5px; font-weight: 500; fill: var(--muted); }
+.t12 { font-size: 12.5px; font-weight: 600; fill: var(--ink); }
+.t12m { font-size: 12.5px; font-weight: 500; fill: var(--muted); }
+.tc { font: 600 13px var(--font-mono); fill: var(--muted); }
+.hv-t { fill: var(--hav); }
+.res-t { fill: var(--res-line); }
+.ile { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 1.6; }
+.pf-h { fill: none; stroke: var(--gold-ui); stroke-width: 3.2; stroke-linecap: round; }
+.pf-b { fill: none; stroke: var(--force); stroke-width: 3.2; stroke-linecap: round; }
+.pf-p { fill: none; stroke: var(--fils); stroke-width: 3.2; stroke-linecap: round; }
+.ile-s { fill: var(--gold); stroke: var(--gold-ui); stroke-width: 1; }
+.axe { fill: none; stroke: var(--muted); stroke-width: 1.2; }
+.tick { stroke: var(--muted); stroke-width: 1; }
+.lead { fill: none; stroke: var(--muted); stroke-width: 1; }
+.bdg circle { fill: var(--ink); }
+.bdg text { fill: var(--paper); font: 700 11.5px var(--font-body); text-anchor: middle; }
+.z-peri { fill: var(--peri); stroke: var(--gold-ui); stroke-width: 1.6; }
+.ms { fill: var(--esprit); }
+.z-aire { fill: var(--sheet); stroke: var(--peri-line); stroke-width: 1; }
+.z-n { fill: none; stroke: var(--peri-line); stroke-width: .9; stroke-dasharray: 3 3; }
+.z2 { fill: var(--z2); stroke: var(--gold-ui); stroke-width: .8; }
+.z1 { fill: var(--z1); stroke: var(--gold-ui); stroke-width: .8; }
+.sect { fill: var(--zts2); stroke: var(--gold-ui); stroke-width: .7; }
+.sect-b { fill: var(--z1); }
+.zts { fill: var(--zts); stroke: var(--gold-ui); stroke-width: .8; }
+.zts2 { fill: var(--zts2); opacity: .6; }
+.halo { fill: var(--esprit); opacity: .22; }
+.fils-r { fill: var(--fils-fill); stroke: var(--fils); stroke-width: 2.2; }
+.pere-c { fill: var(--gold); stroke: var(--gold-ui); stroke-width: 1; }
+.f-ext { fill: var(--f-ext); stroke: var(--force); stroke-width: 1.6; }
+.f-med { fill: var(--f-med); stroke: var(--force); stroke-width: .8; }
+.f-int { fill: var(--f-int); stroke: var(--force); stroke-width: .8; }
+.anon { fill: var(--anon); stroke: var(--peri-line); stroke-width: .9; }
+.infini { fill: var(--infini); stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 4 3; }
+.qm-t { font: 700 34px var(--font-display); fill: var(--on-infini); opacity: .85; }
+.mid { fill: var(--mid); }
+.pen { fill: var(--pen); stroke: var(--hav); stroke-width: 1.2; }
+.res { fill: var(--res); stroke: var(--res-line); stroke-width: 1.2; }
+.gal ellipse { fill: var(--hav); opacity: .55; }
+.fl-pen { fill: none; stroke: var(--hav); stroke-width: 1.6; }
+.fl-pen-h { fill: var(--hav); }
+.fl-res { fill: none; stroke: var(--res-line); stroke-width: 1.6; }
+.fl-res-h { fill: var(--res-line); }
+.hav1 { fill: none; stroke: var(--hav); stroke-width: 1.4; stroke-dasharray: 2 5; stroke-linecap: round; }
+.orb { fill: none; stroke-width: 1.1; }
+.orb-p { stroke: var(--gold-ui); } .orb-f { stroke: var(--fils); } .orb-e { stroke: var(--esprit); }
+.sp-pere { fill: var(--gold); stroke: var(--gold-ui); stroke-width: 1; }
+.sp-fils { fill: var(--fils-fill); stroke: var(--fils); stroke-width: 1.6; }
+.sp-esp { fill: var(--esprit); }
+.sp-n, .sp-n2 { font: 700 11px var(--font-body); text-anchor: middle; }
+.sp-n { fill: var(--on-gold); } .sp-n2 { fill: var(--on-esprit); }
+.semi { fill: var(--tint); }
+.uniq { fill: var(--esprit-soft); }
+.plan { fill: none; stroke: var(--hav); stroke-width: 1.2; stroke-dasharray: 3 3; }
+.hv-dots circle { fill: var(--hav); }
+.su-dots ellipse { fill: var(--muted); opacity: .7; }
+.belt-f { fill: var(--obs); stroke: var(--obs-dot); stroke-width: 1; }
+.belt-p { fill: url(#pt-stip); }
+.stip { fill: var(--obs-dot); }
+.belt-l { fill: none; stroke: var(--obs-dot); stroke-width: 1.2; }
+.wave { fill: none; stroke: var(--esprit); stroke-width: 1.4; opacity: .8; }
+.brk { fill: none; stroke: var(--sheet); stroke-width: 2.4; stroke-linejoin: round; }
+.rot { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.rot-h { fill: var(--muted); }
+
+/* ==================== Le schéma de Havona ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 22px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.hv-ui { display: grid; gap: 14px; }
+.hv-track { display: grid; gap: 6px; }
+.hv-dir { display: flex; justify-content: space-between; font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.hv-tabs { display: flex; flex-wrap: wrap; gap: 6px; }
+.tb { appearance: none; min-width: 44px; min-height: 44px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 500 .95rem/1 var(--font-body); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
+.tb.tb-c { font: 600 1rem/1 var(--font-mono); padding: 0; width: 44px; }
+.tb:hover { border-color: var(--muted); }
+.tb[aria-selected="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.tb .sw { margin: 0; }
+.hv-opts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .88rem/1.2 var(--font-body); padding: 8px 13px; min-height: 44px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip .tg { width: 30px; height: 16px; border-radius: 999px; border: 1.5px solid currentColor; position: relative; flex: none; }
+.chip .tg::after { content: ""; position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform .2s ease; }
+.chip[aria-pressed="true"] .tg::after { transform: translateX(13px); }
+.hv-main { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; align-items: start; }
+.hv-main.on { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); }
+.hv-sky { margin: 0; border-radius: 14px; overflow: hidden; background: #070B1A; border: 1px solid #1E2744; display: grid; gap: 0; max-width: 620px; width: 100%; }
+.hv-main.on .hv-sky { max-width: none; }
+.hv-svg { width: 100%; height: auto; display: block; touch-action: manipulation; }
+.hv-sky figcaption { color: #B4BED8; font-size: .82rem; line-height: 1.45; padding: 10px 14px 12px; background: #0B1124; border-top: 1px solid #1E2744; }
+.hv-sky figcaption .ref { color: #A9B6D8; }
+.hv-sky .ref a.ref-lien:hover, .hv-sky .ref a.ref-lien:focus-visible { color: #FFD36B; }
+.hv-sky :focus-visible { outline-color: #FFD36B; }
+.hv-svg .hit-s { fill: none; stroke: transparent; pointer-events: stroke; cursor: pointer; }
+.hv-svg .hit-f { fill: transparent; pointer-events: fill; cursor: pointer; }
+.hv-svg .hv-hits { pointer-events: none; }
+.hv-svg .hv-hits > * { pointer-events: auto; }
+.hv-svg .hv-hits .hit-s { pointer-events: stroke; }
+.hv-svg .hv-hits .hit-f { pointer-events: fill; }
+.hv-svg .hv-part, .hv-svg .hv-sel, .hv-svg .hv-num, .hv-svg .hv-et, .hv-svg .hv-lead, .hv-svg .hv-lbl { pointer-events: none; }
+.hv-et circle { fill: #C9D4F2; opacity: .55; }
+.hv-zone { fill: none; stroke: #19213D; }
+.hv-belt { fill: none; stroke: #1B2032; stroke-width: 8; }
+.hv-belt-d { fill: none; stroke: #2D3450; stroke-width: 8; stroke-dasharray: 10 8; }
+.hv-ond { fill: none; stroke: #6F5FB5; stroke-width: 1; opacity: .7; }
+.hv-fl { fill: #8D97B8; }
+.hv-fl-c { fill: #A9C6FF; }
+.hv-orb { fill: none; stroke: #2B3A66; stroke-width: 1; }
+.hv-ring { fill: none; stroke: #A9C6FF; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: .01 5.5; }
+.hv-sorb { fill: none; stroke: #2E3557; stroke-width: .8; }
+.hv-s-p { fill: #F3BE4A; } .hv-s-f { fill: #F4F6FB; } .hv-s-e { fill: #B9A2F7; }
+.hv-ile { fill: #F6C453; stroke: #FFE6A3; stroke-width: 1.2; }
+.hv-rot { transform-box: view-box; transform-origin: 200px 200px; }
+.hv-sel g { display: none; }
+.hv-sel circle, .hv-sel ellipse { fill: none; stroke: #FFD36B; stroke-width: 3; }
+.hv-sel g[data-sel="obs"] circle { stroke-width: 10; stroke-opacity: .5; }
+.hv-svg[data-sel="obs"] .hv-sel g[data-sel="obs"], .hv-svg[data-sel="par"] .hv-sel g[data-sel="par"],
+.hv-svg[data-sel="sat"] .hv-sel g[data-sel="sat"], .hv-svg[data-sel="c1"] .hv-sel g[data-sel="c1"],
+.hv-svg[data-sel="c2"] .hv-sel g[data-sel="c2"], .hv-svg[data-sel="c3"] .hv-sel g[data-sel="c3"],
+.hv-svg[data-sel="c4"] .hv-sel g[data-sel="c4"], .hv-svg[data-sel="c5"] .hv-sel g[data-sel="c5"],
+.hv-svg[data-sel="c6"] .hv-sel g[data-sel="c6"], .hv-svg[data-sel="c7"] .hv-sel g[data-sel="c7"] { display: inline; }
+.hv-svg[data-sel^="c"] .hv-part[data-part^="c"] { opacity: .45; }
+.hv-svg[data-sel="c1"] [data-part="c1"], .hv-svg[data-sel="c2"] [data-part="c2"], .hv-svg[data-sel="c3"] [data-part="c3"],
+.hv-svg[data-sel="c4"] [data-part="c4"], .hv-svg[data-sel="c5"] [data-part="c5"], .hv-svg[data-sel="c6"] [data-part="c6"],
+.hv-svg[data-sel="c7"] [data-part="c7"] { opacity: 1; }
+.hv-num circle { fill: #0B1124; stroke: #7E9BD6; stroke-width: 1; }
+.hv-num text { fill: #DCE6FA; font: 700 11.5px var(--font-body); text-anchor: middle; }
+.hv-svg[data-sel="c1"] .hv-num [data-n="c1"] circle, .hv-svg[data-sel="c2"] .hv-num [data-n="c2"] circle,
+.hv-svg[data-sel="c3"] .hv-num [data-n="c3"] circle, .hv-svg[data-sel="c4"] .hv-num [data-n="c4"] circle,
+.hv-svg[data-sel="c5"] .hv-num [data-n="c5"] circle, .hv-svg[data-sel="c6"] .hv-num [data-n="c6"] circle,
+.hv-svg[data-sel="c7"] .hv-num [data-n="c7"] circle { fill: #FFD36B; stroke: #FFD36B; }
+.hv-svg[data-sel="c1"] .hv-num [data-n="c1"] text, .hv-svg[data-sel="c2"] .hv-num [data-n="c2"] text,
+.hv-svg[data-sel="c3"] .hv-num [data-n="c3"] text, .hv-svg[data-sel="c4"] .hv-num [data-n="c4"] text,
+.hv-svg[data-sel="c5"] .hv-num [data-n="c5"] text, .hv-svg[data-sel="c6"] .hv-num [data-n="c6"] text,
+.hv-svg[data-sel="c7"] .hv-num [data-n="c7"] text { fill: #1B1405; }
+.hv-lead { fill: none; stroke: #6C7AA3; stroke-width: 1; }
+.hv-lbl { fill: #C2CCE6; font: 600 14px var(--font-body); }
+/* mouvement : seulement si l'on n'a pas demandé moins d'animations (classe posée par le script) */
+.anime .hv-ring { animation: hv-cw 2.2s linear infinite; }
+.anime .hv-ext { animation: hv-cw-b 9s linear infinite; }
+.anime .hv-int { animation: hv-ccw-b 9s linear infinite; }
+.anime .hv-rot-a { animation: hv-tour 70s linear infinite; }
+.anime .hv-rot-b { animation: hv-tour 95s linear infinite; }
+.anime .hv-rot-c { animation: hv-tour 120s linear infinite; }
+@keyframes hv-cw { to { stroke-dashoffset: -5.51; } }
+@keyframes hv-cw-b { to { stroke-dashoffset: -18; } }
+@keyframes hv-ccw-b { to { stroke-dashoffset: 18; } }
+@keyframes hv-tour { to { transform: rotate(360deg); } }
+
+.pn { background: var(--paper); border: 1px solid var(--rule); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.pn-k { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); }
+.pn .tv-h { font-size: 1.5rem; }
+.pn .tv-h .tv-n { display: none; }
+.pn p, .pn li { font-size: .97rem; }
+.cnt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; font-size: .97rem; }
+.cnt b { font-family: var(--font-display); font-size: 1.55rem; font-weight: 600; line-height: 1.1; color: var(--ink); font-variant-numeric: lining-nums; }
+.cnt.nsp b { font-size: 1.2rem; color: var(--muted); }
+.pn-com { font-size: .88rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+.pn-nav { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 12px; margin-top: 2px; }
+.pn-nav .chip { display: inline-grid; gap: 2px; justify-items: start; padding: 8px 14px 9px; border-radius: 12px; text-align: left; max-width: 100%; }
+.pn-nav .cn-l { font: 500 .72rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .85; }
+.pn-nav .cn-t { font-weight: 700; font-size: .95rem; }
+.pn-nav .chip.fort { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.pn-nav .chip.fort:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.nsp-n { display: flex; gap: 10px; align-items: flex-start; font-size: .92rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+.nsp-n b { color: var(--ink); font-weight: 600; }
+.go3d { margin-top: 4px; }
+
+/* Version texte */
+.tv { border-top: 1px solid var(--rule); padding-top: 12px; }
+.tv summary { cursor: pointer; font: 600 1.2rem/1.3 var(--font-display); padding-block: 8px; min-height: 44px; display: flex; align-items: center; gap: 10px; list-style: none; }
+.tv summary::-webkit-details-marker { display: none; }
+.tv summary::before { content: ""; width: 8px; height: 8px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(-45deg); transition: transform .15s ease; flex: none; margin-left: 2px; }
+.tv[open] summary::before { transform: rotate(45deg); }
+.tv-intro { margin-top: 10px; max-width: 80ch; font-size: .97rem; }
+.tv-list { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 22px; max-width: 80ch; }
+.tv-list > li { display: grid; gap: 8px; }
+.tv-h { font-size: 1.3rem; display: flex; gap: 10px; align-items: baseline; }
+.tv-n { font: 600 .85rem/1 var(--font-mono); color: var(--gold-ink); }
+
+/* La carrière : le chemin */
+.path { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 6px; }
+.path li { display: inline-flex; align-items: center; gap: 6px; }
+.path .pc { display: inline-grid; gap: 1px; border: 1px solid var(--rule); background: var(--sheet); border-radius: 10px; padding: 7px 11px; line-height: 1.2; }
+.path .pc b { font-weight: 700; font-size: .95rem; }
+.path .pc span { font-size: .78rem; color: var(--muted); }
+.path .pc.hav { border-color: var(--hav); background: var(--hav-soft); }
+.path .pc.fin { border-color: var(--gold); background: var(--gold-soft); }
+.path .arr { color: var(--muted); font-family: var(--font-mono); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.callout li, .unk li { max-width: 78ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+/* Moins d'animations : préférence du système ou bouton du schéma */
+.calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) { .chev, .chip .tg::after { transition: none; } }
+
+@media (max-width: 960px) {
+  .hv-main.on { grid-template-columns: minmax(0, 1fr); }
+  .hv-main.on .hv-sky { max-width: 560px; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .figs2, .two, .fig-in, .sat-grid { grid-template-columns: minmax(0, 1fr); }
+  .fact-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sat-fig { position: static; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 16px 24px; }
+  .forme-figs { grid-template-columns: minmax(0, 1fr); }
+  .fig { padding: 16px 14px 14px; }
+  .cards.c2 { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .tb { padding: 0 10px; }
+}
+</style>
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · fascicules 11 à 14</p>
+      <h1>Le Paradis et Havona</h1>
+      <p class="lede">Au centre de tout, le livre place une ile immobile et éternelle, le Paradis, demeure du Père, du Fils et de l’Esprit. Autour d’elle tourne Havona, un univers parfait d’un milliard de mondes rangés en sept circuits, que ceinturent d’énormes corps de gravité obscurs. Voici, en schémas, ce que le texte en décrit, et ce qu’il laisse dans l’ombre.</p>
+      <a class="cta" href="#circuits">Explorer les sept circuits de Havona <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">En relief, dans la vue 3D&nbsp;: <a href="atlas-3d.html#paradis">le Paradis</a> et <a href="atlas-3d.html#havona">Havona</a>.</p>
+    </div>
+    <aside class="codebox" aria-label="Repères">
+      <div class="cb-top"><svg class="em" viewBox="0 0 120 120" aria-hidden="true" focusable="false"><defs><radialGradient id="em-ciel"><stop offset="0" stop-color="#18234A"/><stop offset="1" stop-color="#080C1C"/></radialGradient><radialGradient id="em-lueur"><stop offset="0" stop-color="#FFE7A0" stop-opacity=".9"/><stop offset="1" stop-color="#F3B949" stop-opacity="0"/></radialGradient></defs><circle cx="60" cy="60" r="58" fill="url(#em-ciel)"/><circle class="em-ring" cx="60" cy="60" r="21"/><circle class="em-ring" cx="60" cy="60" r="25.4"/><circle class="em-ring" cx="60" cy="60" r="29.8"/><circle class="em-ring" cx="60" cy="60" r="34.2"/><circle class="em-ring" cx="60" cy="60" r="38.6"/><circle class="em-ring" cx="60" cy="60" r="43"/><circle class="em-ring" cx="60" cy="60" r="47.4"/><g><circle class="em-p" cx="60" cy="50.5" r="1"/><circle class="em-p" cx="67.4" cy="54.1" r="1"/><circle class="em-p" cx="69.3" cy="62.1" r="1"/><circle class="em-p" cx="64.1" cy="68.6" r="1"/><circle class="em-p" cx="55.9" cy="68.6" r="1"/><circle class="em-p" cx="50.7" cy="62.1" r="1"/><circle class="em-p" cx="52.6" cy="54.1" r="1"/></g><g><circle class="em-f" cx="65.3" cy="48.7" r="1"/><circle class="em-f" cx="72.2" cy="57.1" r="1"/><circle class="em-f" cx="69.9" cy="67.7" r="1"/><circle class="em-f" cx="60.2" cy="72.5" r="1"/><circle class="em-f" cx="50.3" cy="67.9" r="1"/><circle class="em-f" cx="47.8" cy="57.4" r="1"/><circle class="em-f" cx="54.4" cy="48.8" r="1"/></g><g><circle class="em-e" cx="60" cy="44.5" r="1"/><circle class="em-e" cx="72.1" cy="50.3" r="1"/><circle class="em-e" cx="75.1" cy="63.4" r="1"/><circle class="em-e" cx="66.7" cy="74" r="1"/><circle class="em-e" cx="53.3" cy="74" r="1"/><circle class="em-e" cx="44.9" cy="63.4" r="1"/><circle class="em-e" cx="47.9" cy="50.3" r="1"/></g><circle class="em-belt" cx="60" cy="60" r="51"/><circle class="em-belt" cx="60" cy="60" r="55.5"/><circle cx="60" cy="60" r="12" fill="url(#em-lueur)"/><ellipse class="em-ile" cx="60" cy="60" rx="4.6" ry="5.4"/></svg><span class="label">Le centre de tout, en chiffres</span></div>
+      <ul class="keys">
+        <li class="e-pere"><span class="nbx" aria-hidden="true">1</span><b>une Ile éternelle</b><span class="kd">le Paradis, immobile au centre <span class="ref">11:0.1 ; 14:0.1</span></span></li>
+        <li class="e-esprit"><span class="nbx" aria-hidden="true">21</span><b>vingt-et-un satellites</b><span class="kd">trois circuits de sept sphères sacrées <span class="ref">13:0.1–2</span></span></li>
+        <li class="e-hav"><span class="nbx" aria-hidden="true">7</span><b>sept circuits</b><span class="kd">l’univers central, Havona <span class="ref">14:1.9</span></span></li>
+        <li class="e-hav"><span class="nbx" aria-hidden="true"><span>10<sup>9</sup></span></span><b>un milliard de mondes</b><span class="kd">tous différents <span class="ref">14:0.1 ; 14:5.6</span></span></li>
+        <li class="e-obs"><span class="nbx" aria-hidden="true">2</span><b>deux ceintures de corps obscurs</b><span class="kd">qui tournent en sens contraires <span class="ref">14:1.15</span></span></li>
+      </ul>
+      <dl>
+        <dt><span class="qm" aria-hidden="true">?</span></dt><dd>Ce que le texte ne précise pas.</dd>
+        <dt>échelle</dt><dd>Aucun schéma n’est à l’échelle, sauf les proportions de l’Ile.</dd>
+        <dt>mental</dt><dd>traduit l’anglais <i lang="en">mind</i>&nbsp;; <i>esprit</i> traduit <i lang="en">spirit</i>.</dd>
+      </dl>
+      <p class="note">Couleurs, choix de la page&nbsp;: <span class="sw e-pere" aria-hidden="true"></span>or pour le Père, <span class="sw e-fils" aria-hidden="true"></span>blanc pour le Fils, <span class="sw e-esprit" aria-hidden="true"></span>violet pour l’Esprit, comme dans la vue 3D&nbsp;; <span class="sw e-hav" aria-hidden="true"></span>bleu pour Havona.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#centre"><span class="nb">1</span><span class="tt">Le centre de tout</span></a></li>
+      <li><a href="#forme"><span class="nb">2</span><span class="tt">Une ile plate, presque ronde</span></a></li>
+      <li><a href="#domaines"><span class="nb">3</span><span class="tt">Trois domaines&nbsp;: le haut, le pourtour, le bas</span></a></li>
+      <li><a href="#plans"><span class="nb">4</span><span class="tt">Vu de dessus, vu de dessous</span></a></li>
+      <li><a href="#hors-espace"><span class="nb">5</span><span class="tt">Hors de l’espace et du temps</span></a></li>
+      <li><a href="#satellites"><span class="nb">6</span><span class="tt">Les vingt-et-un satellites</span></a></li>
+      <li><a href="#circuits" class="hot"><span class="nb">★</span><span class="tt">Le schéma&nbsp;: les sept circuits de Havona</span></a></li>
+      <li><a href="#obscurs"><span class="nb">7</span><span class="tt">Les corps de gravité obscurs</span></a></li>
+      <li><a href="#havona"><span class="nb">8</span><span class="tt">La vie dans Havona</span></a></li>
+      <li><a href="#carriere"><span class="nb">9</span><span class="tt">Havona dans la carrière ascendante</span></a></li>
+      <li><a href="#registres"><span class="nb">10</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="centre" aria-labelledby="h-centre">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Fascicule 11</p>
+      <h2 id="h-centre">Le centre de tout</h2>
+      <p>Pour le livre, le Paradis est le centre éternel de l’univers des univers, et la demeure du Père Universel, du Fils Éternel et de l’Esprit Infini <span class="ref">11:0.1</span>. Le texte y insiste&nbsp;: c’est un lieu réel, que l’on pourrait trouver, avec les moyens voulus, comme on trouve une ville sur une carte <span class="ref">11:1.3</span>.</p>
+    </div>
+    <div class="prose">
+      <blockquote class="cite e-pere" data-ref="11:0.1"><p>«&nbsp;Le Paradis est une sphère matérielle aussi bien qu’une demeure spirituelle.&nbsp;»</p><span class="ref">11:0.1</span></blockquote>
+      <p>L’Ile existe de toute éternité&nbsp;: il n’y a ni archives ni traditions sur son origine <span class="ref">11:0.2</span>. Sa substance ne se trouve nulle part ailleurs, et les Melchizédeks de Nébadon l’appellent <i>absolutum</i> <span class="ref">11:2.9</span>. Le Père y est <span class="q" data-ref="11:1.4">«&nbsp;personnellement, littéralement et effectivement présent&nbsp;»</span>&nbsp;; s’il en bougeait, ce serait <span class="q" data-ref="11:1.4">«&nbsp;un pandémonium universel&nbsp;»</span>, car les lignes de gravité convergent vers ce centre <span class="ref">11:1.4</span>.</p>
+    </div>
+    <div class="two">
+      <article class="card e-pere">
+        <p class="st">Ce qu’il est</p>
+        <h3>Le centre et la source</h3>
+        <ul>
+          <li>Le centre géographique de l’infinité <span class="ref">11:9.2</span>.</li>
+          <li>La source et le point focal de toute énergie-matière <span class="ref">11:8.9</span>, et le centre de la gravité matérielle absolue <span class="ref">11:8.2</span>.</li>
+          <li>L’archétype de tous les mondes-sièges des univers <span class="ref">11:9.6</span>.</li>
+          <li>Le but de toutes les personnalités d’esprit <span class="ref">11:9.1</span>, et la destinée lointaine des mortels <span class="ref">11:9.8</span>.</li>
+        </ul>
+      </article>
+      <article class="card e-nsp">
+        <p class="st">Ce qu’il n’est pas</p>
+        <h3>Ni une créature, ni un dieu</h3>
+        <ul>
+          <li>Ni une partie de la création, ni même une vraie partie de Havona <span class="ref">11:9.2</span>.</li>
+          <li>Ni un créateur&nbsp;: il n’est l’ancêtre d’aucun être vivant <span class="ref">11:9.5</span>.</li>
+          <li>Ni une Déité, ni un être conscient au sens où l’entendent les mortels <span class="ref">11:9.4</span>.</li>
+        </ul>
+        <blockquote class="cite e-nsp" data-ref="11:2.9"><p>«&nbsp;Cette matière source du Paradis n’est ni morte ni vivante&nbsp;; elle est l’expression originelle non spirituelle de la Source-Centre Première&nbsp;; elle est le <i>Paradis</i>, et le Paradis n’a pas de copie.&nbsp;»</p><span class="ref">11:2.9</span></blockquote>
+      </article>
+    </div>
+    <p class="more">Qui sont le Père, le Fils et l’Esprit, et la place de l’Ile parmi les sept Absolus&nbsp;: <a href="dieu-et-deite.html">Dieu et la Déité</a>.</p>
+  </section>
+
+  <section id="forme" aria-labelledby="h-forme">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Fascicule 11, section 2</p>
+      <h2 id="h-forme">Une ile plate, presque ronde</h2>
+      <p>Le texte ne donne aucune dimension, mais il donne des proportions. Ce sont les seules mesures exactes de cette page.</p>
+    </div>
+    <div class="prose">
+      <blockquote class="cite e-pere" data-ref="11:2.2"><p>«&nbsp;Dans sa forme, le Paradis diffère des corps habités de l’espace&nbsp;: il n’est pas sphérique, il est nettement ellipsoïde, son diamètre nord-sud étant d’un sixième plus long que son diamètre est-ouest. L’Ile centrale est essentiellement plate, et la distance entre la surface supérieure et la surface inférieure est le dixième du diamètre est-ouest.&nbsp;»</p><span class="ref">11:2.2</span></blockquote>
+    </div>
+    <figure class="fig fig-forme" aria-labelledby="h-forme-fig">
+      <h3 id="h-forme-fig">L’Ile aux proportions du texte</h3>
+      <div class="forme-figs">
+        <div><p class="lbl" aria-hidden="true">Vu de dessus</p><svg class="fg" viewBox="0 0 320 330" role="img" aria-label="Vue de dessus de l’Ile du Paradis, aux proportions du texte : une ellipse dont le diamètre nord-sud mesure 7 unités et le diamètre est-ouest 6, soit un sixième de plus." focusable="false">
+<ellipse class="ile" cx="160" cy="170" rx="105" ry="122.5"/>
+<path class="axe" d="M55 170H265M160 47.5V292.5"/>
+<path class="tick" d="M55 165v10M90 165v10M125 165v10M160 165v10M195 165v10M230 165v10M265 165v10M155 47.5h10M155 82.5h10M155 117.5h10M155 152.5h10M155 187.5h10M155 222.5h10M155 257.5h10M155 292.5h10"/>
+<text class="t12" x="216" y="190" text-anchor="middle">est-ouest&#160;: 6</text>
+<text class="t12" x="169" y="99.5">nord-sud&#160;: 7</text>
+<text class="tc" x="160" y="29.5" text-anchor="middle">N</text>
+<text class="tc" x="160" y="320.5" text-anchor="middle">S</text>
+<text class="tc" x="37" y="175" text-anchor="middle">O</text>
+<text class="tc" x="283" y="175" text-anchor="middle">E</text>
+</svg></div>
+        <div><p class="lbl" aria-hidden="true">De profil, d’ouest en est</p><svg class="fg" viewBox="0 0 320 160" role="img" aria-label="Profil de l’Ile du Paradis, aux proportions du texte : une galette plate, longue de 6 unités d’est en ouest et épaisse de 0,6, soit un dixième. Le haut Paradis est la face supérieure, le bas Paradis la face inférieure, le Paradis périphérique le pourtour." focusable="false">
+<rect class="ile" x="55" y="72" width="210" height="21" rx="1.5"/>
+<path class="pf-h" d="M57 72H263"/>
+<path class="pf-b" d="M57 93H263"/>
+<path class="pf-p" d="M55 73.5V91.5M265 73.5V91.5"/>
+<text class="t12" x="40" y="52">périphérie</text>
+<text class="t12" x="160" y="52" text-anchor="middle">haut Paradis</text>
+<text class="t12" x="280" y="52" text-anchor="end">périphérie</text>
+<path class="lead" d="M56 58V69M264 58V69"/>
+<text class="t12" x="160" y="116" text-anchor="middle">bas Paradis</text>
+<text class="tc" x="39" y="88" text-anchor="middle">O</text>
+<text class="tc" x="313" y="88" text-anchor="middle">E</text>
+<path class="axe" d="M55 132H265M55 127v10M265 127v10"/>
+<text class="t12m" x="160" y="152" text-anchor="middle">est-ouest&#160;: 6</text>
+<path class="axe" d="M277 72v21M273 72h8M273 93h8"/>
+<text class="t12m" x="284" y="87">0,6</text>
+</svg></div>
+      </div>
+      <figcaption><span class="ech">À l’échelle des proportions</span> · Une même unité pour les trois mesures&nbsp;: 6 d’est en ouest, 7 du nord au sud, 0,6 d’épaisseur. Le texte ne donne aucune taille réelle&nbsp;; le dessin du bord est un choix de la page.</figcaption>
+    </figure>
+    <div class="cards">
+      <article class="card e-pere">
+        <h3>Un nord absolu</h3>
+        <p>Ces différences de dimensions, l’immobilité de l’Ile et une pression de force plus forte à son extrémité nord permettent d’établir une direction absolue dans le maitre univers <span class="ref">11:2.3</span>.</p>
+      </article>
+      <article class="card e-pere">
+        <h3>Un bord abrupt</h3>
+        <p>L’Ile finit abruptement à sa périphérie, mais elle est si grande que cet angle terminal reste à peu près indiscernable à l’échelle d’une région <span class="ref">11:4.1</span>.</p>
+      </article>
+      <article class="card e-pere">
+        <h3>Immense, mais de quelle taille&nbsp;?</h3>
+        <p>Le texte ne le dit pas. Il la décrit comme <span class="q" data-ref="11:0.1">«&nbsp;le plus gigantesque corps organisé de réalité cosmique dans tout le maitre univers&nbsp;»</span> <span class="ref">11:0.1</span>, et précise que les univers existants n’utilisent que 1 à 4&nbsp;% de la place qui leur est réservée <span class="ref">11:4.4</span>.</p>
+      </article>
+    </div>
+    <p class="more"><a href="atlas-3d.html#paradis">Le Paradis dans la vue 3D <span aria-hidden="true">→</span></a></p>
+  </section>
+
+  <section id="domaines" aria-labelledby="h-dom">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicule 11, sections 2 à 5</p>
+      <h2 id="h-dom">Trois domaines&nbsp;: le haut, le pourtour, le bas</h2>
+      <p>L’Ile se divise en trois domaines d’activité <span class="ref">11:2.4–7</span>. Le côté haut porte les activités de personnalité, le côté bas ce qui est impersonnel, et la périphérie des activités ni strictement personnelles ni non personnelles <span class="ref">11:2.8</span>.</p>
+      <blockquote class="cite e-pere" data-ref="11:2.8"><p>«&nbsp;La Trinité semble dominer le plan personnel ou supérieur, et l’Absolu Non Qualifié le plan inférieur ou impersonnel.&nbsp;»</p><span class="ref">11:2.8</span></blockquote>
+    </div>
+    <div class="cards">
+      <article class="card e-pere">
+        <h3><svg class="mi" viewBox="0 0 64 24" aria-hidden="true" focusable="false"><rect class="mi-ile" x="4" y="9" width="56" height="6" rx="1"/><path class="mi-hl" d="M4 9H60"/></svg>Le haut Paradis</h3>
+        <p class="st">Le personnel</p>
+        <p>Trois grands domaines&nbsp;: la présence de la Déité, la Sphère Très Sainte et l’Aire Sainte, résidentielle <span class="ref">11:3.1</span>. Aucun transport ne s’y pose&nbsp;: le haut et le bas Paradis ne sont abordables ni par les supernaphins transporteurs, ni par les autres franchisseurs d’espace <span class="ref">11:4.1</span>.</p>
+      </article>
+      <article class="card e-fils">
+        <h3><svg class="mi" viewBox="0 0 64 24" aria-hidden="true" focusable="false"><rect class="mi-ile" x="4" y="9" width="56" height="6" rx="1"/><path class="mi-hl" d="M4 8.5v7M60 8.5v7"/></svg>Le Paradis périphérique</h3>
+        <p class="st">Ni strictement personnel, ni non personnel</p>
+        <p>Les champs d’atterrissage et de départ&nbsp;: tous les transports à destination du Paradis s’y posent <span class="ref">11:4.1</span>. Les Sept Maitres Esprits y ont un siège-foyer de force, où les Sept Directeurs Suprêmes de Pouvoir marquent sept stations d’où certaines énergies partent vers les sept superunivers <span class="ref">11:4.2</span>. S’y trouvent aussi les aires d’expositions historiques et prophétiques des Fils Créateurs&nbsp;: sept billions d’emplacements, soit sept-mille milliards, qui occupent à peine 4&nbsp;% de leur aire <span class="ref">11:4.3</span>.</p>
+      </article>
+      <article class="card e-force">
+        <h3><svg class="mi" viewBox="0 0 64 24" aria-hidden="true" focusable="false"><rect class="mi-ile" x="4" y="9" width="56" height="6" rx="1"/><path class="mi-hl mi-f" d="M4 15H60"/></svg>Le bas Paradis</h3>
+        <p class="st">L’impersonnel</p>
+        <p>Les personnalités n’y séjournent pas, et l’Absolu de Déité n’y opère pas&nbsp;; tous les circuits d’énergie physique et de force cosmique y prennent leur origine <span class="ref">11:5.1</span>. L’auteur pense que la présence spatiale de l’Absolu Non Qualifié y est focalisée <span class="ref">11:2.8</span>.</p>
+        <blockquote class="cite e-force" data-ref="11:5.9"><p>«&nbsp;Toute force physique, toute énergie et toute matière ne font qu’un.&nbsp;»</p><span class="ref">11:5.9</span></blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section id="plans" aria-labelledby="h-plans">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · Fascicule 11, sections 1, 3 et 5</p>
+      <h2 id="h-plans">Vu de dessus, vu de dessous</h2>
+      <p>Les deux faces de l’Ile, en schéma. Le texte donne l’ordre des zones, du centre vers le bord, mais ni leur taille ni leur forme exactes. Les numéros renvoient aux légendes.</p>
+    </div>
+    <div class="figs2">
+      <figure class="fig" aria-labelledby="h-dessus">
+        <h3 id="h-dessus">Le haut Paradis, vu de dessus</h3>
+        <svg class="fg" viewBox="0 0 360 410" role="img" aria-label="Le haut Paradis vu de dessus, schéma. Au centre, la présence de la Déité ; autour, la Sphère Très Sainte ; puis les sept zones de l’Aire Sainte, dont seules les deux premières sont décrites, la deuxième avec ses sept secteurs ; enfin le pourtour, le Paradis périphérique, avec les sept sièges-foyers de force des Maitres Esprits." focusable="false">
+<ellipse class="z-peri" cx="180" cy="210" rx="150" ry="175"/>
+<rect class="ms" x="176" y="41.5" width="8" height="8" transform="rotate(45 180 45.5)"/>
+<rect class="ms" x="286.2" y="103.4" width="8" height="8" transform="rotate(45 290.2 107.4)"/>
+<rect class="ms" x="313.5" y="242.6" width="8" height="8" transform="rotate(45 317.5 246.6)"/>
+<rect class="ms" x="237.2" y="354.2" width="8" height="8" transform="rotate(45 241.2 358.2)"/>
+<rect class="ms" x="114.8" y="354.2" width="8" height="8" transform="rotate(45 118.8 358.2)"/>
+<rect class="ms" x="38.5" y="242.6" width="8" height="8" transform="rotate(45 42.5 246.6)"/>
+<rect class="ms" x="65.8" y="103.4" width="8" height="8" transform="rotate(45 69.8 107.4)"/>
+<ellipse class="z-aire" cx="180" cy="210" rx="132" ry="154"/>
+<ellipse class="z-n" cx="180" cy="210" rx="124.2" ry="144.9"/>
+<ellipse class="z-n" cx="180" cy="210" rx="116.4" ry="135.8"/>
+<ellipse class="z-n" cx="180" cy="210" rx="108.6" ry="126.7"/>
+<ellipse class="z-n" cx="180" cy="210" rx="100.8" ry="117.6"/>
+<ellipse class="z2" cx="180" cy="210" rx="93" ry="108.5"/>
+<path class="sect" d="M270.2 236.2 L269.6 239 L268.9 241.7 L268.2 244.4 L267.4 247.1 L266.5 249.8 L265.6 252.4 L251.8 245.6 L252.6 243.4 L253.3 241.1 L254 238.9 L254.6 236.6 L255.2 234.3 L255.7 232 Z"/>
+<path class="sect sect-b" d="M265.6 252.4 L264.6 255 L263.6 257.6 L262.5 260.1 L261.3 262.6 L260.1 265.1 L258.9 267.5 L246.1 258.2 L247.2 256.2 L248.2 254.1 L249.2 252 L250.1 249.9 L251 247.7 L251.8 245.6 Z"/>
+<path class="sect" d="M258.9 267.5 L257.6 269.9 L256.2 272.2 L254.8 274.5 L253.3 276.8 L251.8 279 L250.2 281.2 L238.9 269.7 L240.2 267.9 L241.5 266 L242.7 264.1 L243.9 262.2 L245 260.2 L246.1 258.2 Z"/>
+<path class="sect sect-b" d="M250.2 281.2 L248.6 283.3 L246.9 285.4 L245.2 287.4 L243.4 289.4 L241.6 291.3 L239.8 293.1 L230.1 279.7 L231.7 278.2 L233.2 276.6 L234.7 274.9 L236.1 273.2 L237.5 271.5 L238.9 269.7 Z"/>
+<path class="sect" d="M239.8 293.1 L237.9 294.9 L236 296.7 L234 298.3 L232 300 L230 301.5 L227.9 303 L220.2 288 L221.9 286.7 L223.6 285.4 L225.3 284.1 L226.9 282.7 L228.6 281.2 L230.1 279.7 Z"/>
+<path class="sect sect-b" d="M227.9 303 L225.8 304.4 L223.7 305.8 L221.5 307.1 L219.3 308.3 L217.1 309.5 L214.8 310.6 L209.2 294.4 L211.1 293.5 L213 292.5 L214.8 291.4 L216.6 290.3 L218.4 289.2 L220.2 288 Z"/>
+<path class="sect" d="M214.8 310.6 L212.6 311.6 L210.3 312.6 L208 313.5 L205.6 314.3 L203.3 315 L200.9 315.7 L197.5 298.7 L199.5 298.1 L201.5 297.5 L203.5 296.8 L205.4 296 L207.3 295.2 L209.2 294.4 Z"/>
+<ellipse class="z1" cx="180" cy="210" rx="78" ry="91"/>
+<ellipse class="zts" cx="180" cy="210" rx="63" ry="73.5"/>
+<ellipse class="zts2" cx="180" cy="210" rx="36" ry="42"/>
+<circle class="halo" cx="180" cy="210" r="24"/>
+<circle class="fils-r" cx="180" cy="210" r="11.5"/>
+<circle class="pere-c" cx="180" cy="210" r="5.5"/>
+<path class="lead" d="M180 170V183"/>
+<g class="bdg"><circle cx="180" cy="161" r="9"/><text x="180" y="161" dy=".35em">1</text></g>
+<g class="bdg"><circle cx="137.1" cy="238.9" r="9"/><text x="137.1" y="238.9" dy=".35em">2</text></g>
+<g class="bdg"><circle cx="116.1" cy="175.2" r="8"/><text x="116.1" y="175.2" dy=".35em">3</text></g>
+<g class="bdg"><circle cx="137.2" cy="123.6" r="8"/><text x="137.2" y="123.6" dy=".35em">4</text></g>
+<g class="bdg"><circle cx="222.1" cy="88.3" r="8"/><text x="222.1" y="88.3" dy=".35em">5</text></g>
+<g class="bdg"><circle cx="317.9" cy="175.8" r="8"/><text x="317.9" y="175.8" dy=".35em">6</text></g>
+<text class="tc" x="180" y="24" text-anchor="middle">N</text>
+<text class="tc" x="180" y="404" text-anchor="middle">S</text>
+<text class="tc" x="16" y="215" text-anchor="middle">O</text>
+<text class="tc" x="344" y="215" text-anchor="middle">E</text>
+</svg>
+        <ol class="leg">
+          <li><span class="bd" aria-hidden="true">1</span><span><b>La présence de la Déité.</b> Au centre même de la surface supérieure, la présence personnelle du Père, entourée de celle du Fils, l’une et l’autre revêtues de la gloire de l’Esprit <span class="ref">11:1.1</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">2</span><span><b>La Sphère Très Sainte.</b> La vaste région qui l’entoure, réservée à l’adoration, à la trinitisation et à l’aboutissement spirituel supérieur&nbsp;; ni structures matérielles, ni créations purement intellectuelles <span class="ref">11:3.1</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">3</span><span><b>L’Aire Sainte, zone&nbsp;1.</b> Des Citoyens du Paradis et des natifs de Havona en séjour au Paradis <span class="ref">11:3.3</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">4</span><span><b>Zone&nbsp;2.</b> Les natifs des sept superunivers. Une partie forme sept secteurs immenses, un par superunivers, foyer des êtres spirituels et des créatures ascendantes <span class="ref">11:3.3</span>&nbsp;; ces logements occupent bien moins de un pour cent de l’aire prévue <span class="ref">11:3.4</span>.</span></li>
+          <li class="nsp"><span class="bd" aria-hidden="true">5</span><span><b>Zones 3 à 7.</b> Le texte n’en dit rien.</span></li>
+          <li><span class="bd" aria-hidden="true">6</span><span><b>Le Paradis périphérique.</b> Champs d’atterrissage, sièges-foyers de force des Sept Maitres Esprits (les losanges violets), aires d’expositions <span class="ref">11:4.1–3</span>.</span></li>
+        </ol>
+        <figcaption>Schéma, nord en haut&nbsp;: épaisseur des zones, place des sept secteurs et des sept sièges sont des choix du dessin. Les sept zones de l’Aire Sainte sont souvent appelées <span class="q" data-ref="11:3.3">«&nbsp;les demeures paradisiaques du Père&nbsp;»</span> <span class="ref">11:3.3</span>. Le texte situe aussi <span class="q" data-ref="31:8.1">«&nbsp;dans l’ouest du Paradis&nbsp;»</span> la zone des Transcendantaux, sans dire sur quelle face <span class="ref">31:8.1</span>.</figcaption>
+      </figure>
+      <figure class="fig" aria-labelledby="h-dessous">
+        <h3 id="h-dessous">Le bas Paradis, vu de dessous</h3>
+        <svg class="fg" viewBox="0 0 360 410" role="img" aria-label="Le bas Paradis vu de dessous, schéma. Au centre, la Zone inconnue de l’Infinité ; autour, une aire non dénommée ; sur la bordure, le centre de force en trois zones elliptiques concentriques : intérieure, médiane et extérieure, la plus vaste." focusable="false">
+<ellipse class="f-ext" cx="180" cy="210" rx="150" ry="175"/>
+<ellipse class="f-med" cx="180" cy="210" rx="118.5" ry="138.2"/>
+<ellipse class="f-int" cx="180" cy="210" rx="105" ry="122.5"/>
+<ellipse class="anon" cx="180" cy="210" rx="90" ry="105"/>
+<ellipse class="infini" cx="180" cy="210" rx="45" ry="52.5"/>
+<text class="qm-t" x="180" y="224" text-anchor="middle">?</text>
+<g class="bdg"><circle cx="180" cy="177" r="9"/><text x="180" y="177" dy=".35em">1</text></g>
+<g class="bdg"><circle cx="122.8" cy="168.3" r="9"/><text x="122.8" y="168.3" dy=".35em">2</text></g>
+<g class="bdg"><circle cx="146.7" cy="103.1" r="8"/><text x="146.7" y="103.1" dy=".35em">3</text></g>
+<g class="bdg"><circle cx="218.2" cy="87.5" r="8"/><text x="218.2" y="87.5" dy=".35em">4</text></g>
+<g class="bdg"><circle cx="296.3" cy="131.7" r="8"/><text x="296.3" y="131.7" dy=".35em">5</text></g>
+<text class="tc" x="180" y="24" text-anchor="middle">N</text>
+<text class="tc" x="180" y="404" text-anchor="middle">S</text>
+</svg>
+        <ol class="leg">
+          <li class="nsp"><span class="bd" aria-hidden="true">1</span><span><b>La Zone inconnue et non révélée de l’Infinité.</b> Dans la portion centrale, directement aux antipodes de la Trinité <span class="ref">11:5.2</span>.</span></li>
+          <li class="nsp"><span class="bd" aria-hidden="true">2</span><span><b>Une aire non dénommée</b> l’entoure <span class="ref">11:5.3</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">3</span><span><b>Le centre de force, zone intérieure.</b> Le point focal des activités d’énergie-force du Paradis lui-même&nbsp;; la force mère de l’espace semble y affluer par le sud et s’écouler par le nord <span class="ref">11:5.4–5</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">4</span><span><b>Zone médiane.</b> Statique, sauf trois cycles de dilatation et de contraction&nbsp;; sa fonction n’a jamais été vraiment identifiée <span class="ref">11:5.6</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">5</span><span><b>Zone extérieure.</b> La plus vaste et la plus active&nbsp;; on croit qu’elle est le centre paradisiaque de la présence spatiale de l’Absolu Non Qualifié. Sa force va vers le dehors pendant un peu plus d’un milliard d’années, puis vers le dedans pendant une durée semblable <span class="ref">11:5.7–8</span>.</span></li>
+        </ol>
+        <figcaption>Schéma, nord en haut. Les trois zones de force occupent la bordure extérieure de la face inférieure <span class="ref">11:5.4</span>&nbsp;; leurs largeurs sont un choix du dessin.</figcaption>
+      </figure>
+    </div>
+    <div class="two">
+      <blockquote class="cite e-pere" data-ref="11:1.1"><p>«&nbsp;Cette présence au Paradis du Père Universel est directement entourée par la présence personnelle du Fils Éternel, tandis que tous deux sont revêtus par la gloire indicible de l’Esprit Infini.&nbsp;»</p><span class="ref">11:1.1</span></blockquote>
+      <blockquote class="cite e-force" data-ref="11:5.5"><p>«&nbsp;<i>La zone intérieure</i> de ce centre de force parait agir comme un gigantesque cœur dont les pulsations dirigent des courants jusqu’aux limites extrêmes de l’espace physique.&nbsp;»</p><span class="ref">11:5.5</span></blockquote>
+    </div>
+    <p class="hint more">Sur le bas Paradis, l’auteur prévient&nbsp;: <span class="q" data-ref="11:5.1">«&nbsp;nous ne savons que ce qui est révélé&nbsp;»</span> <span class="ref">11:5.1</span>. Et sur la Sphère Très Sainte&nbsp;: <span class="q" data-ref="11:3.1">«&nbsp;Pour un être purement matériel, une réalité purement spirituelle est apparemment inexistante.&nbsp;»</span> <span class="ref">11:3.1</span></p>
+  </section>
+
+  <section id="hors-espace" aria-labelledby="h-he">
+    <div class="sec-head">
+      <p class="eyebrow"><b>5</b> · Fascicule 11, sections 2, 6 et 7</p>
+      <h2 id="h-he">Hors de l’espace et du temps</h2>
+      <p>Une ile qui a une forme, des zones, un nord, et pourtant aucun emplacement&nbsp;: c’est l’un des points les plus étonnants du fascicule, et le texte l’énonce sans détour.</p>
+    </div>
+    <div class="prose">
+      <blockquote class="cite e-pere" data-ref="11:2.10"><p>«&nbsp;Le Paradis existe sans le temps et n’a pas d’emplacement dans l’espace.&nbsp;»</p><span class="ref">11:2.10</span></blockquote>
+      <p>Le texte précise&nbsp;: le temps tel que nous le comprenons n’y a pas cours, même si ses citoyens ont pleinement conscience de la séquence intemporelle des évènements&nbsp;; le mouvement n’y est pas inhérent, il est <i>volitif</i>, c’est-à-dire voulu. La distance, en revanche, y garde un sens, pour situer les emplacements les uns par rapport aux autres <span class="ref">11:2.11</span>.</p>
+      <blockquote class="cite e-pere" data-ref="11:2.11"><p>«&nbsp;En gros, il semble que l’espace prenne son origine juste au-dessous du bas Paradis et le temps juste au-dessus du haut Paradis. […] Le Paradis est non spatial, et en conséquence ses surfaces sont absolues.&nbsp;»</p><span class="ref">11:2.11</span></blockquote>
+    </div>
+    <figure class="fig fig-large" aria-labelledby="h-esp">
+      <h3 id="h-esp">L’espace total, en coupe verticale</h3>
+      <div class="fig-in">
+        <svg class="fg" viewBox="0 0 360 320" role="img" aria-label="Coupe verticale de l’espace total, schéma en croix de Malte. Au centre, le Paradis. À gauche et à droite, l’espace pénétré, celui des univers, en expansion. En haut et en bas, l’espace non pénétré, les réservoirs, en contraction. Entre les bras, les zones tranquilles d’espace médian, seules à toucher le Paradis. Le temps semble commencer juste au-dessus du haut Paradis, l’espace juste au-dessous du bas Paradis." focusable="false">
+<rect class="mid" x="0" y="0" width="360" height="320" rx="10"/>
+<path class="pen" d="M161 160L8 100V220ZM199 160L352 100V220Z"/>
+<path class="res" d="M180 154L124 8H236ZM180 166L124 312H236Z"/>
+<g class="gal"><ellipse cx="24" cy="176" rx="3.2" ry="1.6" transform="rotate(-20 24 176)"/><ellipse cx="40" cy="196" rx="3.2" ry="1.6" transform="rotate(-20 40 196)"/><ellipse cx="52" cy="180" rx="3.2" ry="1.6" transform="rotate(-20 52 180)"/><ellipse cx="84" cy="172" rx="3.2" ry="1.6" transform="rotate(-20 84 172)"/><ellipse cx="100" cy="150" rx="3.2" ry="1.6" transform="rotate(-20 100 150)"/><ellipse cx="70" cy="190" rx="3.2" ry="1.6" transform="rotate(-20 70 190)"/><ellipse cx="46" cy="158" rx="3.2" ry="1.6" transform="rotate(-20 46 158)"/><ellipse cx="112" cy="172" rx="3.2" ry="1.6" transform="rotate(-20 112 172)"/><ellipse cx="336" cy="178" rx="3.2" ry="1.6" transform="rotate(-20 336 178)"/><ellipse cx="318" cy="196" rx="3.2" ry="1.6" transform="rotate(-20 318 196)"/><ellipse cx="300" cy="176" rx="3.2" ry="1.6" transform="rotate(-20 300 176)"/><ellipse cx="276" cy="172" rx="3.2" ry="1.6" transform="rotate(-20 276 172)"/><ellipse cx="260" cy="152" rx="3.2" ry="1.6" transform="rotate(-20 260 152)"/><ellipse cx="290" cy="190" rx="3.2" ry="1.6" transform="rotate(-20 290 190)"/><ellipse cx="326" cy="146" rx="3.2" ry="1.6" transform="rotate(-20 326 146)"/><ellipse cx="250" cy="172" rx="3.2" ry="1.6" transform="rotate(-20 250 172)"/></g>
+<path class="fl-pen" d="M120 160H70M262 160h50"/>
+<path class="fl-pen-h" d="M70 160l8-5v10zM312 160l-8-5v10z"/>
+<path class="fl-res" d="M180 52v34M180 268v-34"/>
+<path class="fl-res-h" d="M180 86l-5-8h10zM180 234l-5 8h10z"/>
+<rect class="ile-s" x="161" y="156.5" width="38" height="7" rx="1"/>
+<text class="t12 hv-t" x="36" y="143">univers</text>
+<text class="t12 hv-t" x="326" y="143" text-anchor="end">univers</text>
+<text class="t12 res-t" x="190" y="30" text-anchor="middle">réservoir</text>
+<text class="t12 res-t" x="180" y="300" text-anchor="middle">réservoir</text>
+<text class="t11m" x="214" y="140">temps</text>
+<text class="t11m" x="214" y="190">espace</text>
+<text class="t12m" x="36" y="34">zones</text><text class="t12m" x="36" y="49">d’espace médian</text>
+<path class="lead" d="M150 176l10-11"/>
+<g class="bdg"><circle cx="146" cy="182" r="9"/><text x="146" y="182" dy=".35em">1</text></g>
+<g class="bdg"><circle cx="200" cy="136" r="9"/><text x="200" y="136" dy=".35em">2</text></g>
+<g class="bdg"><circle cx="23" cy="138" r="9"/><text x="23" y="138" dy=".35em">3</text></g>
+<g class="bdg"><circle cx="148" cy="26" r="9"/><text x="148" y="26" dy=".35em">4</text></g>
+<g class="bdg"><circle cx="22" cy="30" r="9"/><text x="22" y="30" dy=".35em">5</text></g>
+</svg>
+        <ol class="leg">
+          <li><span class="bd" aria-hidden="true">1</span><span><b>Le Paradis.</b> Le noyau immobile&nbsp;: l’espace n’existe sur aucune de ses surfaces <span class="ref">11:7.1–2</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">2</span><span><b>Le temps et l’espace.</b> Le temps semble commencer juste au-dessus du haut Paradis, l’espace juste au-dessous du bas Paradis, là où les deux sortes d’espace se rejoignent et se transmuent <span class="ref">11:2.11 ; 11:6.2</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">3</span><span><b>L’espace pénétré&nbsp;:</b> celui des univers, à l’horizontale, qui a grossièrement la forme d’un V en révolution autour du Paradis <span class="ref">11:7.4–5</span>. Il approche aujourd’hui du milieu de sa phase d’expansion <span class="ref">11:6.4</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">4</span><span><b>L’espace non pénétré&nbsp;:</b> les réservoirs, au-dessus et au-dessous, en forme de sablier&nbsp;; ils se contractent quand les univers se dilatent, et inversement <span class="ref">11:6.1–2</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">5</span><span><b>Les zones d’espace médian.</b> Tranquilles, elles séparent les deux espaces, s’élargissent avec la distance et sont seules à toucher le Paradis <span class="ref">11:7.1 ; 11:7.3</span>.</span></li>
+        </ol>
+      </div>
+      <figcaption>Schéma, d’après la comparaison du texte&nbsp;: une coupe verticale de l’espace total <span class="q" data-ref="11:7.3">«&nbsp;ressemblerait un peu à une croix de Malte&nbsp;»</span> <span class="ref">11:7.3</span>. Les formes et les tailles relatives sont des choix du dessin.</figcaption>
+    </figure>
+    <div class="cards">
+      <article class="card e-pere">
+        <h3>La respiration de l’espace</h3>
+        <p>Tout l’espace se contracte et se dilate tour à tour. Chaque phase dure un peu plus d’un milliard d’années d’Urantia, le cycle entier un peu plus de deux <span class="ref">11:6.4–5</span>.</p>
+        <blockquote class="cite e-pere" data-ref="11:6.1"><p>«&nbsp;Nous ne connaissons pas le mécanisme effectif de la respiration de l’espace […]&nbsp;»</p><span class="ref">11:6.1</span></blockquote>
+      </article>
+      <article class="card e-pere">
+        <h3>Le seul lieu hors du temps</h3>
+        <p>Dans les sept superunivers, le temps et l’espace sont inséparables <span class="ref">12:5.3</span>. Le Paradis fait exception&nbsp;:</p>
+        <blockquote class="cite e-pere" data-ref="12:5.3"><p>«&nbsp;[…] le seul emplacement vraiment non temporel est l’<i>aire</i> du Paradis.&nbsp;»</p><span class="ref">12:5.3</span></blockquote>
+      </article>
+      <article class="card e-pere">
+        <h3>La gravité du Paradis</h3>
+        <p>La gravité est l’emprise de la présence physique du Paradis. L’Ile est le centre de la gravité matérielle absolue, complétée par les corps de gravité obscurs qui encerclent Havona et équilibrée par les réservoirs d’espace <span class="ref">11:8.1–2</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="satellites" aria-labelledby="h-sat">
+    <div class="sec-head">
+      <p class="eyebrow"><b>6</b> · Fascicule 13</p>
+      <h2 id="h-sat">Les vingt-et-un satellites</h2>
+      <p>Entre l’Ile et le premier circuit de Havona tournent trois circuits de sept sphères&nbsp;: au plus près, les sphères secrètes du Père&nbsp;; puis les mondes lumineux du Fils&nbsp;; enfin les immenses sphères de l’Esprit, sièges des Sept Maitres Esprits <span class="ref">13:0.1</span>.</p>
+      <blockquote class="cite e-esprit" data-ref="13:0.2"><p>«&nbsp;Autant que nous le sachions, ils ont toujours existé&nbsp;; comme le Paradis, ils sont éternels.&nbsp;»</p><span class="ref">13:0.2</span></blockquote>
+    </div>
+    <div class="sat-grid">
+      <figure class="fig sat-fig" aria-labelledby="h-satfig">
+        <h3 id="h-satfig">Trois circuits de sept</h3>
+        <svg class="fg" viewBox="0 0 360 360" role="img" aria-label="Les vingt-et-un satellites du Paradis, schéma. Autour de l’Ile, trois circuits de sept sphères : au plus près, les sept sphères du Père, numérotées de 1, Divinington, à 7, Ascendington ; puis les sept mondes du Fils ; puis les sept mondes de l’Esprit, un par superunivers. Au-delà, le premier circuit de Havona." focusable="false">
+<circle class="hav1" cx="180" cy="180" r="170"/>
+<text class="t12 hv-t" x="358" y="14" text-anchor="end">premier circuit</text>
+<text class="t12 hv-t" x="358" y="29" text-anchor="end">de Havona</text>
+<path class="lead" d="M326 34L309.3 63.2"/>
+<circle class="orb orb-p" cx="180" cy="180" r="62"/>
+<circle class="orb orb-f" cx="180" cy="180" r="102"/>
+<circle class="orb orb-e" cx="180" cy="180" r="142"/>
+<ellipse class="ile" cx="180" cy="180" rx="26" ry="30.3"/>
+<text class="t11" x="180" y="184" text-anchor="middle">Paradis</text>
+<circle class="sp-pere" cx="180" cy="118" r="11"/><text class="sp-n" x="180" y="118" dy=".35em">1</text>
+<circle class="sp-pere" cx="228.5" cy="141.3" r="11"/><text class="sp-n" x="228.5" y="141.3" dy=".35em">2</text>
+<circle class="sp-pere" cx="240.4" cy="193.8" r="11"/><text class="sp-n" x="240.4" y="193.8" dy=".35em">3</text>
+<circle class="sp-pere" cx="206.9" cy="235.9" r="11"/><text class="sp-n" x="206.9" y="235.9" dy=".35em">4</text>
+<circle class="sp-pere" cx="153.1" cy="235.9" r="11"/><text class="sp-n" x="153.1" y="235.9" dy=".35em">5</text>
+<circle class="sp-pere" cx="119.6" cy="193.8" r="11"/><text class="sp-n" x="119.6" y="193.8" dy=".35em">6</text>
+<circle class="sp-pere" cx="131.5" cy="141.3" r="11"/><text class="sp-n" x="131.5" y="141.3" dy=".35em">7</text>
+<circle class="sp-fils" cx="224.3" cy="88.1" r="9.5"/>
+<circle class="sp-fils" cx="279.4" cy="157.3" r="9.5"/>
+<circle class="sp-fils" cx="259.7" cy="243.6" r="9.5"/>
+<circle class="sp-fils" cx="180" cy="282" r="9.5"/>
+<circle class="sp-fils" cx="100.3" cy="243.6" r="9.5"/>
+<circle class="sp-fils" cx="80.6" cy="157.3" r="9.5"/>
+<circle class="sp-fils" cx="135.7" cy="88.1" r="9.5"/>
+<circle class="sp-esp" cx="180" cy="38" r="12"/><text class="sp-n2" x="180" y="38" dy=".35em">1</text>
+<circle class="sp-esp" cx="291" cy="91.5" r="12"/><text class="sp-n2" x="291" y="91.5" dy=".35em">2</text>
+<circle class="sp-esp" cx="318.4" cy="211.6" r="12"/><text class="sp-n2" x="318.4" y="211.6" dy=".35em">3</text>
+<circle class="sp-esp" cx="241.6" cy="307.9" r="12"/><text class="sp-n2" x="241.6" y="307.9" dy=".35em">4</text>
+<circle class="sp-esp" cx="118.4" cy="307.9" r="12"/><text class="sp-n2" x="118.4" y="307.9" dy=".35em">5</text>
+<circle class="sp-esp" cx="41.6" cy="211.6" r="12"/><text class="sp-n2" x="41.6" y="211.6" dy=".35em">6</text>
+<circle class="sp-esp" cx="69" cy="91.5" r="12"/><text class="sp-n2" x="69" y="91.5" dy=".35em">7</text>
+</svg>
+        <figcaption>Schéma sans échelle. En or, les sphères du Père, que le texte numérote de 1, Divinington, à 7, Ascendington <span class="ref">13:1.4 ; 13:1.21</span>&nbsp;; en blanc, les mondes du Fils&nbsp;; en violet, les mondes de l’Esprit, chacun attribué à un Maitre Esprit, donc à un superunivers <span class="ref">13:4.6</span>. Leurs numéros, les positions et les tailles sont des choix du dessin.</figcaption>
+      </figure>
+      <div class="sat-cards">
+        <article class="card e-pere">
+          <h3><span class="sw e-pere" aria-hidden="true"></span>Les sept sphères du Père</h3>
+          <p>Chacune est présidée par dix Secrets de Suprématie Trinitisés <span class="ref">18:1.1</span> et garde ses secrets <span class="ref">13:1.1–3</span>&nbsp;:</p>
+          <ol class="spheres">
+            <li><b>Divinington</b>, <i>sein du Père</i>&nbsp;: les Ajusteurs de Pensée <span class="ref">13:1.4–5</span></li>
+            <li><b>Sonarington</b>, <i>sein du Fils</i>&nbsp;: les Fils de Dieu, et le secret de leur incarnation <span class="ref">13:1.7–8</span></li>
+            <li><b>Spiritington</b>, <i>sein de l’Esprit</i>&nbsp;: la réflectivité <span class="ref">13:1.9–10</span></li>
+            <li><b>Vicegerington</b>, <i>sein du Père et du Fils</i>&nbsp;: la trinitisation <span class="ref">13:1.11–12</span></li>
+            <li><b>Solitarington</b>, <i>sein du Père et de l’Esprit</i>&nbsp;: les Messagers Solitaires <span class="ref">13:1.15–16</span></li>
+            <li><b>Séraphington</b>, <i>sein du Fils et de l’Esprit</i>&nbsp;: les anges, et le secret du transport séraphique <span class="ref">13:1.19–20</span></li>
+            <li><b>Ascendington</b>, <i>sein du Père, du Fils et de l’Esprit</i>&nbsp;: les ascendeurs, et le mystère de l’âme qui grandit dans le mental mortel <span class="ref">13:1.21–22</span></li>
+          </ol>
+          <p>Arrivés dans Havona, les mortels peuvent aller sur Ascendington, et là seulement&nbsp;; devenus finalitaires, sur Sonarington, sauf un septième, puis en partie sur les autres&nbsp;; jamais sur Divinington <span class="ref">13:2.6–7</span>.</p>
+          <blockquote class="cite e-pere" data-ref="13:2.7"><p>«&nbsp;Pendant toute l’éternité, il ne surviendra jamais de circonstances rendant nécessaire votre présence sur le monde des Ajusteurs de Pensée.&nbsp;»</p><span class="ref">13:2.7</span></blockquote>
+        </article>
+        <article class="card e-fils">
+          <h3><span class="sw e-fils" aria-hidden="true"></span>Les sept mondes du Fils</h3>
+          <p>Les mondes des sept phases d’existence de pur esprit, source de la triple lumière du Paradis et de Havona <span class="ref">13:3.1</span>. Ils ont tous la même constitution physique <span class="ref">13:0.2</span> et fourmillent d’une vie autre-que-personnelle <span class="ref">13:3.2</span>.</p>
+          <blockquote class="cite e-fils" data-ref="13:3.3"><p>«&nbsp;Pour autant que je sache, nulle personnalité ne s’est jamais rendue sur aucune de ces sphères du Fils Éternel.&nbsp;»</p><span class="ref">13:3.3</span></blockquote>
+        </article>
+        <article class="card e-esprit">
+          <h3><span class="sw e-esprit" aria-hidden="true"></span>Les sept mondes de l’Esprit</h3>
+          <p>Les sièges administratifs des Sept Maitres Esprits, un par superunivers&nbsp;: les quartiers généraux paradisiaques des sept superunivers <span class="ref">13:4.6</span>, placés sous la direction des Agents Exécutifs Suprêmes <span class="ref">17:1.1</span>. Ils sont ouverts à tous ceux qui désirent les visiter et ont les moyens de s’y rendre <span class="ref">13:4.6</span>.</p>
+          <blockquote class="cite e-esprit" data-ref="13:4.7"><p>«&nbsp;Pour moi, ces mondes administratifs sont les points les plus intéressants et les plus mystérieux en dehors du Paradis.&nbsp;»</p><span class="ref">13:4.7</span></blockquote>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="circuits" class="feature" aria-labelledby="h-hv">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · fascicule 14</p>
+      <h2 id="h-hv">Havona&nbsp;: sept circuits, un milliard de mondes</h2>
+      <p>Autour des satellites du Paradis, un milliard de mondes parfaits tournent en sept circuits concentriques <span class="ref">14:1.9</span>, dans un seul plan et dans le même sens que les satellites <span class="ref">14:1.3 ; 14:1.10</span>. Suis le pèlerin, du dehors vers le centre, ou touche une partie du schéma.</p>
+      <p class="hint" id="hv-aide">Au clavier&nbsp;: Tab jusqu’aux boutons, puis les flèches gauche et droite, Début et Fin.</p>
+    </div>
+    <div class="hv-ui" id="hv-ui" hidden>
+      <div class="hv-track">
+        <div class="hv-dir" aria-hidden="true"><span>← le dehors</span><span>le centre →</span></div>
+        <div class="hv-tabs" id="hv-tabs" role="tablist" aria-label="Parties du schéma, du dehors vers le centre" aria-describedby="hv-aide">
+          <button type="button" class="tb" role="tab" id="hv-t-obs" data-k="obs" aria-controls="hv-panel" aria-selected="false" tabindex="-1">Corps obscurs</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c7" data-k="c7" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>7</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c6" data-k="c6" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>6</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c5" data-k="c5" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>5</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c4" data-k="c4" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>4</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c3" data-k="c3" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>3</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c2" data-k="c2" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>2</button>
+          <button type="button" class="tb tb-c" role="tab" id="hv-t-c1" data-k="c1" aria-controls="hv-panel" aria-selected="false" tabindex="-1"><span class="sr-only">Circuit </span>1</button>
+          <button type="button" class="tb" role="tab" id="hv-t-sat" data-k="sat" aria-controls="hv-panel" aria-selected="false" tabindex="-1">Satellites</button>
+          <button type="button" class="tb" role="tab" id="hv-t-par" data-k="par" aria-controls="hv-panel" aria-selected="false" tabindex="-1">Paradis</button>
+        </div>
+      </div>
+      <div class="hv-opts">
+        <button type="button" class="chip" id="hv-calme" aria-pressed="false"><span class="tg" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip" href="#hv-texte" id="hv-tv">Version texte</a>
+      </div>
+    </div>
+    <div class="hv-main" id="hv-main">
+      <figure class="hv-sky">
+        <svg class="hv-svg" id="hv-svg" viewBox="0 0 400 400" role="img" aria-label="Schéma de l’univers central, vu de dessus et sans échelle. Au centre, l’Ile du Paradis, entourée des trois circuits de ses vingt-et-un satellites ; puis les sept circuits de Havona, numérotés de 1, le plus proche du Paradis, à 7 ; enfin les deux ceintures de corps de gravité obscurs, qui tournent en sens contraires." focusable="false">
+<defs>
+<radialGradient id="hv-ciel" cx="50%" cy="50%" r="72%"><stop offset="0" stop-color="#16213F"/><stop offset=".62" stop-color="#0D1430"/><stop offset="1" stop-color="#070B1A"/></radialGradient>
+<radialGradient id="hv-lueur"><stop offset="0" stop-color="#FFE7A0" stop-opacity=".95"/><stop offset=".35" stop-color="#F3B949" stop-opacity=".55"/><stop offset="1" stop-color="#F3B949" stop-opacity="0"/></radialGradient>
+</defs>
+<rect x="0" y="0" width="400" height="400" fill="url(#hv-ciel)"/>
+<g class="hv-et"><circle cx="39.5" cy="321.4" r="0.9"/><circle cx="28.8" cy="18" r="0.5"/><circle cx="119.3" cy="5.8" r="0.5"/><circle cx="395.1" cy="394.3" r="0.5"/><circle cx="336.1" cy="4.2" r="0.5"/><circle cx="367.4" cy="24.5" r="0.7"/><circle cx="381.9" cy="301.2" r="0.5"/><circle cx="390.2" cy="305.7" r="0.7"/><circle cx="109.8" cy="384.6" r="0.9"/><circle cx="43.3" cy="391.8" r="0.5"/><circle cx="22.6" cy="46.7" r="0.9"/><circle cx="381.4" cy="97.5" r="0.9"/><circle cx="387.1" cy="53.5" r="0.7"/><circle cx="363.6" cy="84" r="0.5"/><circle cx="101.6" cy="22.3" r="0.7"/><circle cx="353.2" cy="388.4" r="0.9"/><circle cx="33.3" cy="30.4" r="0.7"/><circle cx="129" cy="395.7" r="0.5"/><circle cx="21.4" cy="371" r="0.9"/><circle cx="254.6" cy="393.4" r="0.7"/><circle cx="104.3" cy="8.4" r="0.7"/><circle cx="365" cy="86.3" r="0.5"/><circle cx="332.9" cy="389" r="0.7"/><circle cx="389.7" cy="49.2" r="0.5"/><circle cx="320.5" cy="379.7" r="0.9"/><circle cx="18.2" cy="92.8" r="0.7"/><circle cx="132" cy="389.1" r="0.5"/><circle cx="388.4" cy="387.1" r="0.9"/><circle cx="386.9" cy="369.4" r="0.7"/><circle cx="360.7" cy="339.5" r="0.7"/><circle cx="395.9" cy="357" r="0.9"/><circle cx="376.1" cy="37.7" r="0.5"/><circle cx="48.8" cy="5.9" r="0.7"/><circle cx="14.9" cy="384" r="0.9"/><circle cx="391.8" cy="51.8" r="0.5"/><circle cx="379.1" cy="366" r="0.7"/><circle cx="370.8" cy="364.6" r="0.9"/><circle cx="12.9" cy="80.1" r="0.5"/><circle cx="8.6" cy="115.4" r="0.9"/><circle cx="89.5" cy="395.4" r="0.5"/><circle cx="42" cy="330.2" r="0.7"/><circle cx="138.7" cy="395.4" r="0.5"/><circle cx="13.5" cy="302.7" r="0.9"/><circle cx="392.2" cy="367.3" r="0.5"/><circle cx="360.2" cy="372.3" r="0.9"/><circle cx="389.2" cy="319.5" r="0.7"/></g>
+<g class="hv-hits"><circle class="hit-s" data-k="obs" cx="200" cy="200" r="176" stroke-width="44"/><circle class="hit-s" data-k="c1" cx="200" cy="200" r="46" stroke-width="17"/><circle class="hit-s" data-k="c2" cx="200" cy="200" r="63" stroke-width="17"/><circle class="hit-s" data-k="c3" cx="200" cy="200" r="80" stroke-width="17"/><circle class="hit-s" data-k="c4" cx="200" cy="200" r="97" stroke-width="17"/><circle class="hit-s" data-k="c5" cx="200" cy="200" r="114" stroke-width="17"/><circle class="hit-s" data-k="c6" cx="200" cy="200" r="131" stroke-width="17"/><circle class="hit-s" data-k="c7" cx="200" cy="200" r="148" stroke-width="17"/><circle class="hit-f" data-k="sat" cx="200" cy="200" r="38"/><ellipse class="hit-f" data-k="par" cx="200" cy="200" rx="15" ry="17"/></g>
+<g class="hv-part" data-part="obs"><circle class="hv-zone" cx="200" cy="200" r="192" stroke-width="8"/><circle class="hv-zone" cx="200" cy="200" r="157" stroke-width="6"/><circle class="hv-belt" cx="200" cy="200" r="182"/><circle class="hv-belt-d hv-anim hv-ext" cx="200" cy="200" r="182"/><circle class="hv-belt" cx="200" cy="200" r="166"/><circle class="hv-belt-d hv-anim hv-int" cx="200" cy="200" r="166"/>
+<path class="hv-ond" d="M374 200 L375.4 203.1 L375.3 206.1 L373.8 209.1 L372.2 212 L372 215 L373 218.2 L374.1 221.4 L373.7 224.4 L371.9 227.2 L370 230 L369.4 232.9 L370.2 236.2 L370.9 239.5 L370.2 242.4 L368.1 245 L365.9 247.6 L365.1 250.5 L365.5 253.8 L365.8 257.1 L364.8 260 L362.4 262.4 L360 264.7 L358.9 267.4 L359 270.8 L359 274.1 L357.6 276.9 L355 279 L352.4 281 L351 283.7 L350.7 287 L350.3 290.3 L348.7 292.9 L345.9 294.8 L343.1 296.5 L341.4 299 L340.8 302.3 L340.1 305.5 L338.2 308 L335.2 309.5 L332.2 311 L330.3 313.2 L329.3 316.4 L328.3 319.6 L326.2 321.8 L323 323 L319.9 324.2 L317.7 326.2 L316.4 329.3 L315.1 332.4 L312.7 334.4 L309.5 335.2 L306.3 336 L303.9 337.9 L302.3 340.8 L300.6 343.7 L298.1 345.4 L294.8 345.9 L291.5 346.4 L288.9 348 L287 350.7 L285 353.4 L282.3 354.9 L279 355 L275.7 355.1 L272.9 356.4 L270.8 359 L268.5 361.4 L265.7 362.6 L262.4 362.4 L259 362.2 L256.2 363.2 L253.8 365.5 L251.3 367.7 L248.3 368.6 L245 368.1 L241.8 367.5 L238.8 368.2 L236.2 370.2 L233.5 372.2 L230.5 372.7 L227.2 371.9 L224 370.9 L221 371.3 L218.2 373 L215.3 374.7 L212.2 375 L209.1 373.8 L206 372.5 L203 372.6 L200 374 L196.9 375.4 L193.9 375.3 L190.9 373.8 L188 372.2 L185 372 L181.8 373 L178.6 374.1 L175.6 373.7 L172.8 371.9 L170 370 L167.1 369.4 L163.8 370.2 L160.5 370.9 L157.6 370.2 L155 368.1 L152.4 365.9 L149.5 365.1 L146.2 365.5 L142.9 365.8 L140 364.8 L137.6 362.4 L135.3 360 L132.6 358.9 L129.2 359 L125.9 359 L123.1 357.6 L121 355 L119 352.4 L116.3 351 L113 350.7 L109.7 350.3 L107.1 348.7 L105.2 345.9 L103.5 343.1 L101 341.4 L97.7 340.8 L94.5 340.1 L92 338.2 L90.5 335.2 L89 332.2 L86.8 330.3 L83.6 329.3 L80.4 328.3 L78.2 326.2 L77 323 L75.8 319.9 L73.8 317.7 L70.7 316.4 L67.6 315.1 L65.6 312.7 L64.8 309.5 L64 306.3 L62.1 303.9 L59.2 302.3 L56.3 300.6 L54.6 298.1 L54.1 294.8 L53.6 291.5 L52 288.9 L49.3 287 L46.6 285 L45.1 282.3 L45 279 L44.9 275.7 L43.6 272.9 L41 270.8 L38.6 268.5 L37.4 265.7 L37.6 262.4 L37.8 259 L36.8 256.2 L34.5 253.8 L32.3 251.3 L31.4 248.3 L31.9 245 L32.5 241.8 L31.8 238.8 L29.8 236.2 L27.8 233.5 L27.3 230.5 L28.1 227.2 L29.1 224 L28.7 221 L27 218.2 L25.3 215.3 L25 212.2 L26.2 209.1 L27.5 206 L27.4 203 L26 200 L24.6 196.9 L24.7 193.9 L26.2 190.9 L27.8 188 L28 185 L27 181.8 L25.9 178.6 L26.3 175.6 L28.1 172.8 L30 170 L30.6 167.1 L29.8 163.8 L29.1 160.5 L29.8 157.6 L31.9 155 L34.1 152.4 L34.9 149.5 L34.5 146.2 L34.2 142.9 L35.2 140 L37.6 137.6 L40 135.3 L41.1 132.6 L41 129.2 L41 125.9 L42.4 123.1 L45 121 L47.6 119 L49 116.3 L49.3 113 L49.7 109.7 L51.3 107.1 L54.1 105.2 L56.9 103.5 L58.6 101 L59.2 97.7 L59.9 94.5 L61.8 92 L64.8 90.5 L67.8 89 L69.7 86.8 L70.7 83.6 L71.7 80.4 L73.8 78.2 L77 77 L80.1 75.8 L82.3 73.8 L83.6 70.7 L84.9 67.6 L87.3 65.6 L90.5 64.8 L93.7 64 L96.1 62.1 L97.7 59.2 L99.4 56.3 L101.9 54.6 L105.2 54.1 L108.5 53.6 L111.1 52 L113 49.3 L115 46.6 L117.7 45.1 L121 45 L124.3 44.9 L127.1 43.6 L129.2 41 L131.5 38.6 L134.3 37.4 L137.6 37.6 L141 37.8 L143.8 36.8 L146.2 34.5 L148.7 32.3 L151.7 31.4 L155 31.9 L158.2 32.5 L161.2 31.8 L163.8 29.8 L166.5 27.8 L169.5 27.3 L172.8 28.1 L176 29.1 L179 28.7 L181.8 27 L184.7 25.3 L187.8 25 L190.9 26.2 L194 27.5 L197 27.4 L200 26 L203.1 24.6 L206.1 24.7 L209.1 26.2 L212 27.8 L215 28 L218.2 27 L221.4 25.9 L224.4 26.3 L227.2 28.1 L230 30 L232.9 30.6 L236.2 29.8 L239.5 29.1 L242.4 29.8 L245 31.9 L247.6 34.1 L250.5 34.9 L253.8 34.5 L257.1 34.2 L260 35.2 L262.4 37.6 L264.7 40 L267.4 41.1 L270.8 41 L274.1 41 L276.9 42.4 L279 45 L281 47.6 L283.7 49 L287 49.3 L290.3 49.7 L292.9 51.3 L294.8 54.1 L296.5 56.9 L299 58.6 L302.3 59.2 L305.5 59.9 L308 61.8 L309.5 64.8 L311 67.8 L313.2 69.7 L316.4 70.7 L319.6 71.7 L321.8 73.8 L323 77 L324.2 80.1 L326.2 82.3 L329.3 83.6 L332.4 84.9 L334.4 87.3 L335.2 90.5 L336 93.7 L337.9 96.1 L340.8 97.7 L343.7 99.4 L345.4 101.9 L345.9 105.2 L346.4 108.5 L348 111.1 L350.7 113 L353.4 115 L354.9 117.7 L355 121 L355.1 124.3 L356.4 127.1 L359 129.2 L361.4 131.5 L362.6 134.3 L362.4 137.6 L362.2 141 L363.2 143.8 L365.5 146.2 L367.7 148.7 L368.6 151.7 L368.1 155 L367.5 158.2 L368.2 161.2 L370.2 163.8 L372.2 166.5 L372.7 169.5 L371.9 172.8 L370.9 176 L371.3 179 L373 181.8 L374.7 184.7 L375 187.8 L373.8 190.9 L372.5 194 L372.6 197Z"/>
+<path class="hv-fl" d="M369.3 266.9L375.4 260.7L368.7 258.2Z"/><path class="hv-fl" d="M133.1 369.3L139.3 375.4L141.8 368.7Z"/><path class="hv-fl" d="M30.7 133.1L24.6 139.3L31.3 141.8Z"/><path class="hv-fl" d="M266.9 30.7L260.7 24.6L258.2 31.3Z"/>
+<path class="hv-fl" d="M274.7 348.3L269 355L265.9 348.5Z"/><path class="hv-fl" d="M51.7 274.7L45 269L51.5 265.9Z"/><path class="hv-fl" d="M125.3 51.7L131 45L134.1 51.5Z"/><path class="hv-fl" d="M348.3 125.3L355 131L348.5 134.1Z"/></g>
+<g class="hv-part" data-part="hav">
+<g class="hv-part" data-part="c1"><circle class="hv-orb" cx="200" cy="200" r="46"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="46"/></g>
+<g class="hv-part" data-part="c2"><circle class="hv-orb" cx="200" cy="200" r="63"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="63"/></g>
+<g class="hv-part" data-part="c3"><circle class="hv-orb" cx="200" cy="200" r="80"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="80"/></g>
+<g class="hv-part" data-part="c4"><circle class="hv-orb" cx="200" cy="200" r="97"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="97"/></g>
+<g class="hv-part" data-part="c5"><circle class="hv-orb" cx="200" cy="200" r="114"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="114"/></g>
+<g class="hv-part" data-part="c6"><circle class="hv-orb" cx="200" cy="200" r="131"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="131"/></g>
+<g class="hv-part" data-part="c7"><circle class="hv-orb" cx="200" cy="200" r="148"/><circle class="hv-ring hv-anim" cx="200" cy="200" r="148"/></g>
+<path class="hv-fl hv-fl-c" d="M310.2 299L318.1 295.1L312.5 290.5Z"/><path class="hv-fl hv-fl-c" d="M89.8 101L81.9 104.9L87.5 109.5Z"/></g>
+<g class="hv-part" data-part="sat">
+<circle class="hv-sorb" cx="200" cy="200" r="19"/>
+<g class="hv-rot hv-anim hv-rot-a"><circle class="hv-s-p" cx="200" cy="181" r="2.2"/><circle class="hv-s-p" cx="214.9" cy="188.2" r="2.2"/><circle class="hv-s-p" cx="218.5" cy="204.2" r="2.2"/><circle class="hv-s-p" cx="208.2" cy="217.1" r="2.2"/><circle class="hv-s-p" cx="191.8" cy="217.1" r="2.2"/><circle class="hv-s-p" cx="181.5" cy="204.2" r="2.2"/><circle class="hv-s-p" cx="185.1" cy="188.2" r="2.2"/></g>
+<circle class="hv-sorb" cx="200" cy="200" r="25"/>
+<g class="hv-rot hv-anim hv-rot-b"><circle class="hv-s-f" cx="210.8" cy="177.5" r="2.2"/><circle class="hv-s-f" cx="224.4" cy="194.4" r="2.2"/><circle class="hv-s-f" cx="219.5" cy="215.6" r="2.2"/><circle class="hv-s-f" cx="200" cy="225" r="2.2"/><circle class="hv-s-f" cx="180.5" cy="215.6" r="2.2"/><circle class="hv-s-f" cx="175.6" cy="194.4" r="2.2"/><circle class="hv-s-f" cx="189.2" cy="177.5" r="2.2"/></g>
+<circle class="hv-sorb" cx="200" cy="200" r="31"/>
+<g class="hv-rot hv-anim hv-rot-c"><circle class="hv-s-e" cx="200" cy="169" r="2.2"/><circle class="hv-s-e" cx="224.2" cy="180.7" r="2.2"/><circle class="hv-s-e" cx="230.2" cy="206.9" r="2.2"/><circle class="hv-s-e" cx="213.5" cy="227.9" r="2.2"/><circle class="hv-s-e" cx="186.5" cy="227.9" r="2.2"/><circle class="hv-s-e" cx="169.8" cy="206.9" r="2.2"/><circle class="hv-s-e" cx="175.8" cy="180.7" r="2.2"/></g>
+</g>
+<g class="hv-part" data-part="par"><circle cx="200" cy="200" r="30" fill="url(#hv-lueur)"/><ellipse class="hv-ile" cx="200" cy="200" rx="10.5" ry="12.25"/></g>
+<g class="hv-sel"><g data-sel="obs"><circle cx="200" cy="200" r="166"/><circle cx="200" cy="200" r="182"/></g><g data-sel="c1"><circle cx="200" cy="200" r="46"/></g><g data-sel="c2"><circle cx="200" cy="200" r="63"/></g><g data-sel="c3"><circle cx="200" cy="200" r="80"/></g><g data-sel="c4"><circle cx="200" cy="200" r="97"/></g><g data-sel="c5"><circle cx="200" cy="200" r="114"/></g><g data-sel="c6"><circle cx="200" cy="200" r="131"/></g><g data-sel="c7"><circle cx="200" cy="200" r="148"/></g><g data-sel="sat"><circle cx="200" cy="200" r="19"/><circle cx="200" cy="200" r="25"/><circle cx="200" cy="200" r="31"/></g><g data-sel="par"><ellipse cx="200" cy="200" rx="15.5" ry="17.5"/></g></g>
+<g class="hv-num" aria-hidden="true"><g data-n="c1"><circle cx="154" cy="200" r="7.9"/><text x="154" y="200" dy=".36em">1</text></g><g data-n="c2"><circle cx="137" cy="200" r="7.9"/><text x="137" y="200" dy=".36em">2</text></g><g data-n="c3"><circle cx="120" cy="200" r="7.9"/><text x="120" y="200" dy=".36em">3</text></g><g data-n="c4"><circle cx="103" cy="200" r="7.9"/><text x="103" y="200" dy=".36em">4</text></g><g data-n="c5"><circle cx="86" cy="200" r="7.9"/><text x="86" y="200" dy=".36em">5</text></g><g data-n="c6"><circle cx="69" cy="200" r="7.9"/><text x="69" y="200" dy=".36em">6</text></g><g data-n="c7"><circle cx="52" cy="200" r="7.9"/><text x="52" y="200" dy=".36em">7</text></g></g>
+<path class="hv-lead" d="M58 26L74 66"/><text class="hv-lbl" x="8" y="20">corps de gravité obscurs</text>
+<path class="hv-lead" d="M338 372L306 304"/><text class="hv-lbl" x="394" y="390" text-anchor="end">Havona, sept circuits</text>
+</svg>
+        <figcaption>Vu de dessus, sans échelle&nbsp;: tailles, distances et vitesses sont des choix du dessin. Les circuits intérieurs tournent plus vite, car leur année est plus courte <span class="ref">14:1.11</span>&nbsp;; les deux ceintures de corps obscurs tournent en sens contraires <span class="ref">14:1.15</span>.</figcaption>
+      </figure>
+      <div class="pn" id="hv-panel" role="tabpanel" aria-labelledby="hv-t-c7" tabindex="-1" hidden></div>
+    </div>
+    <p class="sr-only" id="hv-status" aria-live="polite"></p>
+
+    <details class="tv" id="hv-texte" open>
+      <summary>Version texte du schéma, du dehors vers le centre</summary>
+      <p class="tv-intro" id="tv-commun">Chaque circuit est imprégné par l’un des sept Esprits des Circuits, impersonnel <span class="ref">14:1.9 ; 17:5.2</span>&nbsp;; un superviseur suprême siège sur son monde-pilote <span class="ref">24:1.7</span>, et chaque monde est dirigé par un Éternel des Jours <span class="ref">18:2.1</span>. Les mondes d’un même circuit ont une année de même longueur, d’autant plus courte que le circuit est proche du Paradis <span class="ref">14:1.11</span>.</p>
+      <ol class="tv-list">
+        <li id="tv-obs" data-kick="au-delà de Havona">
+          <h3 class="tv-h">Les corps de gravité obscurs</h3>
+          <p>D’innombrables corps de gravité obscurs entourent Havona si complètement qu’ils le cachent à la vue des univers habités <span class="ref">14:1.14</span>. Ils forment deux circuits elliptiques séparés par une intrusion unique d’espace&nbsp;: le circuit intérieur tourne en sens inverse des aiguilles d’une montre, l’extérieur dans le sens des aiguilles <span class="ref">14:1.15</span>.</p>
+          <p>Une zone semi-tranquille les sépare des circuits de Havona, une autre des superunivers <span class="ref">14:1.4 ; 14:1.8</span>. Leurs mouvements alternés et leur masse font de l’univers central une création physiquement équilibrée <span class="ref">14:1.15</span>. Voir la section <a href="#obscurs">Les corps de gravité obscurs</a>.</p>
+        </li>
+        <li id="tv-c7" data-kick="le circuit le plus extérieur">
+          <h3 class="tv-h"><span class="tv-n">7</span>Circuit 7&nbsp;: l’accueil</h3>
+          <p class="cnt"><b>plus de 245&nbsp;millions</b><span>de mondes <span class="ref">14:1.9</span></span></p>
+          <p>Les pèlerins du temps y sont déposés sur le monde-pilote, la planète réceptrice, après un long vol au-delà des corps de gravité obscurs <span class="ref">26:4.11–12</span>. Les aides des pèlerins leur donnent une esquisse de toutes les exigences du Paradis <span class="ref">26:5.2</span>.</p>
+          <p><b>Pour passer au sixième&nbsp;:</b> comprendre l’identité du Maitre Esprit de son superunivers <span class="ref">14:5.4</span>.</p>
+          <blockquote class="cite e-hav" data-ref="26:4.15"><p>«&nbsp;Le consentement à croire est la clef de Havona.&nbsp;»</p><span class="ref">26:4.15</span></blockquote>
+        </li>
+        <li id="tv-c6">
+          <h3 class="tv-h"><span class="tv-n">6</span>Circuit 6&nbsp;: le Suprême</h3>
+          <p class="cnt nsp"><b>nombre non précisé</b><span>calcul de lecteur&nbsp;: environ 210&nbsp;millions</span></p>
+          <p>Les ascendeurs qui y arrivent sont appelés <span class="q" data-ref="26:6.1">«&nbsp;diplômés spirituels&nbsp;»</span>&nbsp;; les guides de suprématie s’occupent d’eux <span class="ref">26:6.1</span>. Ils y sont tout près de rencontrer la réalité spirituelle de Dieu le Suprême <span class="ref">26:6.2</span>.</p>
+          <p><b>Pour passer au cinquième&nbsp;:</b> parvenir à une réalisation de la Suprématie, qui prépare à l’aventure de la Déité <span class="ref">14:5.4</span>.</p>
+        </li>
+        <li id="tv-c5">
+          <h3 class="tv-h"><span class="tv-n">5</span>Circuit 5&nbsp;: l’Esprit Infini</h3>
+          <p class="cnt nsp"><b>nombre non précisé</b><span>calcul de lecteur&nbsp;: environ 175&nbsp;millions</span></p>
+          <p>Les pèlerins y sont appelés <span class="q" data-ref="26:7.1">«&nbsp;candidats à l’aventure de la Déité&nbsp;»</span>. Les guides de la Trinité leur donnent une instruction avancée sur la Trinité, pour les préparer à essayer de reconnaitre la personnalité de l’Esprit Infini <span class="ref">26:7.1</span>&nbsp;; chacun a son guide <span class="ref">26:7.2</span>.</p>
+          <p><b>Pour passer au quatrième&nbsp;:</b> avoir atteint l’Esprit Infini <span class="ref">14:5.4</span>.</p>
+        </li>
+        <li id="tv-c4">
+          <h3 class="tv-h"><span class="tv-n">4</span>Circuit 4&nbsp;: le Fils Éternel</h3>
+          <p class="cnt nsp"><b>nombre non précisé</b><span>calcul de lecteur&nbsp;: environ 140&nbsp;millions</span></p>
+          <p>On l’appelle parfois le <span class="q" data-ref="26:8.1">«&nbsp;circuit des Fils&nbsp;»</span>. De là, les pèlerins vont au Paradis établir un contact compréhensif avec le Fils Éternel&nbsp;; sur sept de ses mondes, les Micaëls du Paradis tiennent des écoles où pèlerins du temps et pèlerins de l’éternité se comprennent pour la première fois <span class="ref">26:8.1</span>. Les découvreurs de Fils les y préparent <span class="ref">26:8.2</span>.</p>
+          <p><b>Pour passer au troisième&nbsp;:</b> avoir atteint le Fils Éternel <span class="ref">14:5.4</span>.</p>
+        </li>
+        <li id="tv-c3">
+          <h3 class="tv-h"><span class="tv-n">3</span>Circuit 3&nbsp;: le Père Universel</h3>
+          <p class="cnt nsp"><b>nombre non précisé</b><span>calcul de lecteur&nbsp;: environ 105&nbsp;millions</span></p>
+          <p>Les guides du Père, les plus anciens et les plus expérimentés de ces ministres, y tiennent des écoles de sagesse et des collèges de technique <span class="ref">26:9.1</span>.</p>
+          <p><b>Pour passer au deuxième&nbsp;:</b> avoir reconnu le Père Universel <span class="ref">14:5.4</span>.</p>
+          <blockquote class="cite e-hav" data-ref="26:9.2"><p>«&nbsp;Le fait d’atteindre le Père Universel est le passeport pour l’éternité, malgré les circuits qui restent à traverser.&nbsp;»</p><span class="ref">26:9.2</span></blockquote>
+        </li>
+        <li id="tv-c2">
+          <h3 class="tv-h"><span class="tv-n">2</span>Circuit 2&nbsp;: les conseils</h3>
+          <p class="cnt nsp"><b>nombre non précisé</b><span>calcul de lecteur&nbsp;: environ 70&nbsp;millions</span></p>
+          <p>On s’y familiarise avec les multitudes du Paradis <span class="ref">14:5.4</span>. Les conseillers et les consultants y instruisent de la carrière de l’éternité <span class="ref">26:10.1</span>.</p>
+          <p><b>En cas d’échec&nbsp;:</b> ceux qui ne réussissent pas leur premier effort pour atteindre la Déité sont conduits directement à ce cercle, avant d’être renvoyés au service d’un superunivers <span class="ref">26:10.2</span>.</p>
+        </li>
+        <li id="tv-c1" data-kick="le plus proche du Paradis">
+          <h3 class="tv-h"><span class="tv-n">1</span>Circuit 1&nbsp;: le seuil du Paradis</h3>
+          <p class="cnt"><b>plus de 35&nbsp;millions</b><span>de mondes <span class="ref">14:1.9</span></span></p>
+          <p>Son année, la plus courte, dure presque mille ans d’Urantia&nbsp;: c’est le jour standard du Paradis-Havona <span class="ref">14:1.12</span>. Y arriver, c’est être admis au service du Paradis&nbsp;; on y reste un temps indéterminé, selon la longueur et la nature de son ascension <span class="ref">14:5.4</span>. Les compléments de repos y préparent à la vie au Paradis <span class="ref">26:11.1</span>.</p>
+          <p><b>Ensuite&nbsp;:</b> la résidence au Paradis et le Corps de la Finalité <span class="ref">14:5.4</span>.</p>
+          <blockquote class="cite e-hav" data-ref="26:11.6"><p>«&nbsp;Les pèlerins ayant atteint la perfection commencent ce repos et s’endorment sur le premier cercle de Havona, mais se réveillent sur les rives du Paradis.&nbsp;»</p><span class="ref">26:11.6</span></blockquote>
+        </li>
+        <li id="tv-sat" data-kick="entre Havona et l’Ile">
+          <h3 class="tv-h">Les satellites du Paradis</h3>
+          <p>Trois circuits de sept sphères&nbsp;: celles de l’Esprit, puis celles du Fils, puis, au plus près de l’Ile, celles du Père <span class="ref">13:0.1</span>. Physiquement, satellites et circuits de Havona forment un seul système de dix unités concentriques <span class="ref">14:1.10</span>.</p>
+          <p>Leur lumière baigne Havona&nbsp;: les sphères du Père reflètent l’éclat central des Déités, les mondes du Fils émettent une lumière sans chaleur <span class="ref">13:0.3–4</span>. Voir la section <a href="#satellites">Les vingt-et-un satellites</a>.</p>
+        </li>
+        <li id="tv-par" data-kick="au centre">
+          <h3 class="tv-h">L’Ile du Paradis</h3>
+          <p>Immobile au cœur de l’univers éternel <span class="ref">14:0.1</span>, elle n’appartient pourtant pas vraiment à Havona <span class="ref">11:9.2</span>. Seules les zones tranquilles d’espace médian la touchent <span class="ref">14:1.2 ; 11:7.1</span>.</p>
+          <p>Au Paradis, on ne compte pas le temps&nbsp;; il apparait avec les circuits de Havona, où chaque monde a son temps local <span class="ref">14:1.11</span>. Voir <a href="#forme">sa forme</a> et <a href="#plans">ses deux faces</a>.</p>
+          <blockquote class="cite e-pere" data-ref="14:6.39"><p>«&nbsp;Le Paradis est le foyer, et Havona l’atelier et le terrain de jeu des finalitaires.&nbsp;»</p><span class="ref">14:6.39</span></blockquote>
+        </li>
+      </ol>
+      <p class="tv-intro hint">Pour les circuits 2 à 6, le texte ne donne pas de nombre&nbsp;: il dit seulement qu’il y a <span class="q" data-ref="14:1.9">«&nbsp;des quantités proportionnelles dans les circuits intermédiaires&nbsp;»</span> <span class="ref">14:1.9</span>. Les chiffres indiqués supposent une proportion au rang du circuit (35&nbsp;millions × le rang)&nbsp;: c’est un calcul de lecteur, pas une donnée du livre.</p>
+    </details>
+    <a class="cta go3d" href="atlas-3d.html#havona">Voir Havona dans la vue 3D <span class="ar" aria-hidden="true">→</span></a>
+  </section>
+
+  <section id="obscurs" aria-labelledby="h-obs">
+    <div class="sec-head">
+      <p class="eyebrow"><b>7</b> · Fascicule 14, section 1</p>
+      <h2 id="h-obs">Les corps de gravité obscurs</h2>
+      <p>Bien au-delà du septième circuit circulent d’innombrables corps de gravité obscurs, très différents des autres corps de l’espace, jusque dans leur forme <span class="ref">14:1.14</span>.</p>
+      <blockquote class="cite e-obs" data-ref="14:1.14"><p>«&nbsp;Ces corps de gravité obscurs ne réfléchissent pas la lumière et ne l’absorbent pas non plus […]&nbsp;»</p><span class="ref">14:1.14</span></blockquote>
+    </div>
+    <figure class="fig fig-large" aria-labelledby="h-coupe">
+      <h3 id="h-coupe">La bordure de l’univers central, en coupe</h3>
+      <div class="fig-in">
+        <svg class="fg" viewBox="0 0 360 260" role="img" aria-label="Coupe schématique, sans échelle, de la bordure de l’univers central. De gauche à droite : le plan de Havona ; une zone semi-tranquille ; la ceinture intérieure des corps de gravité obscurs, un tube qui, en coupe, montre trois cercles concentriques ; une zone unique, parcourue de mouvements ondulatoires verticaux ; la ceinture extérieure, verticale et immensément haute ; une autre zone semi-tranquille ; puis les superunivers." focusable="false">
+<defs><pattern id="pt-stip" width="4" height="4" patternUnits="userSpaceOnUse"><circle class="stip" cx="1.2" cy="1.2" r=".75"/></pattern></defs>
+<rect class="semi" x="84" y="14" width="18" height="212" rx="3"/>
+<rect class="uniq" x="152" y="14" width="72" height="212" rx="3"/>
+<rect class="semi" x="250" y="14" width="22" height="212" rx="3"/>
+<path class="plan" d="M6 128H80M282 128H354"/>
+<g class="hv-dots"><circle cx="12" cy="128" r="2.6"/><circle cx="24" cy="128" r="2.6"/><circle cx="36" cy="128" r="2.6"/><circle cx="48" cy="128" r="2.6"/><circle cx="60" cy="128" r="2.6"/><circle cx="72" cy="128" r="2.6"/></g>
+<g class="su-dots"><ellipse cx="292" cy="128" rx="3.4" ry="1.7"/><ellipse cx="308" cy="128" rx="3.4" ry="1.7"/><ellipse cx="324" cy="128" rx="3.4" ry="1.7"/><ellipse cx="340" cy="128" rx="3.4" ry="1.7"/></g>
+<text class="t12 hv-t" x="6" y="152">Havona</text>
+<text class="t12m" x="354" y="152" text-anchor="end">superunivers</text>
+<circle class="belt-f" cx="126" cy="128" r="22"/><circle class="belt-p" cx="126" cy="128" r="22"/><circle class="belt-l" cx="126" cy="128" r="15"/><circle class="belt-l" cx="126" cy="128" r="8"/>
+<path class="wave" d="M170 20 L172.2 22 L173.6 24 L174 26 L173 28 L171.1 30 L168.9 32 L167 34 L166 36 L166.4 38 L167.8 40 L170 42 L172.2 44 L173.6 46 L174 48 L173 50 L171.1 52 L168.9 54 L167 56 L166 58 L166.4 60 L167.8 62 L170 64 L172.2 66 L173.6 68 L174 70 L173 72 L171.1 74 L168.9 76 L167 78 L166 80 L166.4 82 L167.8 84 L170 86 L172.2 88 L173.6 90 L174 92 L173 94 L171.1 96 L168.9 98 L167 100 L166 102 L166.4 104 L167.8 106 L170 108 L172.2 110 L173.6 112 L174 114 L173 116 L171.1 118 L168.9 120 L167 122 L166 124 L166.4 126 L167.8 128 L170 130 L172.2 132 L173.6 134 L174 136 L173 138 L171.1 140 L168.9 142 L167 144 L166 146 L166.4 148 L167.8 150 L170 152 L172.2 154 L173.6 156 L174 158 L173 160 L171.1 162 L168.9 164 L167 166 L166 168 L166.4 170 L167.8 172 L170 174 L172.2 176 L173.6 178 L174 180 L173 182 L171.1 184 L168.9 186 L167 188 L166 190 L166.4 192 L167.8 194 L170 196 L172.2 198 L173.6 200 L174 202 L173 204 L171.1 206 L168.9 208 L167 210 L166 212 L166.4 214 L167.8 216 L170 218 L172.2 220"/>
+<path class="wave" d="M188 20 L190.2 22 L191.6 24 L192 26 L191 28 L189.1 30 L186.9 32 L185 34 L184 36 L184.4 38 L185.8 40 L188 42 L190.2 44 L191.6 46 L192 48 L191 50 L189.1 52 L186.9 54 L185 56 L184 58 L184.4 60 L185.8 62 L188 64 L190.2 66 L191.6 68 L192 70 L191 72 L189.1 74 L186.9 76 L185 78 L184 80 L184.4 82 L185.8 84 L188 86 L190.2 88 L191.6 90 L192 92 L191 94 L189.1 96 L186.9 98 L185 100 L184 102 L184.4 104 L185.8 106 L188 108 L190.2 110 L191.6 112 L192 114 L191 116 L189.1 118 L186.9 120 L185 122 L184 124 L184.4 126 L185.8 128 L188 130 L190.2 132 L191.6 134 L192 136 L191 138 L189.1 140 L186.9 142 L185 144 L184 146 L184.4 148 L185.8 150 L188 152 L190.2 154 L191.6 156 L192 158 L191 160 L189.1 162 L186.9 164 L185 166 L184 168 L184.4 170 L185.8 172 L188 174 L190.2 176 L191.6 178 L192 180 L191 182 L189.1 184 L186.9 186 L185 188 L184 190 L184.4 192 L185.8 194 L188 196 L190.2 198 L191.6 200 L192 202 L191 204 L189.1 206 L186.9 208 L185 210 L184 212 L184.4 214 L185.8 216 L188 218 L190.2 220"/>
+<path class="wave" d="M206 20 L208.2 22 L209.6 24 L210 26 L209 28 L207.1 30 L204.9 32 L203 34 L202 36 L202.4 38 L203.8 40 L206 42 L208.2 44 L209.6 46 L210 48 L209 50 L207.1 52 L204.9 54 L203 56 L202 58 L202.4 60 L203.8 62 L206 64 L208.2 66 L209.6 68 L210 70 L209 72 L207.1 74 L204.9 76 L203 78 L202 80 L202.4 82 L203.8 84 L206 86 L208.2 88 L209.6 90 L210 92 L209 94 L207.1 96 L204.9 98 L203 100 L202 102 L202.4 104 L203.8 106 L206 108 L208.2 110 L209.6 112 L210 114 L209 116 L207.1 118 L204.9 120 L203 122 L202 124 L202.4 126 L203.8 128 L206 130 L208.2 132 L209.6 134 L210 136 L209 138 L207.1 140 L204.9 142 L203 144 L202 146 L202.4 148 L203.8 150 L206 152 L208.2 154 L209.6 156 L210 158 L209 160 L207.1 162 L204.9 164 L203 166 L202 168 L202.4 170 L203.8 172 L206 174 L208.2 176 L209.6 178 L210 180 L209 182 L207.1 184 L204.9 186 L203 188 L202 190 L202.4 192 L203.8 194 L206 196 L208.2 198 L209.6 200 L210 202 L209 204 L207.1 206 L204.9 208 L203 210 L202 212 L202.4 214 L203.8 216 L206 218 L208.2 220"/>
+<rect class="belt-f" x="234" y="18" width="8.8" height="204"/><rect class="belt-p" x="234" y="18" width="8.8" height="204"/>
+<path class="brk" d="M229 42l4-4 4 8 4-8 4 8 4-4M229 200l4-4 4 8 4-8 4 8 4-4"/>
+<path class="rot" d="M96 235.5A6.5 6.5 0 1 0 102.1 239.8"/><path class="rot-h" d="M100.7 235.8 L105.6 239.6 L99.3 241.9Z"/>
+<text class="t11m" x="107" y="246">sens inverse</text>
+<path class="rot" d="M208 235.5A6.5 6.5 0 1 1 201.9 239.8"/><path class="rot-h" d="M203.3 235.8 L198.4 239.6 L204.7 241.9Z"/>
+<text class="t11m" x="219" y="246">sens des aiguilles</text>
+<g class="bdg"><circle cx="40" cy="92" r="8"/><text x="40" y="92" dy=".35em">1</text></g>
+<g class="bdg"><circle cx="93" cy="92" r="8"/><text x="93" y="92" dy=".35em">2</text></g>
+<g class="bdg"><circle cx="126" cy="92" r="8"/><text x="126" y="92" dy=".35em">3</text></g>
+<g class="bdg"><circle cx="188" cy="92" r="8"/><text x="188" y="92" dy=".35em">4</text></g>
+<g class="bdg"><circle cx="238" cy="92" r="8"/><text x="238" y="92" dy=".35em">5</text></g>
+<g class="bdg"><circle cx="261" cy="92" r="8"/><text x="261" y="92" dy=".35em">6</text></g>
+</svg>
+        <ol class="leg">
+          <li><span class="bd" aria-hidden="true">1</span><span><b>Havona&nbsp;:</b> ses sept circuits sont dans un seul plan <span class="ref">14:1.10</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">2</span><span><b>Une zone semi-tranquille</b> sépare les circuits des corps obscurs <span class="ref">14:1.4</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">3</span><span><b>Le circuit intérieur,</b> en sens inverse des aiguilles d’une montre <span class="ref">14:1.5</span>&nbsp;: un tube de trois groupements circulaires <span class="ref">14:1.16</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">4</span><span><b>Une zone unique</b> en son genre&nbsp;: d’énormes mouvements ondulatoires verticaux, des activités énergétiques d’un ordre inconnu <span class="ref">14:1.6 ; 14:1.17</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">5</span><span><b>Le circuit extérieur,</b> dans le sens des aiguilles <span class="ref">14:1.7</span>&nbsp;: vertical, dix-mille fois plus haut que l’intérieur, et cinquante-mille fois plus haut qu’épais <span class="ref">14:1.16</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">6</span><span><b>Une autre zone semi-tranquille,</b> puis les circuits intérieurs des sept superunivers <span class="ref">14:1.8</span>.</span></li>
+        </ol>
+      </div>
+      <figcaption>Coupe schématique&nbsp;: ni les distances ni la hauteur du circuit extérieur, coupé en haut et en bas, ne sont à l’échelle. Seule son épaisseur suit le texte&nbsp;: par calcul, un cinquième de la hauteur du circuit intérieur (10&#8239;000 divisé par 50&#8239;000).</figcaption>
+    </figure>
+    <div class="prose">
+      <blockquote class="cite e-obs" data-ref="14:1.16"><p>«&nbsp;Une coupe transversale de ce circuit ferait ressortir trois cercles concentriques de densité à peu près égale.&nbsp;»</p><span class="ref">14:1.16</span></blockquote>
+    </div>
+    <div class="cards c2">
+      <article class="card e-obs">
+        <h3>Ils cachent Havona</h3>
+        <p>Ils entourent et enveloppent l’univers central si complètement qu’ils le cachent à la vue des univers habités, même des plus proches <span class="ref">14:1.14</span>.</p>
+      </article>
+      <article class="card e-obs">
+        <h3>Ils l’équilibrent</h3>
+        <p>Leurs sens de rotation alternés et leur masse extraordinaire contrebalancent les lignes de gravité de Havona <span class="ref">14:1.15</span>&nbsp;; avec la constitution triata des mondes, ils rendent possibles des sphères aussi énormes <span class="ref">14:3.6</span>. Ils ne sont faits ni de triata ni de gravita, et leur attraction relève des deux formes de gravité physique, linéaire et absolue <span class="ref">11:8.7</span>.</p>
+      </article>
+      <article class="card e-obs">
+        <h3>Une masse inouïe</h3>
+        <p>À cause d’eux, le contenu massique de l’univers central <span class="q" data-ref="12:1.10">«&nbsp;dépasse considérablement le total des masses connues de l’ensemble des sept secteurs du grand univers&nbsp;»</span> <span class="ref">12:1.10</span>.</p>
+      </article>
+      <article class="card e-obs">
+        <h3>Sans équivalent</h3>
+        <blockquote class="cite e-obs" data-ref="14:1.18"><p>«&nbsp;Nous considérons ces processions alternées de prodigieux corps équilibreurs de gravité comme uniques dans le maitre univers.&nbsp;»</p><span class="ref">14:1.18</span></blockquote>
+        <p class="hint">À ne pas confondre avec les <i>iles obscures de l’espace</i>, soleils morts et autres masses sans lumière des superunivers <span class="ref">15:6.11</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="havona" aria-labelledby="h-vie">
+    <div class="sec-head">
+      <p class="eyebrow"><b>8</b> · Fascicule 14, et fascicules 17 à 26</p>
+      <h2 id="h-vie">La vie dans Havona</h2>
+      <p>Havona n’a pas évolué&nbsp;: c’est un univers entièrement créé et parfait, le modèle que les Fils Créateurs cherchent à reproduire dans le temps et l’espace <span class="ref">14:0.2</span>.</p>
+      <blockquote class="cite e-hav" data-ref="14:0.2"><p>«&nbsp;C’est l’unique et le seul agrégat de mondes qui soit fixé, parfait et ancré.&nbsp;»</p><span class="ref">14:0.2</span></blockquote>
+    </div>
+    <div class="fact-row">
+      <div class="fact e-hav"><p class="big">1&nbsp;milliard</p><p>de mondes, tous différents&nbsp;: chacun a été développé et embelli selon les plans de l’Éternel des Jours qui y réside <span class="ref">14:5.6</span>.</p></div>
+      <div class="fact e-hav"><p class="big">1&#8239;000</p><p>éléments chimiques de base, et sept formes d’énergie havonienne <span class="ref">14:2.3</span>.</p></div>
+      <div class="fact e-hav"><p class="big">49</p><p>formes de sensation chez les natifs&nbsp;; les sens morontiels sont au nombre de soixante-dix <span class="ref">14:2.3</span>.</p></div>
+      <div class="fact e-hav"><p class="big">3</p><p>Des énergies triples, et non doubles comme dans les superunivers&nbsp;: la création centrale est triple, comme la Trinité <span class="ref">14:2.2</span>.</p></div>
+      <div class="fact e-pere"><p class="big">≈&nbsp;1&#8239;000&nbsp;ans</p><p>Un jour du Paradis-Havona, commune mesure du temps pour les sept superunivers <span class="ref">14:1.12–13</span>.</p></div>
+      <div class="fact e-nsp"><p class="big">0</p><p>gouvernement&nbsp;: ni tribunaux ni assemblées législatives, une simple direction administrative <span class="ref">14:3.1</span>.</p></div>
+    </div>
+    <div class="two">
+      <div class="prose flat">
+        <p>Ces mondes sont réels, mais d’une autre substance que les planètes des superunivers <span class="ref">14:2.1</span>&nbsp;: un mortel d’Urantia n’y percevrait rien.</p>
+        <blockquote class="cite e-hav" data-ref="14:2.4"><p>«&nbsp;Si un mortel d’Urantia pouvait être transporté à Havona, il y serait sourd, aveugle et complètement dépourvu de toute autre réaction sensorielle […]&nbsp;»</p><span class="ref">14:2.4</span></blockquote>
+        <p>Ni décrépitude ni mort&nbsp;: les créatures vivantes inférieures y changent de forme sans se dissoudre <span class="ref">14:4.9</span>. Le péché y serait impossible, mais le texte présente ce point comme une inférence, tirée de ce qu’aucune faute n’y a jamais été commise <span class="ref">14:2.9</span>.</p>
+      </div>
+      <div class="prose flat">
+        <blockquote class="cite e-hav" data-ref="14:3.7"><p>«&nbsp;Mais il y a de vrais lacs et de vraies rivières sur ces mondes parfaits.&nbsp;»</p><span class="ref">14:3.7</span></blockquote>
+        <p>Chaque monde est une création originale <span class="ref">14:5.6</span>, et l’on ne s’y lasse jamais&nbsp;: la monotonie ne fait pas partie de la carrière de Havona <span class="ref">14:5.9</span>.</p>
+        <blockquote class="cite e-hav" data-ref="14:5.9"><p>«&nbsp;Chacun de ces mille millions de mondes d’étude est une véritable université de surprises.&nbsp;»</p><span class="ref">14:5.9</span></blockquote>
+      </div>
+    </div>
+    <h3 class="sub-h">Qui vit dans Havona</h3>
+    <div class="cards">
+      <article class="card e-hav">
+        <h3>Les natifs de Havona</h3>
+        <p>Issus directement de la Trinité, ils n’ont pas de créatures pour ancêtres et ne se reproduisent pas <span class="ref">14:4.10</span>. Ils ont leur propre progression, vers l’intérieur, vers l’extérieur ou au sein d’un circuit <span class="ref">14:4.14–17</span>, et certains peuvent rejoindre le Corps des Mortels de la Finalité <span class="ref">19:6.3</span>.</p>
+        <blockquote class="cite e-hav" data-ref="14:4.13"><p>«&nbsp;Dans leur nature même, ils <i>sont</i> la volonté de Dieu.&nbsp;»</p><span class="ref">14:4.13</span></blockquote>
+      </article>
+      <article class="card e-pere">
+        <h3>Les Éternels des Jours</h3>
+        <p>Un par monde, exactement un milliard <span class="ref">18:2.1</span>&nbsp;: ce ne sont pas des créateurs, mais de parfaits administrateurs, et des éducateurs d’une habileté suprême <span class="ref">14:3.3</span>. Chacun a développé son monde selon ses propres idées, sans copier les autres <span class="ref">18:2.3</span>.</p>
+      </article>
+      <article class="card e-esprit">
+        <h3>Les esprits des circuits</h3>
+        <p>Sept Esprits des Circuits, impersonnels, un par circuit, représentent l’Esprit Infini et les Sept Maitres Esprits <span class="ref">17:5.1–2</span>. Sept superviseurs suprêmes siègent sur les mondes-pilotes <span class="ref">24:1.7</span>.</p>
+      </article>
+      <article class="card e-esprit">
+        <h3>Ceux qui servent les pèlerins</h3>
+        <p>Les supernaphins secondaires, en sept groupes, un par circuit, des aides des pèlerins aux compléments de repos <span class="ref">26:5.1 ; 26:11.1</span>&nbsp;; les Guides des Diplômés, sur tous les circuits <span class="ref">24:6.1 ; 26:6.1</span>&nbsp;; les servites de Havona, créés par les Maitres Esprits et les Directeurs Suprêmes de Pouvoir <span class="ref">25:1.2</span>.</p>
+      </article>
+      <article class="card e-hav">
+        <h3>Les modèles de tous les êtres</h3>
+        <blockquote class="cite e-hav" data-ref="14:4.18"><p>«&nbsp;Tous les êtres dans tous les univers sont façonnés sur le modèle de quelque créature archétypale vivant sur l’un des mille millions de mondes de Havona.&nbsp;»</p><span class="ref">14:4.18</span></blockquote>
+      </article>
+      <article class="card e-pere">
+        <h3>Les pèlerins et les finalitaires</h3>
+        <p>Les pèlerins du temps, venus des univers, et ceux de l’éternité, venus du Paradis, s’y croisent <span class="ref">26:5.1</span>. Les finalitaires, qui résident au Paradis, y séjournent souvent et y servent <span class="ref">14:3.5</span>. Beaucoup d’autres êtres n’ont pas de lien avec le plan d’ascension, et le texte ne les présente pas <span class="ref">14:4.21</span>.</p>
+        <blockquote class="cite e-hav" data-ref="19:6.2"><p>«&nbsp;Pendant votre long séjour sur le milliard de mondes de culture havonienne, une amitié éternelle pour ces êtres splendides se développera en vous.&nbsp;»</p><span class="ref">19:6.2</span></blockquote>
+      </article>
+    </div>
+  </section>
+
+  <section id="carriere" aria-labelledby="h-car">
+    <div class="sec-head">
+      <p class="eyebrow"><b>9</b> · Fascicules 14 et 26</p>
+      <h2 id="h-car">Havona dans la carrière ascendante</h2>
+      <p>Pour un mortel, Havona est la dernière école avant le Paradis. Le voyage commence sur Urantia, passe par les mondes des maisons, l’univers local et le superunivers <span class="ref">14:5.1</span>, puis traverse les sept circuits, planète par planète, cercle par cercle, du dehors vers le centre <span class="ref">14:3.4</span>.</p>
+      <blockquote class="cite e-hav" data-ref="14:6.38"><p>«&nbsp;Havona se dresse devant toutes les créatures volitives comme la porte permettant d’entrer au Paradis et d’atteindre Dieu.&nbsp;»</p><span class="ref">14:6.38</span></blockquote>
+    </div>
+    <ol class="path" aria-label="Les étapes de Havona, du dehors vers le centre">
+      <li><span class="pc"><b>Le long vol</b><span>au-delà des corps obscurs</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 7</b><span>le Maitre Esprit</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 6</b><span>le Suprême</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 5</b><span>l’Esprit Infini</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 4</b><span>le Fils Éternel</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 3</b><span>le Père Universel</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 2</b><span>les multitudes du Paradis</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc hav"><b>Circuit 1</b><span>le service du Paradis</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc"><b>Le dernier sommeil</b><span>sur le premier cercle</span></span><span class="arr" aria-hidden="true">→</span></li>
+      <li><span class="pc fin"><b>Le Paradis</b><span>le Corps de la Finalité</span></span></li>
+    </ol>
+    <p class="sub-p hint">L’arrivée <span class="ref">26:4.11–12</span>&nbsp;; ce que l’on atteint sur chaque circuit <span class="ref">14:5.4</span>&nbsp;; le sommeil et le réveil <span class="ref">26:11.6</span>. Le détail de chaque étape est dans <a href="#circuits">le schéma des circuits</a>.</p>
+    <div class="two">
+      <div class="prose flat">
+        <p><b>À l’arrivée.</b> Le pèlerin n’est pas encore parfait, sauf d’une seule façon&nbsp;:</p>
+        <blockquote class="cite e-hav" data-ref="26:4.13"><p>«&nbsp;[…] vous y arrivez avec une seule sorte de perfection — <i>la perfection de dessein.</i>&nbsp;»</p><span class="ref">26:4.13</span></blockquote>
+        <p><b>Pendant le séjour.</b> On visite librement les mondes de son circuit, et l’on peut revenir sur ceux déjà traversés&nbsp;; mais pour quitter Havona ou dépasser son circuit, il faut un supernaphin transporteur <span class="ref">14:5.5</span>. Les mortels passent la majeure partie de leurs <span class="q" data-ref="13:1.21">«&nbsp;vacances&nbsp;»</span> de Havona sur Ascendington <span class="ref">13:1.21</span>.</p>
+        <p><b>Un nom donné aux cercles.</b> Les cercles de progrès du mental humain, les cercles psychiques, ont été nommés d’après ces circuits <span class="ref">14:5.4</span>&nbsp;: voir <a href="destinee-humaine.html#vie">La destinée humaine</a>.</p>
+      </div>
+      <div class="prose flat">
+        <p><b>L’échec n’est pas la fin.</b> Qui ne réussit pas sa première tentative pour atteindre la Déité est conduit au deuxième cercle, puis renvoyé pour un temps au service d’un superunivers, où il sert, dit l’auteur, auprès des enfants du temps et des déçus <span class="ref">26:10.2</span>.</p>
+        <p><b>Le terme.</b> Sur le premier cercle, le complément de repos, compagnon de longue date, se prépare à entrer dans le repos aux côtés du pèlerin <span class="ref">26:11.7</span>&nbsp;: c’est la troisième et dernière métamorphose.</p>
+        <blockquote class="cite e-pere" data-ref="26:11.8"><p>«&nbsp;Votre première transition était en vérité la mort, la deuxième un sommeil idéal et, maintenant, la troisième métamorphose est le vrai repos, la détente des âges.&nbsp;»</p><span class="ref">26:11.8</span></blockquote>
+        <p><b>Le premier.</b> Le premier mortel qui atteignit Havona s’appelait Grandfanda&nbsp;; il venait du superunivers numéro 1 <span class="ref">24:6.8 ; 7:5.8</span>.</p>
+      </div>
+    </div>
+    <p class="more"><a href="destinee-humaine.html">Le début du voyage&nbsp;: La destinée humaine</a> · <a href="atlas-3d.html#carriere">La carrière ascendante dans la vue 3D</a></p>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Les fascicules 11 à 14 sont présentés par un Perfecteur de Sagesse, mandaté par les Anciens des Jours d’Uversa <span class="ref">11:9.9 ; 12:9.7 ; 13:4.8 ; 14:6.42</span>. L’auteur marque souvent ses limites&nbsp;; de Divinington, il écrit <span class="q" data-ref="13:1.2">«&nbsp;Ce monde m’est totalement interdit.&nbsp;»</span> <span class="ref">13:1.2</span>. Le livre distingue surtout ses vérités religieuses, appelées à durer, de ses affirmations scientifiques, appelées à être revues <span class="ref">101:4.2</span>&nbsp;:
+        <blockquote class="cite" data-ref="101:4.2"><p>«&nbsp;La cosmologie révélée ici n’est <i>pas inspirée</i>.&nbsp;»</p><span class="ref">101:4.2</span></blockquote>
+        Il ajoute&nbsp;: <span class="q" data-ref="101:4.1">«&nbsp;Toute cosmologie présentée comme partie d’une religion révélée est destinée à être dépassée au bout de très peu de temps.&nbsp;»</span> <span class="ref">101:4.1</span></li>
+      <li><b>Lecture courante.</b> Les lecteurs ne lisent pas tous cette géographie de la même façon. Certains la prennent à la lettre&nbsp;: une ile réelle, avec un nord et un sud. D’autres y voient d’abord une manière de dire l’absolu, puisque le texte la dit non spatiale <span class="ref">11:2.11</span>. Une question vient vite à l’esprit&nbsp;: comment un lieu sans emplacement peut-il avoir des dimensions&nbsp;? Le texte n’y répond qu’en partie, par le sens que garde la distance sur le Paradis <span class="ref">11:2.11</span>. D’autres encore cherchent des correspondances avec l’astronomie&nbsp;: un essai de lecteur de 1992 (Stuart R. Kerr III) jugeait probable que les trous noirs soient ces corps de gravité obscurs, alors que le texte précise que ces corps n’absorbent pas la lumière <span class="ref">14:1.14</span>. Cette page, comme la vue 3D, choisit des tailles et des distances que le texte ne donne pas&nbsp;; elle ne tranche pas entre ces lectures.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Il reprend des images bibliques&nbsp;: la maison du Père où il y a <span class="q" data-bible="Jean 14:2">«&nbsp;beaucoup de demeures&nbsp;»</span> <span class="bref">Jean 14, 2</span> devient l’Aire Sainte et ses <span class="q" data-ref="11:3.3">«&nbsp;demeures paradisiaques du Père&nbsp;»</span> <span class="ref">11:3.3</span>&nbsp;; la phrase <span class="q" data-ref="14:1.12">«&nbsp;Mille ans sont comme un jour pour le Seigneur, et comme une veille dans la nuit&nbsp;»</span>, qui mêle <span class="bref">2 Pierre 3, 8</span> et <span class="bref">Psaumes 90, 4</span>, sert au jour du Paradis-Havona <span class="ref">14:1.12</span>&nbsp;; les <span class="q" data-bible="1 Corinthiens 2:9">«&nbsp;choses que l’œil n’a point vues&nbsp;»</span> <span class="bref">1 Corinthiens 2, 9</span> sont reprises pour les gloires du Paradis <span class="ref">11:4.5</span>. L’Apocalypse voit descendre du ciel <span class="q" data-bible="Apocalypse 21:2">«&nbsp;la ville sainte&nbsp;»</span> <span class="bref">Apocalypse 21, 2</span>&nbsp;; le livre, lui, ne parle pas de ville, mais d’une Aire Sainte. L’image d’un centre divin entouré de cercles tournants est ancienne&nbsp;: au chant XXVIII du <i>Paradis</i> de Dante, au début du XIV<sup>e</sup>&nbsp;siècle, Dieu apparait comme un point de lumière entouré de neuf cercles d’anges, les plus proches tournant le plus vite. Ce rapprochement est de cette page, pas du livre. Enfin, quand le livre parait, l’astronomie décrit depuis les années 1920 un univers en expansion, et la cosmologie actuelle ne lui reconnait aucun centre&nbsp;; le livre place au contraire un centre immobile, et parle d’une respiration de l’espace <span class="ref">11:6.4</span>. Il dit lui-même avoir pris pour base plus de mille concepts humains <span class="ref">0:12.12</span>.</li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Les dimensions réelles.</b> Pour l’Ile, des proportions seulement <span class="ref">11:2.2</span>&nbsp;; pour Havona, des dimensions énormes, qui <span class="q" data-ref="14:0.1">«&nbsp;dépassent réellement les bornes de la compréhension du mental humain&nbsp;»</span> <span class="ref">14:0.1</span>.</li>
+        <li><b>Les distances</b> entre l’Ile, les satellites, les circuits et les corps obscurs. Seul indice&nbsp;: les mondes du premier circuit, pourtant très rapides, mettent presque mille ans à faire le tour du Paradis <span class="ref">14:1.12</span>.</li>
+        <li><b>Le nombre de mondes des circuits 2 à 6.</b> Des quantités proportionnelles, sans plus <span class="ref">14:1.9</span>. Les chiffres du schéma (35&nbsp;millions × le rang) sont un calcul de lecteur&nbsp;: avec les deux extrêmes, ils donnent 980&nbsp;millions, ce qui reste compatible avec le milliard, puisque le texte dit <i>plus de</i>.</li>
+        <li><b>Le relief et le bord de l’Ile.</b> Essentiellement plate, finissant abruptement&nbsp;: rien de plus <span class="ref">11:2.2 ; 11:4.1</span>.</li>
+        <li><b>Les zones 3 à 7 de l’Aire Sainte</b>, et l’emplacement des sept secteurs de la zone 2 <span class="ref">11:3.3</span>.</li>
+        <li><b>Le bas Paradis.</b> La Zone de l’Infinité est dite inconnue et non révélée, l’aire qui l’entoure n’a pas de nom, et la fonction de la zone médiane n’a jamais été identifiée <span class="ref">11:5.2–3 ; 11:5.6</span>.</li>
+        <li><b>La respiration de l’espace.</b> Son mécanisme est inconnu, et l’auteur ne sait pas si les réservoirs serviront toujours de contrepoids aux univers <span class="ref">11:6.1 ; 11:6.3</span>.</li>
+        <li><b>D’où l’on regarde.</b> Le texte dit <i>dans le sens des aiguilles d’une montre</i>, sans dire de quel côté l’on regarde <span class="ref">14:1.3 ; 14:1.5</span>&nbsp;; le schéma suppose une vue de dessus.</li>
+        <li><b>En quoi les deux circuits de corps obscurs sont égaux.</b> Le texte les dit <span class="q" data-ref="14:1.15">«&nbsp;deux circuits elliptiques égaux&nbsp;»</span> <span class="ref">14:1.15</span>, alors que l’un est dix-mille fois plus haut que l’autre <span class="ref">14:1.16</span>.</li>
+        <li><b>Les satellites.</b> La matière dont ils sont faits, les noms des mondes du Fils et de l’Esprit, la plupart des habitants des sphères du Père, et bien de leurs desseins <span class="ref">13:0.2 ; 13:0.6–7</span>.</li>
+        <li><b>L’avenir des Havoniens</b>, dont la destinée future n’est pas révélée <span class="ref">14:4.14 ; 19:6.3</span>.</li>
+        <li><b>Les schémas.</b> Couleurs, positions, épaisseurs, sens de lecture et vitesses d’animation sont des choix de la page&nbsp;; seuls les éléments, leur ordre et les proportions de l’Ile viennent du texte.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-trois&nbsp;citations courtes, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Les schémas sont des images symboliques&nbsp;: positions, couleurs, épaisseurs et mouvements sont des choix de présentation. Seules les proportions de l’Ile, vue de dessus et de profil, sont celles du texte.</p>
+    <p>Faits extérieurs au livre (date de parution, Dante, cosmologie actuelle, interprétations de lecteurs)&nbsp;: résumés prudents, sans prise de position.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  /* ====================== 1. Moins d’animations ====================== */
+  /* Par défaut : la préférence du système ; le bouton du schéma la remplace, et le choix est gardé si possible.
+     Les mouvements du schéma n’existent qu’avec la classe anime, posée ici : sans script, rien ne bouge. */
+  var CLE = "paradis-havona-calme";
+  function systeme() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function lire() { try { var v = window.localStorage.getItem(CLE); return v === "1" ? true : (v === "0" ? false : null); } catch (e) { return null; } }
+  function garder(v) { try { window.localStorage.setItem(CLE, v ? "1" : "0"); } catch (e) { /* choix non gardé */ } }
+  var calme = lire();
+  if (calme === null) calme = systeme();
+  var bCalme = document.getElementById("hv-calme");
+  function appliquerCalme() {
+    var r = document.documentElement;
+    r.classList.toggle("calme", calme);
+    r.classList.toggle("anime", !calme);
+    if (bCalme) bCalme.setAttribute("aria-pressed", String(calme));
+  }
+  appliquerCalme();
+  if (bCalme) bCalme.addEventListener("click", function () { calme = !calme; garder(calme); appliquerCalme(); });
+
+  /* ====================== 2. Le schéma de Havona ====================== */
+  /* Les textes, citations et références de chaque partie sont dans la version texte (#tv-obs à #tv-par) :
+     le panneau les reprend. Ordre des onglets : du dehors vers le centre, comme le pèlerin. */
+  var ui = document.getElementById("hv-ui"), main = document.getElementById("hv-main"), svg = document.getElementById("hv-svg");
+  var panel = document.getElementById("hv-panel"), tabsEl = document.getElementById("hv-tabs"), statut = document.getElementById("hv-status");
+  var tv = document.getElementById("hv-texte"), lienTv = document.getElementById("hv-tv"), commun = document.getElementById("tv-commun");
+
+  if (ui && main && svg && panel && tabsEl) {
+    var tabs = Array.prototype.slice.call(tabsEl.querySelectorAll("[role=\"tab\"]"));
+    var ordre = tabs.map(function (t) { return t.getAttribute("data-k"); });
+    var cur = -1;
+
+    var titre = function (k) {
+      var h = document.querySelector("#tv-" + k + " .tv-h"), n = h.querySelector(".tv-n");
+      return h.textContent.slice(n ? n.textContent.length : 0).trim();
+    };
+
+    var bouton = function (classe, l1, l2, j) {
+      var b = document.createElement("button"), a = document.createElement("span"), c = document.createElement("span");
+      b.type = "button";
+      b.className = classe;
+      a.className = "cn-l";
+      c.className = "cn-t";
+      a.textContent = l1;
+      c.textContent = l2;
+      b.appendChild(a);
+      b.appendChild(c);
+      b.addEventListener("click", function () {
+        choisir(j, { annoncer: true });
+        panel.focus({ preventScroll: true });
+        var r = panel.getBoundingClientRect();
+        if (r.top < 0) panel.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      });
+      return b;
+    };
+
+    var choisir = function (i, o) {
+      o = o || {};
+      i = Math.max(0, Math.min(ordre.length - 1, i));
+      var k = ordre[i], li = document.getElementById("tv-" + k);
+      if (!li) return;
+      cur = i;
+      tabs.forEach(function (t, j) {
+        t.setAttribute("aria-selected", String(j === i));
+        t.tabIndex = j === i ? 0 : -1;
+      });
+      svg.setAttribute("data-sel", k);
+      panel.setAttribute("aria-labelledby", tabs[i].id);
+      panel.textContent = "";
+      var kick = document.createElement("p");
+      kick.className = "pn-k";
+      kick.textContent = "Étape " + (i + 1) + " sur " + ordre.length + (li.getAttribute("data-kick") ? " · " + li.getAttribute("data-kick") : "");
+      panel.appendChild(kick);
+      Array.prototype.forEach.call(li.children, function (c) { panel.appendChild(c.cloneNode(true)); });
+      if (/^c\d$/.test(k) && commun) {
+        var p = document.createElement("p");
+        p.className = "pn-com";
+        p.innerHTML = commun.innerHTML;
+        panel.appendChild(p);
+      }
+      var nav = document.createElement("div");
+      nav.className = "pn-nav";
+      if (i > 0) nav.appendChild(bouton("chip", "← Vers le dehors", titre(ordre[i - 1]), i - 1));
+      if (i < ordre.length - 1) nav.appendChild(bouton("chip fort", "Vers le centre →", titre(ordre[i + 1]), i + 1));
+      else nav.appendChild(bouton("chip fort", "Fin du chemin", "Revoir depuis le dehors ↺", 0));
+      panel.appendChild(nav);
+      if (o.annoncer && statut) statut.textContent = titre(k) + ", " + (i + 1) + " sur " + ordre.length;
+      if (o.focus) tabs[i].focus();
+      if (o.defiler) {                                /* sur téléphone, le panneau est sous le schéma */
+        var r = panel.getBoundingClientRect();
+        if (r.top > window.innerHeight - 120) panel.scrollIntoView({ block: "nearest", behavior: calme ? "auto" : "smooth" });
+      }
+    };
+
+    tabs.forEach(function (t, i) { t.addEventListener("click", function () { choisir(i); }); });
+    tabsEl.addEventListener("keydown", function (ev) {
+      var j = null;
+      if (ev.key === "ArrowRight") j = cur + 1;
+      else if (ev.key === "ArrowLeft") j = cur - 1;
+      else if (ev.key === "Home") j = 0;
+      else if (ev.key === "End") j = ordre.length - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      choisir(j, { focus: true });
+    });
+    svg.addEventListener("click", function (ev) {
+      var e = ev.target && ev.target.closest ? ev.target.closest("[data-k]") : null;
+      if (!e) return;
+      var i = ordre.indexOf(e.getAttribute("data-k"));
+      if (i >= 0) choisir(i, { annoncer: true, defiler: true });
+    });
+    if (lienTv && tv) lienTv.addEventListener("click", function (ev) {
+      ev.preventDefault();
+      tv.open = true;
+      tv.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+      var s = tv.querySelector("summary");
+      if (s) s.focus({ preventScroll: true });
+    });
+
+    ui.hidden = false;                              /* sans JavaScript : le dessin et la version texte seulement */
+    panel.hidden = false;
+    main.classList.add("on");
+    if (tv && location.hash !== "#hv-texte") tv.open = false;
+    choisir(Math.max(0, ordre.indexOf("c7")));
+  }
+
+  /* ====================== 3. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

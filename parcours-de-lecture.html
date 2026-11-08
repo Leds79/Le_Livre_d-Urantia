@@ -1,0 +1,936 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(d,w){var c=d.documentElement.classList;c.add("an-js");if(w.speechSynthesis&&w.SpeechSynthesisUtterance)c.add("an-tts");if(w.AudioContext||w.webkitAudioContext)c.add("an-son")})(document,window)</script>
+<meta name="description" content="Cinq itinéraires de lecture du Livre d’Urantia, fascicule par fascicule : durée estimée, lien vers le texte, pages de l’atlas à voir en chemin, et une case « Lu » gardée sur l’appareil.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/parcours-de-lecture.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131A2E" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas Urantia">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="author" content="Sylvain Leduc">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="Parcours de lecture — Le Livre d’Urantia en images">
+<meta property="og:description" content="Cinq itinéraires de lecture du Livre d’Urantia, fascicule par fascicule : durée estimée, lien vers le texte, pages de l’atlas à voir en chemin, et une case « Lu » gardée sur l’appareil.">
+<meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/parcours-de-lecture.html">
+<meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<script src="assets/hors-ligne.js" defer></script>
+<script src="assets/musique.js" defer></script>
+<script src="assets/navigation.js" defer></script>
+<script src="assets/ecouter.js" defer></script>
+<script src="assets/glossaire.js" defer></script>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Parcours de lecture — Le Livre d’Urantia en images</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : cinq itinéraires de lecture à travers le livre. En tête, le mode d’emploi et « Reprendre » ; puis
+   les cinq cartes (aperçu et progression) ; puis chaque parcours, fascicule par fascicule, avec sa case « Lu ».
+   Chaque parcours a sa couleur et son icône (choix de la page) ; l’or reste l’accent des liens et du focus.
+   Largeur utile : 1100 px. La progression est gardée dans le navigateur (localStorage), si possible. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  --on-c: #FFFFFF;     /* texte posé sur la couleur d’un parcours */
+  --danger: #B3261E; --danger-soft: #FBE9E7;
+  /* Les cinq parcours (choix de la page) : couleur, fond doux */
+  --recit: #A3461F; --recit-soft: #FBEDE6;
+  --fond: #5B47B8; --fond-soft: #EFEBFA;
+  --reli: #A3366A; --reli-soft: #FAEAF2;
+  --dest: #0E7268; --dest-soft: #E2F3EF;
+  --cosmo: #2459A6; --cosmo-soft: #E7EEF8;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-soft: #221F17;
+    --on-c: #0C1120; --danger: #FF8A80; --danger-soft: #331716;
+    --recit: #F2A27F; --recit-soft: #2A1C16;
+    --fond: #B4A4F6; --fond-soft: #1E1A36;
+    --reli: #F59AC4; --reli-soft: #2A1724;
+    --dest: #5FD3C4; --dest-soft: #102928;
+    --cosmo: #8DB6F4; --cosmo-soft: #15213A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --on-gold: #1B1405; --gold-soft: #221F17;
+  --on-c: #0C1120; --danger: #FF8A80; --danger-soft: #331716;
+  --recit: #F2A27F; --recit-soft: #2A1C16;
+  --fond: #B4A4F6; --fond-soft: #1E1A36;
+  --reli: #F59AC4; --reli-soft: #2A1724;
+  --dest: #5FD3C4; --dest-soft: #102928;
+  --cosmo: #8DB6F4; --cosmo-soft: #15213A;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-padding-top: 16px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 64px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.3rem; line-height: 1.2; }
+p { margin: 0; }
+.eyebrow, .label { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.eyebrow b { color: var(--c, var(--gold-ink)); font-weight: 500; }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; }
+
+/* Couleur de chaque parcours (--c) et son fond doux (--soft) */
+.p-recit { --c: var(--recit); --soft: var(--recit-soft); }
+.p-fondations { --c: var(--fond); --soft: var(--fond-soft); }
+.p-religion { --c: var(--reli); --soft: var(--reli-soft); }
+.p-destinee { --c: var(--dest); --soft: var(--dest-soft); }
+.p-cosmologie { --c: var(--cosmo); --soft: var(--cosmo-soft); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 54ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+.cta { appearance: none; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 500 1.02rem/1.25 var(--font-body); text-decoration: none; text-align: left; max-width: 100%; min-height: 44px; cursor: pointer; }
+.cta:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.cta.second { background: transparent; color: var(--ink); border-color: var(--rule); }
+.cta.second:hover { border-color: var(--muted); background: var(--sheet); color: var(--ink); }
+.reprise { font-size: .95rem; color: var(--muted); max-width: 60ch; }
+.reprise b { color: var(--ink); font-weight: 600; }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.how { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 10px; border-bottom: 1px solid var(--rule); counter-reset: how; }
+.how li { display: grid; grid-template-columns: 1.9rem minmax(0, 1fr); gap: 0 10px; align-items: start; font-size: .95rem; line-height: 1.4; counter-increment: how; }
+.how li::before { content: counter(how); width: 1.9rem; height: 1.9rem; border-radius: 50%; display: grid; place-items: center; background: var(--gold-soft); border: 1.5px solid var(--gold); color: var(--gold-ink); font: 600 .85rem/1 var(--font-mono); }
+.how b { font-weight: 700; }
+.codebox .note { font-size: .86rem; color: var(--muted); line-height: 1.45; }
+.codebox .note.alerte { color: var(--ink); background: var(--gold-soft); border-left: 3px solid var(--gold); padding: 8px 10px; border-radius: 6px; }
+
+/* Les cinq cartes */
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.hint { color: var(--muted); font-size: .98rem; }
+.cards { list-style: none; margin: 24px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); gap: 14px; }
+.card { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 12px; padding: 18px 18px 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card:hover { border-color: var(--muted); border-top-color: var(--c); }
+.card-h { display: flex; gap: 12px; align-items: center; }
+.badge { width: 2.6rem; height: 2.6rem; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--soft); color: var(--c); border: 1.5px solid var(--c); }
+.badge .ic { width: 1.35rem; height: 1.35rem; }
+.card h3 { font-size: 1.5rem; }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }   /* toute la carte est cliquable */
+.card h3 a:hover { color: var(--gold-ink); }
+.card h3 a:focus-visible { outline: none; }
+.card h3 a:focus-visible::after { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
+.card .quoi { font-size: .97rem; }
+.card .meta { font: 500 .78rem/1.4 var(--font-mono); color: var(--muted); letter-spacing: .02em; }
+.card .meta b { color: var(--ink); font-weight: 500; }
+.card .voir { font-size: .92rem; color: var(--gold-ink); font-weight: 500; }
+
+/* Barre de progression (image ; le texte à côté porte l’information) */
+.bar { height: 8px; border-radius: 999px; background: var(--tint); overflow: hidden; }
+.bar > i { display: block; height: 100%; width: 0; border-radius: inherit; background: var(--c); transition: width .35s ease; }
+.prog { display: grid; gap: 6px; }
+.prog-t { font-size: .9rem; color: var(--muted); }
+.prog-t b { color: var(--ink); font-weight: 600; }
+.fini .prog-t b { color: var(--c); }
+
+/* Un parcours */
+.pc { display: grid; gap: 22px; scroll-margin-top: 12px; }
+.pc-head { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 18px 36px; align-items: end; }
+.pc-head .sec-head h2 { display: flex; gap: 14px; align-items: center; }
+.pc-head .badge { width: 3rem; height: 3rem; }
+.pc-head .badge .ic { width: 1.55rem; height: 1.55rem; }
+.pc-intro { font-size: 1.05rem; max-width: 64ch; }
+.pc-side { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--c); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 10px; min-width: 0; }
+.pc-chiffres { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: .95rem; }
+.pc-chiffres b { font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; line-height: 1; margin-right: 4px; color: var(--ink); }
+.pc-suite { font-size: .95rem; color: var(--ink); }
+.pc-conseil { font-size: .9rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 10px; }
+.pc-suite b { color: var(--ink); font-weight: 600; }
+.pc-suite a { font-weight: 500; }
+.atlas { display: grid; gap: 8px; }
+.atlas ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.atlas li { min-width: 0; max-width: 100%; }
+.atlas a { display: inline-flex; flex-direction: column; justify-content: center; gap: 1px; min-height: 44px; padding: 7px 14px; border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); color: var(--ink); text-decoration: none; max-width: 100%; }
+.atlas a:hover { border-color: var(--c); }
+.atlas a b { font-weight: 600; font-size: .95rem; line-height: 1.25; color: var(--gold-ink); }
+.atlas a span { font-size: .82rem; color: var(--muted); line-height: 1.3; }
+
+/* Liste des fascicules */
+.groupe { display: grid; gap: 8px; }
+.groupe h3 { font-size: 1.2rem; display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; }
+.groupe h3 .rg { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fxs { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.fx { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 8px 10px 8px 12px; min-width: 0; transition: background-color .2s ease, border-color .2s ease; }
+.fx .num { width: 2.6rem; height: 2.6rem; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--c); color: var(--c); background: var(--sheet); font: 600 .9rem/1 var(--font-mono); position: relative; }
+.fx .num .ok { display: none; }
+.fx-txt { position: relative; display: grid; gap: 1px; min-width: 0; }
+.fx-t { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; color: var(--ink); text-decoration: none; padding-block: 4px; overflow-wrap: anywhere; }
+.fx-t::after { content: ""; position: absolute; inset: -8px 0; }   /* toute la zone du titre et de l’auteur est cliquable */
+.fx-t:hover { color: var(--gold-ink); text-decoration: underline; text-decoration-thickness: 1px; }
+.fx-t:focus-visible { outline: none; }
+.fx-t:focus-visible::after { outline: 2px solid var(--gold-ink); outline-offset: 2px; border-radius: 8px; }
+.fx-t .ext { font-family: var(--font-mono); font-size: .8em; color: var(--muted); margin-left: 4px; }
+.fx-a { font-size: .86rem; color: var(--muted); line-height: 1.35; }
+.fx-a .tps { white-space: nowrap; }
+.lu { position: relative; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; min-width: 44px; padding: 0 14px 0 10px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); font-size: .95rem; font-weight: 500; color: var(--muted); cursor: pointer; -webkit-user-select: none; user-select: none; }
+.lu:hover { border-color: var(--c); color: var(--ink); }
+.lu input { appearance: none; -webkit-appearance: none; margin: 0; width: 1.25rem; height: 1.25rem; flex: none; border: 2px solid var(--muted); border-radius: 5px; background: var(--sheet); display: grid; place-items: center; cursor: pointer; }
+.lu input::after { content: ""; width: .38rem; height: .7rem; border: solid var(--on-c); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) translate(-1px, -1px); opacity: 0; }
+.lu input:checked { background: var(--c); border-color: var(--c); }
+.lu input:checked::after { opacity: 1; }
+.lu input:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 2px; }
+.fx.est-lu .lu { color: var(--ink); border-color: var(--c); background: var(--sheet); }
+.fx.est-lu { background: var(--soft); border-color: var(--rule); border-color: color-mix(in srgb, var(--c) 35%, var(--rule)); }
+.fx.est-lu .num { background: var(--c); color: var(--on-c); }
+.fx.suivant { border-color: var(--c); box-shadow: inset 4px 0 0 var(--c); }
+.fx .tag { display: none; font: 500 .68rem/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--on-c); background: var(--c); border-radius: 999px; padding: 4px 8px; margin-left: 6px; vertical-align: .2em; white-space: nowrap; }
+.fx.suivant .tag { display: inline-block; }
+.fx.flash { animation: flash 1.6s ease 1; }
+@keyframes flash { 0%, 100% { box-shadow: inset 4px 0 0 var(--c); } 30% { box-shadow: inset 4px 0 0 var(--c), 0 0 0 4px color-mix(in srgb, var(--c) 45%, transparent); } }
+
+/* Groupes repliables (Récit d’abord) */
+details.groupe { background: transparent; border-top: 1px solid var(--rule); }
+details.groupe:last-of-type { border-bottom: 1px solid var(--rule); }
+details.groupe > summary { list-style: none; display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 4px 14px; align-items: center; min-height: 52px; padding: 8px 4px; cursor: pointer; }
+details.groupe > summary::-webkit-details-marker { display: none; }
+details.groupe > summary::marker { content: ""; }
+details.groupe > summary:hover .g-t { color: var(--gold-ink); }
+.g-t { font-family: var(--font-display); font-weight: 600; font-size: 1.22rem; line-height: 1.2; }
+.g-r { display: block; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+.g-p { font: 500 .8rem/1 var(--font-mono); color: var(--muted); white-space: nowrap; }
+.g-p.fini { color: var(--c); font-weight: 600; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin: 0 8px 4px 2px; }
+details.groupe[open] > summary .chev { transform: rotate(-135deg); margin-bottom: 0; margin-top: 4px; }
+details.groupe > .fxs { padding: 2px 0 14px; }
+
+/* Effacer la progression */
+.raz { max-width: 84ch; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; justify-items: start; }
+.raz h2 { font-size: 1.7rem; }
+.raz-etat { color: var(--muted); }
+.raz-etat b { color: var(--ink); }
+.btn { appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 10px 18px; border-radius: 999px; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); font: 600 .97rem/1.25 var(--font-body); cursor: pointer; text-align: center; }
+.btn:hover { border-color: var(--muted); }
+.btn.danger { background: var(--danger); border-color: var(--danger); color: var(--on-c); }
+.btn.danger:hover { filter: brightness(1.08); }
+.raz-conf { width: 100%; display: grid; gap: 12px; padding: 14px 16px; border: 1px solid var(--danger); border-radius: 10px; background: var(--danger-soft); }
+.raz-conf p { max-width: 64ch; }
+.raz-btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.raz-msg { font-weight: 600; }
+.raz-msg:empty { display: none; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bar > i, .fx, .chev { transition: none; }
+  .fx.flash { animation: none; }
+}
+@media (max-width: 860px) {
+  .hero, .pc-head { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .pc-head { gap: 18px; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .wrap { gap: 52px; }
+  .fx { grid-template-columns: 2.3rem minmax(0, 1fr) auto; gap: 4px 10px; padding: 8px 8px 8px 10px; }
+  .fx .num { width: 2.3rem; height: 2.3rem; font-size: .82rem; }
+  .fx-t { font-size: 1.12rem; }
+  .lu { padding: 0 10px 0 9px; gap: 6px; }
+  .raz { padding: 20px 16px; }
+  .pc-chiffres b { font-size: 1.35rem; }
+}
+@media (max-width: 380px) {
+  .fx { grid-template-columns: minmax(0, 1fr) auto; }
+  .fx .num { display: none; }
+}
+@media print {
+  .actions, .raz, .lu { display: none !important; }
+  details.groupe > .fxs { display: grid !important; }
+}
+</style><style>/* barre commune, menus, tiroir, bandeau et pied de l’atlas (construire_site.py ; comportement : assets/navigation.js) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:1100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.an-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}html.an-bloque,html.an-bloque body{overflow:hidden}html.an-bloque main *,html.an-bloque main *::before,html.an-bloque main *::after{animation-play-state:paused!important}.atlas-nav{position:relative;z-index:100;background:var(--sheet);border-bottom:1px solid var(--rule);color:var(--ink);font:500 1rem/1.25 var(--font-body)}.an-barre{display:flex;align-items:center;gap:2px;max-width:1100px;min-height:64px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}.atlas-nav ul,.atlas-nav ol{list-style:none;margin:0;padding:0}.atlas-nav li,.atlas-nav p{margin:0}.atlas-nav a{color:inherit;text-decoration:none}.atlas-nav svg{display:block;flex:none}.atlas-nav :focus-visible{outline:2px solid var(--gold-ink);outline-offset:2px;border-radius:10px}.an-ic{width:20px;height:20px}.an-emb{width:28px;height:28px;border-radius:8px}.an-accueil,.an-g-btn,.an-ecouter,.an-menu{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ink);font:600 1rem/1 var(--font-body);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}.an-accueil{padding-left:6px;margin-right:4px}.an-g-btn{list-style:none}.an-g-btn::-webkit-details-marker{display:none}.an-g-btn::marker{content:""}.an-accueil:hover,.an-g-btn:hover,.an-ecouter:hover,.an-menu:hover{background:var(--tint)}.an-g-btn[aria-expanded="true"],.an-d[open]>.an-g-btn{background:var(--tint)}.an-chev{width:12px;height:12px;color:var(--muted);transition:transform .2s ease}.an-g-btn[aria-expanded="true"] .an-chev,.an-d[open]>.an-g-btn .an-chev{transform:rotate(180deg)}.an-accueil[aria-current="page"]::after,.an-ici>.an-g-btn::after,.an-ici>.an-d>.an-g-btn::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:2px;background:var(--gold-ui,var(--gold))}.an-accueil[aria-current="page"]::after{left:42px}.an-tiroir{display:flex;align-items:center;min-width:0}.an-liste{display:flex;align-items:center;gap:2px}.an-g{position:relative}.an-l-accueil,.an-t-tete,.an-t-pied,.an-page,.an-menu{display:none}.an-panneau{position:absolute;top:calc(100% + 10px);left:0;z-index:110;min-width:340px;padding:8px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;box-shadow:0 26px 56px -18px rgba(8,13,30,.36),0 4px 14px rgba(8,13,30,.1)}.an-p-tete{display:flex;justify-content:space-between;gap:16px;margin:6px 10px 8px;font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.an-items{display:grid;gap:2px}.an-items a{display:grid;gap:3px;min-height:44px;padding:10px 12px;border-radius:10px}.an-items a:hover,.an-etapes a:hover{background:var(--tint)}.an-nom{font:600 1rem/1.25 var(--font-body);color:var(--ink)}.an-aide{font:400 .87rem/1.3 var(--font-body);color:var(--muted)}.an-ext{margin-left:.35em;font-weight:500;color:var(--muted)}.an-items a[aria-current="page"],.an-etapes a[aria-current="page"]{background:var(--tint);background:color-mix(in srgb,var(--gold) 15%,transparent)}.an-items a[aria-current="page"] .an-nom,.an-etapes a[aria-current="page"] .an-et{color:var(--gold-ink)}.an-p-parcours{width:640px}.an-etapes{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(var(--an-rangs,7),auto);grid-auto-flow:column;gap:2px 8px}.an-etapes a{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 10px;border-radius:10px}.an-num{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--gold-ui,var(--gold));border-radius:50%;font:500 .8rem/1 var(--font-mono);color:var(--gold-ink)}.an-etapes a[aria-current="page"] .an-num{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}.an-et{font:500 .98rem/1.25 var(--font-body);color:var(--ink)}.an-3d{margin-left:auto;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;font:500 .68rem/1.3 var(--font-mono);letter-spacing:.06em;color:var(--muted)}.an-actions{display:flex;align-items:center;gap:4px;margin-left:auto;padding-left:8px}.an-chercher{display:none;align-items:center;gap:10px;min-width:210px;min-height:44px;margin:0 4px 0 0;padding:0 8px 0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--muted);font:500 .97rem/1 var(--font-body);cursor:pointer;-webkit-tap-highlight-color:transparent}html.an-js .an-chercher{display:inline-flex}.an-chercher:hover{border-color:var(--muted);color:var(--ink)}.an-chercher .an-ic{width:18px;height:18px;color:var(--gold-ink)}.an-chercher kbd{margin-left:auto;padding:2px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);font:500 .78rem/1.3 var(--font-mono);color:var(--muted)}.an-ecouter{display:none}html.an-tts .an-ecouter{display:inline-flex}.an-ecouter .an-ic{color:var(--gold-ink)}.an-ecouter[data-etat="lecture"],.an-ecouter[data-etat="pause"]{background:var(--tint);color:var(--gold-ink)}.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}html:not(.an-son) .atlas-musique{display:none}.atlas-musique:hover{color:var(--gold-ink);background:var(--tint)}.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}.atlas-musique svg{width:20px;height:20px}.an-voile{position:fixed;inset:0;z-index:1000;background:rgba(6,10,22,.5);opacity:0;transition:opacity .26s ease}.an-voile.ouvert{opacity:1}.an-t-titre{flex:1;display:flex;align-items:center;gap:10px;font:600 1.22rem/1.15 var(--font-display);color:var(--ink)}.an-fermer{flex:none;display:inline-grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:none;color:var(--ink);cursor:pointer}.an-fermer:hover{background:var(--tint)}.an-t-btn{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;margin:0;padding:0 16px;border:1px solid var(--rule);border-radius:12px;background:var(--paper);color:var(--ink);font:600 1rem/1.2 var(--font-body);text-align:left;cursor:pointer}.an-t-btn .an-ic,.an-t-btn svg{width:20px;height:20px;color:var(--gold-ink)}.an-t-btn[aria-pressed="true"],.an-t-btn[data-etat="lecture"],.an-t-btn[data-etat="pause"]{border-color:var(--gold-ui,var(--gold));color:var(--gold-ink)}html:not(.an-tts) .an-t-ecouter,html:not(.an-son) .atlas-musique-t{display:none}@media (max-width:999.98px){html.an-js .an-barre{min-height:56px;gap:4px;padding-left:max(6px,env(safe-area-inset-left,0px));padding-right:max(6px,env(safe-area-inset-right,0px))}html.an-js .an-menu{display:inline-flex;padding:0 14px 0 10px}html.an-js .an-accueil{display:none}html.an-js .an-page{display:block;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 1.04rem/1.2 var(--font-body);color:var(--ink);text-align:center}html.an-js .an-actions{margin-left:0;padding-left:0}html.an-js .an-actions .an-ecouter,html.an-js .an-actions .atlas-musique{display:none}html.an-js .an-chercher{min-width:0;margin:0;padding:0 12px;border-color:transparent;background:none;color:var(--ink)}html.an-js .an-chercher .an-lbl,html.an-js .an-chercher kbd{display:none}html.an-js .an-chercher .an-ic{width:22px;height:22px;color:var(--ink)}html.an-js .an-tiroir{position:fixed;top:0;bottom:0;left:0;z-index:1001;display:flex;flex-direction:column;align-items:stretch;width:min(88vw,400px);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);background:var(--sheet);box-shadow:24px 0 60px -20px rgba(4,8,20,.5);overflow-y:auto;overscroll-behavior:contain;transform:translateX(-104%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s linear .26s}html.an-js .an-tiroir.ouvert{transform:none;visibility:visible;transition:transform .26s cubic-bezier(.2,.8,.2,1)}html.an-js .an-t-tete{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}html.an-js .an-liste{display:block;padding:6px 0 10px}html.an-js .an-l-accueil{display:block}html.an-js .an-l-accueil a{display:flex;align-items:center;min-height:52px;padding:0 22px;font:600 1.06rem/1.2 var(--font-body)}html.an-js .an-l-accueil a[aria-current="page"]{color:var(--gold-ink);box-shadow:inset 3px 0 0 var(--gold-ui,var(--gold))}html.an-js .an-g{position:static;border-top:1px solid var(--rule)}html.an-js .an-g-btn{display:flex;width:100%;justify-content:space-between;min-height:54px;padding:0 22px;border-radius:0;font-size:1.06rem}html.an-js .an-g-btn:hover{background:var(--tint)}html.an-js .an-g-btn::after{display:none}html.an-js .an-ici>.an-g-btn>span::after{content:"";display:inline-block;width:7px;height:7px;margin-left:10px;border-radius:50%;background:var(--gold-ui,var(--gold));vertical-align:2px}html.an-js .an-panneau{position:static;width:auto;min-width:0;margin:0;padding:0 10px 12px;border:0;border-radius:0;background:none;box-shadow:none}html.an-js .an-p-tete{display:none}html.an-js .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}html.an-js .an-items a,html.an-js .an-etapes a{padding-left:12px}html.an-js .an-t-pied{display:grid;gap:10px;margin-top:auto;padding:14px 16px 18px;border-top:1px solid var(--rule)}html:not(.an-js) .an-barre{flex-wrap:wrap;position:relative;padding-block:4px}html:not(.an-js) .an-tiroir,html:not(.an-js) .an-liste{flex-wrap:wrap}html:not(.an-js) .an-g{position:static}html:not(.an-js) .an-panneau{left:8px;right:8px;width:auto;min-width:0}html:not(.an-js) .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}@media (prefers-reduced-motion:reduce){.an-tiroir,.an-tiroir.ouvert,.an-voile,.an-chev{transition:none!important}}@media print{.atlas-nav,.aller-contenu{display:none!important}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}.atlas-suite-seule{grid-template-columns:minmax(0,1fr)}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}.atlas-credit{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:.45em}.atlas-credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}.atlas-credit .atlas-note{font-size:.92em}.atlas-droits{margin:0}.atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}a.ref-lien{padding-block:5px}</style>
+</head>
+<body>
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Atlas"><div class="an-barre"><button type="button" class="an-menu" aria-expanded="false" aria-controls="an-tiroir"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Menu</span></button><a class="an-accueil" href="index.html"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Accueil</span></a><p class="an-page" aria-hidden="true">Parcours de lecture</p><div class="an-tiroir" id="an-tiroir"><div class="an-t-tete"><p class="an-t-titre"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Le Livre d’Urantia en images</span></p><button type="button" class="an-fermer" aria-label="Fermer le menu"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="an-liste"><li class="an-l-accueil"><a href="index.html">Accueil</a></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Parcours</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau an-p-parcours" id="an-p-parcours"><p class="an-p-tete"><span>Parcours de découverte</span><span>13 étapes</span></p><ol class="an-etapes" style="--an-rangs:7"><li><a href="nebadon-dans-orvonton.html"><span class="an-num">1</span><span class="an-et">Nébadon dans Orvonton</span></a></li><li><a href="atlas-3d.html"><span class="an-num">2</span><span class="an-et">D’Urantia au Paradis (3D)</span></a></li><li><a href="atlas-3d.html#gouvernement"><span class="an-num">3</span><span class="an-et">Qui gouverne quoi</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#frise"><span class="an-num">4</span><span class="an-et">La frise du temps</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#carriere"><span class="an-num">5</span><span class="an-et">La carrière ascendante</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="familles-de-personnalites.html"><span class="an-num">6</span><span class="an-et">Familles de personnalités</span></a></li><li><a href="concepts-en-schemas.html"><span class="an-num">7</span><span class="an-et">Concepts en schémas</span></a></li><li><a href="dieu-et-deite.html"><span class="an-num">8</span><span class="an-et">Dieu et la Déité</span></a></li><li><a href="destinee-humaine.html"><span class="an-num">9</span><span class="an-et">La destinée humaine</span></a></li><li><a href="histoire-d-urantia.html"><span class="an-num">10</span><span class="an-et">L’histoire d’Urantia</span></a></li><li><a href="rebellion-de-lucifer.html"><span class="an-num">11</span><span class="an-et">La rébellion de Lucifer</span></a></li><li><a href="vie-de-jesus.html"><span class="an-num">12</span><span class="an-et">La vie de Jésus</span></a></li><li><a href="bible-et-livre.html"><span class="an-num">13</span><span class="an-et">La Bible et le Livre d’Urantia</span></a></li></ol></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Thèmes</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-themes"><ul class="an-items"><li><a href="paradis-et-havona.html"><span class="an-nom">Le Paradis et Havona</span><span class="an-aide">L’ile centrale et l’univers parfait</span></a></li><li><a href="etre-supreme.html"><span class="an-nom">L’Être Suprême</span><span class="an-aide">Un Dieu qui grandit avec l’expérience</span></a></li><li><a href="les-anges.html"><span class="an-nom">Les anges</span><span class="an-aide">Séraphins, chérubins et anges gardiens</span></a></li><li><a href="evolution-religion.html"><span class="an-nom">L’évolution de la religion</span><span class="an-aide">De la peur à la foi, en huit étapes</span></a></li><li><a href="effusions-de-micael.html"><span class="an-nom">Les sept effusions de Micaël</span><span class="an-aide">Sept fois la vie de ses créatures</span></a></li><li><a href="douze-apotres.html"><span class="an-nom">Les douze apôtres</span><span class="an-aide">Qui ils étaient, ce qu’ils devinrent</span></a></li><li><a href="enseignements-de-jesus.html"><span class="an-nom">Les enseignements de Jésus</span><span class="an-aide">Quinze enseignements, rangés par thème</span></a></li></ul></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Le livre</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-livre"><ul class="an-items"><li><a href="histoire-du-livre.html"><span class="an-nom">D’où vient ce livre ?</span><span class="an-aide">Son origine, ses témoins, ses critiques</span></a></li><li><a href="auteurs-et-chiffres.html"><span class="an-nom">Les auteurs déclarés et le livre en chiffres</span><span class="an-aide">Qui présente chaque fascicule ; le livre mesuré</span></a></li><li><a href="bible-et-livre.html"><span class="an-nom">La Bible et le Livre d’Urantia</span><span class="an-aide">Cent parallèles, de la Genèse à l’Apocalypse</span></a></li><li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener"><span class="an-nom">Lire le livre sur urantia.org<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Le texte intégral, sur le site de la Fondation Urantia</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li><li class="an-g an-ici"><details class="an-d"><summary class="an-g-btn"><span>Outils</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-outils"><ul class="an-items"><li><a href="parcours-de-lecture.html" aria-current="page"><span class="an-nom">Parcours de lecture</span><span class="an-aide">Cinq itinéraires, fascicule par fascicule</span></a></li><li><a href="glossaire.html"><span class="an-nom">Glossaire</span><span class="an-aide">Les mots du livre, de A à Z</span></a></li><li><a href="index.html#hors-ligne"><span class="an-nom">Lire hors ligne</span><span class="an-aide">Installer l’atlas ou l’enregistrer sur l’appareil</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Parcours%20de%20lecture&amp;page=Parcours%20de%20lecture%20%28parcours-de-lecture.html%29" target="_blank" rel="noopener"><span class="an-nom">Signaler une erreur<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Sur cette page ; un compte GitHub est nécessaire</span><span class="an-sr"> (nouvel onglet)</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md" target="_blank" rel="noopener"><span class="an-nom">Contribuer sur GitHub<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Proposer une correction ou une idée</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li></ul><div class="an-t-pied"><button type="button" class="an-t-btn an-t-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter cette page</span></button><button type="button" class="an-t-btn atlas-musique-t" data-musique aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Musique douce</span></button></div></div><div class="an-actions"><button type="button" class="an-chercher" data-chercher aria-keyshortcuts="/ Control+K" aria-label="Rechercher dans l’atlas"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.6" cy="8.6" r="5.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="an-lbl" aria-hidden="true">Rechercher</span><kbd aria-hidden="true">/</kbd></button><button type="button" class="an-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter</span></button><button type="button" class="atlas-musique" data-musique aria-pressed="false" aria-label="Musique douce"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div></nav>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-recit" viewBox="0 0 20 20"><path d="M2.4 4.6c2.7-1 5.2-.7 7.6 1 2.4-1.7 4.9-2 7.6-1v11.2c-2.7-1-5.2-.7-7.6 1-2.4-1.7-4.9-2-7.6-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 5.6v11.1" stroke="currentColor" stroke-width="1.5"/><path d="M4.6 8.2c1.3-.3 2.5-.2 3.6.4M4.6 11.2c1.3-.3 2.5-.2 3.6.4M11.8 8.6c1.1-.6 2.3-.7 3.6-.4M11.8 11.6c1.1-.6 2.3-.7 3.6-.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity=".75"/></symbol>
+  <symbol id="i-fondations" viewBox="0 0 20 20"><rect x="2.6" y="13" width="14.8" height="4.4" rx="1" fill="currentColor"/><rect x="4.8" y="7.7" width="10.4" height="4.4" rx="1" fill="currentColor" opacity=".75"/><rect x="7" y="2.6" width="6" height="4.2" rx="1" fill="currentColor" opacity=".5"/></symbol>
+  <symbol id="i-religion" viewBox="0 0 20 20"><path d="M10 1.8c3 3.4 4.8 6 4.8 8.9a4.8 4.8 0 0 1-9.6 0c0-1.7.7-3.2 1.9-4.6.2 1.6 1 2.6 2 3C8.9 7 9.2 4.4 10 1.8Z" fill="currentColor"/><path d="M5.5 18.2h9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-destinee" viewBox="0 0 20 20"><path d="M3.2 18.2c.4-3 2.8-4 5.6-4.9 2.6-.9 4.3-2.4 3.6-5.6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2.2 2.1"/><path d="M14.6 1.6l1 2.2 2.4.3-1.8 1.6.5 2.4-2.1-1.2-2.1 1.2.5-2.4-1.8-1.6 2.4-.3Z" fill="currentColor"/></symbol>
+  <symbol id="i-cosmologie" viewBox="0 0 20 20"><ellipse cx="10" cy="10" rx="8.2" ry="3.7" transform="rotate(-22 10 10)" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.9" fill="currentColor"/><circle cx="16.9" cy="6.9" r="1.4" fill="currentColor"/></symbol>
+</svg>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">Le Livre d’Urantia · cinq façons d’y entrer</p>
+      <h1>Parcours de lecture</h1>
+      <p class="lede">Par où commencer un livre de 197 fascicules ? Voici cinq itinéraires, du récit de la vie de Jésus aux grandes descriptions de l’univers. Choisis-en un, lis chaque fascicule sur le site de la <span data-glossaire="non">Fondation Urantia</span>, puis coche-le ici&nbsp;: la page garde ta progression sur cet appareil.</p>
+      <div class="actions">
+        <button type="button" class="cta" id="reprendre" hidden>Reprendre là où j’en étais <span class="ar" aria-hidden="true">→</span></button>
+        <a class="cta second" href="#choisir">Choisir un parcours <span class="ar" aria-hidden="true">↓</span></a>
+      </div>
+      <p class="reprise" id="reprise-info" hidden></p>
+    </div>
+    <aside class="codebox" aria-label="Mode d’emploi">
+      <span class="label">Mode d’emploi</span>
+      <ol class="how">
+        <li><span><b>Choisis</b> un parcours&nbsp;: le plus court se lit en 2&nbsp;h&nbsp;45 environ.</span></li>
+        <li><span><b>Lis</b> chaque fascicule sur urantia.org, le site de la <span data-glossaire="non">Fondation Urantia</span> (nouvel onglet ; il faut une connexion).</span></li>
+        <li><span><b>Coche</b> la case «&nbsp;Lu&nbsp;»&nbsp;: ta progression reste dans ce navigateur, sans compte, et n’est envoyée nulle part.</span></li>
+      </ol>
+      <p class="note">Durées estimées à 200 mots par minute. Un fascicule coché l’est dans tous les parcours où il figure.</p>
+      <p class="note alerte" id="note-stockage" hidden>Ce navigateur ne permet pas de garder ta progression (stockage désactivé, ou navigation privée)&nbsp;: les cases restent cochées tant que la page est ouverte.</p>
+    </aside>
+  </header>
+
+  <section id="choisir" aria-labelledby="h-choisir">
+    <div class="sec-head">
+      <h2 id="h-choisir">Cinq parcours</h2>
+      <p class="hint">Le récit de la quatrième partie est le plus long, environ 37&nbsp;heures ; les quatre autres se lisent chacun en trois à quatre heures environ. Tu peux en suivre plusieurs à la fois.</p>
+    </div>
+    <ul class="cards">
+      <li class="card p-recit">
+        <div class="card-h"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-recit"/></svg></span><div><p class="eyebrow">Parcours 1</p><h3><a href="#recit">Récit d’abord</a></h3></div></div>
+        <p class="quoi">La vie et les enseignements de Jésus&nbsp;: toute la quatrième partie, fascicules 120 à 196.</p>
+        <p class="meta"><b>77</b> fascicules · environ <b>37&nbsp;h&nbsp;20</b></p>
+        <div class="prog" data-prog="recit" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+      </li>
+      <li class="card p-fondations">
+        <div class="card-h"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondations"/></svg></span><div><p class="eyebrow">Parcours 2</p><h3><a href="#fondations">Fondations</a></h3></div></div>
+        <p class="quoi">L’Introduction, puis le Père Universel&nbsp;: fascicules 0 à 5.</p>
+        <p class="meta"><b>6</b> fascicules · environ <b>3&nbsp;h&nbsp;05</b></p>
+        <div class="prog" data-prog="fondations" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+      </li>
+      <li class="card p-religion">
+        <div class="card-h"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-religion"/></svg></span><div><p class="eyebrow">Parcours 3</p><h3><a href="#religion">L’expérience religieuse</a></h3></div></div>
+        <p class="quoi">La religion vécue, fascicules 100 à 103, puis <i>La foi de Jésus</i>, fascicule 196.</p>
+        <p class="meta"><b>5</b> fascicules · environ <b>2&nbsp;h&nbsp;45</b></p>
+        <div class="prog" data-prog="religion" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+      </li>
+      <li class="card p-destinee">
+        <div class="card-h"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-destinee"/></svg></span><div><p class="eyebrow">Parcours 4</p><h3><a href="#destinee">La destinée humaine</a></h3></div></div>
+        <p class="quoi">L’Ajusteur de Pensée et la survie, fascicules 107 à 112, puis les mondes des maisons, 47 et 48.</p>
+        <p class="meta"><b>8</b> fascicules · environ <b>4&nbsp;h&nbsp;10</b></p>
+        <div class="prog" data-prog="destinee" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+      </li>
+      <li class="card p-cosmologie">
+        <div class="card-h"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cosmologie"/></svg></span><div><p class="eyebrow">Parcours 5</p><h3><a href="#cosmologie">Cosmologie</a></h3></div></div>
+        <p class="quoi">Le Paradis, Havona et les superunivers, fascicules 11 à 15, puis l’univers local, 32 et 33.</p>
+        <p class="meta"><b>7</b> fascicules · environ <b>3&nbsp;h&nbsp;35</b></p>
+        <div class="prog" data-prog="cosmologie" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="pc p-recit" id="recit" data-parcours="recit" data-nom="Récit d’abord" aria-labelledby="h-recit">
+    <div class="pc-head">
+      <div class="sec-head">
+        <p class="eyebrow"><b>Parcours 1</b> · fascicules 120 à 196</p>
+        <h2 id="h-recit"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-recit"/></svg></span>Récit d’abord</h2>
+        <p class="pc-intro">La quatrième partie raconte la vie et les enseignements de Jésus, de sa naissance à la Pentecôte&nbsp;: c’est la plus narrative du livre, et la plus facile d’accès. Un Melchizédek l’ouvre, puis un médian, autrefois attaché à l’apôtre André, prend le récit sous la supervision d’une commission de douze médians <span class="ref">120:0.1 ; 121:0.1</span>.</p>
+      </div>
+      <div class="pc-side">
+        <p class="pc-chiffres"><span><b>77</b> fascicules</span><span><b>≈&nbsp;37&nbsp;h&nbsp;20</b> de lecture</span></p>
+        <div class="prog" data-prog="recit" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+        <p class="pc-suite" hidden></p>
+        <p class="pc-conseil">À raison d’un fascicule par jour, ce parcours prend onze semaines.</p>
+      </div>
+    </div>
+    <div class="atlas">
+      <p class="label">En chemin, dans l’atlas</p>
+      <ul>
+        <li><a href="effusions-de-micael.html"><b>Les sept effusions de Micaël</b><span>avant le récit, fascicules 119 et 120</span></a></li>
+        <li><a href="vie-de-jesus.html"><b>La vie de Jésus</b><span>frise de 92 étapes et cartes des voyages</span></a></li>
+        <li><a href="enseignements-de-jesus.html"><b>Les enseignements de Jésus</b><span>quinze thèmes, rangés par idées</span></a></li>
+        <li><a href="douze-apotres.html"><b>Les douze apôtres</b><span>portraits et destinées, fascicule 139</span></a></li>
+        <li><a href="bible-et-livre.html#nouveau-testament"><b>La Bible et le Livre d’Urantia</b><span>les parallèles avec le Nouveau Testament</span></a></li>
+      </ul>
+    </div>
+    <details class="groupe">
+      <summary><span><span class="g-t">L’effusion de Micaël et son époque</span><span class="g-r">fascicules 120 et 121 · environ 59&nbsp;min</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f120" data-f="120" data-min="25" data-titre="L’effusion de Micaël sur Urantia"><span class="num" aria-hidden="true">120</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-120-l-effusion-de-micael-sur-urantia" target="_blank" rel="noopener"><span class="sr-only">Fascicule 120&nbsp;: </span>L’effusion de Micaël sur Urantia<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Mantutia Melchizédek · <span class="tps">environ 25&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-120"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 120</span></label></li>
+        <li class="fx" id="recit-f121" data-f="121" data-min="34" data-titre="L’époque de l’effusion de Micaël"><span class="num" aria-hidden="true">121</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-121-l-epoque-de-l-effusion-de-micael" target="_blank" rel="noopener"><span class="sr-only">Fascicule 121&nbsp;: </span>L’époque de l’effusion de Micaël<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 34&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-121"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 121</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">De la naissance à l’âge adulte</span><span class="g-r">fascicules 122 à 129 · environ 3&nbsp;h&nbsp;55</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f122" data-f="122" data-min="31" data-titre="Naissance et petite enfance de Jésus"><span class="num" aria-hidden="true">122</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-122-naissance-et-petite-enfance-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 122&nbsp;: </span>Naissance et petite enfance de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-122"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 122</span></label></li>
+        <li class="fx" id="recit-f123" data-f="123" data-min="33" data-titre="La prime enfance de Jésus"><span class="num" aria-hidden="true">123</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-123-la-prime-enfance-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 123&nbsp;: </span>La prime enfance de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 33&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-123"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 123</span></label></li>
+        <li class="fx" id="recit-f124" data-f="124" data-min="32" data-titre="La dernière partie de l’enfance de Jésus"><span class="num" aria-hidden="true">124</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-124-la-derniere-partie-de-l-enfance-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 124&nbsp;: </span>La dernière partie de l’enfance de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-124"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 124</span></label></li>
+        <li class="fx" id="recit-f125" data-f="125" data-min="24" data-titre="Jésus à Jérusalem"><span class="num" aria-hidden="true">125</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-125-jesus-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 125&nbsp;: </span>Jésus à Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-125"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 125</span></label></li>
+        <li class="fx" id="recit-f126" data-f="126" data-min="25" data-titre="Les deux années cruciales"><span class="num" aria-hidden="true">126</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-126-les-deux-annees-cruciales" target="_blank" rel="noopener"><span class="sr-only">Fascicule 126&nbsp;: </span>Les deux années cruciales<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 25&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-126"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 126</span></label></li>
+        <li class="fx" id="recit-f127" data-f="127" data-min="34" data-titre="Les années d’adolescence"><span class="num" aria-hidden="true">127</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-127-les-annees-d-adolescence" target="_blank" rel="noopener"><span class="sr-only">Fascicule 127&nbsp;: </span>Les années d’adolescence<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 34&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-127"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 127</span></label></li>
+        <li class="fx" id="recit-f128" data-f="128" data-min="36" data-titre="La vie de jeune homme de Jésus"><span class="num" aria-hidden="true">128</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-128-la-vie-de-jeune-homme-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 128&nbsp;: </span>La vie de jeune homme de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 36&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-128"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 128</span></label></li>
+        <li class="fx" id="recit-f129" data-f="129" data-min="22" data-titre="Suite de la vie d’adulte de Jésus"><span class="num" aria-hidden="true">129</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-129-suite-de-la-vie-d-adulte-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 129&nbsp;: </span>Suite de la vie d’adulte de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 22&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-129"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 129</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">Le voyage à Rome et les années de transition</span><span class="g-r">fascicules 130 à 134 · environ 3&nbsp;h&nbsp;25</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f130" data-f="130" data-min="44" data-titre="Sur le chemin de Rome"><span class="num" aria-hidden="true">130</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-130-sur-le-chemin-de-rome" target="_blank" rel="noopener"><span class="sr-only">Fascicule 130&nbsp;: </span>Sur le chemin de Rome<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 44&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-130"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 130</span></label></li>
+        <li class="fx" id="recit-f131" data-f="131" data-min="42" data-titre="Les religions du monde"><span class="num" aria-hidden="true">131</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-131-les-religions-du-monde" target="_blank" rel="noopener"><span class="sr-only">Fascicule 131&nbsp;: </span>Les religions du monde<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 42&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-131"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 131</span></label></li>
+        <li class="fx" id="recit-f132" data-f="132" data-min="38" data-titre="Le séjour à Rome"><span class="num" aria-hidden="true">132</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-132-le-sejour-rome" target="_blank" rel="noopener"><span class="sr-only">Fascicule 132&nbsp;: </span>Le séjour à Rome<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 38&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-132"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 132</span></label></li>
+        <li class="fx" id="recit-f133" data-f="133" data-min="44" data-titre="Le retour de Rome"><span class="num" aria-hidden="true">133</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-133-le-retour-de-rome" target="_blank" rel="noopener"><span class="sr-only">Fascicule 133&nbsp;: </span>Le retour de Rome<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 44&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-133"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 133</span></label></li>
+        <li class="fx" id="recit-f134" data-f="134" data-min="38" data-titre="Les années de transition"><span class="num" aria-hidden="true">134</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-134-les-annees-de-transition" target="_blank" rel="noopener"><span class="sr-only">Fascicule 134&nbsp;: </span>Les années de transition<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 38&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-134"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 134</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">Jean le Baptiste, le baptême et l’attente en Galilée</span><span class="g-r">fascicules 135 à 137 · environ 2&nbsp;h&nbsp;05</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f135" data-f="135" data-min="40" data-titre="Jean le Baptiste"><span class="num" aria-hidden="true">135</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-135-jean-le-baptiste" target="_blank" rel="noopener"><span class="sr-only">Fascicule 135&nbsp;: </span>Jean le Baptiste<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 40&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-135"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 135</span></label></li>
+        <li class="fx" id="recit-f136" data-f="136" data-min="44" data-titre="Le baptême et les quarante jours"><span class="num" aria-hidden="true">136</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-136-le-bapteme-et-les-quarante-jours" target="_blank" rel="noopener"><span class="sr-only">Fascicule 136&nbsp;: </span>Le baptême et les quarante jours<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 44&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-136"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 136</span></label></li>
+        <li class="fx" id="recit-f137" data-f="137" data-min="42" data-titre="Séjour d’attente en Galilée"><span class="num" aria-hidden="true">137</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-137-sejour-d-attente-en-galilee" target="_blank" rel="noopener"><span class="sr-only">Fascicule 137&nbsp;: </span>Séjour d’attente en Galilée<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 42&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-137"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 137</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">Les apôtres et le début de l’œuvre publique</span><span class="g-r">fascicules 138 à 145 · environ 4&nbsp;h&nbsp;50</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f138" data-f="138" data-min="29" data-titre="La formation des messagers du royaume"><span class="num" aria-hidden="true">138</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-138-la-formation-des-messagers-du-royaume" target="_blank" rel="noopener"><span class="sr-only">Fascicule 138&nbsp;: </span>La formation des messagers du royaume<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-138"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 138</span></label></li>
+        <li class="fx" id="recit-f139" data-f="139" data-min="60" data-titre="Les douze apôtres"><span class="num" aria-hidden="true">139</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-139-les-douze-apotres" target="_blank" rel="noopener"><span class="sr-only">Fascicule 139&nbsp;: </span>Les douze apôtres<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 1&nbsp;h</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-139"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 139</span></label></li>
+        <li class="fx" id="recit-f140" data-f="140" data-min="57" data-titre="L’ordination des douze"><span class="num" aria-hidden="true">140</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-140-l-ordination-des-douze" target="_blank" rel="noopener"><span class="sr-only">Fascicule 140&nbsp;: </span>L’ordination des douze<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 57&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-140"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 140</span></label></li>
+        <li class="fx" id="recit-f141" data-f="141" data-min="27" data-titre="Le commencement de l’œuvre publique"><span class="num" aria-hidden="true">141</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-141-le-commencement-de-l-oeuvre-publique" target="_blank" rel="noopener"><span class="sr-only">Fascicule 141&nbsp;: </span>Le commencement de l’œuvre publique<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 27&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-141"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 141</span></label></li>
+        <li class="fx" id="recit-f142" data-f="142" data-min="31" data-titre="La Pâque à Jérusalem"><span class="num" aria-hidden="true">142</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-142-la-paque-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 142&nbsp;: </span>La Pâque à Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-142"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 142</span></label></li>
+        <li class="fx" id="recit-f143" data-f="143" data-min="31" data-titre="Traversée de la Samarie"><span class="num" aria-hidden="true">143</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-143-traversee-de-la-samarie" target="_blank" rel="noopener"><span class="sr-only">Fascicule 143&nbsp;: </span>Traversée de la Samarie<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-143"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 143</span></label></li>
+        <li class="fx" id="recit-f144" data-f="144" data-min="30" data-titre="À Gilboa et dans la Décapole"><span class="num" aria-hidden="true">144</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-144-gilboa-et-dans-la-decapole" target="_blank" rel="noopener"><span class="sr-only">Fascicule 144&nbsp;: </span>À Gilboa et dans la Décapole<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 30&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-144"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 144</span></label></li>
+        <li class="fx" id="recit-f145" data-f="145" data-min="26" data-titre="Quatre journées mémorables à Capharnaüm"><span class="num" aria-hidden="true">145</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-145-quatre-journees-memorables-capharnaum" target="_blank" rel="noopener"><span class="sr-only">Fascicule 145&nbsp;: </span>Quatre journées mémorables à Capharnaüm<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 26&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-145"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 145</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">Les tournées en Galilée et la crise de Capharnaüm</span><span class="g-r">fascicules 146 à 156 · environ 5&nbsp;h</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f146" data-f="146" data-min="29" data-titre="La première tournée de prédication en Galilée"><span class="num" aria-hidden="true">146</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-146-la-premiere-tournee-de-predication-en-galilee" target="_blank" rel="noopener"><span class="sr-only">Fascicule 146&nbsp;: </span>La première tournée de prédication en Galilée<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-146"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 146</span></label></li>
+        <li class="fx" id="recit-f147" data-f="147" data-min="30" data-titre="L’intermède de la visite à Jérusalem"><span class="num" aria-hidden="true">147</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-147-l-intermede-de-la-visite-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 147&nbsp;: </span>L’intermède de la visite à Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 30&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-147"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 147</span></label></li>
+        <li class="fx" id="recit-f148" data-f="148" data-min="32" data-titre="La formation d’évangélistes à Bethsaïde"><span class="num" aria-hidden="true">148</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-148-la-formation-d-evangelistes-bethsaide" target="_blank" rel="noopener"><span class="sr-only">Fascicule 148&nbsp;: </span>La formation d’évangélistes à Bethsaïde<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-148"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 148</span></label></li>
+        <li class="fx" id="recit-f149" data-f="149" data-min="28" data-titre="La deuxième tournée de prédication"><span class="num" aria-hidden="true">149</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-149-la-seconde-tournee-de-predication" target="_blank" rel="noopener"><span class="sr-only">Fascicule 149&nbsp;: </span>La deuxième tournée de prédication<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 28&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-149"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 149</span></label></li>
+        <li class="fx" id="recit-f150" data-f="150" data-min="28" data-titre="La troisième tournée de prédication"><span class="num" aria-hidden="true">150</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-150-la-troisieme-tournee-de-predication" target="_blank" rel="noopener"><span class="sr-only">Fascicule 150&nbsp;: </span>La troisième tournée de prédication<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 28&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-150"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 150</span></label></li>
+        <li class="fx" id="recit-f151" data-f="151" data-min="27" data-titre="Séjour et enseignement au bord de la mer"><span class="num" aria-hidden="true">151</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-151-sejour-et-enseignement-au-bord-de-la-mer" target="_blank" rel="noopener"><span class="sr-only">Fascicule 151&nbsp;: </span>Séjour et enseignement au bord de la mer<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 27&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-151"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 151</span></label></li>
+        <li class="fx" id="recit-f152" data-f="152" data-min="26" data-titre="Les prodromes de la crise de Capharnaüm"><span class="num" aria-hidden="true">152</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-152-les-prodromes-de-la-crise-de-capharnaum" target="_blank" rel="noopener"><span class="sr-only">Fascicule 152&nbsp;: </span>Les prodromes de la crise de Capharnaüm<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 26&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-152"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 152</span></label></li>
+        <li class="fx" id="recit-f153" data-f="153" data-min="28" data-titre="La crise à Capharnaüm"><span class="num" aria-hidden="true">153</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-153-la-crise-capharnaum" target="_blank" rel="noopener"><span class="sr-only">Fascicule 153&nbsp;: </span>La crise à Capharnaüm<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 28&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-153"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 153</span></label></li>
+        <li class="fx" id="recit-f154" data-f="154" data-min="20" data-titre="Derniers jours à Capharnaüm"><span class="num" aria-hidden="true">154</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-154-derniers-jours-capharnaum" target="_blank" rel="noopener"><span class="sr-only">Fascicule 154&nbsp;: </span>Derniers jours à Capharnaüm<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-154"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 154</span></label></li>
+        <li class="fx" id="recit-f155" data-f="155" data-min="26" data-titre="En fuite à travers la Galilée du Nord"><span class="num" aria-hidden="true">155</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-155-en-fuite-travers-la-galilee-du-nord" target="_blank" rel="noopener"><span class="sr-only">Fascicule 155&nbsp;: </span>En fuite à travers la Galilée du Nord<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 26&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-155"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 155</span></label></li>
+        <li class="fx" id="recit-f156" data-f="156" data-min="24" data-titre="Le séjour à Tyr et à Sidon"><span class="num" aria-hidden="true">156</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-156-le-sejour-tyr-et-sidon" target="_blank" rel="noopener"><span class="sr-only">Fascicule 156&nbsp;: </span>Le séjour à Tyr et à Sidon<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-156"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 156</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">De Césarée de Philippe à la fête de la Dédicace</span><span class="g-r">fascicules 157 à 164 · environ 3&nbsp;h&nbsp;35</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f157" data-f="157" data-min="26" data-titre="À Césarée de Philippe"><span class="num" aria-hidden="true">157</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-157-cesaree-de-philippe" target="_blank" rel="noopener"><span class="sr-only">Fascicule 157&nbsp;: </span>À Césarée de Philippe<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 26&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-157"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 157</span></label></li>
+        <li class="fx" id="recit-f158" data-f="158" data-min="29" data-titre="Le mont de la transfiguration"><span class="num" aria-hidden="true">158</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-158-le-mont-de-la-transfiguration" target="_blank" rel="noopener"><span class="sr-only">Fascicule 158&nbsp;: </span>Le mont de la transfiguration<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-158"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 158</span></label></li>
+        <li class="fx" id="recit-f159" data-f="159" data-min="29" data-titre="La tournée en Décapole"><span class="num" aria-hidden="true">159</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-159-la-tournee-en-decapole" target="_blank" rel="noopener"><span class="sr-only">Fascicule 159&nbsp;: </span>La tournée en Décapole<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-159"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 159</span></label></li>
+        <li class="fx" id="recit-f160" data-f="160" data-min="32" data-titre="Rodan d’Alexandrie"><span class="num" aria-hidden="true">160</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-160-rodan-d-alexandrie" target="_blank" rel="noopener"><span class="sr-only">Fascicule 160&nbsp;: </span>Rodan d’Alexandrie<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-160"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 160</span></label></li>
+        <li class="fx" id="recit-f161" data-f="161" data-min="14" data-titre="Suite des discussions avec Rodan"><span class="num" aria-hidden="true">161</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-161-suite-des-discussions-avec-rodan" target="_blank" rel="noopener"><span class="sr-only">Fascicule 161&nbsp;: </span>Suite des discussions avec Rodan<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 14&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-161"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 161</span></label></li>
+        <li class="fx" id="recit-f162" data-f="162" data-min="33" data-titre="À la fête des Tabernacles"><span class="num" aria-hidden="true">162</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-162-la-fete-des-tabernacles" target="_blank" rel="noopener"><span class="sr-only">Fascicule 162&nbsp;: </span>À la fête des Tabernacles<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 33&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-162"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 162</span></label></li>
+        <li class="fx" id="recit-f163" data-f="163" data-min="27" data-titre="L’ordination des soixante-dix à Magadan"><span class="num" aria-hidden="true">163</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-163-l-ordination-des-soixante-dix-magadan" target="_blank" rel="noopener"><span class="sr-only">Fascicule 163&nbsp;: </span>L’ordination des soixante-dix à Magadan<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 27&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-163"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 163</span></label></li>
+        <li class="fx" id="recit-f164" data-f="164" data-min="23" data-titre="La fête de la Dédicace"><span class="num" aria-hidden="true">164</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-164-la-fete-de-la-dedicace" target="_blank" rel="noopener"><span class="sr-only">Fascicule 164&nbsp;: </span>La fête de la Dédicace<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 23&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-164"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 164</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">De la mission en Pérée au chemin de Jérusalem</span><span class="g-r">fascicules 165 à 171 · environ 2&nbsp;h&nbsp;55</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f165" data-f="165" data-min="24" data-titre="La mission en Pérée commence"><span class="num" aria-hidden="true">165</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-165-la-mission-en-peree-commence" target="_blank" rel="noopener"><span class="sr-only">Fascicule 165&nbsp;: </span>La mission en Pérée commence<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-165"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 165</span></label></li>
+        <li class="fx" id="recit-f166" data-f="166" data-min="22" data-titre="Dernière tournée en Pérée du Nord"><span class="num" aria-hidden="true">166</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-166-derniere-tournee-en-peree-du-nord" target="_blank" rel="noopener"><span class="sr-only">Fascicule 166&nbsp;: </span>Dernière tournée en Pérée du Nord<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 22&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-166"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 166</span></label></li>
+        <li class="fx" id="recit-f167" data-f="167" data-min="27" data-titre="La visite à Philadelphie"><span class="num" aria-hidden="true">167</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-167-la-visite-philadelphie" target="_blank" rel="noopener"><span class="sr-only">Fascicule 167&nbsp;: </span>La visite à Philadelphie<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 27&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-167"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 167</span></label></li>
+        <li class="fx" id="recit-f168" data-f="168" data-min="22" data-titre="La résurrection de Lazare"><span class="num" aria-hidden="true">168</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-168-la-resurrection-de-lazare" target="_blank" rel="noopener"><span class="sr-only">Fascicule 168&nbsp;: </span>La résurrection de Lazare<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 22&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-168"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 168</span></label></li>
+        <li class="fx" id="recit-f169" data-f="169" data-min="23" data-titre="Derniers enseignements à Pella"><span class="num" aria-hidden="true">169</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-169-derniers-enseignements-pella" target="_blank" rel="noopener"><span class="sr-only">Fascicule 169&nbsp;: </span>Derniers enseignements à Pella<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 23&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-169"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 169</span></label></li>
+        <li class="fx" id="recit-f170" data-f="170" data-min="24" data-titre="Le royaume des cieux"><span class="num" aria-hidden="true">170</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-170-le-royaume-des-cieux" target="_blank" rel="noopener"><span class="sr-only">Fascicule 170&nbsp;: </span>Le royaume des cieux<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-170"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 170</span></label></li>
+        <li class="fx" id="recit-f171" data-f="171" data-min="31" data-titre="Sur le chemin de Jérusalem"><span class="num" aria-hidden="true">171</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-171-sur-le-chemin-de-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 171&nbsp;: </span>Sur le chemin de Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-171"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 171</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">La dernière semaine, de l’entrée à Jérusalem à Gethsémani</span><span class="g-r">fascicules 172 à 182 · environ 4&nbsp;h&nbsp;30</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f172" data-f="172" data-min="29" data-titre="L’entrée à Jérusalem"><span class="num" aria-hidden="true">172</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-172-l-entree-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 172&nbsp;: </span>L’entrée à Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-172"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 172</span></label></li>
+        <li class="fx" id="recit-f173" data-f="173" data-min="24" data-titre="Le lundi à Jérusalem"><span class="num" aria-hidden="true">173</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-173-le-lundi-jerusalem" target="_blank" rel="noopener"><span class="sr-only">Fascicule 173&nbsp;: </span>Le lundi à Jérusalem<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-173"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 173</span></label></li>
+        <li class="fx" id="recit-f174" data-f="174" data-min="24" data-titre="Le mardi matin au temple"><span class="num" aria-hidden="true">174</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-174-le-mardi-matin-au-temple" target="_blank" rel="noopener"><span class="sr-only">Fascicule 174&nbsp;: </span>Le mardi matin au temple<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-174"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 174</span></label></li>
+        <li class="fx" id="recit-f175" data-f="175" data-min="20" data-titre="Le dernier discours au temple"><span class="num" aria-hidden="true">175</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-175-le-dernier-discours-au-temple" target="_blank" rel="noopener"><span class="sr-only">Fascicule 175&nbsp;: </span>Le dernier discours au temple<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-175"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 175</span></label></li>
+        <li class="fx" id="recit-f176" data-f="176" data-min="24" data-titre="Le mardi soir sur le mont Olivet"><span class="num" aria-hidden="true">176</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-176-le-mardi-soir-sur-le-mont-olivet" target="_blank" rel="noopener"><span class="sr-only">Fascicule 176&nbsp;: </span>Le mardi soir sur le mont Olivet<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-176"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 176</span></label></li>
+        <li class="fx" id="recit-f177" data-f="177" data-min="25" data-titre="Le mercredi, jour de repos"><span class="num" aria-hidden="true">177</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-177-mercredi-jour-de-repos" target="_blank" rel="noopener"><span class="sr-only">Fascicule 177&nbsp;: </span>Le mercredi, jour de repos<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 25&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-177"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 177</span></label></li>
+        <li class="fx" id="recit-f178" data-f="178" data-min="20" data-titre="Le dernier jour au camp"><span class="num" aria-hidden="true">178</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-178-le-dernier-jour-au-camp" target="_blank" rel="noopener"><span class="sr-only">Fascicule 178&nbsp;: </span>Le dernier jour au camp<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-178"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 178</span></label></li>
+        <li class="fx" id="recit-f179" data-f="179" data-min="22" data-titre="Le dernier souper"><span class="num" aria-hidden="true">179</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-179-le-dernier-souper" target="_blank" rel="noopener"><span class="sr-only">Fascicule 179&nbsp;: </span>Le dernier souper<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 22&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-179"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 179</span></label></li>
+        <li class="fx" id="recit-f180" data-f="180" data-min="29" data-titre="Le discours d’adieu"><span class="num" aria-hidden="true">180</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-180-le-discours-d-adieu" target="_blank" rel="noopener"><span class="sr-only">Fascicule 180&nbsp;: </span>Le discours d’adieu<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-180"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 180</span></label></li>
+        <li class="fx" id="recit-f181" data-f="181" data-min="32" data-titre="Ultimes exhortations et avertissements"><span class="num" aria-hidden="true">181</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-181-ultimes-exhortations-et-avertissements" target="_blank" rel="noopener"><span class="sr-only">Fascicule 181&nbsp;: </span>Ultimes exhortations et avertissements<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-181"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 181</span></label></li>
+        <li class="fx" id="recit-f182" data-f="182" data-min="23" data-titre="À Gethsémani"><span class="num" aria-hidden="true">182</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-182-gethsemani" target="_blank" rel="noopener"><span class="sr-only">Fascicule 182&nbsp;: </span>À Gethsémani<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 23&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-182"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 182</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">L’arrestation, les procès et la crucifixion</span><span class="g-r">fascicules 183 à 188 · environ 2&nbsp;h&nbsp;20</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f183" data-f="183" data-min="21" data-titre="Jésus trahi et arrêté"><span class="num" aria-hidden="true">183</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-183-jesus-trahi-et-arrete" target="_blank" rel="noopener"><span class="sr-only">Fascicule 183&nbsp;: </span>Jésus trahi et arrêté<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 21&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-183"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 183</span></label></li>
+        <li class="fx" id="recit-f184" data-f="184" data-min="24" data-titre="Devant le tribunal du sanhédrin"><span class="num" aria-hidden="true">184</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-184-devant-le-tribunal-du-sanhedrin" target="_blank" rel="noopener"><span class="sr-only">Fascicule 184&nbsp;: </span>Devant le tribunal du sanhédrin<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-184"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 184</span></label></li>
+        <li class="fx" id="recit-f185" data-f="185" data-min="30" data-titre="Le jugement devant Pilate"><span class="num" aria-hidden="true">185</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-185-le-jugement-devant-pilate" target="_blank" rel="noopener"><span class="sr-only">Fascicule 185&nbsp;: </span>Le jugement devant Pilate<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 30&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-185"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 185</span></label></li>
+        <li class="fx" id="recit-f186" data-f="186" data-min="19" data-titre="Peu avant la crucifixion"><span class="num" aria-hidden="true">186</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-186-peu-avant-la-crucifixion" target="_blank" rel="noopener"><span class="sr-only">Fascicule 186&nbsp;: </span>Peu avant la crucifixion<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 19&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-186"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 186</span></label></li>
+        <li class="fx" id="recit-f187" data-f="187" data-min="24" data-titre="La crucifixion"><span class="num" aria-hidden="true">187</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-187-la-crucifixion" target="_blank" rel="noopener"><span class="sr-only">Fascicule 187&nbsp;: </span>La crucifixion<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-187"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 187</span></label></li>
+        <li class="fx" id="recit-f188" data-f="188" data-min="24" data-titre="L’heure du tombeau"><span class="num" aria-hidden="true">188</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-188-l-heure-du-tombeau" target="_blank" rel="noopener"><span class="sr-only">Fascicule 188&nbsp;: </span>L’heure du tombeau<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-188"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 188</span></label></li>
+      </ol>
+    </details>
+    <details class="groupe">
+      <summary><span><span class="g-t">La résurrection, les apparitions et la Pentecôte</span><span class="g-r">fascicules 189 à 196 · environ 3&nbsp;h&nbsp;40</span></span><span class="g-p"></span><i class="chev" aria-hidden="true"></i></summary>
+      <ol class="fxs">
+        <li class="fx" id="recit-f189" data-f="189" data-min="24" data-titre="La résurrection"><span class="num" aria-hidden="true">189</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-189-la-resurrection" target="_blank" rel="noopener"><span class="sr-only">Fascicule 189&nbsp;: </span>La résurrection<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-189"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 189</span></label></li>
+        <li class="fx" id="recit-f190" data-f="190" data-min="22" data-titre="Les apparitions morontielles de Jésus"><span class="num" aria-hidden="true">190</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-190-les-apparitions-morontielles-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 190&nbsp;: </span>Les apparitions morontielles de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 22&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-190"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 190</span></label></li>
+        <li class="fx" id="recit-f191" data-f="191" data-min="24" data-titre="Apparitions aux apôtres et à d’autres disciples influents"><span class="num" aria-hidden="true">191</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-191-apparitions-aux-apotres-et-d-autres-disciples" target="_blank" rel="noopener"><span class="sr-only">Fascicule 191&nbsp;: </span>Apparitions aux apôtres et à d’autres disciples influents<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-191"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 191</span></label></li>
+        <li class="fx" id="recit-f192" data-f="192" data-min="20" data-titre="Apparitions en Galilée"><span class="num" aria-hidden="true">192</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-192-apparitions-en-galilee" target="_blank" rel="noopener"><span class="sr-only">Fascicule 192&nbsp;: </span>Apparitions en Galilée<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-192"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 192</span></label></li>
+        <li class="fx" id="recit-f193" data-f="193" data-min="20" data-titre="Apparitions finales et ascension"><span class="num" aria-hidden="true">193</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-193-apparitions-finales-et-ascension" target="_blank" rel="noopener"><span class="sr-only">Fascicule 193&nbsp;: </span>Apparitions finales et ascension<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-193"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 193</span></label></li>
+        <li class="fx" id="recit-f194" data-f="194" data-min="29" data-titre="L’effusion de l’Esprit de Vérité"><span class="num" aria-hidden="true">194</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-194-l-effusion-de-l-esprit-de-verite" target="_blank" rel="noopener"><span class="sr-only">Fascicule 194&nbsp;: </span>L’effusion de l’Esprit de Vérité<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-194"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 194</span></label></li>
+        <li class="fx" id="recit-f195" data-f="195" data-min="52" data-titre="Après la Pentecôte"><span class="num" aria-hidden="true">195</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-195-apres-la-pentecote" target="_blank" rel="noopener"><span class="sr-only">Fascicule 195&nbsp;: </span>Après la Pentecôte<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 52&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-195"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 195</span></label></li>
+        <li class="fx" id="recit-f196" data-f="196" data-min="31" data-titre="La foi de Jésus"><span class="num" aria-hidden="true">196</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-196-la-foi-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 196&nbsp;: </span>La foi de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-recit-196"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 196</span></label></li>
+      </ol>
+    </details>
+  </section>
+  <section class="pc p-fondations" id="fondations" data-parcours="fondations" data-nom="Fondations" aria-labelledby="h-fondations">
+    <div class="pc-head">
+      <div class="sec-head">
+        <p class="eyebrow"><b>Parcours 2</b> · Introduction et fascicules 1 à 5</p>
+        <h2 id="h-fondations"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondations"/></svg></span>Fondations</h2>
+        <p class="pc-intro">L’Introduction explique le sens que le livre donne à des mots comme Dieu, divinité et déité, qu’il emploie ensuite partout <span class="ref">0:0.1</span>. Les fascicules 1 à 5 présentent le Père Universel&nbsp;: sa nature, ses attributs, ses relations avec l’univers et avec chaque personne.</p>
+      </div>
+      <div class="pc-side">
+        <p class="pc-chiffres"><span><b>6</b> fascicules</span><span><b>≈&nbsp;3&nbsp;h&nbsp;05</b> de lecture</span></p>
+        <div class="prog" data-prog="fondations" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+        <p class="pc-suite" hidden></p>
+        <p class="pc-conseil">Le texte le plus abstrait du livre&nbsp;: le glossaire de l’atlas aide pour les mots nouveaux.</p>
+      </div>
+    </div>
+    <div class="atlas">
+      <p class="label">En chemin, dans l’atlas</p>
+      <ul>
+        <li><a href="dieu-et-deite.html"><b>Dieu et la Déité</b><span>le JE SUIS, les sept Absolus, la Trinité</span></a></li>
+        <li><a href="dieu-et-deite.html#s-attr"><b>Les attributs du Père</b><span>dans «&nbsp;Dieu et la Déité&nbsp;»</span></a></li>
+        <li><a href="etre-supreme.html"><b>L’Être Suprême</b><span>le Dieu qui évolue, défini dès l’Introduction</span></a></li>
+        <li><a href="glossaire.html"><b>Glossaire</b><span>les mots du livre, de A à Z</span></a></li>
+      </ul>
+    </div>
+    <div class="groupe">
+      <h3>L’Introduction <span class="rg">fascicule 0</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="fondations-f0" data-f="0" data-min="42" data-titre="Introduction"><span class="num" aria-hidden="true">0</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/introduction" target="_blank" rel="noopener"><span class="sr-only">Introduction&nbsp;: </span>Introduction<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 42&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-0"><span>Lu</span><span class="sr-only">&nbsp;: Introduction</span></label></li>
+      </ol>
+    </div>
+    <div class="groupe">
+      <h3>Le Père Universel <span class="rg">fascicules 1 à 5</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="fondations-f1" data-f="1" data-min="33" data-titre="Le Père Universel"><span class="num" aria-hidden="true">1</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-1-le-pere-universel" target="_blank" rel="noopener"><span class="sr-only">Fascicule 1&nbsp;: </span>Le Père Universel<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 33&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-1"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 1</span></label></li>
+        <li class="fx" id="fondations-f2" data-f="2" data-min="32" data-titre="La nature de Dieu"><span class="num" aria-hidden="true">2</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-2-la-nature-de-dieu" target="_blank" rel="noopener"><span class="sr-only">Fascicule 2&nbsp;: </span>La nature de Dieu<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-2"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 2</span></label></li>
+        <li class="fx" id="fondations-f3" data-f="3" data-min="29" data-titre="Les attributs de Dieu"><span class="num" aria-hidden="true">3</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-3-les-attributs-de-dieu" target="_blank" rel="noopener"><span class="sr-only">Fascicule 3&nbsp;: </span>Les attributs de Dieu<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-3"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 3</span></label></li>
+        <li class="fx" id="fondations-f4" data-f="4" data-min="21" data-titre="Relations de Dieu avec l’univers"><span class="num" aria-hidden="true">4</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-4-relations-de-dieu-avec-l-univers" target="_blank" rel="noopener"><span class="sr-only">Fascicule 4&nbsp;: </span>Relations de Dieu avec l’univers<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 21&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-4"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 4</span></label></li>
+        <li class="fx" id="fondations-f5" data-f="5" data-min="29" data-titre="Relations de Dieu avec l’individu"><span class="num" aria-hidden="true">5</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-5-relations-de-dieu-avec-l-individu" target="_blank" rel="noopener"><span class="sr-only">Fascicule 5&nbsp;: </span>Relations de Dieu avec l’individu<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Conseiller Divin · <span class="tps">environ 29&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-fondations-5"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 5</span></label></li>
+      </ol>
+    </div>
+  </section>
+  <section class="pc p-religion" id="religion" data-parcours="religion" data-nom="L’expérience religieuse" aria-labelledby="h-religion">
+    <div class="pc-head">
+      <div class="sec-head">
+        <p class="eyebrow"><b>Parcours 3</b> · fascicules 100 à 103, puis 196</p>
+        <h2 id="h-religion"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-religion"/></svg></span>L’expérience religieuse</h2>
+        <p class="pc-intro">Quatre fascicules d’un Melchizédek décrivent la religion telle qu’on la vit&nbsp;: sa place dans l’expérience humaine, sa nature réelle, les fondements de la foi et la réalité de l’expérience religieuse <span class="ref">103:9.13</span>. Le dernier fascicule du livre, <i>La foi de Jésus</i>, montre ensuite cette foi vécue par Jésus lui-même <span class="ref">196:0.1</span>.</p>
+      </div>
+      <div class="pc-side">
+        <p class="pc-chiffres"><span><b>5</b> fascicules</span><span><b>≈&nbsp;2&nbsp;h&nbsp;45</b> de lecture</span></p>
+        <div class="prog" data-prog="religion" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+        <p class="pc-suite" hidden></p>
+        <p class="pc-conseil">Le fascicule 196 fait aussi partie du parcours «&nbsp;Récit d’abord&nbsp;»&nbsp;: coché ici, il l’est là aussi.</p>
+      </div>
+    </div>
+    <div class="atlas">
+      <p class="label">En chemin, dans l’atlas</p>
+      <ul>
+        <li><a href="evolution-religion.html#vecue"><b>L’évolution de la religion</b><span>la religion vécue, fascicules 100 à 103</span></a></li>
+        <li><a href="enseignements-de-jesus.html#g-royaume"><b>Les enseignements de Jésus</b><span>la foi et la religion personnelle</span></a></li>
+        <li><a href="concepts-en-schemas.html#s2"><b>Les trois influences d’esprit</b><span>dans «&nbsp;Concepts en schémas&nbsp;»</span></a></li>
+        <li><a href="concepts-en-schemas.html#s3"><b>L’échelle des sept adjuvats</b><span>dans «&nbsp;Concepts en schémas&nbsp;»</span></a></li>
+        <li><a href="vie-de-jesus.html"><b>La vie de Jésus</b><span>pour le fascicule 196</span></a></li>
+      </ul>
+    </div>
+    <div class="groupe">
+      <h3>La religion vécue <span class="rg">fascicules 100 à 103</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="religion-f100" data-f="100" data-min="28" data-titre="La religion dans l’expérience humaine"><span class="num" aria-hidden="true">100</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-100-la-religion-dans-l-experience-humaine" target="_blank" rel="noopener"><span class="sr-only">Fascicule 100&nbsp;: </span>La religion dans l’expérience humaine<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Melchizédek · <span class="tps">environ 28&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-religion-100"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 100</span></label></li>
+        <li class="fx" id="religion-f101" data-f="101" data-min="38" data-titre="La nature réelle de la religion"><span class="num" aria-hidden="true">101</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-101-la-nature-reelle-de-la-religion" target="_blank" rel="noopener"><span class="sr-only">Fascicule 101&nbsp;: </span>La nature réelle de la religion<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Melchizédek · <span class="tps">environ 38&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-religion-101"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 101</span></label></li>
+        <li class="fx" id="religion-f102" data-f="102" data-min="31" data-titre="Les fondements de la foi religieuse"><span class="num" aria-hidden="true">102</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-102-les-fondements-de-la-foi-religieuse" target="_blank" rel="noopener"><span class="sr-only">Fascicule 102&nbsp;: </span>Les fondements de la foi religieuse<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Melchizédek · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-religion-102"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 102</span></label></li>
+        <li class="fx" id="religion-f103" data-f="103" data-min="39" data-titre="La réalité de l’expérience religieuse"><span class="num" aria-hidden="true">103</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-103-la-realite-de-l-experience-religieuse" target="_blank" rel="noopener"><span class="sr-only">Fascicule 103&nbsp;: </span>La réalité de l’expérience religieuse<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Melchizédek · <span class="tps">environ 39&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-religion-103"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 103</span></label></li>
+      </ol>
+    </div>
+    <div class="groupe">
+      <h3>La foi de Jésus <span class="rg">fascicule 196</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="religion-f196" data-f="196" data-min="31" data-titre="La foi de Jésus"><span class="num" aria-hidden="true">196</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-196-la-foi-de-jesus" target="_blank" rel="noopener"><span class="sr-only">Fascicule 196&nbsp;: </span>La foi de Jésus<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Commission de médians · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-religion-196"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 196</span></label></li>
+      </ol>
+    </div>
+  </section>
+  <section class="pc p-destinee" id="destinee" data-parcours="destinee" data-nom="La destinée humaine" aria-labelledby="h-destinee">
+    <div class="pc-head">
+      <div class="sec-head">
+        <p class="eyebrow"><b>Parcours 4</b> · fascicules 107 à 112, puis 47 et 48</p>
+        <h2 id="h-destinee"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-destinee"/></svg></span>La destinée humaine</h2>
+        <p class="pc-intro">Six fascicules d’un Messager Solitaire présentent l’Ajusteur de Pensée, ce fragment de Dieu qui habite le mental humain, puis l’âme et la survie de la personnalité <span class="ref">107:0.3 ; 112:7.20</span>. Les fascicules 47 et 48 décrivent ensuite le réveil sur les mondes des maisons et la vie morontielle qui suit.</p>
+      </div>
+      <div class="pc-side">
+        <p class="pc-chiffres"><span><b>8</b> fascicules</span><span><b>≈&nbsp;4&nbsp;h&nbsp;10</b> de lecture</span></p>
+        <div class="prog" data-prog="destinee" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+        <p class="pc-suite" hidden></p>
+        <p class="pc-conseil">La page «&nbsp;La destinée humaine&nbsp;» résume ces huit fascicules en un schéma de sept étapes.</p>
+      </div>
+    </div>
+    <div class="atlas">
+      <p class="label">En chemin, dans l’atlas</p>
+      <ul>
+        <li><a href="destinee-humaine.html"><b>La destinée humaine</b><span>ce qui survit, étape par étape</span></a></li>
+        <li><a href="destinee-humaine.html#maisons"><b>Les sept mondes des maisons</b><span>dans «&nbsp;La destinée humaine&nbsp;»</span></a></li>
+        <li><a href="les-anges.html#mort"><b>Les anges</b><span>le gardien à la mort et au réveil</span></a></li>
+        <li><a href="atlas-3d.html#carriere"><b>La carrière ascendante</b><span>vue 3D, des mondes des maisons au Paradis</span></a></li>
+        <li><a href="concepts-en-schemas.html#s4"><b>Les sept cercles psychiques</b><span>dans «&nbsp;Concepts en schémas&nbsp;»</span></a></li>
+      </ul>
+    </div>
+    <div class="groupe">
+      <h3>L’Ajusteur de Pensée et la survie <span class="rg">fascicules 107 à 112</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="destinee-f107" data-f="107" data-min="23" data-titre="Origine et nature des Ajusteurs de Pensée"><span class="num" aria-hidden="true">107</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-107-origine-et-nature-des-ajusteurs-de-pensee" target="_blank" rel="noopener"><span class="sr-only">Fascicule 107&nbsp;: </span>Origine et nature des Ajusteurs de Pensée<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 23&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-107"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 107</span></label></li>
+        <li class="fx" id="destinee-f108" data-f="108" data-min="25" data-titre="Mission et ministère des Ajusteurs de Pensée"><span class="num" aria-hidden="true">108</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee" target="_blank" rel="noopener"><span class="sr-only">Fascicule 108&nbsp;: </span>Mission et ministère des Ajusteurs de Pensée<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 25&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-108"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 108</span></label></li>
+        <li class="fx" id="destinee-f109" data-f="109" data-min="20" data-titre="Position des Ajusteurs par rapport aux créatures de l’univers"><span class="num" aria-hidden="true">109</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers" target="_blank" rel="noopener"><span class="sr-only">Fascicule 109&nbsp;: </span>Position des Ajusteurs par rapport aux créatures de l’univers<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-109"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 109</span></label></li>
+        <li class="fx" id="destinee-f110" data-f="110" data-min="32" data-titre="Position des Ajusteurs par rapport aux mortels individuels"><span class="num" aria-hidden="true">110</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels" target="_blank" rel="noopener"><span class="sr-only">Fascicule 110&nbsp;: </span>Position des Ajusteurs par rapport aux mortels individuels<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 32&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-110"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 110</span></label></li>
+        <li class="fx" id="destinee-f111" data-f="111" data-min="27" data-titre="L’Ajusteur et l’âme"><span class="num" aria-hidden="true">111</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-111-l-ajusteur-et-l-ame" target="_blank" rel="noopener"><span class="sr-only">Fascicule 111&nbsp;: </span>L’Ajusteur et l’âme<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 27&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-111"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 111</span></label></li>
+        <li class="fx" id="destinee-f112" data-f="112" data-min="42" data-titre="La survie de la personnalité"><span class="num" aria-hidden="true">112</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-112-la-survie-de-la-personnalite" target="_blank" rel="noopener"><span class="sr-only">Fascicule 112&nbsp;: </span>La survie de la personnalité<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Messager Solitaire · <span class="tps">environ 42&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-112"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 112</span></label></li>
+      </ol>
+    </div>
+    <div class="groupe">
+      <h3>Les mondes des maisons et la vie morontielle <span class="rg">fascicules 47 et 48</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="destinee-f47" data-f="47" data-min="30" data-titre="Les sept mondes des maisons"><span class="num" aria-hidden="true">47</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-47-les-sept-mondes-des-maisons" target="_blank" rel="noopener"><span class="sr-only">Fascicule 47&nbsp;: </span>Les sept mondes des maisons<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Une Brillante Étoile du Soir · <span class="tps">environ 30&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-47"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 47</span></label></li>
+        <li class="fx" id="destinee-f48" data-f="48" data-min="49" data-titre="La vie morontielle"><span class="num" aria-hidden="true">48</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-48-la-vie-morontielle" target="_blank" rel="noopener"><span class="sr-only">Fascicule 48&nbsp;: </span>La vie morontielle<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un archange · <span class="tps">environ 49&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-destinee-48"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 48</span></label></li>
+      </ol>
+    </div>
+  </section>
+  <section class="pc p-cosmologie" id="cosmologie" data-parcours="cosmologie" data-nom="Cosmologie" aria-labelledby="h-cosmologie">
+    <div class="pc-head">
+      <div class="sec-head">
+        <p class="eyebrow"><b>Parcours 5</b> · fascicules 11 à 15, puis 32 et 33</p>
+        <h2 id="h-cosmologie"><span class="badge"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-cosmologie"/></svg></span>Cosmologie</h2>
+        <p class="pc-intro">Les fascicules 11 à 15 décrivent l’univers depuis son centre&nbsp;: l’Ile éternelle du Paradis, l’univers central de Havona et son milliard de sphères, puis les sept superunivers <span class="ref">14:0.1</span>. Les fascicules 32 et 33 en viennent à l’univers local, œuvre d’un Fils Créateur, et à son administration <span class="ref">32:0.1</span>.</p>
+      </div>
+      <div class="pc-side">
+        <p class="pc-chiffres"><span><b>7</b> fascicules</span><span><b>≈&nbsp;3&nbsp;h&nbsp;35</b> de lecture</span></p>
+        <div class="prog" data-prog="cosmologie" hidden><div class="bar" aria-hidden="true"><i></i></div><p class="prog-t"></p></div>
+        <p class="pc-suite" hidden></p>
+        <p class="pc-conseil">Garde la vue 3D ouverte à côté&nbsp;: chaque niveau y porte ses chiffres et ses références.</p>
+      </div>
+    </div>
+    <div class="atlas">
+      <p class="label">En chemin, dans l’atlas</p>
+      <ul>
+        <li><a href="paradis-et-havona.html"><b>Le Paradis et Havona</b><span>l’Ile et les sept circuits, en schémas</span></a></li>
+        <li><a href="atlas-3d.html"><b>D’Urantia au Paradis</b><span>vue 3D, niveau par niveau</span></a></li>
+        <li><a href="atlas-3d.html#coupe"><b>La vue en coupe</b><span>vue 3D, l’espace en section verticale</span></a></li>
+        <li><a href="nebadon-dans-orvonton.html"><b>Nébadon dans Orvonton</b><span>notre univers local dans son superunivers</span></a></li>
+        <li><a href="atlas-3d.html#gouvernement"><b>Qui gouverne quoi</b><span>vue 3D, de la planète au superunivers</span></a></li>
+        <li><a href="dieu-et-deite.html#s2"><b>L’Ile du Paradis</b><span>dans «&nbsp;Dieu et la Déité&nbsp;»</span></a></li>
+      </ul>
+    </div>
+    <div class="groupe">
+      <h3>Le Paradis, Havona et les superunivers <span class="rg">fascicules 11 à 15</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="cosmologie-f11" data-f="11" data-min="28" data-titre="L’Ile éternelle du Paradis"><span class="num" aria-hidden="true">11</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-11-l-ile-eternelle-du-paradis" target="_blank" rel="noopener"><span class="sr-only">Fascicule 11&nbsp;: </span>L’Ile éternelle du Paradis<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Perfecteur de Sagesse · <span class="tps">environ 28&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-11"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 11</span></label></li>
+        <li class="fx" id="cosmologie-f12" data-f="12" data-min="40" data-titre="L’univers des univers"><span class="num" aria-hidden="true">12</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-12-l-univers-des-univers" target="_blank" rel="noopener"><span class="sr-only">Fascicule 12&nbsp;: </span>L’univers des univers<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Perfecteur de Sagesse · <span class="tps">environ 40&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-12"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 12</span></label></li>
+        <li class="fx" id="cosmologie-f13" data-f="13" data-min="24" data-titre="Les sphères sacrées du Paradis"><span class="num" aria-hidden="true">13</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-13-les-spheres-sacrees-du-paradis" target="_blank" rel="noopener"><span class="sr-only">Fascicule 13&nbsp;: </span>Les sphères sacrées du Paradis<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Perfecteur de Sagesse · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-13"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 13</span></label></li>
+        <li class="fx" id="cosmologie-f14" data-f="14" data-min="31" data-titre="L’univers central et divin"><span class="num" aria-hidden="true">14</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-14-l-univers-central-et-divin" target="_blank" rel="noopener"><span class="sr-only">Fascicule 14&nbsp;: </span>L’univers central et divin<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Perfecteur de Sagesse · <span class="tps">environ 31&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-14"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 14</span></label></li>
+        <li class="fx" id="cosmologie-f15" data-f="15" data-min="50" data-titre="Les sept superunivers"><span class="num" aria-hidden="true">15</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-15-les-sept-superunivers" target="_blank" rel="noopener"><span class="sr-only">Fascicule 15&nbsp;: </span>Les sept superunivers<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Censeur Universel · <span class="tps">environ 50&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-15"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 15</span></label></li>
+      </ol>
+    </div>
+    <div class="groupe">
+      <h3>L’univers local <span class="rg">fascicules 32 et 33</span></h3>
+      <ol class="fxs">
+        <li class="fx" id="cosmologie-f32" data-f="32" data-min="24" data-titre="L’évolution des univers locaux"><span class="num" aria-hidden="true">32</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-32-l-evolution-des-univers-local" target="_blank" rel="noopener"><span class="sr-only">Fascicule 32&nbsp;: </span>L’évolution des univers locaux<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Un Puissant Messager · <span class="tps">environ 24&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-32"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 32</span></label></li>
+        <li class="fx" id="cosmologie-f33" data-f="33" data-min="20" data-titre="Administration de l’univers local"><span class="num" aria-hidden="true">33</span><div class="fx-txt"><a class="fx-t" href="https://www.urantia.org/fr/le-livre-d-urantia/fascicule-33-administration-de-l-univers-local" target="_blank" rel="noopener"><span class="sr-only">Fascicule 33&nbsp;: </span>Administration de l’univers local<span class="ext" aria-hidden="true">↗</span><span class="sr-only"> (urantia.org, nouvel onglet)</span></a><span class="fx-a">Le chef des archanges · <span class="tps">environ 20&nbsp;min</span><span class="tag" aria-hidden="true">Prochain</span></span></div><label class="lu"><input type="checkbox" id="lu-cosmologie-33"><span>Lu</span><span class="sr-only">&nbsp;: fascicule 33</span></label></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="raz" id="effacer" aria-labelledby="h-raz" hidden>
+    <h2 id="h-raz">Ta progression</h2>
+    <p class="raz-etat" id="raz-etat"></p>
+    <button type="button" class="btn" id="raz" aria-expanded="false" aria-controls="raz-conf">Effacer ma progression</button>
+    <div class="raz-conf" id="raz-conf" role="group" aria-labelledby="raz-q" hidden>
+      <p id="raz-q"></p>
+      <div class="raz-btns">
+        <button type="button" class="btn danger" id="raz-oui">Oui, tout effacer</button>
+        <button type="button" class="btn" id="raz-non">Annuler</button>
+      </div>
+    </div>
+    <p class="raz-msg" id="raz-msg" role="status"></p>
+  </section>
+
+  <p class="sr-only" id="annonce" aria-live="polite"></p>
+
+  <div class="atlas-suite atlas-suite-seule"><div class="etape"><p>Outil</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div></div>
+<footer class="foot">
+    <p>Titres, auteurs et nombre de mots&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024 ; l’auteur indiqué est celui que le livre déclare pour chaque fascicule. Durées estimées à 200 mots par minute, arrondies.</p>
+    <p>Les liens des fascicules ouvrent le texte sur urantia.org, le site de la Fondation Urantia. Ces parcours sont des suggestions de l’atlas, pas de la Fondation.</p>
+    <p>Ta progression est enregistrée seulement dans ce navigateur (stockage local) ; elle n’est envoyée nulle part.</p>
+  <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Parcours%20de%20lecture&amp;page=Parcours%20de%20lecture%20%28parcours-de-lecture.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
+<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a> <span aria-hidden="true">·</span> <a href="glossaire.html">glossaire des termes</a></p>
+</footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  /* Progression de lecture : les numéros des fascicules cochés, et le dernier parcours suivi.
+     Un fascicule coché l’est dans tous les parcours où il figure (196 est dans deux parcours).
+     Gardée dans le navigateur si possible (localStorage) ; sinon, la page marche tant qu’elle reste ouverte. */
+  var CLE = "atlas-parcours-de-lecture";
+  var NB = " ";
+  var lus = Object.create(null);
+  var dernier = null;
+  var stockage = (function () {
+    try { var k = CLE + "-essai"; window.localStorage.setItem(k, "1"); window.localStorage.removeItem(k); return true; } catch (e) { return false; }
+  })();
+
+  function lire() {
+    lus = Object.create(null);
+    dernier = null;
+    if (!stockage) return;
+    try {
+      var v = JSON.parse(window.localStorage.getItem(CLE) || "null");
+      if (!v || v.v !== 1) return;
+      (v.lus || []).forEach(function (n) { if (typeof n === "number" && n >= 0 && n <= 196) lus[n] = true; });
+      if (typeof v.dernier === "string") dernier = v.dernier;
+    } catch (e) { /* données illisibles : on repart de zéro */ }
+  }
+  function garder() {
+    if (!stockage) return;
+    try {
+      var l = Object.keys(lus).map(Number).sort(function (a, b) { return a - b; });
+      if (!l.length) window.localStorage.removeItem(CLE);
+      else window.localStorage.setItem(CLE, JSON.stringify({ v: 1, lus: l, dernier: dernier, maj: new Date().toISOString().slice(0, 10) }));
+    } catch (e) { stockage = false; noteStockage(); }
+  }
+  function noteStockage() {
+    var n = document.getElementById("note-stockage");
+    if (n) n.hidden = stockage;
+  }
+
+  /* Les parcours, lus dans la page */
+  var PARCOURS = [];
+  Array.prototype.forEach.call(document.querySelectorAll("section.pc[data-parcours]"), function (sec) {
+    var p = { id: sec.getAttribute("data-parcours"), nom: sec.getAttribute("data-nom"), sec: sec, items: [] };
+    Array.prototype.forEach.call(sec.querySelectorAll("li.fx[data-f]"), function (li) {
+      p.items.push({ f: +li.getAttribute("data-f"), min: +li.getAttribute("data-min"), li: li,
+        box: li.querySelector("input[type=checkbox]"), lien: li.querySelector("a.fx-t"),
+        titre: li.getAttribute("data-titre") });
+    });
+    PARCOURS.push(p);
+  });
+  if (!PARCOURS.length) return;
+  function parcoursDe(id) { for (var i = 0; i < PARCOURS.length; i++) if (PARCOURS[i].id === id) return PARCOURS[i]; return null; }
+
+  function duree(min) {
+    if (min < 1) return "moins d’une minute";
+    if (min < 60) return min + NB + "min";
+    var h = Math.floor(min / 60), m = Math.round((min - h * 60) / 5) * 5;
+    if (m === 60) { h++; m = 0; }
+    return h + NB + "h" + (m ? NB + (m < 10 ? "0" : "") + m : "");
+  }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;"); }
+  function nomF(it) { return it.f === 0 ? "l’Introduction" : "fascicule " + it.f + ", " + esc(it.titre); }
+  function prochain(p) { for (var i = 0; i < p.items.length; i++) if (!lus[p.items[i].f]) return p.items[i]; return null; }
+  function compte(p) { var n = 0; p.items.forEach(function (it) { if (lus[it.f]) n++; }); return n; }
+
+  var annonce = document.getElementById("annonce");
+  function dire(t) { if (!annonce) return; annonce.textContent = ""; setTimeout(function () { annonce.textContent = t; }, 60); }
+
+  /* Affichage de l’état */
+  function appliquer() {
+    var total = 0, uniques = Object.create(null);
+    PARCOURS.forEach(function (p) {
+      var n = compte(p), N = p.items.length, reste = 0, suiv = prochain(p);
+      p.items.forEach(function (it) {
+        var l = !!lus[it.f];
+        it.box.checked = l;
+        it.li.classList.toggle("est-lu", l);
+        it.li.classList.toggle("suivant", n > 0 && suiv === it);
+        if (!l) reste += it.min;
+        uniques[it.f] = true;
+      });
+      var pc = N ? Math.round(n * 100 / N) : 0;
+      Array.prototype.forEach.call(document.querySelectorAll('[data-prog="' + p.id + '"]'), function (el) {
+        var bar = el.querySelector(".bar > i"), t = el.querySelector(".prog-t");
+        if (bar) bar.style.width = pc + "%";
+        if (t) t.innerHTML = n === N ? "<b>Parcours terminé</b> · " + N + " fascicules sur " + N
+          : "<b>" + n + "</b> sur " + N + " lu" + (n > 1 ? "s" : "") + " · il reste environ " + duree(reste);
+        el.classList.toggle("fini", n === N);
+        el.hidden = false;
+      });
+      // prochain fascicule de ce parcours
+      var ps = p.sec.querySelector(".pc-suite");
+      if (ps) {
+        if (!suiv) ps.innerHTML = "<b>Bravo</b>" + NB + ": tu as lu tout ce parcours.";
+        else ps.innerHTML = (n ? "Prochain fascicule" : "Pour commencer") + NB + ": <a href=\"#" + suiv.li.id + "\" data-aller=\"" + suiv.li.id + "\">" +
+          nomF(suiv) + "</a> (environ " + duree(suiv.min) + ")";
+        ps.hidden = false;
+      }
+      // groupes repliables : compte par groupe
+      Array.prototype.forEach.call(p.sec.querySelectorAll("details.groupe"), function (d) {
+        var its = d.querySelectorAll("li.fx[data-f]"), k = 0;
+        Array.prototype.forEach.call(its, function (li) { if (lus[+li.getAttribute("data-f")]) k++; });
+        var gp = d.querySelector(".g-p");
+        if (gp) { gp.textContent = k + "/" + its.length; gp.classList.toggle("fini", k === its.length); gp.setAttribute("aria-label", k + " sur " + its.length + " lus"); }
+      });
+    });
+    Object.keys(lus).forEach(function (f) { if (uniques[f]) total++; });
+    var nU = Object.keys(uniques).length;
+    // bilan et bouton « Effacer »
+    var et = document.getElementById("raz-etat");
+    if (et) et.innerHTML = total ? "Tu as coché <b>" + total + "</b> fascicule" + (total > 1 ? "s" : "") + " sur les " + nU + " de ces parcours."
+      : "Aucun fascicule coché pour l’instant.";
+    majReprendre();
+  }
+
+  /* « Reprendre là où j’en étais » : le premier fascicule non lu du dernier parcours suivi */
+  var bRep = document.getElementById("reprendre"), infoRep = document.getElementById("reprise-info");
+  function cible() {
+    var p = dernier && parcoursDe(dernier);
+    if (p && prochain(p) && compte(p)) return { p: p, it: prochain(p) };
+    for (var i = 0; i < PARCOURS.length; i++) {
+      var q = PARCOURS[i];
+      if (compte(q) && prochain(q)) return { p: q, it: prochain(q) };
+    }
+    return null;
+  }
+  function majReprendre() {
+    if (!bRep) return;
+    var c = cible();
+    bRep.hidden = !c;
+    if (infoRep) {
+      infoRep.hidden = !c;
+      if (c) infoRep.innerHTML = "Parcours <b>" + esc(c.p.nom) + "</b> · prochain" + NB + ": " +
+        nomF(c.it) + " (environ " + duree(c.it.min) + ")";
+    }
+  }
+  var calme = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function aller(li) {
+    if (!li) return;
+    var d = li.closest("details");
+    if (d && !d.open) d.open = true;
+    li.scrollIntoView({ behavior: calme ? "auto" : "smooth", block: "center" });
+    var a = li.querySelector("a.fx-t");
+    if (a) { try { a.focus({ preventScroll: true }); } catch (e) { a.focus(); } }
+    li.classList.remove("flash");
+    void li.offsetWidth;
+    li.classList.add("flash");
+    setTimeout(function () { li.classList.remove("flash"); }, 1700);
+  }
+  if (bRep) bRep.addEventListener("click", function () { var c = cible(); if (c) aller(c.it.li); });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a[data-aller]");
+    if (!a) return;
+    e.preventDefault();
+    aller(document.getElementById(a.getAttribute("data-aller")));
+  });
+
+  /* Les cases « Lu » */
+  PARCOURS.forEach(function (p) {
+    p.items.forEach(function (it) {
+      it.box.addEventListener("change", function () {
+        if (it.box.checked) lus[it.f] = true; else delete lus[it.f];
+        dernier = p.id;
+        garder();
+        appliquer();
+        var n = compte(p), N = p.items.length;
+        dire((it.f === 0 ? "Introduction" : "Fascicule " + it.f) + (it.box.checked ? " coché" : " décoché") + ". " + p.nom + NB + ": " +
+          (n === N ? "parcours terminé." : n + " sur " + N + " lu" + (n > 1 ? "s" : "") + "."));
+      });
+    });
+  });
+
+  /* Groupes repliables : à l’ouverture, celui qui contient le prochain fascicule est ouvert */
+  function ouvrirGroupes() {
+    PARCOURS.forEach(function (p) {
+      var ds = p.sec.querySelectorAll("details.groupe");
+      if (!ds.length) return;
+      var s = prochain(p), cible = s ? s.li.closest("details") : null;
+      Array.prototype.forEach.call(ds, function (d, i) { d.open = cible ? d === cible : i === 0; });
+    });
+  }
+
+  /* Effacer ma progression, avec confirmation dans la page */
+  var bRaz = document.getElementById("raz"), conf = document.getElementById("raz-conf"), msg = document.getElementById("raz-msg");
+  var oui = document.getElementById("raz-oui"), non = document.getElementById("raz-non"), q = document.getElementById("raz-q");
+  function fermerConf(focus) { conf.hidden = true; bRaz.setAttribute("aria-expanded", "false"); if (focus) bRaz.focus(); }
+  if (bRaz && conf && oui && non) {
+    bRaz.addEventListener("click", function () {
+      var n = Object.keys(lus).length;
+      msg.textContent = "";
+      if (!n) { msg.textContent = "Il n’y a rien à effacer" + NB + ": aucun fascicule n’est coché."; return; }
+      q.innerHTML = "<b>Effacer ta progression" + NB + "?</b> Les " + n + " fascicule" + (n > 1 ? "s" : "") + " coché" + (n > 1 ? "s" : "") +
+        " redeviendront non lus, dans tous les parcours. Cette action ne peut pas être annulée.";
+      conf.hidden = false;
+      bRaz.setAttribute("aria-expanded", "true");
+      non.focus();
+    });
+    non.addEventListener("click", function () { fermerConf(true); });
+    oui.addEventListener("click", function () {
+      lus = Object.create(null);
+      dernier = null;
+      garder();
+      appliquer();
+      ouvrirGroupes();
+      fermerConf(true);
+      msg.textContent = "Ta progression est effacée.";
+    });
+    conf.addEventListener("keydown", function (e) { if (e.key === "Escape" || e.key === "Esc") { e.preventDefault(); fermerConf(true); } });
+  }
+
+  /* Une autre fenêtre de l’atlas a changé la progression */
+  window.addEventListener("storage", function (e) { if (e.key === CLE || e.key === null) { lire(); appliquer(); } });
+
+  var raz = document.getElementById("effacer");
+  if (raz) raz.hidden = false;
+  lire();
+  noteStockage();
+  appliquer();
+  ouvrirGroupes();
+})();
+</script>
+
+<script src="assets/refs-urantia.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1179 @@
+<title>D'où vient ce livre ?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : l’origine du livre racontée à plusieurs voix. Trois registres ont chacun leur couleur (choix de la page) :
+   or = ce que dit le texte, sarcelle = lecture courante (mouvement, lecteurs), bleu = regard historique (documents, critiques).
+   La frise ajoute le rose pour la justice. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --rule-ctl: #7D88A3; /* bordure des commandes */
+  --gold: #C98A12;     /* accent de sélection */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --gold-ui: #9E6B00;  /* or des traits et contours (3:1 au moins) */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  /* Les trois registres */
+  --lec: #13837A; --lec-ink: #0B655E; --lec-soft: #E2F3EF;   /* lecture courante : sarcelle */
+  --his: #2F62A8; --his-ink: #24508C; --his-soft: #E7EEF8;   /* regard historique : bleu */
+  --dro: #B8487A; --dro-ink: #8F2F5C; --dro-soft: #F8E9F0;   /* justice et droits : rose */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --rule-ctl: #6A769C; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --lec: #52CFC0; --lec-ink: #7FDCD0; --lec-soft: #102928;
+    --his: #8CB4F2; --his-ink: #A9C7F5; --his-soft: #15213A;
+    --dro: #E486B0; --dro-ink: #EFA9C8; --dro-soft: #2A1824;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --rule-ctl: #6A769C; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --lec: #52CFC0; --lec-ink: #7FDCD0; --lec-soft: #102928;
+  --his: #8CB4F2; --his-ink: #A9C7F5; --his-soft: #15213A;
+  --dro: #E486B0; --dro-ink: #EFA9C8; --dro-soft: #2A1824;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+a.ext::after { content: "\00a0↗"; font-size: .85em; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; color: var(--c, currentColor); }
+.q i, blockquote.cite p i { font-style: italic; }
+
+/* Les registres : couleur (--c), encre (--ci), fond doux (--soft) */
+.r-dit { --c: var(--gold-ui); --ci: var(--gold-ink); --soft: var(--gold-soft); }
+.r-lec { --c: var(--lec); --ci: var(--lec-ink); --soft: var(--lec-soft); }
+.r-his { --c: var(--his); --ci: var(--his-ink); --soft: var(--his-soft); }
+.r-dro { --c: var(--dro); --ci: var(--dro-ink); --soft: var(--dro-soft); }
+.reg { display: inline-flex; align-items: center; gap: 6px; padding: 2px 9px 2px 7px; border-radius: 999px; border: 1px solid var(--c); background: var(--soft); color: var(--ci); font: 500 .72rem/1.5 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.reg .ic { width: .95rem; height: .95rem; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 44px; align-items: center; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 56ch; }
+.ctx-link { font-size: .98rem; color: var(--muted); }
+.ctx-link a { padding-block: 6px; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+
+/* La chaine de transmission */
+.chain { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 20px 20px 16px; display: grid; gap: 14px; min-width: 0; }
+.ch { list-style: none; margin: 0; padding: 0; display: grid; }
+.ch li { position: relative; display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: 12px; padding-bottom: 12px; }
+.ch li:last-child { padding-bottom: 0; }
+.ch li::after { content: ""; position: absolute; left: calc(1rem - 1px); top: 1.9rem; bottom: 0; width: 2px; background: var(--rule); }
+.ch li:last-child::after { display: none; }
+.ch .cd { grid-row: span 2; width: 2rem; height: 2rem; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2px solid var(--c); color: var(--c); position: relative; z-index: 1; }
+.ch .cd .ic { width: 1rem; height: 1rem; }
+.ch .k-dit .cd { border-style: dashed; background: var(--gold-soft); }
+.ch .k-tem .cd { background: var(--lec-soft); }
+.ch .k-doc .cd { background: var(--his-soft); }
+.ch b { font-family: var(--font-display); font-size: 1.16rem; font-weight: 600; line-height: 1.2; padding-top: 3px; }
+.ch .cs { grid-column: 2; font-size: .86rem; line-height: 1.35; color: var(--muted); }
+.k-dit { --c: var(--gold-ui); } .k-tem { --c: var(--lec); } .k-doc { --c: var(--his); }
+.ch-key { list-style: none; margin: 0; padding: 12px 0 0; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .84rem; color: var(--muted); }
+.ch-key li { display: inline-flex; align-items: center; gap: 6px; }
+.ch-key .kd { width: .9rem; height: .9rem; border-radius: 50%; border: 2px solid var(--c); }
+.ch-key .k-dit .kd { border-style: dashed; background: var(--gold-soft); }
+.ch-key .k-tem .kd { background: var(--lec-soft); }
+.ch-key .k-doc .kd { background: var(--his-soft); }
+.chain .note { font-size: .82rem; color: var(--muted); line-height: 1.45; }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section, aside.callout { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 76ch; }
+.sec-head .eyebrow { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold-ui)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.ref-ext { font: 500 .74rem/1.4 var(--font-mono); color: var(--muted); }
+.sub-h { margin-top: 40px; font-size: 1.6rem; }
+.sub-p { margin-top: 10px; max-width: 74ch; }
+
+/* 1. Quatre voix */
+.voices { margin-top: 24px; display: grid; gap: 0; border: 1px solid var(--rule); border-radius: 14px; overflow: hidden; background: var(--sheet); }
+.vrow { display: grid; grid-template-columns: 9.5rem repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); }
+.vrow:first-child { border-top: 0; }
+.vrow > * { padding: 12px 14px; min-width: 0; font-size: .92rem; line-height: 1.45; }
+.vrow > * + * { border-left: 1px solid var(--rule); }
+.vhead { background: var(--tint); }
+.vhead > span { display: flex; align-items: center; gap: 7px; font: 600 1.08rem/1.2 var(--font-display); color: var(--ci, var(--ink)); }
+.vhead > span .ic { width: 1.05rem; height: 1.05rem; }
+.vq { font: 600 1.12rem/1.2 var(--font-display); background: var(--paper); }
+.vc .vl { display: none; }
+.vq-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.vhead > span { box-shadow: inset 0 -3px 0 var(--c, transparent); }
+.voices-note { margin-top: 12px; }
+
+/* Cartes */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr)); gap: 14px; margin-top: 24px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.card h3 { font-size: 1.36rem; display: flex; gap: 9px; align-items: center; }
+.card h3 .ic { width: 1.25rem; height: 1.25rem; }
+.card p { font-size: .97rem; }
+.card .who { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ci, var(--muted)); }
+.card .src { font-size: .84rem; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 9px; }
+
+/* Encart « Qui signe quoi ? » : les auteurs déclarés, détaillés dans « Les auteurs déclarés et le livre en chiffres » */
+.sign { margin-top: 34px; background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--gold-ui); border-radius: 14px; padding: 22px 24px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-areas: "txt fig" "cta fig"; gap: 16px 36px; align-items: center; }
+.sign-txt { grid-area: txt; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.sign h3 { font-size: 1.6rem; }
+.sign-txt p { max-width: 62ch; }
+.sign .cta { grid-area: cta; align-self: start; }
+.sign-fig { grid-area: fig; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; min-width: 0; }
+.sign-fig li { display: grid; gap: 4px; align-content: start; border-top: 2px solid var(--gold-ui); padding-top: 10px; min-width: 0; }
+.sign-fig b { font: 700 clamp(1.8rem, 3.4vw, 2.3rem)/1 var(--font-body); color: var(--ink); font-variant-numeric: tabular-nums; }
+.sign-fig span { font-size: .86rem; line-height: 1.38; color: var(--muted); }
+
+/* ==================== La frise ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--his); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 20px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.certs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.certs li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 8px; align-items: baseline; background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 9px 11px; font-size: .84rem; line-height: 1.35; color: var(--muted); }
+.certs li .cert { grid-row: span 2; }
+.certs li b { color: var(--ink); font-size: .9rem; }
+.cert { display: inline-flex; align-items: center; gap: 6px; font: 500 .72rem/1.4 var(--font-mono); letter-spacing: .05em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.cert::before { content: ""; width: .8rem; height: .8rem; border-radius: 50%; flex: none; border: 2px solid var(--ink); box-sizing: border-box; }
+.cert.c-eta::before { background: var(--ink); }
+.cert.c-tem::before { background: linear-gradient(90deg, var(--ink) 50%, transparent 50%); }
+.cert.c-dis::before { border-style: dashed; }
+.cert.c-inc::before { border-style: dotted; border-color: var(--muted); }
+.certs li .cert { font-size: 0; gap: 0; }
+.certs li .cert::before { width: .95rem; height: .95rem; }
+
+.tl-bar { display: grid; gap: 10px; }
+.tl-filtres { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.tl-filtres .lbl { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 4px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule-ctl); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .9rem/1.2 var(--font-body); padding: 8px 14px; min-height: 44px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--ink); }
+.sw { width: .95rem; height: .95rem; border-radius: 3px; background: var(--c); flex: none; display: inline-block; }   /* pastille de couleur */
+.chip .sw { border-radius: 50%; width: .8rem; height: .8rem; }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip[aria-pressed="true"] .sw { box-shadow: 0 0 0 2px var(--paper); }
+.c-livre { --c: var(--gold-ui); --ci: var(--gold-ink); --soft: var(--gold-soft); }
+.c-mvt { --c: var(--lec); --ci: var(--lec-ink); --soft: var(--lec-soft); }
+.c-droit { --c: var(--dro); --ci: var(--dro-ink); --soft: var(--dro-soft); }
+.c-crit { --c: var(--his); --ci: var(--his-ink); --soft: var(--his-soft); }
+.tl-dec { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font-size: .9rem; }
+.tl-dec .lbl { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.tl-dec a { display: inline-flex; align-items: center; min-height: 40px; min-width: 44px; justify-content: center; padding: 0 6px; border-radius: 8px; font: 500 .88rem/1 var(--font-mono); color: var(--ink); text-decoration: none; border: 1px solid transparent; }
+.tl-dec a:hover { border-color: var(--rule-ctl); }
+.tl-dec a[aria-disabled="true"] { color: var(--muted); opacity: .5; pointer-events: none; }
+.tl-compte { font-size: .9rem; color: var(--muted); }
+
+.tl { list-style: none; margin: 4px 0 0; padding: 0; display: grid; max-width: 920px; }
+.tl .dec { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); align-items: center; gap: 0 16px; padding: 18px 0 8px; scroll-margin-top: 12px; }
+.tl .dec span { grid-column: 2; font: 600 1.5rem/1 var(--font-display); color: var(--muted); display: flex; align-items: center; gap: 12px; }
+.tl .dec span::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+.ev { display: grid; grid-template-columns: 6.6rem 1.2rem minmax(0, 1fr); gap: 0 10px; position: relative; scroll-margin-top: 12px; }
+.ev::before { content: ""; position: absolute; left: calc(6.6rem + 10px + .6rem - 1px); top: 0; bottom: 0; width: 2px; background: var(--rule); }
+.ev-date { text-align: right; padding-top: 14px; display: grid; gap: 2px; align-content: start; }
+.ev-date .y { font: 600 1.32rem/1 var(--font-display); color: var(--ink); }
+.ev-date .d { font: 500 .74rem/1.3 var(--font-mono); color: var(--muted); }
+.ev-dot { position: relative; z-index: 1; width: 1.2rem; height: 1.2rem; margin-top: 16px; border-radius: 50%; background: var(--sheet); border: 3px solid var(--c); }
+.ev-card { margin: 6px 0 8px; background: var(--paper); border: 1px solid var(--rule); border-left: 3px solid var(--c); border-radius: 10px; padding: 12px 14px 12px; display: grid; gap: 8px; min-width: 0; }
+.ev-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; }
+.ev-cat { font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ci); }
+.ev h3 { font-size: 1.24rem; }
+.ev p { font-size: .95rem; }
+.ev .src { font-size: .82rem; color: var(--muted); line-height: 1.45; }
+.ev .src a { padding-block: 4px; }
+.ev blockquote.cite { --c: var(--ci); }
+.ev blockquote.cite p { font-size: 1.06rem; }
+
+/* 3. Le débat */
+.duo2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 24px; }
+.pair { margin-top: 30px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 20px 20px 18px; display: grid; gap: 14px; }
+.pair h3 { font-size: 1.45rem; }
+.pair-g { display: grid; grid-template-columns: minmax(0, 1fr) 2.2rem minmax(0, 1fr); gap: 6px 10px; align-items: stretch; }
+.pair-h { font-size: .86rem; color: var(--muted); line-height: 1.4; display: grid; gap: 2px; align-content: end; padding-bottom: 6px; border-bottom: 2px solid var(--c); }
+.pair-h b { font: 600 1.08rem/1.2 var(--font-display); color: var(--ink); }
+.pair-h.l { --c: var(--gold-ui); } .pair-h.r { --c: var(--his); }
+.pc { background: var(--paper); border: 1px solid var(--rule); border-radius: 9px; padding: 8px 11px; font-size: .9rem; line-height: 1.35; display: grid; gap: 2px; align-content: center; }
+.pc .ref { font-size: .78em; }
+.pc.vide { border-style: dashed; background: transparent; color: var(--muted); }
+.pc i[lang="en"] { font-style: italic; }
+.pl-link { display: grid; place-items: center; color: var(--muted); font: 500 1.2rem/1 var(--font-body); }
+.pair .note { font-size: .84rem; color: var(--muted); }
+
+/* 4. Droits : deux cours, deux réponses */
+.law { margin-top: 24px; display: grid; gap: 12px; max-width: 980px; }
+.law-step { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px; display: grid; gap: 6px; font-size: .95rem; }
+.law-step b.t { font: 600 1.18rem/1.2 var(--font-display); }
+.law-split { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; position: relative; }
+.law-arm { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--dro); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 8px; align-content: start; font-size: .95rem; }
+.law-arm .court { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--dro-ink); }
+.law-arm .court sup { text-transform: none; }
+.law-arm h3 { font-size: 1.3rem; }
+.law-arm .res { font-weight: 700; }
+.law-arrow { text-align: center; color: var(--muted); font: 500 1rem/1 var(--font-mono); }
+.law-end { border-left: 4px solid var(--his); }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 24px 24px 22px; display: grid; gap: 16px; }
+.callout h2 { font-size: 1.8rem; }
+.regs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.regs article { border: 1px solid var(--rule); border-top: 3px solid var(--c); border-radius: 12px; padding: 14px 16px 16px; background: var(--paper); display: grid; gap: 8px; align-content: start; min-width: 0; }
+.regs h3 { display: flex; align-items: center; gap: 8px; font-size: 1.3rem; color: var(--ink); }
+.regs h3 .ic { width: 1.2rem; height: 1.2rem; }
+.regs p { font-size: .94rem; }
+.regs .ex { font-size: .86rem; color: var(--muted); }
+.callout .fin { font-size: .95rem; color: var(--muted); }
+
+.unk { max-width: 86ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.unk li { max-width: 80ch; }
+
+/* Sources et lectures */
+.biblio { margin-top: 20px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; }
+.biblio section { display: grid; gap: 8px; align-content: start; }
+.biblio h3 { font-size: 1.2rem; display: flex; align-items: center; gap: 8px; }
+.biblio ul { margin: 0; padding-left: 18px; display: grid; gap: 7px; font-size: .9rem; line-height: 1.45; }
+.biblio a { overflow-wrap: anywhere; }
+.biblio .ref { white-space: normal; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 86ch; display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+
+@media (max-width: 960px) {
+  .vrow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .vrow.vhead { display: none; }
+  .vrow > * + * { border-left: 0; }
+  .vq { grid-column: 1 / -1; border-bottom: 1px solid var(--rule); }
+  .vc:nth-child(odd) { border-left: 1px solid var(--rule); }
+  .vc:nth-child(n+4) { border-top: 1px solid var(--rule); }
+  .vc { box-shadow: inset 0 3px 0 var(--c); }
+  .vc .vl { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ci); }
+  .vc .vl .ic { width: .9rem; height: .9rem; }
+  .certs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .regs { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .duo2, .biblio { grid-template-columns: minmax(0, 1fr); }
+  .sign { grid-template-columns: minmax(0, 1fr); grid-template-areas: "txt" "fig" "cta"; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 16px 24px; }
+  .vrow { grid-template-columns: minmax(0, 1fr); }
+  .vc:nth-child(odd) { border-left: 0; }
+  .vc:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .tl .dec { grid-template-columns: minmax(0, 1fr); padding-left: 30px; }
+  .tl .dec span { grid-column: 1; font-size: 1.3rem; }
+  .ev { grid-template-columns: 1.2rem minmax(0, 1fr); gap: 0 10px; }
+  .ev::before { left: calc(.6rem - 1px); }
+  .ev-dot { grid-column: 1; grid-row: 1 / span 2; }
+  .ev-date { grid-column: 2; grid-row: 1; text-align: left; padding-top: 12px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+  .ev-card { grid-column: 2; grid-row: 2; margin-top: 4px; }
+  .pair-g { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .pl-link { display: none; }
+  .law-split { grid-template-columns: minmax(0, 1fr); }
+  .certs { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .certs li { background: transparent; border: 0; border-radius: 0; padding: 0; display: block; font-size: .86rem; }
+  .certs li .cert { vertical-align: -0.1em; margin-right: 6px; }
+  .certs li b::after { content: "\00a0: "; font-weight: 400; color: var(--muted); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .chain { padding: 16px 14px 14px; }
+  .pair { padding: 16px 12px; }
+  .sign { padding: 18px 16px; }
+  .sign-fig { gap: 10px; }
+  .tl-dec a { min-width: 40px; }
+}
+</style>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-livre" viewBox="0 0 20 20"><path d="M3 4.2c2.6-.9 4.9-.6 7 1v11.2c-2.1-1.5-4.4-1.8-7-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M17 4.2c-2.6-.9-4.9-.6-7 1v11.2c2.1-1.5 4.4-1.8 7-1Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+  <symbol id="i-voix" viewBox="0 0 20 20"><path d="M3.2 4.5h13.6v8.4H9.4l-3.8 3v-3H3.2Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M6.4 8.7h7.2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-loupe" viewBox="0 0 20 20"><circle cx="8.4" cy="8.4" r="5.4" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="m12.4 12.4 4.6 4.6" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></symbol>
+  <symbol id="i-fondation" viewBox="0 0 20 20"><path d="M2.6 8 10 3.4 17.4 8Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M4.6 8.6v6.6M8.2 8.6v6.6M11.8 8.6v6.6M15.4 8.6v6.6M2.6 16.6h14.8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-etoile" viewBox="0 0 20 20"><path d="M10 1.6c.8 4.4 3.6 7.6 8.4 8.4-4.8.8-7.6 4-8.4 8.4-.8-4.4-3.6-7.6-8.4-8.4 4.8-.8 7.6-4 8.4-8.4Z" fill="currentColor"/></symbol>
+  <symbol id="i-dormeur" viewBox="0 0 20 20"><path d="M2.4 14.6h15.2M3.6 14.6v-3.2c0-1 .8-1.8 1.8-1.8h9.8c1 0 1.8.8 1.8 1.8v3.2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.2" cy="7.4" r="1.8" fill="currentColor"/><path d="M12.2 3.2h2.6l-2.6 2.8h2.6" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-plume" viewBox="0 0 20 20"><path d="M16.8 2.8C10.4 3.6 6.4 8 5 14.6l1.4.4c.8-1.6 1.8-2.8 3-3.6 2.4.2 4.4-.6 5.6-2.4-1.2 0-2-.2-2.6-.6 1.6-.4 2.8-1.4 3.4-2.8-1 .2-1.8.2-2.4 0 1.2-.8 2-1.8 2.4-2.8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M3 17.6 6.2 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+  <symbol id="i-machine" viewBox="0 0 20 20"><rect x="2.6" y="8.2" width="14.8" height="7.6" rx="1.4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 8.2V4h8v4.2M5.4 11.4h1.2M8.2 11.4h1.2M11 11.4h1.2M13.8 11.4h1M7 13.8h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+  <symbol id="i-plaque" viewBox="0 0 20 20"><rect x="3.4" y="2.8" width="13.2" height="14.4" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6 6h8M6 8.6h8M6 11.2h8M6 13.8h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+  <symbol id="i-livre-p" viewBox="0 0 20 20"><path d="M4.4 3h9.8c.8 0 1.4.6 1.4 1.4V17H5.8c-.8 0-1.4-.6-1.4-1.4Z" fill="currentColor" opacity=".18"/><path d="M4.4 15.6V4.4C4.4 3.6 5 3 5.8 3h9.8v11.2H5.8c-.8 0-1.4.6-1.4 1.4S5 17 5.8 17h9.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="10.4" cy="8.4" r="2.6" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="10.4" cy="8.4" r="1.1" fill="currentColor"/></symbol>
+  <symbol id="i-livres" viewBox="0 0 20 20"><path d="M3 3.4h3v13.2H3ZM7.2 3.4h3v13.2h-3Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="m11.6 4.6 2.9-.8 3.4 12.8-2.9.8Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></symbol>
+  <symbol id="i-science" viewBox="0 0 20 20"><circle cx="10" cy="10" r="1.7" fill="currentColor"/><ellipse cx="10" cy="10" rx="7.8" ry="3" fill="none" stroke="currentColor" stroke-width="1.3"/><ellipse cx="10" cy="10" rx="7.8" ry="3" transform="rotate(60 10 10)" fill="none" stroke="currentColor" stroke-width="1.3"/><ellipse cx="10" cy="10" rx="7.8" ry="3" transform="rotate(-60 10 10)" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-balance" viewBox="0 0 20 20"><path d="M10 3v13.6M5.6 16.6h8.8M3.4 6.2h13.2M10 3.4l.01 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3.4 6.2 1.2 11a2.3 2.3 0 0 0 4.4 0Zm13.2 0L14.4 11a2.3 2.3 0 0 0 4.4 0Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+</svg>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · son origine et ses débats</p>
+      <h1>D’où vient ce livre&nbsp;?</h1>
+      <p class="lede">Il se présente comme l’œuvre d’êtres célestes. Ses premiers lecteurs, à Chicago, racontent l’avoir reçu par l’intermédiaire d’un homme endormi dont ils n’ont jamais dit le nom. Des critiques y voient une œuvre humaine, nourrie de nombreux livres de son temps. Cette page fait entendre chaque voix, avec ses sources et son degré de certitude, sans trancher.</p>
+      <a class="cta" href="#frise">Voir la frise, de 1911 à 2024 <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">À lire avec&nbsp;: <a href="science-et-histoire.html">Science et histoire</a> · <a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a> · <a href="familles-de-personnalites.html">Familles de personnalités</a></p>
+    </div>
+    <aside class="chain" aria-labelledby="h-chain">
+      <p class="label" id="h-chain">Le chemin du texte, selon le récit</p>
+      <ol class="ch">
+        <li class="k-dit"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-etoile"/></svg></span><b>Des auteurs célestes</b><span class="cs">ce que dit le livre <span class="ref">0:0.1 ; 92:4.9</span></span></li>
+        <li class="k-tem"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-dormeur"/></svg></span><b>Un homme endormi</b><span class="cs">dont le nom n’a jamais été révélé</span></li>
+        <li class="k-tem"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plume"/></svg></span><b>Des manuscrits écrits à la main</b><span class="cs">détruits depuis</span></li>
+        <li class="k-tem"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-machine"/></svg></span><b>Une copie dactylographiée</b><span class="cs">gardée dans un coffre ignifuge</span></li>
+        <li class="k-doc"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-plaque"/></svg></span><b>Environ 2&#8239;000 plaques d’imprimerie</b><span class="cs">remises à la Fondation Urantia en 1950</span></li>
+        <li class="k-doc"><span class="cd" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-livre-p"/></svg></span><b>Le livre imprimé</b><span class="cs">12 octobre 1955 · 2&#8239;097 pages</span></li>
+      </ol>
+      <ul class="ch-key" aria-label="Légende">
+        <li class="k-dit"><span class="kd" aria-hidden="true"></span>selon le livre</li>
+        <li class="k-tem"><span class="kd" aria-hidden="true"></span>selon les témoins</li>
+        <li class="k-doc"><span class="kd" aria-hidden="true"></span>attesté par des documents</li>
+      </ul>
+      <p class="note">D’après la Fondation Urantia et la décision de justice de 1997. Le procédé lui-même n’a jamais été expliqué, ni par le livre ni par les témoins.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#voix"><span class="nb">1</span><span class="tt">En bref&nbsp;: quatre voix, cinq questions</span></a></li>
+      <li><a href="#livre"><span class="nb">2</span><span class="tt">Ce que dit le livre lui-même</span></a></li>
+      <li><a href="#frise" class="hot"><span class="nb">★</span><span class="tt">La frise, de 1911 à 2024</span></a></li>
+      <li><a href="#sources"><span class="nb">3</span><span class="tt">Le débat sur les sources humaines</span></a></li>
+      <li><a href="#droits"><span class="nb">4</span><span class="tt">Du droit d’auteur au domaine public</span></a></li>
+      <li><a href="#registres"><span class="nb">5</span><span class="tt">Trois manières de lire cette histoire</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que l’on ne sait pas</span></a></li>
+      <li><a href="#biblio"><span class="nb">6</span><span class="tt">Sources et lectures</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="voix" aria-labelledby="h-voix">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · En bref</p>
+      <h2 id="h-voix">Quatre voix, cinq questions</h2>
+      <p>Sur l’origine du livre, quatre voix se répondent&nbsp;: le livre lui-même, la Fondation Urantia qui le publie, des lecteurs, et des critiques ou historiens. Chacune parle ici pour elle-même&nbsp;; le détail et les sources suivent plus bas.</p>
+    </div>
+    <div class="vq-tabs" id="vq-tabs" role="group" aria-label="Choisir une question" hidden>
+      <button type="button" class="chip" data-q="0" aria-pressed="true">Qui&nbsp;?</button>
+      <button type="button" class="chip" data-q="1" aria-pressed="false">Comment&nbsp;?</button>
+      <button type="button" class="chip" data-q="2" aria-pressed="false">Quand&nbsp;?</button>
+      <button type="button" class="chip" data-q="3" aria-pressed="false">Sources&nbsp;?</button>
+      <button type="button" class="chip" data-q="4" aria-pressed="false">Science&nbsp;?</button>
+      <button type="button" class="chip" data-q="tout" aria-pressed="false">Les cinq</button>
+    </div>
+    <div class="voices" id="voices" role="table" aria-label="Ce que disent quatre voix sur l’origine du livre">
+      <div class="vrow vhead" role="row">
+        <span role="columnheader">Question</span>
+        <span role="columnheader" class="r-dit"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>
+        <span role="columnheader" class="r-lec"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>
+        <span role="columnheader" class="r-lec"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>
+        <span role="columnheader" class="r-his"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>
+      </div>
+      <div class="vrow" role="row">
+        <span class="vq" role="rowheader">Qui l’a écrit&nbsp;?</span>
+        <div class="vc r-dit" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>Des êtres célestes, nommés à la fin des fascicules ou en tête de la quatrième partie&nbsp;: <span class="q" data-ref="92:4.9">«&nbsp;une présentation composite par de nombreux êtres&nbsp;»</span> <span class="ref">92:4.9</span>.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>Elle ne nomme aucun auteur humain&nbsp;: l’identité des personnes en cause a été tue, dit-elle, pour qu’on ne leur voue pas un intérêt excessif.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>La Fellowship, association de lecteurs, renvoie aux signatures du livre et invite à le juger à ce qu’il apporte à la vie spirituelle.</div>
+        <div class="vc r-his" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>Des humains. Pour Martin Gardner (1995), l’homme endormi, qu’il identifie à Wilfred Kellogg, et William S. Sadler, qui aurait remanié et en partie écrit le texte.</div>
+      </div>
+      <div class="vrow" role="row">
+        <span class="vq" role="rowheader">Comment&nbsp;?</span>
+        <div class="vc r-dit" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>Par un sujet humain et l’aide des médians <span class="ref">77:8.8 ; 113:2.6</span>, <span class="q" data-ref="56:10.23">«&nbsp;au moyen d’une technique autorisée par nos supérieurs&nbsp;»</span>, qu’il ne décrit pas <span class="ref">56:10.23</span>.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>Des manuscrits, recopiés à la machine, puis gravés sur plaques. Au-delà, <span class="q" data-ext="fondation-fr">«&nbsp;Les détails supplémentaires sur comment le manuscrit vit le jour sont limités.&nbsp;»</span></div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>La Fellowship propose de laisser de côté les théories contradictoires sur la naissance du livre, et d’aller au livre lui-même.</div>
+        <div class="vc r-his" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>Le récit ne peut pas être vérifié&nbsp;: les manuscrits ont été détruits. Gardner y voit une écriture humaine, en partie inconsciente, retouchée ensuite.</div>
+      </div>
+      <div class="vrow" role="row">
+        <span class="vq" role="rowheader">Quand&nbsp;?</span>
+        <div class="vc r-dit" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>En 1934 pour les parties I et II, en 1935 pour la partie III <span class="ref">31:10.22 ; 56:10.23 ; 119:8.9</span>.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>Des fascicules dès 1925 environ, les parties I à III certifiées en 1934, la IV en 1935, puis des années de clarifications&nbsp;; parution le 12 octobre 1955.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>La Fellowship fait commencer les réunions de lecture en 1924 et finir le Forum le 7&nbsp;juin 1942.</div>
+        <div class="vc r-his" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>Matthew Block a repéré 17 sources publiées après 1935, la dernière en 1945&nbsp;; il en conclut que le texte a encore changé dans les années 1940.</div>
+      </div>
+      <div class="vrow" role="row">
+        <span class="vq" role="rowheader">Des sources humaines&nbsp;?</span>
+        <div class="vc r-dit" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>Oui, il le dit&nbsp;: plus de mille concepts humains <span class="ref">0:12.12</span>, la pensée de plus de deux-mille personnes pour la vie de Jésus <span class="ref">121:8.13</span>. Mais il ne nomme aucun livre.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>L’histoire de 1960 qu’elle publie renvoie elle-même à ces passages <span class="ref">0:12.11–12 ; 121:8.12</span>.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>Pour des lecteurs croyants, la manière dont ces textes sont repris reste compatible avec une origine céleste.</div>
+        <div class="vc r-his" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>Environ 125 livres en anglais, utilisés dans quelque 150 fascicules (Block). Gardner et Brad Gooch parlent de plagiat.</div>
+      </div>
+      <div class="vrow" role="row">
+        <span class="vq" role="rowheader">Et la science&nbsp;?</span>
+        <div class="vc r-dit" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</span>Elle sera dépassée, prévient-il&nbsp;: sa cosmologie <span class="q" data-ref="101:4.2">«&nbsp;n’est <i>pas inspirée</i>&nbsp;»</span> <span class="ref">101:4.2</span>.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>La Fondation</span>Son histoire de 1960 cite ce même avertissement parmi les passages sur l’origine du livre.</div>
+        <div class="vc r-lec" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Des lecteurs</span>Pour Meredith Sprunger, pasteur et lecteur (1992), presque toute cette science était celle de son époque&nbsp;; il refusait d’en faire un texte infaillible.</div>
+        <div class="vc r-his" role="cell"><span class="vl"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et historiens</span>Pour Gardner, cette science datée est la marque d’auteurs humains de leur temps. <a href="science-et-histoire.html">Voir Science et histoire</a>.</div>
+      </div>
+    </div>
+    <p class="hint voices-note">Fondation&nbsp;: sa foire aux questions, sa présentation et son histoire de 1960. Lecteurs&nbsp;: la Fellowship, Meredith Sprunger, et Wikipédia pour les lecteurs croyants. Critiques&nbsp;: Gardner et Gooch d’après Wikipédia, Matthew Block d’après son site. Références complètes dans les sections suivantes.</p>
+  </section>
+
+  <section id="livre" aria-labelledby="h-livre">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · <span class="reg r-dit"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le texte dit</span></p>
+      <h2 id="h-livre">Ce que dit le livre lui-même</h2>
+      <p>Le livre parle de sa propre origine par petites touches, dispersées dans ses 197 documents. Rassemblées, elles dessinent quatre affirmations.</p>
+    </div>
+    <div class="cards">
+      <article class="card r-dit">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-plume"/></svg>Des auteurs qui signent</h3>
+        <p>Les 120 premiers documents, de l’Introduction au fascicule 119, portent tous à leur fin une mention entre crochets sur leur auteur ou leur parrain&nbsp;: <i>Présenté par…</i> dans 88 cas, <i>Parrainé par…</i> dans 20, et aussi <i>Rédigé</i>, <i>Dicté</i> ou <i>Relaté par…</i> La première partie est attribuée à une commission de vingt-quatre administrateurs d’Orvonton <span class="ref">31:10.22</span>&nbsp;; la quatrième, sur Jésus, à un médian aidé de onze collègues <span class="ref">121:0.1 ; 121:8.14</span>.</p>
+        <blockquote class="cite r-dit" data-ref="92:4.9"><p>«&nbsp;Ils diffèrent de toutes les révélations antérieures, car ils ne sont pas l’œuvre d’une seule personnalité de l’univers, mais une présentation composite par de nombreux êtres.&nbsp;»</p><span class="ref">92:4.9</span></blockquote>
+        <p class="src">Ses lecteurs l’appellent parfois la <i>cinquième révélation d’époque</i>, d’après la liste du fascicule 92, où les fascicules d’Urantia viennent en cinquième <span class="ref">92:4.4–9</span>.</p>
+      </article>
+      <article class="card r-dit">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-dormeur"/></svg>Un texte transmis en anglais</h3>
+        <p>L’Introduction annonce des fascicules que le corps des révélateurs de vérité d’Orvonton a été <span class="q" data-ref="0:0.1">«&nbsp;autorisé à traduire dans la langue anglaise d’Urantia&nbsp;»</span> <span class="ref">0:0.1</span>, en n’inventant de mots nouveaux que faute de mieux <span class="ref">0:0.2</span>. Trois fascicules datent leur mise en anglais, de 1934 et 1935 <span class="ref">31:10.22 ; 56:10.23 ; 119:8.9</span>, et deux l’attribuent à une technique <span class="q" data-ref="119:8.9">«&nbsp;permise par nos supérieurs&nbsp;»</span> <span class="ref">119:8.9</span>.</p>
+        <p>Le livre évoque aussi, sans le nommer, l’humain qui servit d’intermédiaire&nbsp;: le sujet <span class="q" data-ref="77:8.8">«&nbsp;par qui les présentes communications furent transmises&nbsp;»</span> <span class="ref">77:8.8</span>. Son Ajusteur serait <span class="q" data-ref="110:5.7">«&nbsp;l’un des Ajusteurs les plus expérimentés de son temps et de sa génération&nbsp;»</span> <span class="ref">110:5.7</span>, et son ange gardien est désigné par un numéro <span class="ref">113:2.6</span>. Les médians, précise le texte, n’ont rien à voir avec le spiritisme ni avec la médiumnité <span class="ref">77:8.13</span>.</p>
+        <p class="src">Le texte ne dit ni qui était ce sujet, ni en quoi consistait la technique.</p>
+      </article>
+      <article class="card r-dit">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livres"/></svg>Des sources humaines, reconnues</h3>
+        <p>Les auteurs disent donner la préférence aux concepts humains les plus élevés, et ne recourir à la révélation pure que faute d’expression humaine adéquate <span class="ref">0:12.11</span>.</p>
+        <blockquote class="cite r-dit" data-ref="0:12.12"><p>«&nbsp;En conséquence, pour présenter Dieu et ses associés dans l’univers, nous avons choisi pour base de ces fascicules plus de mille concepts humains […]&nbsp;»</p><span class="ref">0:12.12</span></blockquote>
+        <p>Pour la vie de Jésus, le médian auteur dit avoir puisé chez plus de deux-mille êtres humains <span class="ref">121:8.13</span>, et se décrit ainsi&nbsp;:</p>
+        <blockquote class="cite r-dit" data-ref="121:8.14"><p>«&nbsp;Sous beaucoup de rapports, j’ai davantage servi de collecteur et d’éditeur que de narrateur original.&nbsp;»</p><span class="ref">121:8.14</span></blockquote>
+        <p class="src">Le texte ne nomme aucun de ces auteurs, ni aucun livre. Il cite en revanche les Évangiles comme sources de la quatrième partie <span class="ref">121:8.1</span>&nbsp;: voir <a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a>.</p>
+      </article>
+      <article class="card r-dit">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-science"/></svg>Un avertissement sur la science</h3>
+        <blockquote class="cite r-dit" data-ref="101:4.2"><p>«&nbsp;Nous ne sommes pas libres d’anticiper sur les découvertes scientifiques d’un millénaire.&nbsp;»</p><span class="ref">101:4.2</span></blockquote>
+        <p>Toute cosmologie liée à une religion révélée, dit le texte, est vite dépassée <span class="ref">101:4.1</span>&nbsp;; d’ici peu d’années, beaucoup de ses affirmations sur les sciences physiques <span class="q" data-ref="101:4.2">«&nbsp;auront besoin d’être revues&nbsp;»</span> <span class="ref">101:4.2</span>.</p>
+        <p class="src">Ce que valent aujourd’hui ces affirmations&nbsp;: voir <a href="science-et-histoire.html">Science et histoire</a>.</p>
+      </article>
+    </div>
+
+    <aside class="sign" aria-labelledby="h-sign">
+      <div class="sign-txt">
+        <h3 id="h-sign">Qui signe quoi&nbsp;?</h3>
+        <p>Le livre attribue chacun de ses documents à un auteur, du Conseiller Divin qui rédige l’Introduction <span class="ref">0:12.14</span> à la commission de douze médians sous laquelle est écrit le récit de la vie de Jésus <span class="ref">121:0.1</span>. Une page les réunit tous, fascicule par fascicule, dans une mosaïque interactive, avec le livre en chiffres.</p>
+      </div>
+      <ul class="sign-fig" aria-label="Les auteurs déclarés en trois chiffres">
+        <li><b>197</b><span>documents, de l’Introduction au fascicule&nbsp;196</span></li>
+        <li><b>23</b><span>auteurs déclarés, en six familles</span></li>
+        <li><b>76</b><span>fascicules attribués à une commission de médians, de 121 à&nbsp;196</span></li>
+      </ul>
+      <a class="cta" href="auteurs-et-chiffres.html#mosaique">Voir la mosaïque des 197&nbsp;fascicules <span class="ar" aria-hidden="true">→</span></a>
+    </aside>
+  </section>
+
+  <section id="frise" class="feature" aria-labelledby="h-frise">
+    <div class="sec-head">
+      <p class="eyebrow">Frise datée · <span class="reg r-his"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Regard historique</span></p>
+      <h2 id="h-frise">De 1911 à 2024&nbsp;: l’histoire du livre</h2>
+      <p>Chaque date porte sa source et un degré de certitude. Les récits du mouvement viennent souvent des témoins eux-mêmes, sans document indépendant&nbsp;: ils sont signalés comme tels.</p>
+    </div>
+    <ul class="certs" aria-label="Les degrés de certitude">
+      <li><span class="cert c-eta" aria-hidden="true"></span><b>Établi</b><span>documents publics concordants&nbsp;: jugements, catalogues, le livre lui-même</span></li>
+      <li><span class="cert c-tem" aria-hidden="true"></span><b>Témoignage</b><span>récit des acteurs du mouvement, sans confirmation indépendante connue</span></li>
+      <li><span class="cert c-dis" aria-hidden="true"></span><b>Discuté</b><span>les sources ne s’accordent pas</span></li>
+      <li><span class="cert c-inc" aria-hidden="true"></span><b>Inconnu</b><span>aucune source ne permet de répondre</span></li>
+    </ul>
+    <div class="tl-bar">
+      <div class="tl-filtres" id="tl-filtres" role="group" aria-label="Filtrer la frise" hidden>
+        <span class="lbl" aria-hidden="true">Afficher</span>
+        <button type="button" class="chip" data-f="tout" aria-pressed="true">Tout</button>
+        <button type="button" class="chip c-livre" data-f="livre" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Le livre et ses éditions</button>
+        <button type="button" class="chip c-mvt" data-f="mvt" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Le mouvement</button>
+        <button type="button" class="chip c-droit" data-f="droit" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Justice et droits</button>
+        <button type="button" class="chip c-crit" data-f="crit" aria-pressed="false"><span class="sw" aria-hidden="true"></span>Critiques et recherche</button>
+      </div>
+      <nav class="tl-dec" id="tl-dec" aria-label="Aller à une décennie">
+        <span class="lbl" aria-hidden="true">Aller à</span>
+        <a href="#d1910">1910</a><a href="#d1920">1920</a><a href="#d1930">1930</a><a href="#d1940">1940</a><a href="#d1950">1950</a><a href="#d1960">1960</a><a href="#d1980">1980</a><a href="#d1990">1990</a><a href="#d2000">2000</a><a href="#d2010">2010</a><a href="#d2020">2020</a>
+      </nav>
+      <p class="tl-compte" id="tl-compte" aria-live="polite"></p>
+    </div>
+
+    <ol class="tl" id="tl">
+      <li class="dec" id="d1910"><span>Années 1910</span></li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1911">1911</time><span class="d">été</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-tem">Témoignage</span></div>
+          <h3>Un dormeur pas comme les autres</h3>
+          <p>À Chicago, William S. Sadler (1875-1969), médecin, et sa femme Lena Sadler (1875-1939), médecin elle aussi, observent un homme qui, profondément endormi, transmet des messages attribués à des visiteurs d’autres mondes. Sadler dira avoir connu ce cas <span class="q" data-ext="sadler-1929" lang="en">«&nbsp;in the summer of 1911&nbsp;»</span>, à l’été 1911, et assisté à quelque 250 séances de nuit.</p>
+          <p class="src">Source&nbsp;: W. S. Sadler, <i lang="en">The Mind at Mischief</i>, 1929, appendice (<a class="ext" href="https://archive.org/details/mindatmischieftr0000will" target="_blank" rel="noopener">archive.org</a>). D’autres récits datent la rencontre entre 1906 et 1911 (Wikipédia).</p>
+        </div>
+      </li>
+      <li class="dec" id="d1920"><span>Années 1920</span></li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1924">1924</time><span class="d">vers</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-dis">Discuté</span></div>
+          <h3>Le dimanche, chez les Sadler</h3>
+          <p>D’anciens patients et des amis se réunissent le dimanche après-midi chez les Sadler pour parler de santé&nbsp;; Sadler leur parle du dormeur, et le groupe devient le Forum. Les sources donnent 1923 ou 1924.</p>
+          <p class="src">Sources&nbsp;: <a class="ext" href="https://www.urantia.org/fr/la-fondation-urantia/lhistoire-du-mouvement-urantia" target="_blank" rel="noopener">L’Histoire du Mouvement Urantia (1960)</a>, Fondation Urantia&nbsp;; <a class="ext" href="https://urantiabook.org/welcome/about-us/our-organization/a-brief-history" target="_blank" rel="noopener">A Brief History</a>, Fellowship (1924)&nbsp;; Wikipédia (1923).</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1925-09">1925</time><span class="d">septembre</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-tem">Témoignage</span></div>
+          <h3>Des questions, puis des fascicules</h3>
+          <p>Le Forum devient un groupe fermé de trente membres fondateurs, tenus au secret. Ses questions, triées, sont transmises&nbsp;; des fascicules écrits à la main arrivent en réponse. Une poignée de personnes, la Commission de contact, recueille les questions et compare la dactylographie aux manuscrits. Plus de 300 personnes poseront des questions.</p>
+          <blockquote class="cite" data-ext="histoire-1960-fr"><p>«&nbsp;Pas de questions—pas de Fascicules.&nbsp;»</p><span class="ref-ext">L’Histoire du Mouvement Urantia, 1960</span></blockquote>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://www.urantia.org/fr/la-fondation-urantia/lhistoire-du-mouvement-urantia" target="_blank" rel="noopener">L’Histoire du Mouvement Urantia (1960)</a>, publiée par la Fondation. Selon la Fellowship, la Commission réunissait les deux Sadler, leur fils Bill, Emma Christensen et Wilfred et Anna Kellogg.</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1929-10">1929</time><span class="d">octobre</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-eta">Établi</span></div>
+          <h3>Un cas que Sadler ne sait pas classer</h3>
+          <p>Dans <i lang="en">The Mind at Mischief</i>, livre où il démonte les fraudes des médiums, Sadler mentionne en appendice un cas de dormeur qu’il dit incapable de classer&nbsp;; il a promis de ne pas le publier du vivant de l’intéressé.</p>
+          <p class="src">Source&nbsp;: Funk &amp; Wagnalls, 1929, p.&nbsp;382-383 (<a class="ext" href="https://archive.org/details/mindatmischieftr0000will" target="_blank" rel="noopener">archive.org</a>).</p>
+        </div>
+      </li>
+      <li class="dec" id="d1930"><span>Années 1930</span></li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="1934">1934</time><span class="d">et 1935</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le livre</span><span class="cert c-eta">Établi&nbsp;: le texte le dit</span></div>
+          <h3>Les dates que donne le livre</h3>
+          <p>Le livre date de 1934 la mise en anglais des parties I et II, de 1935 celle de la partie III <span class="ref">31:10.22 ; 56:10.23 ; 119:8.9</span>. Selon l’histoire de 1960, 57 fascicules sont d’abord venus, puis 196&nbsp;; les parties I à III ont été certifiées en 1934, la partie IV en 1935, avant plusieurs années de clarifications.</p>
+          <p class="src">Sources&nbsp;: le livre&nbsp;; <a class="ext" href="https://www.urantia.org/fr/la-fondation-urantia/lhistoire-du-mouvement-urantia" target="_blank" rel="noopener">L’Histoire du Mouvement Urantia (1960)</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1939">1939</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-tem">Témoignage</span></div>
+          <h3>Les Soixante-dix&nbsp;; mort de Lena Sadler</h3>
+          <p>Le 3 avril, soixante-dix membres du Forum entament une étude suivie des fascicules, qui durera jusqu’en 1956. Lena Sadler meurt en aout&nbsp;; elle avait réuni environ 20&#8239;000 dollars pour l’impression.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://www.urantia.org/fr/la-fondation-urantia/lhistoire-du-mouvement-urantia" target="_blank" rel="noopener">L’Histoire du Mouvement Urantia (1960)</a>.</p>
+        </div>
+      </li>
+      <li class="dec" id="d1940"><span>Années 1940</span></li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1942">1942</time><span class="d">mai ou juin</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-tem">Témoignage</span></div>
+          <h3>Fin du Forum</h3>
+          <p>Le Forum tient sa dernière réunion, le 31 mai selon l’histoire de 1960, le 7 juin selon la Fellowship. En 17 ans, il a compté 486 membres. Les lectures continuent jusqu’à la publication.</p>
+          <p class="src">Sources&nbsp;: histoire de 1960&nbsp;; <a class="ext" href="https://urantiabook.org/welcome/about-us/our-organization/a-brief-history" target="_blank" rel="noopener">Fellowship</a>.</p>
+        </div>
+      </li>
+      <li class="dec" id="d1950"><span>Années 1950</span></li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1950-01-11">1950</time><span class="d">11 janvier</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-eta">Établi</span></div>
+          <h3>La Fondation Urantia</h3>
+          <p>La Fondation est constituée en Illinois pour publier le texte et le garder inchangé&nbsp;; son acte de fiducie lui remet les plaques d’imprimerie. Premier conseil, selon l’histoire de 1960&nbsp;: William M. Hales, William S. Sadler Jr., Emma L. Christensen, Wilfred C. Kellogg et Edith Cook.</p>
+          <p class="src">Sources&nbsp;: <a class="ext" href="https://www.urantia.org/fr/qui-sommes-nous/a-propos-de-nous" target="_blank" rel="noopener">Fondation Urantia, Qui sommes-nous&nbsp;?</a>&nbsp;; <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">décision de 1997</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1955-01-02">1955</time><span class="d">2 janvier</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-eta">Établi</span></div>
+          <h3>La Brotherhood</h3>
+          <p>Trente-six lecteurs fondent à Chicago l’Urantia Brotherhood, association fraternelle chargée de faire connaitre les enseignements du livre, sans vouloir fonder d’église.</p>
+          <p class="src">Sources&nbsp;: histoire de 1960&nbsp;; Fondation&nbsp;; Fellowship.</p>
+        </div>
+      </li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="1955-10-12">1955</time><span class="d">12 octobre</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le livre</span><span class="cert c-eta">Établi</span></div>
+          <h3><i lang="en">The Urantia Book</i> parait</h3>
+          <p>Le livre compte 2&#8239;097 pages&nbsp;; il est tiré à 10&#8239;000 exemplaires, sans nom d’auteur humain. L’appel aux dons a réuni plus de 49&#8239;000 dollars&nbsp;; le premier, 1&#8239;000 dollars, venait de l’explorateur polaire Sir Hubert Wilkins. Le droit d’auteur est enregistré en 1956.</p>
+          <p class="src">Sources&nbsp;: Fondation&nbsp;; histoire de 1960&nbsp;; <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">décision de 1997</a> (enregistrement).</p>
+        </div>
+      </li>
+      <li class="dec" id="d1960"><span>Années 1960</span></li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1960">1960</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-dis">Discuté</span></div>
+          <h3>Une histoire du mouvement</h3>
+          <p>Un récit jusqu’en 1960, publié par la Fondation sous le nom de William S. Sadler, raconte le Forum et explique le silence gardé sur l’origine du livre&nbsp;:</p>
+          <blockquote class="cite" data-ext="histoire-1960-fr"><p>«&nbsp;Aucun d’entre nous ne sait vraiment comment ce phénomène fut exécuté.&nbsp;»</p><span class="ref-ext">L’Histoire du Mouvement Urantia, 1960</span></blockquote>
+          <p>Son attribution est discutée&nbsp;: le texte n’est pas signé, et selon le chercheur Larry Mullins, il s’agirait de l’histoire inachevée d’Emma Christensen, qui y aurait inséré des pages de Sadler.</p>
+          <p class="src">Sources&nbsp;: Fondation&nbsp;; note des <a class="ext" href="https://archive.urantiabook.org/archive/history/histumov.htm" target="_blank" rel="noopener">archives de la Fellowship</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="1961">1961</time><span class="d">à 1962</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Les éditions</span><span class="cert c-eta">Établi</span></div>
+          <h3><i>La Cosmogonie d’Urantia</i></h3>
+          <p>La première traduction française parait en trois volumes, à Chicago et à Paris&nbsp;: elle est de Jacques Weiss (1894-1987), avec Lysie Guionic et Simone Leclère. L’histoire de 1960 l’annonçait pour la fin de 1961.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://catalogue.bnf.fr/ark:/12148/cb33204793v" target="_blank" rel="noopener">catalogue de la BnF</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1969-04-26">1969</time><span class="d">26 avril</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-eta">Établi</span></div>
+          <h3>Mort de William S. Sadler</h3>
+          <p>Sadler meurt à Chicago à 93 ans. La maison de 1908 où les Sadler vivaient et recevaient leurs patients, au 533 Diversey Parkway, est léguée la même année à la Fondation, qui y a toujours son siège.</p>
+          <p class="src">Sources&nbsp;: <a class="ext" href="https://www.urantia.org/urantia-book/faqs" target="_blank" rel="noopener">foire aux questions de la Fondation</a>&nbsp;; Wikipédia (date).</p>
+        </div>
+      </li>
+      <li class="dec" id="d1980"><span>Années 1980</span></li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="1983">1983</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Le renouvellement</h3>
+          <p>La loi américaine de l’époque protège une œuvre 28 ans, puis demande de renouveler le droit. La Fondation le renouvelle en 1983, en se déclarant propriétaire d’une œuvre de commande (<i lang="en">work made for hire</i>)&nbsp;: c’est ce renouvellement que les procès vont discuter.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">décision de 1997</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-mvt" data-cat="mvt">
+        <div class="ev-date"><time class="y" datetime="1989">1989</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Le mouvement</span><span class="cert c-tem">Témoignage</span></div>
+          <h3>La Brotherhood devient la Fellowship</h3>
+          <p>La Fondation retire à la Brotherhood le droit d’utiliser le nom <i>Urantia</i> et le symbole des trois cercles, pour des divergences que la Fellowship dit idéologiques. L’association prend le nom de <i lang="en">Fifth Epochal Fellowship</i>, puis de <i lang="en">The Urantia Book Fellowship</i>.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://urantiabook.org/welcome/about-us/our-organization/a-brief-history" target="_blank" rel="noopener">A Brief History</a>, Fellowship. Le récit est celui d’une des deux parties.</p>
+        </div>
+      </li>
+      <li class="dec" id="d1990"><span>Années 1990</span></li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="1991">1991</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Le procès Maaherra</h3>
+          <p>La Fondation poursuit Kristen Maaherra, lectrice depuis 1969, qui distribuait gratuitement, sur disquettes, une aide à l’étude contenant le texte intégral.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener"><i lang="en">Urantia Foundation v. Maaherra</i>, 1997</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-crit" data-cat="crit">
+        <div class="ev-date"><time class="y" datetime="1992">1992</time><span class="d">printemps</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Critiques et recherche</span><span class="cert c-eta">Établi</span></div>
+          <h3>Matthew Block cherche les sources</h3>
+          <p>Lecteur du livre, Matthew Block tombe sur des ouvrages des années 1920 et 1930 dont des passages suivis ont des parallèles étroits avec le livre. Le premier, <i lang="en">Origin and Evolution of Religion</i> d’E. Washburn Hopkins (1923), sert de trame au fascicule 85.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://urantiabooksources.com/" target="_blank" rel="noopener">urantiabooksources.com</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="1994">1994</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Les éditions</span><span class="cert c-eta">Établi</span></div>
+          <h3><i>Le Livre d’Urantia</i>, traduction révisée</h3>
+          <p>La traduction française, révisée et corrigée, parait sous son titre actuel.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://catalogue.bnf.fr/ark:/12148/cb357113801" target="_blank" rel="noopener">catalogue de la BnF</a> (1994)&nbsp;; Wikipédia en français indique 1996.</p>
+        </div>
+      </li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="1995-02-10">1995</time><span class="d">10 février</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Premier jugement&nbsp;: Maaherra gagne</h3>
+          <p>Un tribunal fédéral d’Arizona juge le renouvellement de 1983 invalide&nbsp;: le livre n’est pas une œuvre de commande, et la Fondation n’a pas montré qu’elle en était propriétaire.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">décision d’appel de 1997</a>, qui résume ce jugement.</p>
+        </div>
+      </li>
+      <li class="ev c-crit" data-cat="crit">
+        <div class="ev-date"><time class="y" datetime="1995">1995</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Critiques et recherche</span><span class="cert c-eta">Établi</span></div>
+          <h3>Le livre de Martin Gardner</h3>
+          <p>Le sceptique Martin Gardner (1914-2010) publie <i lang="en">Urantia: The Great Cult Mystery</i> chez Prometheus Books&nbsp;: pour lui, le livre est d’origine humaine (voir plus bas).</p>
+          <p class="src">Source&nbsp;: notice <a class="ext" href="https://archive.org/details/isbn_9780879759551" target="_blank" rel="noopener">archive.org</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="1997-06-10">1997</time><span class="d">10 juin</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>En appel&nbsp;: le renouvellement est valide</h3>
+          <p>La cour d’appel du 9<sup>e</sup>&nbsp;circuit renverse le jugement. Le droit d’auteur, écrit-elle, ne protège pas des créations d’êtres divins, <span class="q" data-ext="maaherra-1997" lang="en">«&nbsp;it is not creations of divine beings that the copyright laws were intended to protect&nbsp;»</span>&nbsp;: il faut une part humaine. Elle la trouve dans les questions de la Commission de contact, qui ont structuré les fascicules. Le livre est une compilation, et le renouvellement est valide.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener"><i lang="en">Urantia Foundation v. Maaherra</i>, 114 F.3d 955</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="1999">1999</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Un nouveau procès</h3>
+          <p>La Michael Foundation, présidée par Harry McMullan III, publie <i lang="en">Jesus—A New Revelation</i>, qui reprend mot pour mot 76 des 196 fascicules, puis demande au tribunal de déclarer invalide le droit de la Fondation.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://static.case.law/f-appx/61/html/0538-01.html" target="_blank" rel="noopener">décision de 2003</a>.</p>
+        </div>
+      </li>
+      <li class="dec" id="d2000"><span>Années 2000</span></li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="2001">2001</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Un jury d’Oklahoma</h3>
+          <p>Le jury donne raison à la Michael Foundation&nbsp;: le livre n’est ni une œuvre composite, ni une œuvre de commande.</p>
+          <p class="src">Sources&nbsp;: décision de 2003, qui rapporte le verdict&nbsp;; Wikipédia pour l’année.</p>
+        </div>
+      </li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="2003-03-11">2003</time><span class="d">11 mars</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Le domaine public aux États-Unis</h3>
+          <p>La cour d’appel du 10<sup>e</sup>&nbsp;circuit confirme le verdict. Seul l’auteur, ou ses héritiers, pouvait renouveler le droit&nbsp;; or l’auteur retenu, le dormeur, que la cour appelle <i lang="en">the Conduit</i>, était mort avant 1983, et ses héritiers ne l’ont pas fait. Le texte anglais tombe donc dans le domaine public aux États-Unis. Un juge était dissident, et la décision, non publiée, ne fait pas jurisprudence.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://static.case.law/f-appx/61/html/0538-01.html" target="_blank" rel="noopener"><i lang="en">Michael Foundation v. Urantia Foundation</i>, 61 F. App’x 538</a>.</p>
+        </div>
+      </li>
+      <li class="ev c-droit" data-cat="droit">
+        <div class="ev-date"><time class="y" datetime="2006-01">2006</time><span class="d">janvier</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Justice et droits</span><span class="cert c-eta">Établi</span></div>
+          <h3>Ailleurs aussi</h3>
+          <p>Selon la Fondation, son droit d’auteur international sur le texte anglais de 1955 a expiré en janvier 2006&nbsp;: ce texte est dans le domaine public. Les traductions qu’elle publie restent protégées.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://www.urantia.org/terms-and-conditions" target="_blank" rel="noopener">conditions d’utilisation de la Fondation</a> (adresse de l’ancienne page des droits).</p>
+        </div>
+      </li>
+      <li class="ev c-crit" data-cat="crit">
+        <div class="ev-date"><time class="y" datetime="2007">2007</time></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Critiques et recherche</span><span class="cert c-eta">Établi</span></div>
+          <h3>Un regard universitaire</h3>
+          <p>La chercheuse Sarah Lewis consacre au récit de la réception du livre un chapitre d’un ouvrage collectif de Cambridge University Press sur l’invention des traditions sacrées.</p>
+          <p class="src">Source&nbsp;: <i lang="en">The Peculiar Sleep: Receiving The Urantia Book</i>, dans J.&nbsp;R. Lewis et O. Hammer (dir.), <i lang="en">The Invention of Sacred Tradition</i>, p.&nbsp;199-212 (<a class="ext" href="https://doi.org/10.1017/CBO9780511488450.011" target="_blank" rel="noopener">DOI</a>).</p>
+        </div>
+      </li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="2007">2007</time><span class="d">à 2009</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Les éditions</span><span class="cert c-eta">Établi</span></div>
+          <h3>Un texte de référence commun</h3>
+          <p>La Fondation et la Fellowship forment un comité commun qui établit le texte de référence standard&nbsp;: de rares corrections au texte de 1955, adoptées pour la plupart en 2009. Ce texte sert de base aux publications et aux traductions.</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://www.urantia.org/urantia-book/text-standardization" target="_blank" rel="noopener">Fondation Urantia, texte de référence standard</a>.</p>
+        </div>
+      </li>
+      <li class="dec" id="d2010"><span>Années 2010</span></li>
+      <li class="ev c-crit" data-cat="crit">
+        <div class="ev-date"><time class="y" datetime="2016-03-10">2016</time><span class="d">10 mars</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Critiques et recherche</span><span class="cert c-eta">Établi</span></div>
+          <h3>Environ 125 livres</h3>
+          <p>Matthew Block recense environ 125 livres utilisés dans quelque 150 fascicules, tous publiés en anglais, dont 17 après 1935&nbsp;; le plus récent, <i lang="en">The Anatomy of Peace</i> d’Emery Reves (1945), au fascicule 134. Le plus utilisé est <i lang="en">The Science of Society</i> de Sumner et Keller (1927).</p>
+          <p class="src">Source&nbsp;: <a class="ext" href="https://urantiabooksources.com/" target="_blank" rel="noopener">urantiabooksources.com</a>, présentation datée du 10 mars 2016.</p>
+        </div>
+      </li>
+      <li class="dec" id="d2020"><span>Années 2020</span></li>
+      <li class="ev c-livre" data-cat="livre">
+        <div class="ev-date"><time class="y" datetime="2024-12-13">2024</time><span class="d">13 décembre</span></div>
+        <span class="ev-dot" aria-hidden="true"></span>
+        <div class="ev-card">
+          <div class="ev-top"><span class="ev-cat">Les éditions</span><span class="cert c-eta">Établi</span></div>
+          <h3>L’édition citée sur ce site</h3>
+          <p>La Fondation diffuse la traduction française révisée dans une édition 2024 (étampe UF-202412132348). Elle dit avoir publié plus de 25 traductions.</p>
+          <p class="src">Sources&nbsp;: page de titre de l’édition&nbsp;; Fondation, Qui sommes-nous&nbsp;?</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="sources" aria-labelledby="h-src">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · <span class="reg r-his"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Regard historique</span> <span class="reg r-lec"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Lecture courante</span></p>
+      <h2 id="h-src">Le débat sur les sources humaines</h2>
+      <p>Que le livre reprenne des pensées humaines, il le dit lui-même. Le débat porte sur l’ampleur de ces emprunts, et sur ce qu’ils signifient.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card r-his">
+        <p class="who">Le critique</p>
+        <h3>Martin Gardner, 1995</h3>
+        <p>Selon Gardner, tel que le résume Wikipédia, l’homme endormi serait Wilfred Kellogg, beau-frère de Sadler, qui aurait produit le texte à partir de son subconscient&nbsp;; Sadler l’aurait ensuite remanié et en partie écrit. Gardner relève aussi des emprunts à des livres de l’époque, une science datée, et des traits qu’il rattache à l’adventisme, milieu d’où venaient les Sadler.</p>
+        <p class="src">Ce sont ses conclusions&nbsp;: l’identité du dormeur n’a jamais été confirmée. Les rapprochements avec l’adventisme sont discutés dans <a href="destinee-humaine.html">La destinée humaine</a> et <a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a>.</p>
+      </article>
+      <article class="card r-his">
+        <p class="who">Le chercheur, lui-même lecteur</p>
+        <h3>Matthew Block, depuis 1992</h3>
+        <p>Il publie des tableaux qui mettent en regard, phrase par phrase, des passages du livre et leurs sources. Il constate que les techniques d’emprunt sont <span class="q" data-ext="block-2016" lang="en">«&nbsp;remarkably similar regardless of stated author&nbsp;»</span>, remarquablement semblables quel que soit l’auteur déclaré, et les compare à la manière dont Sadler écrivait ses propres livres.</p>
+        <p class="src">Source&nbsp;: <a class="ext" href="https://urantiabooksources.com/" target="_blank" rel="noopener">urantiabooksources.com</a> et sa page <a class="ext" href="https://urantiabooksources.com/the-sadler-project/" target="_blank" rel="noopener">The Sadler Project</a>.</p>
+      </article>
+      <article class="card r-his">
+        <p class="who">D’autres regards</p>
+        <h3>Journalistes et universitaires</h3>
+        <p>Le journaliste et professeur d’anglais Brad Gooch (<i lang="en">Godtalk</i>, 2002) attribue le livre à Sadler, selon Wikipédia. Sarah Lewis (2007) étudie le récit de sa réception. Un juriste, Thomas F. Cotter, a analysé les procès dans la <i lang="en">California Law Review</i> (2003).</p>
+        <p class="src">Références dans <a href="#biblio">Sources et lectures</a>.</p>
+      </article>
+    </div>
+
+    <article class="pair" aria-labelledby="h-pair">
+      <h3 id="h-pair">Un exemple&nbsp;: le fascicule 85 et un livre de 1923</h3>
+      <p class="hint">À gauche, les sections du fascicule <i>Les origines de l’adoration</i>, signé d’une Brillante Étoile du Soir <span class="ref">85:7.4</span>. À droite, les chapitres du livre d’E. Washburn Hopkins (Yale University Press, 1923) où Block a trouvé sa trame.</p>
+      <div class="pair-g">
+        <div class="pair-h l"><b>Fascicule 85</b>Le Livre d’Urantia</div>
+        <span class="pl-link" aria-hidden="true"></span>
+        <div class="pair-h r"><b lang="en">Origin and Evolution of Religion</b>E. Washburn Hopkins, 1923</div>
+        <div class="pc"><span class="ref">85:1</span>L’adoration des pierres et des collines</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. II</span><i lang="en">The Worship of Stones, Hills, Trees, and Plants</i></div>
+        <div class="pc"><span class="ref">85:2</span>L’adoration des plantes et des arbres</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. II, suite</span><i lang="en">… Trees, and Plants</i></div>
+        <div class="pc"><span class="ref">85:3</span>L’adoration des animaux</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. III</span><i lang="en">The Worship of Animals</i></div>
+        <div class="pc"><span class="ref">85:4</span>L’adoration des éléments</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. IV</span><i lang="en">The Worship of Elements and Heavenly Phenomena</i></div>
+        <div class="pc"><span class="ref">85:5</span>L’adoration des corps célestes</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. IV, suite, et V</span><i lang="en">The Worship of the Sun</i></div>
+        <div class="pc"><span class="ref">85:6</span>L’adoration de l’homme</div><span class="pl-link" aria-hidden="true">↔</span><div class="pc"><span>ch. VI</span><i lang="en">The Worship of Man</i></div>
+        <div class="pc"><span class="ref">85:7</span>Les adjuvats d’adoration et de sagesse</div><span class="pl-link" aria-hidden="true">·</span><div class="pc vide"><span>ch. VII et VIII</span><i lang="en">The Worship of Ancestors · Religious Stimuli</i></div>
+      </div>
+      <p class="note">Titres repris des deux livres&nbsp;; la mise en regard est faite par la page, d’après l’ordre des sujets. Les parallèles de détail sont dans les tableaux de Matthew Block. Livre de Hopkins&nbsp;: <a class="ext" href="https://archive.org/details/in.ernet.dli.2015.188850" target="_blank" rel="noopener">archive.org</a>.</p>
+    </article>
+
+    <h3 class="sub-h">Les réponses du mouvement</h3>
+    <p class="sub-p"><span class="reg r-lec"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Lecture courante</span> Convictions et témoignages, présentés comme tels.</p>
+    <div class="cards">
+      <article class="card r-lec">
+        <p class="who">La Fondation Urantia</p>
+        <h3>L’origine compte moins que le message</h3>
+        <p>Pour la Fondation, la valeur du livre tient moins à son origine qu’à son contenu spirituel&nbsp;: <span class="q" data-ext="faq-fondation" lang="en">«&nbsp;The true value of The Urantia Book lies not so much in its origins as in the spirit content of its message.&nbsp;»</span> Son histoire de 1960 renvoie aux passages où le livre reconnait ses emprunts.</p>
+        <p class="src">Source&nbsp;: <a class="ext" href="https://www.urantia.org/urantia-book/faqs" target="_blank" rel="noopener">foire aux questions</a>.</p>
+      </article>
+      <article class="card r-lec">
+        <p class="who">La Fellowship</p>
+        <h3>Aller au livre lui-même</h3>
+        <p>L’association propose de laisser de côté les théories contradictoires, de lire ce que le livre dit de ses auteurs, et de le juger à ce qu’il apporte à la croissance spirituelle de chacun.</p>
+        <p class="src">Source&nbsp;: <a class="ext" href="https://urantiabook.org/welcome/frequently-asked-questions/who-wrote-the-urantia-book" target="_blank" rel="noopener">Who wrote The Urantia Book?</a></p>
+      </article>
+      <article class="card r-lec">
+        <p class="who">Des lecteurs</p>
+        <h3>Des emprunts annoncés</h3>
+        <p>Pour des lecteurs croyants, la manière dont ces textes sont repris reste compatible avec une origine céleste, puisque le livre annonce qu’il préfèrera les concepts humains <span class="ref">0:12.11 ; 121:8.12</span>. Interrogé par Gardner, le pasteur Meredith Sprunger répondit que ces emprunts seraient troublants si des humains avaient écrit le livre, mais pas s’il venait d’êtres surhumains. Ken Glasziou, proche de la Fondation, a soutenu par des statistiques que Sadler n’avait ni écrit ni beaucoup retouché le texte.</p>
+        <p class="src">Source&nbsp;: Wikipédia en anglais (<i lang="en">The Urantia Book</i>&nbsp;; <i lang="en">William S. Sadler</i>), source secondaire.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="droits" aria-labelledby="h-droits">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · <span class="reg r-dro"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-balance"/></svg>Justice et droits</span></p>
+      <h2 id="h-droits">Du droit d’auteur au domaine public</h2>
+      <p>Les procès n’ont jamais jugé de la vérité du livre. La cour de 1997 l’écrit&nbsp;: la question n’est pas métaphysique. Ils posaient une question de droit&nbsp;: qui, parmi les humains, pouvait en être tenu pour l’auteur&nbsp;?</p>
+    </div>
+    <div class="law">
+      <div class="law-step"><b class="t">1955-1956&nbsp;: un droit d’auteur pour 28 ans</b><span>Publié par la Fondation, le livre est protégé 28 ans, puis le droit doit être renouvelé.</span></div>
+      <p class="law-arrow" aria-hidden="true">↓</p>
+      <div class="law-step"><b class="t">1983&nbsp;: la Fondation renouvelle</b><span>La loi réservait ce renouvellement à l’auteur ou à ses héritiers, sauf pour certaines œuvres, comme une œuvre composite ou une œuvre de commande, que leur propriétaire peut renouveler.</span></div>
+      <p class="law-arrow" aria-hidden="true">↓ deux procès, deux réponses ↓</p>
+      <div class="law-split">
+        <article class="law-arm">
+          <p class="court">9<sup>e</sup> circuit · 1997 · affaire Maaherra</p>
+          <h3>Une compilation humaine</h3>
+          <p>Les questions choisies par la Commission de contact ont donné leur structure aux fascicules&nbsp;: c’est assez pour une part de création humaine. La Fondation, propriétaire de cette œuvre composite, pouvait renouveler.</p>
+          <p class="res">Renouvellement valide.</p>
+        </article>
+        <article class="law-arm">
+          <p class="court">10<sup>e</sup> circuit · 2003 · Michael Foundation</p>
+          <h3>L’œuvre d’un seul auteur</h3>
+          <p>Selon le jury, le livre n’est ni composite ni de commande&nbsp;: c’est l’œuvre unique du dormeur. Lui seul, ou ses héritiers, pouvait renouveler&nbsp;; il était mort, et ils ne l’ont pas fait.</p>
+          <p class="res">Renouvellement invalide&nbsp;: domaine public aux États-Unis.</p>
+        </article>
+      </div>
+      <div class="law-step law-end"><b class="t">Aujourd’hui</b><span>Selon la Fondation, le texte anglais de 1955 est dans le domaine public, et son droit international a expiré en 2006. Ses traductions, dont la française, restent protégées&nbsp;; elle autorise à en citer jusqu’à 25&#8239;000 mots, avec mention de la source. D’où les citations courtes de ce site.</span></div>
+    </div>
+    <p class="sub-p hint">Sources&nbsp;: <a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">décision de 1997</a>&nbsp;; <a class="ext" href="https://static.case.law/f-appx/61/html/0538-01.html" target="_blank" rel="noopener">décision de 2003</a>&nbsp;; <a class="ext" href="https://www.urantia.org/terms-and-conditions" target="_blank" rel="noopener">conditions d’utilisation de la Fondation</a>. Ce résumé simplifie le droit américain du renouvellement&nbsp;; il ne remplace pas les décisions elles-mêmes.</p>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire cette histoire</h2>
+    <div class="regs">
+      <article class="r-dit">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le texte dit</h3>
+        <p>Ce que le livre affirme de lui-même&nbsp;: ses auteurs, sa transmission, ses dates, ses emprunts, les limites de sa science. On peut le citer exactement&nbsp;; on ne peut pas le vérifier de l’extérieur.</p>
+        <p class="ex">Par exemple <span class="ref">0:12.12 ; 77:8.8 ; 101:4.2</span>.</p>
+      </article>
+      <article class="r-lec">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-voix"/></svg>Lecture courante</h3>
+        <p>Ce qu’en disent ceux qui le lisent et le publient&nbsp;: le récit des témoins, le silence de la Fondation, l’invitation de la Fellowship, les réponses aux critiques. Ce sont des convictions et des témoignages.</p>
+        <p class="ex">Par exemple l’histoire de 1960, la foire aux questions de la Fondation.</p>
+      </article>
+      <article class="r-his">
+        <h3><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Regard historique</h3>
+        <p>Ce qu’établissent ou suggèrent les documents, les tribunaux et les chercheurs&nbsp;: dates, procès, catalogues, sources retrouvées, hypothèses des critiques. Il ne tranche pas la question de la foi.</p>
+        <p class="ex">Par exemple les décisions de 1997 et 2003, le travail de Matthew Block.</p>
+      </article>
+    </div>
+    <p class="fin">Cette page ne prend pas parti&nbsp;: elle rapporte qui dit quoi, et sur quoi chacun s’appuie.</p>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que l’on ne sait pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Qui était l’homme endormi.</b> Ceux qui le connaissaient se sont engagés au silence, et la Fondation ne l’a jamais nommé. En 2003, la cour d’appel écrit <span class="q" data-ext="michael-2003" lang="en">«&nbsp;No one knows who the Conduit was&nbsp;»</span>&nbsp;: personne ne sait qui il était. Wilfred Kellogg n’est qu’une hypothèse, celle de Gardner et d’autres auteurs.</li>
+        <li><b>Comment les textes apparaissaient.</b> Les témoins disent eux-mêmes l’ignorer&nbsp;; le livre parle d’une technique sans la décrire <span class="ref">56:10.23 ; 119:8.9</span>.</li>
+        <li><b>Ce que disaient les manuscrits et les questions.</b> Les manuscrits ont été détruits après la fabrication des plaques, comme les documents liés aux questions du Forum, selon les décisions de 1997 et 2003. Aucune comparaison n’est donc possible avec le texte imprimé.</li>
+        <li><b>Quand le texte a été arrêté.</b> Le livre donne 1934 et 1935&nbsp;; des sources publiées jusqu’en 1945 et des années de clarifications indiquent qu’il a encore évolué. La date de la version définitive n’est pas connue.</li>
+        <li><b>La part de chacun.</b> Le dormeur, Sadler, la Commission de contact&nbsp;: qui a écrit, choisi ou corrigé quoi&nbsp;? Les témoins disent s’être limités à l’orthographe, aux majuscules et à la ponctuation&nbsp;; les critiques en doutent&nbsp;; aucun document ne permet de trancher.</li>
+        <li><b>Des journaux disparus.</b> Au procès de 2001, un témoignage sur des journaux secrets, disparus une vingtaine d’années plus tôt, a été écarté pour une raison de procédure&nbsp;; leur contenu reste inconnu.</li>
+        <li><b>Combien de lecteurs.</b> Il n’existe pas de recensement&nbsp;: les groupes d’étude sont informels, et beaucoup lisent seuls (Wikipédia).</li>
+        <li><b>Le schéma.</b> La chaine de transmission est une image de la page&nbsp;: ses couleurs et ses trois catégories sont des choix de présentation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="biblio" aria-labelledby="h-bib">
+    <div class="sec-head">
+      <p class="eyebrow"><b>6</b> · Pour aller plus loin</p>
+      <h2 id="h-bib">Sources et lectures</h2>
+      <p class="hint">Consultées le 8 novembre 2026. Les liens s’ouvrent dans un nouvel onglet.</p>
+    </div>
+    <div class="biblio">
+      <section aria-labelledby="b-livre" class="r-dit">
+        <h3 id="b-livre"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Le livre</h3>
+        <ul>
+          <li><i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024&nbsp;: <span class="ref">0:0.1–2 ; 0:12.11–14 ; 31:10.22 ; 56:10.23 ; 77:8.8 ; 77:8.13 ; 92:4.9 ; 101:4.1–2 ; 110:5.7 ; 113:2.6 ; 119:8.9 ; 121:0.1 ; 121:8.12–14</span>.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="b-mvt" class="r-lec">
+        <h3 id="b-mvt"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-fondation"/></svg>Le mouvement</h3>
+        <ul>
+          <li>Fondation Urantia&nbsp;: <a class="ext" href="https://www.urantia.org/fr/qui-sommes-nous/a-propos-de-nous" target="_blank" rel="noopener">Qui sommes-nous&nbsp;?</a>&nbsp;; <a class="ext" href="https://www.urantia.org/fr/la-fondation-urantia/lhistoire-du-mouvement-urantia" target="_blank" rel="noopener">L’Histoire du Mouvement Urantia (1960)</a>&nbsp;; <a class="ext" href="https://www.urantia.org/urantia-book/faqs" target="_blank" rel="noopener">foire aux questions</a>&nbsp;; <a class="ext" href="https://www.urantia.org/terms-and-conditions" target="_blank" rel="noopener">conditions d’utilisation</a>&nbsp;; <a class="ext" href="https://www.urantia.org/urantia-book/text-standardization" target="_blank" rel="noopener">texte de référence standard</a>.</li>
+          <li>The Urantia Book Fellowship&nbsp;: <a class="ext" href="https://urantiabook.org/welcome/about-us/our-organization/a-brief-history" target="_blank" rel="noopener">A Brief History</a>&nbsp;; <a class="ext" href="https://urantiabook.org/welcome/frequently-asked-questions/who-wrote-the-urantia-book" target="_blank" rel="noopener">Who wrote The Urantia Book?</a>&nbsp;; <a class="ext" href="https://archive.urantiabook.org/archive/history/histumov.htm" target="_blank" rel="noopener">archives, histoire du mouvement</a>.</li>
+          <li>Meredith Sprunger, <i lang="en">Urantia Book Fundamentalism</i>, <i lang="en">The Spiritual Fellowship Journal</i>, printemps 1992 (<a class="ext" href="https://web.archive.org/web/20131109221331/http://www.thespiritualfellowship.org/Journal/Spring-92.pdf" target="_blank" rel="noopener">archive</a>).</li>
+        </ul>
+      </section>
+      <section aria-labelledby="b-doc" class="r-dro">
+        <h3 id="b-doc"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-balance"/></svg>Documents et décisions</h3>
+        <ul>
+          <li>William S. Sadler, <i lang="en">The Mind at Mischief</i>, Funk &amp; Wagnalls, 1929, appendice (<a class="ext" href="https://archive.org/details/mindatmischieftr0000will" target="_blank" rel="noopener">archive.org</a>).</li>
+          <li><i lang="en">Urantia Foundation v. Maaherra</i>, 114 F.3d 955, 9<sup>e</sup>&nbsp;circuit, 1997 (<a class="ext" href="https://openjurist.org/114/f3d/955" target="_blank" rel="noopener">OpenJurist</a>).</li>
+          <li><i lang="en">Michael Foundation v. Urantia Foundation</i>, 61 F. App’x 538, 10<sup>e</sup>&nbsp;circuit, 2003 (<a class="ext" href="https://static.case.law/f-appx/61/html/0538-01.html" target="_blank" rel="noopener">Caselaw Access Project</a>).</li>
+          <li>Bibliothèque nationale de France&nbsp;: <a class="ext" href="https://catalogue.bnf.fr/ark:/12148/cb33204793v" target="_blank" rel="noopener"><i>La Cosmogonie d’Urantia</i>, 1961-1962</a>&nbsp;; <a class="ext" href="https://catalogue.bnf.fr/ark:/12148/cb357113801" target="_blank" rel="noopener"><i>Le Livre d’Urantia</i>, 1994</a>.</li>
+        </ul>
+      </section>
+      <section aria-labelledby="b-crit" class="r-his">
+        <h3 id="b-crit"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-loupe"/></svg>Critiques et recherche</h3>
+        <ul>
+          <li>Martin Gardner, <i lang="en">Urantia: The Great Cult Mystery</i>, Prometheus Books, 1995 (<a class="ext" href="https://archive.org/details/isbn_9780879759551" target="_blank" rel="noopener">notice</a>).</li>
+          <li>Matthew Block, <a class="ext" href="https://urantiabooksources.com/" target="_blank" rel="noopener">urantiabooksources.com</a>.</li>
+          <li>Sarah Lewis, <i lang="en">The Peculiar Sleep: Receiving The Urantia Book</i>, dans J.&nbsp;R. Lewis et O. Hammer (dir.), <i lang="en">The Invention of Sacred Tradition</i>, Cambridge University Press, 2007 (<a class="ext" href="https://doi.org/10.1017/CBO9780511488450.011" target="_blank" rel="noopener">DOI</a>).</li>
+          <li>Brad Gooch, <i lang="en">Godtalk: Travels in Spiritual America</i>, Knopf, 2002.</li>
+          <li>Thomas F. Cotter, <i lang="en">Gutenberg’s Legacy: Copyright, Censorship, and Religious Pluralism</i>, <i lang="en">California Law Review</i>, vol.&nbsp;91, n<sup>o</sup>&nbsp;2, 2003 (<a class="ext" href="https://doi.org/10.2307/3481334" target="_blank" rel="noopener">DOI</a>).</li>
+          <li>E. Washburn Hopkins, <i lang="en">Origin and Evolution of Religion</i>, Yale University Press, 1923 (<a class="ext" href="https://archive.org/details/in.ernet.dli.2015.188850" target="_blank" rel="noopener">archive.org</a>).</li>
+          <li>Sources secondaires&nbsp;: Wikipédia en anglais, <a class="ext" href="https://en.wikipedia.org/wiki/The_Urantia_Book" target="_blank" rel="noopener">The Urantia Book</a> et <a class="ext" href="https://en.wikipedia.org/wiki/William_S._Sadler" target="_blank" rel="noopener">William S. Sadler</a>&nbsp;; en français, <a class="ext" href="https://fr.wikipedia.org/wiki/Le_Livre_d%27Urantia" target="_blank" rel="noopener">Le Livre d’Urantia</a>.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Douze citations courtes du livre, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe).</p>
+    <p>Faits extérieurs au livre&nbsp;: chaque date porte sa source et son degré de certitude. Les citations en anglais sont reproduites telles quelles, avec leur sens en français&nbsp;; Wikipédia est signalée comme source secondaire.</p>
+    <p>Cette page ne juge pas de la vérité du livre&nbsp;: elle rapporte qui dit quoi, et sur quoi chacun s’appuie.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  /* ====================== 0. Quatre voix : une question à la fois sur téléphone ====================== */
+  /* Sur un écran étroit, le tableau empilé serait très long : des boutons choisissent la question affichée.
+     Sur un écran large, ou sans JavaScript, les cinq questions restent visibles. */
+  var voix = document.getElementById("voices"), vtabs = document.getElementById("vq-tabs");
+  if (voix && vtabs && window.matchMedia) {
+    var etroit = window.matchMedia("(max-width: 640px)"), lignes = voix.querySelectorAll(".vrow:not(.vhead)"),
+        vboutons = vtabs.querySelectorAll("button[data-q]"), question = "0";
+    var montrerVoix = function () {
+      var mono = etroit.matches, i;
+      vtabs.hidden = !mono;
+      for (i = 0; i < lignes.length; i++) lignes[i].hidden = mono && question !== "tout" && String(i) !== question;
+      for (i = 0; i < vboutons.length; i++) vboutons[i].setAttribute("aria-pressed", String(vboutons[i].getAttribute("data-q") === question));
+    };
+    for (var q = 0; q < vboutons.length; q++) {
+      vboutons[q].addEventListener("click", function () { question = this.getAttribute("data-q"); montrerVoix(); });
+    }
+    if (etroit.addEventListener) etroit.addEventListener("change", montrerVoix); else if (etroit.addListener) etroit.addListener(montrerVoix);
+    montrerVoix();
+  }
+
+  /* ====================== 1. La frise : filtres et décennies ====================== */
+  /* Sans JavaScript, toute la frise reste visible ; les filtres n’apparaissent qu’ici. */
+  var tl = document.getElementById("tl"), filtres = document.getElementById("tl-filtres"),
+      dec = document.getElementById("tl-dec"), compte = document.getElementById("tl-compte");
+  if (tl && filtres) {
+    var items = tl.children, boutons = filtres.querySelectorAll("button[data-f]");
+    var NOMS = { tout: "", livre: "le livre et ses éditions", mvt: "le mouvement", droit: "justice et droits", crit: "critiques et recherche" };
+    var filtrer = function (cat) {
+      var n = 0, tete = null, dans = 0, vues = {}, i, li, montre;
+      for (i = 0; i < items.length; i++) {
+        li = items[i];
+        if (li.classList.contains("dec")) {
+          if (tete) { tete.hidden = dans === 0; vues[tete.id] = dans > 0; }
+          tete = li; dans = 0;
+          continue;
+        }
+        montre = cat === "tout" || li.getAttribute("data-cat") === cat;
+        li.hidden = !montre;
+        if (montre) { n++; dans++; }
+      }
+      if (tete) { tete.hidden = dans === 0; vues[tete.id] = dans > 0; }
+      for (i = 0; i < boutons.length; i++) boutons[i].setAttribute("aria-pressed", String(boutons[i].getAttribute("data-f") === cat));
+      if (dec) {
+        var liens = dec.querySelectorAll("a");
+        for (i = 0; i < liens.length; i++) {
+          if (vues[liens[i].getAttribute("href").slice(1)] === false) {
+            liens[i].setAttribute("aria-disabled", "true"); liens[i].setAttribute("tabindex", "-1");
+          } else {
+            liens[i].removeAttribute("aria-disabled"); liens[i].removeAttribute("tabindex");
+          }
+        }
+      }
+      if (compte) compte.textContent = n + (n > 1 ? " évènements" : " évènement") + (cat === "tout" ? ", de 1911 à 2024" : " · " + NOMS[cat]);
+    };
+    for (var b = 0; b < boutons.length; b++) {
+      boutons[b].addEventListener("click", function () { filtrer(this.getAttribute("data-f")); });
+    }
+    if (dec) dec.addEventListener("click", function (e) {
+      var a = e.target.closest ? e.target.closest("a") : null;
+      if (a && a.getAttribute("aria-disabled") === "true") e.preventDefault();
+    });
+    filtres.hidden = false;
+    filtrer("tout");
+  }
+
+  /* ====================== 2. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

@@ -1,0 +1,883 @@
+{
+ "version": 1,
+ "source": "Le Livre d’Urantia, traduction française de la Fondation Urantia, édition 2024 ; références fascicule:section.paragraphe vérifiées avec outils/ub.py.",
+ "etapes": [
+  {
+   "n": 1,
+   "titre": "Nébadon dans Orvonton",
+   "page": "nebadon-dans-orvonton.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, quel est le numéro d’Urantia dans le système de Satania ?",
+     "choix": [
+      "24",
+      "70",
+      "606",
+      "619"
+     ],
+     "bonne": 2,
+     "explication": "Urantia « porte le numéro 606 dans le groupe planétaire ou système de Satania », qui compte présentement 619 mondes habités.",
+     "ref": "15:14.5"
+    },
+    {
+     "q": "Selon le livre, environ combien de mondes habités ou habitables compte un système local ?",
+     "choix": [
+      "Environ mille",
+      "Environ dix mille",
+      "Environ un million",
+      "Environ un milliard"
+     ],
+     "bonne": 0,
+     "explication": "L’unité de base du supergouvernement, appelée système, « est formée d’environ mille mondes habités ou habitables ».",
+     "ref": "15:2.3"
+    },
+    {
+     "q": "Selon le livre, où se situe Nébadon dans le superunivers d’Orvonton ?",
+     "choix": [
+      "Au centre, autour d’Uversa",
+      "Très excentré, près de la lisière extérieure",
+      "Au cœur de la Voie lactée",
+      "En dehors d’Orvonton, près d’Andromède"
+     ],
+     "bonne": 1,
+     "explication": "Le livre précise que Nébadon est « présentement très excentré et proche de la lisière extérieure d’Orvonton ».",
+     "ref": "32:2.11"
+    },
+    {
+     "q": "Selon le livre, que représente la Voie lactée pour le superunivers d’Orvonton ?",
+     "choix": [
+      "Son noyau central",
+      "Notre univers local, Nébadon",
+      "L’univers central, Havona",
+      "Un superunivers voisin"
+     ],
+     "bonne": 0,
+     "explication": "Pour le livre, le vaste système d’étoiles de la Voie lactée « représente le noyau central d’Orvonton », le septième superunivers.",
+     "ref": "15:3.1"
+    },
+    {
+     "q": "Selon le livre, quel est le statut de la cosmologie qu’il présente ?",
+     "choix": [
+      "Elle est inspirée et définitive",
+      "Elle est confirmée par l’astronomie actuelle",
+      "Elle n’est pas inspirée et devra en partie être revue"
+     ],
+     "bonne": 2,
+     "explication": "Les révélateurs préviennent que beaucoup de leurs affirmations sur les sciences physiques devront être revues, et que la cosmologie révélée ici n’est pas inspirée.",
+     "ref": "101:4.2"
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "titre": "D’Urantia au Paradis",
+   "page": "atlas-3d.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, comment s’appelle la famille planétaire de notre soleil ?",
+     "choix": [
+      "Monmatia",
+      "Satania",
+      "Andronover",
+      "Angona"
+     ],
+     "bonne": 0,
+     "explication": "Monmatia est le « nom de la famille planétaire de votre soleil », c’est-à-dire le système solaire auquel appartient Urantia.",
+     "ref": "57:5.3"
+    },
+    {
+     "q": "Selon le livre, combien de sphères compte Havona, l’univers central ?",
+     "choix": [
+      "Sept",
+      "Cent mille",
+      "Un milliard",
+      "Mille milliards"
+     ],
+     "bonne": 2,
+     "explication": "Havona, éternel et « sans commencement ni fin », consiste en un milliard de sphères d’une perfection sublime, avec l’Ile du Paradis en son centre.",
+     "ref": "12:1.10"
+    },
+    {
+     "q": "Selon le livre, quel est le seul élément stationnaire du maitre univers ?",
+     "choix": [
+      "Uversa",
+      "L’Ile du Paradis",
+      "Salvington",
+      "Jérusem"
+     ],
+     "bonne": 1,
+     "explication": "Tout tourne dans le maitre univers, sauf le centre même de Havona, « l’éternelle Ile du Paradis, le centre de gravité ».",
+     "ref": "12:4.1"
+    },
+    {
+     "q": "Selon le livre, en combien d’ellipses concentriques le maitre univers existe-t-il ?",
+     "choix": [
+      "Trois",
+      "Six",
+      "Sept",
+      "Douze"
+     ],
+     "bonne": 1,
+     "explication": "Le maitre univers existe en « six ellipses concentriques » autour de l’Ile centrale : Havona, les sept superunivers et quatre niveaux d’espace extérieur.",
+     "ref": "12:1.3–9"
+    },
+    {
+     "q": "Selon le livre, à quoi ressemblerait le profil d’une section verticale de l’espace total ?",
+     "choix": [
+      "À une sphère pleine",
+      "À une spirale à sept bras",
+      "À une pyramide",
+      "À une croix de Malte"
+     ],
+     "bonne": 3,
+     "explication": "Le profil d’une section verticale de l’espace total « ressemblerait un peu à une croix de Malte », dont les bras horizontaux figurent l’univers.",
+     "ref": "11:7.3"
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "titre": "Qui gouverne quoi",
+   "page": "atlas-3d.html",
+   "ancre": "gouvernement",
+   "questions": [
+    {
+     "q": "Selon le livre, qui a reçu l’autorité d’agir à la place de Micaël comme Prince Planétaire d’Urantia ?",
+     "choix": [
+      "Caligastia",
+      "Adam",
+      "Machiventa Melchizédek",
+      "Van"
+     ],
+     "bonne": 2,
+     "explication": "L’autorité de vice-gérant pour agir à la place de Micaël comme Prince Planétaire « a été récemment conférée à Machiventa Melchizédek ».",
+     "ref": "114:1.2"
+    },
+    {
+     "q": "Selon le livre, qui est le souverain actuel du système de Satania ?",
+     "choix": [
+      "Lucifer",
+      "Caligastia",
+      "Gabriel",
+      "Lanaforge"
+     ],
+     "bonne": 3,
+     "explication": "Le souverain du système est Lanaforge, « numéro 2 709 de l’ordre primaire et successeur de l’apostat Lucifer ».",
+     "ref": "45:3.2"
+    },
+    {
+     "q": "Selon le livre, qui régit une constellation comme Norlatiadek ?",
+     "choix": [
+      "Trois Anciens des Jours",
+      "Un Fils Créateur",
+      "Trois Très Hauts, des Fils Vorondadeks",
+      "Un Prince Planétaire"
+     ],
+     "bonne": 2,
+     "explication": "Chaque constellation a un siège architectural et « est régie par trois Fils de l’ordre des Vorondadeks, les Très Hauts ».",
+     "ref": "15:2.4"
+    },
+    {
+     "q": "Selon le livre, qui sont le père et la mère d’un univers local ?",
+     "choix": [
+      "Adam et Ève",
+      "Gabriel et Emmanuel de Salvington",
+      "Les Anciens des Jours et les Très Hauts",
+      "Le Fils Créateur et la Divine Ministre"
+     ],
+     "bonne": 3,
+     "explication": "Les univers locaux ont une double supervision : leur père est le Fils Créateur, et leur mère la Divine Ministre, l’Esprit Créatif de l’univers local.",
+     "ref": "33:5.1"
+    },
+    {
+     "q": "Selon le livre, combien d’Anciens des Jours régissent chaque superunivers ?",
+     "choix": [
+      "Un",
+      "Trois",
+      "Sept",
+      "Vingt-quatre"
+     ],
+     "bonne": 1,
+     "explication": "Chaque superunivers est régi par trois Anciens des Jours, « chefs exécutifs conjoints du supergouvernement ».",
+     "ref": "15:10.3"
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "titre": "La frise du temps",
+   "page": "atlas-3d.html",
+   "ancre": "frise",
+   "questions": [
+    {
+     "q": "Selon le livre, de quelle nébuleuse notre soleil est-il issu ?",
+     "choix": [
+      "Andronover",
+      "Andromède",
+      "Angona",
+      "Monmatia"
+     ],
+     "bonne": 0,
+     "explication": "Notre soleil, né il y a 6 milliards d’années, est l’un des derniers soleils issus de la nébuleuse d’Andronover, qui en produisit plus d’un million.",
+     "ref": "57:4.8"
+    },
+    {
+     "q": "Selon le livre, il y a environ combien de temps Lucifer proclama-t-il son manifeste ?",
+     "choix": [
+      "Environ un million d’années",
+      "Environ 500 000 ans",
+      "Environ 200 000 ans",
+      "Environ 37 000 ans"
+     ],
+     "bonne": 2,
+     "explication": "Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre, « il y a environ deux-cent-mille ans du temps d’Urantia ».",
+     "ref": "53:4.1"
+    },
+    {
+     "q": "Selon le livre, combien de Princes Planétaires se rallièrent à Lucifer dans la rébellion ?",
+     "choix": [
+      "Sept",
+      "Douze",
+      "Vingt-quatre",
+      "Trente-sept"
+     ],
+     "bonne": 3,
+     "explication": "La rébellion eut lieu à l’échelle du système : trente-sept Princes Planétaires séparatistes firent passer, dans une large mesure, l’administration de leurs mondes du côté de l’archirebelle.",
+     "ref": "53:7.1"
+    },
+    {
+     "q": "Selon le livre, à quelle date Jésus naquit-il ?",
+     "choix": [
+      "Le 14 janvier de l’an 26",
+      "Le 21 aout de l’an 7 av. J.-C.",
+      "Le 7 avril de l’an 30"
+     ],
+     "bonne": 1,
+     "explication": "Selon le texte, c’est « à midi le 21 aout de l’an 7 av. J.-C. » que Marie accoucha d’un enfant mâle, Jésus de Nazareth.",
+     "ref": "122:8.1"
+    },
+    {
+     "q": "Selon le livre, quelle mesure isole encore partiellement le système de Satania des autres systèmes ?",
+     "choix": [
+      "Les corps de gravité obscurs",
+      "La zone de calme qui entoure les superunivers",
+      "Une quarantaine de Norlatiadek"
+     ],
+     "bonne": 2,
+     "explication": "Même si Urantia retrouvait les circuits du système, l’ensemble de Satania « reste soumis à une quarantaine de Norlatiadek, qui l’isole partiellement de tous les autres systèmes ».",
+     "ref": "46:8.2"
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "titre": "La carrière ascendante",
+   "page": "atlas-3d.html",
+   "ancre": "carriere",
+   "questions": [
+    {
+     "q": "Selon le livre, combien y a-t-il de mondes des maisons ?",
+     "choix": [
+      "Trois",
+      "Sept",
+      "Douze",
+      "Soixante-dix"
+     ],
+     "bonne": 1,
+     "explication": "Le nom de mondes des maisons s’applique plus spécifiquement « aux sept satellites du monde numéro un », parmi les cinquante-six mondes qui entourent Jérusem.",
+     "ref": "47:0.1"
+    },
+    {
+     "q": "Selon le livre, après les mondes des maisons, dans quel ordre l’ascendeur passe-t-il par ces trois capitales ?",
+     "choix": [
+      "Salvington, Édentia, puis Jérusem",
+      "Édentia, Jérusem, puis Salvington",
+      "Jérusem, Salvington, puis Édentia",
+      "Jérusem, Édentia, puis Salvington"
+     ],
+     "bonne": 3,
+     "explication": "La formation se poursuit des mondes des maisons et des sphères de Jérusem jusqu’aux 70 royaumes d’Édentia, puis aux 490 sphères entourant Salvington.",
+     "ref": "37:6.2"
+    },
+    {
+     "q": "Selon le livre, que maitrise surtout l’ascendeur pendant son séjour sur Édentia ?",
+     "choix": [
+      "La langue d’Uversa",
+      "La physique supérieure",
+      "L’art de l’adoration",
+      "L’éthique de groupe"
+     ],
+     "bonne": 3,
+     "explication": "Le séjour sur Édentia et ses sphères associées se passe « principalement à maitriser l’éthique de groupe », le secret de bonnes relations entre personnalités.",
+     "ref": "43:8.3"
+    },
+    {
+     "q": "Selon le livre, d’où partent toujours les diplômés dirigés sur Havona ?",
+     "choix": [
+      "De Jérusem",
+      "Des rivages d’Uversa",
+      "D’Édentia",
+      "De Salvington"
+     ],
+     "bonne": 1,
+     "explication": "Les pèlerins sont rééduqués dans les sept universités d’Uversa, et « on fait toujours partir directement des rivages d’Uversa les diplômés qui sont dirigés sur Havona ».",
+     "ref": "15:7.10"
+    },
+    {
+     "q": "Selon le livre, où se réveillent les pèlerins qui s’endorment sur le premier cercle de Havona ?",
+     "choix": [
+      "Sur le premier monde des maisons",
+      "Sur Uversa",
+      "Sur les rives du Paradis",
+      "Sur le septième circuit de Havona"
+     ],
+     "bonne": 2,
+     "explication": "Au terme de leur séjour, les pèlerins parfaits « s’endorment sur le premier cercle de Havona, mais se réveillent sur les rives du Paradis ».",
+     "ref": "26:11.6"
+    }
+   ]
+  },
+  {
+   "n": 6,
+   "titre": "Familles de personnalités",
+   "page": "familles-de-personnalites.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, d’après quoi les êtres vivants sont-ils classés au Paradis ?",
+     "choix": [
+      "D’après leurs relations avec les Déités du Paradis",
+      "D’après leur rang dans le gouvernement des superunivers",
+      "D’après la date de leur création",
+      "D’après leur planète natale"
+     ],
+     "bonne": 0,
+     "explication": "Au Paradis, les êtres vivants sont classés selon leurs relations, inhérentes ou atteintes, avec les Déités ; lors des grands rassemblements, on les groupe souvent par origine trine, duelle ou unique.",
+     "ref": "30:1.1"
+    },
+    {
+     "q": "Selon le livre, en combien de grandes divisions la famille divine des êtres vivants est-elle enregistrée sur Uversa ?",
+     "choix": [
+      "Trois",
+      "Cinq",
+      "Dix",
+      "Sept"
+     ],
+     "bonne": 3,
+     "explication": "Le registre d’Uversa compte sept grandes divisions, des Déités du Paradis jusqu’au Corps de Citoyenneté Permanente.",
+     "ref": "30:2.1–8"
+    },
+    {
+     "q": "Selon le livre, quels Fils sont les bâtisseurs et les chefs des univers locaux ?",
+     "choix": [
+      "Les Fils Magistraux (Avonals)",
+      "Les Fils Melchizédeks",
+      "Les Fils Instructeurs de la Trinité",
+      "Les Fils Créateurs (Micaëls)"
+     ],
+     "bonne": 3,
+     "explication": "D’origine duelle, incorporant les caractéristiques du Père et du Fils, les Fils Créateurs sont « les bâtisseurs et les chefs des univers locaux du temps et de l’espace ».",
+     "ref": "21:0.1"
+    },
+    {
+     "q": "Selon le livre, qui crée les séraphins ?",
+     "choix": [
+      "L’Esprit-Mère de l’univers",
+      "Le Fils Créateur seul",
+      "Les Anciens des Jours",
+      "Les Porteurs de Vie"
+     ],
+     "bonne": 0,
+     "explication": "Le texte l’affirme : « Les séraphins sont créés par l’Esprit-Mère de l’univers », dans son premier effort solitaire de reproduction d’esprits.",
+     "ref": "38:1.1"
+    },
+    {
+     "q": "Selon le livre, quels mortels sont seuls enrôlés dans le Corps des Mortels de la Finalité ?",
+     "choix": [
+      "Les mortels fusionnés avec l’Esprit",
+      "Les mortels fusionnés avec le Père",
+      "Les mortels fusionnés avec le Fils"
+     ],
+     "bonne": 1,
+     "explication": "Parmi toutes les créatures du grand univers, « seuls les individus qui ont fusionné avec le Père sont enrôlés dans le Corps des Mortels de la Finalité ».",
+     "ref": "30:4.31"
+    }
+   ]
+  },
+  {
+   "n": 7,
+   "titre": "Concepts en schémas",
+   "page": "concepts-en-schemas.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, quelle réalité nait de l’Ajusteur, qui en est le père, et du mental matériel, qui en est la mère ?",
+     "choix": [
+      "La personnalité",
+      "Le corps",
+      "L’âme",
+      "Le Saint-Esprit"
+     ],
+     "bonne": 2,
+     "explication": "Quand la créature choisit de faire la volonté du Père, l’esprit intérieur devient le père d’une nouvelle réalité, l’âme morontielle, dont le mental matériel est la mère.",
+     "ref": "0:5.10"
+    },
+    {
+     "q": "Selon le livre, laquelle de ces trois influences d’esprit habite le mental humain ?",
+     "choix": [
+      "L’Esprit de Vérité",
+      "Le Saint-Esprit",
+      "L’Ajusteur de Pensée"
+     ],
+     "bonne": 2,
+     "explication": "Les Ajusteurs habitent le mental mortel comme partie intégrante de ce mental ; l’esprit du Fils Créateur et celui de l’Esprit-Mère ne l’habitent pas ainsi.",
+     "ref": "34:5.6 ; 194:2.11"
+    },
+    {
+     "q": "Selon le livre, quel est le plus élevé des sept esprits-mentaux adjuvats ?",
+     "choix": [
+      "L’esprit d’adoration",
+      "L’esprit de connaissance",
+      "L’esprit d’intuition",
+      "L’esprit de sagesse"
+     ],
+     "bonne": 3,
+     "explication": "Le septième adjuvat, l’esprit de sagesse, est « le plus élevé des sept » : c’est lui qui coordonne et articule le travail de tous les autres.",
+     "ref": "36:5.12"
+    },
+    {
+     "q": "Selon le livre, à partir de quel cercle psychique l’Ajusteur peut-il, en général, parler directement avec l’être humain ?",
+     "choix": [
+      "Le premier",
+      "Le troisième",
+      "Le cinquième",
+      "Le septième"
+     ],
+     "bonne": 0,
+     "explication": "« Généralement, l’Ajusteur ne peut parler directement et immédiatement avec vous avant que vous ayez atteint le premier cercle », le cercle final d’accomplissement progressif.",
+     "ref": "110:6.15"
+    },
+    {
+     "q": "Selon le livre, où se situe la morontia ?",
+     "choix": [
+      "Au-delà du niveau spirituel",
+      "Entre le matériel et le spirituel",
+      "Au-dessous du niveau matériel",
+      "Au niveau absolu du Paradis"
+     ],
+     "bonne": 1,
+     "explication": "La morontia désigne « un vaste niveau intermédiaire entre le matériel et le spirituel » ; la chaine du tissu morontiel est spirituelle, sa trame matérielle.",
+     "ref": "0:5.12"
+    }
+   ]
+  },
+  {
+   "n": 8,
+   "titre": "Dieu et la Déité",
+   "page": "dieu-et-deite.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, que dénote toujours le mot « Dieu » ?",
+     "choix": [
+      "La personnalité",
+      "Une force impersonnelle",
+      "L’Ile du Paradis",
+      "L’énergie-matière"
+     ],
+     "bonne": 0,
+     "explication": "Le texte distingue les deux mots : « Le mot Dieu dénote toujours la personnalité », alors que le mot Déité peut se référer ou non à des personnalités.",
+     "ref": "0:2.10"
+    },
+    {
+     "q": "Selon le livre, quelle réalité non personnelle est la source effective des univers physiques ?",
+     "choix": [
+      "L’Ile du Paradis",
+      "Le Fils Éternel",
+      "Les Sept Maitres Esprits",
+      "L’Absolu de Déité"
+     ],
+     "bonne": 0,
+     "explication": "Dérivée de la Déité sans qu’on puisse la dire Déité, l’Ile est, dit le texte, « la source effective des univers physiques — passés, présents et futurs ».",
+     "ref": "0:4.12"
+    },
+    {
+     "q": "Selon le livre, à qui revient l’application de la loi, c’est-à-dire la justice ?",
+     "choix": [
+      "Au Père Universel seul",
+      "Au Fils Éternel seul",
+      "À l’Esprit Infini seul",
+      "À la Trinité du Paradis"
+     ],
+     "bonne": 3,
+     "explication": "Le Père est l’origine de la loi, le Fils l’administre, l’Esprit la révèle ; quant à son application, la justice, elle « tombe dans le domaine de la Trinité du Paradis ».",
+     "ref": "10:6.1"
+    },
+    {
+     "q": "Selon le livre, quelle Déité est « le Dieu du temps et de l’espace », qui s’actualise ou évolue ?",
+     "choix": [
+      "Dieu le Suprême",
+      "Dieu l’Ultime",
+      "Dieu l’Absolu",
+      "Le Fils Éternel"
+     ],
+     "bonne": 0,
+     "explication": "Dieu le Suprême est « le Dieu du temps et de l’espace, s’actualisant ou évoluant », le Dieu expérientiel des créatures évolutionnaires.",
+     "ref": "0:2.15"
+    },
+    {
+     "q": "Selon le livre, quel Absolu unifie le déifié et le non déifié ?",
+     "choix": [
+      "L’Absolu de Déité",
+      "L’Absolu Universel",
+      "L’Absolu Non Qualifié"
+     ],
+     "bonne": 1,
+     "explication": "Septième des Absolus, l’Absolu Universel unifie le déifié et le non déifié et met en corrélation l’absolu et le relatif.",
+     "ref": "105:3.8"
+    }
+   ]
+  },
+  {
+   "n": 9,
+   "titre": "La destinée humaine",
+   "page": "destinee-humaine.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, de qui l’Ajusteur de Pensée émane-t-il directement ?",
+     "choix": [
+      "De l’Esprit-Mère de l’univers local",
+      "Du Fils Créateur",
+      "Des Sept Maitres Esprits",
+      "Du Père Universel"
+     ],
+     "bonne": 3,
+     "explication": "Tous s’accordent sur leur origine : les Ajusteurs émanent directement du Père Universel ; ce ne sont pas des êtres créés, mais des entités de fragmentation, présence factuelle du Dieu infini.",
+     "ref": "107:1.2"
+    },
+    {
+     "q": "Selon le livre, après quel évènement l’Ajusteur de Pensée est-il affecté à l’enfant ?",
+     "choix": [
+      "Sa naissance",
+      "Ses premiers mots",
+      "Sa première décision morale",
+      "Son entrée dans l’âge adulte"
+     ],
+     "bonne": 2,
+     "explication": "Les Ajusteurs se portent volontaires, mais ne sont affectés qu’après la première décision morale de l’enfant ; sur Urantia, ils arrivent en moyenne juste avant six ans.",
+     "ref": "108:2.1"
+    },
+    {
+     "q": "Selon le livre, combien d’espèces de morts faut-il distinguer pour la survie de la personnalité ?",
+     "choix": [
+      "Une seule",
+      "Trois",
+      "Deux",
+      "Sept"
+     ],
+     "bonne": 1,
+     "explication": "On ne reconnait d’ordinaire qu’une mort, la cessation physique, mais le texte en distingue trois : spirituelle (de l’âme), intellectuelle (du mental) et physique (corps et mental).",
+     "ref": "112:3.1–4"
+    },
+    {
+     "q": "Selon le livre, à la mort, à qui l’âme morontielle est-elle confiée ?",
+     "choix": [
+      "À l’Ajusteur de Pensée",
+      "Aux médians",
+      "Au Prince Planétaire",
+      "Au gardien séraphique de la destinée"
+     ],
+     "bonne": 3,
+     "explication": "À la mort, le corps retourne au monde élémental, l’Ajusteur part pour Divinington avec la mémoire transcrite, et l’âme morontielle est confiée au gardien de la destinée.",
+     "ref": "112:3.5"
+    },
+    {
+     "q": "Selon le livre, qu’est-ce qui constitue la résurrection des survivants endormis ?",
+     "choix": [
+      "La réunion de l’âme morontielle et de l’Ajusteur",
+      "La réunion du corps physique et du mental matériel",
+      "L’union de l’âme et de son gardien séraphique",
+      "Le retour de l’Ajusteur dans un autre mental"
+     ],
+     "bonne": 0,
+     "explication": "La résurrection des survivants endormis est la réunion de l’âme morontielle, confiée aux séraphins, et du mental spirituel confié à l’Ajusteur, qui reconstitue la personnalité.",
+     "ref": "47:3.3"
+    }
+   ]
+  },
+  {
+   "n": 10,
+   "titre": "L’histoire d’Urantia",
+   "page": "histoire-d-urantia.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, qui implanta la vie sur Urantia, il y a 550 millions d’années ?",
+     "choix": [
+      "Les médians",
+      "Les séraphins",
+      "Les Porteurs de Vie",
+      "Les Fils Matériels"
+     ],
+     "bonne": 2,
+     "explication": "Il y a 550 millions d’années, les Porteurs de Vie revinrent sur Urantia et implantèrent les modèles originels de vie dans les eaux de la planète.",
+     "ref": "58:4.2"
+    },
+    {
+     "q": "Selon le livre, comment s’appelaient les deux premiers êtres humains ?",
+     "choix": [
+      "Adam et Ève",
+      "Andon et Fonta",
+      "Van et Amadon",
+      "Caïn et Abel"
+     ],
+     "bonne": 1,
+     "explication": "Le message des archanges reconnaissant Urantia comme monde habité annonçait que « les parents de cette nouvelle race seront appelés Andon et Fonta ».",
+     "ref": "63:0.1–2"
+    },
+    {
+     "q": "Selon le livre, de quelle famille descendent les six races de couleur d’Urantia ?",
+     "choix": [
+      "La famille Sangik",
+      "La famille de Nod",
+      "La famille d’Adam et Ève",
+      "La famille de Van"
+     ],
+     "bonne": 0,
+     "explication": "Chez les Badonites des hautes terres, un couple eut des enfants exceptionnellement intelligents : « Ce fut la famille Sangik, ancêtre des six races colorées d’Urantia ».",
+     "ref": "64:5.2"
+    },
+    {
+     "q": "Selon le livre, qu’arriva-t-il à Dalamatia, la cité du Prince Planétaire, après la rébellion ?",
+     "choix": [
+      "Elle devint la cité de Babel",
+      "Un raz de marée l’engloutit",
+      "Les Andites l’incendièrent",
+      "Elle fut ensevelie sous les glaces"
+     ],
+     "bonne": 1,
+     "explication": "Cent-soixante-deux ans après la rébellion, un raz de marée balaya Dalamatia, et le quartier général planétaire s’enfonça au-dessous du niveau de la mer.",
+     "ref": "67:5.4"
+    },
+    {
+     "q": "Selon le livre, où se trouvait le premier Jardin d’Éden, préparé pour Adam et Ève ?",
+     "choix": [
+      "Sur une ile du golfe Persique",
+      "Près du lac Van",
+      "Au sud-est de la mer Caspienne",
+      "Sur une péninsule de la côte orientale de la Méditerranée"
+     ],
+     "bonne": 3,
+     "explication": "Parmi trois sites proposés, dont une ile du golfe Persique, le comité choisit presque à l’unanimité une longue péninsule étroite de la côte orientale de la Méditerranée.",
+     "ref": "73:3.1–2"
+    }
+   ]
+  },
+  {
+   "n": 11,
+   "titre": "La rébellion de Lucifer",
+   "page": "rebellion-de-lucifer.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, quelle fonction Lucifer exerçait-il avant sa rébellion ?",
+     "choix": [
+      "Souverain du système de Satania",
+      "Prince Planétaire d’Urantia",
+      "Fils Créateur de Nébadon",
+      "Très Haut Père de la constellation"
+     ],
+     "bonne": 0,
+     "explication": "Depuis Jérusem, Lucifer administrait un grand système de 607 mondes habités ; le texte l’appelle « le Souverain déchu et déposé de Satania ».",
+     "ref": "53:1.1 ; 53:1.3"
+    },
+    {
+     "q": "Selon le livre, que prétendait Lucifer au sujet du Père Universel dans son manifeste ?",
+     "choix": [
+      "Qu’il punissait trop durement les mortels",
+      "Qu’il n’existait pas réellement",
+      "Qu’il avait confié Nébadon à Gabriel",
+      "Qu’il avait abandonné Satania"
+     ],
+     "bonne": 1,
+     "explication": "La première rubrique de la Déclaration de Liberté affirmait que le Père Universel n’existait pas réellement et qu’il était « un mythe inventé par les Fils du Paradis ».",
+     "ref": "53:3.1–2"
+    },
+    {
+     "q": "Selon le livre, quel Prince Planétaire d’Urantia suivit Lucifer dans la rébellion ?",
+     "choix": [
+      "Caligastia",
+      "Van",
+      "Machiventa Melchizédek",
+      "Lanaforge"
+     ],
+     "bonne": 0,
+     "explication": "Lors d’une inspection, Satan informa Caligastia de la Déclaration de Liberté de Lucifer, et le Prince accepta de trahir la planète dès que la rébellion serait annoncée.",
+     "ref": "67:1.1–2"
+    },
+    {
+     "q": "Selon le livre, pourquoi Urantia est-elle une planète isolée ?",
+     "choix": [
+      "Parce qu’Adam et Ève ont échoué dans leur mission",
+      "Parce qu’elle est trop éloignée de Jérusem",
+      "Parce qu’elle n’a jamais reçu d’Ajusteurs de Pensée",
+      "Parce que son Prince Planétaire a suivi Lucifer dans la rébellion"
+     ],
+     "bonne": 3,
+     "explication": "Comme Urantia suivit son Prince dans la rébellion, les circuits aboutissant aux mondes déchus furent coupés, pour que Lucifer ne puisse pas les employer à propager son plan.",
+     "ref": "53:7.3 ; 67:2.3"
+    },
+    {
+     "q": "Selon le livre, où se trouvait Lucifer à l’époque où les fascicules furent rédigés ?",
+     "choix": [
+      "Caché sur Urantia",
+      "Réhabilité sur Édentia",
+      "Prisonnier sur un satellite des sphères du Père, autour de Jérusem",
+      "En exil sur Panoptia"
+     ],
+     "bonne": 2,
+     "explication": "Quand Micaël devint le chef confirmé de Nébadon, les agents des Anciens des Jours emprisonnèrent Lucifer, resté depuis prisonnier sur le satellite numéro 1 des sphères du Père entourant Jérusem.",
+     "ref": "53:9.2"
+    }
+   ]
+  },
+  {
+   "n": 12,
+   "titre": "La vie de Jésus",
+   "page": "vie-de-jesus.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le livre, dans quelle ville Joseph et Marie se réfugièrent-ils avec Jésus pour échapper au massacre des enfants de Bethléem ?",
+     "choix": [
+      "Alexandrie",
+      "Damas",
+      "Rome",
+      "Jéricho"
+     ],
+     "bonne": 0,
+     "explication": "Prévenus par un messager de Zacharie, Joseph et Marie quittèrent Bethléem la nuit avant le massacre et séjournèrent deux années entières à Alexandrie, en Égypte.",
+     "ref": "122:10.4"
+    },
+    {
+     "q": "Selon le livre, avec qui Jésus fit-il son voyage autour du monde romain, en l’an 22 et en l’an 23 ?",
+     "choix": [
+      "Gonod et son fils Ganid",
+      "Pierre et André",
+      "Zébédée et ses fils",
+      "Lazare et ses sœurs"
+     ],
+     "bonne": 0,
+     "explication": "Jésus quitta Jérusalem le 26 avril de l’an 22 avec deux natifs des Indes, Gonod et son fils Ganid, et leur fit ses adieux à Charax en l’an 23.",
+     "ref": "130:0.1"
+    },
+    {
+     "q": "Selon le livre, qui Jean baptisa-t-il dans le Jourdain en même temps que Jésus ?",
+     "choix": [
+      "Philippe et Nathanael",
+      "Pierre et André",
+      "Nicodème et Joseph d’Arimathie",
+      "Ses frères Jacques et Jude"
+     ],
+     "bonne": 3,
+     "explication": "À midi, le 14 janvier de l’an 26, Jean baptisa dans le Jourdain Jésus et ses deux frères, Jacques et Jude.",
+     "ref": "135:8.6"
+    },
+    {
+     "q": "Selon le livre, quel jour Jésus sortit-il du tombeau sous sa forme morontielle ?",
+     "choix": [
+      "Le vendredi 7 avril de l’an 30",
+      "Le dimanche 9 avril de l’an 30",
+      "Le mardi 4 avril de l’an 30",
+      "Le jeudi 18 mai de l’an 30"
+     ],
+     "bonne": 1,
+     "explication": "À trois heures deux minutes, « ce dimanche 9 avril de l’an 30 », la forme morontielle ressuscitée de Jésus sortit du tombeau neuf de Joseph d’Arimathie.",
+     "ref": "189:1.1"
+    },
+    {
+     "q": "Selon le livre, combien de croyants étaient en prière quand vint l’Esprit de Vérité, le jour de la Pentecôte ?",
+     "choix": [
+      "Douze",
+      "Soixante-dix",
+      "Cent-vingt",
+      "Cinq-cents"
+     ],
+     "bonne": 2,
+     "explication": "Le jour de la Pentecôte, vers une heure de l’après-midi, les cent-vingt croyants en prière perçurent une présence étrange, que Pierre reconnut comme la venue de l’Esprit de Vérité.",
+     "ref": "194:0.1–2 ; 194:1.1"
+    }
+   ]
+  },
+  {
+   "n": 13,
+   "titre": "La Bible et le Livre d’Urantia",
+   "page": "bible-et-livre.html",
+   "ancre": "",
+   "questions": [
+    {
+     "q": "Selon le Livre d’Urantia, qui était le père de Caïn ?",
+     "choix": [
+      "Van",
+      "Cano",
+      "Nod",
+      "Sérapatatia"
+     ],
+     "bonne": 1,
+     "explication": "Pour le livre, Caïn n’était pas le fils d’Adam : son père, de race nodite, était Cano, « le père de Caïn encore à naitre ».",
+     "ref": "75:5.3 ; 76:2.4"
+    },
+    {
+     "q": "Selon le Livre d’Urantia, quelle inondation Noé a-t-il connue ?",
+     "choix": [
+      "Le raz de marée qui engloutit Dalamatia",
+      "Une crue du fleuve qui emporta son village",
+      "L’engloutissement de la péninsule d’Éden"
+     ],
+     "bonne": 1,
+     "explication": "Le livre écarte tout déluge universel depuis l’établissement de la vie : une crue annuelle, accrue par de fortes pluies, emporta le village de Noé, sauvé avec sa proche famille.",
+     "ref": "78:7.4–5"
+    },
+    {
+     "q": "Selon le Livre d’Urantia, d’où vient le nom de Babel ?",
+     "choix": [
+      "De Bablot, architecte et bâtisseur de la tour",
+      "De Nod, chef des Nodites",
+      "De Daligastia, associé du Prince",
+      "De Dilmun, la cité des Nodites"
+     ],
+     "bonne": 0,
+     "explication": "La nouvelle ville devait porter le nom de Bablot, architecte et bâtisseur de la tour ; le site s’appela plus tard Bablod, puis Babel.",
+     "ref": "77:3.3"
+    },
+    {
+     "q": "Selon le Livre d’Urantia, sur quoi s’est construite la légende de l’étoile de Bethléem ?",
+     "choix": [
+      "Le passage d’une comète",
+      "L’explosion d’une étoile lointaine",
+      "Des conjonctions de Jupiter et de Saturne",
+      "Une aurore boréale"
+     ],
+     "bonne": 2,
+     "explication": "« Ces hommes sages ne virent pas d’étoile pour les guider vers Bethléem » : la légende naquit de trois conjonctions de Jupiter et de Saturne, en l’an 7 av. J.-C.",
+     "ref": "122:8.7"
+    },
+    {
+     "q": "Selon le Livre d’Urantia, quel est le seul miracle de la nature que Jésus accomplit après l’avoir sciemment projeté ?",
+     "choix": [
+      "Les noces de Cana",
+      "La tempête apaisée",
+      "La multiplication des pains",
+      "La pêche au bord du lac"
+     ],
+     "bonne": 2,
+     "explication": "Pour le repas d’environ cinq-mille personnes, le texte parle du « premier et unique miracle de la nature que Jésus accomplit après l’avoir sciemment projeté ».",
+     "ref": "152:2.9–10"
+    }
+   ]
+  }
+ ]
+}

@@ -21,9 +21,22 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [La rébellion de Lucifer](rebellion-de-lucifer.html) | les trois échelles (Jérusem, Dalamatia, le Jardin), pourquoi Urantia est une planète isolée, le manifeste, les loyaux et les rebelles |
 | [La vie de Jésus](vie-de-jesus.html) | frise de 92 étapes, de l’annonce à Marie à la Pentecôte ; cartes de Palestine, de la Méditerranée et de l’Orient |
 | [La Bible et le Livre d’Urantia](bible-et-livre.html) | cent parallèles entre la Bible (Crampon 1923) et le livre, de la Création à l’Apocalypse : ce qui concorde, ce qui diffère, et ce que le livre en dit |
-| [Glossaire](glossaire.html) | les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références ; une ancre par terme (`glossaire.html#ajusteur-de-pensee`) |
+| [Le Paradis et Havona](paradis-et-havona.html) | thème : l’Ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas |
+| [L’Être Suprême](etre-supreme.html) | thème : un Dieu qui n’est pas encore achevé et grandit avec l’expérience des créateurs et des créatures (fascicules 115 à 117) |
+| [Les sept effusions de Micaël](effusions-de-micael.html) | thème : sept fois, Micaël a vécu la vie de ses créatures, de Melchizédek à Jésus sur Urantia (fascicules 119 et 120) |
+| [Les anges](les-anges.html) | thème : qui sont les anges, leur vie, les chérubins, les sept ordres de séraphins, l’ange gardien |
+| [L’évolution de la religion](evolution-religion.html) | thème : de la peur et du besoin d’adorer à la foi en un Père qui aime, en huit étapes |
+| [Les douze apôtres](douze-apotres.html) | thème : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte |
+| [Les enseignements de Jésus](enseignements-de-jesus.html) | thème : quinze grands enseignements du Maitre, rangés par thème, avec ses mots et les épisodes où il les donne |
+| [D’où vient ce livre ?](histoire-du-livre.html) | le livre : ce qu’il dit de lui-même, ce que racontent ses premiers lecteurs, ce qu’en disent les critiques, chaque voix avec ses sources |
+| [Les auteurs déclarés et le livre en chiffres](auteurs-et-chiffres.html) | le livre : qui présente chaque fascicule, puis le livre mesuré (parties, longueurs, mots) |
+| [Parcours de lecture](parcours-de-lecture.html) | outil : cinq itinéraires de lecture, fascicule par fascicule, avec une case « Lu » gardée sur l’appareil |
+| [Glossaire](glossaire.html) | outil : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références ; une ancre par terme (`glossaire.html#ajusteur-de-pensee`) |
 
-Chaque page porte la même barre de navigation ; les pages du parcours de découverte indiquent leur étape et mènent à la précédente et à la suivante. Dans le texte des pages, la première occurrence de chaque terme du glossaire est soulignée en pointillé : un clic ou un toucher ouvre sa définition. Le pied de chaque page donne le lien du code source, les licences, le glossaire et un lien « Signaler une erreur sur cette page ».
+Chaque page porte la même barre : **Accueil**, puis quatre menus, **Parcours** (les treize étapes du parcours de découverte), **Thèmes**, **Le livre** et **Outils** (parcours de lecture, glossaire, lecture hors ligne, signalement d’une erreur, contribution sur GitHub) ; à droite, **Rechercher**, **Écouter** et la musique douce. Sur téléphone, une barre compacte ouvre un menu latéral. Les pages du parcours de découverte indiquent leur étape et mènent à la précédente et à la suivante ; les autres, leur groupe (Thème, Le livre, Outil). Dans le texte des pages, la première occurrence de chaque terme du glossaire est soulignée en pointillé : un clic ou un toucher ouvre sa définition. Les pages du parcours finissent par un court quiz. Le pied de chaque page donne le lien du code source, les licences, le glossaire et un lien « Signaler une erreur sur cette page ».
+
+- **Rechercher** (bouton 🔍, touche `/` ou Ctrl+K) : toutes les pages, le glossaire et la vue 3D ; sans tenir compte des accents ni des majuscules, sur le début des mots ; résultats groupés par page, avec un extrait, et un lien vers l’endroit exact. Une référence tapée (`57:6.5`) ouvre le passage sur urantia.org et liste les pages de l’atlas qui la citent.
+- **Écouter** : la page est lue à voix haute par le navigateur (une voix française s’il en a une), paragraphe par paragraphe, avec lecture, pause, arrêt et vitesse ; le paragraphe lu est surligné. Le bouton n’apparait que si le navigateur sait lire ; la vue 3D n’en a pas.
 
 La vue 3D accepte des liens directs (`atlas-3d.html#…`) :
 
@@ -39,7 +52,7 @@ Le site est une application web installable, qui se lit aussi sans réseau :
 - **iPhone, iPad (Safari)** : touchez Partager, puis « Sur l’écran d’accueil ».
 - **Lire hors ligne sans installer** : sur l’accueil, « Télécharger pour lire hors ligne » enregistre tout l’atlas sur l’appareil (quelques mégaoctets : la taille exacte est indiquée sur le bouton), avec la progression affichée.
 
-Les pages déjà consultées restent disponibles hors ligne. Une page qui n’est pas encore enregistrée affiche un message clair et la liste de celles qui le sont. Les mises à jour du site se font d’elles-mêmes à la visite suivante avec une connexion : seuls les fichiers modifiés sont téléchargés de nouveau. Les liens vers le texte du livre, sur urantia.org, demandent toujours Internet.
+Les pages déjà consultées restent disponibles hors ligne. Une page qui n’est pas encore enregistrée affiche un message clair et la liste de celles qui le sont. La recherche marche aussi sans réseau dès que son index est enregistré : après une première recherche, ou après le téléchargement complet. Les mises à jour du site se font d’elles-mêmes à la visite suivante avec une connexion : seuls les fichiers modifiés sont téléchargés de nouveau. Les liens vers le texte du livre, sur urantia.org, demandent toujours Internet.
 
 On peut aussi télécharger le dépôt (bouton **Code**, puis **Download ZIP**), le décompresser et ouvrir `index.html` dans un navigateur récent : Three.js et les polices sont inclus.
 
@@ -69,10 +82,13 @@ Pour proposer une correction ou une amélioration au site lui-même, voir [CONTR
 
 Le dossier `sources/` contient de quoi reconstruire tout le site depuis un clone du dépôt, avec la marche à suivre dans `sources/CONSTRUIRE.md` et les dépendances Python dans `sources/requirements.txt` :
 
-- les pages de l’atlas (`accueil.html`, `nebadon-orvonton.html`, `familles-de-personnalites.html`, `concepts.html`, `dieu-et-deite.html`, `destinee-humaine.html`, `histoire-d-urantia.html`, `rebellion-de-lucifer.html`, `vie-de-jesus.html`, `bible-et-livre.html`, `glossaire.html`) ;
+- les pages de l’atlas (`accueil.html`, `nebadon-orvonton.html`, `familles-de-personnalites.html`, `concepts.html`, `dieu-et-deite.html`, `destinee-humaine.html`, `histoire-d-urantia.html`, `rebellion-de-lucifer.html`, `vie-de-jesus.html`, `bible-et-livre.html`, les pages des thèmes, du livre et des outils, `glossaire.html`) ;
 - le glossaire : `glossaire-atlas.json` (termes, définitions, références et citations vérifiées), `glossaire.js` (le script des définitions dans les pages) et `glossaire.py` (contrôle des données et liste de A à Z de la page) ;
+- le quiz des étapes du parcours : `quiz-atlas.json` (questions, explications et références) et `quiz.js` ;
+- `navigation.js`, la barre commune (menus, menu latéral du téléphone) et la recherche ; son index, `assets/recherche.js`, est écrit à chaque construction à partir des pages ;
+- `ecouter.js`, la lecture à voix haute (bouton « Écouter »), par la synthèse vocale du navigateur ;
 - le gabarit de la vue 3D (`urantia-paradis-3d.src.html`) et ses données : étoiles (`etoiles.json`), contours terrestres (`geo.json`), textures (`tex.json`) ;
-- les scripts qui les produisent et les assemblent : `polices.py`, `etoiles.py`, `geo.py`, `textures.py`, `assembler.py` ;
+- les scripts qui les produisent et les assemblent : `polices.py`, `etoiles.py`, `geo.py`, `textures.py`, `voie-lactee-lecture-exr.py` et `voie-lactee-conversion.py` (le fond de Voie lactée de la vue 3D), `assembler.py` ;
 - les références cliquables : `liens_refs.py` fabrique `refs-urantia.js`, le script qui relie chaque référence au passage correspondant sur urantia.org ;
 - `hors-ligne.js`, le script de lecture hors ligne et d’installation ;
 - `musique.js`, la musique douce facultative (bouton ♪ de la barre), composée en direct par le navigateur ;

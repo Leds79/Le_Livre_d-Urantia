@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>(function(d,w){var c=d.documentElement.classList;c.add("an-js");if(w.speechSynthesis&&w.SpeechSynthesisUtterance)c.add("an-tts");if(w.AudioContext||w.webkitAudioContext)c.add("an-son")})(document,window)</script>
+<meta name="description" content="Les douze apôtres selon le Livre d’Urantia : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte.">
+<link rel="canonical" href="https://leds79.github.io/Le_Livre_d-Urantia/douze-apotres.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#131A2E" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Atlas Urantia">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="author" content="Sylvain Leduc">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Le Livre d’Urantia en images">
+<meta property="og:title" content="Les douze apôtres — Le Livre d’Urantia en images">
+<meta property="og:description" content="Les douze apôtres selon le Livre d’Urantia : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte.">
+<meta property="og:url" content="https://leds79.github.io/Le_Livre_d-Urantia/douze-apotres.html">
+<meta property="og:image" content="https://leds79.github.io/Le_Livre_d-Urantia/assets/apercu.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Le Livre d’Urantia en images : l’origine et l’organisation de l’univers, en cartes, en 3D et en schémas. Orbites concentriques autour d’un centre lumineux, sur un fond de nuit.">
+<script src="assets/hors-ligne.js" defer></script>
+<script src="assets/musique.js" defer></script>
+<script src="assets/navigation.js" defer></script>
+<script src="assets/ecouter.js" defer></script>
+<script src="assets/glossaire.js" defer></script>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Les douze apôtres — Le Livre d’Urantia en images</title>
+<link rel="stylesheet" href="assets/fonts/fonts.css">
+<style>
+/* Mise en page : les douze autour du Maitre (140:2.1), puis qui a appelé qui, les douze portraits du fascicule 139,
+   les paires, Judas, et les destinées comparées aux traditions. Deux familles de couleur, choix de la page :
+   le bleu pour les six premiers (fascicule 137), le vert d’eau pour les six qu’ils choisirent (fascicule 138) ;
+   l’anneau d’or marque les trois compagnons personnels de Jésus. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* accent : sélection */
+  --gold-ink: #8A5A00; /* accent, en texte */
+  --gold-ui: #9E6B00;  /* or des repères d’interface : 3:1 au moins */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  /* Les deux familles (choix de la page) */
+  --g1: #2F62A8; --g1-ink: #24508F; --g1-soft: #E7EEF8;   /* les six premiers : bleu du lac */
+  --g2: #13837A; --g2-ink: #0B655E; --g2-soft: #E2F3EF;   /* les six suivants : vert d’eau */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --g1: #8CB4F2; --g1-ink: #A9C6F5; --g1-soft: #15213A;
+    --g2: #52CFC0; --g2-ink: #7FDCD0; --g2-soft: #102928;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --g1: #8CB4F2; --g1-ink: #A9C6F5; --g1-soft: #15213A;
+  --g2: #52CFC0; --g2-ink: #7FDCD0; --g2-soft: #102928;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+.bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.q i { font-style: italic; }
+
+/* Les deux familles : couleur (--c), encre (--ci), fond doux (--soft) */
+.g1 { --c: var(--g1); --ci: var(--g1-ink); --soft: var(--g1-soft); }
+.g2 { --c: var(--g2); --ci: var(--g2-ink); --soft: var(--g2-soft); }
+
+/* Médaillon : un emblème (objet, métier ou initiale), jamais un visage, et le numéro d’ordre du livre */
+.medal { position: relative; flex: none; display: inline-grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: var(--soft, var(--tint)); border: 2px solid var(--c, var(--rule)); color: var(--c, var(--ink)); }
+.medal .em { width: 27px; height: 27px; overflow: visible; }
+.medal .no { position: absolute; right: -5px; bottom: -4px; min-width: 21px; height: 21px; padding: 0 4px; border-radius: 999px; display: grid; place-items: center; background: var(--sheet); border: 1.5px solid var(--c, var(--rule)); color: var(--ink); font: 600 .7rem/1 var(--font-mono); }
+.medal.cp { box-shadow: 0 0 0 3px var(--sheet), 0 0 0 5px var(--gold-ui); }
+.medal.sm { width: 38px; height: 38px; border-width: 1.5px; }
+.medal.sm .em { width: 20px; height: 20px; }
+.medal.sm .no { min-width: 17px; height: 17px; font-size: .62rem; right: -6px; bottom: -5px; }
+.medal.sm.cp { box-shadow: 0 0 0 2px var(--sheet), 0 0 0 3.5px var(--gold-ui); }
+.medal .ini { font: 600 1.15rem/1 var(--font-display); color: var(--ink); }
+.two { display: inline-flex; flex: none; }
+.two .medal + .medal { margin-left: 4px; }
+.em { fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: center; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 54ch; }
+.hero-cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--gold); display: grid; gap: 4px; max-width: 56ch; }
+.hero-cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+.hero-cite p i { font-style: normal; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.ctx-link { font-size: .98rem; color: var(--muted); }
+.ctx-link a, .sub-p a, .jd-fin a, .ap-dest a, .callout a { padding-block: 14px; }
+
+/* L’anneau des douze : à l’ordination, ils s’agenouillent en cercle autour du Maitre (140:2.1).
+   Grand écran : les médaillons sont centrés sur un cercle de 184 px de rayon, dont le centre est à 216 px du haut
+   (liens de 64 px de large : aucune zone cliquable ne chevauche sa voisine) ;
+   en dessous de 1080 px, une grille de quatre colonnes. */
+.ring-fig { margin: 0; display: grid; gap: 12px; justify-items: center; min-width: 0; }
+.ring-wrap { position: relative; width: 440px; max-width: 100%; height: 456px; }
+.ring { position: absolute; inset: 0; list-style: none; margin: 0; padding: 0; }
+.ring::before { content: ""; position: absolute; left: 50%; top: 216px; width: 368px; height: 368px; transform: translate(-50%, -50%); border-radius: 50%; border: 1.5px dashed var(--rule); }
+.ring li { --a: calc(-90deg + var(--i) * 30deg); position: absolute; left: 50%; top: 216px; transform: translate(-50%, -29px) rotate(var(--a)) translate(184px) rotate(calc(-1 * var(--a))); }
+.ring a { display: grid; justify-items: center; align-content: start; gap: 3px; width: 64px; min-height: 44px; padding: 2px 0 4px; text-decoration: none; color: var(--ink); border-radius: 12px; }
+.ring a:hover .rn { color: var(--gold-ink); }
+.ring a:hover .medal { border-color: var(--gold-ui); }
+.ring .rn { font-weight: 700; font-size: .8rem; line-height: 1.12; text-align: center; }
+.ring-centre { position: absolute; left: 50%; top: 216px; transform: translate(-50%, -50%); width: 160px; height: 160px; border-radius: 50%; display: grid; place-content: center; text-align: center; gap: 4px; background: radial-gradient(circle, var(--gold-soft) 0%, var(--gold-soft) 56%, transparent 71%); }
+.ring-centre b { font: 600 1.5rem/1 var(--font-display); }
+.ring-centre span { font: 500 .66rem/1.35 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.ring-fig figcaption { font-size: .84rem; color: var(--muted); line-height: 1.45; max-width: 46ch; text-align: center; }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; font-size: .84rem; color: var(--muted); }
+.legend li { display: inline-flex; align-items: center; gap: 7px; }
+.legend .sw { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--c); background: var(--soft); flex: none; }
+.legend .sw.cp { border-color: var(--rule); background: var(--sheet); box-shadow: 0 0 0 2px var(--sheet), 0 0 0 3.5px var(--gold-ui); }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; min-height: 44px; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+blockquote.cite p i { font-style: normal; }
+.sub-h { margin-top: 34px; font-size: 1.55rem; }
+.sub-p { margin-top: 10px; max-width: 74ch; }
+
+/* 1. Qui a appelé qui */
+.calls { margin-top: 26px; display: grid; gap: 10px; }
+.band { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 12px; text-align: center; padding: 10px 16px; border-radius: 12px; background: var(--gold-soft); border: 1px solid var(--gold-ui); }
+.band b { font: 600 1.3rem/1.2 var(--font-display); }
+.band span { font-size: .9rem; color: var(--muted); }
+.band.bas { background: var(--g2-soft); border-color: var(--g2); }
+.lin { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: auto auto auto; gap: 0 10px; }
+.lin > li { display: grid; grid-row: span 3; grid-template-rows: subgrid; gap: 0; justify-items: stretch; min-width: 0; }
+.chip-a { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; align-items: center; min-height: 44px; padding: 10px 10px 10px 8px; border-radius: 12px; background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c); color: var(--ink); text-decoration: none; }
+.chip-a:hover { border-color: var(--c); }
+.chip-a .nm { font-weight: 700; font-size: .95rem; line-height: 1.2; }
+.chip-a .how { grid-column: 1 / -1; font-size: .8rem; line-height: 1.35; color: var(--muted); }
+.chip-a .how .ref { white-space: normal; }
+.lin .arr { display: grid; justify-items: center; align-content: center; gap: 0; padding: 4px 0; min-height: 52px; font: 500 .7rem/1.2 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.lin .arr::before { content: ""; width: 2px; height: 14px; background: var(--rule); }
+.lin .arr::after { content: ""; width: 0; height: 0; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 8px solid var(--muted); }
+.frise { list-style: none; margin: 26px 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; counter-reset: fr; }
+.frise li { position: relative; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 14px 16px 16px; display: grid; gap: 6px; align-content: start; font-size: .93rem; line-height: 1.45; min-width: 0; }
+.frise .d { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.frise b { font-family: var(--font-display); font-size: 1.18rem; line-height: 1.2; }
+.org { list-style: none; margin: 18px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.org li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 12px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 10px 12px; min-width: 0; font-size: .92rem; line-height: 1.35; }
+.org .who { display: flex; }
+.org .who .medal + .medal { margin-left: 4px; }
+.org b { font-family: var(--font-display); font-size: 1.12rem; line-height: 1.15; display: block; }
+.org span.t { color: var(--muted); }
+
+/* 2. Les cartes */
+.cards-bar { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.btn { appearance: none; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; border-radius: 999px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); font: 500 .95rem/1.2 var(--font-body); cursor: pointer; }
+.btn:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr)); gap: 16px; margin-top: 20px; align-items: start; }
+.ap { scroll-margin-top: 12px; background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--c); border-radius: 14px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.ap:target, .ap.vise { box-shadow: 0 0 0 3px var(--gold-ui); }
+.ap-top { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 16px; align-items: center; }
+.ap h3 { font-size: 1.62rem; line-height: 1.05; }
+.ap-alias { font-size: .9rem; color: var(--muted); line-height: 1.35; margin-top: 4px; }
+.ap-role { font: 500 .74rem/1.35 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ci); }
+.ap-facts { margin: 0; padding: 8px 10px; border-radius: 10px; background: var(--soft); font-size: .92rem; line-height: 1.45; }
+.ap-facts b { font-weight: 700; }
+.ap-tog { appearance: none; justify-self: start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 14px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .92rem/1.2 var(--font-body); cursor: pointer; }
+.ap-tog:hover { border-color: var(--c); }
+.ap-tog .chev { margin-right: 0; }
+.ap-tog[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.ap-more { display: grid; gap: 10px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.ap-more p { font-size: .97rem; }
+.k { font-weight: 700; }
+.fw { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.fw li { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: 8px; align-items: baseline; font-size: .95rem; line-height: 1.45; }
+.tag { font: 500 .68rem/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tag.f { color: var(--ci); }
+.ap-dest { background: var(--paper); border-radius: 10px; padding: 10px 12px; }
+.ap-dest .k { display: block; font: 500 .72rem/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 2px; }
+.ap-bib { font-size: .9rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 14px; color: var(--muted); }
+.ap-bib a { display: inline-block; padding-block: 10px; }
+.ap .cite p { font-size: 1.1rem; }
+
+/* 3. Deux par deux */
+.seg { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 8px; }
+.seg button { appearance: none; display: inline-grid; gap: 1px; justify-items: start; min-height: 44px; padding: 8px 14px 9px; border-radius: 12px; border: 1px solid var(--rule); background: var(--sheet); color: var(--ink); font: 500 .95rem/1.2 var(--font-body); text-align: left; cursor: pointer; }
+.seg button small { font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.seg button:hover { border-color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.seg button[aria-pressed="true"] small { color: var(--paper); opacity: .8; }
+.pan { margin-top: 18px; display: grid; gap: 12px; }
+.pan + .pan { margin-top: 28px; }
+.pan h3 { font-size: 1.36rem; }
+.prs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 21rem), 1fr)); gap: 10px; }
+.prs li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; align-items: center; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 10px 14px; min-width: 0; min-height: 60px; }
+.prs .two { grid-row: span 2; }
+.prs .nm { font-weight: 700; line-height: 1.25; }
+.prs .x { font-size: .88rem; color: var(--muted); line-height: 1.35; }
+.prs li.fr { border-left: 4px solid var(--gold-ui); }
+.pan-note { font-size: .92rem; color: var(--muted); max-width: 80ch; }
+
+/* 4. Ce que chacun admirait */
+.adm { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(6, auto); grid-auto-flow: column; gap: 0 28px; }
+.adm li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 14px; align-items: center; padding: 10px 0; border-top: 1px solid var(--rule); min-width: 0; }
+.adm .who { font-weight: 700; font-size: .92rem; }
+.adm .tr { font-family: var(--font-display); font-size: 1.16rem; line-height: 1.3; }
+.adm li.nul .tr { color: var(--muted); }
+
+/* 5. Judas */
+.jd { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; align-items: start; }
+.jd article { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.jd h3 { font-size: 1.3rem; }
+.jd p, .jd li { font-size: .95rem; }
+.jd ol, .jd ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
+.steps { list-style: none; margin: 0; padding: 0 0 0 4px !important; display: grid; gap: 0 !important; }
+.steps li { position: relative; padding: 0 0 12px 22px; line-height: 1.45; }
+.steps li::before { content: ""; position: absolute; left: 3px; top: .5em; width: 9px; height: 9px; border-radius: 50%; background: var(--sheet); border: 2px solid var(--muted); }
+.steps li::after { content: ""; position: absolute; left: 7px; top: calc(.5em + 11px); bottom: 0; width: 1.5px; background: var(--rule); }
+.steps li:last-child::after { display: none; }
+.jd-fin { margin-top: 18px; max-width: 84ch; display: grid; gap: 12px; }
+
+/* 6. Après la Pentecôte : le livre et les traditions */
+.trad { width: 100%; margin-top: 22px; border-collapse: separate; border-spacing: 0; font-size: .94rem; line-height: 1.45; }
+.trad caption { text-align: left; font-size: .9rem; color: var(--muted); padding-bottom: 10px; caption-side: top; }
+.trad th, .trad td { text-align: left; vertical-align: top; padding: 10px 12px; border-top: 1px solid var(--rule); }
+.trad thead th { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-top: 0; }
+.trad tbody th { font-weight: 700; white-space: nowrap; }
+.trad tbody th .medal, .trad tbody th .two { margin-right: 10px; vertical-align: middle; }
+.trad td.lv { background: var(--sheet); }
+.trad .cell-l { display: none; }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 84ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout ul, .unk ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.callout li, .unk li { max-width: 78ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.reg-p { margin-top: 10px; }
+.unk { max-width: 84ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 84ch; display: grid; gap: 6px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .chev { transition: none; }
+}
+@media (max-width: 1079px) {
+  .ring-wrap { position: static; width: 100%; height: auto; }
+  .ring { position: static; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px 6px; }
+  .ring::before, .ring-centre { display: none; }
+  .ring li { position: static; transform: none; display: grid; justify-items: center; min-width: 0; }
+  .ring a { width: auto; max-width: 100%; min-width: 0; }
+}
+@media (max-width: 960px) {
+  .org { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .jd { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .ring-wrap { max-width: 560px; }
+  .lin { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; gap: 8px; }
+  .lin > li { grid-row: auto; grid-template-columns: minmax(0, 1fr) 4.2rem minmax(0, 1fr); grid-template-rows: auto; align-items: stretch; }
+  .lin .arr { min-height: 0; padding: 0 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; text-align: center; }
+  .lin .arr::before { display: none; }
+  .lin .arr::after { content: "→"; width: auto; height: auto; border: 0; font: 600 1.15rem/1 var(--font-mono); color: var(--muted); }
+  .frise { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .adm { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; }
+}
+@media (max-width: 700px) {
+  .trad, .trad tbody, .trad tr, .trad th, .trad td { display: block; width: 100%; }
+  .trad thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+  .trad tbody tr { border: 1px solid var(--rule); border-radius: 12px; background: var(--sheet); margin-bottom: 10px; overflow: hidden; }
+  .trad tbody th { white-space: normal; border-top: 0; padding: 12px 14px 4px; }
+  .trad td { border-top: 0; padding: 4px 14px 10px; }
+  .trad td.lv { background: transparent; }
+  .trad td + td { border-top: 1px dashed var(--rule); padding-top: 10px; }
+  .trad .cell-l { display: block; font: 500 .68rem/1.4 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+}
+@media (max-width: 640px) {
+  .org { grid-template-columns: minmax(0, 1fr); }
+  .frise { grid-template-columns: minmax(0, 1fr); }
+  .lin > li { grid-template-columns: minmax(0, 1fr) 3.4rem minmax(0, 1fr); }
+  .chip-a { grid-template-columns: minmax(0, 1fr); padding: 8px 9px 9px; gap: 4px; }
+  .chip-a .medal { display: none; }
+  .chip-a .nm::before { content: attr(data-n) " · "; font: 500 .74rem/1 var(--font-mono); color: var(--ci); }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .ap { padding: 16px 14px 18px; }
+  .ap h3 { font-size: 1.48rem; }
+  .fw li { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .ring { gap: 10px 2px; }
+  .ring .rn { font-size: .76rem; }
+  .medal { width: 50px; height: 50px; }
+}
+</style><style>/* barre commune, menus, tiroir, bandeau et pied de l’atlas (construire_site.py ; comportement : assets/navigation.js) */.aller-contenu{position:absolute;left:-10000px;top:8px;z-index:1100;padding:10px 16px;border-radius:8px;background:var(--ink);color:var(--paper);font:600 1rem/1.2 var(--font-body);text-decoration:none}.aller-contenu:focus{left:12px}.an-sr{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}html.an-bloque,html.an-bloque body{overflow:hidden}html.an-bloque main *,html.an-bloque main *::before,html.an-bloque main *::after{animation-play-state:paused!important}.atlas-nav{position:relative;z-index:100;background:var(--sheet);border-bottom:1px solid var(--rule);color:var(--ink);font:500 1rem/1.25 var(--font-body)}.an-barre{display:flex;align-items:center;gap:2px;max-width:1100px;min-height:64px;margin:0 auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}.atlas-nav ul,.atlas-nav ol{list-style:none;margin:0;padding:0}.atlas-nav li,.atlas-nav p{margin:0}.atlas-nav a{color:inherit;text-decoration:none}.atlas-nav svg{display:block;flex:none}.atlas-nav :focus-visible{outline:2px solid var(--gold-ink);outline-offset:2px;border-radius:10px}.an-ic{width:20px;height:20px}.an-emb{width:28px;height:28px;border-radius:8px}.an-accueil,.an-g-btn,.an-ecouter,.an-menu{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;margin:0;padding:0 12px;border:0;border-radius:10px;background:none;color:var(--ink);font:600 1rem/1 var(--font-body);white-space:nowrap;cursor:pointer;-webkit-tap-highlight-color:transparent}.an-accueil{padding-left:6px;margin-right:4px}.an-g-btn{list-style:none}.an-g-btn::-webkit-details-marker{display:none}.an-g-btn::marker{content:""}.an-accueil:hover,.an-g-btn:hover,.an-ecouter:hover,.an-menu:hover{background:var(--tint)}.an-g-btn[aria-expanded="true"],.an-d[open]>.an-g-btn{background:var(--tint)}.an-chev{width:12px;height:12px;color:var(--muted);transition:transform .2s ease}.an-g-btn[aria-expanded="true"] .an-chev,.an-d[open]>.an-g-btn .an-chev{transform:rotate(180deg)}.an-accueil[aria-current="page"]::after,.an-ici>.an-g-btn::after,.an-ici>.an-d>.an-g-btn::after{content:"";position:absolute;left:12px;right:12px;bottom:2px;height:3px;border-radius:2px;background:var(--gold-ui,var(--gold))}.an-accueil[aria-current="page"]::after{left:42px}.an-tiroir{display:flex;align-items:center;min-width:0}.an-liste{display:flex;align-items:center;gap:2px}.an-g{position:relative}.an-l-accueil,.an-t-tete,.an-t-pied,.an-page,.an-menu{display:none}.an-panneau{position:absolute;top:calc(100% + 10px);left:0;z-index:110;min-width:340px;padding:8px;background:var(--sheet);border:1px solid var(--rule);border-radius:16px;box-shadow:0 26px 56px -18px rgba(8,13,30,.36),0 4px 14px rgba(8,13,30,.1)}.an-p-tete{display:flex;justify-content:space-between;gap:16px;margin:6px 10px 8px;font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.an-items{display:grid;gap:2px}.an-items a{display:grid;gap:3px;min-height:44px;padding:10px 12px;border-radius:10px}.an-items a:hover,.an-etapes a:hover{background:var(--tint)}.an-nom{font:600 1rem/1.25 var(--font-body);color:var(--ink)}.an-aide{font:400 .87rem/1.3 var(--font-body);color:var(--muted)}.an-ext{margin-left:.35em;font-weight:500;color:var(--muted)}.an-items a[aria-current="page"],.an-etapes a[aria-current="page"]{background:var(--tint);background:color-mix(in srgb,var(--gold) 15%,transparent)}.an-items a[aria-current="page"] .an-nom,.an-etapes a[aria-current="page"] .an-et{color:var(--gold-ink)}.an-p-parcours{width:640px}.an-etapes{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(var(--an-rangs,7),auto);grid-auto-flow:column;gap:2px 8px}.an-etapes a{display:flex;align-items:center;gap:12px;min-height:44px;padding:6px 10px;border-radius:10px}.an-num{flex:none;display:grid;place-items:center;width:28px;height:28px;border:1.5px solid var(--gold-ui,var(--gold));border-radius:50%;font:500 .8rem/1 var(--font-mono);color:var(--gold-ink)}.an-etapes a[aria-current="page"] .an-num{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}.an-et{font:500 .98rem/1.25 var(--font-body);color:var(--ink)}.an-3d{margin-left:auto;padding:2px 7px;border:1px solid var(--rule);border-radius:999px;font:500 .68rem/1.3 var(--font-mono);letter-spacing:.06em;color:var(--muted)}.an-actions{display:flex;align-items:center;gap:4px;margin-left:auto;padding-left:8px}.an-chercher{display:none;align-items:center;gap:10px;min-width:210px;min-height:44px;margin:0 4px 0 0;padding:0 8px 0 14px;border:1px solid var(--rule);border-radius:999px;background:var(--paper);color:var(--muted);font:500 .97rem/1 var(--font-body);cursor:pointer;-webkit-tap-highlight-color:transparent}html.an-js .an-chercher{display:inline-flex}.an-chercher:hover{border-color:var(--muted);color:var(--ink)}.an-chercher .an-ic{width:18px;height:18px;color:var(--gold-ink)}.an-chercher kbd{margin-left:auto;padding:2px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--sheet);font:500 .78rem/1.3 var(--font-mono);color:var(--muted)}.an-ecouter{display:none}html.an-tts .an-ecouter{display:inline-flex}.an-ecouter .an-ic{color:var(--gold-ink)}.an-ecouter[data-etat="lecture"],.an-ecouter[data-etat="pause"]{background:var(--tint);color:var(--gold-ink)}.atlas-musique{appearance:none;display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:999px;background:none;color:var(--muted);cursor:pointer}html:not(.an-son) .atlas-musique{display:none}.atlas-musique:hover{color:var(--gold-ink);background:var(--tint)}.atlas-musique[aria-pressed="true"]{color:var(--gold-ink);box-shadow:inset 0 0 0 2px var(--gold-ui,var(--gold))}.atlas-musique svg{width:20px;height:20px}.an-voile{position:fixed;inset:0;z-index:1000;background:rgba(6,10,22,.5);opacity:0;transition:opacity .26s ease}.an-voile.ouvert{opacity:1}.an-t-titre{flex:1;display:flex;align-items:center;gap:10px;font:600 1.22rem/1.15 var(--font-display);color:var(--ink)}.an-fermer{flex:none;display:inline-grid;place-items:center;width:44px;height:44px;margin:0;padding:0;border:0;border-radius:50%;background:none;color:var(--ink);cursor:pointer}.an-fermer:hover{background:var(--tint)}.an-t-btn{display:flex;align-items:center;gap:12px;width:100%;min-height:48px;margin:0;padding:0 16px;border:1px solid var(--rule);border-radius:12px;background:var(--paper);color:var(--ink);font:600 1rem/1.2 var(--font-body);text-align:left;cursor:pointer}.an-t-btn .an-ic,.an-t-btn svg{width:20px;height:20px;color:var(--gold-ink)}.an-t-btn[aria-pressed="true"],.an-t-btn[data-etat="lecture"],.an-t-btn[data-etat="pause"]{border-color:var(--gold-ui,var(--gold));color:var(--gold-ink)}html:not(.an-tts) .an-t-ecouter,html:not(.an-son) .atlas-musique-t{display:none}@media (max-width:999.98px){html.an-js .an-barre{min-height:56px;gap:4px;padding-left:max(6px,env(safe-area-inset-left,0px));padding-right:max(6px,env(safe-area-inset-right,0px))}html.an-js .an-menu{display:inline-flex;padding:0 14px 0 10px}html.an-js .an-accueil{display:none}html.an-js .an-page{display:block;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font:600 1.04rem/1.2 var(--font-body);color:var(--ink);text-align:center}html.an-js .an-actions{margin-left:0;padding-left:0}html.an-js .an-actions .an-ecouter,html.an-js .an-actions .atlas-musique{display:none}html.an-js .an-chercher{min-width:0;margin:0;padding:0 12px;border-color:transparent;background:none;color:var(--ink)}html.an-js .an-chercher .an-lbl,html.an-js .an-chercher kbd{display:none}html.an-js .an-chercher .an-ic{width:22px;height:22px;color:var(--ink)}html.an-js .an-tiroir{position:fixed;top:0;bottom:0;left:0;z-index:1001;display:flex;flex-direction:column;align-items:stretch;width:min(88vw,400px);padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px) env(safe-area-inset-left,0px);background:var(--sheet);box-shadow:24px 0 60px -20px rgba(4,8,20,.5);overflow-y:auto;overscroll-behavior:contain;transform:translateX(-104%);visibility:hidden;transition:transform .26s cubic-bezier(.2,.8,.2,1),visibility 0s linear .26s}html.an-js .an-tiroir.ouvert{transform:none;visibility:visible;transition:transform .26s cubic-bezier(.2,.8,.2,1)}html.an-js .an-t-tete{position:sticky;top:0;z-index:1;display:flex;align-items:center;gap:12px;padding:8px 8px 8px 18px;background:var(--sheet);border-bottom:1px solid var(--rule)}html.an-js .an-liste{display:block;padding:6px 0 10px}html.an-js .an-l-accueil{display:block}html.an-js .an-l-accueil a{display:flex;align-items:center;min-height:52px;padding:0 22px;font:600 1.06rem/1.2 var(--font-body)}html.an-js .an-l-accueil a[aria-current="page"]{color:var(--gold-ink);box-shadow:inset 3px 0 0 var(--gold-ui,var(--gold))}html.an-js .an-g{position:static;border-top:1px solid var(--rule)}html.an-js .an-g-btn{display:flex;width:100%;justify-content:space-between;min-height:54px;padding:0 22px;border-radius:0;font-size:1.06rem}html.an-js .an-g-btn:hover{background:var(--tint)}html.an-js .an-g-btn::after{display:none}html.an-js .an-ici>.an-g-btn>span::after{content:"";display:inline-block;width:7px;height:7px;margin-left:10px;border-radius:50%;background:var(--gold-ui,var(--gold));vertical-align:2px}html.an-js .an-panneau{position:static;width:auto;min-width:0;margin:0;padding:0 10px 12px;border:0;border-radius:0;background:none;box-shadow:none}html.an-js .an-p-tete{display:none}html.an-js .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}html.an-js .an-items a,html.an-js .an-etapes a{padding-left:12px}html.an-js .an-t-pied{display:grid;gap:10px;margin-top:auto;padding:14px 16px 18px;border-top:1px solid var(--rule)}html:not(.an-js) .an-barre{flex-wrap:wrap;position:relative;padding-block:4px}html:not(.an-js) .an-tiroir,html:not(.an-js) .an-liste{flex-wrap:wrap}html:not(.an-js) .an-g{position:static}html:not(.an-js) .an-panneau{left:8px;right:8px;width:auto;min-width:0}html:not(.an-js) .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}}@media (prefers-reduced-motion:reduce){.an-tiroir,.an-tiroir.ouvert,.an-voile,.an-chev{transition:none!important}}@media print{.atlas-nav,.aller-contenu{display:none!important}}.atlas-suite{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px 18px;align-items:center}.atlas-suite a{display:grid;gap:2px;padding:12px 16px;min-height:44px;border:1px solid var(--rule);border-radius:12px;background:var(--sheet);color:var(--ink);text-decoration:none}.atlas-suite a:hover{border-color:var(--muted)}.atlas-suite .s-lbl{font:500 .72rem/1.3 var(--font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}.atlas-suite .s-nom{font:600 1.15rem/1.2 var(--font-display);color:var(--gold-ink)}.atlas-suite .suiv{text-align:right}.atlas-suite .etape{display:grid;gap:8px;justify-items:center;text-align:center}.atlas-suite .etape p{margin:0;font:500 .74rem/1.3 var(--font-mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}.atlas-suite .etape a.livre{display:inline-flex;align-items:center;min-height:44px;padding:0;border:0;background:none;color:var(--gold-ink);font:500 .95rem/1.3 var(--font-body);text-decoration:underline;text-underline-offset:3px}.atlas-suite-seule{grid-template-columns:minmax(0,1fr)}@media (max-width:640px){.atlas-suite{grid-template-columns:minmax(0,1fr)}.atlas-suite .etape{order:-1;justify-items:start;text-align:left}.atlas-suite .suiv{text-align:left}}.atlas-credit{margin:0;display:flex;flex-wrap:wrap;align-items:center;column-gap:.45em}.atlas-credit a{display:inline-flex;align-items:center;min-height:44px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}.atlas-credit .atlas-note{font-size:.92em}.atlas-droits{margin:0}.atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}a.ref-lien{padding-block:5px}</style>
+</head>
+<body>
+<a class="aller-contenu" href="#contenu">Aller au contenu</a>
+<nav class="atlas-nav" aria-label="Atlas"><div class="an-barre"><button type="button" class="an-menu" aria-expanded="false" aria-controls="an-tiroir"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Menu</span></button><a class="an-accueil" href="index.html"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Accueil</span></a><p class="an-page" aria-hidden="true">Les douze apôtres</p><div class="an-tiroir" id="an-tiroir"><div class="an-t-tete"><p class="an-t-titre"><svg class="an-emb" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><rect width="64" height="64" rx="14" fill="#0C1120"/><ellipse cx="32" cy="33" rx="27" ry="15" fill="none" stroke="#9DB0F0" stroke-opacity=".55" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="18" ry="10" fill="none" stroke="#9DB0F0" stroke-opacity=".9" stroke-width="2.6"/><ellipse cx="32" cy="33" rx="8" ry="4" fill="#F6C766"/><circle cx="51" cy="19" r="3.6" fill="#F0B33C"/></svg><span>Le Livre d’Urantia en images</span></p><button type="button" class="an-fermer" aria-label="Fermer le menu"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><ul class="an-liste"><li class="an-l-accueil"><a href="index.html">Accueil</a></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Parcours</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau an-p-parcours" id="an-p-parcours"><p class="an-p-tete"><span>Parcours de découverte</span><span>13 étapes</span></p><ol class="an-etapes" style="--an-rangs:7"><li><a href="nebadon-dans-orvonton.html"><span class="an-num">1</span><span class="an-et">Nébadon dans Orvonton</span></a></li><li><a href="atlas-3d.html"><span class="an-num">2</span><span class="an-et">D’Urantia au Paradis (3D)</span></a></li><li><a href="atlas-3d.html#gouvernement"><span class="an-num">3</span><span class="an-et">Qui gouverne quoi</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#frise"><span class="an-num">4</span><span class="an-et">La frise du temps</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="atlas-3d.html#carriere"><span class="an-num">5</span><span class="an-et">La carrière ascendante</span><span class="an-3d" title="Dans la vue 3D">3D</span></a></li><li><a href="familles-de-personnalites.html"><span class="an-num">6</span><span class="an-et">Familles de personnalités</span></a></li><li><a href="concepts-en-schemas.html"><span class="an-num">7</span><span class="an-et">Concepts en schémas</span></a></li><li><a href="dieu-et-deite.html"><span class="an-num">8</span><span class="an-et">Dieu et la Déité</span></a></li><li><a href="destinee-humaine.html"><span class="an-num">9</span><span class="an-et">La destinée humaine</span></a></li><li><a href="histoire-d-urantia.html"><span class="an-num">10</span><span class="an-et">L’histoire d’Urantia</span></a></li><li><a href="rebellion-de-lucifer.html"><span class="an-num">11</span><span class="an-et">La rébellion de Lucifer</span></a></li><li><a href="vie-de-jesus.html"><span class="an-num">12</span><span class="an-et">La vie de Jésus</span></a></li><li><a href="bible-et-livre.html"><span class="an-num">13</span><span class="an-et">La Bible et le Livre d’Urantia</span></a></li></ol></div></details></li><li class="an-g an-ici"><details class="an-d"><summary class="an-g-btn"><span>Thèmes</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-themes"><ul class="an-items"><li><a href="paradis-et-havona.html"><span class="an-nom">Le Paradis et Havona</span><span class="an-aide">L’ile centrale et l’univers parfait</span></a></li><li><a href="etre-supreme.html"><span class="an-nom">L’Être Suprême</span><span class="an-aide">Un Dieu qui grandit avec l’expérience</span></a></li><li><a href="les-anges.html"><span class="an-nom">Les anges</span><span class="an-aide">Séraphins, chérubins et anges gardiens</span></a></li><li><a href="evolution-religion.html"><span class="an-nom">L’évolution de la religion</span><span class="an-aide">De la peur à la foi, en huit étapes</span></a></li><li><a href="effusions-de-micael.html"><span class="an-nom">Les sept effusions de Micaël</span><span class="an-aide">Sept fois la vie de ses créatures</span></a></li><li><a href="douze-apotres.html" aria-current="page"><span class="an-nom">Les douze apôtres</span><span class="an-aide">Qui ils étaient, ce qu’ils devinrent</span></a></li><li><a href="enseignements-de-jesus.html"><span class="an-nom">Les enseignements de Jésus</span><span class="an-aide">Quinze enseignements, rangés par thème</span></a></li></ul></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Le livre</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-livre"><ul class="an-items"><li><a href="histoire-du-livre.html"><span class="an-nom">D’où vient ce livre ?</span><span class="an-aide">Son origine, ses témoins, ses critiques</span></a></li><li><a href="auteurs-et-chiffres.html"><span class="an-nom">Les auteurs déclarés et le livre en chiffres</span><span class="an-aide">Qui présente chaque fascicule ; le livre mesuré</span></a></li><li><a href="bible-et-livre.html"><span class="an-nom">La Bible et le Livre d’Urantia</span><span class="an-aide">Cent parallèles, de la Genèse à l’Apocalypse</span></a></li><li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener"><span class="an-nom">Lire le livre sur urantia.org<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Le texte intégral, sur le site de la Fondation Urantia</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li><li class="an-g"><details class="an-d"><summary class="an-g-btn"><span>Outils</span><svg class="an-chev" viewBox="0 0 12 12" aria-hidden="true" focusable="false"><path d="M3 4.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="an-panneau" id="an-p-outils"><ul class="an-items"><li><a href="parcours-de-lecture.html"><span class="an-nom">Parcours de lecture</span><span class="an-aide">Cinq itinéraires, fascicule par fascicule</span></a></li><li><a href="glossaire.html"><span class="an-nom">Glossaire</span><span class="an-aide">Les mots du livre, de A à Z</span></a></li><li><a href="index.html#hors-ligne"><span class="an-nom">Lire hors ligne</span><span class="an-aide">Installer l’atlas ou l’enregistrer sur l’appareil</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Les%20douze%20ap%C3%B4tres&amp;page=Les%20douze%20ap%C3%B4tres%20%28douze-apotres.html%29" target="_blank" rel="noopener"><span class="an-nom">Signaler une erreur<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Sur cette page ; un compte GitHub est nécessaire</span><span class="an-sr"> (nouvel onglet)</span></a></li><li><a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/CONTRIBUER.md" target="_blank" rel="noopener"><span class="an-nom">Contribuer sur GitHub<span class="an-ext" aria-hidden="true">↗</span></span><span class="an-aide">Proposer une correction ou une idée</span><span class="an-sr"> (nouvel onglet)</span></a></li></ul></div></details></li></ul><div class="an-t-pied"><button type="button" class="an-t-btn an-t-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter cette page</span></button><button type="button" class="an-t-btn atlas-musique-t" data-musique aria-pressed="false"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Musique douce</span></button></div></div><div class="an-actions"><button type="button" class="an-chercher" data-chercher aria-keyshortcuts="/ Control+K" aria-label="Rechercher dans l’atlas"><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><circle cx="8.6" cy="8.6" r="5.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12.7 12.7l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span class="an-lbl" aria-hidden="true">Rechercher</span><kbd aria-hidden="true">/</kbd></button><button type="button" class="an-ecouter" data-ecouter><svg class="an-ic" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M3.5 7.6h2.8L10 4.7v10.6l-3.7-2.9H3.5z" fill="currentColor"/><path d="M13.1 7.3a3.8 3.8 0 0 1 0 5.4M15.5 5a7 7 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="an-lbl">Écouter</span></button><button type="button" class="atlas-musique" data-musique aria-pressed="false" aria-label="Musique douce"><svg viewBox="0 0 20 20" aria-hidden="true" focusable="false"><ellipse cx="7" cy="15" rx="3.6" ry="2.7" transform="rotate(-20 7 15)" fill="currentColor"/><path d="M10.2 14.6V3.2c2.5 1.3 4.7 2.6 5.5 5.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div></nav>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="e-andre" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4"/><path d="M12 6.6 13.9 12 12 17.4 10.1 12Z" fill="currentColor"/><path d="M12 2.2v1.6M12 20.2v1.6M2.2 12h1.6M20.2 12h1.6"/></symbol>
+  <symbol id="e-pierre" viewBox="0 0 24 24"><path d="M4.6 15.2c-.7-3.6 1.5-7.4 5.4-8.6 4-1.2 8.1.5 9.1 4.1 1 3.7-1.5 7.1-5.6 7.8-4.2.7-8.2-.1-8.9-3.3Z"/><path d="M9.2 12.1c1.3-1.6 3.2-2.4 5.3-2.3"/><path d="M3 21h18"/></symbol>
+  <symbol id="e-jacques" viewBox="0 0 24 24"><path d="M13.6 2.8 6.4 13.3h5.2l-1.2 7.9 7.2-10.5h-5.2l1.2-7.9Z"/></symbol>
+  <symbol id="e-jean" viewBox="0 0 24 24"><path d="M12 20.2s-7.6-4.7-7.6-10.3A4.2 4.2 0 0 1 12 7.5a4.2 4.2 0 0 1 7.6 2.4c0 5.6-7.6 10.3-7.6 10.3Z"/></symbol>
+  <symbol id="e-philippe" viewBox="0 0 24 24"><path d="M3.8 14c0-3.9 3.7-7 8.2-7s8.2 3.1 8.2 7v2.9a1.6 1.6 0 0 1-1.6 1.6H5.4a1.6 1.6 0 0 1-1.6-1.6Z"/><path d="m8.6 10.4 1.3 2.6M12.2 9.8l1.3 2.6M15.6 10.6l1 2"/></symbol>
+  <symbol id="e-nathanael" viewBox="0 0 24 24"><path d="M3.6 11.2 12 4.4l8.4 6.8"/><path d="M6 9.6v10h12v-10"/><path d="M10.2 19.6v-5h3.6v5"/></symbol>
+  <symbol id="e-matthieu" viewBox="0 0 24 24"><ellipse cx="12" cy="6.6" rx="6.6" ry="2.6"/><path d="M5.4 6.6v4.2c0 1.4 3 2.6 6.6 2.6s6.6-1.2 6.6-2.6V6.6"/><path d="M5.4 10.8V15c0 1.4 3 2.6 6.6 2.6s6.6-1.2 6.6-2.6v-4.2"/></symbol>
+  <symbol id="e-thomas" viewBox="0 0 24 24"><path d="M4.6 3.6v16h16v-4h-12v-12Z"/><path d="M4.6 7.6h2M4.6 11.6h2M12.6 19.6v-2M16.6 19.6v-2"/></symbol>
+  <symbol id="e-barque" viewBox="0 0 24 24"><path d="M3 15.2h18l-2.8 4.4H5.8Z"/><path d="M12.2 15.2V3.8l6 9h-6"/><path d="M10.2 6.6 6.4 12.8h3.8"/></symbol>
+  <symbol id="e-simon" viewBox="0 0 24 24"><path d="M12 21.2c-3.9 0-6.6-2.7-6.6-6.3 0-3.5 2.4-5.6 3.7-8.3.5 2 1.6 3.1 2.8 3.6-.2-2.9.8-5.5 3.1-7.5.1 3.3 3.6 5.6 3.6 10.6 0 4.6-2.7 7.9-6.6 7.9Z"/><path d="M12 21.2c-1.6 0-2.7-1.1-2.7-2.6 0-1.6 1.2-2.6 2.1-3.9.9 1.2 3.3 2 3.3 4 0 1.5-1.2 2.5-2.7 2.5Z"/></symbol>
+  <symbol id="e-judas" viewBox="0 0 24 24"><path d="M8 9.6h8c2.4 2 3.8 4.5 3.8 6.8 0 2.6-2.2 4.6-5 4.6H9.2c-2.8 0-5-2-5-4.6 0-2.3 1.4-4.8 3.8-6.8Z"/><path d="M8.6 9.6 7.2 5.4c1.6.8 3.2.8 4.8 0 1.6.8 3.2.8 4.8 0l-1.4 4.2"/><path d="M9.6 14.8h4.8"/></symbol>
+</svg>
+
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape>Thème · </span>Le Livre d’Urantia · surtout le fascicule 139</p>
+      <h1>Les douze apôtres</h1>
+      <p class="lede">Pêcheurs pour la plupart, un receveur des douanes, un ancien zélote, un Judéen de Jéricho&nbsp;: le livre consacre tout un fascicule aux douze. Il dit l’âge de chacun, son métier, son rôle, ses forces et ses faiblesses, ce qu’il admirait chez le Maitre et ce qu’il devint après la Pentecôte.</p>
+      <blockquote class="cite hero-cite" data-ref="139:0.2"><p>«&nbsp;Ces douze hommes représentaient de nombreux types différents de tempéraments humains, et l’instruction ne les avait pas rendus <i>semblables</i>.&nbsp;»</p><span class="ref">139:0.2</span></blockquote>
+      <a class="cta" href="#douze">Rencontrer les douze <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">Le récit suivi&nbsp;: <a href="vie-de-jesus.html">La vie de Jésus</a>, en frise. Les parallèles avec les Évangiles&nbsp;: <a href="bible-et-livre.html#p-premiers-disciples">La Bible et le Livre d’Urantia</a>.</p>
+    </div>
+    <figure class="ring-fig">
+      <div class="ring-wrap">
+      <ol class="ring" aria-label="Les douze, dans l’ordre du livre">
+        <li style="--i:0"><a class="g1" href="#andre"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span class="rn">André</span></a></li>
+        <li style="--i:1"><a class="g1" href="#pierre"><span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span><span class="rn">Pierre</span></a></li>
+        <li style="--i:2"><a class="g1" href="#jacques"><span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span class="rn">Jacques</span></a></li>
+        <li style="--i:3"><a class="g1" href="#jean"><span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span><span class="rn">Jean</span></a></li>
+        <li style="--i:4"><a class="g1" href="#philippe"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span class="rn">Philippe</span></a></li>
+        <li style="--i:5"><a class="g1" href="#nathanael"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span><span class="rn">Nathanael</span></a></li>
+        <li style="--i:6"><a class="g2" href="#matthieu"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span><span class="rn">Matthieu</span></a></li>
+        <li style="--i:7"><a class="g2" href="#thomas"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span><span class="rn">Thomas</span></a></li>
+        <li style="--i:8"><a class="g2" href="#jacques-alphee"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="rn">Jacques Alphée</span></a></li>
+        <li style="--i:9"><a class="g2" href="#judas-alphee"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span><span class="rn">Judas Alphée</span></a></li>
+        <li style="--i:10"><a class="g2" href="#simon"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span><span class="rn">Simon Zélotès</span></a></li>
+        <li style="--i:11"><a class="g2" href="#judas-iscariot"><span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span><span class="rn">Judas Iscariot</span></a></li>
+      </ol>
+      <div class="ring-centre" aria-hidden="true"><b>Le Maitre</b><span>12 janvier 27</span></div>
+      </div>
+      <figcaption>À l’ordination, les douze s’agenouillent en cercle autour de Jésus, qui pose les mains sur la tête de chacun, de Judas Iscariot à André <span class="ref">140:2.1</span>. Choisis un apôtre pour lire son portrait.</figcaption>
+      <ul class="legend">
+        <li class="g1"><span class="sw" aria-hidden="true"></span>les six premiers, appelés en février 26</li>
+        <li class="g2"><span class="sw" aria-hidden="true"></span>les six qu’ils choisirent, l’été suivant</li>
+        <li><span class="sw cp" aria-hidden="true"></span>compagnons personnels de Jésus</li>
+      </ul>
+    </figure>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#appels"><span class="nb">1</span><span class="tt">Qui a appelé qui</span></a></li>
+      <li><a href="#douze" class="hot"><span class="nb">2</span><span class="tt">Les douze, un par un</span></a></li>
+      <li><a href="#paires"><span class="nb">3</span><span class="tt">Deux par deux</span></a></li>
+      <li><a href="#regards"><span class="nb">4</span><span class="tt">Ce que chacun admirait chez le Maitre</span></a></li>
+      <li><a href="#judas"><span class="nb">5</span><span class="tt">Judas Iscariot, selon le livre</span></a></li>
+      <li><a href="#apres"><span class="nb">6</span><span class="tt">Après la Pentecôte&nbsp;: le livre et les traditions</span></a></li>
+      <li><a href="#registres"><span class="nb">7</span><span class="tt">Trois manières de lire ce fascicule</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="appels" aria-labelledby="h-appels">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Fascicules 137 et 138</p>
+      <h2 id="h-appels">Qui a appelé qui</h2>
+      <p>Jésus n’a choisi lui-même que la moitié des douze <span class="ref">179:4.7</span>. Les six premiers viennent à lui en deux jours, les 23 et 24 février de l’an 26, près de Pella, où Jean le Baptiste baptisait. Quatre mois plus tard, il demande à chacun d’eux de choisir un nouvel apôtre parmi ses premiers convertis <span class="ref">137:2.1 ; 138:1.2</span>.</p>
+    </div>
+    <div class="calls">
+      <p class="band"><b>Jésus</b><span>appelle ou accueille les six premiers · 23 et 24 février 26</span></p>
+      <ol class="lin" aria-label="Les six premiers, et l’apôtre que chacun choisit">
+        <li><a class="chip-a g1" href="#andre"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span class="nm" data-n="1">André</span><span class="how">le premier choisi <span class="ref">137:1.1</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#matthieu"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span><span class="nm" data-n="7">Matthieu Lévi</span><span class="how">receveur des douanes <span class="ref">138:2.4</span></span></a></li>
+        <li><a class="chip-a g1" href="#pierre"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span><span class="nm" data-n="2">Simon Pierre</span><span class="how">amené par son frère André <span class="ref">137:1.3</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#simon"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span><span class="nm" data-n="11">Simon Zélotès</span><span class="how">un chef zélote <span class="ref">138:2.8</span></span></a></li>
+        <li><a class="chip-a g1" href="#jacques"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span class="nm" data-n="3">Jacques Zébédée</span><span class="how">rejoint Jésus le soir même <span class="ref">137:1.5–6</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#jacques-alphee"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="nm" data-n="9">Jacques Alphée</span><span class="how">pêcheur et fermier <span class="ref">138:2.6</span></span></a></li>
+        <li><a class="chip-a g1" href="#jean"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span><span class="nm" data-n="4">Jean Zébédée</span><span class="how">avec son frère Jacques <span class="ref">137:1.5–6</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#judas-alphee"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span><span class="nm" data-n="10">Judas Alphée</span><span class="how">le jumeau de Jacques <span class="ref">138:2.7</span></span></a></li>
+        <li><a class="chip-a g1" href="#philippe"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span class="nm" data-n="5">Philippe</span><span class="how">Jésus lui dit <span class="q" data-ref="137:2.5">«&nbsp;Suis-moi.&nbsp;»</span> <span class="ref">137:2.5</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#thomas"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span><span class="nm" data-n="8">Thomas Didyme</span><span class="how">pêcheur à Tarichée <span class="ref">138:2.5</span></span></a></li>
+        <li><a class="chip-a g1" href="#nathanael"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span><span class="nm" data-n="6">Nathanael</span><span class="how">amené par son ami Philippe <span class="ref">137:2.6–7</span></span></a><span class="arr">a choisi</span><a class="chip-a g2" href="#judas-iscariot"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span><span class="nm" data-n="12">Judas Iscariot</span><span class="how">pour son expérience des finances <span class="ref">138:2.9</span></span></a></li>
+      </ol>
+      <p class="band bas"><b>Les six suivants</b><span>proposés par les six, acceptés à l’unanimité · été 26 <span class="ref">138:2.1–2</span></span></p>
+    </div>
+
+    <ol class="frise" aria-label="Les étapes, de l’appel à l’ordination">
+      <li><span class="d">Samedi 23 février 26</span><b>André, puis Simon</b><span>Au camp de Jean le Baptiste, près de Pella. Le soir même, Jacques et Jean rejoignent Jésus ; le mot <i>apôtre</i> date de ce jour <span class="ref">137:0.1 ; 137:1.1–7</span>.</span></li>
+      <li><span class="d">Dimanche 24 février 26</span><b>Philippe et Nathanael</b><span>Sur la route de la Galilée, Jésus appelle Philippe, qui court chercher son ami <span class="ref">137:2.1–7</span>.</span></li>
+      <li><span class="d">Dimanche 23 juin 26</span><b>Six choisissent six</b><span>Jésus envoie les six deux par deux et autorise chacun à choisir un nouvel apôtre <span class="ref">138:1.1–2</span>.</span></li>
+      <li><span class="d">Dimanche 12 janvier 27</span><b>L’ordination</b><span>Jésus les ordonne ambassadeurs du royaume et prédicateurs de la bonne nouvelle <span class="ref">138:10.11 ; 140:0.1</span>.</span></li>
+    </ol>
+
+    <h3 class="sub-h">L’organisation des douze</h3>
+    <p class="sub-p">Ils s’organisent de bonne heure, et cette répartition des charges dure jusqu’à la désertion de Judas <span class="ref">138:10.1 ; 138:10.11</span>. Ces étapes prennent place dans la frise de <a href="vie-de-jesus.html">La vie de Jésus</a>.</p>
+    <ul class="org">
+      <li class="g1"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span></span><span><b>Président et directeur</b><span class="t">André dirige les douze <span class="ref">138:10.2</span></span></span></li>
+      <li class="g1"><span class="who"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span></span><span><b>Compagnons personnels</b><span class="t">Pierre, Jacques et Jean, auprès de Jésus jour et nuit <span class="ref">138:10.3</span></span></span></li>
+      <li class="g1"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span></span><span><b>Intendant</b><span class="t">Philippe assure le ravitaillement <span class="ref">138:10.4</span></span></span></li>
+      <li class="g1"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span></span><span><b>Les familles</b><span class="t">Nathanael veille aux besoins des familles des douze <span class="ref">138:10.5</span></span></span></li>
+      <li class="g2"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span></span><span><b>Agent comptable</b><span class="t">Matthieu tient le budget et alimente la trésorerie <span class="ref">138:10.6</span></span></span></li>
+      <li class="g2"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span></span><span><b>L’itinéraire</b><span class="t">Thomas prévoit les étapes, le logement et les lieux de prêche <span class="ref">138:10.7</span></span></span></li>
+      <li class="g2"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span></span><span><b>Les foules</b><span class="t">les jumeaux Alphée y maintiennent l’ordre pendant la prédication <span class="ref">138:10.8</span></span></span></li>
+      <li class="g2"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span></span><span><b>La détente</b><span class="t">Simon Zélotès organise récréations et divertissements <span class="ref">138:10.9</span></span></span></li>
+      <li class="g2"><span class="who"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span></span><span><b>Trésorier</b><span class="t">Judas Iscariot porte la bourse et tient les comptes <span class="ref">138:10.10</span></span></span></li>
+    </ul>
+  </section>
+
+  <section id="douze" aria-labelledby="h-douze">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Fascicule 139</p>
+      <h2 id="h-douze">Les douze, un par un</h2>
+      <p>Le fascicule 139 brosse le portrait de chacun, dans l’ordre où ils furent choisis. Les apôtres, dit-il, apprirent de Jésus le royaume du ciel, et Jésus apprit d’eux beaucoup sur la nature humaine <span class="ref">139:0.2</span>.</p>
+      <p class="hint" id="cartes-aide" hidden>Touche <b>Lire le portrait</b> pour déplier une carte.</p>
+    </div>
+    <div class="cards-bar" id="cartes-barre" hidden><button type="button" class="btn" id="tout">Tout déplier</button></div>
+    <div class="cards">
+
+      <article class="ap g1" id="andre" aria-labelledby="h-andre">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span>
+          <div><p class="ap-role">Chef du groupe</p><h3 id="h-andre">André</h3><p class="ap-alias">le premier choisi · les apôtres l’appelaient d’un nom équivalent à <i>Chef</i></p></div>
+        </div>
+        <p class="ap-facts"><b>33 ans</b> en 26, le plus âgé des douze · pêcheur, né à Capharnaüm, célibataire <span class="ref">139:1.1–4</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="andre-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="andre-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>une superbe stabilité ; de tous, c’est lui qui jugeait le mieux les hommes</span></li>
+            <li><span class="tag">Faiblesse</span><span>le manque d’enthousiasme&nbsp;: par horreur de la flatterie, il louait trop peu ses compagnons <span class="ref">139:1.8–10</span></span></li>
+          </ul>
+          <p>Le plus capable des douze, sauf pour le don de la parole, il amena aussitôt à Jésus son frère Simon <span class="ref">139:1.1–4</span>. Les deux frères, si différents, ne furent jamais jaloux l’un de l’autre. Le soir de la Pentecôte, André dit à Pierre&nbsp;:</p>
+          <blockquote class="cite" data-ref="139:1.6"><p>«&nbsp;J’aurais été incapable de cela, mais je suis heureux d’avoir un frère capable de l’avoir fait.&nbsp;»</p><span class="ref">139:1.6</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Sa confiance&nbsp;: il en fait le chef des douze. Au dernier souper, il le décharge de toute autorité administrative et lui demande de garder ses frères unis, puis de consacrer sa vie à l’amour fraternel <span class="ref">181:2.16–18</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Dès l’ascension, il avait commencé un récit des dires et des actes du Maitre <span class="ref">139:1.8–10</span>. Dispersé par les persécutions, il prêche en Arménie, en Asie Mineure et en Macédoine, puis il est crucifié à Patras, en Achaïe&nbsp;: deux jours sur la croix, à annoncer encore la bonne nouvelle <span class="ref">139:1.12</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-premiers-disciples">les premiers disciples</a></p>
+        </div>
+      </article>
+
+      <article class="ap g1" id="pierre" aria-labelledby="h-pierre">
+        <div class="ap-top">
+          <span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span>
+          <div><p class="ap-role">Compagnon personnel de Jésus</p><h3 id="h-pierre">Simon Pierre</h3><p class="ap-alias">Jésus le surnomma <i>Pierre</i>, avec un sourire · le grand prédicateur des douze</p></div>
+        </div>
+        <p class="ap-facts"><b>30 ans</b> · marié, trois enfants · pêcheur à Bethsaïde, avec son frère André et sa belle-mère sous son toit <span class="ref">139:2.1–4</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="pierre-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="pierre-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>la loyauté, l’amitié&nbsp;: il aimait Jésus réellement et sincèrement</span></li>
+            <li><span class="tag">Faiblesse</span><span>l’inconstance&nbsp;: vaillant devant une attaque de front, il s’effondrait devant le ridicule <span class="ref">139:2.6</span></span></li>
+          </ul>
+          <p>Impulsif et optimiste, il parlait sans réfléchir. Orateur éloquent, penseur rapide mais peu profond, il posait plus de questions que tous les autres apôtres réunis <span class="ref">139:2.1–4</span>.</p>
+          <blockquote class="cite" data-ref="139:2.6"><p>«&nbsp;Pierre représentait l’une des combinaisons les plus inexplicables de courage et de lâcheté que l’on ait jamais vues sur terre.&nbsp;»</p><span class="ref">139:2.6</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Le pardon. Après son reniement, guidé par André, il est le premier à retourner à ses filets ; assuré que Jésus lui a pardonné, il devient un prédicateur ardent&nbsp;: nul, sauf Paul, ne contribua plus que lui à établir le royaume <span class="ref">139:2.9–10</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Ce jour-là, son appel gagne près de deux-mille âmes <span class="ref">194:1.2</span>. Il visite les Églises de Babylone à Corinthe et travaille avec Paul. Sa femme, qui l’accompagnait, est jetée aux bêtes dans l’arène de Rome le jour de sa mort ; lui est crucifié à Rome, comme son Maitre <span class="ref">139:2.11–15</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-confession-pierre">la confession de Pierre</a><a href="bible-et-livre.html#p-reniement">le reniement</a></p>
+        </div>
+      </article>
+
+      <article class="ap g1" id="jacques" aria-labelledby="h-jacques">
+        <div class="ap-top">
+          <span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span>
+          <div><p class="ap-role">Compagnon personnel de Jésus</p><h3 id="h-jacques">Jacques Zébédée</h3><p class="ap-alias">l’ainé des fils de Zébédée · avec Jean, l’un des <i>fils du tonnerre</i>, comme disait Jésus</p></div>
+        </div>
+        <p class="ap-facts"><b>30 ans</b> · marié, quatre enfants · pêcheur à Bethsaïde, associé d’André et de Simon <span class="ref">139:3.1</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="jacques-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="jacques-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>voir tous les aspects d’un problème</span></li>
+            <li><span class="tag">Faiblesse</span><span>des colères véhémentes, puis des silences inexpliqués, parfois plusieurs jours de suite <span class="ref">139:3.2–3</span></span></li>
+          </ul>
+          <p>Pondéré comme André, il parlait bien mieux que lui en public&nbsp;: après Pierre, et peut-être Matthieu, c’était le meilleur orateur des douze <span class="ref">139:3.2–3</span>.</p>
+          <blockquote class="cite" data-ref="139:3.4"><p>«&nbsp;Il était celui des douze qui fut le plus près de saisir l’importance et la signification réelles de l’enseignement de Jésus.&nbsp;»</p><span class="ref">139:3.4</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Lent d’abord à comprendre, il acquit avant la fin de sa formation un concept supérieur du message <span class="ref">139:3.4</span>. Au dernier souper, Jésus lui demande de dominer son âme avec patience et de joindre le discernement au courage <span class="ref">181:2.15</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Jésus avait demandé aux deux frères s’ils pouvaient boire sa coupe&nbsp;: pour Jacques, ce fut littéralement vrai. Premier des douze à mourir martyr, il périt par l’épée sur l’ordre d’Hérode Agrippa, qui le redoutait plus que tous les autres. Son accusateur, bouleversé, s’enfuit pour rejoindre les disciples <span class="ref">139:3.8–9</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-transfiguration">la Transfiguration</a><a href="bible-et-livre.html#p-gethsemani">Gethsémani</a></p>
+        </div>
+      </article>
+
+      <article class="ap g1" id="jean" aria-labelledby="h-jean">
+        <div class="ap-top">
+          <span class="medal cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span>
+          <div><p class="ap-role">Compagnon personnel · chargé de la famille de Jésus</p><h3 id="h-jean">Jean Zébédée</h3><p class="ap-alias">le plus jeune des douze · plus tard, <i>l’apôtre de l’amour</i></p></div>
+        </div>
+        <p class="ap-facts"><b>24 ans</b> · célibataire · pêcheur à Bethsaïde, chez ses parents ; il s’occupe pour Jésus de la famille du Maitre <span class="ref">139:4.1</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="jean-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="jean-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>on pouvait lui faire confiance&nbsp;: prompt et courageux, fidèle et dévoué</span></li>
+            <li><span class="tag">Faiblesse</span><span>une vanité démesurée, d’ordinaire bien cachée <span class="ref">139:4.2–5</span></span></li>
+          </ul>
+          <p>Seul des apôtres, il suivit Jésus toute la nuit de l’arrestation et resta près de lui jusqu’à la croix ; il fut le premier à croire pleinement à la résurrection <span class="ref">139:4.10</span>. Le livre refuse pourtant d’en faire <span class="q" data-ref="139:4.2–5">«&nbsp;le disciple que Jésus aimait&nbsp;»</span>&nbsp;: Jésus n’avait pas de favori, et c’est Jean, devenu vieux, qui se désigna ainsi <span class="ref">139:4.2–5</span>.</p>
+          <p><b class="k">Ce que Jésus lui apporte.</b> L’exemple d’un amour désintéressé, qui domina toute sa vie&nbsp;: le <i>fils du tonnerre</i> devint l’<i>apôtre de l’amour</i> <span class="ref">139:4.6</span>, et sa vanité diminua beaucoup <span class="ref">139:4.2–5</span>. Vieil évêque à Éphèse, il se bornait à dire aux croyants&nbsp;:</p>
+          <blockquote class="cite" data-ref="139:4.6"><p>«&nbsp;Mes petits enfants, aimez-vous les uns les autres.&nbsp;»</p><span class="ref">139:4.6</span></blockquote>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Principal auxiliaire de Pierre ce jour-là, puis soutien de l’Église de Jérusalem. Banni quatre ans à Patmos, il y écrit l’Apocalypse ; évêque à Éphèse, il guide à 99&nbsp;ans son collaborateur Nathan dans la rédaction de l’Évangile selon Jean. Il meurt de mort naturelle à Éphèse, en 103, à cent-un ans <span class="ref">139:4.11–15</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-bord-du-lac">au bord du lac</a><a href="bible-et-livre.html#p-apocalypse-retour">l’Apocalypse</a></p>
+        </div>
+      </article>
+
+      <article class="ap g1" id="philippe" aria-labelledby="h-philippe">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span>
+          <div><p class="ap-role">Intendant · les vivres</p><h3 id="h-philippe">Philippe</h3><p class="ap-alias">Philippe le curieux · de Bethsaïde, comme André et Pierre</p></div>
+        </div>
+        <p class="ap-facts"><b>27 ans</b> · marié depuis peu, sans enfants · de Bethsaïde <span class="ref">139:5.1–2</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="philippe-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="philippe-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>un esprit méthodique et consciencieux&nbsp;: en quatre ans, les vivres ne manquèrent presque jamais</span></li>
+            <li><span class="tag">Faiblesse</span><span>un manque à peu près total d’imagination ; il voulait toujours qu’on lui montre <span class="ref">139:5.3–5</span></span></li>
+          </ul>
+          <blockquote class="cite" data-ref="139:5.4"><p>«&nbsp;Philippe n’était pas un homme capable d’accomplir de grandes choses, mais il pouvait faire de petites choses avec grandeur, les faire bien et d’une manière agréable.&nbsp;»</p><span class="ref">139:5.4</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Une patience sans faille. Jésus ne le reprit jamais pour ses questions naïves, pour ne pas blesser cette âme honnête ni lui ôter la liberté de demander ; à travers lui, dit le texte, Jésus apprit beaucoup d’un certain type de mental humain <span class="ref">139:5.5–7</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Le premier à porter l’évangile hors de la communauté juive, chez les Samaritains. Sa femme, intrépide, prêche au pied de sa croix jusqu’à être lapidée ; leur fille ainée, Léa, devient la célèbre prophétesse d’Hiérapolis. Philippe est crucifié et enterré à Hiérapolis <span class="ref">139:5.10–12</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-premiers-disciples">les premiers disciples</a><a href="bible-et-livre.html#p-pains">la multiplication des pains</a></p>
+        </div>
+      </article>
+
+      <article class="ap g1" id="nathanael" aria-labelledby="h-nathanael">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span>
+          <div><p class="ap-role">Veille sur les familles des douze</p><h3 id="h-nathanael">Nathanael</h3><p class="ap-alias">l’honnête Nathanael · fils de Bartholomé · <i>Nathanaël</i> dans les Bibles françaises</p></div>
+        </div>
+        <p class="ap-facts"><b>25 ans</b> · célibataire · seul soutien de ses parents âgés, à Cana ; il songeait à devenir commerçant <span class="ref">139:6.1–2</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="nathanael-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="nathanael-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>la sincérité&nbsp;: il était sans artifice</span></li>
+            <li><span class="tag">Faiblesse</span><span>l’orgueil de sa famille, de sa ville et de sa nation, et la tendance à juger d’avance <span class="ref">139:6.3–6</span></span></li>
+          </ul>
+          <p>Le philosophe et le rêveur du groupe, mais un rêveur très pratique, et sans doute son meilleur conteur&nbsp;: dans les moments tendus, son humour détendait les apôtres <span class="ref">139:6.3–6</span>.</p>
+          <blockquote class="cite" data-ref="139:6.4"><p>«&nbsp;Nathanael considéra peu à peu Jésus et le royaume avec plus de sérieux, mais ne se prit jamais lui-même au sérieux.&nbsp;»</p><span class="ref">139:6.4</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Jésus aimait l’entendre discourir sur les choses graves comme sur les frivoles. Quand Judas vint se plaindre en secret de son manque de sérieux, Jésus prit sa défense&nbsp;: il était venu pour que ses frères aient plus de joie <span class="ref">139:6.3–6</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>En désaccord avec Pierre, qui prêchait sur Jésus plutôt que l’évangile du royaume, il se retire à Philadelphie, puis part prêcher au-delà de la Mésopotamie <span class="ref">193:6.4</span>. Il meurt aux Indes ; ses frères ne surent jamais ce qu’il était devenu <span class="ref">139:6.9</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-premiers-disciples">les premiers disciples</a></p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="matthieu" aria-labelledby="h-matthieu">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span>
+          <div><p class="ap-role">Agent financier</p><h3 id="h-matthieu">Matthieu Lévi</h3><p class="ap-alias">choisi par André · les apôtres l’appelaient <i>le collecteur d’argent</i></p></div>
+        </div>
+        <p class="ap-facts"><b>31 ans</b> · marié, quatre enfants · receveur des douanes à Capharnaüm, d’une famille de publicains <span class="ref">139:7.1–3</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="matthieu-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="matthieu-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>un dévouement de tout cœur à la cause</span></li>
+            <li><span class="tag">Faiblesse</span><span>une conception matérialiste et à courte vue de la vie, qu’il corrigea beaucoup au fil des mois <span class="ref">139:7.1–3</span></span></li>
+          </ul>
+          <p>Homme d’affaires capable, seul des douze à disposer de quelques ressources, il savait se faire des amis dans tous les milieux <span class="ref">139:7.1–3</span>. Ses amples notes servirent plus tard de base à l’Évangile selon Matthieu, rédigé par Isadore <span class="ref">139:7.5</span>.</p>
+          <blockquote class="cite" data-ref="139:7.7"><p>«&nbsp;La présence de Matthieu parmi les douze fut le moyen de garder les portes du royaume grandes ouvertes pour une foule d’âmes découragées et déshéritées […]&nbsp;»</p><span class="ref">139:7.7</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> D’être accueilli, lui, un publicain&nbsp;: il en garda une reconnaissance débordante <span class="ref">139:7.1–3</span>. Il finança en secret une grande part de la vie du groupe, au point de partir prêcher sans ressources ; seul Jésus le savait <span class="ref">139:7.8–9</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Dispersé par les persécutions, il prêche et baptise en Syrie, en Cappadoce, en Galatie, en Bithynie et en Thrace. À Lysimachie, des Juifs incroyants complotent sa mort avec des soldats romains ; il meurt triomphant dans la foi <span class="ref">139:7.10</span>.</p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="thomas" aria-labelledby="h-thomas">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span>
+          <div><p class="ap-role">Organise l’itinéraire</p><h3 id="h-thomas">Thomas Didyme</h3><p class="ap-alias">choisi par Philippe · plus tard, <i>Thomas l’incrédule</i></p></div>
+        </div>
+        <p class="ap-facts"><b>29 ans</b> · marié, quatre enfants · jadis charpentier et maçon, devenu pêcheur, à Tarichée <span class="ref">139:8.1–2</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="thomas-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="thomas-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>un superbe mental analytique, et un courage indomptable une fois sa décision prise</span></li>
+            <li><span class="tag">Faiblesse</span><span>le doute soupçonneux, dont il ne triompha jamais complètement <span class="ref">139:8.3–4</span></span></li>
+          </ul>
+          <p>Le seul mental vraiment analytique des douze, leur homme de science <span class="ref">139:8.1–2</span>. Une enfance malheureuse l’avait rendu querelleur, pessimiste et soupçonneux ; mais plus ses compagnons le connurent, plus ils l’aimèrent, honnête et loyal <span class="ref">139:8.3–4</span>.</p>
+          <blockquote class="cite" data-ref="139:8.12"><p>«&nbsp;Thomas est le grand exemple d’un être humain qui a des doutes, qui y fait face et qui en triomphe.&nbsp;»</p><span class="ref">139:8.12</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Le contact du Maitre commença aussitôt à transformer son caractère <span class="ref">139:8.3–4</span>. Jésus eut avec lui de longues conversations ; son admission parmi les douze proclamait que Jésus aimait même ceux qui doutaient honnêtement <span class="ref">139:8.6</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Remis d’un abime de désespoir, il conseille sagement les apôtres. Il prêche à Chypre, en Crète, sur la côte de l’Afrique du Nord et en Sicile, avant d’être mis à mort à Malte par des agents du gouvernement romain ; il venait de commencer à écrire la vie et les enseignements de Jésus <span class="ref">139:8.13</span>.</p>
+          <p class="ap-bib"><span>Dans la Bible&nbsp;:</span><a href="bible-et-livre.html#p-thomas">Thomas l’incrédule</a></p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="jacques-alphee" aria-labelledby="h-jacques-alphee">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span>
+          <div><p class="ap-role">L’ordre dans les foules</p><h3 id="h-jacques-alphee">Jacques Alphée</h3><p class="ap-alias">choisi par Jacques Zébédée · jumeau de Judas Alphée</p></div>
+        </div>
+        <p class="ap-facts"><b>26 ans</b> · marié, trois enfants · pêcheur près de Khérésa <span class="ref">139:10.1–2</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="jacques-alphee-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="jacques-alphee-p">
+          <p><b class="k">Forces et faiblesses.</b> Aucune, dit le texte avec bienveillance&nbsp;: les jumeaux, que l’on appelait aussi Thaddée et Lébbée, n’avaient <span class="q" data-ref="139:10.4–5">«&nbsp;ni points forts ni points faibles&nbsp;»</span>. On les disait <span class="q" data-ref="139:10.4–5">«&nbsp;les moindres de tous les apôtres&nbsp;»</span>, et cela les mettait de bonne humeur <span class="ref">139:10.4–5</span>.</p>
+          <p>Ils comprenaient peu les débats de leurs compagnons, mais se réjouissaient d’être du groupe ; ce que l’on dit de l’un, ajoute le texte, on peut le dire de l’autre <span class="ref">139:10.1–2</span>.</p>
+          <blockquote class="cite" data-ref="139:10.6"><p>«&nbsp;Ils croyaient en Jésus ; ils étaient des fils de Dieu et des citoyens du royaume.&nbsp;»</p><span class="ref">139:10.6</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Une place d’honneur&nbsp;: en voyant deux des leurs parmi les apôtres, bien des gens simples et craintifs entrèrent dans le royaume <span class="ref">139:10.4–5</span>. Jacques aimait surtout la simplicité du Maitre <span class="ref">139:10.6</span>. Au dernier souper, Jésus demande aux jumeaux de consacrer leur vie à magnifier le travail de tous les jours <span class="ref">181:2.19</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Fidèles jusqu’au bout, les jumeaux furent, après Jean, les premiers à croire à la résurrection. Ils retournèrent ensuite à leur famille et à leurs filets&nbsp;: leur tâche était achevée <span class="ref">139:10.11</span>.</p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="judas-alphee" aria-labelledby="h-judas-alphee">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span>
+          <div><p class="ap-role">L’ordre dans les foules</p><h3 id="h-judas-alphee">Judas Alphée</h3><p class="ap-alias">choisi par Jean Zébédée · jumeau de Jacques Alphée</p></div>
+        </div>
+        <p class="ap-facts"><b>26 ans</b> · marié, deux enfants · pêcheur près de Khérésa <span class="ref">139:10.1–3</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="judas-alphee-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="judas-alphee-p">
+          <p>Semblable à son frère en tout, apparence, mental et perception spirituelle. Avec lui, il était huissier pendant les sermons et serviteur de tous&nbsp;: il faisait les commissions, aidait Philippe au ravitaillement et Nathanael à porter l’argent aux familles <span class="ref">139:10.1–3</span>. D’un caractère heureux et d’un esprit simple, il était aimé de tous <span class="ref">139:10.7–10</span>.</p>
+          <blockquote class="cite" data-ref="139:10.8"><p>«&nbsp;Jésus ne dédaigne pas la petitesse, mais seulement le mal et le péché.&nbsp;»</p><span class="ref">139:10.8</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Judas était attiré par l’humilité sans ostentation du Maitre, jointe à sa dignité. Un jour, il osa demander à Jésus comment il favoriserait encore les douze, une fois révélé au monde <span class="ref">139:10.7–10</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Peu après, les jumeaux rentrent chez eux en Galilée <span class="ref">193:6.4</span>. Ils vécurent et moururent conscients d’avoir été honorés par quatre années aux côtés d’un Fils de Dieu <span class="ref">139:10.11</span>.</p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="simon" aria-labelledby="h-simon">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span>
+          <div><p class="ap-role">Récréations et détente</p><h3 id="h-simon">Simon Zélotès</h3><p class="ap-alias">Simon le Zélote · choisi par Pierre</p></div>
+        </div>
+        <p class="ap-facts"><b>28 ans</b> · vivait avec sa famille à Capharnaüm · ancien commerçant, voué au mouvement patriotique des zélotes <span class="ref">139:11.1–4</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="simon-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="simon-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>une fidélité entrainante&nbsp;: un quart d’heure lui suffisait souvent pour lever les doutes d’un indécis</span></li>
+            <li><span class="tag">Faiblesse</span><span>une mentalité matérialiste ; quatre ans ne suffirent pas à faire de ce nationaliste un internationaliste à mentalité spirituelle <span class="ref">139:11.1–4</span></span></li>
+          </ul>
+          <p>Fougueux agitateur, qui parlait beaucoup sans réfléchir, il brillait dans les débats&nbsp;: on lui confiait les Juifs procéduriers et les arguties des Grecs <span class="ref">139:11.6–9</span>. Jésus lui répétait qu’il était légitime de vouloir améliorer la société, mais ajoutait toujours&nbsp;:</p>
+          <blockquote class="cite" data-ref="139:11.9"><p>«&nbsp;Ce n’est pas l’affaire du royaume des cieux. Il faut que nous soyons consacrés à faire la volonté du Père.&nbsp;»</p><span class="ref">139:11.9</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Une patience constante et de nombreux entretiens&nbsp;: le révolutionnaire devint un puissant prédicateur de paix, même si Jésus ne réussit jamais pleinement à en faire un internationaliste <span class="ref">139:11.6–9</span>. Au dernier souper, il le prévient qu’aucun ne sera plus désespéré que lui après son départ, mais que son esprit l’accompagnera <span class="ref">181:2.10–11</span>.</p>
+          <p class="ap-dest"><b class="k">Après la Pentecôte</b>Accablé après la dispersion, il se retire quelque temps. Quelques années plus tard, il reprend espoir, part pour Alexandrie, remonte le Nil et prêche jusqu’au cœur de l’Afrique, où il meurt, vieux et faible ; il y est enterré <span class="ref">139:11.10–11</span>.</p>
+        </div>
+      </article>
+
+      <article class="ap g2" id="judas-iscariot" aria-labelledby="h-judas-iscariot">
+        <div class="ap-top">
+          <span class="medal" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span>
+          <div><p class="ap-role">Trésorier</p><h3 id="h-judas-iscariot">Judas Iscariot</h3><p class="ap-alias">choisi par Nathanael · né à Kérioth, le seul Judéen des douze</p></div>
+        </div>
+        <p class="ap-facts"><b>30 ans</b> · célibataire · fils unique de sadducéens de Jéricho, qui le renièrent quand il suivit Jean le Baptiste <span class="ref">139:12.1–2</span></p>
+        <button type="button" class="ap-tog" aria-expanded="true" aria-controls="judas-iscariot-p" hidden><span>Lire le portrait</span><i class="chev" aria-hidden="true"></i></button>
+        <div class="ap-more" id="judas-iscariot-p">
+          <ul class="fw">
+            <li><span class="tag f">Force</span><span>un administrateur de valeur&nbsp;: trésorier honnête et efficace jusqu’à la trahison</span></li>
+            <li><span class="tag">Faiblesse</span><span>enfant gâté, il se faisait une idée exagérée de son importance, était mauvais perdant et rendait la pareille à ceux qui, croyait-il, l’avaient blessé <span class="ref">139:12.3–6</span></span></li>
+          </ul>
+          <p>Probablement le plus instruit des douze, bon penseur, mais pas toujours honnête avec lui-même <span class="ref">139:12.1–2</span>. Les apôtres l’aimaient et ne le critiquèrent jamais ; mais lui n’admirait chez Jésus aucun trait particulier, et le jugeait en secret timide <span class="ref">139:12.3–6</span>.</p>
+          <blockquote class="cite" data-ref="139:12.7"><p>«&nbsp;Pour Jésus, Judas était une aventure de la foi.&nbsp;»</p><span class="ref">139:12.7</span></blockquote>
+          <p><b class="k">Ce que Jésus lui apporte.</b> Une chance entière&nbsp;: Jésus connaissait sa faiblesse dès le début, mais il l’admit, et fit tout jusqu’au bout pour le transformer et le sauver <span class="ref">139:12.7–8</span>.</p>
+          <p class="ap-dest"><b class="k">Sa fin</b>Il livra son Maitre, puis se donna la mort <span class="ref">139:12.13</span>. <a href="#judas">Ce que le livre dit de ses causes</a></p>
+        </div>
+      </article>
+
+    </div>
+    <p class="sub-p hint">Pour lire la suite dans le texte&nbsp;: l’ordination <span class="ref">140:2.1</span>, les adieux de Jésus à chacun au dernier souper <span class="ref">181:2.1</span>, ses entretiens avec eux au bord du lac après la résurrection <span class="ref">192:2.1</span>.</p>
+  </section>
+
+  <section id="paires" aria-labelledby="h-paires">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicules 138, 150 et 192</p>
+      <h2 id="h-paires">Deux par deux</h2>
+      <p>Jésus n’envoyait pas ses messagers seuls. Après la résurrection, il le rappelle aux onze&nbsp;:</p>
+      <blockquote class="cite" data-ref="193:3.2"><p>«&nbsp;Ne vous ai-je pas envoyés enseigner deux par deux afin que vous ne vous sentiez pas seuls, et que vous ne tombiez pas dans les ennuis et les malheurs de l’isolement ?&nbsp;»</p><span class="ref">193:3.2</span></blockquote>
+      <p class="hint" id="seg-aide" hidden>Choisis un moment&nbsp;: les paires changent.</p>
+    </div>
+    <div class="seg" id="seg" role="group" aria-label="Trois moments où le texte nomme les paires" hidden>
+      <button type="button" aria-pressed="false" aria-controls="pan-1" data-p="pan-1"><small>Juin 26</small>Les six premiers</button>
+      <button type="button" aria-pressed="true" aria-controls="pan-2" data-p="pan-2"><small>An 29</small>Les douze en mission</button>
+      <button type="button" aria-pressed="false" aria-controls="pan-3" data-p="pan-3"><small>Avril 30</small>Au bord du lac</button>
+    </div>
+    <div class="pan" id="pan-1">
+      <h3>Juin 26&nbsp;: les six premiers, en trois paires</h3>
+      <ul class="prs">
+        <li class="g1 fr"><span class="two"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span></span><span class="nm">Jacques et Jean</span><span class="x">à Khérésa</span></li>
+        <li class="g1 fr"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span></span><span class="nm">André et Pierre</span><span class="x">à Capharnaüm</span></li>
+        <li class="g1"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span></span><span class="nm">Philippe et Nathanael</span><span class="x">à Tarichée</span></li>
+      </ul>
+      <p class="pan-note">Deux semaines de travail personnel, sans baptiser ni prêcher en public ; à leur retour, chacun propose un nouvel apôtre <span class="ref">138:1.1–4</span>.</p>
+    </div>
+    <div class="pan" id="pan-2">
+      <h3>An 29&nbsp;: les douze, envoyés à travers la Galilée</h3>
+      <ul class="prs">
+        <li class="g1 fr"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span></span><span class="nm">André et Pierre</span><span class="x">deux frères</span></li>
+        <li class="g1 fr"><span class="two"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span></span><span class="nm">Jacques et Jean Zébédée</span><span class="x">deux frères</span></li>
+        <li class="g1"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span></span><span class="nm">Philippe et Nathanael</span><span class="x">deux amis</span></li>
+        <li class="g2"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span></span><span class="nm">Thomas et Matthieu</span><span class="x">l’itinéraire et les finances</span></li>
+        <li class="g2 fr"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span></span><span class="nm">Jacques et Judas Alphée</span><span class="x">deux jumeaux</span></li>
+        <li class="g2"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span></span><span class="nm">Simon Zélotès et Judas Iscariot</span><span class="x">les deux derniers choisis</span></li>
+      </ul>
+      <p class="pan-note">Paires désignées par Jésus pendant la troisième tournée de prédication <span class="ref">150:4.1</span>. Dès aout 26, ils partaient déjà deux par deux, et Jésus accompagnait chaque paire à tour de rôle, <span class="q" data-ref="138:8.1">«&nbsp;dans l’ordre où ils avaient été choisis&nbsp;»</span> <span class="ref">138:8.1</span>. Les trois paires de frères sont marquées d’un filet d’or <span class="ref">181:2.19</span>.</p>
+    </div>
+    <div class="pan" id="pan-3">
+      <h3>Avril 30&nbsp;: au bord du lac, après la résurrection</h3>
+      <ul class="prs">
+        <li class="g1"><span class="two"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span></span><span class="nm">Pierre et Jean</span><span class="x">Jésus leur demande <span class="q" data-ref="192:2.1–4">«&nbsp;m’aimes-tu ?&nbsp;»</span> <span class="ref">192:2.1–4</span></span></li>
+        <li class="g1"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span></span><span class="nm">André et Jacques</span><span class="x"><span class="q" data-ref="192:2.7–8">«&nbsp;as-tu confiance en moi ?&nbsp;»</span> <span class="ref">192:2.7–8</span></span></li>
+        <li class="g2"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span><span class="medal sm g1" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span></span><span class="nm">Thomas et Nathanael</span><span class="x"><span class="q" data-ref="192:2.9–10">«&nbsp;me sers-tu ?&nbsp;»</span> <span class="ref">192:2.9–10</span></span></li>
+        <li class="g1"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span class="medal sm g2" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span></span><span class="nm">Philippe et Matthieu</span><span class="x"><span class="q" data-ref="192:2.11–12">«&nbsp;m’obéis-tu ?&nbsp;»</span> <span class="ref">192:2.11–12</span></span></li>
+        <li class="g2"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span></span><span class="nm">Jacques et Judas Alphée</span><span class="x"><span class="q" data-ref="192:2.13">«&nbsp;croyez-vous en moi ?&nbsp;»</span> <span class="ref">192:2.13</span></span></li>
+      </ul>
+      <p class="pan-note">Les paires ne sont plus celles qu’il avait envoyées en mission. Les onze étaient descendus ensemble de Jérusalem, mais Simon Zélotès, découragé, était rentré chez lui <span class="ref">192:1.10</span>.</p>
+    </div>
+  </section>
+
+  <section id="regards" aria-labelledby="h-regards">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · Fascicule 139</p>
+      <h2 id="h-regards">Ce que chacun admirait chez le Maitre</h2>
+      <blockquote class="cite" data-ref="139:1.11"><p>«&nbsp;Chacun des apôtres aimait Jésus, mais il reste vrai que chacun d’eux était attiré vers lui par un trait caractéristique différent de la personnalité du Maitre […]&nbsp;»</p><span class="ref">139:1.11</span></blockquote>
+    </div>
+    <ul class="adm">
+      <li class="g1"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span><span><span class="who">André</span><br><span class="tr"><span class="q" data-ref="139:1.11">«&nbsp;sa constante sincérité […] sa dignité sans affectation&nbsp;»</span> <span class="ref">139:1.11</span></span></span></li>
+      <li class="g1"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span><span><span class="who">Pierre</span><br><span class="tr"><span class="q" data-ref="139:2.5">«&nbsp;sa divine tendresse&nbsp;»</span> <span class="ref">139:2.5</span></span></span></li>
+      <li class="g1"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span><span><span class="who">Jacques Zébédée</span><br><span class="tr"><span class="q" data-ref="139:3.6">«&nbsp;l’affection compatissante du Maitre&nbsp;»</span> <span class="ref">139:3.6</span></span></span></li>
+      <li class="g1"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span><span><span class="who">Jean Zébédée</span><br><span class="tr"><span class="q" data-ref="139:4.6">«&nbsp;son amour et son désintéressement&nbsp;»</span> <span class="ref">139:4.6</span></span></span></li>
+      <li class="g1"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span><span><span class="who">Philippe</span><br><span class="tr"><span class="q" data-ref="139:5.6">«&nbsp;l’inlassable générosité du Maitre&nbsp;»</span> <span class="ref">139:5.6</span></span></span></li>
+      <li class="g1"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span><span><span class="who">Nathanael</span><br><span class="tr"><span class="q" data-ref="139:6.8">«&nbsp;sa tolérance&nbsp;»</span> <span class="ref">139:6.8</span></span></span></li>
+      <li class="g2"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span><span><span class="who">Matthieu</span><br><span class="tr"><span class="q" data-ref="139:7.4">«&nbsp;la disposition au pardon&nbsp;»</span> <span class="ref">139:7.4</span></span></span></li>
+      <li class="g2"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span><span><span class="who">Thomas</span><br><span class="tr"><span class="q" data-ref="139:8.7">«&nbsp;son caractère superbement équilibré&nbsp;»</span> <span class="ref">139:8.7</span></span></span></li>
+      <li class="g2"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span><span class="who">Jacques Alphée</span><br><span class="tr"><span class="q" data-ref="139:10.6">«&nbsp;la simplicité du Maitre&nbsp;»</span> <span class="ref">139:10.6</span></span></span></li>
+      <li class="g2"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span><span><span class="who">Judas Alphée</span><br><span class="tr"><span class="q" data-ref="139:10.7">«&nbsp;l’humilité sans ostentation du Maitre&nbsp;»</span> <span class="ref">139:10.7</span></span></span></li>
+      <li class="g2"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span><span><span class="who">Simon Zélotès</span><br><span class="tr"><span class="q" data-ref="139:11.5">«&nbsp;le calme du Maitre, son assurance, son équilibre et son inexplicable sérénité&nbsp;»</span> <span class="ref">139:11.5</span></span></span></li>
+      <li class="g2 nul"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span><span><span class="who">Judas Iscariot</span><br><span class="tr"><span class="q" data-ref="139:12.4">«&nbsp;aucun trait spécial&nbsp;»</span>, sinon la personnalité attirante du Maitre <span class="ref">139:12.4</span></span></span></li>
+    </ul>
+  </section>
+
+  <section id="judas" aria-labelledby="h-judas">
+    <div class="sec-head">
+      <p class="eyebrow"><b>5</b> · Fascicules 139, 172, 177, 179, 186 et 193</p>
+      <h2 id="h-judas">Judas Iscariot, selon le livre</h2>
+      <p>Le livre ne fait de Judas ni un monstre ni l’instrument d’une fatalité. Il raconte un homme bien intentionné, que des blessures ruminées en silence ont conduit à trahir <span class="ref">193:4.3 ; 193:4.14</span>&nbsp;: le seul des douze qui abandonna le Maitre <span class="ref">139:0.1</span>.</p>
+    </div>
+    <div class="jd">
+      <article>
+        <h3>Ce que le texte écarte</h3>
+        <ul>
+          <li><b>L’argent.</b> Trésorier loyal jusqu’au bout&nbsp;: <span class="q" data-ref="139:12.5">«&nbsp;Jamais l’argent n’aurait pu être un motif l’incitant à trahir le Maitre.&nbsp;»</span> <span class="ref">139:12.5</span> Chez Caïphe, il cherchait des honneurs <span class="ref">177:4.4</span>.</li>
+          <li><b>La fatalité.</b> Au dernier souper, Jésus dit <span class="q" data-ref="179:4.1">«&nbsp;il n’était pas nécessaire que l’un de vous me trahisse&nbsp;»</span> <span class="ref">179:4.1</span>.</li>
+          <li><b>Une possession.</b> La trahison était <span class="q" data-ref="179:2.3">«&nbsp;l’œuvre de Judas&nbsp;»</span>, même si elle plaisait à Lucifer, à Satan et à Caligastia <span class="ref">179:2.3</span>.</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Des blessures accumulées</h3>
+        <ol class="steps">
+          <li>Ancien disciple de Jean le Baptiste, il en voulut toujours à Jésus de ne pas avoir sauvé Jean <span class="ref">177:4.11</span>.</li>
+          <li>Jésus le reprend quand il vient se plaindre de Nathanael ; il n’oubliera pas <span class="ref">139:6.5</span>.</li>
+          <li>Il jalouse Pierre, Jacques et Jean, plus proches du Maitre <span class="ref">177:4.4</span>.</li>
+          <li>À Béthanie, Jésus désavoue en public sa protestation contre l’onguent précieux que Marie répand sur lui&nbsp;: il se décide à la vengeance <span class="ref">172:1.5–7 ; 139:12.10</span>.</li>
+          <li>Chez Caïphe, il s’offre pour livrer Jésus, dans l’espoir d’être honoré <span class="ref">177:4.4–7</span>.</li>
+          <li>Payé de trente pièces d’argent, le prix d’un esclave, il les jette dans le temple, puis se donne la mort dans la vallée du Hinnom <span class="ref">186:1.2–7</span>.</li>
+        </ol>
+      </article>
+      <article>
+        <h3>Les causes, selon le texte</h3>
+        <p>Le livre résume sa défaite en sept traits <span class="ref">193:4.4–11</span>&nbsp;:</p>
+        <ol>
+          <li>une personnalité solitaire, repliée sur elle-même ;</li>
+          <li>une enfance trop facile&nbsp;: il était mauvais perdant ;</li>
+          <li>face aux déceptions, il blâmait toujours quelqu’un ;</li>
+          <li>la rancune et l’idée de vengeance ;</li>
+          <li>il n’aimait pas regarder les faits en face ;</li>
+          <li>il ne confiait ses problèmes à personne, pas même au Maitre ;</li>
+          <li>il n’apprit jamais que les vraies récompenses sont spirituelles.</li>
+        </ol>
+      </article>
+    </div>
+    <div class="jd-fin">
+      <p>Rien ne le condamnait d’avance, insiste le texte&nbsp;: Thomas et Nathanael avaient les mêmes penchants à la suspicion, mais leur amour pour leurs compagnons et pour Jésus alla en croissant <span class="ref">193:4.3</span>. Jusqu’au dernier soir, Jésus fit tout son possible pour le sauver <span class="ref">179:4.7</span>. Après la résurrection, il dit aux onze&nbsp;:</p>
+      <blockquote class="cite" data-ref="193:3.2"><p>«&nbsp;Judas n’est plus avec vous parce que son amour s’était refroidi et parce qu’il vous refusait sa confiance, à vous ses frères loyaux.&nbsp;»</p><span class="ref">193:3.2</span></blockquote>
+      <blockquote class="cite" data-ref="139:12.14"><p>«&nbsp;Jésus se borna à regarder le traitre avec pitié.&nbsp;»</p><span class="ref">139:12.14</span></blockquote>
+      <p>Pour le remplacer, les onze tirent au sort entre Matthias et Justus&nbsp;: le sort désigne Matthias, nommé trésorier, qui ne joue ensuite qu’un rôle effacé <span class="ref">193:6.2–3</span>. Dans la Bible&nbsp;: <a href="bible-et-livre.html#p-judas">la fin de Judas</a> · <a href="bible-et-livre.html#p-arrestation">l’arrestation</a>.</p>
+    </div>
+  </section>
+
+  <section id="apres" aria-labelledby="h-apres">
+    <div class="sec-head">
+      <p class="eyebrow"><b>6</b> · Le texte dit · regard historique</p>
+      <h2 id="h-apres">Après la Pentecôte&nbsp;: le livre et les traditions</h2>
+      <p>Hormis celle de Judas, le Nouveau Testament ne raconte que la mort de Jacques <span class="bref">Actes 12, 2</span>. Pour les autres, les Églises ont recueilli des traditions plus tardives, que les historiens tiennent pour incertaines, souvent légendaires. Le livre donne sa propre version&nbsp;: elle rejoint parfois ces traditions, et parfois s’en écarte.</p>
+    </div>
+    <table class="trad">
+      <caption>Ce que le livre dit de chacun, et ce que rapportent les traditions chrétiennes, en résumé prudent.</caption>
+      <thead><tr><th scope="col">Apôtre</th><th scope="col">Selon le livre</th><th scope="col">Selon les traditions des Églises</th></tr></thead>
+      <tbody>
+        <tr class="g1"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-andre"/></svg><span class="no">1</span></span>André</th><td class="lv"><span class="cell-l">Selon le livre</span>Arménie, Asie Mineure, Macédoine ; crucifié à Patras, en Achaïe <span class="ref">139:1.12</span></td><td><span class="cell-l">Selon les traditions</span>La Scythie, selon Origène cité par Eusèbe ; crucifié à Patras, selon les <i>Actes d’André</i>. La croix en X n’apparait pas avant le Moyen Âge.</td></tr>
+        <tr class="g1"><th scope="row"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-pierre"/></svg><span class="no">2</span></span>Pierre</th><td class="lv"><span class="cell-l">Selon le livre</span>Les Églises de Babylone à Corinthe ; crucifié à Rome <span class="ref">139:2.11–15</span></td><td><span class="cell-l">Selon les traditions</span>Martyr à Rome ; crucifié la tête en bas, selon Origène cité par Eusèbe. L’Évangile de Jean fait allusion à sa mort <span class="bref">Jean 21, 18-19</span>.</td></tr>
+        <tr class="g1"><th scope="row"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jacques"/></svg><span class="no">3</span></span>Jacques Zébédée</th><td class="lv"><span class="cell-l">Selon le livre</span>Tué par l’épée sur l’ordre d’Hérode Agrippa ; son accusateur rejoint les disciples <span class="ref">139:3.8–9</span></td><td><span class="cell-l">Selon les traditions</span>Hérode le fait mourir par le glaive <span class="bref">Actes 12, 2</span> ; selon Clément d’Alexandrie, cité par Eusèbe, son accusateur se déclare chrétien et meurt avec lui.</td></tr>
+        <tr class="g1"><th scope="row"><span class="medal sm cp" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-jean"/></svg><span class="no">4</span></span>Jean Zébédée</th><td class="lv"><span class="cell-l">Selon le livre</span>Patmos, puis Éphèse ; mort naturelle en 103, à cent-un ans <span class="ref">139:4.13–15</span></td><td><span class="cell-l">Selon les traditions</span>Exilé à Patmos <span class="bref">Apocalypse 1, 9</span> ; mort très âgé à Éphèse, sous l’empereur Trajan, selon Irénée de Lyon.</td></tr>
+        <tr class="g1"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-philippe"/></svg><span class="no">5</span></span>Philippe</th><td class="lv"><span class="cell-l">Selon le livre</span>La Samarie, puis Hiérapolis, où il est crucifié et enterré <span class="ref">139:5.10–12</span></td><td><span class="cell-l">Selon les traditions</span>Enterré à Hiérapolis, selon Polycrate d’Éphèse (IIᵉ&nbsp;siècle), cité par Eusèbe. Dans les Actes, le Philippe qui évangélise la Samarie est d’ordinaire compris comme l’un des Sept, distinct de l’apôtre <span class="bref">Actes 6, 5</span> ; <span class="bref">Actes 8, 5</span>.</td></tr>
+        <tr class="g1"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-nathanael"/></svg><span class="no">6</span></span>Nathanael</th><td class="lv"><span class="cell-l">Selon le livre</span>La Mésopotamie et les Indes, où il meurt <span class="ref">139:6.9</span></td><td><span class="cell-l">Selon les traditions</span>Souvent identifié à Barthélemy, nommé dans les trois premiers Évangiles ; on le fait prêcher en Inde, selon Eusèbe, ou en Arménie.</td></tr>
+        <tr class="g2"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-matthieu"/></svg><span class="no">7</span></span>Matthieu</th><td class="lv"><span class="cell-l">Selon le livre</span>Syrie, Cappadoce, Galatie, Bithynie, Thrace ; tué à Lysimachie <span class="ref">139:7.10</span></td><td><span class="cell-l">Selon les traditions</span>Elles divergent&nbsp;: l’Éthiopie, la Perse…</td></tr>
+        <tr class="g2"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-thomas"/></svg><span class="no">8</span></span>Thomas</th><td class="lv"><span class="cell-l">Selon le livre</span>Chypre, Crète, Afrique du Nord, Sicile ; mis à mort à Malte <span class="ref">139:8.13</span></td><td><span class="cell-l">Selon les traditions</span>La Parthie, selon Origène ; l’Inde, où il serait mort martyr, selon les <i>Actes de Thomas</i> (début du IIIᵉ&nbsp;siècle).</td></tr>
+        <tr class="g2"><th scope="row"><span class="two"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">9</span></span><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-barque"/></svg><span class="no">10</span></span></span>Les jumeaux Alphée</th><td class="lv"><span class="cell-l">Selon le livre</span>Le retour en Galilée, à leur famille et à leurs filets <span class="ref">139:10.11 ; 193:6.4</span></td><td><span class="cell-l">Selon les traditions</span>Les Évangiles ne les disent pas jumeaux&nbsp;: Luc nomme <span class="q" data-bible="Luc 6:16">«&nbsp;Jude, frère de Jacques&nbsp;»</span> <span class="bref">Luc 6, 16</span>. Jacques, fils d’Alphée, est souvent identifié à Jacques le Mineur ; Jude, ou Thaddée, à des missions en Orient.</td></tr>
+        <tr class="g2"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-simon"/></svg><span class="no">11</span></span>Simon Zélotès</th><td class="lv"><span class="cell-l">Selon le livre</span>Alexandrie, le Nil, le cœur de l’Afrique <span class="ref">139:11.10–11</span></td><td><span class="cell-l">Selon les traditions</span>L’Égypte, puis la Perse, où il serait mort martyr avec Jude, selon la tradition occidentale.</td></tr>
+        <tr class="g2"><th scope="row"><span class="medal sm" aria-hidden="true"><svg class="em" focusable="false"><use href="#e-judas"/></svg><span class="no">12</span></span>Judas Iscariot</th><td class="lv"><span class="cell-l">Selon le livre</span>Il se pend dans la vallée du Hinnom ; le nœud se défait et il tombe sur les rochers <span class="ref">186:1.7</span></td><td><span class="cell-l">Selon les traditions</span>Chez Matthieu, il se pend <span class="bref">Matthieu 27, 5</span> ; dans les Actes, il tombe et se rompt par le milieu <span class="bref">Actes 1, 18</span>. Le livre réunit les deux récits.</td></tr>
+        <tr><th scope="row"><span class="medal sm" aria-hidden="true"><span class="ini">M</span></span>Matthias</th><td class="lv"><span class="cell-l">Selon le livre</span>Tiré au sort pour remplacer Judas, puis nommé trésorier <span class="ref">193:6.3</span></td><td><span class="cell-l">Selon les traditions</span>Désigné par le sort <span class="bref">Actes 1, 26</span> ; les traditions sur sa mission varient.</td></tr>
+      </tbody>
+    </table>
+    <p class="sub-p hint">Ces traditions sont anciennes, mais souvent tardives, et varient d’une Église à l’autre. Les témoignages d’Origène, de Clément d’Alexandrie et de Polycrate cités ici nous parviennent par l’<i>Histoire ecclésiastique</i> d’Eusèbe de Césarée, au IVᵉ&nbsp;siècle ; les <i>Actes d’André</i> et les <i>Actes de Thomas</i> sont des récits apocryphes.</p>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ce fascicule</h2>
+    <ul>
+      <li><b>Le texte dit.</b> La quatrième partie du livre se présente comme l’œuvre d’une commission de douze médians, qui dit avoir puisé d’abord à des sources humaines, dont le récit de l’apôtre André, et aux idées de plus de deux-mille êtres humains <span class="ref">121:8.12–14</span>. Le fascicule 139 corrige parfois les récits reçus&nbsp;: les apôtres n’étaient pas des ignorants, même si, note-t-il, les archives humaines les disent <span class="q" data-ref="139:0.3–4">«&nbsp;d’ignorants et d’illettrés&nbsp;»</span> <span class="ref">139:0.3–4</span>, là où la Crampon parle d’<span class="q" data-bible="Actes 4:13">«&nbsp;hommes du peuple sans instruction&nbsp;»</span> <span class="bref">Actes 4, 13</span> ; Jean n’était pas le favori de Jésus <span class="ref">139:4.2</span> ; Judas ne volait pas la bourse <span class="ref">139:12.5</span>, alors que l’Évangile de Jean le dit <span class="q" data-bible="Jean 12:6">«&nbsp;voleur&nbsp;»</span> <span class="bref">Jean 12, 6</span>.</li>
+      <li><b>Lecture courante.</b> Nombre de lecteurs lisent ce fascicule comme une galerie de tempéraments où chacun peut se reconnaitre ; le texte y invite, en notant combien la présence de Philippe, de Thomas ou des jumeaux encourageait des gens qui leur ressemblaient <span class="ref">139:5.5 ; 139:8.6 ; 139:10.4</span>. Les débats portent sur la valeur historique de ces portraits, invérifiables hors du livre, et sur leurs écarts avec les traditions. Ainsi de la parole sur la pierre <span class="bref">Matthieu 16, 18</span>&nbsp;: elle fonde, pour l’Église catholique, la primauté de Pierre et de ses successeurs ; le livre y voit le <span class="q" data-ref="157:4.5">«&nbsp;roc de réalité spirituelle&nbsp;»</span> de la foi confessée, et remet <span class="q" data-ref="157:4.5">«&nbsp;les clefs du royaume extérieur&nbsp;»</span> aux douze et à leurs successeurs <span class="ref">157:4.5</span>. Cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Les Évangiles et les Actes donnent quatre listes des douze, qui ne concordent pas tout à fait <span class="bref">Matthieu 10, 2-4</span> ; <span class="bref">Marc 3, 16-19</span> ; <span class="bref">Luc 6, 14-16</span> ; <span class="bref">Actes 1, 13</span>&nbsp;: Thaddée chez Matthieu et Marc, Jude chez Luc ; Barthélemy dans les trois premiers Évangiles, Nathanaël chez Jean <span class="bref">Jean 1, 45</span>. Le livre concilie ces noms&nbsp;: Nathanael est le fils de Bartholomé <span class="ref">139:6.9</span>, et les jumeaux Alphée sont ceux <span class="q" data-ref="139:10.5">«&nbsp;que l’on appelait aussi Thaddée et Lébbée&nbsp;»</span> <span class="ref">139:10.5</span> ; le nom de Lébbée vient de certains manuscrits anciens de <span class="bref">Matthieu 10, 3</span>. Marc donne aux fils de Zébédée le surnom de <span class="q" data-bible="Marc 3:17">«&nbsp;Boanergès, c’est-à-dire, fils du tonnerre&nbsp;»</span> <span class="bref">Marc 3, 17</span>, que le livre reprend <span class="ref">139:3.1</span>. <i>Didyme</i> veut dire jumeau en grec <span class="bref">Jean 11, 16</span>, et le livre donne à Thomas une sœur jumelle, morte quand il avait neuf ans <span class="ref">139:8.10</span>. <i>Iscariot</i> est souvent compris comme <i>l’homme de Kérioth</i> ; le livre fait naitre Judas à Kérioth <span class="ref">139:12.1</span>.
+        <p class="reg-p">Les attributs que l’art chrétien donne aux apôtres, comme les clés de Pierre ou la croix en X d’André, viennent des Évangiles et de ces traditions ; les emblèmes de cette page viennent du rôle que le livre donne à chacun. Le livre, paru en anglais en 1955, présente ainsi le travail de ses auteurs&nbsp;:</p>
+        <blockquote class="cite" data-ref="121:8.14"><p>«&nbsp;Sous beaucoup de rapports, j’ai davantage servi de collecteur et d’éditeur que de narrateur original.&nbsp;»</p><span class="ref">121:8.14</span></blockquote></li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>La date de la plupart de ces morts.</b> Seuls sont situés dans le temps le martyre de Jacques, que fit périr Hérode Agrippa <span class="q" data-ref="139:3.8">«&nbsp;bientôt&nbsp;»</span> <span class="ref">139:3.8</span>, et la mort de Jean, en 103 <span class="ref">139:4.15</span>.</li>
+        <li><b>Où mourut Jacques Zébédée.</b> Le texte nomme Hérode Agrippa, pas le lieu <span class="ref">139:3.8</span>.</li>
+        <li><b>Comment moururent Nathanael, Matthieu et Thomas.</b> Aux Indes, à Lysimachie, à Malte&nbsp;: le texte dit le lieu, pas la manière <span class="ref">139:6.9 ; 139:7.10 ; 139:8.13</span>.</li>
+        <li><b>La suite de la vie des jumeaux.</b> Ni le lieu ni la date de leur mort ; le moment même de leur retour varie&nbsp;: <span class="q" data-ref="139:10.11">«&nbsp;après la crucifixion de leur Maitre&nbsp;»</span>, ou <span class="q" data-ref="193:6.4">«&nbsp;après la Pentecôte&nbsp;»</span> <span class="ref">139:10.11 ; 193:6.4</span>.</li>
+        <li><b>Lequel des jumeaux s’appelait Thaddée, lequel Lébbée.</b> Le texte donne les deux noms ensemble <span class="ref">139:10.5</span>.</li>
+        <li><b>Ce que devint Matthias.</b> Rien, sinon <span class="q" data-ref="193:6.3">«&nbsp;un rôle effacé&nbsp;»</span> <span class="ref">193:6.3</span>.</li>
+        <li><b>Ce que devint Judas après sa mort.</b> Le texte dit seulement&nbsp;: <span class="q" data-ref="139:12.14">«&nbsp;Les mondes ont trouvé difficile d’absoudre Judas&nbsp;»</span> <span class="ref">139:12.14</span>.</li>
+        <li><b>Leur apparence.</b> André est <span class="q" data-ref="139:1.12">«&nbsp;robuste&nbsp;»</span> <span class="ref">139:1.12</span>, les jumeaux <span class="q" data-ref="139:10.2">«&nbsp;à peu près identiques&nbsp;»</span> <span class="ref">139:10.2</span> ; pour le reste, le fascicule ne décrit pas leurs traits.</li>
+        <li><b>Le sort de leurs écrits.</b> Le récit d’André fut détruit à Alexandrie <span class="ref">139:1.9</span> ; de la vie de Jésus que Thomas commençait à écrire, le texte ne dit rien de plus <span class="ref">139:8.13</span>.</li>
+        <li><b>Les emblèmes et les couleurs.</b> Choix de la page&nbsp;: ils viennent du rôle ou d’un trait que le texte donne à chacun.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="atlas-suite atlas-suite-seule"><div class="etape"><p>Thème</p><a class="livre" href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener" aria-label="Lire le livre (urantia.org), nouvel onglet">Lire le livre (urantia.org)&nbsp;↗</a></div></div>
+<footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Cinquante-quatre citations courtes du livre et quatre de la Bible, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Les emblèmes sont des choix de la page&nbsp;: un objet ou un métier tiré du texte, jamais un visage. Couleurs et anneau d’or&nbsp;: choix de présentation.</p>
+    <p>Traditions des Églises et faits extérieurs au livre (manuscrits, attributs, auteurs anciens)&nbsp;: résumés prudents, vérifiés le 2026-11-08, sans prise de position.</p>
+  <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Les%20douze%20ap%C3%B4tres&amp;page=Les%20douze%20ap%C3%B4tres%20%28douze-apotres.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
+<p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a> <span aria-hidden="true">·</span> <a href="glossaire.html">glossaire des termes</a></p>
+</footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  /* ====================== 1. Les cartes : repliées sur petit écran ====================== */
+  /* Sans JavaScript, tout est visible. Sur un écran étroit, chaque carte montre son en-tête (nom, rôle, âge et métier)
+     et un bouton Lire le portrait ; sur un grand écran, toutes les cartes sont dépliées. */
+  var etroit = window.matchMedia ? window.matchMedia("(max-width: 700px)") : { matches: false };
+  var cartes = Array.prototype.slice.call(document.querySelectorAll(".ap"));
+  var tout = document.getElementById("tout"), barre = document.getElementById("cartes-barre"), aide = document.getElementById("cartes-aide");
+  var LIRE = "Lire le portrait", REPLIER = "Replier le portrait";
+
+  function regler(carte, ouvert) {
+    var b = carte.querySelector(".ap-tog"), corps = carte.querySelector(".ap-more");
+    if (!b || !corps) return;
+    corps.hidden = !ouvert;
+    b.setAttribute("aria-expanded", String(ouvert));
+    b.querySelector("span").textContent = ouvert ? REPLIER : LIRE;
+  }
+  function toutesOuvertes() {
+    return cartes.every(function (c) { var m = c.querySelector(".ap-more"); return !m || !m.hidden; });
+  }
+  function majTout() { if (tout) tout.textContent = toutesOuvertes() ? "Tout replier" : "Tout déplier"; }
+  function mode() {
+    var petit = !!etroit.matches;
+    cartes.forEach(function (c) {
+      var b = c.querySelector(".ap-tog");
+      if (b) b.hidden = !petit;
+      regler(c, !petit);
+    });
+    if (barre) barre.hidden = !petit;
+    if (aide) aide.hidden = !petit;
+    majTout();
+  }
+  cartes.forEach(function (c) {
+    var b = c.querySelector(".ap-tog");
+    if (b) b.addEventListener("click", function () { regler(c, b.getAttribute("aria-expanded") !== "true"); majTout(); });
+  });
+  if (tout) tout.addEventListener("click", function () {
+    var ouvrir = !toutesOuvertes();
+    cartes.forEach(function (c) { regler(c, ouvrir); });
+    majTout();
+  });
+  /* Un lien vers une carte (l’anneau, le schéma des appels, une adresse en #) l’ouvre avant d’y mener */
+  function ouvrirCarte(id) {
+    var el = id ? document.getElementById(id) : null;
+    if (!el || !el.classList || !el.classList.contains("ap")) return;
+    regler(el, true);
+    majTout();
+  }
+  function idDuHash() { try { return decodeURIComponent((location.hash || "").slice(1)); } catch (e) { return ""; } }
+  document.addEventListener("click", function (ev) {
+    var a = ev.target && ev.target.closest ? ev.target.closest("a[href^=\"#\"]") : null;
+    if (a) ouvrirCarte(a.getAttribute("href").slice(1));
+  });
+  window.addEventListener("hashchange", function () { ouvrirCarte(idDuHash()); });
+  mode();
+  if (etroit.addEventListener) etroit.addEventListener("change", mode);
+  else if (etroit.addListener) etroit.addListener(mode);
+  if (location.hash) {
+    var cible = document.getElementById(idDuHash());
+    if (cible && cible.classList.contains("ap")) { ouvrirCarte(cible.id); cible.scrollIntoView({ block: "start" }); }
+  }
+
+  /* ====================== 2. Deux par deux : trois moments ====================== */
+  /* Sans JavaScript, les trois listes se suivent ; sinon, un sélecteur n’en montre qu’une. */
+  var seg = document.getElementById("seg"), segAide = document.getElementById("seg-aide");
+  if (seg) {
+    var bs = Array.prototype.slice.call(seg.querySelectorAll("button"));
+    var pans = bs.map(function (b) { return document.getElementById(b.getAttribute("data-p")); });
+    var choisir = function (i) {
+      bs.forEach(function (b, j) {
+        b.setAttribute("aria-pressed", String(i === j));
+        if (pans[j]) pans[j].hidden = i !== j;
+      });
+    };
+    bs.forEach(function (b, i) { b.addEventListener("click", function () { choisir(i); }); });
+    seg.addEventListener("keydown", function (ev) {
+      var i = bs.indexOf(document.activeElement), j = null;
+      if (i < 0) return;
+      if (ev.key === "ArrowRight") j = (i + 1) % bs.length;
+      else if (ev.key === "ArrowLeft") j = (i + bs.length - 1) % bs.length;
+      if (j === null) return;
+      ev.preventDefault();
+      bs[j].focus();
+      choisir(j);
+    });
+    seg.hidden = false;
+    if (segAide) segAide.hidden = false;
+    var dep = 0;
+    bs.forEach(function (b, i) { if (b.getAttribute("aria-pressed") === "true") dep = i; });
+    choisir(dep);
+  }
+
+  /* ====================== 3. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script src="assets/refs-urantia.js" defer></script>
+</body>
+</html>
