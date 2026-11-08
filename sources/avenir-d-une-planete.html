@@ -1,0 +1,1495 @@
+<title>L'avenir d'une planète</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mise en page : les mondes habités (fascicule 49), puis le schéma central, une frise à deux voies (le parcours type
+   d’un monde selon le fascicule 52, et ce que le texte dit d’Urantia), les sept époques une par une, la place d’Urantia,
+   puis les sphères de lumière et de vie (fascicule 55) et leur échelle de sept stades. Couleurs (choix de la page,
+   validées : contraste, daltonisme) : bleu pour Urantia, rouge sobre pour ce que la rébellion et la faute ont perturbé
+   (comme sur la page de la rébellion), or pour la sélection et la lumière. Toujours doublées d’une icône et d’un
+   libellé. Largeur utile : 1100 px. */
+:root {
+  --paper: #EEF1F6;    /* fond : papier bleuté */
+  --sheet: #FFFFFF;    /* surfaces */
+  --tint: #E4E9F2;     /* survol, panneaux */
+  --ink: #18213B;      /* encre bleu nuit */
+  --muted: #56607D;    /* texte secondaire */
+  --rule: #CBD2E0;     /* filets */
+  --gold: #C98A12;     /* sélection, lumière */
+  --gold-ink: #8A5A00; /* or, en texte */
+  --gold-ui: #9E6B00;  /* or des traits et anneaux : 3:1 au moins */
+  --on-gold: #1B1405;  /* texte posé sur l’or */
+  --gold-soft: #FBF4E4;
+  --ura: #2672D2; --ura-soft: #E7F0FB; --on-ura: #FFFFFF;   /* Urantia : bleu */
+  --reb: #A8352F; --reb-soft: #FBEDEB;                      /* rébellion, faute : rouge sobre */
+  /* Le chemin d’un monde : de la nuit à la lumière */
+  --p0: #333D66; --p1: #6E6A9E; --p2: #C99A3C; --p3: #F2D27A;
+  /* Barres de proportions : deux gris alternés */
+  --s1: #D5DBE7; --s2: #BCC5D6;
+  --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+    --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+    --ura: #3987E5; --ura-soft: #13213A; --on-ura: #0C1120; --reb: #E8695D; --reb-soft: #2A1820;
+    --p0: #5B69A2; --p1: #7A70A8; --p2: #D19E3A; --p3: #F3D27C;
+    --s1: #29324F; --s2: #39445F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
+  --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
+  --ura: #3987E5; --ura-soft: #13213A; --on-ura: #0C1120; --reb: #E8695D; --reb-soft: #2A1820;
+  --p0: #5B69A2; --p1: #7A70A8; --p2: #D19E3A; --p3: #F3D27C;
+  --s1: #29324F; --s2: #39445F;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.6; }
+.wrap {
+  max-width: 1100px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 44px 56px;
+  display: grid; gap: 72px;
+}
+.wrap > * { min-width: 0; }
+h1, h2, h3, h4 { margin: 0; font-family: var(--font-display); font-weight: 600; line-height: 1.08; text-wrap: balance; }
+h1 { font-size: clamp(2.4rem, 5.6vw, 4rem); letter-spacing: -0.005em; }
+h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+h3 { font-size: 1.32rem; line-height: 1.2; }
+p { margin: 0; }
+sup { font-size: .68em; line-height: 0; }
+.label, .eyebrow { font: 500 .76rem/1.3 var(--font-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: normal; }
+.ref a, .ref-lien { white-space: nowrap; }
+.bref { font-family: var(--font-mono); font-size: .8em; font-style: normal; color: var(--muted); letter-spacing: 0; white-space: nowrap; }
+:focus-visible { outline: 2px solid var(--gold-ink); outline-offset: 3px; border-radius: 4px; }
+a { color: var(--gold-ink); text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ic { width: 1.15em; height: 1.15em; flex: none; display: inline-block; vertical-align: -0.2em; overflow: visible; color: var(--c, currentColor); }
+.bdg { width: 2rem; height: 2rem; border-radius: 50%; flex: none; display: inline-grid; place-items: center; border: 2.5px solid var(--ink); background: var(--sheet); color: var(--ink); font: 600 .9rem/1 var(--font-mono); }
+.c-ura { --c: var(--ura); }
+.c-reb { --c: var(--reb); }
+.c-gold { --c: var(--gold-ui); }
+
+/* En-tête */
+.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 44px; align-items: end; }
+.hero-text { display: grid; gap: 22px; min-width: 0; }
+.lede { font-size: 1.22rem; line-height: 1.5; max-width: 54ch; }
+.ctx-link { font-size: .98rem; }
+.ctx-link a { padding-block: 6px; }
+.cta { justify-self: start; display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 500; font-size: 1.02rem; text-decoration: none; max-width: 100%; min-height: 44px; }
+.cta:hover { background: var(--gold-ink); color: var(--sheet); }
+.cta .ar { font-family: var(--font-mono); }
+.codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
+.keys { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 7px; border-bottom: 1px solid var(--rule); }
+.keys li { display: grid; grid-template-columns: 1.75rem 1.2rem minmax(0, 1fr); gap: 0 9px; align-items: center; font-size: .93rem; line-height: 1.3; }
+.keys .bdg { width: 1.75rem; height: 1.75rem; font-size: .8rem; border-width: 2px; }
+.keys .ic { width: 1.2rem; height: 1.2rem; }
+.keys .kd { color: var(--muted); font-size: .84rem; }
+.codebox dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; font-size: .88rem; align-items: baseline; }
+.codebox dt { font: 500 .78rem/1.5 var(--font-mono); color: var(--gold-ink); white-space: nowrap; }
+.codebox dd { margin: 0; color: var(--muted); min-width: 0; }
+.codebox .note { font-size: .82rem; color: var(--muted); line-height: 1.45; }
+
+/* Sommaire */
+.toc { display: grid; gap: 14px; }
+.toc h2 { font-size: 1.5rem; }
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 11px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a:hover .tt { color: var(--gold-ink); }
+.toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
+.toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
+.toc a.hot .tt { color: var(--gold-ink); }
+
+/* Sections */
+section { scroll-margin-top: 12px; }
+.sec-head { display: grid; gap: 12px; max-width: 74ch; }
+.sec-head .eyebrow b { color: var(--gold-ink); font-weight: 500; }
+.hint { color: var(--muted); font-size: .96rem; }
+.prose { display: grid; gap: 14px; max-width: 74ch; margin-top: 18px; }
+blockquote.cite { margin: 0; padding-left: 14px; border-left: 2px solid var(--c, var(--gold)); display: grid; gap: 4px; }
+blockquote.cite p { font-family: var(--font-display); font-style: italic; font-size: 1.14rem; line-height: 1.4; }
+.q i { font-style: italic; }
+.sub-h { margin-top: 36px; font-size: 1.55rem; }
+.sub-p { margin-top: 10px; max-width: 74ch; }
+
+/* Cartes */
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18.5rem), 1fr)); gap: 14px; margin-top: 24px; }
+.card { background: var(--sheet); border: 1px solid var(--rule); border-top: 3px solid var(--c, var(--rule)); border-radius: 12px; padding: 18px 18px 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.card h3 { font-size: 1.32rem; display: flex; gap: 9px; align-items: center; }
+.card p, .card li { font-size: .97rem; }
+.card .st { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.card.gold { --c: var(--gold); }
+.card ol:not([class]), .card ul:not([class]) { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+
+/* ===== Les mondes habités : où se range l’humain d’Urantia ===== */
+.clf { margin: 26px 0 0; background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 22px 24px 20px; display: grid; gap: 18px; min-width: 0; }
+.clf > *, .callout > *, .callout li, .card > *, .ura > * { min-width: 0; }
+.clf-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 18px; }
+.clf-head h3 { font-size: 1.5rem; }
+.clf-key { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--muted); }
+.clf-key li { display: inline-flex; align-items: center; gap: 6px; }
+.k-u { width: .95rem; height: .95rem; border-radius: 4px; background: var(--ura); flex: none; }
+.k-g { width: .95rem; height: .95rem; border-radius: 4px; background: var(--s2); flex: none; }
+.k-c { width: .95rem; height: .95rem; border-radius: 50%; border: 1.5px solid var(--muted); flex: none; }
+.clf-rows { display: grid; gap: 16px; }
+.clf-row { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 4px 18px; align-items: center; }
+.clf-t { font-size: .95rem; line-height: 1.25; }
+.clf-t b { display: block; font-weight: 700; }
+.clf-t span { color: var(--muted); font-size: .8rem; }
+.clf-bar { display: flex; gap: 2px; height: 28px; min-width: 0; }
+.seg { position: relative; flex: var(--v, 1) 1 0%; height: 100%; border-radius: 4px; background: var(--s1); display: flex; align-items: center; min-width: 3px; overflow: visible; }
+.seg:nth-child(even) { background: var(--s2); }
+.seg.u { background: var(--ura); }
+.seg b { font: 500 .74rem/1 var(--font-mono); color: var(--ink); padding-left: 7px; white-space: nowrap; }
+.seg.u b { color: var(--on-ura); }
+.clf-leg { grid-column: 2; display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: .8rem; color: var(--muted); line-height: 1.35; }
+.clf-leg .u { color: var(--ink); font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+.clf-leg .u::before { content: ""; width: .7rem; height: .7rem; border-radius: 3px; background: var(--ura); }
+.clf-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.cc { display: inline-flex; align-items: center; gap: 6px; border: 1.5px solid var(--rule); border-radius: 999px; padding: 3px 11px; font-size: .84rem; line-height: 1.3; background: var(--paper); }
+.cc.u { border-color: var(--ura); background: var(--ura-soft); font-weight: 700; }
+.cc.u::before { content: ""; width: .6rem; height: .6rem; border-radius: 50%; background: var(--ura); }
+.clf-note { font-size: .84rem; color: var(--muted); line-height: 1.45; border-top: 1px solid var(--rule); padding-top: 12px; }
+details.tbl { font-size: .9rem; }
+details.tbl summary { cursor: pointer; min-height: 44px; display: inline-flex; align-items: center; gap: 8px; color: var(--gold-ink); font-weight: 500; }
+.tbl-w { overflow-x: auto; margin-top: 8px; max-width: 100%; }
+.tbl table { border-collapse: collapse; width: 100%; min-width: 0; font-size: .86rem; }
+.tbl th, .tbl td { text-align: left; padding: 6px 10px 6px 0; border-top: 1px solid var(--rule); vertical-align: top; }
+.tbl th { font-weight: 700; }
+.tbl td.n { font-family: var(--font-mono); font-size: .8rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.tip { position: fixed; z-index: 20; pointer-events: none; background: var(--ink); color: var(--paper); font-size: .82rem; line-height: 1.3; padding: 6px 9px; border-radius: 6px; max-width: 16rem; }
+
+/* Tailles des mortels */
+.tailles { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; align-items: end; margin-top: 4px; }
+.tailles figure { margin: 0; display: grid; justify-items: center; gap: 4px; text-align: center; font-size: .8rem; line-height: 1.25; color: var(--muted); }
+.tailles svg { display: block; width: 34px; overflow: visible; color: var(--ink); }
+.tailles b { color: var(--ink); font-family: var(--font-mono); font-weight: 500; font-size: .8rem; }
+
+/* Évasion terrestre */
+.esc { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: es; }
+.esc li { display: grid; grid-template-columns: 1.8rem minmax(0, 1fr); gap: 2px 10px; padding: 9px 0; border-top: 1px solid var(--rule); font-size: .94rem; line-height: 1.4; }
+.esc li::before { counter-increment: es; content: counter(es); grid-row: 1 / span 2; width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; border: 1.5px solid var(--muted); font: 600 .76rem/1 var(--font-mono); }
+.esc li.top::before { background: var(--gold); border-color: var(--gold-ui); color: var(--on-gold); }
+.esc b { font-weight: 700; }
+.esc span { color: var(--muted); font-size: .86rem; }
+
+/* ==================== Le schéma : la frise à deux voies ==================== */
+.feature { background: var(--sheet); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 14px; padding: 28px 28px 30px; display: grid; gap: 22px; }
+.feature .sec-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
+.sc { display: grid; gap: 18px; min-width: 0; }
+.sc-opts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px 10px; }
+.chip { appearance: none; display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--rule); border-radius: 999px; background: var(--paper); color: var(--ink); font: 500 .88rem/1.2 var(--font-body); padding: 8px 13px; min-height: 44px; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip .swt { width: 30px; height: 16px; border-radius: 999px; border: 1.5px solid currentColor; position: relative; flex: none; }
+.chip .swt::after { content: ""; position: absolute; top: 2px; left: 2px; width: 9px; height: 9px; border-radius: 50%; background: currentColor; transition: transform .2s ease; }
+.chip[aria-pressed="true"] .swt::after { transform: translateX(13px); }
+.chip.fort { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.chip.fort:hover { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--sheet); }
+
+.fr { display: grid; gap: 10px; min-width: 0; }
+.lane-t { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 12px; }
+.lane-t .label b { color: var(--ink); font-weight: 500; }
+.lane-t .hint { font-size: .84rem; }
+.lane { position: relative; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.lane-n { padding-top: 4px; }
+.path { position: absolute; left: calc(100% / 14); right: calc(100% / 14); top: 57px; height: 10px; border-radius: 999px; background: linear-gradient(90deg, var(--p0), var(--p1) 38%, var(--p2) 78%, var(--p3)); }
+.pre { position: absolute; left: 0; top: 57px; width: calc(100% / 14); height: 10px; border-radius: 999px 0 0 999px; background: repeating-linear-gradient(90deg, var(--p0) 0 4px, transparent 4px 8px); opacity: .55; }
+.e-mk { appearance: none; position: relative; margin: 0; padding: 4px 2px 4px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; display: grid; grid-template-rows: 36px 44px auto; justify-items: center; align-items: center; min-width: 0; border-radius: 10px; }
+@media (hover: hover) { .e-mk:hover { background: var(--tint); } .e-mk:hover .bdg { transform: scale(1.06); } .u-mk:hover { background: var(--tint); } .lad-mk:hover { border-color: var(--muted); } }
+.e-ti { display: flex; flex-wrap: wrap; align-items: center; align-content: flex-end; justify-content: center; gap: 1px 5px; font-size: .84rem; line-height: 1.15; color: var(--muted); text-align: center; align-self: end; padding-bottom: 4px; height: 100%; }
+.e-ti .ic { width: 1.15rem; height: 1.15rem; color: var(--ink); }
+.e-ti .nl { display: none; }
+.e-mk .bdg { width: 2.4rem; height: 2.4rem; font-size: 1rem; border-width: 2.5px; transition: transform .2s ease; box-shadow: 0 0 0 3px var(--sheet); }
+.e-mk[aria-pressed="true"] .bdg { background: var(--gold); border-color: var(--gold-ui); color: var(--on-gold); transform: scale(1.12); }
+.e-mk[aria-pressed="true"] .e-ti { color: var(--ink); font-weight: 700; }
+.e-du { display: none; font: 500 .7rem/1.25 var(--font-mono); color: var(--muted); text-align: center; padding: 2px 4px 0; }
+
+.lane-u { margin-top: 2px; padding-top: 20px; }
+.u-line { position: absolute; left: calc(100% / 14); right: calc(100% / 14); top: 39.5px; height: 0; border-top: 3px solid var(--ura); }
+.u-line.fut { left: calc(100% * 4.5 / 7); border-top-style: dashed; border-top-width: 2.5px; opacity: .8; }
+.u-line.ok { right: calc(100% * 2.5 / 7); }
+.u-mk { appearance: none; position: relative; margin: 0; padding: 0 2px 6px; border: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; display: grid; grid-template-rows: 44px auto; justify-items: center; min-width: 0; border-radius: 10px; }
+.u-ic { width: 34px; height: 34px; margin-top: 4px; border-radius: 50%; display: grid; place-items: center; background: var(--sheet); border: 2.5px solid var(--ura); color: var(--ura); box-shadow: 0 0 0 3px var(--sheet); transition: transform .2s ease; }
+.u-ic .ic { width: 1.05rem; height: 1.05rem; }
+.u-ic .u-q { font: 700 .95rem/1 var(--font-mono); }
+.u-mk.rupt .u-ic { border-color: var(--reb); color: var(--reb); background: var(--reb-soft); }
+.u-mk.abs .u-ic { border-style: dashed; border-color: var(--muted); color: var(--muted); }
+.u-mk.fut .u-ic { border-style: dashed; color: var(--ura); }
+.u-mk.mic .u-ic { border-color: var(--gold-ui); color: var(--gold-ink); background: var(--gold-soft); }
+.u-mk[aria-pressed="true"] .u-ic { transform: scale(1.14); box-shadow: 0 0 0 3px var(--sheet), 0 0 0 5.5px var(--gold-ui); }
+.u-lb { display: none; font-size: .78rem; line-height: 1.2; color: var(--muted); text-align: center; padding: 2px 3px 0; }
+.u-mk[aria-pressed="true"] .u-lb { color: var(--ink); font-weight: 700; }
+.pin { position: absolute; z-index: 2; left: calc(100% * 4.5 / 7); top: 0; transform: translateX(-50%); font: 600 .62rem/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 4px 7px; white-space: nowrap; pointer-events: none; }
+.pin::after { content: ""; position: absolute; left: 50%; bottom: -4px; margin-left: -4px; border: 4px solid transparent; border-top-color: var(--ink); border-bottom: 0; }
+.mach { position: absolute; z-index: 1; left: calc(100% * 3 / 7); top: 35px; width: 12px; height: 12px; margin-left: -6px; transform: rotate(45deg); background: var(--sheet); border: 2px solid var(--ura); pointer-events: none; }
+.mach-l { display: none; position: absolute; left: calc(100% * 3 / 7); top: 6px; transform: translateX(-50%); font-size: .72rem; line-height: 1; color: var(--muted); white-space: nowrap; pointer-events: none; }
+.lag { display: none; position: relative; margin: 0 calc(100% * 2.5 / 7) 0 calc(100% * 2.5 / 7); height: 14px; border: 1.5px dashed var(--ura); border-top: 0; border-radius: 0 0 10px 10px; }
+.lag-l { display: none; text-align: center; font-size: .8rem; color: var(--muted); line-height: 1.35; margin-top: 2px; }
+.fr-leg { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .82rem; color: var(--muted); }
+.fr-leg li { display: inline-flex; align-items: center; gap: 6px; }
+.lg { width: 1.1rem; height: 1.1rem; border-radius: 50%; display: inline-grid; place-items: center; border: 2px solid var(--ura); color: var(--ura); flex: none; background: var(--sheet); }
+.lg .ic { width: .7rem; height: .7rem; }
+.lg.rupt { border-color: var(--reb); color: var(--reb); background: var(--reb-soft); }
+.lg.abs { border-style: dashed; border-color: var(--muted); }
+.lg.fut { border-style: dashed; font: 700 .62rem/1 var(--font-mono); }
+.lg.mic { border-color: var(--gold-ui); color: var(--gold-ink); background: var(--gold-soft); }
+.lg.dia { width: .65rem; height: .65rem; border-radius: 0; transform: rotate(45deg); margin: 0 .2rem; }
+.fr-cap { font-size: .9rem; color: var(--muted); line-height: 1.45; border-left: 3px solid var(--ura); padding: 2px 0 2px 12px; }
+.fr-cap b { color: var(--ink); }
+
+/* La fiche */
+.cap { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.cap.in { animation: entre .35s ease both; }
+@keyframes entre { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.cap-n { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); }
+.cap-h { font-size: 1.6rem; display: flex; gap: 10px; align-items: center; }
+.cap-h .ic { width: 1.4rem; height: 1.4rem; }
+.cap-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 16px 22px; align-items: start; }
+.cap-col { display: grid; gap: 10px; align-content: start; min-width: 0; }
+.cap-col > .label { color: var(--muted); }
+.cap .ep-dl { font-size: .9rem; }
+.cap .ep-lead { font-size: .97rem; }
+.cap blockquote.cite p { font-size: 1.08rem; }
+.cap-nav { display: flex; flex-wrap: wrap; gap: 8px; border-top: 1px solid var(--rule); padding-top: 12px; }
+
+/* Les sept époques, une par une */
+.ep-list { display: grid; gap: 16px; margin-top: 26px; }
+.ep { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--p1); border-radius: 12px; padding: 18px 20px 20px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); grid-template-areas: "h h" "n u"; gap: 14px 28px; scroll-margin-top: 12px; min-width: 0; }
+.ep[data-n="1"] { border-left-color: var(--p0); }
+.ep[data-n="6"], .ep[data-n="7"] { border-left-color: var(--p2); }
+.ep > .ep-h { grid-area: h; }
+.ep > .ep-norm { grid-area: n; }
+.ep > .ura { grid-area: u; }
+.ep-h { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; }
+.ep-ti { display: flex; gap: 12px; align-items: center; min-width: 0; }
+.ep-ti .bdg { width: 2.7rem; height: 2.7rem; font-size: 1.08rem; }
+.ep-n { font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ep h3 { font-size: 1.62rem; display: flex; gap: 9px; align-items: center; }
+.ep h3 .ic { width: 1.35rem; height: 1.35rem; }
+.ep-voir { min-height: 44px; }
+.ep-norm { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.ep-nom { font-size: .9rem; color: var(--muted); }
+.ep-nom i { color: var(--ink); }
+.ep-dl { margin: 0; display: grid; gap: 8px; align-content: start; font-size: .93rem; line-height: 1.45; }
+.ep-dl > div { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); gap: 10px; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 7px; }
+.ep-dl > div:first-child { border-top: 0; padding-top: 0; }
+.ep-dl dt { font: 500 .72rem/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.ep-dl dd { margin: 0; min-width: 0; }
+.ep-lead { font-size: 1rem; }
+.ura { background: var(--ura-soft); border: 1px solid var(--rule); border-left: 4px solid var(--ura); border-radius: 10px; padding: 14px 16px 16px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.ura-t { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; font: 500 .74rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.ura-t .ic { color: var(--ura); width: 1.1rem; height: 1.1rem; }
+.ura-t .st { margin-left: auto; letter-spacing: .04em; text-transform: none; font-size: .74rem; color: var(--muted); display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
+.ura p { font-size: .95rem; }
+.ura blockquote.cite { --c: var(--ura); }
+.ura blockquote.cite p { font-size: 1.06rem; }
+.ura .go-l { font-size: .9rem; }
+.ura .go-l a { display: inline-block; padding-block: 4px; }
+.ages { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; counter-reset: ag; }
+.ages li { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 10px 8px 11px; display: grid; gap: 4px; align-content: start; font-size: .84rem; line-height: 1.3; min-width: 0; }
+.ages li::before { counter-increment: ag; content: counter(ag); font: 600 .78rem/1 var(--font-mono); color: var(--muted); }
+.ages b { font-family: var(--font-display); font-size: 1.06rem; font-weight: 600; line-height: 1.15; }
+.ages li:last-child { background: var(--gold-soft); border-color: var(--gold-ui); }
+
+/* Où en est Urantia */
+.duo { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 28px; margin-top: 24px; align-items: start; }
+.duo .prose { margin-top: 0; }
+.fact { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--ura); border-radius: 12px; padding: 20px 20px 22px; display: grid; gap: 12px; }
+.fact .big { font: 500 .74rem/1.4 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); }
+.fact blockquote.cite { --c: var(--ura); }
+.fact blockquote.cite p { font-size: 1.28rem; }
+.fact p { font-size: .95rem; }
+.cmp { display: grid; gap: 0; margin: 22px 0 6px; background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 4px 20px 6px; }
+.cmp-h, .cmp article { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr) minmax(0, 1fr); gap: 6px 22px; padding: 11px 0; }
+.cmp article { border-top: 1px solid var(--rule); }
+.cmp-h { padding-bottom: 6px; }
+.cmp h4 { font-size: 1.16rem; line-height: 1.2; }
+.cmp .col { display: grid; gap: 3px; font-size: .94rem; align-content: start; min-width: 0; }
+.cmp .cl { font: 500 .7rem/1.3 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); display: inline-flex; align-items: center; gap: 6px; }
+.cmp .cl .ic { width: .95rem; height: .95rem; }
+.cmp-h .cl { color: var(--ink); }
+.cmp .col.u { padding-left: 12px; border-left: 3px solid var(--ura); }
+.cmp .col.u.r { border-left-color: var(--reb); }
+.cmp .m-l { display: none; }
+.go { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+
+/* Lumière et vie : le temple, le transfert, la dîme */
+.temple { margin: 0; display: grid; gap: 8px; }
+.temple svg { display: block; width: 100%; height: auto; max-height: 230px; }
+.temple .t-bg { fill: var(--gold-soft); }
+.temple .t-rays path { stroke: var(--gold); stroke-width: 1.6; stroke-linecap: round; opacity: .7; }
+.temple .t-body { fill: var(--sheet); stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; }
+.temple .t-mid { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 2; stroke-linejoin: round; }
+.temple .t-line { stroke: var(--rule); stroke-width: 1.2; }
+.temple .t-glow { fill: var(--gold); opacity: .9; }
+.temple .t-step { fill: var(--tint); stroke: var(--ink); stroke-width: 1.2; }
+.temple-l { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 8px; text-align: center; font-size: .82rem; line-height: 1.3; color: var(--muted); }
+.temple-l b { display: block; color: var(--ink); font-weight: 700; font-size: .86rem; }
+.gauge { display: grid; gap: 6px; margin-top: 4px; }
+.gauge .label { font-size: .72rem; line-height: 1.35; }
+.g-bar { position: relative; height: 12px; border-radius: 999px; background: var(--tint); }
+.g-fill { position: absolute; left: 0; top: 0; bottom: 0; width: 56%; border-radius: 999px; background: linear-gradient(90deg, var(--gold-soft), var(--gold)); }
+.g-tk { position: absolute; top: -3px; width: 2px; height: 18px; background: var(--ink); transform: translateX(-50%); }
+.g-num { position: relative; height: 1.1rem; font: 500 .74rem/1 var(--font-mono); color: var(--ink); }
+.g-num span { position: absolute; bottom: 2px; transform: translateX(-50%); }
+.g-leg { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 3px; font-size: .86rem; line-height: 1.35; color: var(--muted); }
+.g-leg b { color: var(--ink); font-weight: 700; }
+.dime { display: flex; gap: 2px; height: 30px; }
+.dime span { flex: 0 0 auto; display: flex; align-items: center; padding-left: 6px; border-radius: 4px; background: var(--gold-soft); border-bottom: 3px solid var(--gold); font: 500 .74rem/1 var(--font-mono); color: var(--ink); white-space: nowrap; overflow: visible; }
+.dime span.as { background: var(--tint); border-bottom-color: var(--muted); }
+.dime-l { display: flex; flex-wrap: wrap; gap: 2px 12px; font-size: .8rem; color: var(--muted); }
+
+/* ==================== L’échelle des sept stades ==================== */
+.lad-w { display: grid; gap: 18px; align-items: start; }
+.lad { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; min-width: 0; }
+.lad-mk { appearance: none; position: relative; margin: 0; border: 1px solid var(--rule); border-radius: 10px 10px 4px 4px; padding: 10px 6px 10px; min-height: var(--h, 7rem); background: var(--sheet); background: linear-gradient(180deg, color-mix(in srgb, var(--gold) var(--g, 10%), var(--sheet)), var(--sheet) 70%); color: var(--ink); font: inherit; cursor: pointer; display: grid; align-content: start; justify-items: center; gap: 6px; text-align: center; min-width: 0; }
+.lad-mk .bdg { width: 2.1rem; height: 2.1rem; font-size: .92rem; transition: transform .2s ease; }
+.lad-mk b { font-family: var(--font-display); font-size: 1.02rem; font-weight: 600; line-height: 1.12; }
+.lad-mk small { font: 500 .66rem/1.25 var(--font-mono); color: var(--ink); }
+.lad-mk .sure { font: 500 .62rem/1.2 var(--font-mono); letter-spacing: .04em; text-transform: uppercase; color: var(--ink); border-top: 1px solid var(--rule); padding-top: 5px; }
+.lad-mk[aria-pressed="true"] { border: 2px solid var(--gold-ui); }
+.lad-mk[aria-pressed="true"] .bdg { background: var(--gold); border-color: var(--gold-ui); color: var(--on-gold); transform: scale(1.1); }
+.lad-mk.hyp { border-style: dashed; }
+.lad-cap { background: var(--paper); border: 1px solid var(--rule); border-top: 4px solid var(--gold); border-radius: 12px; padding: 16px 18px 18px; display: grid; gap: 11px; align-content: start; min-width: 0; }
+.lad-cap.in { animation: entre .35s ease both; }
+.lad-cap .st-dl { font-size: .9rem; }
+.lad-axis { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 10px; font: 500 .7rem/1.3 var(--font-mono); color: var(--muted); border-top: 1px solid var(--rule); padding-top: 6px; }
+.stades { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 12px; }
+.stg { background: var(--sheet); border: 1px solid var(--rule); border-left: 4px solid var(--gold); border-radius: 12px; padding: 16px 20px 18px; display: grid; gap: 10px; scroll-margin-top: 12px; min-width: 0; }
+.stg.hyp { border-left-style: dashed; }
+.st-h { display: flex; gap: 12px; align-items: center; }
+.st-h .bdg { width: 2.4rem; height: 2.4rem; }
+.st-h h3 { font-size: 1.4rem; }
+.st-n { font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.st-dl { margin: 0; display: grid; gap: 7px; font-size: .94rem; line-height: 1.45; }
+.st-dl > div { display: grid; grid-template-columns: 8.4rem minmax(0, 1fr); gap: 10px; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 7px; }
+.st-dl > div:first-child { border-top: 0; padding-top: 0; }
+.st-dl dt { font: 500 .72rem/1.5 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--gold-ink); }
+.st-dl dd { margin: 0; min-width: 0; }
+
+/* Encadrés */
+.callout { background: var(--sheet); border: 1px solid var(--rule); border-radius: 12px; padding: 22px 24px; display: grid; gap: 14px; max-width: 90ch; }
+.callout h2 { font-size: 1.7rem; }
+.callout > ul { margin: 0; padding-left: 20px; display: grid; gap: 14px; }
+.callout li { max-width: 82ch; }
+.callout blockquote.cite { margin-top: 8px; margin-bottom: 4px; }
+.rel { margin: 8px 0 0; padding-left: 20px; display: grid; gap: 10px; }
+.unk { max-width: 90ch; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding-block: 14px; }
+.unk h2 { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; }
+.unk-btn { appearance: none; width: 100%; min-height: 44px; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
+.qm { display: inline-grid; place-items: center; width: 1.35rem; height: 1.35rem; border-radius: 50%; border: 1.5px dashed var(--muted); color: var(--muted); font: 600 .78rem/1 var(--font-mono); }
+.unk-btn .qm { margin-right: 10px; vertical-align: .2em; }
+.chev { width: 10px; height: 10px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); transform: rotate(45deg); transition: transform .15s ease; flex: none; margin-right: 6px; }
+.unk-btn[aria-expanded="true"] .chev { transform: rotate(-135deg); }
+.unk-body { margin-top: 14px; }
+.unk-body ul { margin: 0; padding-left: 20px; display: grid; gap: 12px; }
+.unk-body li { max-width: 82ch; }
+.foot { border-top: 1px solid var(--rule); padding-top: 18px; font-size: .84rem; color: var(--muted); max-width: 90ch; display: grid; gap: 6px; }
+
+/* Moins d’animations : préférence du système ou bouton des schémas */
+.calme *, .calme *::before, .calme *::after { animation: none !important; transition: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .bdg, .u-ic, .chev, .chip .swt::after { transition: none; }
+  .cap.in, .lad-cap.in { animation: none; }
+}
+
+@media (min-width: 761px) {
+  .e-du, .u-lb { display: block; }
+  .mach-l { display: block; }
+  .lag { display: block; }
+  .lag-l { display: block; }
+  .fr-cap.m { display: none; }
+}
+@media (min-width: 1001px) {
+  .e-ti .nl { display: inline; }
+  .e-ti .ns { display: none; }
+}
+@media (max-width: 1000px) {
+  .lad-mk b { font-size: .92rem; }
+}
+@media (max-width: 960px) {
+  .ages { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ages li:last-child { grid-column: span 1; }
+}
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .duo { grid-template-columns: minmax(0, 1fr); }
+  .ep { grid-template-columns: minmax(0, 1fr); grid-template-areas: "h" "n" "u"; }
+  .cap-grid { grid-template-columns: minmax(0, 1fr); }
+  .cmp-h { display: none; }
+  .cmp article { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .cmp h4 { grid-column: 1 / -1; }
+  .cmp .m-l { display: inline-flex; }
+  .clf-row { grid-template-columns: minmax(0, 1fr); }
+  .clf-leg { grid-column: 1; }
+}
+@media (max-width: 760px) {
+  .e-ti { font-size: 0; gap: 0; }
+  .e-ti .ic { width: 1.25rem; height: 1.25rem; }
+  .e-mk { grid-template-rows: 30px 44px; }
+  .e-mk .bdg { width: 2.05rem; height: 2.05rem; font-size: .9rem; border-width: 2px; }
+  .path, .pre { top: 52px; height: 8px; }
+  .u-ic { width: 29px; height: 29px; margin-top: 6.5px; border-width: 2px; }
+  .u-ic .ic { width: .9rem; height: .9rem; }
+  .u-mk[aria-pressed="true"] .u-ic { transform: scale(1.1); box-shadow: 0 0 0 2px var(--sheet), 0 0 0 4px var(--gold-ui); }
+  .mach { width: 10px; height: 10px; margin-left: -5px; top: 36px; }
+}
+@media (max-width: 860px) {
+  /* l’échelle devient un escalier vertical : le stade 7 en haut */
+  .lad { grid-template-columns: minmax(0, 1fr); gap: 6px; align-items: stretch; }
+  .lad-mk { order: var(--o); min-height: 50px; margin-left: calc(var(--i) * 3%); grid-template-columns: 2.1rem minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 10px; row-gap: 1px; align-content: center; align-items: center; justify-items: start; text-align: left; padding: 7px 12px; border-radius: 10px; background: var(--sheet); background: linear-gradient(90deg, color-mix(in srgb, var(--gold) var(--g, 10%), var(--sheet)), var(--sheet) 75%); }
+  .lad-mk .bdg { grid-column: 1; grid-row: 1 / span 3; }
+  .lad-mk b { grid-column: 2; grid-row: 1; font-size: 1.04rem; }
+  .lad-mk small { grid-column: 2; grid-row: 2; }
+  .lad-mk .sure { grid-column: 2; grid-row: 3; border-top: 0; padding-top: 1px; font-size: .6rem; }
+}
+@media (max-width: 640px) {
+  .feature { padding: 22px 16px 24px; }
+  .clf { padding: 18px 14px 16px; }
+  .cmp { padding: 2px 14px 4px; }
+  .cmp article { grid-template-columns: minmax(0, 1fr); }
+  .ages { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ages li:last-child { grid-column: 1 / -1; }
+  .ep { padding: 16px 16px 18px; }
+  .ep-dl > div, .st-dl > div { grid-template-columns: minmax(0, 1fr); gap: 1px; }
+  .temple-l { font-size: .74rem; }
+  .temple-l b { font-size: .78rem; }
+}
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .callout { padding: 20px 16px; }
+  .codebox { padding: 16px 14px 14px; }
+}
+</style>
+<svg class="defs" aria-hidden="true" focusable="false">
+  <symbol id="i-feu" viewBox="0 0 20 20"><path d="M10 1.8c.8 2.8 4.2 4.6 4.2 8.8a4.2 4.2 0 0 1-8.4 0c0-2 1-3.4 2.2-4.4.2 1.6.9 2.5 1.9 2.9-.5-2.5-.7-4.7.1-7.3Z" fill="currentColor"/><path d="M4.6 17.8h10.8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-prince" viewBox="0 0 20 20"><path d="M2.9 14.6 2 5.9l4.5 3.7L10 3.3l3.5 6.3L18 5.9l-.9 8.7Z" fill="currentColor"/><path d="M3.2 17.2h13.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-jardin" viewBox="0 0 20 20"><circle cx="10" cy="7.4" r="5.6" fill="currentColor"/><path d="M10 11.6v6.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5.4 18.2h9.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-balance" viewBox="0 0 20 20"><path d="M10 2.6v14.6M5.4 17.4h9.2M3.6 5.6h12.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M3.6 5.6 1.6 10.6M3.6 5.6l2 5M16.4 5.6l-2 5M16.4 5.6l2 5" fill="none" stroke="currentColor" stroke-width="1.1"/><path d="M1.2 10.6h4.8a2.4 2.4 0 0 1-4.8 0ZM14 10.6h4.8a2.4 2.4 0 0 1-4.8 0Z" fill="currentColor"/></symbol>
+  <symbol id="i-effu" viewBox="0 0 20 20"><path d="m10 1.6 1.5 3.1 3.4.5-2.5 2.4.6 3.4L10 9.4 7 11l.6-3.4-2.5-2.4 3.4-.5Z" fill="currentColor"/><path d="M10 12.4v5.6M7.3 15.4l2.7 2.7 2.7-2.7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-livre" viewBox="0 0 20 20"><path d="M10 5.3C8.2 3.9 5.6 3.4 2.3 3.6v11.8c3.3-.2 5.9.3 7.7 1.6 1.8-1.3 4.4-1.8 7.7-1.6V3.6c-3.3-.2-5.9.3-7.7 1.7Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M10 5.3V17" stroke="currentColor" stroke-width="1.5"/><path d="M4.6 7.2c1.3 0 2.5.2 3.4.6M4.6 10c1.3 0 2.5.2 3.4.6M15.4 7.2c-1.3 0-2.5.2-3.4.6M15.4 10c-1.3 0-2.5.2-3.4.6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" opacity=".75"/></symbol>
+  <symbol id="i-soleil" viewBox="0 0 20 20"><path d="M5.8 13.6a4.2 4.2 0 0 1 8.4 0Z" fill="currentColor"/><path d="M2 13.6h16M10 4.2v2.4M4.1 7.2l1.7 1.7M15.9 7.2l-1.7 1.7M1.8 10.8h2.3M15.9 10.8h2.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 16.8h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" opacity=".6"/></symbol>
+  <symbol id="i-rupt" viewBox="0 0 20 20"><path d="M11.8 1.6 4.4 11.2h4.9l-1.5 7.2 7.8-10.1h-5Z" fill="currentColor"/></symbol>
+  <symbol id="i-etoile" viewBox="0 0 20 20"><path d="m10 1.6 2.5 5.1 5.6.8-4 4 .9 5.6L10 14.4l-5 2.7.9-5.6-4-4 5.6-.8Z" fill="currentColor"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.6 10h14.8M10 2.4c2.2 2.3 3.2 4.8 3.2 7.6s-1 5.3-3.2 7.6c-2.2-2.3-3.2-4.8-3.2-7.6s1-5.3 3.2-7.6Z" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-long" viewBox="0 0 20 20"><path d="M2 8.2c2-2 4-2 6 0s4 2 6 0 3-1.6 4-1.2M2 13.2c2-2 4-2 6 0s4 2 6 0 3-1.6 4-1.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+  <symbol id="i-vide" viewBox="0 0 20 20"><circle cx="10" cy="10" r="5.2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-dasharray="2.4 2.2"/><path d="M5.6 14.4 14.4 5.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+  <symbol id="i-pers" viewBox="0 0 20 44"><circle cx="10" cy="5" r="4.4" fill="currentColor"/><path d="M10 11c-4.5 0-6.6 3-6.6 7.4v9.4h2.7V44h3.1V30.4h1.6V44h3.1V27.8h2.7v-9.4C16.6 14 14.5 11 10 11Z" fill="currentColor"/></symbol>
+  <symbol id="i-temple" viewBox="0 0 20 20"><path d="M2.4 7.4 10 3l7.6 4.4Z" fill="currentColor"/><path d="M4.2 8.8v6.6M8 8.8v6.6M12 8.8v6.6M15.8 8.8v6.6M2.4 17.4h15.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+</svg>
+<main class="wrap" id="contenu" lang="fr">
+
+  <header class="hero">
+    <div class="hero-text">
+      <p class="eyebrow"><span data-etape></span>Le Livre d’Urantia · fascicules 49 à 52 et 55</p>
+      <h1>L’avenir d’une planète</h1>
+      <p class="lede">Selon le Livre d’Urantia, un monde habité n’est pas livré à lui-même&nbsp;: des Fils divins y viennent tour à tour, et chacun ouvre un âge nouveau, de l’homme primitif jusqu’à l’ère de lumière et de vie. Le livre décrit ce parcours type, puis tout ce qui s’est passé autrement sur Urantia, notre monde.</p>
+      <a class="cta" href="#parcours">Voir le parcours et la place d’Urantia <span class="ar" aria-hidden="true">↓</span></a>
+      <p class="ctx-link">Ce qui a dévié chez nous&nbsp;: <a href="rebellion-de-lucifer.html">La rébellion de Lucifer</a>. Notre passé, en frise et en carte&nbsp;: <a href="histoire-d-urantia.html">L’histoire d’Urantia</a>.</p>
+    </div>
+    <aside class="codebox" aria-label="Les sept époques d’un monde, en bref">
+      <span class="label">Les sept époques d’un monde, dans l’ordre</span>
+      <ol class="keys">
+        <li><span class="bdg" aria-hidden="true">1</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-feu"/></svg><span><b>L’homme primitif</b> <span class="kd">avant tout Fils</span></span></li>
+        <li><span class="bdg" aria-hidden="true">2</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-prince"/></svg><span><b>Le Prince Planétaire</b> <span class="kd">un Fils Lanonandek</span></span></li>
+        <li><span class="bdg" aria-hidden="true">3</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-jardin"/></svg><span><b>Adam et Ève</b> <span class="kd">les Fils Matériels</span></span></li>
+        <li><span class="bdg" aria-hidden="true">4</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-balance"/></svg><span><b>Le Fils Magistral</b> <span class="kd">un Avonal du Paradis</span></span></li>
+        <li><span class="bdg" aria-hidden="true">5</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-effu"/></svg><span><b>Le Fils d’effusion</b> <span class="kd">l’incarnation</span></span></li>
+        <li><span class="bdg" aria-hidden="true">6</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg><span><b>Les Fils Instructeurs</b> <span class="kd">de la Trinité</span></span></li>
+        <li><span class="bdg" aria-hidden="true">7</span><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-soleil"/></svg><span><b>Lumière et vie</b> <span class="kd">en sept stades</span></span></li>
+      </ol>
+      <dl>
+        <dt>dispensation</dt><dd>un âge du monde, ouvert par la mission planétaire d’un Fils divin <span class="ref">52:0.1</span>.</dd>
+        <dt>ancré</dt><dd>se dit d’un monde, puis d’un système, d’une constellation…, parvenu à la lumière et la vie.</dd>
+        <dt>transfert</dt><dd>en anglais <i lang="en">translation</i>&nbsp;: le passage d’un mortel vivant à l’état morontiel, sans mourir <span class="ref">55:2.1</span>.</dd>
+      </dl>
+      <p class="note">Couleurs, icônes et dispositions des schémas sont des choix de la page.</p>
+    </aside>
+  </header>
+
+  <nav class="toc" aria-labelledby="h-toc">
+    <h2 id="h-toc">Sommaire</h2>
+    <ol>
+      <li><a href="#mondes"><span class="nb">1</span><span class="tt">Les mondes habités</span></a></li>
+      <li><a href="#parcours" class="hot"><span class="nb">★</span><span class="tt">Le parcours d’un monde, et le nôtre</span></a></li>
+      <li><a href="#epoques"><span class="nb">2</span><span class="tt">Les sept époques, une par une</span></a></li>
+      <li><a href="#urantia"><span class="nb">3</span><span class="tt">Où en est Urantia&nbsp;?</span></a></li>
+      <li><a href="#lumiere"><span class="nb">4</span><span class="tt">Les sphères de lumière et de vie</span></a></li>
+      <li><a href="#stades" class="hot"><span class="nb">★</span><span class="tt">L’échelle des sept stades</span></a></li>
+      <li><a href="#sept-stades"><span class="nb">5</span><span class="tt">Les sept stades, un par un</span></a></li>
+      <li><a href="#registres"><span class="nb">6</span><span class="tt">Trois manières de lire ces fascicules</span></a></li>
+      <li><a href="#inconnu"><span class="nb">?</span><span class="tt">Ce que le texte ne précise pas</span></a></li>
+    </ol>
+  </nav>
+
+  <section id="mondes" aria-labelledby="h-mon">
+    <div class="sec-head">
+      <p class="eyebrow"><b>1</b> · Fascicule 49</p>
+      <h2 id="h-mon">Les mondes habités</h2>
+      <p>Pour le livre, tous les mondes habités par des mortels ont une origine évolutionnaire, et chacun est une école pour l’étape suivante <span class="ref">49:0.1</span>.</p>
+      <blockquote class="cite" data-ref="49:0.1"><p>«&nbsp;Ces sphères sont la frayère, le berceau d’évolution des races mortelles du temps et de l’espace.&nbsp;»</p><span class="ref">49:0.1</span></blockquote>
+    </div>
+    <div class="prose">
+      <p>Ces mondes sont groupés en systèmes d’environ mille mondes évolutionnaires <span class="ref">49:0.2</span>. Le nôtre, Satania, n’en compte encore que 619&nbsp;; Urantia y porte le numéro 606, parce qu’elle fut le six-cent-sixième monde du système à voir apparaitre des êtres humains <span class="ref">49:0.3</span>. Les mortels de ces mondes diffèrent beaucoup par le corps, mais <span class="q" data-ref="49:4.8">«&nbsp;Les mortels sont apparentés en mental&nbsp;»</span> <span class="ref">49:4.8</span>, et leurs carrières après la mort se ressemblent beaucoup.</p>
+    </div>
+
+    <figure class="clf" aria-labelledby="clf-h">
+      <div class="clf-head">
+        <h3 id="clf-h">Où se range l’humain d’Urantia</h3>
+        <ul class="clf-key" aria-label="Légende">
+          <li><span class="k-u" aria-hidden="true"></span>la catégorie d’Urantia</li>
+          <li><span class="k-g" aria-hidden="true"></span>les autres catégories</li>
+          <li><span class="k-c" aria-hidden="true"></span>catégories sans proportion donnée</li>
+        </ul>
+      </div>
+      <div class="clf-rows">
+        <div class="clf-row">
+          <p class="clf-t"><b>Respiration</b><span>mondes de Satania <span class="ref">49:2.12–14</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Respiration, mondes de Satania : sous-respirateurs environ 2,5 %, respirateurs moyens plus de 91 % dont Urantia, superrespirateurs 5 %, non-respirateurs 1,5 %."><span class="seg" style="--v: 2.5" data-t="Sous-respirateurs · environ 2,5 %"></span><span class="seg u" style="--v: 91" data-t="Respirateurs moyens · plus de 91 % · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 5" data-t="Superrespirateurs · 5 %"></span><span class="seg" style="--v: 1.5" data-t="Non-respirateurs · 1,5 %"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span>sous-respirateurs ≈&nbsp;2,5&nbsp;%</span><span class="u">respirateurs moyens, plus de 91&nbsp;%</span><span>superrespirateurs 5&nbsp;%</span><span>non-respirateurs 1,5&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Milieu de vie</b><span>mondes de Satania <span class="ref">49:2.15–18</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Milieu de vie, mondes de Satania : aquatiques 7 %, aériens 10 %, terrestres 70 % dont Urantia, aéroterrestres 13 %."><span class="seg" style="--v: 7" data-t="Aquatiques · 7 %"></span><span class="seg" style="--v: 10" data-t="Aériens · 10 %"></span><span class="seg u" style="--v: 70" data-t="Terrestres · 70 % · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 13" data-t="Aéroterrestres · 13 %"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span>aquatiques 7&nbsp;%</span><span>aériens 10&nbsp;%</span><span class="u">terrestres 70&nbsp;%</span><span>aéroterrestres 13&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Température</b><span>mondes de Satania <span class="ref">49:2.21</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Température, mondes de Satania : hautes températures 12 %, températures moyennes environ 70 % dont Urantia, basses températures 18 %."><span class="seg" style="--v: 12" data-t="Hautes températures · 12 %"></span><span class="seg u" style="--v: 70" data-t="Températures moyennes · environ 70 % (calcul de la page) · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 18" data-t="Basses températures · 18 %"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span>hautes températures 12&nbsp;%</span><span class="u">moyennes ≈&nbsp;70&nbsp;%, calcul de la page</span><span>basses 18&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Type électrique</b><span>dix classes, Satania <span class="ref">49:2.22–23</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Type électrique, dix classes : classe 1, 1 % ; classe 2, 2 % ; classe 3, 5 % ; classe 4, 23 %, celle d’Urantia ; classe 5, 27 % ; classe 6, 24 % ; classe 7, 8 % ; classe 8, 5 % ; classe 9, 3 % ; classe 10, 2 %."><span class="seg" style="--v: 1" data-t="Classe 1 · 1 %"></span><span class="seg" style="--v: 2" data-t="Classe 2 · 2 %"></span><span class="seg" style="--v: 5" data-t="Classe 3 · 5 %"></span><span class="seg u" style="--v: 23" data-t="Classe 4 · 23 % · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 27" data-t="Classe 5 · 27 %"></span><span class="seg" style="--v: 24" data-t="Classe 6 · 24 %"></span><span class="seg" style="--v: 8" data-t="Classe 7 · 8 %"></span><span class="seg" style="--v: 5" data-t="Classe 8 · 5 %"></span><span class="seg" style="--v: 3" data-t="Classe 9 · 3 %"></span><span class="seg" style="--v: 2" data-t="Classe 10 · 2 %"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span>classes 1 à 10, de gauche à droite</span><span class="u">classe 4, 23&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Réceptivité à l’esprit</b><span>selon certaines glandes <span class="ref">49:5.19–20</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Réceptivité à l’esprit : premier groupe, moins réceptif, 12 % ; deuxième groupe 65 %, celui d’Urantia ; troisième groupe, plus enclin à la spiritualité, 23 %."><span class="seg" style="--v: 12" data-t="Premier groupe, moins réceptif · 12 %"></span><span class="seg u" style="--v: 65" data-t="Deuxième groupe · 65 % · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 23" data-t="Troisième groupe, plus enclin à la spiritualité · 23 %"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span>premier groupe, moins réceptif, 12&nbsp;%</span><span class="u">deuxième groupe, 65&nbsp;%</span><span>troisième, plus enclin à la spiritualité, 23&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Série spirituelle</b><span>mondes de Nébadon <span class="ref">49:5.31 ; 37:5.1</span></span></p>
+          <div class="clf-bar" role="img" aria-label="Série spirituelle, mondes de Nébadon : mortels à fusion d’Ajusteurs, presque 90 %, dont Urantia ; autres séries, environ 10 %."><span class="seg u" style="--v: 90" data-t="Fusion d’Ajusteurs · presque 90 % · Urantia"><b aria-hidden="true">Urantia</b></span><span class="seg" style="--v: 10" data-t="Autres séries · environ 10 % (calcul de la page)"></span></div>
+          <p class="clf-leg" aria-hidden="true"><span class="u">fusion d’Ajusteurs, presque 90&nbsp;%</span><span>autres séries ≈&nbsp;10&nbsp;%</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Cerveaux</b><span>trois organisations <span class="ref">49:5.13</span></span></p>
+          <p class="clf-chips"><span class="cc">un cerveau</span><span class="cc u">deux cerveaux · Urantia</span><span class="cc">trois cerveaux</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Adaptation au milieu</b><span>trois groupes <span class="ref">49:5.10–11</span></span></p>
+          <p class="clf-chips"><span class="cc">normale</span><span class="cc">radicale</span><span class="cc u">expérimentale · Urantia</span></p>
+        </div>
+        <div class="clf-row">
+          <p class="clf-t"><b>Nutrition</b><span>six types <span class="ref">49:2.25</span></span></p>
+          <p class="clf-chips"><span class="cc">sous-respirateurs</span><span class="cc">espèces marines</span><span class="cc u">respirateurs moyens · Urantia</span><span class="cc">superrespirateurs</span><span class="cc">non-respirateurs</span><span class="cc">créatures médianes</span></p>
+        </div>
+      </div>
+      <figcaption class="clf-note">Proportions données par le texte, sauf deux calculs de la page (le complément des 30&nbsp;% de types thermiques modifiés, celui des 90&nbsp;% de mondes à fusion d’Ajusteurs). Les mondes à peu ou pas d’air, peuplés de non-respirateurs, sont moins de 7&nbsp;% dans Orvonton, moins de 3&nbsp;% dans Nébadon, et neuf dans tout Satania <span class="ref">49:3.1</span>&nbsp;; leurs habitants sont candidats à la fusion avec l’Esprit, et l’un de ces peuples vit tout près d’Urantia <span class="ref">49:3.5–6</span>.</figcaption>
+      <details class="tbl">
+        <summary>Voir les proportions en tableau</summary>
+        <div class="tbl-w">
+          <table>
+            <thead><tr><th scope="col">Classement</th><th scope="col">Catégorie</th><th scope="col">Part</th><th scope="col">Référence</th></tr></thead>
+            <tbody>
+              <tr><td>Respiration (Satania)</td><td>sous-respirateurs</td><td class="n">≈&nbsp;2,5&nbsp;%</td><td><span class="ref">49:2.12</span></td></tr>
+              <tr><td></td><td>respirateurs moyens (Urantia)</td><td class="n">&gt;&nbsp;91&nbsp;%</td><td><span class="ref">49:2.12–13</span></td></tr>
+              <tr><td></td><td>superrespirateurs</td><td class="n">5&nbsp;%</td><td><span class="ref">49:2.12</span></td></tr>
+              <tr><td></td><td>non-respirateurs</td><td class="n">1,5&nbsp;%</td><td><span class="ref">49:2.14</span></td></tr>
+              <tr><td>Milieu de vie (Satania)</td><td>aquatiques · aériens · terrestres (Urantia) · aéroterrestres</td><td class="n">7 · 10 · 70 · 13&nbsp;%</td><td><span class="ref">49:2.18</span></td></tr>
+              <tr><td>Température (Satania)</td><td>hautes · moyennes (Urantia) · basses</td><td class="n">12 · ≈&nbsp;70 · 18&nbsp;%</td><td><span class="ref">49:2.21</span></td></tr>
+              <tr><td>Type électrique (Satania)</td><td>classes 1 à 10 (Urantia&nbsp;: classe 4)</td><td class="n">1 · 2 · 5 · 23 · 27 · 24 · 8 · 5 · 3 · 2&nbsp;%</td><td><span class="ref">49:2.23</span></td></tr>
+              <tr><td>Réceptivité à l’esprit</td><td>premier · deuxième (Urantia) · troisième groupe</td><td class="n">12 · 65 · 23&nbsp;%</td><td><span class="ref">49:5.20</span></td></tr>
+              <tr><td>Série spirituelle (Nébadon)</td><td>fusion d’Ajusteurs (Urantia) · autres</td><td class="n">≈&nbsp;90 · ≈&nbsp;10&nbsp;%</td><td><span class="ref">49:5.31</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </figure>
+
+    <div class="cards">
+      <article class="card" style="--c: var(--ura)">
+        <p class="st">Fascicule 49, section 5</p>
+        <h3><svg class="ic c-ura" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Urantia, monde d’expérience</h3>
+        <p>Sur les mondes dits décimaux, les Porteurs de Vie essaient de produire des variations utiles des modèles de vie <span class="ref">49:5.11</span>. C’est notre cas&nbsp;:</p>
+        <blockquote class="cite c-ura" data-ref="49:5.11"><p>«&nbsp;Puisque votre monde est une planète expérimentale, il diffère notablement de ses sphères-sœurs de Satania.&nbsp;»</p><span class="ref">49:5.11</span></blockquote>
+        <p>Des formes de vie y sont apparues qu’on ne trouve pas ailleurs <span class="ref">49:5.11</span>, et d’autres écarts ont suivi, dont l’arrivée tardive du Prince Planétaire <span class="ref">65:4.8–9</span>.</p>
+      </article>
+      <article class="card">
+        <p class="st">Fascicule 49, section 2</p>
+        <h3>De 75 centimètres à 3 mètres</h3>
+        <p>Les mortels sont bâtis pour la gravité de leur monde&nbsp;: petits sur les plus grosses planètes, grands sur les plus petites. Dans Satania, un monde sur cinq est peuplé de ces types modifiés <span class="ref">49:2.19–20</span>.</p>
+        <div class="tailles" role="img" aria-label="Tailles des mortels dans Nébadon : environ 75 centimètres sur les plus grosses planètes, un peu moins de 2,10 mètres en moyenne, jusqu’à 3 mètres sur les plus petites.">
+          <figure><svg viewBox="0 0 20 44" style="height: 23px" aria-hidden="true" focusable="false"><use href="#i-pers"/></svg><b>0,75&nbsp;m</b>grosses planètes</figure>
+          <figure><svg viewBox="0 0 20 44" style="height: 63px" aria-hidden="true" focusable="false"><use href="#i-pers"/></svg><b>≈&nbsp;2,10&nbsp;m</b>moyenne de Nébadon</figure>
+          <figure><svg viewBox="0 0 20 44" style="height: 90px" aria-hidden="true" focusable="false"><use href="#i-pers"/></svg><b>3&nbsp;m</b>petites planètes</figure>
+        </div>
+        <p class="hint">La moyenne de Nébadon est <i>un peu au-dessous</i> de 2,10&nbsp;m&nbsp;; une seule race de Satania mesure moins de 1,20&nbsp;m <span class="ref">49:2.20</span>.</p>
+      </article>
+      <article class="card gold">
+        <p class="st">Fascicule 49, section 6</p>
+        <h3><svg class="ic c-gold" aria-hidden="true" focusable="false"><use href="#i-soleil"/></svg>Quitter la Terre sans mourir</h3>
+        <p>Le fascicule décrit cinq manières d’échapper au statut terrestre. La dernière dispense de la mort&nbsp;: <span class="q" data-ref="49:6.18">«&nbsp;ils sont transférés de chez les vivants&nbsp;»</span> <span class="ref">49:6.18</span>. Quand la majorité des mortels part ainsi, la planète est classée dans cette série <span class="ref">49:6.21 ; 52:7.4</span>.</p>
+        <ol class="esc">
+          <li><b>Les survivants endormis</b><span>réveillés lors des appels dispensationnels <span class="ref">49:6.4–7</span></span></li>
+          <li><b>Les ascendeurs individuels</b><span>réveillés le troisième jour après la mort <span class="ref">49:6.8–10</span></span></li>
+          <li><b>Les ascensions à l’épreuve</b><span>les enfants et les jeunes <span class="ref">49:6.11–14</span></span></li>
+          <li><b>L’ordre secondaire modifié</b><span>sans passer par les mondes des maisons <span class="ref">49:6.15–17</span></span></li>
+          <li class="top"><b>L’ordre primaire modifié</b><span>le transfert, sans la mort <span class="ref">49:6.18–21</span></span></li>
+        </ol>
+        <p class="hint">Le texte français dit <i>transfert</i>, l’anglais <i lang="en">translation</i>. L’expression monde de transfert est de la page.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="parcours" class="feature" aria-labelledby="h-sc">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · fascicules 52 et 55</p>
+      <h2 id="h-sc">Le parcours d’un monde, et le nôtre</h2>
+      <p>En haut, le parcours type d’un monde habité&nbsp;: sept époques, ouvertes chacune par la venue d’un ordre de Fils divins <span class="ref">52:0.1</span>. En bas, ce que le texte dit d’Urantia pour chacune.</p>
+      <p class="hint js-seul" id="sc-aide" hidden>Touche ou clique une époque pour ouvrir sa fiche. Au clavier&nbsp;: Tab jusqu’à l’une des deux voies, puis les flèches gauche et droite, Début et Fin.</p>
+      <p class="hint sans-js">Le schéma interactif demande JavaScript&nbsp;; sa version texte suit&nbsp;: <a href="#epoques">les sept époques, une par une</a>.</p>
+    </div>
+    <div class="sc" id="sc" hidden>
+      <div class="sc-opts">
+        <button type="button" class="chip calme-btn" aria-pressed="false"><span class="swt" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip" href="#epoques">Version texte</a>
+      </div>
+      <div class="fr">
+        <div class="lane-t"><p class="label" id="ln-n">Un monde normal · <b>le parcours type</b></p><p class="hint">durées moyennes, en années d’Urantia&nbsp;; positions égales, sans échelle de temps</p></div>
+        <div class="lane lane-n" id="lane-n" role="group" aria-labelledby="ln-n" aria-describedby="sc-aide"></div>
+        <div class="lane-t"><p class="label" id="ln-u">Urantia · <b>ce que le texte en dit</b></p></div>
+        <div class="lane lane-u" id="lane-u" role="group" aria-labelledby="ln-u" aria-describedby="sc-aide"></div>
+        <div class="lag" aria-hidden="true"></div>
+        <p class="lag-l">Par son développement matériel, Urantia en est encore à l’époque postadamique <span class="ref">52:3.6</span>.</p>
+        <ul class="fr-leg" aria-label="Légende de la voie d’Urantia">
+          <li><span class="lg" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-long"/></svg></span>autrement qu’ailleurs</li>
+          <li><span class="lg rupt" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-rupt"/></svg></span>perturbé</li>
+          <li><span class="lg abs" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-vide"/></svg></span>jamais venu</li>
+          <li><span class="lg mic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-etoile"/></svg></span>Micaël lui-même</li>
+          <li><span class="lg fut" aria-hidden="true">?</span>à venir</li>
+          <li><span class="lg dia" aria-hidden="true"></span>Machiventa Melchizédek</li>
+        </ul>
+        <p class="fr-cap m">Aujourd’hui, Urantia vit l’âge qui suit l’effusion de Micaël <span class="ref">52:6.1</span>, sans avoir connu d’âge magistral <span class="ref">49:5.26</span>&nbsp;; par son développement matériel, elle en est encore à l’époque postadamique <span class="ref">52:3.6</span>.</p>
+      </div>
+      <div class="cap" id="sc-cap"></div>
+      <p class="sr-only" id="sc-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="epoques" aria-labelledby="h-epo">
+    <div class="sec-head">
+      <p class="eyebrow"><b>2</b> · Fascicules 52, 50 et 51</p>
+      <h2 id="h-epo">Les sept époques, une par une</h2>
+      <p>Le fascicule 52 compte <i>au moins</i> sept époques de vie humaine, du commencement de la vie jusqu’à l’ère de lumière et de vie, dans l’ordre où elles apparaissent sur un monde moyen <span class="ref">52:0.1–8</span>. Avant elles, l’ère préhumaine va de l’implantation de la vie par les Porteurs de Vie à l’apparition de l’homme <span class="ref">52:0.9</span>.</p>
+      <p class="hint">Pour chaque époque&nbsp;: le monde normal à gauche, Urantia à droite (en dessous sur téléphone).</p>
+    </div>
+    <div class="ep-list">
+
+      <article class="ep" id="ep-1" data-n="1" aria-labelledby="ep-1-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">1</span><div><p class="ep-n">Première époque · de 150&nbsp;000 ans à plus d’un million</p><h3 id="ep-1-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-feu"/></svg>L’homme primitif</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme antérieur au Prince Planétaire</i> <span class="ref">52:0.2</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Aucun Fils encore&nbsp;: les Porteurs de Vie, qui ont implanté la vie, veillent sur son développement <span class="ref">52:0.9 ; 49:5.22</span>.</dd></div>
+            <div><dt>Durée</dt><dd>De 150&nbsp;000 ans à plus d’un million d’années, selon les mondes <span class="ref">52:1.1</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>La volonté morale apparait avec le langage&nbsp;; des Ajusteurs peuvent alors venir, temporairement <span class="ref">52:1.6</span>. Six races de couleur paraissent, dans l’ordre du spectre, à commencer par le rouge <span class="ref">52:1.1–2</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Dès que les humains sortent du niveau animal et peuvent choisir d’adorer le Créateur, le texte parle d’hommes primitifs&nbsp;: chasseurs et combattants, sous la loi de la tribu, avec une religion faite surtout de peur <span class="ref">52:1.1 ; 52:1.3 ; 52:1.7</span>. Le Prince Planétaire arrive en général moins de cent-mille ans après que les hommes se tiennent debout <span class="ref">52:1.8</span>.</p>
+          <blockquote class="cite" data-ref="52:1.4"><p>«&nbsp;[…] les performances des hommes primitifs représentent un chapitre splendide et même héroïque dans les annales d’un monde évolutionnaire du temps et de l’espace.&nbsp;»</p><span class="ref">52:1.4</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, première époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-long"/></svg></span>autrement qu’ailleurs</span></p>
+          <p>Les deux premiers êtres humains naissent 993&nbsp;419 ans avant 1934 <span class="ref">62:5.1</span>. Le Prince n’arrive que près d’un demi-million d’années après l’apparition de la volonté humaine <span class="ref">66:0.1</span>&nbsp;; d’ici là, douze Melchizédeks veillent sur la planète, désignée pour une vie modifiée <span class="ref">65:4.9</span>.</p>
+          <p>Les luttes de cet âge y furent plus longues et plus brutales que sur les mondes normaux <span class="ref">52:1.4</span>.</p>
+          <p class="go-l">Voir <a href="histoire-d-urantia.html">L’histoire d’Urantia</a>, en frise et en carte.</p>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-2" data-n="2" aria-labelledby="ep-2-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">2</span><div><p class="ep-n">Deuxième époque · environ 500&nbsp;000 ans</p><h3 id="ep-2-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-prince"/></svg>Le Prince Planétaire</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme postérieur au Prince Planétaire</i> <span class="ref">52:0.3</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Un Fils Lanonandek, invisible aux mortels, avec un état-major d’environ mille personnes, dont des ascendeurs volontaires revêtus d’un corps physique <span class="ref">50:2.4 ; 50:3.1–3 ; 50:4.9</span>.</dd></div>
+            <div><dt>Durée</dt><dd>Environ 500&nbsp;000 ans, parfois plus, parfois moins <span class="ref">52:2.2</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>Un gouvernement, les premières révélations sur l’univers, la vie de famille, l’égalité des sexes, l’agriculture <span class="ref">52:2.1–3 ; 52:2.6–8</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Le Prince fonde un quartier général et des écoles, où l’élite des races est formée avant de retourner vers les siens <span class="ref">50:4.1 ; 50:4.10</span>. La planète est reliée aux circuits du système, et les Ajusteurs viennent plus nombreux <span class="ref">52:2.2</span>. Les guerres continuent, moins souvent&nbsp;: c’est le grand âge de la dispersion des races <span class="ref">52:2.5</span>. Le texte place aussi dans cet âge le début d’une sélection des lignées humaines, un thème discuté plus bas <span class="ref">52:2.9–10</span>.</p>
+          <blockquote class="cite" data-ref="52:2.5"><p>«&nbsp;Mais le Prince Planétaire n’est pas le “Prince de la Paix”.&nbsp;»</p><span class="ref">52:2.5</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, deuxième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg rupt" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-rupt"/></svg></span>perturbé</span></p>
+          <p>Caligastia arrive il y a environ 500&nbsp;000 ans, avec cent aides corporels <span class="ref">66:0.2 ; 50:3.1</span>. Trois-cent-mille ans plus tard, il se rallie à la rébellion de Lucifer, proclamée il y a environ 200&nbsp;000 ans <span class="ref">67:1.1–2 ; 53:4.1</span>&nbsp;: il pervertit les écoles du monde <span class="ref">50:4.11–12</span>&nbsp;; le système est mis en quarantaine <span class="ref">67:3.1</span>, et Urantia reste isolée <span class="ref">28:7.4</span>.</p>
+          <p>Douze Melchizédeks assurent ensuite l’intérim <span class="ref">93:0.2</span>. Aujourd’hui, Christ Micaël porte le titre de Prince Planétaire d’Urantia, et Machiventa Melchizédek celui de Prince Planétaire vice-gérant <span class="ref">119:8.8 ; 93:10.5–6</span>.</p>
+          <p class="go-l">Voir <a href="rebellion-de-lucifer.html#isolement">pourquoi Urantia est isolée</a>.</p>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-3" data-n="3" aria-labelledby="ep-3-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">3</span><div><p class="ep-n">Troisième époque · environ 25&nbsp;000 ans</p><h3 id="ep-3-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-jardin"/></svg>Adam et Ève</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme postadamique</i> <span class="ref">52:0.4</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Un Fils et une Fille Matériels, envoyés par le Souverain du Système&nbsp;: visibles, hauts de 2,50 à 3&nbsp;mètres <span class="ref">52:3.1 ; 51:1.3 ; 51:1.7</span>.</dd></div>
+            <div><dt>Durée</dt><dd>Environ 25&nbsp;000 ans avant que la planète soit mure pour un Fils Magistral <span class="ref">52:3.3</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>Un jardin d’Éden, second centre de culture <span class="ref">51:3.2 ; 51:6.2</span>&nbsp;; les races se mêlent et une langue commune s’impose <span class="ref">52:3.7 ; 52:3.10</span>&nbsp;; inventions et sciences physiques <span class="ref">52:3.6</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Quand l’homme a atteint l’apogée de son évolution biologique, les élévateurs biologiques arrivent <span class="ref">52:3.1 ; 51:0.1</span>. Ils bâtissent d’abord un peuple de leur ordre, la race violette, puis leurs descendants s’unissent aux meilleurs des races du monde <span class="ref">51:3.3 ; 51:5.3</span>. C’est la dispensation de l’internationalisme&nbsp;: le nationalisme décroit, la fraternité commence <span class="ref">52:3.10</span>.</p>
+          <blockquote class="cite" data-ref="52:3.6"><p>«&nbsp;C’est l’ère où apparaissent des industries multiformes et un contrôle des forces naturelles ; c’est l’âge d’or de l’exploration et de la domination finale de la planète.&nbsp;»</p><span class="ref">52:3.6</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, troisième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg rupt" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-rupt"/></svg></span>perturbé</span></p>
+          <p>Adam et Ève arrivent 37&nbsp;848 ans avant 1934 <span class="ref">74:0.1</span>. Après plus de cent ans d’efforts, ils s’écartent du plan divin <span class="ref">75:0.1</span>, pris au piège de Caligastia <span class="ref">51:3.4</span>&nbsp;; le mélange des races prévu ne se fait que très partiellement <span class="ref">51:4.4</span>. Le texte refuse pourtant d’y voir une chute&nbsp;:</p>
+          <blockquote class="cite" data-ref="75:8.2"><p>«&nbsp;Il n’y a pas eu de “chute de l’homme”.&nbsp;»</p><span class="ref">75:8.2</span></blockquote>
+          <p>Bien plus tard, 1&nbsp;973 ans avant la naissance de Jésus, Machiventa Melchizédek vient en Fils de secours pour garder vivante la vérité <span class="ref">93:1.3 ; 93:2.1</span>.</p>
+          <p class="go-l">Voir <a href="rebellion-de-lucifer.html#echelles">la rébellion, de Jérusem au Jardin</a>.</p>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-4" data-n="4" aria-labelledby="ep-4-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">4</span><div><p class="ep-n">Quatrième époque · 25&nbsp;000 à 50&nbsp;000 ans</p><h3 id="ep-4-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-balance"/></svg>Le Fils Magistral</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme postérieur au Fils Magistral</i> <span class="ref">52:0.5</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Un Fils Avonal du Paradis, en mission magistrale&nbsp;: incarné, mais sans naitre ni mourir comme les mortels <span class="ref">52:4.2–3</span>.</dd></div>
+            <div><dt>Durée</dt><dd>De 25&nbsp;000 à 50&nbsp;000 ans&nbsp;; parfois plusieurs Fils Magistraux se succèdent <span class="ref">52:4.9–10</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>Deux heures et demie de travail par jour suffisent à chacun <span class="ref">52:4.5</span>&nbsp;; l’autonomie gouvernementale s’établit <span class="ref">52:4.6</span>&nbsp;; la révélation s’étend à l’univers local <span class="ref">52:4.4</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Le Prince et les Fils Matériels venaient de l’univers local&nbsp;; le Fils Magistral arrive du Paradis <span class="ref">52:4.2</span>. Les races sont désormais d’un même sang, et la fraternité s’épanouit <span class="ref">52:4.1</span>. Là où il est universellement accepté, il peut rester un âge et gouverner avec le Prince et l’Adam <span class="ref">51:7.1</span>.</p>
+          <blockquote class="cite" data-ref="52:4.8"><p>«&nbsp;Sur un monde idéal, la fin de cet âge voit la plénitude d’un grand réveil religieux, une illumination spirituelle du monde entier.&nbsp;»</p><span class="ref">52:4.8</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, quatrième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg abs" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-vide"/></svg></span>jamais venu</span></p>
+          <blockquote class="cite" data-ref="49:5.26"><p>«&nbsp;Il n’y a jamais eu de mission magistrale sur votre monde, et votre Fils d’effusion n’appartenait pas à l’ordre des Avonals.&nbsp;»</p><span class="ref">49:5.26</span></blockquote>
+          <p>Le texte tient pourtant pour certain que des Fils Magistraux et des Fils Instructeurs viendront un jour <span class="ref">93:10.8</span>.</p>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-5" data-n="5" aria-labelledby="ep-5-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">5</span><div><p class="ep-n">Cinquième époque · 10&nbsp;000 à 100&nbsp;000 ans</p><h3 id="ep-5-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-effu"/></svg>Le Fils d’effusion</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme postérieur au Fils d’Effusion</i> <span class="ref">52:0.6</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Un Fils du Paradis de l’ordre des Avonals, qui vit et meurt pour élever les races&nbsp;; une seule fois par univers local, le Fils Créateur lui-même <span class="ref">52:5.2 ; 52:5.4</span>.</dd></div>
+            <div><dt>Durée</dt><dd>De 10&nbsp;000 à 100&nbsp;000 ans <span class="ref">52:5.8</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>Tout mental normal reçoit un Ajusteur dès l’âge du choix moral <span class="ref">52:5.6</span>&nbsp;; la maladie et la délinquance sont pratiquement vaincues, la vie dépasse trois-cents ans <span class="ref">52:5.9</span>&nbsp;; une race, une langue, une religion <span class="ref">52:5.10</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Le Fils d’effusion arrive sur un monde déjà très cultivé, où l’on recherche la vérité spirituelle <span class="ref">52:5.3</span>. Ressuscité le troisième jour, il retourne auprès du Fils Créateur, et l’Esprit de Vérité est répandu sur le monde <span class="ref">52:5.6</span>. C’est le Prince de Paix&nbsp;: les nations n’apprennent plus la guerre <span class="ref">52:6.1</span>.</p>
+          <blockquote class="cite" data-ref="52:5.8"><p>«&nbsp;Il devient possible de mettre la règle d’or en pratique.&nbsp;»</p><span class="ref">52:5.8</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, cinquième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg mic" aria-hidden="true"><svg class="ic" focusable="false"><use href="#i-etoile"/></svg></span>Micaël lui-même</span></p>
+          <p>Le Fils d’effusion fut Micaël, le Fils Créateur de notre univers, un don réservé à un monde sur près de dix-millions <span class="ref">52:5.2</span>. Il vint dès la fin de la dispensation adamique, ce qui n’est pas l’ordre habituel <span class="ref">52:5.1</span>, et vécut de l’an 7 av. J.-C. à l’an 30 <span class="ref">122:8.1 ; 189:1.1</span>. Le plan divin n’exigeait pas une mort violente <span class="ref">20:6.6</span>&nbsp;:</p>
+          <blockquote class="cite" data-ref="188:4.1"><p>«&nbsp;Il est de fait que, sur d’autres planètes habitées voisines, on appelle Urantia le “Monde de la Croix”.&nbsp;»</p><span class="ref">188:4.1</span></blockquote>
+          <p>La paix n’a pas suivi <span class="ref">52:6.1</span>. Mais, depuis la Pentecôte, les Ajusteurs sont donnés à tout mental normal <span class="ref">108:2.3</span>, et les mortels vont de nouveau directement sur les mondes morontiels <span class="ref">52:5.5</span>. Nous vivons l’âge qui suit cette effusion <span class="ref">52:6.1–2</span>.</p>
+          <p class="go-l">Voir <a href="effusions-de-micael.html#septieme">la septième effusion de Micaël</a>.</p>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-6" data-n="6" aria-labelledby="ep-6-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">6</span><div><p class="ep-n">Sixième époque · au moins 1&nbsp;000 ans</p><h3 id="ep-6-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-livre"/></svg>Les Fils Instructeurs de la Trinité</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’homme postérieur aux Fils Instructeurs</i> <span class="ref">52:0.7</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Un Fils Instructeur planétaire, avec soixante-dix Fils primaires, douze secondaires et trois Daynals&nbsp;: des Fils de la Trinité du Paradis <span class="ref">52:7.1–2</span>.</dd></div>
+            <div><dt>Durée</dt><dd>Au moins mille ans, souvent beaucoup plus&nbsp;; ils peuvent revenir maintes fois <span class="ref">52:7.2 ; 52:7.10</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>La révélation s’étend à l’univers central et au Paradis <span class="ref">52:7.3</span>&nbsp;; la vie approche cinq-cents ans, et l’administration du monde ne demande qu’une heure par jour <span class="ref">52:7.5–6</span>&nbsp;; l’allégeance à l’Être Suprême grandit <span class="ref">52:7.7</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">Leur mission fait la transition entre les âges évolutionnaires et l’ère de lumière et de vie <span class="ref">52:7.2</span>. Beaucoup de mortels sont transférés vivants sur les mondes morontiels&nbsp;; la mort naturelle se raréfie, et la planète finit par être classée dans l’ordre primaire modifié d’ascension <span class="ref">52:7.4</span>. À la fin d’une de leurs missions, le Prince devient Souverain Planétaire <span class="ref">52:7.10</span>.</p>
+          <blockquote class="cite" data-ref="52:7.9"><p>«&nbsp;Rien n’est parfait, mais on voit se développer une qualité de quasi-perfection dans les opérations d’un monde imparfait et dans la vie de ses habitants humains.&nbsp;»</p><span class="ref">52:7.9</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, sixième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg fut" aria-hidden="true">?</span>à venir</span></p>
+          <p>Pas encore. Jésus a promis de revenir, mais l’ordre des prochaines venues n’est pas connu <span class="ref">52:7.1</span>. Le texte assure pourtant que, quels que soient les antécédents d’un monde,</p>
+          <blockquote class="cite" data-ref="52:7.14"><p>«&nbsp;[…] tôt ou tard, la grâce de Dieu et le ministère des anges feront arriver le jour de la venue des Fils Instructeurs de la Trinité […]&nbsp;»</p><span class="ref">52:7.14</span></blockquote>
+        </aside>
+      </article>
+
+      <article class="ep" id="ep-7" data-n="7" aria-labelledby="ep-7-h">
+        <div class="ep-h"><div class="ep-ti"><span class="bdg" aria-hidden="true">7</span><div><p class="ep-n">Septième époque · indéfiniment</p><h3 id="ep-7-h"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-soleil"/></svg>L’ère de lumière et de vie</h3></div></div></div>
+        <div class="ep-norm">
+          <p class="ep-nom">Dans le texte&nbsp;: <i>L’ère de lumière et de vie</i> <span class="ref">52:0.8</span></p>
+          <dl class="ep-dl">
+            <div><dt>Qui vient</dt><dd>Le temple morontiel apparait&nbsp;; le Fils d’effusion, présent, élève le Prince au rang de Souverain Planétaire, et les finalitaires commencent leur ministère <span class="ref">55:1.1 ; 55:4.1</span>.</dd></div>
+            <div><dt>Durée</dt><dd>Indéfiniment, en sept stades <span class="ref">55:0.2 ; 55:0.4</span>.</dd></div>
+            <div><dt>Ce qui change</dt><dd>De plus en plus de mortels ne meurent pas&nbsp;: ils sont transférés vivants <span class="ref">55:2.1–2</span>&nbsp;; aux stades avancés, la guerre a disparu, avec les armées et la police <span class="ref">55:5.4</span>.</dd></div>
+          </dl>
+          <p class="ep-lead">C’est l’aboutissement évolutionnaire final d’un monde <span class="ref">55:0.1</span>. Il n’est pas parfait&nbsp;: il y a encore des malades, des accidents, et des choix à faire entre le bien et le mal <span class="ref">55:3.1 ; 55:3.10</span>.</p>
+          <blockquote class="cite" data-ref="55:6.2"><p>«&nbsp;Cette grande évolution n’est pas le ciel, mais un avant-gout sublime des mondes divins que l’on rencontrera dans l’ascension vers le Paradis.&nbsp;»</p><span class="ref">55:6.2</span></blockquote>
+        </div>
+        <aside class="ura" aria-label="Sur Urantia, septième époque">
+          <p class="ura-t"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Sur Urantia<span class="st"><span class="lg fut" aria-hidden="true">?</span>à venir</span></p>
+          <p>Le texte ne donne pas de date. Il dit seulement qui siègera alors&nbsp;:</p>
+          <blockquote class="cite" data-ref="55:7.3"><p>«&nbsp;Quand cette ère sera atteinte sur votre planète, il n’y a pas de doute que Machiventa Melchizédek, présentement Prince Planétaire vice-gérant d’Urantia, occupera le siège du Souverain Planétaire […]&nbsp;»</p><span class="ref">55:7.3</span></blockquote>
+          <p>On suppose aussi, sur Jérusem, qu’un fils et une fille d’Adam et Ève, retenus sur Édentia, l’accompagneront <span class="ref">55:7.3</span>.</p>
+          <p class="go-l">Voir <a href="#lumiere">les sphères de lumière et de vie</a>.</p>
+        </aside>
+      </article>
+    </div>
+
+    <h3 class="sub-h">Une autre façon de compter sept</h3>
+    <p class="sub-p">Le fascicule 50 décrit aussi sept époques de la civilisation, que traversent les races d’un monde moyen sous la loi du Prince, des Fils Matériels et des Fils du Paradis <span class="ref">50:5.3</span>. Elles disent ce que font les hommes plus que qui leur rend visite, et la page ne les aligne pas sur les dispensations&nbsp;: le texte ne le fait pas.</p>
+    <ol class="ages" aria-label="Les sept époques de la civilisation selon le fascicule 50">
+      <li><b>Nutrition</b><span class="ref">50:5.4</span></li>
+      <li><b>Sécurité</b><span class="ref">50:5.5</span></li>
+      <li><b>Confort matériel</b><span class="ref">50:5.6</span></li>
+      <li><b>Connaissance et sagesse</b><span class="ref">50:5.7</span></li>
+      <li><b>Philosophie et fraternité</b><span class="ref">50:5.8</span></li>
+      <li><b>Effort spirituel</b><span class="ref">50:5.9</span></li>
+      <li><b>Lumière et vie</b><span class="ref">50:5.10</span></li>
+    </ol>
+  </section>
+
+  <section id="urantia" aria-labelledby="h-ura">
+    <div class="sec-head">
+      <p class="eyebrow"><b>3</b> · Fascicules 49 à 52, 55 et la partie III</p>
+      <h2 id="h-ura">Où en est Urantia&nbsp;?</h2>
+      <p>Presque chaque fois qu’il décrit un monde normal, le texte ajoute ce qui s’est passé autrement chez nous. Le constat est net&nbsp;:</p>
+      <blockquote class="cite c-ura" data-ref="52:6.1"><p>«&nbsp;Urantia ne procède pas selon l’ordre normal. Votre monde ne marche pas au pas dans la procession planétaire.&nbsp;»</p><span class="ref">52:6.1</span></blockquote>
+      <p class="hint">Dans le tableau, un filet rouge marque ce que la rébellion et la faute ont perturbé, un filet bleu ce qui s’est simplement passé autrement.</p>
+    </div>
+    <div class="cmp">
+      <div class="cmp-h" aria-hidden="true"><span></span><span class="cl">Sur un monde normal</span><span class="cl"><svg class="ic c-ura" focusable="false"><use href="#i-globe"/></svg>Sur Urantia</span></div>
+      <article>
+        <h4>Le Prince Planétaire</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Il arrive peu après l’apparition de la volonté <span class="ref">52:1.8</span>, et <span class="q" data-ref="50:5.1">«&nbsp;un Prince Planétaire qui réussit reste chef de son royaume&nbsp;»</span> <span class="ref">50:5.1</span>.</p></div>
+        <div class="col u r"><span class="cl m-l">Sur Urantia</span><p>Caligastia arrive près d’un demi-million d’années après la volonté humaine, puis trahit sa mission <span class="ref">66:0.1 ; 67:1.2</span>.</p></div>
+      </article>
+      <article>
+        <h4>Adam et Ève</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Ils restent pendant tout le cours évolutionnaire du monde, et encore après son ancrage dans la lumière et la vie <span class="ref">51:0.2 ; 51:3.9</span>.</p></div>
+        <div class="col u r"><span class="cl m-l">Sur Urantia</span><p>Leur défaillance a compliqué l’histoire de la planète <span class="ref">49:5.24</span>&nbsp;; le plan prévu pour les races a avorté <span class="ref">75:8.1</span>.</p></div>
+      </article>
+      <article>
+        <h4>Le Fils Magistral</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Au moins un, parfois une série <span class="ref">52:4.9</span>.</p></div>
+        <div class="col u"><span class="cl m-l">Sur Urantia</span><p>Aucun jusqu’ici <span class="ref">49:5.26</span>.</p></div>
+      </article>
+      <article>
+        <h4>Le Fils d’effusion</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Un Avonal, quand les races ont atteint les plus hauts niveaux d’intelligence et d’éthique <span class="ref">52:5.1–2</span>.</p></div>
+        <div class="col u"><span class="cl m-l">Sur Urantia</span><p>Le Fils Créateur lui-même, dès la fin de la dispensation adamique <span class="ref">52:5.1–2</span>.</p></div>
+      </article>
+      <article>
+        <h4>La paix</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Elle suit le Fils d’effusion&nbsp;: les nations n’apprennent plus la guerre <span class="ref">52:6.1</span>.</p></div>
+        <div class="col u r"><span class="cl m-l">Sur Urantia</span><p>Jésus avait annoncé <span class="q" data-ref="52:6.1">«&nbsp;des guerres et des bruits de guerre&nbsp;»</span> <span class="ref">52:6.1</span>.</p></div>
+      </article>
+      <article>
+        <h4>Les liens avec l’univers</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>La planète est reliée aux circuits du système et reçoit les télédiffusions de l’univers <span class="ref">52:2.2 ; 52:6.8</span>.</p></div>
+        <div class="col u r"><span class="cl m-l">Sur Urantia</span><p>Isolée depuis la rébellion&nbsp;; au moment où le livre est rédigé, <span class="q" data-ref="28:7.4">«&nbsp;Urantia étant encore en quarantaine spirituelle partielle&nbsp;»</span> <span class="ref">28:7.4</span>, certains circuits n’y passent pas.</p></div>
+      </article>
+      <article>
+        <h4>Après la mort</h4>
+        <div class="col"><span class="cl m-l">Sur un monde normal</span><p>Les mortels assez avancés se réveillent sur les mondes des maisons le troisième jour, sans attendre les résurrections d’une fin d’âge <span class="ref">49:6.8–9</span>.</p></div>
+        <div class="col u r"><span class="cl m-l">Sur Urantia</span><p>Ce passage direct était suspendu&nbsp;: avant Micaël, toutes les âmes dormaient jusqu’aux résurrections&nbsp;; il est rétabli depuis la Pentecôte <span class="ref">52:5.5</span>.</p></div>
+      </article>
+    </div>
+
+    <div class="duo">
+      <div class="prose">
+        <p>Le texte situe donc Urantia de deux manières. Par la suite des Fils, elle vit l’âge qui suit l’effusion, sans être passée par un âge magistral <span class="ref">52:6.1 ; 49:5.26</span>. Par son développement, elle traverse encore l’époque des sciences physiques, propre à l’âge postadamique <span class="ref">52:3.6</span>.</p>
+        <p>Quatre ordres de Fils l’ont visitée&nbsp;: Caligastia, Adam et Ève, Machiventa Melchizédek et Micaël. Le texte regrette que Micaël n’ait pas été accueilli par un Prince loyal et un Adam qui ait réussi, avant d’ajouter&nbsp;: <span class="q" data-ref="51:3.9">«&nbsp;Mais tous les mondes n’ont pas été aussi infortunés qu’Urantia&nbsp;»</span> <span class="ref">51:3.9</span>.</p>
+        <p class="hint">Ces fascicules disent avoir été rédigés en 1934 et 1935&nbsp;: ils décrivent la situation de ce temps-là <span class="ref">56:10.23 ; 119:8.9</span>.</p>
+      </div>
+      <aside class="fact" aria-label="Une dispensation de retard">
+        <p class="big">En retard sur la moyenne</p>
+        <blockquote class="cite" data-ref="52:3.6"><p>«&nbsp;Votre monde est en retard d’une dispensation entière, et même plus, sur le programme planétaire moyen.&nbsp;»</p><span class="ref">52:3.6</span></blockquote>
+        <p>Le texte le dit à propos de l’âge postadamique, celui des grandes inventions, du contrôle de l’énergie et du développement mécanique <span class="ref">52:3.6</span>.</p>
+      </aside>
+    </div>
+
+    <div class="cards">
+      <article class="card" style="--c: var(--reb)">
+        <p class="st">Le passé</p>
+        <h3><svg class="ic c-reb" aria-hidden="true" focusable="false"><use href="#i-rupt"/></svg>Une double tragédie</h3>
+        <blockquote class="cite" data-ref="50:6.5" style="--c: var(--reb)"><p>«&nbsp;Votre monde continue à poursuivre une carrière irrégulière et pleine de vicissitudes à cause de sa double tragédie d’un Prince Planétaire rebelle et d’un Fils Matériel défaillant. Même l’effusion de Christ Micaël sur Urantia n’a pas écarté immédiatement les conséquences temporelles de ces graves fautes dans l’administration antérieure de ce monde.&nbsp;»</p><span class="ref">50:6.5</span></blockquote>
+      </article>
+      <article class="card">
+        <p class="st">Le présent</p>
+        <h3>Ce qu’il reste à surmonter</h3>
+        <blockquote class="cite" data-ref="55:3.21"><p>«&nbsp;Le grand handicap auquel Urantia doit faire face pour atteindre la haute destinée planétaire de lumière et de vie provient des problèmes de la maladie, de la dégénérescence, de la guerre, des races multicolores et du multilinguisme.&nbsp;»</p><span class="ref">55:3.21</span></blockquote>
+        <p>L’existence de nombreux peuples n’empêche pas, ajoute le texte, d’atteindre les stades supérieurs <span class="ref">55:3.22</span>.</p>
+      </article>
+      <article class="card" style="--c: var(--ura)">
+        <p class="st">Une compensation</p>
+        <h3><svg class="ic c-ura" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Croire sans voir</h3>
+        <p>L’isolement offre aussi une occasion unique d’exercer la foi <span class="ref">50:7.1</span>. Sur Jérusem, les ascendeurs des mondes isolés forment un groupe à part, les agondontaires&nbsp;: des <span class="q" data-ref="50:7.2">«&nbsp;créatures volitives évolutionnaires pouvant croire sans voir, persévérer dans l’isolement et triompher de difficultés quasi insurmontables, même lorsqu’ils sont seuls&nbsp;»</span> <span class="ref">50:7.2</span>.</p>
+      </article>
+      <article class="card gold">
+        <p class="st">L’avenir</p>
+        <h3>Une planète à l’avenir incertain</h3>
+        <blockquote class="cite" data-ref="93:10.8"><p>«&nbsp;[…] font d’Urantia une planète à l’avenir incertain et la rendent une des sphères les plus intéressantes et les plus mystérieuses de l’univers de Nébadon.&nbsp;»</p><span class="ref">93:10.8</span></blockquote>
+        <p>Il est possible, dit le texte, qu’on y voie un jour ensemble Machiventa, Adam et Ève, Christ Micaël, et un Fils Magistral ou des Fils Instructeurs <span class="ref">93:10.8</span>.</p>
+      </article>
+    </div>
+    <div class="go">
+      <a class="chip fort" href="rebellion-de-lucifer.html#isolement">Pourquoi Urantia est isolée</a>
+      <a class="chip" href="histoire-d-urantia.html">L’histoire d’Urantia</a>
+      <a class="chip" href="effusions-de-micael.html#septieme">La septième effusion de Micaël</a>
+    </div>
+  </section>
+
+  <section id="lumiere" aria-labelledby="h-lum">
+    <div class="sec-head">
+      <p class="eyebrow"><b>4</b> · Fascicule 55</p>
+      <h2 id="h-lum">Les sphères de lumière et de vie</h2>
+      <p>Quand les Fils Instructeurs quittent un monde après leur dernière mission, il entre dans l’ère de lumière et de vie, qui se poursuit indéfiniment <span class="ref">55:0.1–2</span>. Le texte en parle avec une certaine retenue&nbsp;:</p>
+      <blockquote class="cite" data-ref="55:0.3"><p>«&nbsp;[…] autant que nous le sachions, ces mondes ancrés dans la lumière et la vie sont destinés à poursuivre leur course dans tous les âges éternels des temps futurs.&nbsp;»</p><span class="ref">55:0.3</span></blockquote>
+    </div>
+    <div class="cards">
+      <article class="card gold">
+        <p class="st">Fascicule 55, section 1</p>
+        <h3><svg class="ic c-gold" aria-hidden="true" focusable="false"><use href="#i-temple"/></svg>Le temple morontiel</h3>
+        <blockquote class="cite" data-ref="55:1.1"><p>«&nbsp;La présence d’un temple morontiel sur la capitale d’un monde habité est le certificat d’admission de cette sphère aux âges confirmés de lumière et de vie.&nbsp;»</p><span class="ref">55:1.1</span></blockquote>
+        <figure class="temple">
+          <svg viewBox="0 0 320 150" role="img" aria-labelledby="tp-t">
+            <title id="tp-t">Schéma symbolique du temple morontiel en trois parties&nbsp;: au centre le sanctuaire du Fils d’effusion, à droite le siège du Souverain Planétaire, à gauche celui du chef des finalitaires.</title>
+            <rect class="t-bg" x="0" y="0" width="320" height="150" rx="10"/>
+            <g class="t-rays"><path d="M160 10v12M118 18l7 9M202 18l-7 9M92 36l10 5M228 36l-10 5"/></g>
+            <path class="t-body" d="M28 128V74h76v54ZM216 128V74h76v54Z"/>
+            <path class="t-body" d="M20 76 66 52l46 24ZM208 76l46-24 46 24Z"/>
+            <path class="t-mid" d="M112 128V60h96v68Z"/>
+            <path class="t-mid" d="M102 62 160 26l58 36Z"/>
+            <circle class="t-glow" cx="160" cy="92" r="11"/>
+            <path class="t-line" d="M44 84v40M60 84v40M76 84v40M92 84v40M228 84v40M244 84v40M260 84v40M276 84v40"/>
+            <path class="t-step" d="M10 128h300v8H10Z"/>
+          </svg>
+          <div class="temple-l" aria-hidden="true"><p><b>À gauche</b>le chef des finalitaires</p><p><b>Au centre</b>le sanctuaire du Fils d’effusion</p><p><b>À droite</b>le Souverain Planétaire</p></div>
+        </figure>
+        <p>Il a trois parties <span class="ref">55:1.2</span>. Ses plans sont dessinés sur la capitale du système, et il est bâti sur place&nbsp;: aucun matériau ne descend du ciel <span class="ref">55:1.3</span>. Il reçoit quelque 300&nbsp;000 personnes, mais ne sert ni au culte ni aux jeux&nbsp;: on y communique avec les dirigeants du système et de la constellation, on y honore les grands services, on y assiste aux transferts <span class="ref">55:1.4–5</span>.</p>
+      </article>
+      <article class="card">
+        <p class="st">Fascicule 55, section 2</p>
+        <h3>La mort devient un départ</h3>
+        <p>Le transfert, la fusion de l’âme avec l’Ajusteur pendant la vie, devient de plus en plus fréquent <span class="ref">55:2.2</span>. Famille et amis se réunissent au temple pour l’éclair qui libère le candidat <span class="ref">55:2.4</span>&nbsp;:</p>
+        <blockquote class="cite" data-ref="55:2.5"><p>«&nbsp;Sur les mondes ancrés dans la lumière et la vie, les “funérailles” sont des occasions de joie suprême, de satisfaction profonde et d’espérance inexprimable.&nbsp;»</p><span class="ref">55:2.5</span></blockquote>
+        <div class="gauge">
+          <p class="label" id="g-t">Part des mortels transférés sans mourir</p>
+          <div class="g-num" aria-hidden="true"><span style="left: 25%">1/4</span><span style="left: 52%">1/2</span></div>
+          <div class="g-bar" aria-hidden="true"><div class="g-fill"></div><span class="g-tk" style="left: 25%"></span><span class="g-tk" style="left: 52%"></span></div>
+          <ul class="g-leg" aria-labelledby="g-t">
+            <li><b>environ 1/4</b> à la fin de la mission des Fils Instructeurs <span class="ref">55:2.2</span></li>
+            <li><b>plus de 1/2</b> au quatrième stade <span class="ref">55:2.8</span></li>
+            <li><b>jamais tous</b>, à la connaissance de l’auteur <span class="ref">55:2.8</span></li>
+          </ul>
+        </div>
+        <p>La mort naturelle recule, sans disparaitre&nbsp;: <span class="q" data-ref="55:2.8">«&nbsp;L’élimination de la mort est théoriquement possible, mais, d’après ce que j’ai observé, elle ne s’est pas encore produite.&nbsp;»</span> <span class="ref">55:2.8</span></p>
+      </article>
+      <article class="card">
+        <p class="st">Fascicule 55, sections 3 à 5</p>
+        <h3>Des âges d’or, pas le paradis</h3>
+        <p>Une seule langue, une seule religion et, sur les sphères normales, une seule race <span class="ref">55:3.1</span>&nbsp;; <span class="q" data-ref="55:3.1">«&nbsp;mais cet âge n’est pas parfait&nbsp;»</span> <span class="ref">55:3.1</span>&nbsp;: <span class="q" data-ref="55:3.10">«&nbsp;même ces sphères glorifiées présentent une bonne moisson de mal, tant réel que potentiel&nbsp;»</span> <span class="ref">55:3.10</span>. Sur un monde visité au premier stade, chacun versait une dime de 10&nbsp;% de ses revenus <span class="ref">55:3.2–6</span>&nbsp;:</p>
+        <div class="dime" role="img" aria-label="La dime de 10 % : 3 % pour la vérité, 3 % pour la beauté, 3 % pour la bonté, 1 % pour l’assurance."><span style="flex: 3 1 0">3&nbsp;% vérité</span><span style="flex: 3 1 0">3&nbsp;% beauté</span><span style="flex: 3 1 0">3&nbsp;% bonté</span><span class="as" style="flex: 1 1 0">1</span></div>
+        <p class="dime-l" aria-hidden="true"><span>vérité&nbsp;: science, éducation, philosophie</span><span>beauté&nbsp;: jeux, loisirs, arts</span><span>bonté&nbsp;: services sociaux, religion</span><span>1&nbsp;%&nbsp;: assurance</span></p>
+        <p>Aux stades avancés, enfin&nbsp;: <span class="q" data-ref="55:5.4">«&nbsp;La guerre est désormais une histoire du passé ; il n’y a plus d’armées ni de forces de police.&nbsp;»</span> <span class="ref">55:5.2–4</span></p>
+      </article>
+    </div>
+  </section>
+
+  <section id="stades" class="feature" aria-labelledby="h-st">
+    <div class="sec-head">
+      <p class="eyebrow">Schéma interactif · fascicule 55</p>
+      <h2 id="h-st">L’échelle des sept stades</h2>
+      <p>L’ère de lumière et de vie a sept stades, nommés d’après l’unité de l’univers qui s’ancre à son tour&nbsp;: la planète, son système, sa constellation, son univers local, puis les secteurs et le superunivers <span class="ref">55:0.4–11</span>&nbsp;: de la planète seule à quelque mille milliards de mondes habitables <span class="ref">15:2.3–8</span>. Un monde peut pourtant atteindre les valeurs d’un stade sans attendre ses voisins <span class="ref">55:0.12 ; 55:11.7</span>.</p>
+      <p class="hint js-seul" id="lad-aide" hidden>Touche ou clique une marche. Marches en pointillé&nbsp;: le texte n’avance que des hypothèses. Au clavier&nbsp;: les flèches, Début et Fin.</p>
+      <p class="hint sans-js">Le schéma interactif demande JavaScript&nbsp;; sa version texte suit&nbsp;: <a href="#sept-stades">les sept stades, un par un</a>.</p>
+    </div>
+    <div class="sc" id="lad-sc" hidden>
+      <div class="sc-opts">
+        <button type="button" class="chip calme-btn" aria-pressed="false"><span class="swt" aria-hidden="true"></span>Moins d’animations</button>
+        <a class="chip" href="#sept-stades">Version texte</a>
+      </div>
+      <div class="lad-w">
+        <div class="lad" id="lad" role="group" aria-labelledby="h-st" aria-describedby="lad-aide"></div>
+        <div class="lad-cap" id="lad-cap"></div>
+      </div>
+      <p class="sr-only" id="lad-status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="sept-stades" aria-labelledby="h-7st">
+    <div class="sec-head">
+      <p class="eyebrow"><b>5</b> · Fascicule 55, sections 4 et 7 à 12</p>
+      <h2 id="h-7st">Les sept stades, un par un</h2>
+      <p>À chaque stade, le texte décrit ce qui s’ancre, comment le gouvernement change, et ce que vivent les mondes. Plus on monte, moins les auteurs en savent.</p>
+    </div>
+    <ol class="stades">
+      <li class="stg" id="st-1" data-nom="Planète" data-echelle="1&nbsp;monde" data-sure="observé">
+        <div class="st-h"><span class="bdg" aria-hidden="true">1</span><div><p class="st-n">Premier stade · 1 monde</p><h3>Le stade planétaire</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>La planète, depuis l’apparition du temple morontiel jusqu’à l’ancrage de tout son système&nbsp;: quand le dernier monde du système est stable depuis un millénaire, tous passent au stade suivant <span class="ref">55:7.1 ; 55:7.4</span>.</dd></div>
+          <div><dt>Gouvernement</dt><dd>Trois dirigeants&nbsp;: le Souverain Planétaire, conseillé par un Fils Instructeur, le chef des finalitaires, et Adam et Ève, seuls visibles, qui font figure de roi et de reine <span class="ref">55:4.4–7 ; 55:7.2</span>.</dd></div>
+          <div><dt>Sur les mondes</dt><dd>Les médians, libérés, deviennent visibles aux mortels <span class="ref">55:4.8</span>&nbsp;; un quart environ des mortels échappe déjà à la mort naturelle <span class="ref">55:2.2</span>.</dd></div>
+          <div><dt>Ce qu’on en sait</dt><dd>L’auteur décrit un monde visité à ce stade <span class="ref">55:3.2</span>.</dd></div>
+        </dl>
+        <blockquote class="cite" data-ref="55:3.22"><p>«&nbsp;Nul monde évolutionnaire ne peut espérer progresser au-delà du premier stade d’ancrage dans la lumière sans s’être rallié à un seul langage, une seule religion, une seule philosophie.&nbsp;»</p><span class="ref">55:3.22</span></blockquote>
+      </li>
+      <li class="stg" id="st-2" data-nom="Système" data-echelle="≈&nbsp;1&nbsp;000 mondes" data-sure="décrit">
+        <div class="st-h"><span class="bdg" aria-hidden="true">2</span><div><p class="st-n">Deuxième stade · environ 1&nbsp;000 mondes</p><h3>Le stade du système</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Un système entier, environ mille mondes habitables <span class="ref">55:8.1 ; 15:2.3</span>.</dd></div>
+          <div><dt>Gouvernement</dt><dd>Les Souverains Planétaires siègent au conclave du système&nbsp;; une assemblée législative reçoit dix représentants par planète <span class="ref">55:8.1</span>.</dd></div>
+          <div><dt>Sur les mondes</dt><dd>Un Porteur de Vie vient conseiller les dirigeants sur l’amélioration de la race <span class="ref">55:4.11</span>&nbsp;; des midsonitaires conseillent assemblées et tribunaux <span class="ref">55:8.4</span>&nbsp;; les Fils Instructeurs deviennent les conseillers des finalitaires <span class="ref">55:4.12</span>.</dd></div>
+        </dl>
+        <blockquote class="cite" data-ref="55:8.3"><p>«&nbsp;Chaque souverain reste perpétuellement à la tête de son système.&nbsp;»</p><span class="ref">55:8.3</span></blockquote>
+      </li>
+      <li class="stg" id="st-3" data-nom="Constellation" data-echelle="≈&nbsp;100&nbsp;000 mondes" data-sure="décrit">
+        <div class="st-h"><span class="bdg" aria-hidden="true">3</span><div><p class="st-n">Troisième stade · environ 100&nbsp;000 mondes</p><h3>Le stade de la constellation</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Une constellation de cent systèmes <span class="ref">55:8.7 ; 15:2.4</span>.</dd></div>
+          <div><dt>Gouvernement</dt><dd>La fonction législative prend fin&nbsp;: l’assemblée des Souverains Systémiques, présidée par les Très Hauts, la remplace <span class="ref">55:9.2</span>.</dd></div>
+          <div><dt>Sur les mondes</dt><dd>Vers ce stade, un chef exécutif humain élu, assisté d’un Fils Instructeur, partage l’administration avec le Souverain Planétaire pour vingt-cinq ans <span class="ref">55:4.15</span>. Au-delà, chaque ascendeur fera un séjour de service sur un monde encore primitif <span class="ref">55:3.11</span>.</dd></div>
+          <div><dt>Ce qu’on en sait</dt><dd>Il n’existe pas encore, dans Nébadon, de groupe aussi avancé <span class="ref">55:8.5</span>.</dd></div>
+        </dl>
+      </li>
+      <li class="stg" id="st-4" data-nom="Univers local" data-echelle="≈&nbsp;10 millions de mondes" data-sure="décrit">
+        <div class="st-h"><span class="bdg" aria-hidden="true">4</span><div><p class="st-n">Quatrième stade · environ 10&nbsp;millions de mondes</p><h3>Le stade de l’univers local</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Un univers local de cent constellations, qui entre dans les circuits du superunivers <span class="ref">55:10.1 ; 15:2.5</span>.</dd></div>
+          <div><dt>Gouvernement</dt><dd>Un conseil suprême d’autorité illimitée&nbsp;: les cent Fidèles des Jours, présidés par l’Union des Jours&nbsp;; le Fils Créateur devient administrativement libre <span class="ref">55:10.1 ; 55:10.9</span>.</dd></div>
+          <div><dt>Sur les mondes</dt><dd>Plus de la moitié des mortels partent par transfert <span class="ref">55:2.8</span>&nbsp;; les plus avancés ont un contact conscient avec le Maitre Esprit de leur superunivers <span class="ref">55:6.4</span>&nbsp;; Adam et Ève peuvent demander à être relevés <span class="ref">55:4.18</span>.</dd></div>
+        </dl>
+        <blockquote class="cite" data-ref="55:10.1"><p>«&nbsp;Le premier acte de ce conseil suprême consiste à reconnaitre que la souveraineté du Maitre Fils Créateur est maintenue.&nbsp;»</p><span class="ref">55:10.1</span></blockquote>
+      </li>
+      <li class="stg" id="st-5" data-nom="Secteur mineur" data-echelle="≈&nbsp;1 milliard de mondes" data-sure="en partie observé">
+        <div class="st-h"><span class="bdg" aria-hidden="true">5</span><div><p class="st-n">Cinquième stade · environ 1&nbsp;milliard de mondes</p><h3>Le stade du secteur mineur</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Cent univers locaux, ancrés ensemble dans les circuits du superunivers <span class="ref">55:11.2 ; 15:2.6</span>.</dd></div>
+          <div><dt>Changements</dt><dd>Presque uniquement physiques&nbsp;: ils regardent les Maitres Contrôleurs Physiques <span class="ref">55:4.20</span>. Les auteurs estiment que l’évolution physique des mortels aura atteint son plein développement à la fin de cette époque <span class="ref">55:6.5</span>.</dd></div>
+        </dl>
+        <blockquote class="cite" data-ref="55:11.2"><p>«&nbsp;Il semble que seuls les centres de pouvoir et leurs associés soient touchés par ces réalignements de la création matérielle.&nbsp;»</p><span class="ref">55:11.2</span></blockquote>
+      </li>
+      <li class="stg hyp" id="st-6" data-nom="Secteur majeur" data-echelle="≈&nbsp;100 milliards de mondes" data-sure="hypothèses">
+        <div class="st-h"><span class="bdg" aria-hidden="true">6</span><div><p class="st-n">Sixième stade · environ 100&nbsp;milliards de mondes</p><h3>Le stade du secteur majeur</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Cent secteurs mineurs <span class="ref">15:2.7</span>.</dd></div>
+          <div><dt>Changements</dt><dd>De nouvelles fonctions des circuits mentaux&nbsp;: la sagesse cosmique semble entrer dans le ministère universel du mental <span class="ref">55:4.21 ; 55:11.4</span>.</dd></div>
+          <div><dt>Ce qu’on en sait</dt><dd>Les auteurs l’avouent&nbsp;: <span class="q" data-ref="55:11.3">«&nbsp;nous ne pouvons que faire des hypothèses, car nul d’entre nous n’a assisté à un tel évènement&nbsp;»</span> <span class="ref">55:11.3</span>.</dd></div>
+        </dl>
+      </li>
+      <li class="stg hyp" id="st-7" data-nom="Superunivers" data-echelle="≈&nbsp;1&nbsp;000 milliards de mondes" data-sure="jamais produit">
+        <div class="st-h"><span class="bdg" aria-hidden="true">7</span><div><p class="st-n">Septième stade · environ mille milliards de mondes</p><h3>Le stade du superunivers</h3></div></div>
+        <dl class="st-dl">
+          <div><dt>Ce qui s’ancre</dt><dd>Le superunivers entier, quand tous ses univers locaux le sont&nbsp;; aucun des sept n’en approche, même de loin <span class="ref">55:11.1 ; 15:2.8</span>.</dd></div>
+          <div><dt>Gouvernement</dt><dd>Le Fils Instructeur qui conseille le Souverain Planétaire est rejoint par un conseiller des Anciens des Jours, puis par un troisième, de l’Exécutif Suprême <span class="ref">55:4.22</span>&nbsp;; les Superviseurs Non Qualifiés du Suprême deviendraient le corps administratif supérieur <span class="ref">55:12.3</span>.</dd></div>
+          <div><dt>Sur les mondes</dt><dd>Adam et Ève sont toujours relevés <span class="ref">55:4.23</span>&nbsp;; les premiers ministres absonites arrivent du Paradis <span class="ref">55:4.10</span>. Sur les mondes depuis longtemps au septième stade, <span class="q" data-ref="55:6.6">«&nbsp;les êtres humains apprennent complètement le langage de l’univers local avant d’être transférés&nbsp;»</span> <span class="ref">55:6.6</span>, et parfois celui du superunivers.</dd></div>
+        </dl>
+        <blockquote class="cite" data-ref="55:12.1"><p>«&nbsp;Nous ne pouvons prévoir positivement ce qui arriverait si un superunivers s’ancrait dans la lumière, parce qu’un tel évènement ne s’est jamais produit.&nbsp;»</p><span class="ref">55:12.1</span></blockquote>
+      </li>
+    </ol>
+
+    <div class="cards">
+      <article class="card gold">
+        <p class="st">Au bout de l’échelle</p>
+        <h3>L’Être Suprême</h3>
+        <p>À mesure que les parties d’un univers local s’ancrent, Dieu le Septuple devient plus manifeste, puis commence la révélation de Dieu le Suprême <span class="ref">56:7.2</span>. L’ancrage du grand univers entier serait l’évènement le plus important depuis l’apparition de l’univers central <span class="ref">55:12.5</span>&nbsp;; le texte n’en dit pas plus que ceci&nbsp;:</p>
+        <blockquote class="cite" data-ref="55:12.5"><p>«&nbsp;Certains estiment que l’Être Suprême lui-même émergera du mystère de Havona […], mais en réalité nous n’en savons rien.&nbsp;»</p><span class="ref">55:12.5</span></blockquote>
+        <p><a href="etre-supreme.html#croissance">Voir comment grandit l’Être Suprême</a></p>
+      </article>
+      <article class="card" style="--c: var(--ura)">
+        <p class="st">Déjà, pour une personne</p>
+        <h3><svg class="ic c-ura" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg>Lumière et vie sur un monde isolé</h3>
+        <p>Les limites du milieu, même sur un monde isolé, n’empêchent pas l’aboutissement personnel. Le texte en donne un exemple&nbsp;: <span class="q" data-ref="55:11.7">«&nbsp;Jésus de Nazareth, en tant qu’homme parmi les hommes, atteignit personnellement le statut de lumière et de vie sur Urantia, il y a plus de dix-neuf-cents ans&nbsp;»</span> <span class="ref">55:11.7</span>.</p>
+      </article>
+    </div>
+  </section>
+
+  <aside class="callout" id="registres" aria-labelledby="h-reg">
+    <h2 id="h-reg">Trois manières de lire ces fascicules</h2>
+    <ul>
+      <li><b>Le texte dit.</b> Le fascicule 49 est présenté par un Melchizédek de l’École d’Administration Planétaire de Jérusem, les fascicules 50 et 51 par un Fils Lanonandek secondaire, les fascicules 52 et 55 par des Puissants Messagers <span class="ref">49:6.22 ; 50:7.4 ; 51:7.6 ; 52:7.17 ; 55:12.6</span>. Ils décrivent un ordre habituel, valable <span class="q" data-ref="52:0.1">«&nbsp;sur un monde habité moyen&nbsp;»</span> <span class="ref">52:0.1</span>, aux durées très variables, et marquent les limites de leur savoir&nbsp;: la quarantaine restreint ce qu’ils peuvent dire des mondes voisins <span class="ref">50:6.1</span>, et les derniers stades de lumière et de vie restent des hypothèses <span class="ref">55:11.3 ; 55:12.1</span>.</li>
+      <li><b>Lecture courante.</b> Ces fascicules offrent à leurs lecteurs une perspective d’espérance, puisque tout monde, même le plus troublé, doit parvenir tôt ou tard à la lumière et la vie <span class="ref">52:7.14</span>. Les lectures divergent surtout sur le présent. Au début des années 1990, des groupes issus du lectorat, réunis sous le nom de <i lang="en">Teaching Mission</i>, ont diffusé des messages présentés comme venus de personnalités célestes&nbsp;; l’un d’eux, lors d’une réunion du 1<sup>er</sup> février 1992, annonçait la réouverture des circuits qui isolaient la planète et le début du règne de Machiventa, selon les archives du mouvement. D’après l’historien Richard Landes, cité par Wikipédia, la Fondation Urantia estime que ces groupes se font illusion, et leur apparition a divisé le mouvement. D’autres lecteurs s’en tiennent au livre, qui ne donne aucune date <span class="ref">55:7.3 ; 176:4.5</span>. Enfin, les passages sur l’amélioration de la race embarrassent des lecteurs eux-mêmes&nbsp;: Dick Bain, dans un article conservé par la <i lang="en">Urantia Book Fellowship</i>, dit son malaise, tandis que Gard Jameson, dans un essai publié sur le site de la Fondation, invite à lire la question des races à la lumière de l’origine, de l’histoire et de la destinée que décrit le livre. Cette page ne prend pas parti.</li>
+      <li><b>Regard historique.</b> Le livre a paru en anglais en 1955&nbsp;; ces fascicules disent avoir été rédigés en 1934 et 1935 <span class="ref">56:10.23 ; 119:8.9</span>. Le mot dispensation et le compte de sept âges rappellent le dispensationalisme protestant, répandu aux États-Unis notamment par la Bible annotée de Scofield (1909), pour qui l’histoire, de la création au jugement final, compte sept ères. Le livre applique le schéma à tous les mondes habités, et ses âges s’ouvrent avec la venue de Fils divins&nbsp;; le rapprochement est de la page. Le texte rattache lui-même la fin des Fils Instructeurs à la vision de l’Apocalypse, qu’il cite ainsi&nbsp;: <span class="q" data-ref="52:7.11">«&nbsp;Je vis de nouveaux cieux et une nouvelle terre&nbsp;»</span> <span class="ref">52:7.11</span>, là où la Crampon traduit <span class="q" data-bible="Apocalypse 21:1">«&nbsp;Et je vis un nouveau ciel et une nouvelle terre&nbsp;»</span> <span class="bref">Apocalypse 21, 1</span>&nbsp;; il convoque aussi Isaïe et les épitres de Pierre <span class="ref">52:7.12–15</span>, mais pour décrire un stade de l’histoire d’une planète, non la fin du monde. Les passages qui veulent <span class="q" data-ref="52:2.10">«&nbsp;purifier la race&nbsp;»</span> <span class="ref">52:2.10</span>, poursuivis jusque dans l’ère de lumière et de vie <span class="ref">52:3.4 ; 55:4.11 ; 55:6.3</span>, et ceux qui hiérarchisent les races de couleur <span class="ref">51:4.2–3</span>, rappellent l’eugénisme et les théories raciales très répandus aux États-Unis dans la première moitié du XX<sup>e</sup> siècle, et rejetés depuis. Le critique Martin Gardner (<i lang="en">Urantia: The Great Cult Mystery</i>, 1995) les rapproche des écrits eugénistes de William S. Sadler, l’un des premiers lecteurs du livre&nbsp;; le texte reconnait d’ailleurs puiser dans des concepts humains <span class="ref">0:12.12</span>.</li>
+    </ul>
+  </aside>
+
+  <section class="unk" id="inconnu" aria-labelledby="unk-btn">
+    <h2><button type="button" class="unk-btn" id="unk-btn" aria-expanded="true" aria-controls="unk-body"><span><span class="qm" aria-hidden="true">?</span>Ce que le texte ne précise pas</span><i class="chev" aria-hidden="true"></i></button></h2>
+    <div class="unk-body" id="unk-body">
+      <ul>
+        <li><b>Quand Urantia parviendra à la lumière et la vie.</b> Le texte dit qui siègera alors, pas quand <span class="ref">55:7.3</span>.</li>
+        <li><b>L’ordre des prochaines venues.</b> Pour le Fils Magistral et les Fils Instructeurs, <span class="q" data-ref="52:7.1">«&nbsp;nul ne sait si sa venue précèdera ou suivra l’apparition sur Urantia d’un Fils Magistral ou des Fils Instructeurs&nbsp;»</span> <span class="ref">52:7.1</span>&nbsp;; pour le retour de Micaël, <span class="q" data-ref="176:4.5">«&nbsp;nous n’avons pas la moindre idée de la date ni de la manière qu’il choisira pour venir&nbsp;»</span> <span class="ref">176:4.5</span>.</li>
+        <li><b>La fin de l’isolement.</b> Le livre décrit la situation de 1934 et 1935, encore une quarantaine partielle <span class="ref">28:7.4</span>&nbsp;; il ne dit rien des années suivantes.</li>
+        <li><b>Les durées exactes.</b> Celles de la frise sont des moyennes, très variables d’un monde à l’autre <span class="ref">52:1.1 ; 52:4.10 ; 52:5.8</span>.</li>
+        <li><b>La fin de la mort.</b> Elle est théoriquement possible, mais l’auteur ne l’a jamais observée <span class="ref">55:2.8</span>.</li>
+        <li><b>Les derniers stades et l’après.</b> Les stades six et sept relèvent de l’hypothèse <span class="ref">55:11.3 ; 55:12.1</span>&nbsp;; si le grand univers était ancré, les mortels seraient-ils encore destinés au Corps de la Finalité&nbsp;? <span class="q" data-ref="55:6.10">«&nbsp;Nous ne le savons pas.&nbsp;»</span> <span class="ref">55:6.10</span></li>
+        <li><b>Les mondes voisins et les autres formes de vie.</b> La quarantaine limite ce que les auteurs peuvent décrire <span class="ref">50:6.1</span>&nbsp;; d’autres formes de vie intelligente existent sans être décrites <span class="ref">49:5.9 ; 55:8.6</span>.</li>
+        <li><b>Les schémas.</b> Couleurs, icônes et positions sont des choix de la page&nbsp;; sur la frise, les époques sont placées à intervalles égaux, sans échelle de temps. Deux pourcentages du premier schéma sont des calculs de la page.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Quarante-huit citations courtes du livre et une de la Bible, entre guillemets&nbsp;; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
+    <p>Lecture courante et regard historique, sources consultées le 2026-11-08&nbsp;: Wikipédia, articles <a href="https://en.wikipedia.org/wiki/The_Urantia_Book" target="_blank" rel="noopener"><i lang="en">The Urantia Book</i></a> (la <i lang="en">Teaching Mission</i>, d’après Richard Landes&nbsp;; la critique de Martin Gardner) et <a href="https://en.wikipedia.org/wiki/Scofield_Reference_Bible" target="_blank" rel="noopener"><i lang="en">Scofield Reference Bible</i></a>&nbsp;; archives de la <i lang="en">Teaching Mission</i>, <a href="https://tmarchive.pages.dev/archive/tmhistory/index-25?tid=8" target="_blank" rel="noopener">compte rendu de la réunion du 1<sup>er</sup> février 1992</a>&nbsp;; Dick Bain, <a href="https://archive.urantiabook.org/archive/newsletters/innerface/vol4_6/page4.html" target="_blank" rel="noopener"><i lang="en">The “E” Word</i></a>, archives de la <i lang="en">Urantia Book Fellowship</i>&nbsp;; Gard Jameson, <a href="https://www.urantia.org/sites/default/files/docs/A-Great-Confusion-About-Race_Gard-Jameson.pdf" target="_blank" rel="noopener"><i lang="en">A Great Confusion About Race</i></a>, site de la Fondation Urantia. Résumés prudents, sans prise de position.</p>
+    <p>Les schémas sont des images symboliques&nbsp;: la frise place les sept époques à intervalles égaux, et l’échelle des stades n’est pas à l’échelle du nombre de mondes.</p>
+  </footer>
+
+</main>
+<script>
+(function () {
+  "use strict";
+
+  function ht(tag, cls, parent, html) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (html) e.innerHTML = html;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function ico(id) { return "<svg class=\"ic\" aria-hidden=\"true\" focusable=\"false\"><use href=\"#" + id + "\"/></svg>"; }
+  function cache(e) { e.setAttribute("aria-hidden", "true"); return e; }
+
+  /* ====================== 1. Moins d’animations ====================== */
+  /* Par défaut : la préférence du système ; les boutons des schémas la remplacent, et le choix est gardé si possible. */
+  var CLE = "avenir-planete-calme";
+  function systeme() { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); }
+  function lire() { try { var v = window.localStorage.getItem(CLE); return v === "1" ? true : (v === "0" ? false : null); } catch (e) { return null; } }
+  function garder(v) { try { window.localStorage.setItem(CLE, v ? "1" : "0"); } catch (e) { /* choix non gardé */ } }
+  var calme = lire();
+  if (calme === null) calme = systeme();
+  var bCalme = Array.prototype.slice.call(document.querySelectorAll(".calme-btn"));
+  function appliquerCalme() {
+    document.documentElement.classList.toggle("calme", calme);
+    bCalme.forEach(function (b) { b.setAttribute("aria-pressed", String(calme)); });
+  }
+  appliquerCalme();
+  bCalme.forEach(function (b) { b.addEventListener("click", function () { calme = !calme; garder(calme); appliquerCalme(); }); });
+  function glisser(el) { el.scrollIntoView({ block: "nearest", behavior: calme ? "auto" : "smooth" }); }
+
+  /* Flèches, Début et Fin dans un groupe de boutons (un seul arrêt de tabulation par groupe) */
+  function clavier(liste, n, choisir, courant, vertical) {
+    return function (ev) {
+      var j = null, k = ev.key;
+      if (k === "ArrowRight" || (vertical() ? k === "ArrowUp" : k === "ArrowDown")) j = courant() + 1;
+      else if (k === "ArrowLeft" || (vertical() ? k === "ArrowDown" : k === "ArrowUp")) j = courant() - 1;
+      else if (k === "Home") j = 0;
+      else if (k === "End") j = n - 1;
+      if (j === null) return;
+      ev.preventDefault();
+      j = Math.max(0, Math.min(n - 1, j));
+      choisir(j, true);
+      liste[j].focus();
+    };
+  }
+  function jamais() { return false; }
+
+  /* ====================== 2. La frise à deux voies ====================== */
+  /* Une époque par ligne : icône, nom long (bureau) et court (tablette), durée moyenne selon le texte ; puis le repère
+     d’Urantia : genre (diff : autrement qu’ailleurs ; rupt : perturbé ; abs : jamais venu ; mic : Micaël lui-même ;
+     fut : à venir), icône et libellé. Les fiches reprennent les articles #ep-1 à #ep-7 de la version texte. */
+  var EP = [
+    { ic: "i-feu", nl: "Homme primitif", ns: "Primitif", du: "de 150 000 ans à plus d’un million", u: "diff", uic: "i-long", ul: "plus long, plus dur" },
+    { ic: "i-prince", nl: "Prince Planétaire", ns: "Prince", du: "environ 500 000 ans", u: "rupt", uic: "i-rupt", ul: "Caligastia se rebelle" },
+    { ic: "i-jardin", nl: "Adam et Ève", ns: "Adam et Ève", du: "environ 25 000 ans", u: "rupt", uic: "i-rupt", ul: "faute d’Adam et Ève" },
+    { ic: "i-balance", nl: "Fils Magistral", ns: "Magistral", du: "25 000 à 50 000 ans", u: "abs", uic: "i-vide", ul: "jamais venu" },
+    { ic: "i-effu", nl: "Fils d’effusion", ns: "Effusion", du: "10 000 à 100 000 ans", u: "mic", uic: "i-etoile", ul: "Micaël lui-même" },
+    { ic: "i-livre", nl: "Fils Instructeurs", ns: "Instructeurs", du: "au moins 1 000 ans", u: "fut", uic: "", ul: "à venir" },
+    { ic: "i-soleil", nl: "Lumière et vie", ns: "Lumière", du: "indéfiniment", u: "fut", uic: "", ul: "à venir" }
+  ];
+  var sc = document.getElementById("sc"), laneN = document.getElementById("lane-n"), laneU = document.getElementById("lane-u");
+  var cap = document.getElementById("sc-cap"), statut = document.getElementById("sc-status");
+
+  if (sc && laneN && laneU && cap && document.getElementById("ep-1")) {
+    var NB = [], UB = [], cur = -1;
+    function nomEp(i) { return document.getElementById("ep-" + (i + 1)).querySelector("h3").textContent.trim(); }
+
+    cache(ht("div", "pre", laneN));
+    cache(ht("div", "path", laneN));
+    EP.forEach(function (d, i) {
+      var b = ht("button", "e-mk", laneN,
+        "<span class=\"e-ti\" aria-hidden=\"true\">" + ico(d.ic) + "<span class=\"nl\">" + d.nl + "</span><span class=\"ns\">" + d.ns + "</span></span>" +
+        "<span class=\"bdg\" aria-hidden=\"true\">" + (i + 1) + "</span><span class=\"e-du\" aria-hidden=\"true\">" + d.du + "</span>");
+      b.type = "button";
+      b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-label", "Époque " + (i + 1) + " sur 7, monde normal : " + nomEp(i) + ", " + d.du);
+      b.addEventListener("click", function () { choisir(i, true, true); });
+      NB.push(b);
+    });
+
+    cache(ht("div", "u-line ok", laneU));
+    cache(ht("div", "u-line fut", laneU));
+    cache(ht("span", "mach", laneU));
+    cache(ht("span", "mach-l", laneU, "Machiventa"));
+    cache(ht("span", "pin", laneU, "aujourd’hui"));
+    EP.forEach(function (d, i) {
+      var b = ht("button", "u-mk " + d.u, laneU,
+        "<span class=\"u-ic\" aria-hidden=\"true\">" + (d.uic ? ico(d.uic) : "<span class=\"u-q\">?</span>") + "</span>" +
+        "<span class=\"u-lb\" aria-hidden=\"true\">" + d.ul + "</span>");
+      b.type = "button";
+      b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-label", "Époque " + (i + 1) + " sur 7, sur Urantia : " + d.ul + (i === 4 ? " ; c’est l’âge où nous sommes" : ""));
+      b.addEventListener("click", function () { choisir(i, true, true); });
+      UB.push(b);
+    });
+
+    /* ---------- La fiche ---------- */
+    function fiche(i, anim) {
+      var d = EP[i], art = document.getElementById("ep-" + (i + 1));
+      cap.innerHTML = "";
+      ht("p", "cap-n", cap, "Époque " + (i + 1) + " sur 7 · " + d.du);
+      ht("h3", "cap-h", cap, art.querySelector("h3").innerHTML);
+      var g = ht("div", "cap-grid", cap), c1 = ht("div", "cap-col", g);
+      ht("p", "label", c1, "Sur un monde normal");
+      [".ep-nom", ".ep-dl", ".ep-lead", ".ep-norm > blockquote.cite"].forEach(function (sel) {
+        var e = art.querySelector(sel);
+        if (e) c1.appendChild(e.cloneNode(true));
+      });
+      var u = art.querySelector(".ura");
+      if (u) g.appendChild(u.cloneNode(true));
+      var nav = ht("div", "cap-nav", cap);
+      if (i > 0) {
+        var bp = ht("button", "chip", nav, "← Précédente");
+        bp.type = "button";
+        bp.addEventListener("click", function () { choisir(i - 1, true); });
+      }
+      if (i < EP.length - 1) {
+        var bn = ht("button", "chip fort", nav, "Suivante : " + (i + 2) + " →");
+        bn.type = "button";
+        bn.addEventListener("click", function () { choisir(i + 1, true); });
+      }
+      var lien = ht("a", "chip", nav, "Tout lire sur cette époque ↓");
+      lien.href = "#ep-" + (i + 1);
+      if (anim) { void cap.offsetWidth; cap.classList.add("in"); }
+    }
+
+    function choisir(i, annoncer, toucher) {
+      i = Math.max(0, Math.min(EP.length - 1, i));
+      var change = i !== cur;
+      cur = i;
+      [NB, UB].forEach(function (L) {
+        L.forEach(function (b, j) {
+          b.setAttribute("aria-pressed", String(j === i));
+          b.tabIndex = j === i ? 0 : -1;
+        });
+      });
+      if (change) fiche(i, annoncer && !calme);
+      if (annoncer) statut.textContent = "Époque " + (i + 1) + " sur 7 : " + nomEp(i) + ". Sur Urantia : " + EP[i].ul + ".";
+      if (toucher) {                                  /* la fiche est sous la frise : la montrer si elle est hors de vue */
+        var r = cap.getBoundingClientRect();
+        if (r.top > window.innerHeight - 160) glisser(cap);
+      }
+    }
+    function courantEp() { return cur; }
+    laneN.addEventListener("keydown", clavier(NB, EP.length, choisir, courantEp, jamais));
+    laneU.addEventListener("keydown", clavier(UB, EP.length, choisir, courantEp, jamais));
+
+    /* Depuis la version texte : voir l’époque sur la frise */
+    EP.forEach(function (d, i) {
+      var h = document.querySelector("#ep-" + (i + 1) + " .ep-h");
+      if (!h) return;
+      var b = ht("button", "chip ep-voir", h, "Voir sur la frise ↑");
+      b.type = "button";
+      b.addEventListener("click", function () {
+        choisir(i, true);
+        sc.scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+        NB[i].focus({ preventScroll: true });
+      });
+    });
+
+    sc.hidden = false;                                /* sans JavaScript, seule la version texte s’affiche */
+    var m = /^#ep-([1-7])$/.exec(location.hash);
+    choisir(m ? +m[1] - 1 : 4, false);                /* par défaut : l’âge où nous sommes */
+  }
+
+  /* ====================== 3. L’échelle des sept stades ====================== */
+  /* Les marches reprennent les éléments #st-1 à #st-7 de la version texte (nom, ordre de grandeur, certitude). */
+  var ladSc = document.getElementById("lad-sc"), lad = document.getElementById("lad"), ladCap = document.getElementById("lad-cap");
+  var ladStatut = document.getElementById("lad-status");
+  var ST = Array.prototype.slice.call(document.querySelectorAll("#sept-stades li.stg"));
+  var HAUT = [6.6, 7.6, 8.6, 9.6, 10.6, 11.6, 12.6], OR = [8, 13, 19, 25, 31, 36, 40];
+  function monter() { return true; }                /* l’échelle monte : flèche haut, stade suivant */
+
+  if (ladSc && lad && ladCap && ST.length === 7) {
+    var LB = [], curSt = -1;
+    ST.forEach(function (li, i) {
+      var hyp = li.classList.contains("hyp");
+      var b = ht("button", "lad-mk" + (hyp ? " hyp" : ""), lad,
+        "<span class=\"bdg\" aria-hidden=\"true\">" + (i + 1) + "</span><b aria-hidden=\"true\">" + li.getAttribute("data-nom") + "</b>" +
+        "<small aria-hidden=\"true\">" + li.getAttribute("data-echelle") + "</small><span class=\"sure\" aria-hidden=\"true\">" + li.getAttribute("data-sure") + "</span>");
+      b.type = "button";
+      b.style.setProperty("--h", HAUT[i] + "rem");
+      b.style.setProperty("--g", OR[i] + "%");
+      b.style.setProperty("--o", String(8 - i));
+      b.style.setProperty("--i", String(i));
+      b.setAttribute("aria-pressed", "false");
+      b.setAttribute("aria-label", "Stade " + (i + 1) + " sur 7 : " + li.querySelector("h3").textContent.trim() + ", " + li.getAttribute("data-echelle") + " ; " + li.getAttribute("data-sure"));
+      b.addEventListener("click", function () { choisirSt(i, true, true); });
+      LB.push(b);
+    });
+
+    function ficheSt(i, anim) {
+      var li = ST[i];
+      ladCap.innerHTML = "";
+      ht("p", "cap-n", ladCap, "Stade " + (i + 1) + " sur 7 · " + li.getAttribute("data-echelle"));
+      ht("h3", "cap-h", ladCap, li.querySelector("h3").innerHTML);
+      [".st-dl", "blockquote.cite"].forEach(function (sel) {
+        var e = li.querySelector(sel);
+        if (e) ladCap.appendChild(e.cloneNode(true));
+      });
+      var nav = ht("div", "cap-nav", ladCap);
+      if (i > 0) {
+        var bp = ht("button", "chip", nav, "← Stade " + i);
+        bp.type = "button";
+        bp.addEventListener("click", function () { choisirSt(i - 1, true); });
+      }
+      if (i < 6) {
+        var bn = ht("button", "chip fort", nav, "Stade " + (i + 2) + " →");
+        bn.type = "button";
+        bn.addEventListener("click", function () { choisirSt(i + 1, true); });
+      }
+      var lien = ht("a", "chip", nav, "Version texte ↓");
+      lien.href = "#st-" + (i + 1);
+      if (anim) { void ladCap.offsetWidth; ladCap.classList.add("in"); }
+    }
+
+    function choisirSt(i, annoncer, toucher) {
+      i = Math.max(0, Math.min(6, i));
+      var change = i !== curSt;
+      curSt = i;
+      LB.forEach(function (b, j) {
+        b.setAttribute("aria-pressed", String(j === i));
+        b.tabIndex = j === i ? 0 : -1;
+      });
+      if (change) ficheSt(i, annoncer && !calme);
+      if (annoncer) ladStatut.textContent = "Stade " + (i + 1) + " sur 7 : " + ST[i].querySelector("h3").textContent.trim() + ".";
+      if (toucher) {
+        var r = ladCap.getBoundingClientRect();
+        if (r.top > window.innerHeight - 160) glisser(ladCap);
+      }
+    }
+    lad.addEventListener("keydown", clavier(LB, 7, choisirSt, function () { return curSt; }, monter));
+
+    ST.forEach(function (li, i) {
+      var h = li.querySelector(".st-h");
+      if (!h) return;
+      var b = ht("button", "chip ep-voir", h, "Voir sur l’échelle ↑");
+      b.type = "button";
+      b.addEventListener("click", function () {
+        choisirSt(i, true);
+        document.getElementById("stades").scrollIntoView({ block: "start", behavior: calme ? "auto" : "smooth" });
+        LB[i].focus({ preventScroll: true });
+      });
+    });
+
+    ladSc.hidden = false;
+    var ms = /^#st-([1-7])$/.exec(location.hash);
+    choisirSt(ms ? +ms[1] - 1 : 0, false);
+  }
+
+  /* ====================== 4. Infobulles des barres de proportions ====================== */
+  /* Un supplément au survol : chaque valeur est aussi dans la légende, le nom accessible de la barre et le tableau. */
+  var tip = null;
+  function placer(ev) {
+    var x = ev.clientX + 14, y = ev.clientY + 16, w = tip.offsetWidth, h = tip.offsetHeight;
+    if (x + w > window.innerWidth - 8) x = Math.max(8, ev.clientX - w - 10);
+    if (y + h > window.innerHeight - 8) y = ev.clientY - h - 12;
+    tip.style.left = x + "px";
+    tip.style.top = y + "px";
+  }
+  Array.prototype.forEach.call(document.querySelectorAll(".seg[data-t]"), function (s) {
+    s.addEventListener("pointerenter", function (ev) {
+      if (ev.pointerType === "touch") return;
+      if (!tip) { tip = cache(ht("div", "tip", document.body)); }
+      tip.textContent = s.getAttribute("data-t");
+      tip.hidden = false;
+      placer(ev);
+    });
+    s.addEventListener("pointermove", function (ev) { if (tip && !tip.hidden) placer(ev); });
+    s.addEventListener("pointerleave", function () { if (tip) tip.hidden = true; });
+  });
+
+  /* ====================== 5. Aides des schémas : visibles seulement avec JavaScript ====================== */
+  Array.prototype.forEach.call(document.querySelectorAll(".js-seul"), function (e) { e.hidden = false; });
+  Array.prototype.forEach.call(document.querySelectorAll(".sans-js"), function (e) { e.hidden = true; });
+
+  /* ====================== 6. Section repliable ====================== */
+  var ub = document.getElementById("unk-btn"), ubody = document.getElementById("unk-body");
+  if (ub && ubody) ub.addEventListener("click", function () {
+    var ouvert = ub.getAttribute("aria-expanded") !== "true";
+    ub.setAttribute("aria-expanded", String(ouvert));
+    ubody.hidden = !ouvert;
+  });
+})();
+</script>
+
+<script id="refs-urantia">
+(function () {
+  'use strict';
+  // Références cliquables : chaque « fascicule:section.paragraphe » d’un élément .ref ouvre le passage sur urantia.org
+  var BASE = 'https://www.urantia.org/fr/le-livre-d-urantia/';
+  var S = ["introduction","fascicule-1-le-pere-universel","fascicule-2-la-nature-de-dieu","fascicule-3-les-attributs-de-dieu","fascicule-4-relations-de-dieu-avec-l-univers","fascicule-5-relations-de-dieu-avec-l-individu","fascicule-6-le-fils-eternel","fascicule-7-position-du-fils-eternel-par-rapport-l-univers","fascicule-8-l-esprit-infini","fascicule-9-position-de-l-esprit-infini-par-rapport-l-univers","fascicule-10-la-trinite-du-paradis","fascicule-11-l-ile-eternelle-du-paradis","fascicule-12-l-univers-des-univers","fascicule-13-les-spheres-sacrees-du-paradis","fascicule-14-l-univers-central-et-divin","fascicule-15-les-sept-superunivers","fascicule-16-les-sept-maitres-esprits","fascicule-17-les-sept-groupes-d-esprits-supremes","fascicule-18-les-personnalites-supremes-de-la-trinite","fascicule-19-les-etres-coordonnes-d-origine-trinitaire","fascicule-20-les-fils-paradisiaques-de-dieu","fascicule-21-les-fils-paradisiaques-createurs","fascicule-22-les-fils-de-dieu-trinitises","fascicule-23-les-messagers-solitaires","fascicule-24-personnalites-superieures-de-l-esprit-infini","fascicule-25-les-armees-des-messagers-de-l-espace","fascicule-26-les-esprits-tutelaires-de-l-univers-central","fascicule-27-le-ministere-des-supernaphins-primaires","fascicule-28-esprits-tutelaires-des-superunivers","fascicule-29-les-directeurs-de-pouvoir-de-l-univers","fascicule-30-personnalites-du-grand-univers","fascicule-31-le-corps-de-la-finalite","fascicule-32-l-evolution-des-univers-local","fascicule-33-administration-de-l-univers-local","fascicule-34-l-esprit-mere-de-l-univers-local","fascicule-35-les-fils-de-dieu-de-l-univers-local","fascicule-36-les-porteurs-de-vie","fascicule-37-personnalites-de-l-univers-local","fascicule-38-esprits-tutelaires-de-l-univers-local","fascicule-39-les-armees-seraphiques","fascicule-40-les-fils-ascendants-de-dieu","fascicule-41-aspects-physiques-de-l-univers-local","fascicule-42-energie-mental-et-matiere","fascicule-43-les-constellations","fascicule-44-les-artisans-celestes","fascicule-45-l-administration-du-systeme-local","fascicule-46-le-siege-du-systeme-local","fascicule-47-les-sept-mondes-des-maisons","fascicule-48-la-vie-morontielle","fascicule-49-les-mondes-habites","fascicule-50-les-princes-planetaires","fascicule-51-les-adams-planetaires","fascicule-52-epoques-planetaires-des-mortels","fascicule-53-la-rebellion-de-lucifer","fascicule-54-problemes-de-la-rebellion-de-lucifer","fascicule-55-les-spheres-de-lumiere-et-de-vie","fascicule-56-unite-universelle","fascicule-57-l-origine-d-urantia","fascicule-58-l-etablissement-de-la-vie-sur-urantia","fascicule-59-l-ere-de-la-vie-marine-sur-urantia","fascicule-60-urantia-pendant-l-ere-de-la-vie-terrestre-primitive","fascicule-61-l-ere-des-mammiferes-sur-urantia","fascicule-62-les-races-l-aurore-de-l-homme-primitif","fascicule-63-la-premiere-famille-humaine","fascicule-64-les-races-evolutionnaires-de-couleur","fascicule-65-le-supercontrole-de-l-evolution","fascicule-66-le-prince-planetaire-d-urantia","fascicule-67-la-rebellion-planetaire","fascicule-68-l-aurore-de-la-civilisation","fascicule-69-les-institutions-humaines-primitives","fascicule-70-l-evolution-du-gouvernement-humain","fascicule-71-developpement-de-l-etat","fascicule-72-le-gouvernement-sur-une-planete-voisine","fascicule-73-le-jardin-d-eden","fascicule-74-adam-et-eve","fascicule-75-la-faute-d-adam-et-d-eve","fascicule-76-le-second-jardin","fascicule-77-les-creatures-medianes","fascicule-78-la-race-violette-apres-les-jours-d-adam","fascicule-79-l-expansion-andite-en-orient","fascicule-80-l-expansion-andite-en-occident","fascicule-81-developpement-de-la-civilisation-moderne","fascicule-82-l-evolution-du-mariage","fascicule-83-l-institution-du-mariage","fascicule-84-le-mariage-et-la-vie-familiale","fascicule-85-les-origines-de-l-adoration","fascicule-86-l-evolution-primitive-de-la-religion","fascicule-87-les-cultes-des-fantomes","fascicule-88-fetiches-charmes-et-magie","fascicule-89-peche-sacrifice-et-expiation","fascicule-90-shamanism-le-chamanisme-medecine-men-et-pretres","fascicule-91-l-evolution-de-la-priere","fascicule-92-l-evolution-ulterieure-de-la-religion","fascicule-93-machiventa-melchizedek","fascicule-94-les-enseignements-de-melchizedek-en-orient","fascicule-95-les-enseignements-de-melchizedek-dans-le-levant","fascicule-96-yahweh-le-dieu-des-hebreux","fascicule-97-l-evolution-du-concept-de-dieu-chez-les-hebreux","fascicule-98-les-enseignements-de-melchizedek-en-occident","fascicule-99-les-problemes-sociaux-de-la-religion","fascicule-100-la-religion-dans-l-experience-humaine","fascicule-101-la-nature-reelle-de-la-religion","fascicule-102-les-fondements-de-la-foi-religieuse","fascicule-103-la-realite-de-l-experience-religieuse","fascicule-104-croissance-du-concept-de-trinite","fascicule-105-deite-et-realite","fascicule-106-niveaux-de-realite-de-l-univers","fascicule-107-origine-et-nature-des-ajusteurs-de-pensee","fascicule-108-mission-et-ministere-des-ajusteurs-de-pensee","fascicule-109-position-des-ajusteurs-par-rapport-aux-creatures-de-l-univers","fascicule-110-position-des-ajusteurs-par-rapport-aux-mortels-individuels","fascicule-111-l-ajusteur-et-l-ame","fascicule-112-la-survie-de-la-personnalite","fascicule-113-les-gardiens-seraphiques-de-la-destinee","fascicule-114-le-gouvernement-planetaire-des-seraphins","fascicule-115-l-etre-supreme","fascicule-116-le-tout-puissant-supreme","fascicule-117-dieu-le-supreme","fascicule-118-le-supreme-et-l-ultime-temps-et-espace","fascicule-119-les-effusions-du-christ-micael","fascicule-120-l-effusion-de-micael-sur-urantia","fascicule-121-l-epoque-de-l-effusion-de-micael","fascicule-122-naissance-et-petite-enfance-de-jesus","fascicule-123-la-prime-enfance-de-jesus","fascicule-124-la-derniere-partie-de-l-enfance-de-jesus","fascicule-125-jesus-jerusalem","fascicule-126-les-deux-annees-cruciales","fascicule-127-les-annees-d-adolescence","fascicule-128-la-vie-de-jeune-homme-de-jesus","fascicule-129-suite-de-la-vie-d-adulte-de-jesus","fascicule-130-sur-le-chemin-de-rome","fascicule-131-les-religions-du-monde","fascicule-132-le-sejour-rome","fascicule-133-le-retour-de-rome","fascicule-134-les-annees-de-transition","fascicule-135-jean-le-baptiste","fascicule-136-le-bapteme-et-les-quarante-jours","fascicule-137-sejour-d-attente-en-galilee","fascicule-138-la-formation-des-messagers-du-royaume","fascicule-139-les-douze-apotres","fascicule-140-l-ordination-des-douze","fascicule-141-le-commencement-de-l-oeuvre-publique","fascicule-142-la-paque-jerusalem","fascicule-143-traversee-de-la-samarie","fascicule-144-gilboa-et-dans-la-decapole","fascicule-145-quatre-journees-memorables-capharnaum","fascicule-146-la-premiere-tournee-de-predication-en-galilee","fascicule-147-l-intermede-de-la-visite-jerusalem","fascicule-148-la-formation-d-evangelistes-bethsaide","fascicule-149-la-seconde-tournee-de-predication","fascicule-150-la-troisieme-tournee-de-predication","fascicule-151-sejour-et-enseignement-au-bord-de-la-mer","fascicule-152-les-prodromes-de-la-crise-de-capharnaum","fascicule-153-la-crise-capharnaum","fascicule-154-derniers-jours-capharnaum","fascicule-155-en-fuite-travers-la-galilee-du-nord","fascicule-156-le-sejour-tyr-et-sidon","fascicule-157-cesaree-de-philippe","fascicule-158-le-mont-de-la-transfiguration","fascicule-159-la-tournee-en-decapole","fascicule-160-rodan-d-alexandrie","fascicule-161-suite-des-discussions-avec-rodan","fascicule-162-la-fete-des-tabernacles","fascicule-163-l-ordination-des-soixante-dix-magadan","fascicule-164-la-fete-de-la-dedicace","fascicule-165-la-mission-en-peree-commence","fascicule-166-derniere-tournee-en-peree-du-nord","fascicule-167-la-visite-philadelphie","fascicule-168-la-resurrection-de-lazare","fascicule-169-derniers-enseignements-pella","fascicule-170-le-royaume-des-cieux","fascicule-171-sur-le-chemin-de-jerusalem","fascicule-172-l-entree-jerusalem","fascicule-173-le-lundi-jerusalem","fascicule-174-le-mardi-matin-au-temple","fascicule-175-le-dernier-discours-au-temple","fascicule-176-le-mardi-soir-sur-le-mont-olivet","fascicule-177-mercredi-jour-de-repos","fascicule-178-le-dernier-jour-au-camp","fascicule-179-le-dernier-souper","fascicule-180-le-discours-d-adieu","fascicule-181-ultimes-exhortations-et-avertissements","fascicule-182-gethsemani","fascicule-183-jesus-trahi-et-arrete","fascicule-184-devant-le-tribunal-du-sanhedrin","fascicule-185-le-jugement-devant-pilate","fascicule-186-peu-avant-la-crucifixion","fascicule-187-la-crucifixion","fascicule-188-l-heure-du-tombeau","fascicule-189-la-resurrection","fascicule-190-les-apparitions-morontielles-de-jesus","fascicule-191-apparitions-aux-apotres-et-d-autres-disciples","fascicule-192-apparitions-en-galilee","fascicule-193-apparitions-finales-et-ascension","fascicule-194-l-effusion-de-l-esprit-de-verite","fascicule-195-apres-la-pentecote","fascicule-196-la-foi-de-jesus"];   // page de chaque fascicule, de l’Introduction (0) au fascicule 196
+  var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
+  function link(el) {
+    var t = el.textContent;
+    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
+    var frag = document.createDocumentFragment(), last = 0, n = 0, m;
+    RX.lastIndex = 0;
+    while ((m = RX.exec(t))) {
+      var p = +m[1];
+      if (!S[p]) continue;
+      if (m.index > last) frag.appendChild(document.createTextNode(t.slice(last, m.index)));
+      var a = document.createElement('a');
+      a.className = 'ref-lien';
+      a.href = BASE + S[p] + '#U' + p + '_' + (+m[2]) + '_' + (m[3] ? +m[3] : 0);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.title = 'Lire ' + m[0] + ' sur urantia.org';
+      a.textContent = m[0];
+      frag.appendChild(a);
+      last = m.index + m[0].length;
+      n++;
+    }
+    if (!n) return;
+    if (last < t.length) frag.appendChild(document.createTextNode(t.slice(last)));
+    el.textContent = '';
+    el.appendChild(frag);
+    el.setAttribute('data-lk', el.textContent);
+  }
+  function scan(node) {
+    if (!node || node.nodeType !== 1) return;
+    if (node.classList.contains('ref')) link(node);
+    var l = node.querySelectorAll('.ref');
+    for (var i = 0; i < l.length; i++) link(l[i]);
+  }
+  function refOf(node) { var e = node && (node.nodeType === 1 ? node : node.parentNode); return e && e.closest ? e.closest('.ref') : null; }
+  function start() {
+    try {
+      var st = document.createElement('style');
+      st.textContent = 'a.ref-lien{color:inherit;text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:2px;pointer-events:auto}' +
+        'a.ref-lien:hover,a.ref-lien:focus-visible{color:var(--gold-ink,inherit);text-decoration-style:solid}';
+      document.head.appendChild(st);
+      scan(document.body);
+      if (!window.MutationObserver) return;
+      new MutationObserver(function (list) {
+        for (var i = 0; i < list.length; i++) {
+          var mu = list[i];
+          if (mu.type === 'characterData') { var r = refOf(mu.target); if (r) link(r); continue; }
+          for (var j = 0; j < mu.addedNodes.length; j++) {
+            var nd = mu.addedNodes[j];
+            if (nd.nodeType === 1) scan(nd); else { var r2 = refOf(nd); if (r2) link(r2); }
+          }
+        }
+      }).observe(document.body, { childList: true, subtree: true, characterData: true });
+    } catch (e) { /* les références restent en texte simple */ }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>

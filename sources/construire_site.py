@@ -25,6 +25,7 @@ import json
 import re
 import shutil
 import struct
+import subprocess
 import sys
 import urllib.parse
 from html.parser import HTMLParser
@@ -78,6 +79,8 @@ PAGES = [
      'La vie de Jésus selon la quatrième partie du livre : une frise de 92 étapes, de l’annonce à Marie à la Pentecôte, et les cartes de ses voyages.'),
     ('bible-et-livre.html', 'bible-et-livre.html', 'La Bible et le Livre d’Urantia', 'La Bible et le livre',
      'Cent parallèles entre la Bible (Crampon 1923) et le Livre d’Urantia, de la Création à l’Apocalypse : ce qui concorde, ce qui diffère, et ce que le livre en dit.'),
+    ('pere-fils-esprit.html', 'pere-fils-esprit.html', 'Le Père, le Fils et l’Esprit', 'Père, Fils et Esprit',
+     'Le Père, le Fils et l’Esprit selon le Livre d’Urantia : le Père Universel, le Fils Éternel et l’Esprit Infini, les trois personnes de la Déité, avec les références du texte.'),
     ('paradis-et-havona.html', 'paradis-et-havona.html', 'Le Paradis et Havona', 'Le Paradis et Havona',
      'Le Paradis et Havona selon le Livre d’Urantia : l’ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas.'),
     ('etre-supreme.html', 'etre-supreme.html', 'L’Être Suprême', 'L’Être Suprême',
@@ -85,21 +88,27 @@ PAGES = [
     ('effusions-de-micael.html', 'effusions-de-micael.html', 'Les sept effusions de Micaël', 'Les effusions de Micaël',
      'Les sept effusions de Micaël selon le Livre d’Urantia : sept fois la vie de ses propres créatures, de Melchizédek à Jésus sur Urantia, et ce qu’elles ont changé, avec les références du texte.'),
     ('jerusem-et-edentia.html', 'jerusem-et-edentia.html', 'Jérusem, Édentia et les mondes des maisons', 'Jérusem et Édentia',
-     'Jérusem, Édentia et les mondes des maisons selon le Livre d’Urantia : les premiers mondes où les mortels poursuivent leur ascension après la mort, avec les références du texte.'),
+     'Jérusem, Édentia et les mondes des maisons selon le Livre d’Urantia : les premiers lieux qu’il décrit après la mort, la capitale du système et ses mondes des maisons, puis la capitale de la constellation, en cartes et en schémas.'),
     ('les-anges.html', 'les-anges.html', 'Les anges', 'Les anges',
      'Les anges selon le Livre d’Urantia : qui ils sont, leur vie, les chérubins, les sept ordres de séraphins et l’ange gardien, avec les références du texte.'),
     ('avenir-d-une-planete.html', 'avenir-d-une-planete.html', 'L’avenir d’une planète', 'L’avenir d’une planète',
-     'L’avenir d’une planète selon le Livre d’Urantia : les époques d’un monde habité, jusqu’à l’ère de lumière et de vie, avec les références du texte.'),
+     'L’avenir d’une planète selon le Livre d’Urantia : les âges qu’ouvrent tour à tour les Fils divins sur un monde habité, jusqu’à l’ère de lumière et de vie, et ce qui s’est passé autrement sur Urantia.'),
     ('institutions-humaines.html', 'institutions-humaines.html', 'L’évolution des institutions humaines', 'Institutions humaines',
-     'L’évolution des institutions humaines selon le Livre d’Urantia : l’aurore de la civilisation, le gouvernement, l’État, le mariage et la famille, avec les références du texte.'),
+     'L’évolution des institutions humaines selon le Livre d’Urantia : l’industrie, la propriété, l’État et le mariage, nés d’une lente évolution des coutumes, de la horde à l’État représentatif et au foyer.'),
     ('evolution-religion.html', 'evolution-religion.html', 'L’évolution de la religion', 'Évolution de la religion',
      'L’évolution de la religion selon le Livre d’Urantia : de la peur et du besoin d’adorer à la foi en un Père qui aime, en huit étapes, puis la religion vécue.'),
+    ('religion-vecue.html', 'religion-vecue.html', 'La religion vécue', 'La religion vécue',
+     'La religion vécue selon le Livre d’Urantia : la religion comme expérience personnelle, la foi et ce qu’elle produit dans une vie, avec les références du texte.'),
     ('melchizedek-et-religions.html', 'melchizedek-et-religions.html', 'Melchizédek et les religions du monde', 'Melchizédek et les religions',
-     'Melchizédek et les religions du monde selon le Livre d’Urantia : Machiventa Melchizédek, la diffusion de ses enseignements et les grandes religions, avec les références du texte.'),
+     'Machiventa Melchizédek et les religions du monde selon le Livre d’Urantia : le sage de Salem, l’idée d’un Dieu unique portée de l’Islande au Japon et sa trace dans les grandes traditions, sur une carte et une frise.'),
+    ('annees-cachees-de-jesus.html', 'annees-cachees-de-jesus.html', 'Les années cachées de Jésus', 'Les années cachées',
+     'Les années cachées de Jésus selon le Livre d’Urantia : son enfance, sa jeunesse, son métier et ses voyages, jusqu’au début de son ministère public, avec les références du texte.'),
     ('douze-apotres.html', 'douze-apotres.html', 'Les douze apôtres', 'Les douze apôtres',
      'Les douze apôtres selon le Livre d’Urantia : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte.'),
     ('enseignements-de-jesus.html', 'enseignements-de-jesus.html', 'Les enseignements de Jésus', 'Enseignements de Jésus',
      'Les enseignements de Jésus selon la quatrième partie du Livre d’Urantia : quinze grands enseignements du Maitre, rangés par thème, avec ses mots, ses références et les épisodes où il les donne.'),
+    ('apres-la-pentecote.html', 'apres-la-pentecote.html', 'Après la Pentecôte', 'Après la Pentecôte',
+     'Après la Pentecôte selon le Livre d’Urantia : l’effusion de l’Esprit de Vérité, la diffusion du message et la naissance du christianisme, avec les références du texte.'),
     ('histoire-du-livre.html', 'histoire-du-livre.html', 'D’où vient ce livre ?', 'D’où vient ce livre ?',
      'D’où vient le Livre d’Urantia ? Ce qu’il dit de lui-même, ce que racontent ses premiers lecteurs, ce qu’en disent les critiques : chaque voix avec ses sources, sans trancher.'),
     ('auteurs-et-chiffres.html', 'auteurs-et-chiffres.html', 'Les auteurs déclarés et le livre en chiffres', 'Auteurs et chiffres',
@@ -107,7 +116,7 @@ PAGES = [
     ('science-et-histoire.html', 'science-et-histoire.html', 'La science et l’histoire face au livre', 'Science et histoire',
      'Le Livre d’Urantia face à la science et à l’histoire : ses affirmations confrontées aux connaissances actuelles, avec les références du texte.'),
     ('fascicules.html', 'fascicules.html', 'Le livre fascicule par fascicule', 'Fascicule par fascicule',
-     'Le Livre d’Urantia fascicule par fascicule : les 197 fascicules, avec les pages de l’atlas qui en parlent.'),
+     'Le Livre d’Urantia fascicule par fascicule : pour chacun des 197 fascicules, l’auteur que le texte lui donne, le temps de lecture, le lien vers son texte et les pages de l’atlas qui en parlent.'),
     ('parcours-de-lecture.html', 'parcours-de-lecture.html', 'Parcours de lecture', 'Parcours de lecture',
      'Cinq itinéraires de lecture du Livre d’Urantia, fascicule par fascicule : durée estimée, lien vers le texte, pages de l’atlas à voir en chemin, et une case « Lu » gardée sur l’appareil.'),
     ('glossaire.html', 'glossaire.html', 'Glossaire', 'Glossaire',
@@ -154,7 +163,7 @@ CDN = {
 SOURCES = [p[0] for p in PAGES if p[0] != 'urantia-paradis-3d.html'] + [
            'urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'liens_refs.py'] + SCRIPTS + [
            GLOSSAIRE_JS, GLOSSAIRE_JSON, 'glossaire.py', QUIZ_JS, QUIZ_JSON, 'assembler.py', 'etoiles.py', 'geo.py',
-           'textures.py', 'voie-lactee-lecture-exr.py', 'voie-lactee-conversion.py', 'polices.py', 'smoke3d.js',
+           'textures.py', 'voie-lactee-lecture-exr.py', 'voie-lactee-conversion.py', 'polices.py', 'fascicules.py', 'smoke3d.js',
            'construire_site.py', 'CONSTRUIRE.md', 'requirements.txt']
 RACINE = ['README.md', 'LICENCES.md', 'LICENSE', 'LICENSE-CONTENU.md', 'CONTRIBUER.md']   # copiés de site/ à la racine du site
 GITHUB = ['.github/ISSUE_TEMPLATE/erreur.yml', '.github/ISSUE_TEMPLATE/idee.yml', '.github/ISSUE_TEMPLATE/config.yml',
@@ -174,19 +183,23 @@ SIGNALER = '#signaler'
 MENUS = [
     ('themes', 'Thèmes', 'Thème', [                  # trois sous-groupes : trois colonnes au bureau, intertitres dans le tiroir
         'L’univers',
+        ('pere-fils-esprit.html', 'Les trois personnes de la Déité'),
         ('paradis-et-havona.html', 'L’ile centrale et l’univers parfait'),
         ('etre-supreme.html', 'Un Dieu qui grandit avec l’expérience'),
-        ('jerusem-et-edentia.html', 'Les premiers mondes de l’ascension'),
+        ('jerusem-et-edentia.html', 'La capitale de Satania, les mondes des maisons et Édentia'),
         ('les-anges.html', 'Séraphins, chérubins et anges gardiens'),
         'Urantia et l’humanité',
-        ('avenir-d-une-planete.html', 'Vers l’ère de lumière et de vie'),
-        ('institutions-humaines.html', 'Civilisation, gouvernement, mariage'),
+        ('avenir-d-une-planete.html', 'Les âges d’un monde habité, et le nôtre'),
+        ('institutions-humaines.html', 'D’où viennent l’industrie, la propriété, l’État et le mariage ?'),
         ('evolution-religion.html', 'De la peur à la foi, en huit étapes'),
-        ('melchizedek-et-religions.html', 'Son enseignement et les grandes religions'),
+        ('religion-vecue.html', 'La foi dans l’expérience humaine'),
+        ('melchizedek-et-religions.html', 'Le sage de Salem et le Dieu unique'),
         'Micaël et Jésus',
         ('effusions-de-micael.html', 'Sept fois la vie de ses créatures'),
+        ('annees-cachees-de-jesus.html', 'Enfance, jeunesse et voyages'),
         ('douze-apotres.html', 'Qui ils étaient, ce qu’ils devinrent'),
         ('enseignements-de-jesus.html', 'Quinze enseignements, rangés par thème'),
+        ('apres-la-pentecote.html', 'L’Esprit de Vérité et les premiers croyants'),
     ]),
     ('livre', 'Le livre', 'Le livre', [
         ('histoire-du-livre.html', 'Son origine, ses témoins, ses critiques'),
@@ -319,6 +332,8 @@ html.an-js .an-p-groupes{display:block;width:auto;padding:0 10px 12px}
 html.an-js .an-sg{padding:0}
 html.an-js .an-sg+.an-sg{border-left:0;margin-top:4px;padding-top:4px;border-top:1px dashed var(--rule)}
 html.an-js .an-sg-t{margin:12px 12px 4px}
+html.an-js .an-p-groupes .an-aide{display:none}
+html.an-js .an-p-groupes .an-items a{align-content:center;padding-top:8px;padding-bottom:8px}
 html.an-js .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-rows:none;grid-auto-flow:row}
 html.an-js .an-items a,html.an-js .an-etapes a{padding-left:12px}
 html.an-js .an-t-pied{display:grid;gap:10px;margin-top:auto;padding:14px 16px 18px;border-top:1px solid var(--rule)}
@@ -1266,6 +1281,33 @@ def ecrire_index(construites):
 
 
 # ── Construction ────────────────────────────────────────────────────────────────────────────────
+# Page « Le livre fascicule par fascicule » (fascicules.html) : régénérée d'abord par fascicules.py, pour suivre les pages
+# arrivées depuis (le générateur ne réécrit ses fichiers que si quelque chose a changé ; il écrit aussi
+# ../couverture-du-livre.md, hors du site). Il lit la carte du livre de la copie de travail de l'auteur : depuis un clone
+# du dépôt, la page de sources/ est reprise telle quelle. Une erreur du générateur ne bloque pas la construction.
+GENERATEUR = SRC / 'fascicules.py'
+
+
+def regenerer_fascicules():
+    if not GENERATEUR.exists():
+        return
+    if MODE_DEPOT:
+        print('fascicules.py : non lancé (clone du dépôt) ; fascicules.html est reprise telle quelle')
+        return
+    try:
+        r = subprocess.run([sys.executable, '-I', str(GENERATEUR.resolve())], cwd=str(SRC.resolve().parents[2]), capture_output=True,
+                           text=True, encoding='utf-8', errors='replace', timeout=600)
+    except (OSError, subprocess.SubprocessError) as e:
+        print(f'avertissement : fascicules.py non lancé ({e}) ; la page fascicules.html existante est gardée')
+        return
+    for ligne in (r.stdout or '').splitlines():
+        print('fascicules.py : ' + ligne)
+    if r.returncode:
+        fin = ((r.stderr or '').strip().splitlines() or ['erreur sans message'])[-1]
+        print(f'avertissement : fascicules.py a échoué (code {r.returncode} : {fin}) ; la page fascicules.html existante est gardée')
+
+
+regenerer_fascicules()
 artefacts = {}
 if (SRC / 'artefacts.json').exists():
     artefacts = {k: v for k, v in json.loads((SRC / 'artefacts.json').read_text(encoding='utf-8')).items() if not k.startswith('_')}

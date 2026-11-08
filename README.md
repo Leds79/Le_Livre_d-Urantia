@@ -24,12 +24,16 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [Le Paradis et Havona](paradis-et-havona.html) | thème : l’Ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas |
 | [L’Être Suprême](etre-supreme.html) | thème : un Dieu qui n’est pas encore achevé et grandit avec l’expérience des créateurs et des créatures (fascicules 115 à 117) |
 | [Les sept effusions de Micaël](effusions-de-micael.html) | thème : sept fois, Micaël a vécu la vie de ses créatures, de Melchizédek à Jésus sur Urantia (fascicules 119 et 120) |
+| [Jérusem, Édentia et les mondes des maisons](jerusem-et-edentia.html) | thème : les premiers lieux que le livre décrit après la mort, Jérusem et ses mondes des maisons, puis Édentia, en cartes et en schémas |
 | [Les anges](les-anges.html) | thème : qui sont les anges, leur vie, les chérubins, les sept ordres de séraphins, l’ange gardien |
+| [L’avenir d’une planète](avenir-d-une-planete.html) | thème : les âges d’un monde habité, ouverts tour à tour par des Fils divins, jusqu’à l’ère de lumière et de vie, et ce qui s’est passé autrement sur Urantia |
+| [L’évolution des institutions humaines](institutions-humaines.html) | thème : l’industrie, la propriété, l’État et le mariage, de la horde à l’État représentatif et au foyer |
 | [L’évolution de la religion](evolution-religion.html) | thème : de la peur et du besoin d’adorer à la foi en un Père qui aime, en huit étapes |
 | [Les douze apôtres](douze-apotres.html) | thème : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte |
 | [Les enseignements de Jésus](enseignements-de-jesus.html) | thème : quinze grands enseignements du Maitre, rangés par thème, avec ses mots et les épisodes où il les donne |
 | [D’où vient ce livre ?](histoire-du-livre.html) | le livre : ce qu’il dit de lui-même, ce que racontent ses premiers lecteurs, ce qu’en disent les critiques, chaque voix avec ses sources |
 | [Les auteurs déclarés et le livre en chiffres](auteurs-et-chiffres.html) | le livre : qui présente chaque fascicule, puis le livre mesuré (parties, longueurs, mots) |
+| [Le livre fascicule par fascicule](fascicules.html) | outil : pour chacun des 197 fascicules, l’auteur que le texte lui donne, le temps de lecture, le lien vers son texte et les pages de l’atlas qui en parlent ; une mosaïque montre ce que l’atlas couvre du livre |
 | [Parcours de lecture](parcours-de-lecture.html) | outil : cinq itinéraires de lecture, fascicule par fascicule, avec une case « Lu » gardée sur l’appareil |
 | [Glossaire](glossaire.html) | outil : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références ; une ancre par terme (`glossaire.html#ajusteur-de-pensee`) |
 
@@ -87,6 +91,7 @@ Le dossier `sources/` contient de quoi reconstruire tout le site depuis un clone
 - le quiz des étapes du parcours : `quiz-atlas.json` (questions, explications et références) et `quiz.js` ;
 - `navigation.js`, la barre commune (menus, menu latéral du téléphone) et la recherche ; son index, `assets/recherche.js`, est écrit à chaque construction à partir des pages ;
 - `ecouter.js`, la lecture à voix haute (bouton « Écouter »), par la synthèse vocale du navigateur ;
+- `fascicules.py`, qui écrit la page « Le livre fascicule par fascicule » à partir des pages de l’atlas (relancé à chaque construction dans la copie de travail de l’auteur) ;
 - le gabarit de la vue 3D (`urantia-paradis-3d.src.html`) et ses données : étoiles (`etoiles.json`), contours terrestres (`geo.json`), textures (`tex.json`) ;
 - les scripts qui les produisent et les assemblent : `polices.py`, `etoiles.py`, `geo.py`, `textures.py`, `voie-lactee-lecture-exr.py` et `voie-lactee-conversion.py` (le fond de Voie lactée de la vue 3D), `assembler.py` ;
 - les références cliquables : `liens_refs.py` fabrique `refs-urantia.js`, le script qui relie chaque référence au passage correspondant sur urantia.org ;

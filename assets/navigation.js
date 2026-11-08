@@ -797,6 +797,9 @@
       b.appendChild(el('span', '', 'Rechercher dans l’atlas'));
       b.appendChild(el('kbd', '', '/'));
       menu3d.insertBefore(b, menu3d.firstChild);
+      // le menu ouvert montre l’entrée de recherche : l’index se charge déjà (au toucher, il n’y a pas de survol)
+      var menu = menu3d.closest('details');
+      if (menu) menu.addEventListener('toggle', function () { if (menu.open) chargerIndex(); });
     }
     // l’index se charge dès qu’on approche du bouton (survol, focus, toucher) : la boite s’ouvre prête
     function prevenir(e) { if (e.target.closest && e.target.closest('[data-chercher]')) chargerIndex(); }
