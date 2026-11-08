@@ -32,6 +32,7 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [L’évolution de la religion](evolution-religion.html) | thème : de la peur et du besoin d’adorer à la foi en un Père qui aime, en huit étapes |
 | [La religion vécue](religion-vecue.html) | thème : la religion comme expérience personnelle, la foi et ce qu’elle produit dans une vie |
 | [Melchizédek et les religions du monde](melchizedek-et-religions.html) | thème : le sage de Salem, l’idée d’un Dieu unique portée par ses missionnaires de l’Islande au Japon, et sa trace dans les grandes traditions |
+| [Les années cachées de Jésus](annees-cachees-de-jesus.html) | thème : son enfance, sa jeunesse, son métier et ses voyages, jusqu’au début de son ministère public |
 | [Les douze apôtres](douze-apotres.html) | thème : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte |
 | [Les enseignements de Jésus](enseignements-de-jesus.html) | thème : quinze grands enseignements du Maitre, rangés par thème, avec ses mots et les épisodes où il les donne |
 | [Après la Pentecôte](apres-la-pentecote.html) | thème : l’effusion de l’Esprit de Vérité, la diffusion du message et la naissance du christianisme |
