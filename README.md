@@ -21,6 +21,7 @@ Un atlas visuel et interactif pour comprendre l’origine et l’organisation de
 | [La rébellion de Lucifer](rebellion-de-lucifer.html) | les trois échelles (Jérusem, Dalamatia, le Jardin), pourquoi Urantia est une planète isolée, le manifeste, les loyaux et les rebelles |
 | [La vie de Jésus](vie-de-jesus.html) | frise de 92 étapes, de l’annonce à Marie à la Pentecôte ; cartes de Palestine, de la Méditerranée et de l’Orient |
 | [La Bible et le Livre d’Urantia](bible-et-livre.html) | cent parallèles entre la Bible (Crampon 1923) et le livre, de la Création à l’Apocalypse : ce qui concorde, ce qui diffère, et ce que le livre en dit |
+| [Le Père, le Fils et l’Esprit](pere-fils-esprit.html) | thème : le Père Universel, le Fils Éternel et l’Esprit Infini, les trois personnes de la Déité |
 | [Le Paradis et Havona](paradis-et-havona.html) | thème : l’Ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas |
 | [L’Être Suprême](etre-supreme.html) | thème : un Dieu qui n’est pas encore achevé et grandit avec l’expérience des créateurs et des créatures (fascicules 115 à 117) |
 | [Les sept effusions de Micaël](effusions-de-micael.html) | thème : sept fois, Micaël a vécu la vie de ses créatures, de Melchizédek à Jésus sur Urantia (fascicules 119 et 120) |
