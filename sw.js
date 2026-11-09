@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '0aa2d1c27d2e';
+const VERSION = 'fbf9a9e35816';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -16,7 +16,7 @@ const FICHIERS = {
   "destinee-humaine.html": [147465, "255c8ee81998d2c5"],
   "histoire-d-urantia.html": [199770, "abd025ba8a163b49"],
   "rebellion-de-lucifer.html": [154337, "702f2799d2c58e69"],
-  "vie-de-jesus.html": [135858, "174bd03b42b8c982"],
+  "vie-de-jesus.html": [137795, "4329d14cb60f9c44"],
   "bible-et-livre.html": [450751, "b8e871adc308b9df"],
   "pere-fils-esprit.html": [151731, "0deb9523fa16d1ce"],
   "paradis-et-havona.html": [181568, "a8ae198224970cac"],
