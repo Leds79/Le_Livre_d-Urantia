@@ -121,6 +121,8 @@ PAGES = [
      'Cinq itinéraires de lecture du Livre d’Urantia, fascicule par fascicule : durée estimée, lien vers le texte, pages de l’atlas à voir en chemin, et une case « Lu » gardée sur l’appareil.'),
     ('glossaire.html', 'glossaire.html', 'Glossaire', 'Glossaire',
      'Glossaire du Livre d’Urantia : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références du texte.'),
+    ('index-des-noms.html', 'index-des-noms.html', 'Index des noms', 'Index des noms',
+     'Index des noms du Livre d’Urantia : êtres, ordres, mondes, lieux, peuples et personnages, de A à Z, avec leurs références et les pages de l’atlas qui en parlent.'),
 ]
 # Glossaire : sa page est dans le menu « Outils », hors du parcours numéroté ; ses infobulles (assets/glossaire.js,
 # données de glossaire-atlas.json injectées à la place du marqueur) sont chargées par les pages 2D.
@@ -212,6 +214,7 @@ MENUS = [
         ('fascicules.html', 'Les 197 fascicules et les pages de l’atlas'),
         ('parcours-de-lecture.html', 'Cinq itinéraires, fascicule par fascicule'),
         ('glossaire.html', 'Les mots du livre, de A à Z'),
+        ('index-des-noms.html', 'Êtres, lieux et personnages, de A à Z'),
         ('index.html#hors-ligne', 'Lire hors ligne', 'Installer l’atlas ou l’enregistrer sur l’appareil'),
         (SIGNALER, 'Signaler une erreur', 'Sur cette page ; un compte GitHub est nécessaire'),
         (DEPOT + '/blob/main/CONTRIBUER.md', 'Contribuer sur GitHub', 'Proposer une correction ou une idée'),
@@ -1160,7 +1163,7 @@ def index_glossaire(ix, page):
 # Vue 3D : niveaux (HASH_LV et INFO de son script), astres (BODY), panneaux (boutons t-…), Havona et le Paradis.
 LIEUX_3D = [('havona', 'Havona', 'L’univers central, autour de l’Ile du Paradis.'),
             ('paradis', 'Le Paradis', 'L’Ile centrale, au cœur du maitre univers.')]
-PANNEAUX_3D = [('t-gov', 'gouvernement'), ('t-time', 'frise'), ('t-asc', 'carriere'), ('t-coupe', 'coupe'), ('t-deite', 'deite')]
+PANNEAUX_3D = [('t-gov', 'gouvernement'), ('t-time', 'frise'), ('t-asc', 'carriere'), ('t-eff', 'effusions'), ('t-coupe', 'coupe'), ('t-deite', 'deite')]
 
 
 def js_texte(s):

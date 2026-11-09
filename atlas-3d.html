@@ -110,6 +110,29 @@ button.l3 { appearance: none; margin: 0; border: 0; border-radius: 7px; backgrou
 @keyframes l3in { from { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .l3 { animation: none; } }
 .l3.clamp2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }   /* au plus deux lignes (script) */
+/* Superunivers (niveau Grand univers) : le numéro et, en sous-titre, le Maitre Esprit qui le préside (16:3) ; Orvonton en or */
+.l3.supu { font: 600 13px/1.2 var(--font-body); letter-spacing: .01em; color: #DCE3F7; }
+.l3.gold.supu { font: 700 15.5px/1.1 var(--font-display); letter-spacing: .01em; color: var(--gold-ink); }
+.l3 .l3-t, .l3 .l3-s { display: block; }
+.l3 .l3-s { margin-top: 2px; font: 400 11px/1.25 var(--font-body); letter-spacing: 0; color: #AEB8D6; }
+.l3.gold .l3-s { color: #E3D3A8; }
+.labels.supc .l3 .l3-s, .labels.supc .l3 .l3-me { display: none; }
+/* Repères des sept effusions de Micaël : une pastille dorée numérotée posée sur le lieu (à côté du « tu es ici » pour Urantia) ;
+   pour l’effusion en cours, son nom et son lieu, « position schématique » */
+.l3.eff { display: flex; align-items: center; gap: 8px; padding: 3px; text-align: left; white-space: nowrap; font: 600 13px/1.15 var(--font-body); letter-spacing: 0; color: var(--gold-ink); }
+.l3.eff::before { bottom: 0; border-radius: 999px; background: rgba(15, 12, 4, .74); box-shadow: inset 0 0 0 1px rgba(246, 199, 102, .5); }
+.l3.eff::after, .l3.eff:not(.named)::before { display: none; }
+.l3.eff.side::after { display: block; }
+.l3.eff .eff-n { display: grid; place-items: center; flex: none; width: 22px; height: 22px; border-radius: 50%; background: var(--gold); color: var(--on-gold); font: 700 12px/1 var(--font-mono); text-shadow: none; box-shadow: 0 0 0 2px rgba(3, 5, 12, .78); }
+.l3.eff .eff-tx { display: none; }
+.l3.eff.named { padding: 3px 12px 3px 3px; }
+.l3.eff.named.flip { flex-direction: row-reverse; padding: 3px 3px 3px 12px; text-align: right; }
+.l3.eff.named.col { flex-direction: column; gap: 3px; padding: 3px 12px 6px; text-align: center; }
+.l3.eff.named.col::before { border-radius: 14px; }
+.l3.eff.named .eff-tx { display: grid; gap: 1px; }
+.l3.eff .eff-w { font: 400 11.5px/1.2 var(--font-body); color: #C9D1EA; }
+.l3.eff.cur .eff-n { box-shadow: 0 0 0 2px rgba(3, 5, 12, .9), 0 0 0 3.5px var(--gold-ink); }
+.l3.eff.go:hover .eff-n, .l3.eff.go:focus-visible .eff-n { background: var(--gold-ink); }
 
 /* Interface au-dessus de la scène */
 .ui {
@@ -134,8 +157,13 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .mi { display: none; width: 18px; height: 13px; background: linear-gradient(currentColor, currentColor) 0 0 / 100% 2px no-repeat, linear-gradient(currentColor, currentColor) 0 50% / 100% 2px no-repeat, linear-gradient(currentColor, currentColor) 0 100% / 100% 2px no-repeat; }
 .ml::after { content: " ▾"; font-size: .8em; }
 .menu-panel { position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; width: min(22rem, calc(100vw - 32px)); max-height: min(72vh, 36rem); overflow: auto; overscroll-behavior: contain; padding: 10px 12px 12px; background: var(--panel-solid); border: 1px solid var(--panel-line); border-radius: 12px; box-shadow: 0 12px 36px rgba(0, 0, 0, .42); }
-.menu-panel h3 { margin: 12px 0 4px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.menu-panel h3:first-child { margin-top: 0; }
+/* intertitres : chaque groupe (Pages de l’atlas, Thèmes, Le livre, Outils, Modes…) comme dans le tiroir des pages 2D,
+   puis les trois sous-groupes des thèmes en petites capitales, séparés d’un filet pointillé */
+.menu-panel h3 { margin: 12px 0 4px; padding: 12px 9px 0; border-top: 1px solid var(--panel-line); font: 600 1.06rem/1.2 var(--font-body); letter-spacing: .005em; color: var(--ink); }
+.menu-panel > h3:first-child, .menu-panel > .an-3d-chercher + h3 { margin-top: 0; padding-top: 2px; border-top: 0; }
+.menu-panel h4 { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; padding: 0 9px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.menu-panel h4::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 1px; background: var(--gold); }
+.menu-panel ul + h4 { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--panel-line); }
 .menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
 .menu-panel a { display: block; padding: 7px 9px; border-radius: 8px; color: var(--ink); text-decoration: none; font-size: .95rem; }
 .menu-panel a:hover, .menu-panel a:focus-visible { background: rgba(160, 175, 220, .12); color: var(--gold-ink); }
@@ -143,7 +171,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .menu-modes .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 
 /* Modes (en haut à droite) et boutons */
-.toggles { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; max-width: min(46rem, 62vw); }
+.toggles { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; max-width: min(52rem, 62vw); }
 .chip, .ladder button, .round {
   pointer-events: auto; appearance: none; cursor: pointer; color: var(--ink);
   background: var(--panel); border: 1px solid var(--panel-line); border-radius: 999px;
@@ -309,6 +337,20 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .bc-nav button:hover { border-color: var(--gold); }
 .bc-nav .bc-go { border-color: var(--gold); color: var(--gold-ink); }
 .bc-nav button:last-child { text-align: right; }
+.bc-nav button:disabled { opacity: .4; cursor: default; border-color: var(--panel-line); }
+/* Fiche d’une effusion : les sept étapes, le schéma de Salvington, la mention « position schématique », la page des effusions */
+.bc-steps { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; }
+.bc-steps button { appearance: none; cursor: pointer; min-width: 30px; height: 30px; padding: 0 8px; border-radius: 999px; border: 1px solid var(--panel-line); background: transparent; color: var(--muted); font: 500 var(--small)/1 var(--font-mono); }
+.bc-steps button:hover { border-color: var(--gold); color: var(--gold-ink); }
+.bc-steps button[aria-current="step"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+.bc-diag svg { width: 100%; max-width: 220px; height: auto; display: block; margin: 0 auto; }
+.bc-diag .cap { margin: 4px 0 0; font-size: .8rem; color: var(--muted); text-align: center; }
+.bc-pos { padding: 8px 10px; border: 1px dashed rgba(246, 199, 102, .45); border-radius: 10px; font-size: .86rem; color: var(--muted); }
+.bc-pos b { color: var(--gold-ink); font-weight: 600; }
+.bc-more a { color: var(--gold-ink); text-decoration: underline; text-underline-offset: 3px; }
+.dg-hl { fill: none; stroke: var(--gold-ink); stroke-width: 1.8; }
+.dg-bn { fill: var(--gold); stroke: var(--space); stroke-width: 2; }
+.dg-bt { font: 700 11px var(--font-mono); fill: var(--on-gold); text-anchor: middle; dominant-baseline: central; }
 
 /* Bulle d’aide de la première visite */
 .coach { position: absolute; z-index: 4; left: 50%; top: 30%; transform: translateX(-50%); width: min(30rem, calc(100% - var(--gut-l) - var(--gut-r))); margin: 0; padding: 12px 16px; border: 1px solid var(--gold); border-radius: 14px; background: var(--panel-hi); color: var(--ink); text-align: center; font-size: .95rem; line-height: 1.45; box-shadow: 0 10px 30px rgba(0, 0, 0, .35); pointer-events: auto; }
@@ -358,7 +400,10 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .bc-x { width: 44px; height: 44px; }
   .go-btn { min-height: 44px; padding: 0 14px; margin: 2px 0; display: inline-flex; align-items: center; }
   .chip, .bc-nav button, .tl-ctrl .chip { min-height: 44px; }
-  .asc-steps button { min-width: 44px; height: 44px; }
+  .asc-steps button, .bc-steps button { min-width: 44px; height: 44px; }
+  .bc-more a { display: inline-flex; align-items: center; min-height: 44px; }
+  .menu-panel h4 { font-size: max(.76rem, 12px); }
+  .l3 .l3-me, .l3 .l3-s { display: none; }        /* superunivers : noms courts, sur une ligne (la fiche donne le Maitre Esprit) */
   .tl-ctrl .chip { min-width: 44px; }
   .tl-ctrl label { min-height: 44px; padding-inline: 2px; }
   .zoombar input[type="range"], .tl-ctrl input[type="range"] { height: 44px; margin-block: 0; }   /* zone de prise de 44 px */
@@ -449,7 +494,8 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="vie-de-jesus.html">La vie de Jésus</a></li>
               <li><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a></li>
             </ul>
-            <h3>Thèmes · L’univers</h3>
+            <h3>Thèmes</h3>
+            <h4>L’univers</h4>
             <ul>
               <li><a href="pere-fils-esprit.html">Le Père, le Fils et l’Esprit</a></li>
               <li><a href="paradis-et-havona.html">Le Paradis et Havona</a></li>
@@ -457,7 +503,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="jerusem-et-edentia.html">Jérusem, Édentia et les mondes des maisons</a></li>
               <li><a href="les-anges.html">Les anges</a></li>
             </ul>
-            <h3>Thèmes · Urantia et l’humanité</h3>
+            <h4>Urantia et l’humanité</h4>
             <ul>
               <li><a href="avenir-d-une-planete.html">L’avenir d’une planète</a></li>
               <li><a href="institutions-humaines.html">L’évolution des institutions humaines</a></li>
@@ -465,7 +511,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="religion-vecue.html">La religion vécue</a></li>
               <li><a href="melchizedek-et-religions.html">Melchizédek et les religions du monde</a></li>
             </ul>
-            <h3>Thèmes · Micaël et Jésus</h3>
+            <h4>Micaël et Jésus</h4>
             <ul>
               <li><a href="effusions-de-micael.html">Les sept effusions de Micaël</a></li>
               <li><a href="annees-cachees-de-jesus.html">Les années cachées de Jésus</a></li>
@@ -477,12 +523,14 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
             <ul>
               <li><a href="histoire-du-livre.html">D’où vient ce livre ?</a></li>
               <li><a href="auteurs-et-chiffres.html">Les auteurs déclarés et le livre en chiffres</a></li>
+              <li><a href="science-et-histoire.html">La science et l’histoire face au livre</a></li>
             </ul>
             <h3>Outils</h3>
             <ul>
               <li><a href="fascicules.html">Le livre fascicule par fascicule</a></li>
               <li><a href="parcours-de-lecture.html">Parcours de lecture</a></li>
               <li><a href="glossaire.html">Glossaire</a></li>
+              <li><span class="lien-a-venir">Index des noms</span></li>
               <li><a href="https://www.urantia.org/fr/le-livre-durantia/lire" target="_blank" rel="noopener">Lire le livre (urantia.org)</a></li>
             </ul>
             <p class="credit">Une gracieuseté de Sylvain Leduc · <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener">Code source sur GitHub<span aria-hidden="true">&nbsp;↗</span></a> · <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20D%E2%80%99Urantia%20au%20Paradis%20%283D%29&amp;page=D%E2%80%99Urantia%20au%20Paradis%20%283D%29%20%28atlas-3d.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire">Signaler une erreur<span aria-hidden="true">&nbsp;↗</span></a> · <a href="index.html#droits" title="Citations du Livre d’Urantia : © 1960 Urantia Foundation">Droits</a></p>
@@ -491,6 +539,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <div class="chips">
                 <button type="button" class="chip" data-proxy="t-time" aria-pressed="false">La frise du temps</button>
                 <button type="button" class="chip" data-proxy="t-asc" aria-pressed="false">La carrière ascendante</button>
+                <button type="button" class="chip" data-proxy="t-eff" aria-pressed="false">Les sept effusions</button>
                 <button type="button" class="chip" data-proxy="t-gov" aria-pressed="false">Qui gouverne quoi</button>
                 <button type="button" class="chip" data-proxy="t-coupe" aria-pressed="false">Vue en coupe</button>
                 <button type="button" class="chip" data-proxy="t-deite" aria-pressed="false">Déité</button>
@@ -509,6 +558,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
       <div class="toggles">
         <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps : de la nébuleuse d’Andronover jusqu’en 1934–1935 ; la vue 3D suit chaque évènement">La frise du temps</button>
         <button type="button" class="chip" id="t-asc" aria-pressed="false" title="La carrière ascendante : les étapes après la mort selon le livre, d’Urantia au Paradis">La carrière ascendante</button>
+        <button type="button" class="chip" id="t-eff" aria-pressed="false" title="Les sept effusions : où le fascicule 119 situe les sept effusions de Micaël, de la sphère Melchizédek à Urantia, une par une ; positions schématiques">Les sept effusions</button>
         <button type="button" class="chip" id="t-gov" aria-pressed="false" title="Qui gouverne quoi : de la planète au maitre univers">Qui gouverne quoi</button>
         <button type="button" class="chip" id="t-coupe" aria-pressed="false" title="Vue en coupe : section verticale de l’espace, en forme de croix de Malte">Vue en coupe</button>
         <button type="button" class="chip" id="t-deite" aria-pressed="false" title="Déité : où le texte situe le Suprême, l’Ultime et les trois Absolus">Déité</button>
@@ -528,7 +578,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         <div class="info-body" id="info-body">
           <p id="info-p"></p>
           <p class="deity" id="info-d" hidden></p>
-          <details class="scale"><summary>Échelle et sources</summary><p>Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines ; pour Orvonton, un rayon déduit des distances de 32:2.11 (le texte ne donne pas sa taille) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Terre et Lune&nbsp;: images de la NASA (domaine public) ; continents&nbsp;: Natural Earth (domaine public) ; nuages&nbsp;: image générée. Voie lactée&nbsp;: carte de la NASA (Goddard Space Flight Center Scientific Visualization Studio, d’après Gaia DR2&nbsp;: ESA/Gaia/DPAC), domaine public. Lueurs et couleurs des niveaux lointains&nbsp;: choix de représentation.</p></details>
+          <details class="scale"><summary>Échelle et sources</summary><p>Échelle réelle pour Urantia, Monmatia (planètes à leur position du jour), les étoiles voisines ; pour Orvonton, un rayon déduit des distances de 32:2.11 (le texte ne donne pas sa taille) ; distances du texte pour les deux premiers niveaux d’espace extérieur (12:1.14–15). Les tailles de Satania à Splandon, de Havona et du grand univers, et la position des deux derniers niveaux, sont schématiques, comme l’ordre des numéros. Les lieux des sept effusions de Micaël, que le texte ne situe pas dans Nébadon, sont placés de façon schématique. Étoiles&nbsp;: catalogue HYG v4.1 (astronexus, CC BY-SA 4.0). Orbites&nbsp;: éléments képlériens approchés du JPL (NASA). Terre et Lune&nbsp;: images de la NASA (domaine public) ; continents&nbsp;: Natural Earth (domaine public) ; nuages&nbsp;: image générée. Voie lactée&nbsp;: carte de la NASA (Goddard Space Flight Center Scientific Visualization Studio, d’après Gaia DR2&nbsp;: ESA/Gaia/DPAC), domaine public. Lueurs et couleurs des niveaux lointains&nbsp;: choix de représentation.</p></details>
         </div>
       </section>
       <section class="tl" id="tl" aria-label="Frise du temps : Nébadon, Norlatiadek, Satania et Urantia" hidden>
@@ -550,7 +600,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
             <dl id="tl-h"></dl>
           </div>
         </div>
-        <p class="tl-note">Dates telles qu’écrites&nbsp;: le texte compte «&nbsp;il y a N ans&nbsp;» depuis les premières décennies du XX<sup>e</sup> siècle (57:0.2) ; ses dates exactes sont comptées avant 1934 (62:5.1, 74:0.1). Les conversions en années av. J.-C. sont indiquées à part, et «&nbsp;déduit&nbsp;» signale un calcul. Les mondes rebelles et les lieux sur le globe sont placés de façon schématique ou approximative.</p>
+        <p class="tl-note">Dates telles qu’écrites&nbsp;: le texte compte «&nbsp;il y a N ans&nbsp;» depuis les premières décennies du XX<sup>e</sup> siècle (57:0.2) ; ses dates exactes sont comptées avant 1934 (62:5.1, 74:0.1). Les conversions en années av. J.-C. sont indiquées à part, et «&nbsp;déduit&nbsp;» signale un calcul. Les mondes rebelles, les lieux des effusions et les lieux sur le globe sont placés de façon schématique ou approximative.</p>
         <div class="tl-ctrl">
           <button type="button" class="chip" id="tl-prev" aria-label="Évènement précédent">◀</button>
           <button type="button" class="chip" id="tl-play" aria-pressed="false">Lecture</button>
@@ -1412,7 +1462,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     fragmentShader: 'uniform sampler2D uMw; uniform float uI; varying vec2 vUv; void main() { vec3 c = texture2D(uMw, vUv).rgb; gl_FragColor = vec4((c * c * 0.35 + c * 0.65) * uI, 0.0); }'
   }));
   mwSphere.renderOrder = -20; mwSphere.visible = false; mwSphere.frustumCulled = false;
-  SKY.group.add(mwSphere);
+  scene.add(mwSphere);                               // à part du ciel projeté (SKY), qui s’efface au profit des étoiles en 3D
   let mwT0 = -1;                                     // instant où la carte est prête (fondu d’apparition)
   {
     const el = document.getElementById('voie-lactee'), src = el && el.textContent ? el.textContent.trim() : '';
@@ -1501,12 +1551,21 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
 
   // 3 à 6 : niveaux de cent unités (tailles schématiques)
+  // o.fixed : places réservées ({ numéro: position }), en plus de la nôtre ; un amas tiré trop près d’elles est déplacé par un
+  // générateur à part, si bien que la suite des tirages (et l’aspect des autres niveaux) ne change pas
   function clusters(L, o) {
-    const b = buf(), sb = buf();
+    const b = buf(), sb = buf(), fx = o.fixed || {}, keep = Object.keys(fx).map((k) => fx[k]), rk = mulberry32(8401);
+    const near = (c) => c.distanceTo(L.local) < o.blob * 3 || keep.some((p) => c.distanceTo(p) < o.blob * 3);
     for (let k = 1; k <= 100; k++) {
       if (k === o.ours) continue;
       let c, tries = 0;
       do { c = randIn(0.95, o.flat); tries++; } while (c.distanceTo(L.local) < o.blob * 3 && tries < 60);
+      if (fx[k]) c = fx[k].clone();
+      else for (let t = 0; t < 60 && keep.length && near(c); t++) {
+        let x, y, z;
+        do { x = rk() * 2 - 1; y = rk() * 2 - 1; z = rk() * 2 - 1; } while (x * x + y * y + z * z > 1);
+        c.set(x * 0.95, y * 0.95 * o.flat, z * 0.95);
+      }
       const n = Math.round(o.pp * (0.7 + rnd() * 0.6));
       for (let i = 0; i < n; i++) put(b, c.x + gauss() * o.blob, c.y + gauss() * o.blob * 0.45, c.z + gauss() * o.blob, tc.copy(o.color).lerp(WHITE, rnd() * 0.35), 0.3 + rnd() * 0.45, 1.3 + rnd() * 0.9);
     }
@@ -1537,9 +1596,13 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
 
   const L4 = addLevel({ name: 'Nébadon', R: 2500, stop: 1.35 });
   L4.local.set(0.74, 0.02, 0.3);
-  clusters(L4, { ours: 70, child: 'Norlatiadek', blob: 0.075, flat: 0.3, pp: 30 * F, color: COOL });
+  // Les sept effusions de Micaël (119) : le texte ne situe pas les constellations 37, 61, 3 et 5 dans Nébadon ;
+  // leurs places, réservées parmi les cent, sont schématiques (repères plus bas)
+  const EFF_C = { 37: new V3(-0.74, 0.02, 0.04), 61: new V3(-0.20, 0.02, 0.66), 3: new V3(-0.28, 0.02, -0.62), 5: new V3(0.26, 0.02, -0.70) };
+  clusters(L4, { ours: 70, child: 'Norlatiadek', blob: 0.075, flat: 0.3, pp: 30 * F, color: COOL, fixed: EFF_C });
   fixedSprite(L4, new V3(0, 0, 0), 0xffffff, 0.02);
-  lab(L4, 'Salvington · centre d’énergie massique', new V3(0, 0, 0), '', { dy: -8 });
+  const salvLab = { text: 'Salvington · centre d’énergie massique', local: new V3(0, 0, 0), cls: '', mode: 'normal', dy: -8 };
+  L4.labels.push(salvLab);
   lab(L4, 'Micaël · la Divine Ministre · Gabriel', new V3(0, 0, 0), 'small', { below: true, dy: 8, gov: true });
   lab(L4, 'Nébadon · 100 constellations', new V3(-0.35, 0.3, -0.7), 'core');
   ascPath(L4, L4.local, new V3(0, 0, 0), 'vers Salvington');
@@ -1596,7 +1659,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   L7.group.add(coreSpr);
   fixedSprite(L7, new V3(0, 0, 0), 0xffffff, 0.022);
   lab(L7, 'Orvonton · le septième superunivers', new V3(0.1, 0.05, -0.56), 'core');
-  lab(L7, 'Uversa · capitale', new V3(0, 0, 0), '', { dy: -8 });
+  const uvLab = { text: 'Uversa · capitale', local: new V3(0, 0, 0), cls: '', mode: 'normal', dy: -8 };
+  L7.labels.push(uvLab);
   lab(L7, 'trois Anciens des Jours', new V3(0, 0, 0), 'gold small', { below: true, dy: 8, gov: true });
   lab(L7, 'Voie lactée · noyau central (15:3.1)', new V3(0, 0, 0), 'core', { below: true, dy: 30 });
   lab(L7, 'Nébadon', NEBn, 'gold', { below: true, dy: 10 });
@@ -1695,6 +1759,16 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const PHI = Math.PI - SUP_T[7];                  // l’axe d’Orvonton coïncide avec celui de la scène
   L8.group.rotation.y = PHI;
   const SUPC = [];
+  // Les Sept Maitres Esprits président les superunivers de même numéro (16:3.2–15) : la nature qui domine en chacun, en
+  // sous-titre des étiquettes et dans la fiche ; le livre ne nomme que le septième, Orvonton (15:1.5)
+  const SUP_ME = [null, ['le Père', 'il ressemble surtout au Père Universel', '16:3.2–3'], ['le Fils Éternel', 'il reflète la nature du Fils Éternel', '16:3.4–5'],
+    ['l’Esprit Infini', 'il ressemble surtout à l’Esprit Infini', '16:3.6–7'], ['le Père et le Fils', 'il unit les natures du Père et du Fils', '16:3.8–9'],
+    ['le Père et l’Esprit', 'il unit les caractères du Père et de l’Esprit Infini', '16:3.10–11'], ['le Fils et l’Esprit', 'il unit les caractères du Fils Éternel et de l’Esprit Infini', '16:3.12–13'],
+    ['le Père, le Fils et l’Esprit', 'il est le portrait, à parts égales, du Père, du Fils et de l’Esprit', '16:3.14–15']];
+  const SUP_ST = (n) => '<span class="l3-me">Maitre Esprit n°&nbsp;' + n + ' · </span>' + SUP_ME[n][0];   // téléphone : la nature seule
+  // place du nom : au bureau, hors de l’anneau ; sur un petit écran, au-dessus de la galaxie (l’anneau occupe toute la largeur),
+  // en priorité sur les autres noms (le titre de Havona peut alors céder la place)
+  const supAt = (t) => small ? ring(t, RX, 0.02) : ring(t, RX + 0.36), SUP_PRIO = small ? 0.5 : 2;
   // aspect de galaxie spirale : nombre de bras, pas de la spirale (degrés), barre, orientation ; le n° 7 reprend Orvonton
   const GAL = [{ arms: 2, pitch: 16, bar: true, ph: 0.3 }, { arms: 3, pitch: 20, bar: false, ph: 1.1 }, { arms: 2, pitch: 12, bar: false, ph: 2.0 }, { arms: 4, pitch: 22, bar: false, ph: 0.6 }, { arms: 2, pitch: 18, bar: true, ph: 2.6 }, { arms: 3, pitch: 15, bar: true, ph: 1.7 }, { arms: 2, pitch: 13, bar: true, ph: 0.4 }];
   for (let n = 1; n <= 7; n++) {
@@ -1717,10 +1791,10 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (k === 0) {
       for (let i = 0; i < 220 * F; i++) put(b, -0.84 * A + gauss() * 0.004, gauss() * 0.001, 0.072 * A + gauss() * 0.004, GOLD, 0.8, 1.8);
       L8.sub = makePoints(b, g);
-      lab(L8, 'Orvonton · n° 7', ring(t, RX, 0.03), 'gold', { sub: true });
+      lab(L8, 'Orvonton · superunivers n° 7', ring(t, RX, 0.02), 'gold supu', { sub: true, ht: 'Orvonton · <span class="l3-me">superunivers </span>n°&nbsp;7', st: SUP_ST(7), nocap: true, prio: SUP_PRIO, radial: true });   // sur sa galaxie : le « tu es ici » est au bord extérieur
     } else {
       L8.pts.push(makePoints(b, g));
-      lab(L8, 'superunivers n° ' + n, ring(t, RX + 0.25), 'small');
+      lab(L8, 'Superunivers n° ' + n, supAt(t), 'supu', { ht: 'Superunivers n°&nbsp;' + n, st: SUP_ST(n), prio: SUP_PRIO, nocap: true, radial: true, tgt: ring(t, RX) });
     }
   }
   {
@@ -2007,6 +2081,51 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     L7.group.add(cone);
     lab(L7, 'vers Havona et le Paradis', a1, '', { dy: -8 });
   }
+  /* ---------- Les sept effusions de Micaël (119) : repères ---------- */
+  // 1 : la sphère Melchizédek, monde-pilote du circuit de Salvington (35:3.1) ; repère sur Salvington. 2, 3, 4, 6 : constellations
+  // 37, 61, 3 et 5, places schématiques ; 5 : Uversa, centre d’Orvonton ; 7 : Urantia, sur Norlatiadek (constellation 70).
+  // Traits dorés (mode « Les sept effusions ») : Micaël part chaque fois de Salvington et y revient (119:1.2 · 119:2.7 · 119:3.4).
+  const ORD = ['', 'Première', 'Deuxième', 'Troisième', 'Quatrième', 'Cinquième', 'Sixième', 'Septième'];
+  // 7 : sur l’amas de Norlatiadek, un peu à côté de son centre, de biais par rapport au « tu es ici » (place schématique)
+  function effOn7() { const du = L4.P.clone().divideScalar(L4.R).sub(L4.local).setY(0).normalize(); return L4.local.clone().add(new V3(du.z, 0, -du.x).multiplyScalar(0.08)); }
+  const EFFM = [null,
+    { L: L4, p: new V3(), s: 'Fils Melchizédek', w: 'sphère Melchizédek, à Salvington', v: 2400, lab: salvLab },
+    { L: L4, p: EFF_C[37], s: 'Fils Lanonandek', w: 'constellation 37', v: 2400, aura: 1 },
+    { L: L4, p: EFF_C[61], s: 'Fils Matériel', w: 'constellation 61', v: 2400, aura: 1 },
+    { L: L4, p: EFF_C[3], s: 'Séraphin', w: 'constellation 3', v: 2400, aura: 1 },
+    { L: L7, p: new V3(), s: 'Mortel ascendant, Éventod', w: 'Uversa', v: 2.4e5, lab: uvLab },
+    { L: L4, p: EFF_C[5], s: 'Mortel morontiel', w: 'Endantum, constellation 5', v: 2400, aura: 1 },
+    { L: L4, p: effOn7(), s: 'Jésus de Nazareth', w: 'Urantia, dans Norlatiadek', v: 2400 }];
+  EFFM.forEach((m, n) => {
+    if (!m) return;
+    m.place = m.lab || null;                       // étiquette du lieu, au même point : relevée quand la pastille est là
+    // une lueur dorée sous la pastille, plus large sur une constellation (cliquable, même sans étiquettes)
+    m.sz = m.aura ? 0.11 : 0.05; m.op = m.aura ? 0.3 : 0.5;
+    const sp = fixedSprite(m.L, m.p, 0xF6C766, m.sz, softTex, null, 'effm' + n);
+    m.mat = m.L.mats[m.L.mats.length - 1];
+    m.mat.base = m.op;
+    sp.userData.eff = n; sp.renderOrder = 6;
+    m.fx = m.L.fixed[m.L.fixed.length - 1];
+    m.lab = { text: m.s, local: m.p, cls: 'eff', mode: 'normal', cf: 'effm' + n, eff: n, prio: 3.5, pinx: 14 };
+    m.L.labels.push(m.lab);
+    if (n === 1 || n === 5) return;
+    const sl = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new V3(), m.p.clone()]), lineMat(L4, 0xF6C766, 0.85, true, 0.018, 0.012, 'effs' + n));
+    sl.computeLineDistances();
+    L4.group.add(sl);
+  });
+  { // cinquième : de Salvington vers Uversa, hors du disque de Nébadon ; dans Orvonton, de Nébadon à Uversa
+    const u5 = L4.P.clone().sub(L7.P).normalize(), tip = u5.clone().multiplyScalar(1.22);
+    const sl = new THREE.Line(new THREE.BufferGeometry().setFromPoints([new V3(), tip]), lineMat(L4, 0xF6C766, 0.85, true, 0.018, 0.012, 'effs5'));
+    sl.computeLineDistances();
+    L4.group.add(sl);
+    const cone = new THREE.Mesh(new THREE.ConeGeometry(0.014, 0.045, 14), fadeMat(L4, new THREE.MeshBasicMaterial({ color: 0xF6C766 }), 0.85, 'effs5'));
+    cone.position.copy(tip); cone.quaternion.setFromUnitVectors(new V3(0, 1, 0), u5);
+    L4.group.add(cone);
+    lab(L4, 'vers Uversa · cinquième effusion', tip, 'small', { cf: 'eff', dy: -6 });
+    const s7 = new THREE.Line(new THREE.BufferGeometry().setFromPoints([NEBn.clone(), new V3()]), lineMat(L7, 0xF6C766, 0.85, true, 0.016, 0.012, 'effs5'));
+    s7.computeLineDistances();
+    L7.group.add(s7);
+  }
   const DECOR = [SKY, LOC, PLN];
   const ALLLV = LV.concat(DECOR);
 
@@ -2030,7 +2149,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     gravite: { h: 'Les corps de gravité obscurs', s: 'Corps de gravité', p: 'Deux ceintures encerclent Havona et le cachent aux univers du temps&nbsp;: ces corps «&nbsp;ne réfléchissent pas la lumière et ne l’absorbent pas non plus&nbsp;»' + REF('14:1.14') + '. La ceinture intérieure forme un tube de trois anneaux concentriques et tourne en sens inverse des aiguilles d’une montre&nbsp;; l’extérieure, verticale, est «&nbsp;d’une hauteur dix-mille fois supérieure à celle du circuit intérieur&nbsp;» et tourne dans le sens des aiguilles' + REF('14:1.5–7 · 14:1.16') + '. À cause d’elles, le contenu massique de l’univers central «&nbsp;dépasse considérablement le total des masses connues&nbsp;» des sept superunivers' + REF('12:1.10') + '. La hauteur est ici très réduite.' },
     uversa: { h: 'Uversa', p: 'Le monde-siège d’Orvonton, autour duquel tournent les dix secteurs majeurs' + REF('15:3.13') + '. La Voie lactée forme le noyau central du superunivers' + REF('15:3.1') + '.' },
     salvington: { h: 'Salvington', p: 'Capitale de Nébadon, située «&nbsp;exactement au centre d’énergie massique de l’univers local&nbsp;»' + REF('32:2.4') + '. C’est le quartier général personnel de Micaël de Nébadon' + REF('32:2.5') + '.' },
-    sup: (k) => ({ h: 'Le superunivers n° ' + k, p: 'Chaque superunivers est un amas d’environ un septième de la création organisée au-delà de Havona, et les sept sont à peu près équivalents en univers locaux et en espace' + REF('12:1.12') + '. Chacun est régi par trois Anciens des Jours' + REF('15:2.8') + '. L’ordre des numéros est ici schématique.' }),
+    sup: (k) => ({ h: 'Le superunivers n° ' + k, p: 'Chaque superunivers est un amas d’environ un septième de la création organisée au-delà de Havona, et les sept sont à peu près équivalents en univers locaux et en espace' + REF('12:1.12') + '. Chacun est régi par trois Anciens des Jours' + REF('15:2.8') + '. Celui-ci est présidé par le Maitre Esprit n°&nbsp;' + k + '&nbsp;: ' + SUP_ME[k][1] + REF(SUP_ME[k][2]) + '. Le livre ne nomme que le septième, Orvonton&nbsp;; les six autres sont désignés par leur numéro' + REF('15:1.4–5') + '. Leurs places sur l’anneau suivent cette description, Orvonton tournant entre les numéros un et six&nbsp;; leurs tailles et leurs écarts sont schématiques.' }),
     calme: { h: 'La zone de calme', p: 'Entre les sept superunivers et le premier niveau d’espace extérieur s’étend une zone comparativement calme, large en moyenne de 400&#160;000 années-lumière. Ces zones sont «&nbsp;libres de poussière stellaire&nbsp;»' + REF('12:1.14') + '.' },
     niveau2: { h: 'Le deuxième niveau d’espace extérieur', s: '2e niveau extérieur', p: 'Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent l’organisation du deuxième' + REF('12:1.15') + '. Il semble tourner en sens inverse des aiguilles d’une montre, comme les superunivers' + REF('12:4.15') + '.' }
   };
@@ -2042,10 +2161,10 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       ['soleil', 'mercure', 'venus', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton'].map((k) => '<button type="button" class="go-btn" data-go="b:' + k + '">' + BODY[k].n + '</button>').join('') + '</span>Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley. Les points ont une taille indicative&nbsp;; chaque astre existe aussi en vrai volume, et son point ou son nom mène jusqu’à lui.' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
-    { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#160;840&#160;101 planètes habitées' + REF('32:2.9') + '.' },
+    { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#160;840&#160;101 planètes habitées' + REF('32:2.9') + '. Les pastilles dorées numérotées situent les sept effusions de Micaël' + REF('119:0.7') + '&nbsp;; le texte ne situe pas leurs constellations dans Nébadon&nbsp;: ces places sont schématiques. <button type="button" class="go-btn" data-go="eff">Les parcourir une par une</button>' },
     { h: 'Ensa', p: 'Secteur mineur n°&nbsp;3 de Splandon&nbsp;: cent univers locaux, capitale Uminor la troisième' + REF('15:14.7') + '. Son centre de rotation se trouve dans le nuage stellaire du Sagittaire' + REF('15:3.5') + '.' },
     { h: 'Splandon', p: 'Secteur majeur, le cinquième d’Orvonton&nbsp;: cent secteurs mineurs, capitale Umajor la cinquième' + REF('15:14.7') + '.' },
-    { h: 'Orvonton', p: 'Le septième superunivers forme «&nbsp;un groupement ovale allongé à profil de montre&nbsp;»' + REF('15:3.1') + '. La Voie lactée en est le noyau central, autour d’Uversa' + REF('15:3.13') + '. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;»' + REF('32:2.11') + '. Le centre est placé ici dans la direction du Sagittaire, celle du cœur dense de la Voie lactée&nbsp;: c’est un choix de représentation. L’aspect de galaxie spirale en est un autre&nbsp;: le texte compte des «&nbsp;nébuleuses spirales&nbsp;» parmi le contenu d’Orvonton, mais ne dit pas que le superunivers lui-même a des bras' + REF('15:3.1') + '.' },
+    { h: 'Orvonton', p: 'Le septième superunivers forme «&nbsp;un groupement ovale allongé à profil de montre&nbsp;»' + REF('15:3.1') + '. La Voie lactée en est le noyau central, autour d’Uversa' + REF('15:3.13') + '. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;»' + REF('32:2.11') + '. Le centre est placé ici dans la direction du Sagittaire, celle du cœur dense de la Voie lactée&nbsp;: c’est un choix de représentation. L’aspect de galaxie spirale en est un autre&nbsp;: le texte compte des «&nbsp;nébuleuses spirales&nbsp;» parmi le contenu d’Orvonton, mais ne dit pas que le superunivers lui-même a des bras' + REF('15:3.1') + '. Son Maitre Esprit, le septième, est le portrait, à parts égales, du Père, du Fils et de l’Esprit' + REF('16:3.14–15') + '. La pastille n°&nbsp;5 marque Uversa, où Micaël vécut sa cinquième effusion sous le nom d’Éventod' + REF('119:5.1–2') + '.' },
     { h: 'Le grand univers', p: 'Les sept superunivers «&nbsp;parcourent une grande ellipse&nbsp;»' + REF('15:1.2') + ' autour de Havona, l’univers central d’«&nbsp;un milliard de sphères&nbsp;», entouré des corps de gravité obscurs. Au centre se trouve l’Ile du Paradis' + REF('12:1.10') + '. Selon l’orientation d’Urantia, Orvonton a pris «&nbsp;le tournant sud-est du niveau d’espace des superunivers&nbsp;», entre les numéros un et six' + REF('15:1.4–5') + '. Les sept rayons de la roue sont les radiations des Sept Maitres Esprits' + REF('15:0.1') + '. Notre univers local est «&nbsp;près de cette frontière extérieure&nbsp;»' + REF('12:1.13') + '. Les superunivers sont dessinés comme des galaxies spirales&nbsp;: c’est une image, car le texte dit seulement qu’ils sont «&nbsp;à peu près équivalents&nbsp;» en univers locaux et en espace' + REF('12:1.12') + '. Clique sur Havona pour l’explorer de près.' },
     { h: 'Le premier niveau d’espace extérieur', s: '1er niveau extérieur', p: 'Autour des sept superunivers s’étend une zone de calme relatif, large en moyenne de 400&#160;000 années-lumière. À environ un demi-million d’années-lumière au-delà du grand univers commence «&nbsp;une ceinture continue d’activité cosmique&nbsp;», qui s’étend sur plus de 25 millions d’années-lumière' + REF('12:1.14') + '. D’innombrables univers y sont «&nbsp;en cours de formation&nbsp;»' + REF('11:7.7') + '. Cette ceinture tourne dans le sens des aiguilles d’une montre, à l’inverse des superunivers' + REF('12:4.15') + '.' },
     { h: 'Le maitre univers', p: 'Le maitre univers forme «&nbsp;six ellipses concentriques&nbsp;» autour de l’Ile centrale&nbsp;: Havona, les sept superunivers et quatre niveaux d’espace extérieur' + REF('12:1.3–9') + '. Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent le deuxième' + REF('12:1.15') + ', qui semble tourner en sens inverse, comme les superunivers. Une «&nbsp;troisième ceinture d’espace immensément lointaine&nbsp;» paraît s’orienter dans le sens des aiguilles d’une montre' + REF('12:4.15') + '. Le texte ne donne pas la distance des deux derniers niveaux.' },
@@ -2158,7 +2277,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     edentia: ['Édentia', 'Édentia, environ cent fois plus grande qu’Urantia, est entourée de soixante-dix sphères majeures, chacune avec dix satellites&nbsp;: 771 sphères en tout' + REF('43:0.2') + '.'],
     jerusem: ['Jérusem', 'Jérusem, ses sept mondes de transition et leurs quarante-neuf sous-satellites forment 57 sphères' + REF('45:0.1') + '. Les mondes des maisons (en or) sont les sept satellites du monde de transition n° 1' + REF('47:0.1') + '.']
   };
-  function svgDiag(kind) {
+  function svgDiag(kind, hl) {
     const C = 150, o = [];
     const dot = (x, y, r, cls) => o.push('<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '" class="' + cls + '"/>');
     const txt = (x, y, s) => o.push('<text x="' + x + '" y="' + y + '" class="dg-t">' + s + '</text>');
@@ -2176,12 +2295,19 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       txt(150, 180, CAP[kind][0]);
     } else if (kind === 'salvington') {
       dot(C, C, 10, 'dg-center');
-      pts(10, 104, -Math.PI / 2).forEach((g, gi) => pts(7, 20, 0).forEach((p) => {
+      const G = pts(10, 104, -Math.PI / 2);
+      G.forEach((g, gi) => pts(7, 20, 0).forEach((p) => {
         const x = C + g[0] + p[0], y = C + g[1] + p[1];
         dot(x, y, 2.1, gi === 0 ? 'dg-gold' : 'dg-white');
         pts(6, 5.2, 0).forEach((q) => dot(x + q[0], y + q[1], 0.8, 'dg-dim'));
       }));
       txt(150, 180, 'Salvington');
+      if (hl) {                                    // fiche d’une effusion : une sphère (hl.p) ou tout un groupe (hl.p < 0), et son numéro
+        const g = G[hl.g], q = hl.p >= 0 ? pts(7, 20, 0)[hl.p] : [0, 0], x = C + g[0] + q[0], y = C + g[1] + q[1], r = hl.p >= 0 ? 7 : 29;
+        const ul = Math.hypot(x - C, y - C) || 1, bx = x + (x - C) / ul * (r + 13), by = y + (y - C) / ul * (r + 13);
+        o.push('<circle cx="' + x.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="' + r + '" class="dg-hl"/>');
+        o.push('<circle cx="' + bx.toFixed(1) + '" cy="' + by.toFixed(1) + '" r="9" class="dg-bn"/><text x="' + bx.toFixed(1) + '" y="' + by.toFixed(1) + '" class="dg-bt">' + hl.n + '</text>');
+      }
     } else if (kind === 'edentia') {
       dot(C, C, 13, 'dg-center');
       pts(70, 108, 0).forEach((g) => { dot(C + g[0], C + g[1], 2.3, 'dg-white'); pts(10, 5.5, 0).forEach((q) => dot(C + g[0] + q[0], C + g[1] + q[1], 0.7, 'dg-dim')); });
@@ -2230,13 +2356,22 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     l.el = document.createElement(go ? 'button' : 'div');
     l.el.className = 'l3 ' + l.cls + (l.below ? ' below' : '') + (l.side ? ' side' : '');
     l.el.textContent = l.text;
+    if (l.st) l.el.innerHTML = '<span class="l3-t">' + (l.ht || l.text) + '</span><span class="l3-s">' + l.st + '</span>';   // titre et sous-titre
     l.el.style.display = 'none';
     // priorité au désencombrement : repères, titres de niveau, lieux en or, autres lieux, étoiles
     if (l.prio == null) l.prio = l.cls.indexOf('core') >= 0 ? 1 : l.cls.indexOf('gold') >= 0 ? 2 : l.cls.indexOf('star') >= 0 ? 4 : 3;
     // secondaire (étoile, annotation) : masquée si elle déborde de l’écran ; importante (niveau, lieu) : ramenée dans l’écran
     l.minor = l.cls.indexOf('star') >= 0 || (l.cls.indexOf('small') >= 0 && l.cls.indexOf('gold') < 0);
     if (!go) l.el.setAttribute('aria-hidden', 'true');
-    else {
+    else if (l.eff) {                              // repère d’une effusion : pastille numérotée ; nom et lieu pour l’effusion en cours
+      const m = EFFM[l.eff], d = ORD[l.eff] + ' effusion de Micaël : ' + m.s + ', ' + m.w + ' (position schématique). Ouvrir sa fiche';
+      l.el.type = 'button';
+      l.el.classList.add('go');
+      l.el.innerHTML = '<span class="eff-n" aria-hidden="true">' + l.eff + '</span><span class="eff-tx" aria-hidden="true"><span class="eff-t">' + m.s + '</span><span class="eff-w">' + m.w + ' · position schématique</span></span>';
+      l.el.setAttribute('aria-label', d);
+      l.el.title = d;
+      l.el.addEventListener('click', () => { if (!coupe) { setEffPlay(false); goEff(l.eff); } });
+    } else {
       l.el.type = 'button';
       l.el.classList.add('go');
       l.el.title = 'S’en approcher';
@@ -2247,12 +2382,14 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       l.el.addEventListener('click', () => {
         if (!l.wp || coupe) return;
         if (l.body && (BODY_BY[l.body] || CARD_AT[l.body] || l.body === 'lune' || l.body === 'urantia')) goBody(l.body);   // un astre : on vole jusqu’à lui et sa fiche s’ouvre
-        else { goWorld(l.wp, l.zoomV); if (l.body) openCard(l.body); }
+        else { goWorld(l.tgt ? pv.copy(l.tgt).applyQuaternion(l.L.group.quaternion).multiplyScalar(l.L.group.scale.x).add(l.L.group.position) : l.wp, l.zoomV); if (l.body) openCard(l.body); }   // tgt : le lieu visé, si le nom est posé à côté
       });
     }
     labelsEl.appendChild(l.el);
   }
   ALLLV.forEach((L) => L.labels.forEach((l) => { l.L = L; l.i = LV.indexOf(L); mkLabel(l); ALL.push(l); }));
+  const SUPL = ALL.filter((l) => l.st);           // noms des superunivers (titre et sous-titre)
+  let supCompact = false;
   const hereLabel = { text: 'Urantia · tu es ici', cls: 'gold small here', dy: 0, prio: 0 };
   mkLabel(hereLabel);
   const leadEl = document.createElement('div');           // trait de rappel du « tu es ici »
@@ -2328,6 +2465,21 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     edgeL = Math.max(12, (parseFloat(cs.paddingLeft) || 0) + 4); edgeR = Math.max(12, (parseFloat(cs.paddingRight) || 0) + 4);
   }
   function fit(l, w, h) {
+    if (l.pinx != null) {                            // pastille posée sur le point (repères des effusions) : le nom à droite, à gauche
+      if (!l.el.classList.contains('col')) l.wr = l.w; // si la place manque (bord, fiche ouverte), ou en dessous (écran étroit)
+      const rw = l.wr || l.w, rlim = Math.min(w - edgeR, freeR - 10);
+      const mode = l.ax - l.pinx + rw <= rlim ? 'r' : l.ax + l.pinx - rw >= edgeL ? 'l' : 'c';
+      if (mode !== (l.pm || 'r')) {
+        l.pm = mode;
+        l.el.classList.toggle('flip', mode === 'l'); l.el.classList.toggle('col', mode === 'c');
+        l.w = l.el.offsetWidth || l.w; l.hh = l.el.offsetHeight || l.hh;   // nouvelle forme : nouvelle mesure
+      }
+      if (mode === 'c') { l.px = l.ax; l.py = l.ay - l.pinx + l.hh; }
+      else { l.px = mode === 'l' ? l.ax + l.pinx - l.w / 2 : l.ax - l.pinx + l.w / 2; l.py = l.ay + l.hh / 2; }
+      if (l.py - l.hh < 2 || l.py > h - 2 || l.px - l.w / 2 < edgeL || l.px + l.w / 2 > w - edgeR) return false;
+      setXY(l);
+      return true;
+    }
     if (l.side) {                                    // nom à côté du point (planètes) : à droite, ou à gauche près du bord de l’écran
       const so = (l.so || 5) * h / 1000 + 5, fl = l.ax + so + l.w > w - edgeR;
       if (fl !== !!l.flip) { l.flip = fl; l.el.classList.toggle('flip', fl); }
@@ -2363,10 +2515,13 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
   let uCur = 0, uTarget = 0, coupe = false, deity = false, labelsOn = true, camAnim = null, last = performance.now(), sliderActive = false;
   let free = false, fly = null, blendT = 0;
+  let effOn = false, effI = 1, effTimer = null, effPin = null;   // mode « Les sept effusions » : étape, lecture, lieu montré sur le globe
   let uVel = 0;                                            // vitesse du zoom (ressort)
   const freeFocus = new V3(), blendFrom = new V3(), focusPhys = new V3();
   const FACT = { c8: 1, c9: 0, sup: 0, ult: 0, abs: 0, frame: 0, sun: 1, planets: 1, noplanet: 0, neb: 0, reb: 0, isol: 0, inc: 0, asc: 0, moondot: 1 };
   BODIES.forEach((B) => { FACT['d_' + B.key] = 1; });   // point de chaque astre : s’efface quand son globe grandit
+  FACT.eff = 0;
+  for (let n = 1; n <= 7; n++) { FACT['effm' + n] = 1; FACT['effs' + n] = 0; }   // repère (pastille, lueur) et trait de chaque effusion
 
   const centerOf = (L) => L.P.clone().negate();
   function deepest(f) {
@@ -2533,7 +2688,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       else if (!sa && absFolded) { absFolded = false; setInfoMin(false); }
     }
     // bien au-delà du système solaire, la fiche se referme (pas pendant la descente vers l’astre)
-    if (!bcard.hidden && !fly && (coupe || Math.min(V, uToV(uTarget)) > 4e-3)) closeCard();
+    if (!bcard.hidden && !effOn && !fly && (coupe || Math.min(V, uToV(uTarget)) > 4e-3)) closeCard();
     if (!sliderActive) slider.value = uCur.toFixed(2);
   }
 
@@ -2559,7 +2714,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   tCoupe.addEventListener('click', () => setCoupe(!coupe));
   // Déité : ses halos n’apparaissent qu’à l’échelle du grand univers ; on s’y rend (comme la vue en coupe et #deite)
   tDeite.addEventListener('click', () => { deity = !deity; tDeite.setAttribute('aria-pressed', String(deity)); if (deity && uTarget < 7.5) { recenter(); setU(8); } });
-  const tGov = document.getElementById('t-gov');
+  const tGov = document.getElementById('t-gov'), tEff = document.getElementById('t-eff');
+  tEff.addEventListener('click', () => { if (effOn) closeCard(); else startEff(1); });
   renderGov();
   tGov.addEventListener('click', () => { govOn = !govOn; govEl.hidden = !govOn; tGov.setAttribute('aria-pressed', String(govOn)); if (govOn) { closeCard(); onlyDrawer('gov'); } });
   tRot.addEventListener('click', () => setRotate(!controls.autoRotate));
@@ -2582,21 +2738,25 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       p: 'Le système solaire fonctionne à peu près comme aujourd’hui&nbsp;; il est inscrit sur le registre physique de Nébadon sous le nom de Monmatia' + REF('57:6.8–9') + '.' },
     { y: 1e9, d: 'il y a un milliard d’années', t: 'Début de l’histoire d’Urantia', tr: 'U', u: 0,
       p: 'C’est la date du commencement effectif de l’histoire d’Urantia' + REF('57:8.1') + '. Micaël prépare alors sa première effusion' + REF('119:0.7') + '.' },
-    { y: 9.9e8, d: 'il y a presque un milliard d’années', t: 'Première effusion : un Fils Melchizédek', tr: 'N', u: 4, who: [['Micaël', 'loy'], ['Emmanuel, l’Union des Jours', 'tri']],
+    { y: 9.9e8, d: 'il y a presque un milliard d’années', t: 'Première effusion : un Fils Melchizédek', tr: 'N', u: 4, eff: 1, who: [['Micaël', 'loy'], ['Emmanuel, l’Union des Jours', 'tri']],
       p: 'Sur Salvington, Micaël annonce qu’Emmanuel, son frère ainé, assumera l’autorité dans Nébadon pendant son absence' + REF('119:1.1') + '. Un étrange Fils Melchizédek apparait alors sur la sphère Melchizédek&nbsp;: c’est la première effusion' + REF('119:1.3') + '.' },
     { y: 9.5e8, d: 'il y a 950 millions d’années', t: 'Urantia rattachée à Satania', tr: 'S', u: 2,
       p: 'Urantia n’a qu’un grand continent, entouré de l’océan Pacifique' + REF('57:8.5') + '. Elle est rattachée au système de Satania pour son administration planétaire et inscrite sur le registre de vie de Norlatiadek' + REF('57:8.6') + '.' },
     { y: 9e8, d: 'il y a 900 millions d’années', t: 'Le premier groupe de reconnaissance', tr: 'S', u: 0,
       p: 'Un groupe de Satania, envoyé de Jérusem, vient examiner la planète comme future station expérimentale de vie' + REF('57:8.7') + '.' },
-    { y: 7e8, d: 'entre la première et la cinquième effusion (dates non précisées)', t: 'Deuxième, troisième et quatrième effusions', tr: 'N', u: 4, who: [['Micaël', 'loy'], ['Emmanuel', 'tri']],
-      p: 'Deuxième&nbsp;: Fils Lanonandek, Souverain Systémique en exercice du système 11 de la constellation 37' + REF('119:2.4') + '. Troisième&nbsp;: Fils Matériel, faisant fonction de Prince Planétaire du monde 217 du système 87, constellation 61' + REF('119:3.3') + '. Quatrième&nbsp;: séraphin de l’ordre suprême' + REF('119:4.2') + '. Les effusions se succèdent à environ cent-cinquante-millions d’années d’intervalle' + REF('119:0.7') + '.' },
+    { y: 8.5e8, d: 'près de cent-cinquante-millions d’années après la première (date non précisée)', t: 'Deuxième effusion : un Fils Lanonandek', tr: 'N', u: 4, eff: 2, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Lutentia', 'reb']],
+      p: 'Lutentia, Souverain Systémique du système 11 de la constellation 37, entraine ses associés dans une rébellion' + REF('119:2.1–2') + '. Micaël apparait comme un Fils Lanonandek inconnu et devient Souverain Systémique en exercice de ce système' + REF('119:2.4') + ', connu alors comme le Souverain Sauveur de Palonia' + REF('119:2.5') + '. Les effusions se succèdent à environ cent-cinquante-millions d’années d’intervalle' + REF('119:0.7') + '.' },
+    { y: 7e8, d: 'après la deuxième effusion (date non précisée)', t: 'Troisième effusion : un Fils Matériel', tr: 'N', u: 4, eff: 3, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
+      p: 'Les Porteurs de Vie de la planète 217, dans le système 87 de la constellation 61, demandent un Fils Matériel&nbsp;; ce système connait la deuxième rébellion d’un Souverain Systémique dans Nébadon' + REF('119:3.1') + '. Micaël y devient, comme Fils Matériel, Prince Planétaire faisant fonction du monde 217' + REF('119:3.3') + ', et ramène au repentir le Prince défaillant et tout son état-major' + REF('119:3.4') + '.' },
     { y: 6e8, d: 'il y a 600 millions d’années', t: 'La commission des Porteurs de Vie', tr: 'U', u: 0, who: [['Porteurs de Vie', 'loy']],
       p: 'Envoyée de Jérusem, elle commence l’étude des conditions physiques du monde n°&nbsp;606' + REF('58:1.1') + '.' },
     { y: 5.5e8, d: 'il y a 550 millions d’années', t: 'Le retour des Porteurs de Vie', tr: 'U', u: 0, who: [['Porteurs de Vie', 'loy']],
       p: 'Le corps des Porteurs de Vie revient sur Urantia' + REF('58:4.2') + '&nbsp;; il y a 500 millions d’années, la vie végétale primitive des mers est bien établie' + REF('58:4.3') + '.' },
-    { y: 3.05e8, d: 'il y a un peu plus de 300 millions d’années', t: 'Cinquième effusion, sur Uversa', tr: 'N', u: 7, who: [['Micaël (Éventod)', 'loy'], ['Emmanuel', 'tri']],
+    { y: 5e8, d: 'après la troisième effusion (date non précisée)', t: 'Quatrième effusion : un séraphin', tr: 'N', u: 4, eff: 4, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
+      p: 'À la fin d’un appel nominal millénaire d’Uversa, Micaël remet le gouvernement à Emmanuel et à Gabriel' + REF('119:4.1') + '. Le quartier général séraphique de Nébadon annonce l’arrivée d’un séraphin inconnu, de l’ordre suprême, affecté aux conseillers d’enseignement' + REF('119:4.2') + '. Sa dernière affectation le conduit sur le monde 462 du système 84, dans la constellation 3' + REF('119:4.3') + '.' },
+    { y: 3.05e8, d: 'il y a un peu plus de 300 millions d’années', t: 'Cinquième effusion, sur Uversa', tr: 'N', u: 7, eff: 5, who: [['Micaël (Éventod)', 'loy'], ['Emmanuel', 'tri']],
       p: 'Nouveau transfert d’autorité à Emmanuel' + REF('119:5.1') + '. Sous le nom d’Éventod, Micaël vit et travaille sur Uversa onze années du temps standard d’Orvonton, semblable à un mortel ascendant au stade d’esprit' + REF('119:5.2') + '.' },
-    { y: 1.5e8, d: 'entre la cinquième et la septième effusion (date non précisée)', t: 'Sixième effusion, sur Endantum', tr: 'N', u: 4, who: [['Micaël', 'loy']],
+    { y: 1.5e8, d: 'entre la cinquième et la septième effusion (date non précisée)', t: 'Sixième effusion, sur Endantum', tr: 'N', u: 4, eff: 6, who: [['Micaël', 'loy']],
       p: 'Micaël vit la carrière d’un mortel morontiel d’Endantum&nbsp;; l’auteur n’a pas le droit d’en donner les détails' + REF('119:6.3') + '.' },
     { y: 993419, d: '993&#160;419 ans avant 1934', c: 'soit 991&#160;486 av. J.-C.', t: 'Naissance d’Andon et Fonta', tr: 'U', u: 0, who: [['Andon', 'loy'], ['Fonta', 'loy']],
       p: 'La naissance des deux premiers êtres humains se situe à cette date exacte' + REF('62:5.1') + '.' },
@@ -2630,7 +2790,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       p: 'Adam vécut 530 ans' + REF('76:5.5') + '. Le troisième jour après sa mort, Lanaforge ordonne un appel nominal spécial&nbsp;: Adam et Ève sont repersonnalisés dans la salle de résurrection des mondes des maisons de Satania, avec 1&#160;316 compagnons du premier jardin' + REF('76:6.2') + '. Adam siège aujourd’hui parmi les vingt-quatre conseillers' + REF('45:4.11') + '.' },
     { y: 3913, d: '1&#160;973 ans avant la naissance de Jésus', c: 'soit vers 1980 av. J.-C. (déduit)', t: 'Machiventa Melchizédek à Salem', tr: 'U', u: 0, pin: 'salem', who: [['Machiventa Melchizédek', 'loy']],
       p: 'Machiventa s’effuse sur les races humaines' + REF('93:2.1') + ', près du lieu qui deviendra la ville de Salem, en Palestine' + REF('93:1.3') + '. Il vit quatre-vingt-quatorze ans comme être matériel' + REF('93:2.2') + '.' },
-    { y: 1940, d: 'le 21 aout de l’an 7 av. J.-C.', t: 'La septième effusion : Micaël nait sur Urantia', tr: 'U', u: 0, pin: 'bethleem', who: [['Micaël incarné : Jésus', 'loy']],
+    { y: 1940, d: 'le 21 aout de l’an 7 av. J.-C.', t: 'La septième effusion : Micaël nait sur Urantia', tr: 'U', u: 0, pin: 'bethleem', eff: 7, who: [['Micaël incarné : Jésus', 'loy']],
       p: 'Micaël a choisi Urantia pour son effusion finale' + REF('119:7.2') + '&nbsp;; Marie le met au monde à Bethléem' + REF('122:7.4 · 122:8.1') + '. Le récit de sa vie forme la partie IV du livre, qui fera l’objet d’une étape à part.' },
     { y: 1909, d: 'fin de l’été de l’an 25 (dernière semaine sur l’Hermon), puis le 14 janvier de l’an 26', t: 'Micaël acquiert sa pleine souveraineté', tr: 'N', u: 0, pin: 'hermon', who: [['Jésus (Micaël)', 'loy'], ['Satan', 'reb'], ['Caligastia', 'reb'], ['Gabriel', 'loy']],
       p: 'Au mont Hermon, Jésus rencontre Satan, qui représente Lucifer, et Caligastia' + REF('134:8.6') + '&nbsp;; les annales de l’univers enregistrent qu’il est devenu Prince Planétaire d’Urantia' + REF('136:3.1') + '. Gabriel lui fait savoir ensuite que la souveraineté a été atteinte le jour de son baptême' + REF('136:3.4') + '. Deux passages, deux moments&nbsp;: le mont Hermon et le baptême.',
@@ -2651,6 +2811,8 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       p: 'Les visites de Satan cessent avec la première audience du procès de Gabriel contre les archirebelles' + REF('53:9.3–4') + '. Machiventa Melchizédek reçoit le titre de Prince Planétaire Vice-gérant d’Urantia' + REF('93:10.5 · 114:1.2') + '. Le vingtième gouverneur général remplace le dix-neuvième' + REF('114:3.1') + '. Urantia reste en quarantaine spirituelle partielle' + REF('28:7.4') + ', et Satania sous une quarantaine de Norlatiadek' + REF('46:8.2') + '.',
       q: ['Satan est maintenant détenu inconditionnellement sur les mondes-prisons de Jérusem.', '53:9.4'] }
   ];
+  const EFF_Y = [];
+  EV.forEach((e) => { if (e.eff) EFF_Y[e.eff] = e.y; });   // une effusion n’apparait dans la frise qu’à partir de son évènement
   const ERAS = [
     { f: 875e9, n: 'Formation de Nébadon et du système solaire', c: '#7d8fd0' },
     { f: 1e9, n: 'Préparation de la vie sur Urantia', c: '#5aa57e' },
@@ -2748,6 +2910,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const pw = new V3(), pc = new V3();
   function followEvent(e) {
     if (coupe) setCoupe(false);
+    if (e.eff && e.eff < 7) { goEff(e.eff, { card: false }); return; }   // une effusion : vol jusqu’à son repère
     recenter();
     setU(e.u);
     if (e.u === 0 && e.pin) {                 // tourner le globe vers le lieu
@@ -3087,14 +3250,84 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       f: [['Période', '≈ 76 ans'], ['Distance au Soleil', '0,6 à 35 UA']] }
   };
   const CARD_ORDER = ['soleil', 'mercure', 'venus', 'urantia', 'lune', 'mars', 'asteroides', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton', 'halley'];
+  // Les sept effusions (119) : forme, lieu, date et durée quand le texte les donne, une citation exacte, la position schématique
+  const EFF_PAGE = '<a href="effusions-de-micael.html#ef-';
+  const EFF = [null,
+    { t: 'En Fils Melchizédek', diag: { g: 0, p: 0, n: 1 },
+      f: [['Forme', 'un Fils Melchizédek, au service de secours d’urgence' + REF('119:1.3')], ['Lieu', 'la sphère Melchizédek, près de Salvington' + REF('119:1.3 · 35:3.1')],
+        ['Date', 'il y a presque un milliard d’années' + REF('119:1.1')], ['Durée', 'vingt années du temps standard, un siècle du temps d’Urantia' + REF('119:1.2 · 119:1.4')]],
+      b: BR('Micaël confie l’autorité à Emmanuel et disparait de Salvington {119:1.1–2}. Le troisième jour après son départ, un Fils Melchizédek inconnu apparait sur le monde de cet ordre&nbsp;; il accomplit vingt-quatre missions d’urgence {119:1.3–4}. Les archives ne disent pas qu’il était Micaël, mais on le croit universellement {119:1.6}.') +
+        Q('Aujourd’hui, à midi, est apparu, sur l’aire d’atterrissage de ce monde, un étrange Fils Melchizédek qui n’est pas de notre nombre […]', '119:1.3'),
+      cap: 'Les 490 sphères de Salvington, en dix groupes' + REF('15:7.7 · 35:3.2') + '. En or, le premier groupe, supervisé par les Melchizédeks&nbsp;; cerclé, leur monde-pilote, la sphère Melchizédek' + REF('35:3.1–3') + '. Ordre des groupes et tailles schématiques.',
+      pos: 'Le repère est posé sur Salvington, au centre de Nébadon' + REF('32:2.4') + '&nbsp;: la sphère Melchizédek est le monde-pilote de son circuit. Les traits dorés relient Salvington aux autres lieux&nbsp;: Micaël part chaque fois de Salvington et y revient' + REF('119:1.2 · 119:2.7 · 119:3.4') + '.' },
+    { t: 'En Fils Lanonandek',
+      f: [['Forme', 'Souverain Systémique en exercice' + REF('119:2.4')], ['Lieu', 'système 11 de la constellation 37, Palonia' + REF('119:2.4–5')],
+        ['Date', 'non donnée&nbsp;; près de cent-cinquante-millions d’années après la première' + REF('119:2.1')], ['Durée', 'plus de dix-sept ans du temps universel' + REF('119:2.5')]],
+      b: BR('Le Souverain Systémique Lutentia a entrainé son système dans l’une des rébellions les plus désastreuses de Nébadon {119:2.1–2}. Trois jours après avoir quitté Salvington, Micaël apparait comme un Fils Lanonandek inconnu et prend en charge le système, à la place de Lutentia détrôné {119:2.4}. Il offre même au rebelle de partager le trône, s’il fait des excuses à Emmanuel {119:2.5}. À son départ, son prédécesseur lui envoie ce message&nbsp;:') +
+        Q('Tu es juste et droit dans toutes tes voies.', '119:2.6'),
+      pos: 'Le texte ne situe pas la constellation 37 dans Nébadon&nbsp;: sa place est un choix du schéma.' },
+    { t: 'En Fils Matériel',
+      f: [['Forme', 'Prince Planétaire faisant fonction' + REF('119:3.3')], ['Lieu', 'planète 217 du système 87, constellation 61' + REF('119:3.1')],
+        ['Date', 'non donnée'], ['Durée', 'une génération entière du temps planétaire' + REF('119:3.4')]],
+      b: BR('Les Porteurs de Vie de ce monde demandent un Fils Matériel&nbsp;; son système connait la deuxième rébellion d’un Souverain Systémique dans Nébadon {119:3.1}. Micaël y travaille seul, sur un monde en quarantaine, et ramène au repentir le Prince Planétaire défaillant et tout son état-major {119:3.4}.') +
+        Q('La réhabilitation de ce monde isolé constitue l’un des chapitres les plus magnifiques et les plus touchants des annales du salut de tout Nébadon.', '119:3.5'),
+      pos: 'Le texte ne situe pas la constellation 61 dans Nébadon&nbsp;: sa place est un choix du schéma.' },
+    { t: 'En séraphin', diag: { g: 8, p: -1, n: 4 },
+      f: [['Forme', 'un séraphin de l’ordre suprême, conseiller d’enseignement' + REF('119:4.2')], ['Lieu', 'vingt-deux mondes, enfin le monde 462 du système 84, constellation 3' + REF('119:4.3')],
+        ['Date', 'non donnée'], ['Durée', 'plus de quarante années du temps standard' + REF('119:4.3')]],
+      b: BR('À la fin d’un appel nominal millénaire d’Uversa, Micaël remet le gouvernement à Emmanuel et à Gabriel {119:4.1}. Le troisième jour, le quartier général séraphique de Nébadon annonce l’arrivée d’un séraphin inconnu {119:4.2}. Sa dernière affectation l’attache, sept ans durant, à la mission d’un Fils Instructeur de la Trinité {119:4.3–4}.') +
+        Q('Il se révèle que ce séraphin appartient à l’ordre suprême des anges d’un univers local […]', '119:4.2'),
+      cap: 'Les dix groupes de sphères de Salvington' + REF('15:7.7') + '&nbsp;; cerclé, le neuvième, celui des mondes des séraphins' + REF('38:4.1') + '. Le texte ne dit pas lequel abrite le quartier général séraphique.',
+      pos: 'Le repère marque la dernière affectation, dans la constellation 3, que le texte ne situe pas dans Nébadon&nbsp;: sa place est un choix du schéma.' },
+    { t: 'En mortel ascendant, au stade d’esprit',
+      f: [['Forme', 'un pèlerin ascendant d’origine mortelle, nommé Éventod' + REF('119:5.1–2')], ['Lieu', 'Uversa, siège d’Orvonton' + REF('119:5.1')],
+        ['Date', 'il y a un peu plus de trois-cent-millions d’années' + REF('119:5.1')], ['Durée', 'onze années du temps standard d’Orvonton' + REF('119:5.2')]],
+      b: BR('Pour la première fois, Micaël annonce sa destination&nbsp;: Uversa {119:5.1}. Il y vit et travaille comme un esprit ascendant, jusqu’au départ d’un groupe de mortels pour Havona {119:5.2–3}. Les collèges Melchizédeks commencent alors à enseigner qu’il s’incarnera probablement, un jour, dans la chair {119:5.4}.') +
+        Q('Il est arrivé aujourd’hui, sans annonce préalable ni numéro d’identité, un pèlerin ascendant d’origine mortelle venant de l’univers de Nébadon […]', '119:5.1'),
+      pos: 'Uversa est au centre du schéma d’Orvonton, placé vers le Sagittaire par choix de représentation&nbsp;; le trait doré va de Nébadon à Uversa.' },
+    { t: 'En mortel morontiel',
+      f: [['Forme', 'un mortel morontiel de statut ascendant' + REF('119:6.3')], ['Lieu', 'Endantum, au siège de la cinquième constellation' + REF('119:6.1 · 119:6.3')],
+        ['Date', 'non donnée'], ['Durée', 'non précisée']],
+      b: BR('Avant de partir, Micaël annonce que sa septième et dernière effusion aura lieu dans la chair mortelle {119:6.1}. Il vit la carrière d’un mortel morontiel auprès des Très Hauts Pères de la cinquième constellation&nbsp;; l’auteur a l’interdiction d’en donner les détails {119:6.1 ; 119:6.3}. À son retour, il répond aux discours de bienvenue&nbsp;:') +
+        Q('Je me suis simplement occupé des affaires de mon Père.', '119:6.5'),
+      pos: 'Le texte nomme Endantum {119:6.3 ; 119:6.6} mais ne situe pas la cinquième constellation dans Nébadon&nbsp;: sa place est un choix du schéma.' },
+    { t: 'Dans la chair, sur Urantia',
+      f: [['Forme', 'un mortel de chair, Joshua ben Joseph, né bébé' + REF('119:7.3 · 119:7.5')], ['Lieu', 'Urantia, monde n°&nbsp;606 de Satania' + REF('15:14.5')],
+        ['Date', 'né le 21 aout de l’an 7 av. J.-C.' + REF('122:8.1')], ['Durée', 'un tiers de siècle du temps de la Terre' + REF('119:7.4')]],
+      b: BR('L’annonce que Micaël a choisi Urantia est faite peu après la nouvelle de la défaillance d’Adam et d’Ève {119:7.2}. Pour la première fois, il nait bébé au lieu d’apparaitre adulte {119:7.3}. Cette effusion finale l’installe pour l’éternité comme souverain indiscuté et suprême de Nébadon {119:7.4}&nbsp;; le récit de sa vie forme la quatrième partie du livre.') +
+        Q('Quand la télédiffusion de Salvington annonça que le petit enfant de Bethléem était né sur Urantia, cette nouvelle fit sensation.', '119:7.3') +
+        '<p><button type="button" class="go-btn" data-nav="u">Voir Urantia et Bethléem</button></p>',
+      pos: 'Le repère est posé sur Norlatiadek, la constellation n°&nbsp;70, où se trouve Urantia' + REF('15:14.6') + '&nbsp;; le «&nbsp;tu es ici&nbsp;» marque Urantia. Norlatiadek circule dans la bordure extérieure de Nébadon' + REF('41:10.5') + '&nbsp;; sa place exacte est un choix du schéma.' }];
+  EFF.forEach((E) => { if (E) E.pos = E.pos.replace(/\{([^}]+)\}/g, (m, r) => REF(r)); });
+  function effCardHtml(n) {
+    const E = EFF[n], m = EFFM[n];
+    const steps = '<ol class="bc-steps" aria-label="Les sept effusions">' + [1, 2, 3, 4, 5, 6, 7].map((k) => '<li><button type="button" data-nav="e:' + k + '" data-role="st' + k + '"' +
+      (k === n ? ' aria-current="step"' : '') + ' title="' + ORD[k] + ' effusion : ' + EFFM[k].s + '" aria-label="' + ORD[k] + ' effusion : ' + EFFM[k].s + '">' + k + '</button></li>').join('') + '</ol>';
+    const facts = '<dl class="bc-facts">' + E.f.map((x) => '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('') + '</dl>';
+    const diag = E.diag ? '<div class="bc-diag">' + svgDiag('salvington', E.diag) + '<p class="cap">' + E.cap + '</p></div>' : '';
+    const nav = (k, cls, txt) => k >= 1 && k <= 7 ? '<button type="button" data-nav="e:' + k + '" data-role="' + cls + '" title="' + ORD[k] + ' effusion : ' + EFFM[k].s + '">' + txt + '</button>'
+      : '<button type="button" data-role="' + cls + '" disabled>' + txt + '</button>';
+    return '<div class="bc-head"><p class="eyebrow">Les sept effusions · ' + n + ' sur 7</p><h2 id="bc-title" tabindex="-1">' + E.t + '</h2>' +
+      '<button type="button" class="bc-x" data-nav="x" aria-label="Fermer la fiche (quitte le mode « Les sept effusions »)">×</button>' + steps + '</div>' +
+      '<div class="bc-body">' + facts + '<h3 class="bc-livre">Ce que dit le livre</h3>' + E.b + diag +
+      '<p class="bc-pos"><b>Position schématique.</b> ' + E.pos + '</p>' +
+      '<p class="bc-more">' + EFF_PAGE + n + '">La page «&nbsp;Les sept effusions de Micaël&nbsp;»</a></p></div>' +
+      '<div class="bc-nav">' + nav(n - 1, 'prev', '‹ ' + (n > 1 ? (n - 1) + (n === 2 ? 're' : 'e') : 'Précédente')) +
+      '<button type="button" class="bc-go" data-nav="play" data-role="play" aria-pressed="' + String(!!effTimer) + '">' + (effTimer ? 'Pause' : 'Lecture') + '</button>' +
+      nav(n + 1, 'next', (n < 7 ? (n + 1) + 'e' : 'Suivante') + ' ›') + '</div>';
+  }
   const HUDB = (k) => 'Vue à l’échelle réelle. <button type="button" class="go-btn" data-go="f:' + k + '">Ouvrir la fiche</button> Fais glisser pour tourner autour&nbsp;; ' + (touch ? 'pince' : 'molette') + ' ou bouton −&nbsp;pour t’éloigner.';
   const bcard = document.getElementById('bcard');
   let cardKey = '', cardReturn = null;
-  function openCard(key) {
-    const C = CARDS[key];
-    if (!C) return;
+  // fiche d’un astre (key) ou d’une effusion ('eff1' à 'eff7') ; focus : 'keep' pour ne pas déplacer le focus (lecture automatique)
+  function openCard(key, focus) {
+    const eff = /^eff[1-7]$/.test(key) ? Number(key.slice(3)) : 0, C = CARDS[key];
+    if (!C && !eff) return;
     const wasOpen = !bcard.hidden;
+    const a0 = document.activeElement, role = a0 && bcard.contains(a0) && a0.getAttribute ? a0.getAttribute('data-role') : null;
     cardKey = key;
+    if (eff) bcard.innerHTML = effCardHtml(eff);
+    else {
     const i = CARD_ORDER.indexOf(key), N = CARD_ORDER.length, pk = CARD_ORDER[(i + N - 1) % N], nk = CARD_ORDER[(i + 1) % N];
     const facts = C.f ? '<dl class="bc-facts">' + C.f.map((x) => '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('') + '</dl>' : '';
     // chiffres clés d’abord ; repère doré pour le livre, gris pour l’astronomie actuelle
@@ -3104,6 +3337,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       '<div class="bc-nav"><button type="button" data-nav="' + pk + '" title="Astre précédent : ' + CARDS[pk].k + '">‹ ' + CARDS[pk].k + '</button>' +
       '<button type="button" class="bc-go" data-nav="go">Voir de près</button>' +
       '<button type="button" data-nav="' + nk + '" title="Astre suivant : ' + CARDS[nk].k + '">' + CARDS[nk].k + ' ›</button></div>';
+    }
     bcard.hidden = false;
     bcard.scrollTop = 0;
     ui.classList.add('card-on');                     // le texte du niveau se replie : la fiche le remplace
@@ -3112,14 +3346,78 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     // le focus va au titre (clavier, lecteurs d’écran) ; il reviendra à l’élément d’origine à la fermeture
     const a = document.activeElement;
     if (!wasOpen) cardReturn = a && a !== document.body && !bcard.contains(a) ? a : null;
-    const tt = document.getElementById('bc-title');
-    if (tt && tt.focus) tt.focus({ preventScroll: true });
+    setEffState(eff);
+    // le focus va au titre ; d’une effusion à l’autre, il reste sur la commande utilisée (étape, précédente, suivante, lecture)
+    const tt = document.getElementById('bc-title'), same = role ? bcard.querySelector('[data-role="' + role + '"]') : null;
+    if (same && !same.disabled && same.focus) same.focus({ preventScroll: true });
+    else if (focus !== 'keep' && tt && tt.focus) tt.focus({ preventScroll: true });
+  }
+  // mode « Les sept effusions » : il suit la fiche d’une effusion (ouverte : mode actif ; fermée : mode éteint)
+  function setEffState(n) {
+    effOn = n > 0;
+    if (n) effI = n;
+    tEff.setAttribute('aria-pressed', String(effOn));
+    if (!effOn) { setEffPlay(false); effPin = null; }
+  }
+  function effPhys(n) { const m = EFFM[n]; return m.p.clone().applyQuaternion(m.L.group.quaternion).multiplyScalar(m.L.R).add(centerOf(m.L)); }
+  // vol jusqu’au repère d’une effusion ; o.card === false : sans ouvrir la fiche (frise du temps)
+  function goEff(n, o) {
+    n = clamp(Math.round(n), 1, 7);
+    o = o || {};
+    if (coupe) setCoupe(false);
+    effPin = null;
+    if (o.card !== false) {
+      if (tlOn) setTimeline(false);
+      if (ascOn) setAsc(false);
+      setRotate(false);                            // la vue reste stable pendant la lecture
+    }
+    flyTo(effPhys(n));
+    setU(vToU(EFFM[n].v * (isMobile() ? 1.6 : 1)));   // téléphone : un peu plus de recul (écran étroit)
+    if (o.card !== false) openCard('eff' + n, o.focus);
+  }
+  // début du parcours : vue un peu plongeante sur le disque de Nébadon, puis la première effusion
+  function startEff(n) {
+    const d = camera.position.clone().sub(controls.target);
+    d.y = 0;
+    if (d.lengthSq() < 1e-9) d.set(0, 0, 1);
+    d.normalize().multiplyScalar(0.84); d.y = 0.55;
+    startCam(d);
+    goEff(n || 1);
+  }
+  // lecture : d’une effusion à la suivante, au rythme du texte de la fiche
+  function setEffPlay(on) {
+    if (effTimer) { clearTimeout(effTimer); effTimer = null; }
+    if (on) {
+      const next = () => {
+        effTimer = null;
+        if (!effOn || effI >= 7) { syncEffPlay(); return; }
+        goEff(effI + 1, { focus: 'keep' });
+        effTimer = setTimeout(next, readMs(bcard.querySelector('.bc-body')));
+        syncEffPlay();
+      };
+      effTimer = setTimeout(next, readMs(bcard.querySelector('.bc-body')));
+    }
+    syncEffPlay();
+  }
+  function syncEffPlay() {
+    const b = bcard.querySelector('[data-role="play"]');
+    if (b) { b.setAttribute('aria-pressed', String(!!effTimer)); b.textContent = effTimer ? 'Pause' : 'Lecture'; }
+  }
+  // fiche de la septième : Urantia de près, tournée vers Bethléem (sans quitter la fiche)
+  function effUrantia() {
+    if (free) { free = false; fly = null; blendFrom.copy(focusPhys); blendT = 1; }
+    effPin = 'bethleem';
+    setRotate(false);
+    setU(0);
+    PINS.bethleem.s.getWorldPosition(pw); planet.getWorldPosition(pc);
+    startCam(pw.sub(pc).normalize().add(new V3(0, 0.25, 0)).normalize());
   }
   function closeCard() {
     if (bcard.hidden) return;
     const inside = !!(bcard.contains && bcard.contains(document.activeElement));
     bcard.hidden = true; cardKey = '';
     ui.classList.remove('card-on');
+    if (effOn) setEffState(0);                      // la fiche d’une effusion fermée : fin du mode
     if (inside) {                                   // focus rendu à l’élément d’origine, ou au titre du niveau s’il n’est plus visible
       const back = cardReturn && cardReturn.isConnected && cardReturn.getClientRects && cardReturn.getClientRects().length ? cardReturn : infoH;
       if (back && back.focus) back.focus({ preventScroll: true });
@@ -3155,9 +3453,13 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
   bcard.addEventListener('click', (e) => {
     const b = e.target.closest && e.target.closest('[data-nav]');
-    if (!b) return;
+    if (!b || b.disabled) return;
     const k = b.dataset.nav;
-    if (k === 'x') closeCard(); else if (k === 'go') goBody(cardKey); else goBody(k);
+    if (k === 'x') closeCard();
+    else if (k.indexOf('e:') === 0) { setEffPlay(false); goEff(Number(k.slice(2))); }
+    else if (k === 'play') { const on = !effTimer; if (on && effI >= 7) goEff(1); setEffPlay(on); }
+    else if (k === 'u') { setEffPlay(false); effUrantia(); }
+    else if (k === 'go') goBody(cardKey); else goBody(k);
   });
   infoP.addEventListener('click', (e) => {
     const b = e.target.closest && e.target.closest('[data-go]');
@@ -3166,6 +3468,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (g === 'lune') goBody('lune');
     else if (g.indexOf('b:') === 0) goBody(g.slice(2));
     else if (g.indexOf('f:') === 0) openCard(g.slice(2));
+    else if (g === 'eff') startEff(1);
   });
   function goWorld(wp, v) {                        // v : hauteur de champ visée (la Lune, Urantia), sinon on s’approche d’un cran
     const kv = K / uToV(uCur);
@@ -3223,6 +3526,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
         if (d < bd) { bd = d; hs = fx.s; }
       });
     });
+    if (hs && hs.userData.eff) { setEffPlay(false); goEff(hs.userData.eff); return true; }
     if (hs) {
       const bk = hs.userData.body;
       if (bk) goBody(bk);
@@ -3336,8 +3640,9 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     cand.sort((a, b) => rank(a) - rank(b));
     let n = 0;
     cand.forEach((l) => {
-      const x0 = l.px - l.w / 2 - pad, x1 = l.px + l.w / 2 + pad, y0 = (l.below ? l.py : l.py - l.hh) - pad, y1 = (l.below ? l.py + l.hh : l.py) + pad;
-      let hit = n >= max;
+      const pd = l.eff || l.nocap ? Math.min(pad, 2) : pad;   // pastille d’une effusion, nom d’un superunivers : marge serrée
+      const x0 = l.px - l.w / 2 - pd, x1 = l.px + l.w / 2 + pd, y0 = (l.below ? l.py : l.py - l.hh) - pd, y1 = (l.below ? l.py + l.hh : l.py) + pd;
+      let hit = n >= max && !l.nocap;              // les superunivers ne sont pas limités par le plafond du téléphone
       for (let i = 0; !hit && i < occ.length; i++) { const k = occ[i]; hit = x0 < k[2] && k[0] < x1 && y0 < k[3] && k[1] < y1; }
       l.was = !hit;
       l.el.style.display = hit ? 'none' : '';
@@ -3346,6 +3651,12 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   }
   function updateLabels(w, h, V) {
     const cr = canvas.getBoundingClientRect(), occ = uiBoxes(cr), cand = [], mob = isMobile();
+    let parY = null;                               // hauteur du Paradis à l’écran : les noms des superunivers s’en écartent
+    if (L8.group.visible) {
+      pv.copy(L8.group.position).project(camera); parY = (-pv.y * 0.5 + 0.5) * h;
+      const sc = mob || RX * L8.R / V * h / 2 < 140; // anneau petit à l’écran : noms courts, sur une ligne (le sous-titre revient de près)
+      if (sc !== supCompact) { supCompact = sc; labelsEl.classList.toggle('supc', sc); SUPL.forEach((l) => { l.w = 0; }); }
+    }
     const nearPar = PAR.distanceTo(focusPhys) < 1.2 * V;     // regarde-t-on l’univers central ?
     // disques des astres à l’écran : le nom d’une étoile qui passe derrière n’est pas affiché
     const discs = [];
@@ -3365,7 +3676,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       if (show && l.vmax) show = V <= l.vmax;
       if (show && l.gov) show = govOn;
       if (show && l.tl) show = tlOn && !!l.text;
-      if (show && l.pin) show = tlPin === l.pin && FACT.planets > 0.5;
+      if (show && l.pin) show = (tlPin === l.pin || effPin === l.pin) && FACT.planets > 0.5;
       if (show && l.body && BODY_BY[l.body]) {         // nom d’un astre : quand son globe est petit et qu’il est dans la scène
         const B = BODY_BY[l.body];
         show = V >= 25 * B.rly && B.phys.distanceTo(focusPhys) < 2500 * V;
@@ -3382,6 +3693,12 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
           show = pv.copy(tmp).sub(pc2).dot(pv2.copy(camera.position).sub(tmp)) > 0;
         } else if (L === SKY) tmp.copy(l.local).add(SKY.group.position);         // le ciel suit la caméra
         else tmp.copy(l.local).applyQuaternion(L.group.quaternion).multiplyScalar(L.group.scale.x).add(L.group.position);
+        if (l.radial && parY !== null) {           // nom d’un superunivers : vers l’extérieur de l’anneau
+          pv2.copy(tmp).project(camera);
+          const b = (-pv2.y * 0.5 + 0.5) * h > parY;
+          if (b !== !!l.below) { l.below = b; l.el.classList.toggle('below', b); l.w = 0; }
+          l.dy = b ? -6 : 6;                       // un peu vers sa galaxie : de l’air pour le « tu es ici »
+        }
         if (show) show = place(l, tmp, w, h);
         if (show && discs.length && l.cls.indexOf('star') >= 0) show = !discs.some((d) => (l.ax - d[0]) * (l.ax - d[0]) + (l.ay - d[1]) * (l.ay - d[1]) < d[2] * d[2]);
         if (show) (l.wp || (l.wp = new V3())).copy(tmp);
@@ -3403,13 +3720,13 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   // Décalage de la vue : le point visé se place au centre de la zone que les panneaux laissent libre
   const topEl = document.querySelector('.top'), bottomEl = document.querySelector('.bottom');
   const viewOff = { x: 0, y: 0, on: false };
-  let botC = -1;
+  let botC = -1, freeR = 1e9;                    // freeR : bord gauche du panneau de droite (nom d’une pastille placé avant lui)
   function freeArea(dt) {
     const w = canvas.clientWidth, h = canvas.clientHeight;
     if (!w || !h) return;
     const cr = canvas.getBoundingClientRect(), mob = isMobile();
     const box = (e) => { const r = e.getBoundingClientRect(); return { l: r.left - cr.left, t: r.top - cr.top, b: r.top + r.height - cr.top }; };
-    let tx = 0, ty = 0, bottom = h;
+    let tx = 0, ty = 0, bottom = h, fr = w;
     const top = Math.max(0, box(topEl).b);
     const bc = Math.round(h - box(bottomEl).t + 10), de = document.documentElement;   // le schéma des Absolus s’arrête au-dessus de la barre du bas
     if (bc !== botC && de && de.style && de.style.setProperty) { botC = bc; de.style.setProperty('--bot-c', bc + 'px'); }
@@ -3417,9 +3734,10 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     [tlEl, ascEl, bcard, govEl, absEl, infoOpen ? infoEl : null].forEach((p) => {
       if (!p || p.hidden || (p === absEl && !mob)) return;
       const b = box(p);
-      if (b.l > w * 0.4) { if (p === bcard || mob) tx = Math.max(tx, Math.min(w * 0.25, (w - b.l) / 2)); }   // fiche à droite : la scène glisse à gauche
+      if (b.l > w * 0.4) { fr = Math.min(fr, b.l); if (p === bcard || mob) tx = Math.max(tx, Math.min(w * 0.25, (w - b.l) / 2)); }   // fiche à droite : la scène glisse à gauche
       else if (b.t > top) bottom = Math.min(bottom, b.t);                         // panneau en bas : la scène remonte
     });
+    freeR = fr;
     if (bottom < h - 2 && bottom - top > 40) ty = clamp(h / 2 - (top + bottom) / 2, 0, h * 0.32);
     if (!Number.isFinite(tx) || !Number.isFinite(ty)) return;
     const a = reduced ? 1 : Math.min(1, dt * 6);
@@ -3428,10 +3746,34 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     else if (viewOff.on) { camera.clearViewOffset(); viewOff.on = false; }
   }
 
+  // Repères des sept effusions : visibles à l’échelle de Nébadon (et d’Orvonton pour Uversa), pas dans la carrière ascendante,
+  // dans la frise à partir de leur évènement ; l’effusion en cours (mode ou frise) porte son nom et son trait, et sa lueur respire
+  function effFrame(V, dt, now) {
+    const lv = Math.log10(V), k = reduced ? 1 : Math.min(1, dt * 5);
+    const vf4 = smooth((lv - 2.9) / 0.2) * (1 - smooth((lv - 3.85) / 0.15));   // Nébadon : d’environ 1 300 à 7 000 a.-l.
+    const ev = tlOn ? EV[tlI] : null, cur = effOn ? effI : ev && ev.eff ? ev.eff : 0;
+    FACT.eff += ((effOn ? 1 : 0) - FACT.eff) * k;
+    for (let n = 1; n <= 7; n++) {
+      const m = EFFM[n];
+      let tm = ascOn ? 0 : m.L === L4 ? vf4 : 1;
+      if (ev && !effOn && ev.y > EFF_Y[n]) tm = 0;
+      FACT['effm' + n] += (tm - FACT['effm' + n]) * k;
+      const ts = effOn ? (n === effI ? 1 : 0.32) : n === cur ? 1 : 0;
+      FACT['effs' + n] += (ts - FACT['effs' + n]) * k;
+      const named = n === cur;
+      if (named !== !!m.named) {
+        m.named = named; m.lab.pm = 'r'; m.lab.w = 0;
+        m.lab.el.classList.remove('flip', 'col'); m.lab.el.classList.toggle('named', named); m.lab.el.classList.toggle('cur', named);
+      }
+      m.lab.prio = named ? -1 : effOn ? 1 : 3.5;   // hors du mode : après tous les noms existants (le désencombrement d’avant reste)
+      m.fx.size = m.sz * (named ? (reduced ? 1.2 : 1.15 + 0.12 * Math.sin(now * 0.004)) : 1); m.mat.base = m.op * (named ? 1.6 : 1);
+      if (m.place) m.place.dy = labelsOn && FACT['effm' + n] > 0.5 && m.L.a > 0.55 ? -24 : -8;   // le nom du lieu, relevé au-dessus de la pastille
+    }
+  }
   function frame(now) {
     requestAnimationFrame(frame);
     // au repos (rien ne bouge, aucune action depuis 20 s) : 4 images par seconde, pour le processeur graphique et la batterie
-    const busy = fly || camAnim || blendT > 0 || controls.autoRotate || tlTimer || ascTimer || Math.abs(uTarget - uCur) > 1e-4;
+    const busy = fly || camAnim || blendT > 0 || controls.autoRotate || tlTimer || ascTimer || effTimer || Math.abs(uTarget - uCur) > 1e-4;
     if (!busy && now - lastInput > 20000 && now - lastDraw < 250) return;
     lastDraw = now;
     const rawMs = now - last, dt = Math.max(0, Math.min(0.05, rawMs / 1000));
@@ -3483,6 +3825,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     sunPx = clamp(0.62 * aupx, 13, 62);
     SUNFX[0].size = clamp(0.2 * aupx, 7, 16) / 0.75 / (1.0723 * hpx);
     SUNFX[1].size = sunPx / 0.3 / (1.0723 * hpx);
+    effFrame(V, dt, now);
     updateLevels(V, focusPhys);
     if (L1.group.visible || L0.group.visible) {            // orbites : selon leur taille à l’écran ; survolée ou choisie, mise en valeur
       ORBITS.forEach((o) => {
@@ -3494,7 +3837,15 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       if (MOON_ORB) { const tg = (hoverBody === 'lune' || cardKey === 'lune') ? 1 : 0; MOON_ORB.u.uSel.value += (tg - MOON_ORB.u.uSel.value) * (reduced ? 1 : Math.min(1, dt * 6)); }
     }
     // Voie lactée : fondu d’apparition, puis elle suit le ciel réel ; scintillement des étoiles
-    if (mwT0 >= 0) { mwU.uI.value = 0.75 * SKY.a * (reduced ? 1 : smooth((now - mwT0) / 1200)); mwSphere.visible = mwU.uI.value > 0.003; }
+    // Voie lactée : le panorama vu de la Terre vaut pour la petite région du disque galactique qui nous entoure, de Monmatia à
+    // Nébadon (32:2.11) ; atténué à Ensa pour la lisibilité, il cède la place à Orvonton vu de l’extérieur à Splandon (fondu
+    // enchaîné avec ce niveau) ; loin de la Terre (point visé à plus de 20 000 à 60 000 a.-l.), en coupe ou au-delà, il s’efface
+    if (mwT0 >= 0) {
+      const lw = Math.log10(V), near = 1 - smooth((Math.log10(Math.max(1, focusPhys.length())) - 4.3) / 0.5);
+      const disk = (1 - 0.42 * smooth((lw - 3.75) / 0.55)) * (1 - smooth((lw - 5.0) / 0.35)) * (1 - L7.a) * near;
+      mwU.uI.value = 0.75 * (coupe ? 0 : Math.max(SKY.a, disk)) * (reduced ? 1 : smooth((now - mwT0) / 1200));
+      mwSphere.visible = mwU.uI.value > 0.003;
+    }
     TW.forEach((m) => { m.uniforms.uTime.value = now / 1000; });
     const expected = focusPhys.clone().multiplyScalar(kv);
     camera.position.add(expected.clone().sub(controls.target));
@@ -3517,6 +3868,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
       }
     }
     SKY.group.position.copy(camera.position);       // le ciel étoilé suit la caméra : il reste à l’infini, près d’un astre aussi
+    mwSphere.position.copy(camera.position);        // la Voie lactée aussi, avec la même orientation (repère galactique)
     const pz = -L8.P.z * kv;
     clipPlane.constant = coupe ? pz + 1e-5 : 1e9;
     allPts.forEach((p) => { p.material.uniforms.uClip.value = coupe ? 1 : 0; p.material.uniforms.uClipZ.value = pz; });
@@ -3550,7 +3902,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     {
       const gs0 = L0.group.scale.x || 1;
       PIN_KEYS.forEach((k) => {
-        const p = PINS[k], on = tlPin === k && L0.group.visible && L0.a > 0.05 && FACT.planets > 0.5;
+        const p = PINS[k], on = (tlPin === k || effPin === k) && L0.group.visible && L0.a > 0.05 && FACT.planets > 0.5;
         p.s.visible = on;
         if (on) { p.m.opacity = L0.a; p.s.scale.setScalar(0.03 * (reduced ? 1 : 1 + 0.15 * Math.sin(now * 0.005)) / gs0); }
       });
@@ -3600,6 +3952,7 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     else if (h === 'carriere') { if (!ascOn) setAsc(true); }
     else if (h === 'coupe') { if (!coupe) setCoupe(true); }
     else if (h === 'deite') { if (!deity) tDeite.click(); setU(10); }
+    else if (h === 'effusions' || /^effusion-?[1-7]$/.test(h)) startEff(/[1-7]$/.test(h) ? Number(h.slice(-1)) : 1);
   }
 
   /* ---------- Menu, tiroirs, bulle d’aide, repos ---------- */
