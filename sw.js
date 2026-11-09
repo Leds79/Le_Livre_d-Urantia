@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '59665e684e4f';
+const VERSION = '2e9fb4e9d051';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -13,18 +13,18 @@ const FICHIERS = {
   "familles-de-personnalites.html": [123410, "62441591423176f9"],
   "concepts-en-schemas.html": [110540, "a9f987a1d81e4734"],
   "dieu-et-deite.html": [96576, "5c04e67a98561679"],
-  "destinee-humaine.html": [147415, "027ce777c257fb87"],
+  "destinee-humaine.html": [147465, "255c8ee81998d2c5"],
   "histoire-d-urantia.html": [199770, "abd025ba8a163b49"],
   "rebellion-de-lucifer.html": [154337, "702f2799d2c58e69"],
   "vie-de-jesus.html": [121858, "a5b5760da868bb22"],
   "bible-et-livre.html": [450751, "b8e871adc308b9df"],
-  "pere-fils-esprit.html": [151715, "4f5b775c94825268"],
-  "paradis-et-havona.html": [180936, "146cc311bc91c309"],
-  "etre-supreme.html": [177659, "948915f17496d4a0"],
+  "pere-fils-esprit.html": [151731, "0deb9523fa16d1ce"],
+  "paradis-et-havona.html": [181568, "a8ae198224970cac"],
+  "etre-supreme.html": [177682, "b2d71ae9245573c5"],
   "effusions-de-micael.html": [148933, "4a2f4e07f6c708b1"],
-  "jerusem-et-edentia.html": [272270, "4af57b36e5c1b169"],
-  "les-anges.html": [163576, "d601968893639885"],
-  "avenir-d-une-planete.html": [171607, "5207e4b407eb0860"],
+  "jerusem-et-edentia.html": [272330, "c9395276f44c7e41"],
+  "les-anges.html": [163594, "c9b573f2f00ef13e"],
+  "avenir-d-une-planete.html": [171623, "e84d3f1db153c66b"],
   "institutions-humaines.html": [200817, "0580ebfe43b98fd9"],
   "evolution-religion.html": [121381, "81a3f425204631bc"],
   "religion-vecue.html": [162548, "d294af37ee25e98d"],
@@ -34,9 +34,9 @@ const FICHIERS = {
   "enseignements-de-jesus.html": [209963, "9b70720babb15c6c"],
   "apres-la-pentecote.html": [156188, "6793e51aa1533bea"],
   "histoire-du-livre.html": [137495, "826775cc7c66a7ea"],
-  "auteurs-et-chiffres.html": [269206, "a52e63163f59b256"],
+  "auteurs-et-chiffres.html": [269282, "c9720d7f71a2c0fc"],
   "science-et-histoire.html": [514087, "193d497fc9b5a016"],
-  "fascicules.html": [397244, "9ffdef32e0dea48d"],
+  "fascicules.html": [397476, "c01cdde732322ecd"],
   "parcours-de-lecture.html": [166273, "98336f6aae4f9032"],
   "glossaire.html": [198497, "02718f8f87bfc986"],
   "hors-ligne.html": [8034, "0b63c01870a12a34"],
@@ -62,7 +62,7 @@ const FICHIERS = {
   "assets/fonts/fonts.css": [3095, "2bc36a19d6658921"],
   "assets/fonts/ibm-plex-mono-400.woff2": [14708, "08949f728dc52d52"],
   "assets/fonts/ibm-plex-mono-500.woff2": [14888, "01d285447409c8a5"],
-  "assets/recherche.js": [1397884, "e2012f6905a21688"],
+  "assets/recherche.js": [1398065, "052bddc061113f50"],
   "assets/lib/three.min.js": [603445, "9274bbcec8d96168"],
   "assets/lib/OrbitControls.js": [26375, "02bb4ade710f3e60"]
 };

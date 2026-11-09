@@ -39,8 +39,9 @@
 <style>
 /* Mise en page : du centre vers le dehors, comme le texte (l'Ile, ses surfaces, ses satellites, les sept circuits de
    Havona, les corps de gravité obscurs), puis du dehors vers le centre, comme le pèlerin. Au milieu, le schéma interactif
-   des circuits, sur un fond de nuit. Couleurs : or pour le Père, blanc pour le Fils, violet pour l'Esprit (comme dans la
-   vue 3D), bleu pour Havona, ardoise pour les corps obscurs, cuivre pour les zones de force. Largeur utile : 1100 px. */
+   des circuits, sur un fond de nuit. Couleurs : or pour le Père, violet pour le Fils, bleu pour l'Esprit (comme dans la
+   page Le Père, le Fils et l'Esprit), sarcelle pour Havona et l'espace des univers, vert pour les réservoirs
+   d'espace, ardoise pour les corps obscurs, cuivre pour les zones de force. Largeur utile : 1100 px. */
 :root {
   --paper: #EEF1F6;    /* fond : papier bleuté */
   --sheet: #FFFFFF;    /* surfaces */
@@ -53,16 +54,16 @@
   --gold-ui: #9E6B00;  /* or des traits (3:1 au moins) */
   --on-gold: #1B1405;  /* texte posé sur l'or */
   --gold-soft: #FBF4E4;
-  --fils: #5A6A8E; --fils-fill: #FFFFFF; --fils-soft: #EEF1F7;   /* le Fils : blanc, cerné de gris bleu */
-  --esprit: #6A4BC0; --on-esprit: #FFFFFF; --esprit-soft: #F1EDFA; /* l'Esprit : violet */
-  --hav: #2F62A8; --hav-soft: #E7EEF8;                            /* Havona : bleu */
+  --fils: #6A4BC0; --fils-fill: #DCD0F8; --fils-soft: #F1EDFA;   /* le Fils : violet */
+  --esprit: #2F62A8; --on-esprit: #FFFFFF; --esprit-soft: #E7EEF8; /* l'Esprit : bleu */
+  --hav: #13837A; --hav-ink: #0B655E; --hav-soft: #E2F3EF;        /* Havona, espace des univers : sarcelle */
   --obs: #3E4560; --obs-dot: #A3ABC3;                             /* corps de gravité obscurs : ardoise */
   --force: #A9532B; --force-soft: #F7E8E0;                        /* zones de force du bas Paradis : cuivre */
   --f-ext: #C9713F; --f-med: #F1D3C2; --f-int: #9E4521;
   --anon: #E7EAF1; --infini: #2B3045; --on-infini: #E6E9F2;
   --peri: #E5EAF3; --peri-line: #7A86A3;
   --z1: #F3E3BC; --z2: #F8EDD5; --zts: #FBEBC6; --zts2: #F7DC98;
-  --mid: #F0EDF6; --res: #DCEEEA; --res-line: #256B62; --pen: #DCE7F7;
+  --mid: #F0EDF6; --res: #E8F2DA; --res-line: #356A27; --pen: #D6EFEB;
   --font-display: "Cormorant Garamond", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --font-body: "Alegreya Sans", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
@@ -71,32 +72,32 @@
   :root:not([data-theme="light"]) {
     --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
     --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
-    --fils: #C3CCE2; --fils-fill: #E9EEF8; --fils-soft: #1C2438;
-    --esprit: #B6A0F5; --on-esprit: #170F2E; --esprit-soft: #211B37;
-    --hav: #8CB4F2; --hav-soft: #15213A;
+    --fils: #B6A0F5; --fils-fill: #3A2E63; --fils-soft: #211B37;
+    --esprit: #8CB4F2; --on-esprit: #0C1120; --esprit-soft: #15213A;
+    --hav: #52CFC0; --hav-ink: #7FDCD0; --hav-soft: #102928;
     --obs: #04060D; --obs-dot: #6A7393;
     --force: #F0956A; --force-soft: #2C1A14;
     --f-ext: #A35532; --f-med: #4A2C1F; --f-int: #E58A5C;
     --anon: #1E2537; --infini: #03050B; --on-infini: #E6E9F2;
     --peri: #1C2438; --peri-line: #5A6688;
     --z1: #3D3115; --z2: #2D2614; --zts: #46371A; --zts2: #6A511C;
-    --mid: #161A2C; --res: #0F2826; --res-line: #6CC5B9; --pen: #16274A;
+    --mid: #161A2C; --res: #16260F; --res-line: #8CC873; --pen: #0F2A2A;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #0C1120; --sheet: #131A2E; --tint: #1A2239; --ink: #E6E9F2; --muted: #9AA4C0;
   --rule: #28314B; --gold: #EDB03A; --gold-ink: #F4C664; --gold-ui: #EDB03A; --on-gold: #1B1405; --gold-soft: #221F17;
-  --fils: #C3CCE2; --fils-fill: #E9EEF8; --fils-soft: #1C2438;
-  --esprit: #B6A0F5; --on-esprit: #170F2E; --esprit-soft: #211B37;
-  --hav: #8CB4F2; --hav-soft: #15213A;
+  --fils: #B6A0F5; --fils-fill: #3A2E63; --fils-soft: #211B37;
+  --esprit: #8CB4F2; --on-esprit: #0C1120; --esprit-soft: #15213A;
+  --hav: #52CFC0; --hav-ink: #7FDCD0; --hav-soft: #102928;
   --obs: #04060D; --obs-dot: #6A7393;
   --force: #F0956A; --force-soft: #2C1A14;
   --f-ext: #A35532; --f-med: #4A2C1F; --f-int: #E58A5C;
   --anon: #1E2537; --infini: #03050B; --on-infini: #E6E9F2;
   --peri: #1C2438; --peri-line: #5A6688;
   --z1: #3D3115; --z2: #2D2614; --zts: #46371A; --zts2: #6A511C;
-  --mid: #161A2C; --res: #0F2826; --res-line: #6CC5B9; --pen: #16274A;
+  --mid: #161A2C; --res: #16260F; --res-line: #8CC873; --pen: #0F2A2A;
   color-scheme: dark;
 }
 
@@ -146,8 +147,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .codebox { background: var(--sheet); border: 1px solid var(--rule); border-radius: 10px; padding: 18px 20px 16px; display: grid; gap: 12px; min-width: 0; }
 .cb-top { display: grid; grid-template-columns: 92px minmax(0, 1fr); gap: 16px; align-items: center; }
 .em { width: 92px; height: 92px; display: block; }
-.em-ring { fill: none; stroke: #A9C6FF; stroke-width: 1.3; stroke-dasharray: .1 2.4; stroke-linecap: round; opacity: .95; }
-.em-p { fill: #F3BE4A; } .em-f { fill: #F4F6FB; } .em-e { fill: #B9A2F7; }
+.em-ring { fill: none; stroke: #7FDCD0; stroke-width: 1.3; stroke-dasharray: .1 2.4; stroke-linecap: round; opacity: .95; }
+.em-p { fill: #F3BE4A; } .em-f { fill: #B9A2F7; } .em-e { fill: #8CB4F2; }
 .em-belt { fill: none; stroke: #2A3150; stroke-width: 3; }
 .em-ile { fill: #F6C453; stroke: #FFE6A3; stroke-width: .8; }
 .keys { list-style: none; margin: 0; padding: 0 0 12px; display: grid; gap: 9px; border-bottom: 1px solid var(--rule); }
@@ -239,12 +240,12 @@ blockquote.cite p i { font-style: normal; }
 .t12 { font-size: 12.5px; font-weight: 600; fill: var(--ink); }
 .t12m { font-size: 12.5px; font-weight: 500; fill: var(--muted); }
 .tc { font: 600 13px var(--font-mono); fill: var(--muted); }
-.hv-t { fill: var(--hav); }
+.hv-t { fill: var(--hav-ink); }
 .res-t { fill: var(--res-line); }
 .ile { fill: var(--gold-soft); stroke: var(--gold-ui); stroke-width: 1.6; }
 .pf-h { fill: none; stroke: var(--gold-ui); stroke-width: 3.2; stroke-linecap: round; }
 .pf-b { fill: none; stroke: var(--force); stroke-width: 3.2; stroke-linecap: round; }
-.pf-p { fill: none; stroke: var(--fils); stroke-width: 3.2; stroke-linecap: round; }
+.pf-p { fill: none; stroke: var(--muted); stroke-width: 3.2; stroke-linecap: round; }
 .ile-s { fill: var(--gold); stroke: var(--gold-ui); stroke-width: 1; }
 .axe { fill: none; stroke: var(--muted); stroke-width: 1.2; }
 .tick { stroke: var(--muted); stroke-width: 1; }
@@ -287,7 +288,7 @@ blockquote.cite p i { font-style: normal; }
 .sp-n, .sp-n2 { font: 700 11px var(--font-body); text-anchor: middle; }
 .sp-n { fill: var(--on-gold); } .sp-n2 { fill: var(--on-esprit); }
 .semi { fill: var(--tint); }
-.uniq { fill: var(--esprit-soft); }
+.uniq { fill: var(--peri); }
 .plan { fill: none; stroke: var(--hav); stroke-width: 1.2; stroke-dasharray: 3 3; }
 .hv-dots circle { fill: var(--hav); }
 .su-dots ellipse { fill: var(--muted); opacity: .7; }
@@ -295,7 +296,7 @@ blockquote.cite p i { font-style: normal; }
 .belt-p { fill: url(#pt-stip); }
 .stip { fill: var(--obs-dot); }
 .belt-l { fill: none; stroke: var(--obs-dot); stroke-width: 1.2; }
-.wave { fill: none; stroke: var(--esprit); stroke-width: 1.4; opacity: .8; }
+.wave { fill: none; stroke: var(--muted); stroke-width: 1.4; opacity: .9; }
 .brk { fill: none; stroke: var(--sheet); stroke-width: 2.4; stroke-linejoin: round; }
 .rot { fill: none; stroke: var(--muted); stroke-width: 1.5; }
 .rot-h { fill: var(--muted); }
@@ -339,13 +340,13 @@ blockquote.cite p i { font-style: normal; }
 .hv-zone { fill: none; stroke: #19213D; }
 .hv-belt { fill: none; stroke: #1B2032; stroke-width: 8; }
 .hv-belt-d { fill: none; stroke: #2D3450; stroke-width: 8; stroke-dasharray: 10 8; }
-.hv-ond { fill: none; stroke: #6F5FB5; stroke-width: 1; opacity: .7; }
+.hv-ond { fill: none; stroke: #8E9AC0; stroke-width: 1; opacity: .7; }
 .hv-fl { fill: #8D97B8; }
-.hv-fl-c { fill: #A9C6FF; }
+.hv-fl-c { fill: #7FDCD0; }
 .hv-orb { fill: none; stroke: #2B3A66; stroke-width: 1; }
-.hv-ring { fill: none; stroke: #A9C6FF; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: .01 5.5; }
+.hv-ring { fill: none; stroke: #7FDCD0; stroke-width: 2.6; stroke-linecap: round; stroke-dasharray: .01 5.5; }
 .hv-sorb { fill: none; stroke: #2E3557; stroke-width: .8; }
-.hv-s-p { fill: #F3BE4A; } .hv-s-f { fill: #F4F6FB; } .hv-s-e { fill: #B9A2F7; }
+.hv-s-p { fill: #F3BE4A; } .hv-s-f { fill: #B9A2F7; } .hv-s-e { fill: #8CB4F2; }
 .hv-ile { fill: #F6C453; stroke: #FFE6A3; stroke-width: 1.2; }
 .hv-rot { transform-box: view-box; transform-origin: 200px 200px; }
 .hv-sel g { display: none; }
@@ -360,7 +361,7 @@ blockquote.cite p i { font-style: normal; }
 .hv-svg[data-sel="c1"] [data-part="c1"], .hv-svg[data-sel="c2"] [data-part="c2"], .hv-svg[data-sel="c3"] [data-part="c3"],
 .hv-svg[data-sel="c4"] [data-part="c4"], .hv-svg[data-sel="c5"] [data-part="c5"], .hv-svg[data-sel="c6"] [data-part="c6"],
 .hv-svg[data-sel="c7"] [data-part="c7"] { opacity: 1; }
-.hv-num circle { fill: #0B1124; stroke: #7E9BD6; stroke-width: 1; }
+.hv-num circle { fill: #0B1124; stroke: #5FC7BA; stroke-width: 1; }
 .hv-num text { fill: #DCE6FA; font: 700 11.5px var(--font-body); text-anchor: middle; }
 .hv-svg[data-sel="c1"] .hv-num [data-n="c1"] circle, .hv-svg[data-sel="c2"] .hv-num [data-n="c2"] circle,
 .hv-svg[data-sel="c3"] .hv-num [data-n="c3"] circle, .hv-svg[data-sel="c4"] .hv-num [data-n="c4"] circle,
@@ -524,7 +525,7 @@ blockquote.cite p i { font-style: normal; }
         <dt>échelle</dt><dd>Aucun schéma n’est à l’échelle, sauf les proportions de l’Ile.</dd>
         <dt>mental</dt><dd>traduit l’anglais <i lang="en">mind</i> ; <i>esprit</i> traduit <i lang="en">spirit</i>.</dd>
       </dl>
-      <p class="note">Couleurs, choix de la page&nbsp;: <span class="sw e-pere" aria-hidden="true"></span>or pour le Père, <span class="sw e-fils" aria-hidden="true"></span>blanc pour le Fils, <span class="sw e-esprit" aria-hidden="true"></span>violet pour l’Esprit, comme dans la vue 3D ; <span class="sw e-hav" aria-hidden="true"></span>bleu pour Havona.</p>
+      <p class="note">Couleurs, choix de la page&nbsp;: <span class="sw e-pere" aria-hidden="true"></span>or pour le Père, <span class="sw e-fils" aria-hidden="true"></span>violet pour le Fils, <span class="sw e-esprit" aria-hidden="true"></span>bleu pour l’Esprit, comme dans <a href="pere-fils-esprit.html">Le Père, le Fils et l’Esprit</a> ; <span class="sw e-hav" aria-hidden="true"></span>sarcelle pour Havona.</p>
     </aside>
   </header>
 
@@ -724,7 +725,7 @@ blockquote.cite p i { font-style: normal; }
           <li><span class="bd" aria-hidden="true">3</span><span><b>L’Aire Sainte, zone&nbsp;1.</b> Des Citoyens du Paradis et des natifs de Havona en séjour au Paradis <span class="ref">11:3.3</span>.</span></li>
           <li><span class="bd" aria-hidden="true">4</span><span><b>Zone&nbsp;2.</b> Les natifs des sept superunivers. Une partie forme sept secteurs immenses, un par superunivers, foyer des êtres spirituels et des créatures ascendantes <span class="ref">11:3.3</span> ; ces logements occupent bien moins de un pour cent de l’aire prévue <span class="ref">11:3.4</span>.</span></li>
           <li class="nsp"><span class="bd" aria-hidden="true">5</span><span><b>Zones 3 à 7.</b> Le texte n’en dit rien.</span></li>
-          <li><span class="bd" aria-hidden="true">6</span><span><b>Le Paradis périphérique.</b> Champs d’atterrissage, sièges-foyers de force des Sept Maitres Esprits (les losanges violets), aires d’expositions <span class="ref">11:4.1–3</span>.</span></li>
+          <li><span class="bd" aria-hidden="true">6</span><span><b>Le Paradis périphérique.</b> Champs d’atterrissage, sièges-foyers de force des Sept Maitres Esprits (les losanges bleus), aires d’expositions <span class="ref">11:4.1–3</span>.</span></li>
         </ol>
         <figcaption>Schéma, nord en haut&nbsp;: épaisseur des zones, place des sept secteurs et des sept sièges sont des choix du dessin. Les sept zones de l’Aire Sainte sont souvent appelées <span class="q" data-ref="11:3.3">«&nbsp;les demeures paradisiaques du Père&nbsp;»</span> <span class="ref">11:3.3</span>. Le texte situe aussi <span class="q" data-ref="31:8.1">«&nbsp;dans l’ouest du Paradis&nbsp;»</span> la zone des Transcendantaux, sans dire sur quelle face <span class="ref">31:8.1</span>.</figcaption>
       </figure>
@@ -870,7 +871,7 @@ blockquote.cite p i { font-style: normal; }
 <circle class="sp-esp" cx="41.6" cy="211.6" r="12"/><text class="sp-n2" x="41.6" y="211.6" dy=".35em">6</text>
 <circle class="sp-esp" cx="69" cy="91.5" r="12"/><text class="sp-n2" x="69" y="91.5" dy=".35em">7</text>
 </svg>
-        <figcaption>Schéma sans échelle. En or, les sphères du Père, que le texte numérote de 1, Divinington, à 7, Ascendington <span class="ref">13:1.4 ; 13:1.21</span> ; en blanc, les mondes du Fils ; en violet, les mondes de l’Esprit, chacun attribué à un Maitre Esprit, donc à un superunivers <span class="ref">13:4.6</span>. Leurs numéros, les positions et les tailles sont des choix du dessin.</figcaption>
+        <figcaption>Schéma sans échelle. En or, les sphères du Père, que le texte numérote de 1, Divinington, à 7, Ascendington <span class="ref">13:1.4 ; 13:1.21</span> ; en violet, les mondes du Fils ; en bleu, les mondes de l’Esprit, chacun attribué à un Maitre Esprit, donc à un superunivers <span class="ref">13:4.6</span>. Leurs numéros, les positions et les tailles sont des choix du dessin.</figcaption>
       </figure>
       <div class="sat-cards">
         <article class="card e-pere">
@@ -1162,7 +1163,7 @@ blockquote.cite p i { font-style: normal; }
       </article>
       <article class="card e-esprit">
         <h3>Ceux qui servent les pèlerins</h3>
-        <p>Les supernaphins secondaires, en sept groupes, un par circuit, des aides des pèlerins aux compléments de repos <span class="ref">26:5.1 ; 26:11.1</span> ; les Guides des Diplômés, sur tous les circuits <span class="ref">24:6.1 ; 26:6.1</span> ; les servites de Havona, créés par les Maitres Esprits et les Directeurs Suprêmes de Pouvoir <span class="ref">25:1.2</span>.</p>
+        <p>Les supernaphins secondaires, en sept groupes, un par circuit, des aides des pèlerins aux compléments de repos <span class="ref">26:5.1 ; 26:11.1</span> ; les Guides de Diplômés, sur tous les circuits <span class="ref">24:6.1 ; 26:6.1</span> ; les servites de Havona, créés par les Maitres Esprits et les Directeurs Suprêmes de Pouvoir <span class="ref">25:1.2</span>.</p>
       </article>
       <article class="card e-hav">
         <h3>Les modèles de tous les êtres</h3>
@@ -1254,7 +1255,7 @@ blockquote.cite p i { font-style: normal; }
     </div>
     <ul class="sn-reg">
       <li><b>Le texte dit.</b> Le fascicule est présenté par un Perfecteur de Sagesse venu d’Uversa <span class="ref">27:7.11</span>. Il précise que les supernaphins primaires ne travaillent sous cette classification que depuis l’arrivée au Paradis des pèlerins du temps venus de Havona, et qu’un supernaphin primaire prend la tête des séraphins d’un monde isolé par la rébellion, une fois celui-ci délivré par l’effusion d’un Fils du Paradis&nbsp;: sur Urantia, l’actuel <span class="q" data-ref="27:0.2">«&nbsp;chef des séraphins&nbsp;»</span> est le second de cet ordre depuis l’effusion de Micaël <span class="ref">27:0.2–3</span>.</li>
-      <li><b>Regard historique.</b> Le texte emprunte des images bibliques&nbsp;: les <span class="q" data-ref="27:5.1">«&nbsp;épitres vivantes&nbsp;»</span> connues et lues de tous rappellent la lettre <span class="q" data-bible="2 Corinthiens 3:2">«&nbsp;connue et lue de tous les hommes&nbsp;»</span> <span class="bref">2 Corinthiens 3, 2</span>, et le <span class="q" data-ref="27:5.1">«&nbsp;livre de vie&nbsp;»</span> rappelle celui de l’Apocalypse <span class="bref">Apocalypse 20, 12</span> ; l’accueil sur les rives du Paradis reprend des versets de l’Apocalypse sur la fin des larmes et de la nuit <span class="ref">27:1.5</span> ; <span class="bref">Apocalypse 21, 4</span> ; <span class="bref">Apocalypse 22, 5</span>.</li>
+      <li><b>Regard historique.</b> Le texte emprunte des images bibliques&nbsp;: les <span class="q" data-ref="27:5.1">«&nbsp;épitres vivantes&nbsp;»</span> connues et lues de tous rappellent la lettre <span class="q" data-bible="2 Corinthiens 3:2">«&nbsp;connue et lue de tous les hommes&nbsp;»</span> <span class="bref">2 Corinthiens 3, 2</span>, et le <span class="q" data-ref="27:5.1">«&nbsp;livre de vie&nbsp;»</span> <span class="ref">27:5.1</span> rappelle celui de l’Apocalypse <span class="bref">Apocalypse 20, 12</span> ; l’accueil sur les rives du Paradis reprend des versets de l’Apocalypse sur la fin des larmes et de la nuit <span class="ref">27:1.5</span> ; <span class="bref">Apocalypse 21, 4</span> ; <span class="bref">Apocalypse 22, 5</span>.</li>
     </ul>
   </section>
 
@@ -1264,7 +1265,7 @@ blockquote.cite p i { font-style: normal; }
       <li><b>Le texte dit.</b> Les fascicules 11 à 14 sont présentés par un Perfecteur de Sagesse, mandaté par les Anciens des Jours d’Uversa <span class="ref">11:9.9 ; 12:9.7 ; 13:4.8 ; 14:6.42</span>. L’auteur marque souvent ses limites ; de Divinington, il écrit <span class="q" data-ref="13:1.2">«&nbsp;Ce monde m’est totalement interdit.&nbsp;»</span> <span class="ref">13:1.2</span>. Le livre distingue surtout ses vérités religieuses, appelées à durer, de ses affirmations scientifiques, appelées à être revues <span class="ref">101:4.2</span>&nbsp;:
         <blockquote class="cite" data-ref="101:4.2"><p>«&nbsp;La cosmologie révélée ici n’est <i>pas inspirée</i>.&nbsp;»</p><span class="ref">101:4.2</span></blockquote>
         Il ajoute&nbsp;: <span class="q" data-ref="101:4.1">«&nbsp;Toute cosmologie présentée comme partie d’une religion révélée est destinée à être dépassée au bout de très peu de temps.&nbsp;»</span> <span class="ref">101:4.1</span></li>
-      <li><b>Lecture courante.</b> Les lecteurs ne lisent pas tous cette géographie de la même façon. Certains la prennent à la lettre&nbsp;: une ile réelle, avec un nord et un sud. D’autres y voient d’abord une manière de dire l’absolu, puisque le texte la dit non spatiale <span class="ref">11:2.11</span>. Une question vient vite à l’esprit&nbsp;: comment un lieu sans emplacement peut-il avoir des dimensions ? Le texte n’y répond qu’en partie, par le sens que garde la distance sur le Paradis <span class="ref">11:2.11</span>. D’autres encore cherchent des correspondances avec l’astronomie&nbsp;: un essai de lecteur de 1992 (Stuart R. Kerr III) jugeait probable que les trous noirs soient ces corps de gravité obscurs, alors que le texte précise que ces corps n’absorbent pas la lumière <span class="ref">14:1.14</span>. Cette page, comme la vue 3D, choisit des tailles et des distances que le texte ne donne pas ; elle ne tranche pas entre ces lectures.</li>
+      <li><b>Lecture courante.</b> Les lecteurs ne lisent pas tous cette géographie de la même façon. Certains la prennent à la lettre&nbsp;: une ile réelle, avec un nord et un sud. D’autres y voient d’abord une manière de dire l’absolu, puisque le texte la dit non spatiale <span class="ref">11:2.11</span>. Une question vient vite à l’esprit&nbsp;: comment un lieu sans emplacement peut-il avoir des dimensions ? Le texte n’y répond qu’en partie, par le sens que garde la distance sur le Paradis <span class="ref">11:2.11</span>. D’autres encore cherchent des correspondances avec l’astronomie&nbsp;: un essai de lecteur (Stuart R. Kerr III, <a href="https://ubhs.hosted-by-files.com/docs/A/ai19920312_kerrs_01.pdf" target="_blank" rel="noopener"><i lang="en">Dynamics of the Ultimaton</i></a>, 12&nbsp;mars 1992) jugeait probable que les trous noirs soient ces corps de gravité obscurs, alors que le texte précise que ces corps n’absorbent pas la lumière <span class="ref">14:1.14</span>. Cette page, comme la vue 3D, choisit des tailles et des distances que le texte ne donne pas ; elle ne tranche pas entre ces lectures.</li>
       <li><b>Regard historique.</b> Le livre a paru en anglais en 1955. Il reprend des images bibliques&nbsp;: la maison du Père où il y a <span class="q" data-bible="Jean 14:2">«&nbsp;beaucoup de demeures&nbsp;»</span> <span class="bref">Jean 14, 2</span> devient l’Aire Sainte et ses <span class="q" data-ref="11:3.3">«&nbsp;demeures paradisiaques du Père&nbsp;»</span> <span class="ref">11:3.3</span> ; la phrase <span class="q" data-ref="14:1.12">«&nbsp;Mille ans sont comme un jour pour le Seigneur, et comme une veille dans la nuit&nbsp;»</span>, qui mêle <span class="bref">2 Pierre 3, 8</span> et <span class="bref">Psaumes 90, 4</span>, sert au jour du Paradis-Havona <span class="ref">14:1.12</span> ; les <span class="q" data-bible="1 Corinthiens 2:9">«&nbsp;choses que l’œil n’a point vues&nbsp;»</span> <span class="bref">1 Corinthiens 2, 9</span> sont reprises pour les gloires du Paradis <span class="ref">11:4.5</span>. L’Apocalypse voit descendre du ciel <span class="q" data-bible="Apocalypse 21:2">«&nbsp;la ville sainte&nbsp;»</span> <span class="bref">Apocalypse 21, 2</span> ; le livre, lui, ne parle pas de ville, mais d’une Aire Sainte. L’image d’un centre divin entouré de cercles tournants est ancienne&nbsp;: au chant XXVIII du <i>Paradis</i> de Dante, au début du XIV<sup>e</sup>&nbsp;siècle, Dieu apparait comme un point de lumière entouré de neuf cercles d’anges, les plus proches tournant le plus vite. Ce rapprochement est de cette page, pas du livre. Enfin, quand le livre parait, l’astronomie décrit depuis les années 1920 un univers en expansion, et la cosmologie actuelle ne lui reconnait aucun centre ; le livre place au contraire un centre immobile, et parle d’une respiration de l’espace <span class="ref">11:6.4</span>. Il dit lui-même avoir pris pour base plus de mille concepts humains <span class="ref">0:12.12</span>.</li>
     </ul>
   </aside>
@@ -1293,7 +1294,7 @@ blockquote.cite p i { font-style: normal; }
 <footer class="foot">
     <p>Source&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Soixante et une citations courtes, entre guillemets ; le reste est paraphrasé, avec ses références (fascicule:section.paragraphe). Bible&nbsp;: traduction Crampon (1923), texte numérique mission-web.com, licence CC BY-NC-SA 3.0.</p>
     <p>Les schémas sont des images symboliques&nbsp;: positions, couleurs, épaisseurs et mouvements sont des choix de présentation. Seules les proportions de l’Ile, vue de dessus et de profil, sont celles du texte.</p>
-    <p>Faits extérieurs au livre (date de parution, Dante, cosmologie actuelle, interprétations de lecteurs)&nbsp;: résumés prudents, sans prise de position.</p>
+    <p>Faits extérieurs au livre (date de parution, Dante, cosmologie actuelle, interprétations de lecteurs)&nbsp;: résumés prudents, sans prise de position. Source extérieure, consultée le 2026-11-09&nbsp;: S. R. Kerr III, <a href="https://ubhs.hosted-by-files.com/docs/A/ai19920312_kerrs_01.pdf" target="_blank" rel="noopener"><i lang="en">Dynamics of the Ultimaton</i></a> (12&nbsp;mars 1992, PDF).</p>
   <p class="atlas-credit">Une gracieuseté de Sylvain Leduc <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener" aria-label="Code source libre sur GitHub, nouvel onglet">Code source libre sur GitHub&nbsp;↗</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/blob/main/LICENCES.md" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a> <span aria-hidden="true">·</span> <a href="https://github.com/Leds79/Le_Livre_d-Urantia/issues/new?template=erreur.yml&amp;title=%5BErreur%5D%20Le%20Paradis%20et%20Havona&amp;page=Le%20Paradis%20et%20Havona%20%28paradis-et-havona.html%29" target="_blank" rel="noopener" title="Formulaire sur GitHub : un compte GitHub est nécessaire" aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>
 <p class="atlas-droits">Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation <span aria-hidden="true">·</span> <a href="index.html#droits">droits</a> <span aria-hidden="true">·</span> <a href="glossaire.html">glossaire des termes</a></p>
 </footer>
