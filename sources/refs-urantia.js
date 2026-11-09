@@ -6,7 +6,7 @@
   var RX = /(\d{1,3}):(\d{1,2})(?:\.(\d{1,3}))?(?:\s*[–-]\s*\d{1,3})?/g;
   function link(el) {
     var t = el.textContent;
-    if (el.getAttribute('data-lk') === t) return;                       // déjà fait, texte inchangé
+    if (el.getAttribute('data-lk') === t && el.querySelector('a.ref-lien')) return;   // déjà fait : texte et liens inchangés
     if (el.closest('a, button, [role="button"]') || el.querySelector('a')) return;
     var frag = document.createDocumentFragment(), last = 0, n = 0, m;
     RX.lastIndex = 0;

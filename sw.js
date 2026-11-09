@@ -2,7 +2,7 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = '2e9fb4e9d051';
+const VERSION = '7730f529c0d0';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
@@ -16,7 +16,7 @@ const FICHIERS = {
   "destinee-humaine.html": [147465, "255c8ee81998d2c5"],
   "histoire-d-urantia.html": [199770, "abd025ba8a163b49"],
   "rebellion-de-lucifer.html": [154337, "702f2799d2c58e69"],
-  "vie-de-jesus.html": [121858, "a5b5760da868bb22"],
+  "vie-de-jesus.html": [135858, "174bd03b42b8c982"],
   "bible-et-livre.html": [450751, "b8e871adc308b9df"],
   "pere-fils-esprit.html": [151731, "0deb9523fa16d1ce"],
   "paradis-et-havona.html": [181568, "a8ae198224970cac"],
@@ -41,7 +41,7 @@ const FICHIERS = {
   "glossaire.html": [198497, "02718f8f87bfc986"],
   "hors-ligne.html": [8034, "0b63c01870a12a34"],
   "manifest.webmanifest": [840, "3d1ea890c7f7d469"],
-  "assets/refs-urantia.js": [12010, "e640f74ad35fbbd9"],
+  "assets/refs-urantia.js": [12035, "5d4e6af5f83a9141"],
   "assets/hors-ligne.js": [5241, "d9b44df9a17c61f0"],
   "assets/musique.js": [8725, "036b5f1d0e719ff8"],
   "assets/navigation.js": [44949, "df3429012e63a6f3"],

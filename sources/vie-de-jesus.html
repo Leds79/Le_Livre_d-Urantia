@@ -84,6 +84,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .legend { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .84rem; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .legend svg { width: 16px; height: 16px; flex: none; }
+.mapbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.mapzoom { display: none; }
 
 /* Éléments de carte */
 .m-land { fill: var(--land); }
@@ -189,6 +191,17 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
   .fiche dd { margin-bottom: 6px; }
   /* sur téléphone, la carte est réduite de moitié : on grossit ses textes */
   .m-lbl { font-size: 17px; } .m-region { font-size: 15px; } .m-water { font-size: 17px; } .m-inset-t { font-size: 14px; }
+  /* et la carte suit l’étape, agrandie (voir le script) ; la loupe montre la carte entière */
+  .mapzoom { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; padding: 0;
+    border: 1px solid var(--rule); border-radius: 999px; background: var(--sheet); color: var(--ink); cursor: pointer; }
+  .mapzoom:hover { border-color: var(--muted); }
+  .mapzoom svg { width: 20px; height: 20px; }
+  .mapzoom[aria-pressed="true"] { background: var(--gold); border-color: var(--gold); color: var(--on-gold); }
+  .mapzoom .plus { display: none; }
+  .mapzoom[aria-pressed="true"] .plus { display: inline; }
+  .mapzoom:focus-visible { border-radius: 999px; }
+  .mapbox svg text { transition: opacity .2s; }
+  .mapbox svg text.hors { opacity: 0; }             /* nom que le bord du cadre couperait */
   .fr-ctl input[type="range"] { display: none; }    /* la frise du haut et les boutons suffisent ; le curseur serait trop fin au doigt */
   .fr-ctl .btn .bt { display: none; }
   .fr-cpt { margin-left: auto; }
@@ -196,8 +209,9 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
 @media (prefers-reduced-motion: reduce) {
   .pulse { animation: none; opacity: .8; transform: scale(1.8); }
   .anim { transition: none; }
+  .mapbox svg text { transition: none; }
 }
-@media (pointer: coarse) { .btn, .viewsel button, .field select { min-height: 44px; } .btn { min-width: 44px; justify-content: center; } }
+@media (pointer: coarse) { .btn, .viewsel button, .field select { min-height: 44px; } .btn { min-width: 44px; justify-content: center; } .mapzoom { width: 52px; height: 52px; } }
 </style>
 
 <main class="wrap" id="contenu" lang="fr">
@@ -224,10 +238,13 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
 
     <section class="atelier" aria-label="Carte et fiche de l’étape choisie">
       <div class="mapcol">
-        <div class="viewsel" role="group" aria-label="Choix de la carte">
-          <button type="button" id="v-pal" aria-pressed="true">Palestine</button>
-          <button type="button" id="v-med" aria-pressed="false">Méditerranée</button>
-          <button type="button" id="v-ori" aria-pressed="false">Orient</button>
+        <div class="mapbar">
+          <div class="viewsel" role="group" aria-label="Choix de la carte">
+            <button type="button" id="v-pal" aria-pressed="true">Palestine</button>
+            <button type="button" id="v-med" aria-pressed="false">Méditerranée</button>
+            <button type="button" id="v-ori" aria-pressed="false">Orient</button>
+          </div>
+          <button type="button" class="mapzoom" id="v-all" aria-pressed="false" aria-label="Voir toute la carte" title="Voir toute la carte"><svg viewBox="0 0 20 20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="8.5" cy="8.5" r="5.6"/><path d="M12.7 12.7 17.2 17.2M6 8.5h5"/><path class="plus" d="M8.5 6v5"/></svg></button>
         </div>
         <div class="mapbox">
           <svg id="map-pal" role="img" aria-label="Carte de la Palestine"></svg>
@@ -314,36 +331,38 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
   });
   function pj(vk, lat, lon) { var v = VIEWS[vk]; return [(lon - v.lon0) * v.c * v.k, (v.lat1 - lat) * v.k]; }
 
-  /* Médaillons agrandis, posés sur la mer et le Néguev */
+  /* Médaillons agrandis, posés sur la mer et le Néguev ; m : position sur téléphone, où les noms sont plus grands
+     (le médaillon du lac s’écarte du bord pour que « Capharnaüm » et « mont de l’ordination » restent entiers) */
   var INSETS = {
-    lac: { lon0: 35.46, lon1: 35.72, lat0: 32.69, lat1: 32.93, s: 2.8, x: 8, y: 20, t: "Lac de Galilée, agrandi", from: "tl", to: "rm" },
+    lac: { lon0: 35.46, lon1: 35.72, lat0: 32.69, lat1: 32.93, s: 2.8, x: 8, y: 20, m: [24, 24], t: "Lac de Galilée, agrandi", from: "tl", to: "rm" },
     jer: { lon0: 35.08, lon1: 35.32, lat0: 31.68, lat1: 31.86, s: 3, x: 8, y: 610, t: "Jérusalem, agrandi", from: "bl", to: "tr" }
   };
   function pi(ik, lat, lon) {
     var v = VIEWS.pal, I = INSETS[ik];
-    return [I.x + (lon - I.lon0) * v.c * v.k * I.s, I.y + (I.lat1 - lat) * v.k * I.s];
+    return [I.px + (lon - I.lon0) * v.c * v.k * I.s, I.py + (I.lat1 - lat) * v.k * I.s];
   }
 
   /* ---------- Lieux (coordonnées modernes usuelles) ----------
      a : 1 = position approximative ou débattue ; note : précision affichée dans la fiche ;
-     lb : étiquette par vue [dx, dy, ancre] ; ins : médaillon ; il : étiquette dans le médaillon [dx, dy, ancre, texte] */
+     lb : étiquette par vue [dx, dy, ancre] ; ins : médaillon ; il : étiquette dans le médaillon [dx, dy, ancre, texte] ;
+     lbm, ilm : variantes pour le téléphone, où les noms sont plus grands (sans chevauchement ni coupure au bord) */
   var P = {
     nazareth: { lat: 32.702, lon: 35.297, n: "Nazareth", lb: { pal: [0, 15, "middle"], ori: [-6, 14, "end"] } },
     sepphoris: { lat: 32.753, lon: 35.279, n: "Sepphoris", note: "à 5 km au nord-ouest de Nazareth (124:1.12)", lb: { pal: [-7, -2, "end"] } },
     cana: { lat: 32.746, lon: 35.342, n: "Cana", a: 1, note: "site débattu", lb: { pal: [7, -2, "start"] } },
     tiberiade: { lat: 32.794, lon: 35.532, n: "Tibériade", ins: "lac", il: [6, 4, "start"] },
     magdala: { lat: 32.826, lon: 35.517, n: "Magdala", ins: "lac", il: [6, 4, "start"] },
-    capharnaum: { lat: 32.881, lon: 35.575, n: "Capharnaüm", ins: "lac", il: [-5, 14, "end"], lb: { ori: [-6, -4, "end"] } },
+    capharnaum: { lat: 32.881, lon: 35.575, n: "Capharnaüm", ins: "lac", il: [-5, 14, "end"], lb: { ori: [-6, -4, "end"] }, lbm: { ori: [3, 17, "start"] } },
     bethsaide: { lat: 32.884, lon: 35.594, n: "Bethsaïde", a: 1, note: "le port de pêche de Capharnaüm (139:1.1) ; à ne pas confondre avec Bethsaïde-Julias", ins: "lac", il: [5, 14, "start"] },
-    julias: { lat: 32.910, lon: 35.631, n: "Bethsaïde-Julias", a: 1, note: "site débattu", ins: "lac", il: [0, -7, "middle"] },
+    julias: { lat: 32.910, lon: 35.631, n: "Bethsaïde-Julias", a: 1, note: "site débattu", ins: "lac", il: [0, -7, "middle"], ilm: [-4, -5, "start"] },
     magadan: { lat: 32.897, lon: 35.648, n: "Magadan", a: 1, note: "parc près de Bethsaïde-Julias (158:7.1) ; non situé plus précisément", ins: "lac", il: [6, 4, "start"] },
     kheresa: { lat: 32.826, lon: 35.651, n: "Khérésa", a: 1, note: "petit village de la rive orientale (151:6.1–2) ; site débattu", ins: "lac", il: [6, 4, "start"] },
     ordination: { lat: 32.900, lon: 35.556, n: "Mont de l’ordination", a: 1, note: "hautes terres au nord de Capharnaüm (140:0.2) ; non situé", ins: "lac", il: [-6, 0, "end", "mont de|l’ordination"] },
     cesphil: { lat: 33.248, lon: 35.694, n: "Césarée de Philippe", note: "à ne pas confondre avec Césarée, sur la côte", lb: { pal: [7, 4, "start"] } },
     hermon: { lat: 33.416, lon: 35.857, n: "Mont Hermon", lb: { pal: [8, 4, "start"] } },
     bethjenn: { lat: 33.31, lon: 35.88, n: "Beth-Jenn", a: 1, note: "village sur les premières hauteurs du mont Hermon (134:8.1) ; position estimée", lb: { pal: [8, 4, "start"] } },
-    gilboa: { lat: 32.45, lon: 35.41, n: "Mont Gilboa", lb: { pal: [-7, 4, "end"] } },
-    scythopolis: { lat: 32.497, lon: 35.497, n: "Scythopolis", lb: { pal: [-6, 4, "end"] } },
+    gilboa: { lat: 32.45, lon: 35.41, n: "Mont Gilboa", lb: { pal: [-7, 4, "end"] }, lbm: { pal: [-7, 7, "end"] } },
+    scythopolis: { lat: 32.497, lon: 35.497, n: "Scythopolis", lb: { pal: [-6, 4, "end"] }, lbm: { pal: [-6, 1, "end"] } },
     sychar: { lat: 32.213, lon: 35.287, n: "Sychar (puits de Jacob)", a: 1, note: "position approximative", lb: { pal: [-7, 4, "end"] } },
     pella: { lat: 32.449, lon: 35.617, n: "Pella", lb: { pal: [7, 4, "start"] } },
     beitadis: { lat: 32.36, lon: 35.72, n: "Beit Adis", a: 1, note: "village des collines de Pérée (136:3.2 ; 136:4.14) ; position inconnue", lb: { pal: [7, 4, "start"] } },
@@ -352,20 +371,20 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     jericho: { lat: 31.871, lon: 35.444, n: "Jéricho", lb: { pal: [-7, -4, "end"] } },
     philadelphie: { lat: 31.954, lon: 35.934, n: "Philadelphie", note: "l’actuelle Amman", lb: { pal: [7, 4, "start"] } },
     lydda: { lat: 31.951, lon: 34.888, n: "Lydda", lb: { pal: [-6, 4, "end"] } },
-    jerusalem: { lat: 31.778, lon: 35.235, n: "Jérusalem", ins: "jer", main: 1, il: [-6, 4, "end"], lb: { pal: [0, -9, "middle"], med: [0, 16, "middle"], ori: [-6, 10, "end"] } },
-    olivet: { lat: 31.779, lon: 35.245, n: "Mont Olivet (Gethsémani)", ins: "jer", il: [0, -9, "middle", "mont Olivet"] },
+    jerusalem: { lat: 31.778, lon: 35.235, n: "Jérusalem", ins: "jer", main: 1, il: [-6, 4, "end"], lb: { pal: [0, -9, "middle"], med: [0, 16, "middle"], ori: [-6, 10, "end"] }, ilm: [-6, 0, "end"], lbm: { med: [0, 20, "middle"], ori: [0, 18, "middle"] } },
+    olivet: { lat: 31.779, lon: 35.245, n: "Mont Olivet (Gethsémani)", ins: "jer", il: [0, -9, "middle", "mont Olivet"], ilm: [6, -4, "start", "mont Olivet"] },
     bethanie: { lat: 31.771, lon: 35.262, n: "Béthanie", note: "à environ trois kilomètres du temple (172:3.1) ; à ne pas confondre avec le gué de Béthanie", ins: "jer", il: [0, 15, "middle"] },
     bethleem: { lat: 31.705, lon: 35.200, n: "Bethléem", note: "de Judée ; à ne pas confondre avec Bethléem de Galilée (138:9.3)", ins: "jer", il: [0, 15, "middle"] },
     juda: { lat: 31.768, lon: 35.160, n: "Ville de Juda", a: 1, note: "dans les collines, à sept kilomètres à l’ouest de Jérusalem (122:2.6) ; site débattu", ins: "jer", il: [0, 15, "middle"] },
     emmaus: { lat: 31.835, lon: 35.125, n: "Emmaüs", a: 1, note: "à une douzaine de kilomètres à l’ouest de Jérusalem (190:5.1) ; site débattu", ins: "jer", il: [7, 4, "start"] },
-    engaddi: { lat: 31.461, lon: 35.392, n: "Engaddi", lb: { pal: [-7, 4, "end"] } },
+    engaddi: { lat: 31.461, lon: 35.392, n: "Engaddi", lb: { pal: [-7, 4, "end"] }, lbm: { pal: [-6, 11, "end"] } },
     macharee: { lat: 31.561, lon: 35.627, n: "Macharée", note: "forteresse où Jean fut emprisonné (135:12.1)", lb: { pal: [7, 4, "start"] } },
     joppe: { lat: 32.054, lon: 34.752, n: "Joppé", lb: { pal: [-7, 4, "end"], med: [-6, -4, "end"] } },
     cesaree: { lat: 32.500, lon: 34.892, n: "Césarée", note: "port ; à ne pas confondre avec Césarée de Philippe", lb: { pal: [-7, 4, "end"], med: [-6, -2, "end"] } },
-    sidon: { lat: 33.563, lon: 35.371, n: "Sidon", lb: { pal: [7, 4, "start"], med: [-6, 8, "end"], ori: [-6, -6, "end"] } },
-    sarepta: { lat: 33.457, lon: 35.296, n: "Sarepta", lb: { pal: [-6, 4, "end"] } },
+    sidon: { lat: 33.563, lon: 35.371, n: "Sidon", lb: { pal: [7, 4, "start"], med: [-6, 8, "end"], ori: [-6, -6, "end"] }, lbm: { med: [-6, 10, "end"] } },
+    sarepta: { lat: 33.457, lon: 35.296, n: "Sarepta", lb: { pal: [-6, 4, "end"] }, lbm: { pal: [6, 4, "start"] } },
     tyr: { lat: 33.271, lon: 35.196, n: "Tyr", lb: { pal: [7, 4, "start"] } },
-    damas: { lat: 33.513, lon: 36.292, n: "Damas", lb: { pal: [-7, 4, "end"], med: [0, -8, "middle"], ori: [7, 4, "start"] } },
+    damas: { lat: 33.513, lon: 36.292, n: "Damas", lb: { pal: [-7, 4, "end"], med: [0, -8, "middle"], ori: [7, 4, "start"] }, lbm: { med: [2, -9, "end"] } },
     alexandrie: { lat: 31.200, lon: 29.918, n: "Alexandrie", lb: { med: [0, 16, "middle"] } },
     lasaia: { lat: 34.93, lon: 24.83, n: "Lasaïa (Crète)", a: 1, note: "position approximative", lb: { med: [0, 16, "middle"] } },
     cyrene: { lat: 32.82, lon: 21.86, n: "Cyrène", lb: { med: [0, 16, "middle"] } },
@@ -583,14 +602,21 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
   function label(id, xy, L) {
     var t = L[3] || P[id].n, parts = t.split("|");
     if (parts.length === 1) return txt(xy[0] + L[0], xy[1] + L[1], t, "m-lbl", L[2], ' data-l="' + id + '"');
-    var x = f1(xy[0] + L[0]), y0 = xy[1] + L[1] - 6 * (parts.length - 1);
-    return '<text data-l="' + id + '" class="m-lbl"' + (L[2] !== "start" ? ' text-anchor="' + L[2] + '"' : "") + ' x="' + x + '" y="' + f1(y0) + '">' +
-      parts.map(function (s, k) { return k ? '<tspan x="' + x + '" dy="12">' + esc(s) + "</tspan>" : esc(s); }).join("") + "</text>";
+    // interligne en em : 12 unités au bureau (noms de 12,5), comme avant ; proportionnel aux noms agrandis du téléphone
+    var x = f1(xy[0] + L[0]);
+    return '<text data-l="' + id + '" class="m-lbl"' + (L[2] !== "start" ? ' text-anchor="' + L[2] + '"' : "") + ' x="' + x + '" y="' + f1(xy[1] + L[1]) + '">' +
+      parts.map(function (s, k) { return '<tspan x="' + x + '" dy="' + (k ? "0.96" : -0.48 * (parts.length - 1)) + 'em">' + esc(s) + "</tspan>"; }).join("") + "</text>";
   }
+  /* Téléphone (même seuil que la CSS) : noms agrandis, étiquettes et médaillon du lac adaptés, caméra qui suit */
+  var mqPhone = window.matchMedia ? window.matchMedia("(max-width: 560px)") : null;
+  var PHONE = !!(mqPhone && mqPhone.matches);
+  function lbOf(id, vk) { var p = P[id]; return (PHONE && p.lbm && p.lbm[vk]) || (p.lb && p.lb[vk]) || null; }
+  function ilOf(id) { var p = P[id]; return (PHONE && p.ilm) || p.il || null; }
 
   var svgs = {};
   function buildPal() {
     var v = VIEWS.pal, W = v.W, H = v.H, h = "", P0 = projV("pal");
+    Object.keys(INSETS).forEach(function (k) { var I = INSETS[k]; I.px = PHONE && I.m ? I.m[0] : I.x; I.py = PHONE && I.m ? I.m[1] : I.y; });
     h += '<rect class="m-land" x="0" y="0" width="' + W + '" height="' + H + '"/>';
     h += '<path class="m-sea" d="' + pathOf(P0, COAST.concat([[33.60, 34.20], [31.26, 34.20]]), true) + '"/>';
     h += '<path class="m-coast" d="' + pathOf(P0, COAST, false) + '"/>';
@@ -604,7 +630,7 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     });
     var a = pj("pal", 32.18, 34.30); h += txt(a[0], a[1], "Méditerranée", "m-water");
     a = pj("pal", 32.80, 35.646); h += txt(a[0] + 24, a[1] + 4, "lac de Galilée", "m-water");
-    a = pj("pal", 32.18, 35.565); h += txt(a[0] + 6, a[1], "Jourdain", "m-water");
+    a = PHONE ? pj("pal", 32.0, 35.565) : pj("pal", 32.18, 35.565); h += txt(a[0] + 6, a[1], "Jourdain", "m-water");   // téléphone : à l’écart de Ragaba
     a = pj("pal", 31.33, 35.60); h += txt(a[0] + 4, a[1], "mer Morte", "m-water");
     // cadres des médaillons et traits de rappel
     Object.keys(INSETS).forEach(function (k) {
@@ -612,7 +638,7 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
       I.w = (I.lon1 - I.lon0) * v.c * v.k * I.s; I.h = (I.lat1 - I.lat0) * v.k * I.s;
       h += '<rect class="m-box" data-box="' + k + '" x="' + f1(b0[0]) + '" y="' + f1(b0[1]) + '" width="' + f1(b1[0] - b0[0]) + '" height="' + f1(b1[1] - b0[1]) + '"/>';
       var from = I.from === "tl" ? [b0[0], b0[1]] : [b0[0], b1[1]];
-      var to = I.to === "rm" ? [I.x + I.w, I.y + I.h / 2] : [I.x + I.w, I.y];
+      var to = I.to === "rm" ? [I.px + I.w, I.py + I.h / 2] : [I.px + I.w, I.py];
       h += '<path class="m-box" data-box="' + k + '" d="M' + f1(from[0]) + " " + f1(from[1]) + "L" + f1(to[0]) + " " + f1(to[1]) + '"/>';
     });
     h += '<g class="g-trace"></g>';
@@ -621,15 +647,16 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
       var p = P[id], xy = pj("pal", p.lat, p.lon);
       if (p.ins && !p.main) return; // ces lieux ne figurent que dans leur médaillon
       mk += marker(id, xy[0], xy[1], p.ins ? 2.8 : 3.8);
-      if (p.lb && p.lb.pal) lb += label(id, xy, p.lb.pal);
+      var L = lbOf(id, "pal");
+      if (L) lb += label(id, xy, L);
     });
     h += '<g class="g-mk">' + mk + "</g>" + lb;
     // médaillons
     Object.keys(INSETS).forEach(function (k) {
       var I = INSETS[k], PI = projI(k);
-      h += '<clipPath id="clip-' + k + '"><rect x="' + f1(I.x) + '" y="' + f1(I.y) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/></clipPath>';
-      h += '<rect class="m-inset" x="' + f1(I.x) + '" y="' + f1(I.y) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/>';
-      h += txt(I.x, I.y - 6, I.t, "m-inset-t");
+      h += '<clipPath id="clip-' + k + '"><rect x="' + f1(I.px) + '" y="' + f1(I.py) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/></clipPath>';
+      h += '<rect class="m-inset" x="' + f1(I.px) + '" y="' + f1(I.py) + '" width="' + f1(I.w) + '" height="' + f1(I.h) + '"/>';
+      h += txt(I.px, I.py - 6, I.t, "m-inset-t");
       var g = '<g clip-path="url(#clip-' + k + ')">';
       if (k === "lac") {
         g += '<path class="m-riv" d="' + pathOf(PI, JORDAN_UP, false) + '"/>';
@@ -643,7 +670,8 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
         if (p.ins !== k) return;
         var xy = pi(k, p.lat, p.lon);
         g += marker(id, xy[0], xy[1], 4);
-        if (p.il) lbi += label(id, xy, p.il);
+        var Li = ilOf(id);
+        if (Li) lbi += label(id, xy, Li);
       });
       h += g + "</g>" + lbi;
     });
@@ -658,8 +686,9 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     if (vk === "ori") h += '<path class="m-lake" d="' + pathOf(projV("ori"), URMIA, true) + '"/>';
     var labels = vk === "med"
       ? [[34.3, 18.5, "mer Méditerranée", "m-water"], [42.6, 15.5, "mer Adriatique", "m-water"], [37.3, 25.0, "mer Égée", "m-water"], [43.0, 12.6, "ITALIE", "m-region"], [39.3, 22.0, "GRÈCE", "m-region"], [38.8, 32.5, "ASIE", "m-region"], [30.0, 26.0, "ÉGYPTE", "m-region"], [31.4, 13.0, "AFRIQUE", "m-region"]]
-      : [[43.4, 36.2, "mer Noire", "m-water"], [41.0, 50.6, "mer Caspienne", "m-water"], [28.8, 51.2, "golfe Persique", "m-water"], [34.0, 33.1, "Méditerranée", "m-water", "start"], [36.55, 41.2, "ASSYRIE", "m-region"], [34.4, 49.6, "MÉDIE", "m-region"], [35.3, 53.0, "PARTHIE", "m-region"], [33.2, 43.6, "MÉSOPOTAMIE", "m-region"], [32.9, 36.9, "SYRIE", "m-region"]];
-    labels.forEach(function (r) { var xy = pj(vk, r[0], r[1]); h += txt(xy[0], xy[1], r[2], r[3], r[4] || "middle"); });
+      : [[43.4, 36.2, "mer Noire", "m-water"], [41.0, 50.6, "mer Caspienne", "m-water"], [28.8, 51.2, "golfe Persique", "m-water"], [34.0, 33.1, "Méditerranée", "m-water", "start", [34.4, 33.1]], [36.55, 41.2, "ASSYRIE", "m-region"], [34.4, 49.6, "MÉDIE", "m-region"], [35.3, 53.0, "PARTHIE", "m-region"], [33.2, 43.6, "MÉSOPOTAMIE", "m-region"], [32.9, 36.9, "SYRIE", "m-region", "middle", [32.95, 36.9]]];
+    // r[5] : position sur téléphone, où les noms plus grands rencontreraient ces textes (Sidon, Capharnaüm)
+    labels.forEach(function (r) { var q = PHONE && r[5] || r, xy = pj(vk, q[0], q[1]); h += txt(xy[0], xy[1], r[2], r[3], r[4] || "middle"); });
     var rt = "";
     Object.keys(ROUTES).forEach(function (rk) {
       var R = ROUTES[rk];
@@ -671,18 +700,23 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     PV[vk].forEach(function (id) {
       var p = P[id], xy = pj(vk, p.lat, p.lon);
       mk += marker(id, xy[0], xy[1], 3.6);
-      if (p.lb && p.lb[vk]) lb += label(id, xy, p.lb[vk]);
+      var L = lbOf(id, vk);
+      if (L) lb += label(id, xy, L);
     });
     h += '<g class="g-mk">' + mk + "</g>" + lb + '<g class="g-pulse"></g>';
     return h;
   }
 
-  ["pal", "med", "ori"].forEach(function (vk) {
-    var s = document.getElementById("map-" + vk), v = VIEWS[vk];
-    s.setAttribute("viewBox", "0 0 " + v.W + " " + v.H);
-    s.innerHTML = vk === "pal" ? buildPal() : buildWide(vk, vk === "med" ? LAND_MED : LAND_ORI, vk === "med" ? RIV_MED : RIV_ORI);
-    svgs[vk] = s;
-  });
+  function buildMaps() {
+    lblBox = {};
+    ["pal", "med", "ori"].forEach(function (vk) {
+      var s = document.getElementById("map-" + vk), v = VIEWS[vk];
+      s.setAttribute("viewBox", "0 0 " + v.W + " " + v.H);
+      s.innerHTML = vk === "pal" ? buildPal() : buildWide(vk, vk === "med" ? LAND_MED : LAND_ORI, vk === "med" ? RIV_MED : RIV_ORI);
+      svgs[vk] = s;
+    });
+  }
+  buildMaps();
 
   /* ---------- État ---------- */
   var cur = 0, timer = null, annonce = false;
@@ -694,8 +728,160 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     });
   }
   ["pal", "med", "ori"].forEach(function (k) {
-    document.getElementById("v-" + k).addEventListener("click", function () { setView(k); });
+    document.getElementById("v-" + k).addEventListener("click", function () { setView(k); camUpdate(false); });
   });
+
+  /* ---------- Téléphone : la caméra suit l’étape ----------
+     Sous 560 px, la carte entière réduirait les noms à 6–10 px. La caméra recadre le viewBox autour du lieu courant
+     et de son nom (toujours entiers), du trajet de l’étape et des autres lieux nommés (autant que possible), avec le
+     zoom juste nécessaire pour que les noms fassent NOM_PX à l’écran. Le cadre garde le rapport largeur/hauteur de la
+     carte et ne sort pas de ses limites ; en Palestine, il se cale le plus à gauche possible, pour garder les médaillons.
+     Un long voyage se suit : la caméra accompagne le tracé pendant qu’il se dessine. Transitions douces, aucune si le
+     mouvement est réduit. La loupe (« Voir toute la carte ») montre la carte entière, comme une vue choisie à la main
+     qui ne contient pas le lieu courant ; à une étape sans lieu précisé, la caméra ne bouge pas. Au bureau, rien ne
+     change : le cadre reste la carte entière. */
+  var NOM_PX = 12.5, CAM = {}, camView = null, camRaf = 0, camPath = null, camFull = false, stepCur = [], stepAx = [];
+  var mapbox = document.querySelector(".mapbox"), zoomBtn = document.getElementById("v-all");
+  function clamp(a, lo, hi) { return a < lo ? lo : a > hi ? hi : a; }
+  function ease(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function smooth(a, b, t) { var u = clamp((t - a) / (b - a), 0, 1); return u * u * (3 - 2 * u); }
+  function mix(a, b, t) { return { x: a.x + (b.x - a.x) * t, y: a.y + (b.y - a.y) * t, w: a.w + (b.w - a.w) * t, h: a.h + (b.h - a.h) * t }; }
+  function fullFrame(vk) { var v = VIEWS[vk]; return { x: 0, y: 0, w: v.W, h: v.H }; }
+  function camSet(vk, f) {
+    CAM[vk] = f;
+    var vb = [f.x, f.y, f.w, f.h].map(function (n) { return Math.round(n * 100) / 100; }).join(" ");
+    if (svgs[vk].getAttribute("viewBox") !== vb) svgs[vk].setAttribute("viewBox", vb);
+    camLabels(vk);
+  }
+  // Un nom que le bord du cadre couperait s’efface en fondu, au repos comme en mouvement : jamais de nom tronqué.
+  // (Le lieu courant est toujours cadré entier.) Boîtes mises en cache, recalculées à chaque étape (noms en gras).
+  var lblBox = {};
+  function camLabels(vk) {
+    var f = CAM[vk], list = lblBox[vk];
+    if (!PHONE || f.w >= VIEWS[vk].W - .5) { each(svgs[vk].querySelectorAll("text.hors"), function (t) { t.classList.remove("hors"); }); return; }
+    if (!list) {
+      list = lblBox[vk] = [];
+      each(svgs[vk].querySelectorAll("text"), function (t) {
+        try { var q = t.getBBox(); if (q.width) list.push([t, q.x, q.y, q.x + q.width, q.y + q.height]); } catch (err) { /* non rendu */ }
+      });
+    }
+    list.forEach(function (q) {
+      var cut = q[3] > f.x && q[1] < f.x + f.w && q[4] > f.y && q[2] < f.y + f.h &&
+        (q[1] < f.x + 1 || q[2] < f.y + 1 || q[3] > f.x + f.w - 1 || q[4] > f.y + f.h - 1);
+      if (q[0].classList.contains("hors") !== cut) q[0].classList.toggle("hors", cut);
+    });
+  }
+  function camStop() {
+    if (camRaf) { cancelAnimationFrame(camRaf); camRaf = 0; }
+    if (camPath) { camPath.style.strokeDashoffset = "0"; camPath = null; }   // voyage interrompu : tracé entier
+  }
+  // zoom (1 = carte entière) et échelle (px d’écran par unité de carte)
+  function camScale(vk) {
+    var v = VIEWS[vk], cs = getComputedStyle(mapbox);
+    var boxW = mapbox.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+    var t = svgs[vk].querySelector(".m-lbl"), fs = t ? parseFloat(getComputedStyle(t).fontSize) : 0;
+    var k0 = boxW / v.W, z = PHONE && !camFull && k0 > 0 && fs > 0 ? NOM_PX / (fs * k0) : 1;
+    z = z < 1.04 ? 1 : Math.min(z, 3);
+    return { z: z, k: k0 * z };
+  }
+  function bx() { return [Infinity, Infinity, -Infinity, -Infinity]; }
+  function bxAdd(b, x0, y0, x1, y1) { b[0] = Math.min(b[0], x0); b[1] = Math.min(b[1], y0); b[2] = Math.max(b[2], x1); b[3] = Math.max(b[3], y1); }
+  function bxEl(b, el) {
+    if (el.tagName.toLowerCase() === "circle") {
+      var cx = +el.getAttribute("cx"), cy = +el.getAttribute("cy"), r = +el.getAttribute("r") + 2;
+      bxAdd(b, cx - r, cy - r, cx + r, cy + r);
+      return;
+    }
+    try { var q = el.getBBox(); if (q.width || q.height) bxAdd(b, q.x, q.y, q.x + q.width, q.y + q.height); } catch (err) { /* élément non rendu */ }
+  }
+  // Cadre de l’étape : M (lieu courant et son nom) toujours entier ; U (tout ce qu’on aimerait voir) autant que possible.
+  function camFrame(vk, M, U, sc) {
+    var v = VIEWS[vk], w = v.W / sc.z, h = v.H / sc.z, pad = 12 / sc.k;
+    function axis(mlo, mhi, ulo, uhi, size, max, left) {
+      var a;
+      if (left) a = Math.max(0, uhi + pad - size);
+      else if (uhi - ulo + 2 * pad <= size) a = (ulo + uhi - size) / 2;
+      else { var mid = (mlo + mhi) / 2; a = clamp((ulo + uhi - size) / 2, mid - size * .68, mid - size * .32); }
+      a = mhi - mlo + 2 * pad <= size ? clamp(a, mhi + pad - size, mlo - pad) : (mlo + mhi - size) / 2;
+      return clamp(a, 0, max - size);
+    }
+    return { x: axis(M[0], M[2], U[0], U[2], w, v.W, vk === "pal"), y: axis(M[1], M[3], U[1], U[3], h, v.H, false), w: w, h: h,
+      fits: U[2] - U[0] + 2 * pad <= w && U[3] - U[1] + 2 * pad <= h };
+  }
+  // Recadre la carte affichée. anim : transition douce ; route : tracé du voyage de l’étape, animé ici.
+  function camUpdate(anim, route) {
+    camStop();
+    var vk = ["pal", "med", "ori"].filter(function (k) { return !svgs[k].classList.contains("cache"); })[0];
+    if (!vk) return;
+    var fresh = camView !== vk, from = CAM[vk] || fullFrame(vk), sc = camScale(vk), target = fullFrame(vk), fits = true;
+    camView = vk;
+    if (sc.z > 1 && vk === E[cur].v) {
+      var s = svgs[vk], M = bx(), U = bx();
+      each(s.querySelectorAll(".mk, [data-l]"), function (el) {
+        var id = el.getAttribute("data-p") || el.getAttribute("data-l");
+        if (stepCur.indexOf(id) >= 0) bxEl(M, el); else if (stepAx.indexOf(id) >= 0) bxEl(U, el);
+      });
+      each(s.querySelectorAll(".g-trace path, .rt.now, .m-box.on"), function (el) { bxEl(U, el); });
+      if (M[2] >= M[0]) {
+        bxAdd(U, M[0], M[1], M[2], M[3]);
+        target = camFrame(vk, M, U, sc);
+        fits = target.fits;
+      } else if (CAM[vk]) {   // étape sans lieu précisé : la caméra reste où elle est, les noms restent lisibles
+        var c = CAM[vk], vw = VIEWS[vk].W / sc.z, vh = VIEWS[vk].H / sc.z;
+        target = { x: clamp(c.x + c.w / 2 - vw / 2, 0, VIEWS[vk].W - vw), y: clamp(c.y + c.h / 2 - vh / 2, 0, VIEWS[vk].H - vh), w: vw, h: vh };
+      }
+    }
+    if (route && !fits && !reduce) { camFollow(vk, route, target, fresh ? null : from); return; }
+    if (route) animate(route);
+    if (!anim || reduce || fresh) camSet(vk, target); else camTween(vk, from, target, 700);
+  }
+  function camTween(vk, a, b, D) {
+    if (Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.w - b.w) < .5) { camSet(vk, b); return; }
+    var v = VIEWS[vk], t0 = 0, ax = a.x + a.w / 2, ay = a.y + a.h / 2, bx2 = b.x + b.w / 2, by = b.y + b.h / 2;
+    function step(now) {
+      t0 = t0 || now;
+      var t = Math.min(1, (now - t0) / D), e = ease(t), w = a.w * Math.pow(b.w / a.w, e), h = w * v.H / v.W;
+      if (t < 1) {
+        camSet(vk, { x: clamp(ax + (bx2 - ax) * e - w / 2, 0, v.W - w), y: clamp(ay + (by - ay) * e - h / 2, 0, v.H - h), w: w, h: h });
+        camRaf = requestAnimationFrame(step);
+      } else { camRaf = 0; camSet(vk, b); }
+    }
+    camRaf = requestAnimationFrame(step);
+  }
+  // Long voyage : la caméra accompagne le tracé, qui se dessine en même temps, puis se pose sur le cadre de l’étape.
+  function camFollow(vk, path, end, from) {
+    var L = 0;
+    try { L = path.getTotalLength(); } catch (err) { /* tracé sans longueur */ }
+    if (!L) { animate(path); camSet(vk, end); return; }
+    var v = VIEWS[vk], w = end.w, h = end.h, N = 40, R = 5, pts = [], sm = [], i, j;
+    for (i = 0; i <= N; i++) { var q = path.getPointAtLength(L * i / N); pts.push([q.x, q.y]); }
+    for (i = 0; i <= N; i++) {    // moyenne glissante : la caméra ne suit pas chaque coude du trajet
+      var sx = 0, sy = 0, n = 0;
+      for (j = Math.max(0, i - R); j <= Math.min(N, i + R); j++) { sx += pts[j][0]; sy += pts[j][1]; n++; }
+      sm.push([sx / n, sy / n]);
+    }
+    function frameAt(cx, cy) { return { x: clamp(cx - w / 2, 0, v.W - w), y: clamp(cy - h / 2, 0, v.H - h), w: w, h: h }; }
+    function follow(u) {
+      var f = u * N, k = Math.min(N - 1, Math.floor(f)), t = f - k;
+      return frameAt(sm[k][0] + (sm[k + 1][0] - sm[k][0]) * t, sm[k][1] + (sm[k + 1][1] - sm[k][1]) * t);
+    }
+    var start = from || frameAt(pts[0][0], pts[0][1]), D = clamp(L * 1.6, 1300, 2300), t0 = 0;
+    path.classList.remove("anim");
+    path.style.strokeDasharray = L + " " + L;
+    path.style.strokeDashoffset = String(L);
+    camPath = path;
+    function step(now) {
+      t0 = t0 || now;
+      var t = Math.min(1, (now - t0) / D), e = ease(t);
+      path.style.strokeDashoffset = String(L * (1 - e));
+      if (t < 1) {
+        camSet(vk, mix(mix(start, follow(e), smooth(0, .2, t)), end, smooth(.7, 1, t)));
+        camRaf = requestAnimationFrame(step);
+      } else { camRaf = 0; camPath = null; camSet(vk, end); }
+    }
+    camSet(vk, start);
+    camRaf = requestAnimationFrame(step);
+  }
 
   function prevEnd(i) {
     for (var j = i - 1; j >= 0; j--) {
@@ -720,8 +906,10 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
   }
   function ptPal(q) { return typeof q === "string" ? pj("pal", P[q].lat, P[q].lon) : pj("pal", q[0], q[1]); }
 
-  function render() {
+  function render(mapsOnly) {
     var e = E[cur];
+    camStop();
+    lblBox = {};
     setView(e.v);
     // lieux parcourus (toutes vues confondues) et itinéraires déjà suivis
     var visited = {}, doneR = {};
@@ -735,6 +923,7 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     }
     var curIds = (e.np || e.nv) ? e.pl.slice() : (e.pl.length ? [e.pl[e.pl.length - 1]] : []);
     var axIds = e.ax || [];
+    stepCur = curIds; stepAx = axIds;
     ["pal", "med", "ori"].forEach(function (vk) {
       var s = svgs[vk], here = vk === e.v;
       each(s.querySelectorAll(".mk"), function (m) {
@@ -765,9 +954,10 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
       var k = b.getAttribute("data-box");
       b.classList.toggle("on", e.v === "pal" && curIds.concat(axIds).some(function (id) { return P[id] && P[id].ins === k; }));
     });
-    // trajet récent
+    // trajet récent (le tracé d’un voyage est animé par la caméra : suivi sur téléphone, comme avant au bureau)
+    var routePath = null;
     if (e.r) {
-      animate(svgs[e.v].querySelector('.rt[data-r="' + e.r + '"]'));
+      routePath = svgs[e.v].querySelector('.rt[data-r="' + e.r + '"]');
     } else if (!e.np && !e.nv && e.v === "pal" && e.pl.length) {
       var start = prevEnd(cur), seq = [];
       if (start) seq.push(start);
@@ -793,6 +983,8 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
         });
       }
     }
+    camUpdate(true, routePath);
+    if (mapsOnly) return;   // cartes seules (changement de seuil) : la fiche et la frise sont déjà à jour
     // fiche
     var per = PERIODS[e.p];
     document.getElementById("f-sw").style.setProperty("--sw", "var(--p" + e.p + ")");
@@ -883,6 +1075,29 @@ details.unk ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; }
     if (ev.key === "ArrowRight") { stop(); go(cur + 1); ev.preventDefault(); }
     else if (ev.key === "ArrowLeft") { stop(); go(cur - 1); ev.preventDefault(); }
   });
+
+  zoomBtn.addEventListener("click", function () {
+    camFull = !camFull;
+    zoomBtn.setAttribute("aria-pressed", String(camFull));
+    camUpdate(true);
+  });
+  var mqT = 0;
+  function onPhone() {   // après 200 ms, pour ignorer une bascule passagère ; les cartes seules sont redessinées
+    clearTimeout(mqT);
+    mqT = setTimeout(function () {
+      if (!mqPhone || mqPhone.matches === PHONE) return;
+      PHONE = mqPhone.matches;
+      camStop(); CAM = {}; camView = null;
+      buildMaps(); render(true);
+    }, 200);
+  }
+  if (mqPhone) { if (mqPhone.addEventListener) mqPhone.addEventListener("change", onPhone); else if (mqPhone.addListener) mqPhone.addListener(onPhone); }
+  var rsz = 0, boxW0 = mapbox.clientWidth;
+  window.addEventListener("resize", function () {
+    clearTimeout(rsz);
+    rsz = setTimeout(function () { if (mapbox.clientWidth !== boxW0) { boxW0 = mapbox.clientWidth; if (PHONE) camUpdate(false); } }, 150);
+  });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { lblBox = {}; if (PHONE && !camRaf) camUpdate(false); });
 
   go(0);
   annonce = true;
