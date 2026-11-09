@@ -1454,12 +1454,12 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
   const TW = [];                                     // matériaux des étoiles qui scintillent
   // Voie lactée : carte de la NASA (SVS, Deep Star Maps 2020, d’après Gaia DR2) en coordonnées galactiques, comme la scène :
   // x vers le centre galactique, y vers le pôle Nord galactique. Sur téléphone, texture réduite de moitié.
-  const mwU = { uMw: { value: null }, uI: { value: 0 } };
+  const mwU = { uMw: { value: null }, uI: { value: 0 }, uK: { value: 0.35 } };   // uK : contraste (part du carré)
   const mwSphere = new THREE.Mesh(new THREE.SphereGeometry(1400, 48, 20, 0, Math.PI * 2, 33 * DEG, 114 * DEG), new THREE.ShaderMaterial({
     uniforms: mwU, side: THREE.BackSide, depthWrite: false, depthTest: false, transparent: false, blending: THREE.NoBlending,
     // sphère de Three.js : u = longitude depuis -x ; longitude galactique l = 2π u - π, d’où 1 - u ; latitude b = asin(y / R)
     vertexShader: 'varying vec2 vUv; void main() { vUv = vec2(1.0 - uv.x, 0.5 + asin(clamp(position.y / 1400.0, -1.0, 1.0)) * 0.31830989); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
-    fragmentShader: 'uniform sampler2D uMw; uniform float uI; varying vec2 vUv; void main() { vec3 c = texture2D(uMw, vUv).rgb; gl_FragColor = vec4((c * c * 0.35 + c * 0.65) * uI, 0.0); }'
+    fragmentShader: 'uniform sampler2D uMw; uniform float uI; uniform float uK; varying vec2 vUv; void main() { vec3 c = texture2D(uMw, vUv).rgb; gl_FragColor = vec4((c * c * uK + c * (1.0 - uK)) * uI, 0.0); }'
   }));
   mwSphere.renderOrder = -20; mwSphere.visible = false; mwSphere.frustumCulled = false;
   scene.add(mwSphere);                               // à part du ciel projeté (SKY), qui s’efface au profit des étoiles en 3D
@@ -2589,17 +2589,41 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     f.lerp(par, coupe ? 1 : smooth((u - 7.05) / 0.85));
     return f;
   }
+  // vue abaissée de Satania à Nébadon (autoTilt) : tiltFrom = hauteur (sinus) d’avant, à rétablir en quittant ces niveaux ;
+  // tiltOff = vue tournée à la main (on n’y touche plus jusqu’au retour au parcours guidé) ; tiltS = hauteur de référence
+  let tiltFrom = null, tiltOff = false, tiltS = null;
   function goFree() { if (!free) { free = true; freeFocus.copy(focusPhys); fly = null; } }
   // revenir au parcours guidé ; quitter un astre referme sa fiche
-  function recenter() { closeCard(); if (free) { free = false; fly = null; blendFrom.copy(focusPhys); blendT = 1; } }
+  function recenter() { closeCard(); tiltOff = false; tiltS = null; if (free) { free = false; fly = null; blendFrom.copy(focusPhys); blendT = 1; } }
   // vol vers un point : sa hauteur (arc) et sa durée sont fixées à la première image (frame)
   function flyTo(p) { goFree(); fly = { from: freeFocus.clone(), to: p.clone(), t0: performance.now() }; }
 
   function killDamping() { controls.enableDamping = false; controls.update(); controls.enableDamping = !reduced; }
-  function startCam(dir) {
+  function startCam(dir, auto) {
+    tiltS = null;
+    if (!auto) tiltFrom = null;                // autre vue choisie par l’atlas : plus rien à rétablir
     killDamping();
     if (reduced) { camera.position.copy(controls.target).add(dir.clone().normalize().multiplyScalar(D)); camera.lookAt(controls.target); controls.update(); return; }
     camAnim = { t0: performance.now(), from: camera.position.clone().sub(controls.target).normalize(), to: dir.clone().normalize() }; controls.enabled = false;
+  }
+  // Satania, Norlatiadek, Nébadon : sur le parcours guidé, la vue s’abaisse vers 16° au-dessus du plan galactique (même
+  // azimut, même côté du plan) : la Voie lactée, dans ce plan, passe alors dans le cadre, derrière la scène ; en quittant ces
+  // niveaux, elle retrouve sa hauteur d’avant (seuils décalés : pas d’allers-retours à la limite)
+  const TILT = 16 * DEG, tiltV = new V3();
+  function camElev(s) {                        // direction de même azimut, de hauteur s (sinus)
+    const d = tiltV.copy(camera.position).sub(controls.target).normalize(), h = new V3(d.x, 0, d.z);
+    if (h.lengthSq() < 1e-9) h.set(0, 0, 1);
+    h.normalize().multiplyScalar(Math.sqrt(1 - s * s)); h.y = s;
+    return h;
+  }
+  function autoTilt() {
+    if (camAnim) { tiltS = null; return; }
+    const s = tiltV.copy(camera.position).sub(controls.target).normalize().y, k = Math.sin(TILT);
+    if (tiltS === null) tiltS = s;
+    else if (Math.abs(s - tiltS) > 0.02) { tiltOff = true; tiltFrom = null; tiltS = s; }   // vue tournée à la main
+    if (free || coupe || tiltOff) return;
+    if (tiltFrom === null && uTarget >= 1.6 && uTarget <= 4.4 && Math.abs(s) > k + 0.03) { tiltFrom = s; startCam(camElev(Math.sign(s) * k), true); }
+    else if (tiltFrom !== null && (uTarget < 1.4 || uTarget > 4.6)) { const s0 = tiltFrom; tiltFrom = null; startCam(camElev(s0), true); }
   }
   function stepCam(now) {
     const k = Math.min(1, (now - camAnim.t0) / 1400);
@@ -3375,12 +3399,12 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     setU(vToU(EFFM[n].v * (isMobile() ? 1.6 : 1)));   // téléphone : un peu plus de recul (écran étroit)
     if (o.card !== false) openCard('eff' + n, o.focus);
   }
-  // début du parcours : vue un peu plongeante sur le disque de Nébadon, puis la première effusion
+  // début du parcours : vue un peu plongeante (20°) sur le disque de Nébadon, la Voie lactée derrière, puis la première effusion
   function startEff(n) {
     const d = camera.position.clone().sub(controls.target);
     d.y = 0;
     if (d.lengthSq() < 1e-9) d.set(0, 0, 1);
-    d.normalize().multiplyScalar(0.84); d.y = 0.55;
+    d.normalize().multiplyScalar(Math.cos(20 * DEG)); d.y = Math.sin(20 * DEG);
     startCam(d);
     goEff(n || 1);
   }
@@ -3843,13 +3867,17 @@ const TEX = {"day":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUEB
     if (mwT0 >= 0) {
       const lw = Math.log10(V), near = 1 - smooth((Math.log10(Math.max(1, focusPhys.length())) - 4.3) / 0.5);
       const disk = (1 - 0.42 * smooth((lw - 3.75) / 0.55)) * (1 - smooth((lw - 5.0) / 0.35)) * (1 - L7.a) * near;
-      mwU.uI.value = 0.75 * (coupe ? 0 : Math.max(SKY.a, disk)) * (reduced ? 1 : smooth((now - mwT0) / 1200));
+      // de Satania à Nébadon, la vue un peu rasante montre la bande : plus lumineuse et plus contrastée, comme vue de la Terre
+      const vivid = smooth((lw - 0.3) / 0.6) * (1 - smooth((lw - 3.75) / 0.4)) * near * (1 - L7.a);
+      mwU.uK.value = 0.35 + 0.25 * vivid;
+      mwU.uI.value = 0.75 * (coupe ? 0 : Math.max(SKY.a, disk * (1 + 0.5 * vivid))) * (reduced ? 1 : smooth((now - mwT0) / 1200));
       mwSphere.visible = mwU.uI.value > 0.003;
     }
     TW.forEach((m) => { m.uniforms.uTime.value = now / 1000; });
     const expected = focusPhys.clone().multiplyScalar(kv);
     camera.position.add(expected.clone().sub(controls.target));
     controls.target.copy(expected);
+    autoTilt();
     if (camAnim) stepCam(now); else controls.update();
     const moved = controls.target.clone().sub(expected);
     if (moved.lengthSq() > 1e-12) { goFree(); freeFocus.add(moved.divideScalar(kv)); }

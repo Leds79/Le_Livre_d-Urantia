@@ -2,14 +2,14 @@
    Écrit par construire_site.py à chaque construction : ne pas le modifier à la main.
    VERSION est l’empreinte du contenu des fichiers listés ; elle change dès que l’un d’eux change. */
 'use strict';
-const VERSION = 'fbf9a9e35816';
+const VERSION = '3540ac835240';
 const PREFIXE = 'atlas-urantia-';
 const CACHE = PREFIXE + VERSION;
 // tout l’atlas, pour le téléchargement complet : chemin → [octets, empreinte]
 const FICHIERS = {
   "index.html": [151389, "04382f4165a5f279"],
   "nebadon-dans-orvonton.html": [73763, "7644473b7cd4e66e"],
-  "atlas-3d.html": [2553868, "6087a4f15f4f2d6e"],
+  "atlas-3d.html": [2556188, "873f6d8cc049b450"],
   "familles-de-personnalites.html": [123410, "62441591423176f9"],
   "concepts-en-schemas.html": [110540, "a9f987a1d81e4734"],
   "dieu-et-deite.html": [96576, "5c04e67a98561679"],
