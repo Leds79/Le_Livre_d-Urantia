@@ -122,7 +122,7 @@ PAGES = [
     ('glossaire.html', 'glossaire.html', 'Glossaire', 'Glossaire',
      'Glossaire du Livre d’Urantia : les termes du livre de A à Z, avec une définition simple, l’anglais d’origine, une courte citation et les références du texte.'),
     ('index-des-noms.html', 'index-des-noms.html', 'Index des noms', 'Index des noms',
-     'Index des noms du Livre d’Urantia : êtres, ordres, mondes, lieux, peuples et personnages, de A à Z, avec leurs références et les pages de l’atlas qui en parlent.'),
+     'Index des noms du Livre d’Urantia : les êtres, les mondes, les lieux, les peuples, les personnages et les religions que nomme le livre, de A à Z, avec qui ils sont, où le livre les présente et les pages de l’atlas qui en parlent.'),
 ]
 # Glossaire : sa page est dans le menu « Outils », hors du parcours numéroté ; ses infobulles (assets/glossaire.js,
 # données de glossaire-atlas.json injectées à la place du marqueur) sont chargées par les pages 2D.
@@ -164,7 +164,7 @@ CDN = {
 # (adresses claude.ai rendues relatives, rangées data-artefact et balises claude: retirées).
 SOURCES = [p[0] for p in PAGES if p[0] != 'urantia-paradis-3d.html'] + [
            'urantia-paradis-3d.src.html', 'etoiles.json', 'geo.json', 'tex.json', 'liens_refs.py'] + SCRIPTS + [
-           GLOSSAIRE_JS, GLOSSAIRE_JSON, 'glossaire.py', QUIZ_JS, QUIZ_JSON, 'assembler.py', 'etoiles.py', 'geo.py',
+           GLOSSAIRE_JS, GLOSSAIRE_JSON, 'glossaire.py', 'index-des-noms.json', 'index_des_noms.py', QUIZ_JS, QUIZ_JSON, 'assembler.py', 'etoiles.py', 'geo.py',
            'textures.py', 'voie-lactee-lecture-exr.py', 'voie-lactee-conversion.py', 'polices.py', 'fascicules.py', 'smoke3d.js',
            'construire_site.py', 'CONSTRUIRE.md', 'requirements.txt']
 RACINE = ['README.md', 'LICENCES.md', 'LICENSE', 'LICENSE-CONTENU.md', 'CONTRIBUER.md']   # copiés de site/ à la racine du site
@@ -214,7 +214,7 @@ MENUS = [
         ('fascicules.html', 'Les 197 fascicules et les pages de l’atlas'),
         ('parcours-de-lecture.html', 'Cinq itinéraires, fascicule par fascicule'),
         ('glossaire.html', 'Les mots du livre, de A à Z'),
-        ('index-des-noms.html', 'Êtres, lieux et personnages, de A à Z'),
+        ('index-des-noms.html', 'Êtres, lieux, peuples et religions, de A à Z'),
         ('index.html#hors-ligne', 'Lire hors ligne', 'Installer l’atlas ou l’enregistrer sur l’appareil'),
         (SIGNALER, 'Signaler une erreur', 'Sur cette page ; un compte GitHub est nécessaire'),
         (DEPOT + '/blob/main/CONTRIBUER.md', 'Contribuer sur GitHub', 'Proposer une correction ou une idée'),
@@ -1248,7 +1248,7 @@ def ecrire_index(construites):
         arbre.feed(page)
         arbre.close()
         main = trouver(arbre.racine, 'main') or trouver(arbre.racine, 'body') or arbre.racine
-        ixr = Indexeur(ix, p, nom, desc, sauter=('liste',) if name == GLOSSAIRE else ())
+        ixr = Indexeur(ix, p, nom, desc, sauter=('liste',) if name in (GLOSSAIRE, 'index-des-noms.html') else ())
         debut = len(ix['T'])
         buf = []
         ixr.marcher(main, buf)
@@ -1443,6 +1443,8 @@ for fichier, name, nom, court, desc in present:
             problems.append('glossaire.html : liste des termes à régénérer '
                             '(python -I glossaire.py page glossaire-atlas.json glossaire.html artefacts.json)')
         html = re.sub(r'<!--(?:GLOSSAIRE|AZ|THEMES):(?:DEBUT|FIN)[^>]*-->\n?', '', html)
+    if name == 'index-des-noms.html':  # liste écrite par index_des_noms.py (python -I index_des_noms.py page) : marqueurs retirés
+        html = re.sub(r'<!--(?:NOMS|AZ|CATS):(?:DEBUT|FIN)[^>]*-->\n?', '', html)
     if name == 'index.html':          # encadré « Lire hors ligne » : avec le bloc de crédit (div.fin), sinon avant le pied
         k = html.find('<div class="fin">')
         k = k + len('<div class="fin">') if k >= 0 else html.find('<footer class="foot"')

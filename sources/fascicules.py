@@ -51,7 +51,7 @@ PAGE = 'fascicules.html'
 RAPPORT = 'couverture-du-livre.md'
 URANTIA = 'https://www.urantia.org/fr/le-livre-d-urantia/'
 
-EXCLUES = {'glossaire.html', 'auteurs-et-chiffres.html', PAGE}   # parcourent tout le livre (et cette page elle-même)
+EXCLUES = {'glossaire.html', 'index-des-noms.html', 'auteurs-et-chiffres.html', PAGE}   # parcourent tout le livre (et cette page elle-même)
 GABARIT_3D = ('urantia-paradis-3d.html', 'urantia-paradis-3d.src.html')
 SEUILS = (1, 4, 12)                                    # peu : 1 à 3 ; moyen : 4 à 11 ; bien couvert : 12 et plus
 MOTS_MINUTE = 200
