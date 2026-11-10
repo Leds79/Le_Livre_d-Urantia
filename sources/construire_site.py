@@ -1807,28 +1807,67 @@ for p in OUT.rglob('*'):
             problems.append(f'{p.relative_to(OUT)} : contient encore une adresse d’artefact claude.ai')
 # Budget de citations. La déclaration « Permission to Quote » de la Fondation Urantia permet de citer sa traduction
 # jusqu'à 25 000 mots dans une même œuvre (avec au moins autant de mots propres et 5 000 mots consécutifs au plus).
-# Par prudence, le site entier compte comme une seule œuvre. On compte chaque passage distinct placé entre « » et
-# suivi de près d'une référence p:s.a ; au-delà de 24 000 mots, la construction le signale.
+# Par prudence, le site entier compte comme une seule œuvre, et chaque répétition compte : un passage cité sur deux pages
+# compte deux fois. Règle du site : un passage n'est cité mot pour mot qu'une fois ; ailleurs, on le résume avec sa
+# référence. Sont relevés : les passages entre « » suivis d'une référence p:s.a (ou précédés : « Le livre : « … » »),
+# les chaînes de citation des scripts (q: […], cite:, Q(…), [« … », 'p:s.a']) et les citations des explications du quiz.
+# Au-delà de 24 000 mots, la construction le signale.
 PLAFOND_CITATIONS, ALERTE_CITATIONS = 25000, 24000
 
 
 def mots_cites_du_livre():
-    mot, refp, vus = re.compile(r"[A-Za-zÀ-ÿœŒ0-9’'-]+"), re.compile(r'\b\d{1,3}:\d{1,2}\.\d{1,3}'), {}
-    for p in OUT.glob('*.html'):
+    """Rend (mots cités, chaque occurrence comptée ; nombre d'occurrences ; nombre de passages distincts)."""
+    mot = re.compile(r"[A-Za-zÀ-ÿœŒ0-9’'-]+")
+    refp = re.compile(r'\b\d{1,3}:\d{1,2}\.\d{1,3}')
+    chaine = r'"((?:[^"\\\n]|\\.){8,4000})"|\'((?:[^\'\\\n]|\\.){8,4000})\''
+    cite_js = re.compile(r'(?:\bq\s*:\s*\[?\s*|\bcite\s*:\s*|\bQ\(\s*|\[\s*)(?:' + chaine + r')'
+                         r'\s*,\s*(?:(?:qr|ref)\s*:\s*)?["\']\s*\d{1,3}:\d{1,2}(?:\.\d{1,3})?')
+    balise_html, balise_js = re.compile(r'<[^>]+>'), re.compile(r'</?[A-Za-z][^<>]{0,300}>')   # dans un script : pas « i < n »
+
+    def cle(q):
+        return re.sub(r'\W+', ' ', q.lower()).strip()
+
+    def texte(s, balise):
+        return html_lib.unescape(balise.sub(' ', s)).replace('\u00a0', ' ')
+
+    def guillemets(txt, ref_obligatoire=True):
+        trouves = []
+        for m in re.finditer(r'«\s*(.*?)\s*»', txt, flags=re.S):
+            avant = txt[max(0, m.start() - 60):m.start()]
+            if (not ref_obligatoire or refp.search(txt[m.end():m.end() + 90]) or re.search(r'Le livre\s*:\s*$', avant)
+                    or re.search(r'\d{1,3}:\d{1,2}\.\d{1,3}(?:\s*[;,–-]\s*[\d:.]+)*\s*:\s*$', avant)):
+                q = m.group(1).strip()
+                if q and len(q) <= 4000:
+                    trouves.append(q)
+        return trouves
+
+    occ = []
+    for p in sorted(OUT.glob('*.html')):
         if p.name in ('404.html', 'hors-ligne.html'):
             continue
-        t = re.sub(r'<style.*?</style>', ' ', p.read_text(encoding='utf-8'), flags=re.S)
-        txt = html_lib.unescape(re.sub(r'<[^>]+>', ' ', t)).replace('\u00a0', ' ')
-        for m in re.finditer(r'«\s*(.*?)\s*»', txt, flags=re.S):
-            q = m.group(1)
-            if len(q) <= 4000 and refp.search(txt[m.end():m.end() + 90]):
-                vus[re.sub(r'\W+', ' ', q.lower()).strip()] = len(mot.findall(q))
-    return sum(vus.values()), len(vus)
+        brut = p.read_text(encoding='utf-8')
+        occ += guillemets(texte(re.sub(r'<style.*?</style>|<script\b[^>]*>.*?</script>', ' ', brut, flags=re.S), balise_html))
+        for b in re.findall(r'<script\b[^>]*>(.*?)</script>', brut, flags=re.S):
+            bloc = guillemets(texte(re.sub(r'\\(["\'])', r'\1', b), balise_js))
+            vus = {cle(q) for q in bloc}
+            for m in cite_js.finditer(b):
+                s = texte(re.sub(r'\\(["\'])', r'\1', m.group(1) or m.group(2)), balise_js)
+                for q in (re.findall(r'«\s*(.*?)\s*»', s, flags=re.S) or [s]):
+                    if len(mot.findall(q)) >= 4 and cle(q) not in vus:
+                        vus.add(cle(q))
+                        bloc.append(q.strip())
+            occ += bloc
+    if QZ_ACTIF:                                   # quiz : chaque « … » d'une explication cite le livre (champ ref)
+        for etape in json.loads((SRC / QUIZ_JSON).read_text(encoding='utf-8')).get('etapes', []):
+            for question in etape.get('questions', []):
+                occ += guillemets(question.get('explication', ''), ref_obligatoire=False)
+    return sum(len(mot.findall(q)) for q in occ), len(occ), len({cle(q) for q in occ})
 
 
-cites, n_cites = mots_cites_du_livre()
-print(f'citations du livre : {cites} mots en {n_cites} passages distincts (plafond {PLAFOND_CITATIONS} mots)')
+cites, n_occ, n_cites = mots_cites_du_livre()
+print(f'citations du livre : {cites} mots, chaque répétition comptée ({n_occ} occurrences, {n_cites} passages distincts ; '
+      f'plafond {PLAFOND_CITATIONS} mots)')
 if cites > ALERTE_CITATIONS:
     problems.append(f'citations : {cites} mots du livre cités, proche ou au-delà du plafond de {PLAFOND_CITATIONS} mots '
-                    '(« Permission to Quote ») ; raccourcir des citations ou demander une permission écrite')
+                    '(« Permission to Quote ») ; résumer une citation répétée, raccourcir, ou demander une permission écrite')
 print('\n'.join(problems) if problems else 'vérification : aucune adresse externe à remplacer, aucun lien interne cassé')
