@@ -58,7 +58,7 @@ button.l3 { appearance: none; margin: 0; border: 0; border-radius: 7px; backgrou
 .l3.below::before { top: 11px; bottom: 0; }
 .l3.below::after { bottom: auto; top: 1px; background: linear-gradient(rgba(255, 255, 255, 0), currentColor); }
 .l3.gold { font: 700 17px/1.1 var(--font-display); letter-spacing: .01em; color: var(--gold-ink); }
-.l3.gold.small { font-size: 15px; }
+.l3.gold.small { font-size: 15px; color: var(--gold-ink); }
 .l3.core { font: 600 18px/1.1 var(--font-display); font-variant-caps: all-small-caps; letter-spacing: .1em; color: #BCCAF7; }
 .l3.core::before { background: rgba(6, 9, 21, .5); }
 .l3.violet { color: var(--violet); }
@@ -128,11 +128,11 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .menu-panel { position: absolute; z-index: 5; top: calc(100% + 6px); left: 0; width: min(22rem, calc(100vw - 32px)); max-height: min(72vh, 36rem); overflow: auto; overscroll-behavior: contain; padding: 10px 12px 12px; background: var(--panel-solid); border: 1px solid var(--panel-line); border-radius: 12px; box-shadow: 0 12px 36px rgba(0, 0, 0, .42); }
 /* intertitres : chaque groupe (Pages de l’atlas, Thèmes, Le livre, Outils, Modes…) comme dans le tiroir des pages 2D,
    puis les trois sous-groupes des thèmes en petites capitales, séparés d’un filet pointillé */
-.menu-panel h3 { margin: 12px 0 4px; padding: 12px 9px 0; border-top: 1px solid var(--panel-line); font: 600 1.06rem/1.2 var(--font-body); letter-spacing: .005em; color: var(--ink); }
-.menu-panel > h3:first-child, .menu-panel > .an-3d-chercher + h3 { margin-top: 0; padding-top: 2px; border-top: 0; }
-.menu-panel h4 { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; padding: 0 9px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
-.menu-panel h4::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 1px; background: var(--gold); }
-.menu-panel ul + h4 { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--panel-line); }
+.menu-panel h2 { margin: 12px 0 4px; padding: 12px 9px 0; border-top: 1px solid var(--panel-line); font: 600 1.06rem/1.2 var(--font-body); letter-spacing: .005em; color: var(--ink); }
+.menu-panel > h2:first-child, .menu-panel > .an-3d-chercher + h2 { margin-top: 0; padding-top: 2px; border-top: 0; }
+.menu-panel h3 { display: flex; align-items: center; gap: 8px; margin: 8px 0 2px; padding: 0 9px; font: 500 var(--small)/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.menu-panel h3::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 1px; background: var(--gold); }
+.menu-panel ul + h3 { margin-top: 8px; padding-top: 10px; border-top: 1px dashed var(--panel-line); }
 .menu-panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
 .menu-panel a { display: block; padding: 7px 9px; border-radius: 8px; color: var(--ink); text-decoration: none; font-size: .95rem; }
 .menu-panel a:hover, .menu-panel a:focus-visible { background: rgba(160, 175, 220, .12); color: var(--gold-ink); }
@@ -184,7 +184,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 .round { width: 38px; height: 38px; padding: 0; display: grid; place-items: center; font: 600 1.2rem/1 var(--font-body); flex: none; }
 .viewbtns { display: flex; gap: 6px; flex: none; margin-left: 4px; }
 .viewbtns .chip { padding: 8px 11px; font-size: .8rem; }
-.hint { flex: none; margin: 0; font-size: .8rem; color: var(--muted); pointer-events: auto; }
+.hint { flex: none; margin: 0; font-size: .8rem; color: var(--muted); pointer-events: auto; text-shadow: 0 0 2px rgba(3, 5, 12, .95), 0 0 8px rgba(3, 5, 12, .8); }
 
 /* Sans WebGL ou sans JavaScript : l’en-tête et le menu restent, avec des liens vers les autres pages */
 .fallback { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 4px; text-align: center; padding: 24px var(--gut-r) 24px var(--gut-l); }
@@ -341,7 +341,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
 }
 
 /* Téléphone (et écrans bas) : une ligne de titre et le menu ☰ ; en bas, le niveau en une ligne, l’échelle, le zoom */
-@media (max-width: 640px), (max-height: 500px) {
+@media (max-width: 640px), (max-height: 500px), (pointer: coarse) and (max-width: 900px) {
   .ui { gap: 8px; padding-block: 8px 10px; }
   .top { align-items: center; }
   .top::before { top: -8px; bottom: -24px; }
@@ -354,7 +354,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .ml { display: none; }
   .menu-panel { position: fixed; top: calc(60px + env(safe-area-inset-top, 0px)); left: max(8px, env(safe-area-inset-left, 0px)); right: max(8px, env(safe-area-inset-right, 0px)); width: auto; max-height: calc(100% - 72px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); padding: 12px 14px 14px; }
   .menu-panel a { padding: 11px 10px; font-size: 1rem; }
-  .menu-panel .credit a, .fallback .credit a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; }   /* cible de 44 px */
+  .menu-panel .credit a, .fallback .credit a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; min-width: 44px; padding: 0 2px; }   /* cible de 44 px */
   .menu-modes { display: block; }
   .menu-modes .chip { min-height: 44px; padding: 0 15px; font-size: .92rem; }
   .bottom { align-items: stretch; gap: 8px; }
@@ -371,7 +371,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
   .chip, .bc-nav button, .tl-ctrl .chip { min-height: 44px; }
   .asc-steps button, .bc-steps button { min-width: 44px; height: 44px; }
   .bc-more a { display: inline-flex; align-items: center; min-height: 44px; }
-  .menu-panel h4 { font-size: max(.76rem, 12px); }
+  .menu-panel h3 { font-size: max(.76rem, 12px); }
   .l3 .l3-me, .l3 .l3-s { display: none; }        /* superunivers : noms courts, sur une ligne (la fiche donne le Maitre Esprit) */
   .tl-ctrl .chip { min-width: 44px; }
   .tl-ctrl label { min-height: 44px; padding-inline: 2px; }
@@ -449,7 +449,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         <details class="menu" id="menu">
           <summary aria-label="Pages de l’atlas"><span class="mi" aria-hidden="true"></span><span class="ml">Pages de l’atlas</span></summary>
           <div class="menu-panel">
-            <h3>Pages de l’atlas</h3>
+            <h2>Pages de l’atlas</h2>
             <ul>
               <li><a href="index.html">Accueil</a></li>
               <li><a href="nebadon-dans-orvonton.html">Nébadon dans Orvonton</a></li>
@@ -462,8 +462,8 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="vie-de-jesus.html">La vie de Jésus</a></li>
               <li><a href="bible-et-livre.html">La Bible et le Livre d’Urantia</a></li>
             </ul>
-            <h3>Thèmes</h3>
-            <h4>L’univers</h4>
+            <h2>Thèmes</h2>
+            <h3>L’univers</h3>
             <ul>
               <li><a href="pere-fils-esprit.html">Le Père, le Fils et l’Esprit</a></li>
               <li><a href="paradis-et-havona.html">Le Paradis et Havona</a></li>
@@ -471,7 +471,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="jerusem-et-edentia.html">Jérusem, Édentia et les mondes des maisons</a></li>
               <li><a href="les-anges.html">Les anges</a></li>
             </ul>
-            <h4>Urantia et l’humanité</h4>
+            <h3>Urantia et l’humanité</h3>
             <ul>
               <li><a href="avenir-d-une-planete.html">L’avenir d’une planète</a></li>
               <li><a href="institutions-humaines.html">L’évolution des institutions humaines</a></li>
@@ -479,7 +479,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="religion-vecue.html">La religion vécue</a></li>
               <li><a href="melchizedek-et-religions.html">Melchizédek et les religions du monde</a></li>
             </ul>
-            <h4>Micaël et Jésus</h4>
+            <h3>Micaël et Jésus</h3>
             <ul>
               <li><a href="effusions-de-micael.html">Les sept effusions de Micaël</a></li>
               <li><a href="annees-cachees-de-jesus.html">Les années cachées de Jésus</a></li>
@@ -487,13 +487,13 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
               <li><a href="enseignements-de-jesus.html">Les enseignements de Jésus</a></li>
               <li><a href="apres-la-pentecote.html">Après la Pentecôte</a></li>
             </ul>
-            <h3>Le livre</h3>
+            <h2>Le livre</h2>
             <ul>
               <li><a href="histoire-du-livre.html">D’où vient ce livre&nbsp;?</a></li>
               <li><a href="auteurs-et-chiffres.html">Les auteurs déclarés et le livre en chiffres</a></li>
               <li><a href="science-et-histoire.html">La science et l’histoire face au livre</a></li>
             </ul>
-            <h3>Outils</h3>
+            <h2>Outils</h2>
             <ul>
               <li><a href="fascicules.html">Le livre fascicule par fascicule</a></li>
               <li><a href="parcours-de-lecture.html">Parcours de lecture</a></li>
@@ -503,7 +503,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
             </ul>
             <p class="credit">Une gracieuseté de Sylvain Leduc · <a href="https://github.com/Leds79/Le_Livre_d-Urantia" target="_blank" rel="noopener">Code source sur GitHub<span aria-hidden="true">&nbsp;↗</span></a></p>
             <div class="menu-modes">
-              <h3>Modes</h3>
+              <h2>Modes</h2>
               <div class="chips">
                 <button type="button" class="chip" data-proxy="t-time" aria-pressed="false">La frise du temps</button>
                 <button type="button" class="chip" data-proxy="t-asc" aria-pressed="false">La carrière ascendante</button>
@@ -512,7 +512,7 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
                 <button type="button" class="chip" data-proxy="t-coupe" aria-pressed="false">Vue en coupe</button>
                 <button type="button" class="chip" data-proxy="t-deite" aria-pressed="false">Déité</button>
               </div>
-              <h3>Réglages</h3>
+              <h2>Réglages</h2>
               <div class="chips">
                 <button type="button" class="chip" data-proxy="t-center">Recentrer</button>
                 <button type="button" class="chip" data-proxy="t-rot" aria-pressed="true">Rotation</button>
@@ -524,12 +524,12 @@ h1 { margin: 4px 0; font: 600 clamp(1.7rem, 4.2vw, 2.8rem)/1.02 var(--font-displ
         </details>
       </div>
       <div class="toggles">
-        <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps : de la nébuleuse d’Andronover jusqu’en 1934–1935 ; la vue 3D suit chaque évènement">La frise du temps</button>
-        <button type="button" class="chip" id="t-asc" aria-pressed="false" title="La carrière ascendante : les étapes après la mort selon le livre, d’Urantia au Paradis">La carrière ascendante</button>
-        <button type="button" class="chip" id="t-eff" aria-pressed="false" title="Les sept effusions : où le fascicule 119 situe les sept effusions de Micaël, de la sphère Melchizédek à Urantia, une par une ; positions schématiques">Les sept effusions</button>
-        <button type="button" class="chip" id="t-gov" aria-pressed="false" title="Qui gouverne quoi : de la planète au maitre univers">Qui gouverne quoi</button>
-        <button type="button" class="chip" id="t-coupe" aria-pressed="false" title="Vue en coupe : section verticale de l’espace, en forme de croix de Malte">Vue en coupe</button>
-        <button type="button" class="chip" id="t-deite" aria-pressed="false" title="Déité : où le texte situe le Suprême, l’Ultime et les trois Absolus">Déité</button>
+        <button type="button" class="chip" id="t-time" aria-pressed="false" title="La frise du temps&nbsp;: de la nébuleuse d’Andronover jusqu’en 1934–1935 ; la vue 3D suit chaque évènement">La frise du temps</button>
+        <button type="button" class="chip" id="t-asc" aria-pressed="false" title="La carrière ascendante&nbsp;: les étapes après la mort selon le livre, d’Urantia au Paradis">La carrière ascendante</button>
+        <button type="button" class="chip" id="t-eff" aria-pressed="false" title="Les sept effusions&nbsp;: où le fascicule 119 situe les sept effusions de Micaël, de la sphère Melchizédek à Urantia, une par une&nbsp;; positions schématiques">Les sept effusions</button>
+        <button type="button" class="chip" id="t-gov" aria-pressed="false" title="Qui gouverne quoi&nbsp;: de la planète au maitre univers">Qui gouverne quoi</button>
+        <button type="button" class="chip" id="t-coupe" aria-pressed="false" title="Vue en coupe&nbsp;: section verticale de l’espace, en forme de croix de Malte">Vue en coupe</button>
+        <button type="button" class="chip" id="t-deite" aria-pressed="false" title="Déité&nbsp;: où le texte situe le Suprême, l’Ultime et les trois Absolus">Déité</button>
       </div>
     </header>
     <div class="bottom">
@@ -657,6 +657,9 @@ const TEX = /*__TEX__*/null;
   const canvas = document.getElementById('c');
   const fail = () => { fallback.hidden = false; ui.classList.add('no3d'); };   // sans WebGL : l’en-tête et le menu des pages restent
   if (!window.THREE || !THREE.OrbitControls) { fail(); return; }
+  // sans WebGL : le repli tout de suite, sans le message d’erreur que Three.js écrirait dans la console
+  const glOk = (() => { try { const c = document.createElement('canvas'), g = c.getContext('webgl2') || c.getContext('webgl'); if (!g) return false; const x = g.getExtension('WEBGL_lose_context'); if (x) x.loseContext(); return true; } catch (e) { return false; } })();
+  if (!glOk) { fail(); return; }
   let renderer;
   try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); }
   catch (e) { fail(); return; }
@@ -667,7 +670,7 @@ const TEX = /*__TEX__*/null;
   const small = Math.min(window.innerWidth, window.innerHeight) < 600;
   const F = small ? 0.6 : 1;
   const touch = !!(window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
-  const mqMobile = window.matchMedia ? window.matchMedia('(max-width: 640px), (max-height: 500px)') : null;
+  const mqMobile = window.matchMedia ? window.matchMedia('(max-width: 640px), (max-height: 500px), (pointer: coarse) and (max-width: 900px)') : null;
   const isMobile = () => !!(mqMobile && mqMobile.matches);   // téléphone ou écran bas : en-tête d’une ligne, panneaux en tiroirs
   renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
   renderer.setClearColor(0x000000, 0);
@@ -1154,7 +1157,7 @@ const TEX = /*__TEX__*/null;
   const isoRing = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: dashTex, color: 0xff7a6b, blending: THREE.AdditiveBlending, depthTest: false }), 0.95, 'isol'));
   isoRing.scale.set(3.4, 3.4, 1); isoRing.renderOrder = 4;
   L0.group.add(isoRing);
-  lab(L0, 'Urantia isolée : « les circuits du système avaient été coupés » (67:2.3)', new V3(0, -1.62, 0), 'small', { below: true, cf: 'isol' });
+  lab(L0, 'Urantia isolée : « les circuits du système avaient été coupés » (67:2.3)', new V3(0, -1.62, 0), 'small', { below: true, cf: 'isol' });
   const incHalo = new THREE.Sprite(fadeMat(L0, new THREE.SpriteMaterial({ map: glowTex, color: 0xffd27a, blending: THREE.AdditiveBlending }), 0.75, 'inc'));
   incHalo.scale.set(4.4, 4.4, 1); incHalo.renderOrder = 3;
   L0.group.add(incHalo);
@@ -1759,7 +1762,7 @@ const TEX = /*__TEX__*/null;
     if (k === 0) {
       for (let i = 0; i < 220 * F; i++) put(b, -0.84 * A + gauss() * 0.004, gauss() * 0.001, 0.072 * A + gauss() * 0.004, GOLD, 0.8, 1.8);
       L8.sub = makePoints(b, g);
-      lab(L8, 'Orvonton · superunivers n° 7', ring(t, RX, 0.02), 'gold supu', { sub: true, ht: 'Orvonton · <span class="l3-me">superunivers </span>n°&nbsp;7', st: SUP_ST(7), nocap: true, prio: SUP_PRIO, radial: true });   // sur sa galaxie : le « tu es ici » est au bord extérieur
+      lab(L8, 'Orvonton · superunivers n° 7', ring(t, RX, 0.02), 'gold supu', { sub: true, ht: 'Orvonton · <span class="l3-me">superunivers </span>n°&nbsp;7', st: SUP_ST(7), nocap: true, prio: Math.min(SUP_PRIO, 1) - 0.25, radial: true });   // sur sa galaxie : le « tu es ici » est au bord extérieur
     } else {
       L8.pts.push(makePoints(b, g));
       lab(L8, 'Superunivers n° ' + n, supAt(t), 'supu', { ht: 'Superunivers n°&nbsp;' + n, st: SUP_ST(n), prio: SUP_PRIO, nocap: true, radial: true, tgt: ring(t, RX) });
@@ -1971,7 +1974,7 @@ const TEX = /*__TEX__*/null;
   arcArrow(L9, 0.12, 0.9, 0.4, 0xc9b8ff, 0.5);
   arcArrow(L9, 0.47, 0.4, 0.9, 0xb8c4ff, 0.45);
   arcArrow(L9, 0.65, 0.9, 0.5, 0x9aa6d8, 0.35);
-  lab(L9, 'zone de calme · ≈ 400 000 a.-l.', ring(2.6, 0.0049), 'small', { vmin: 2.5e6, vmax: 1.6e7 });
+  lab(L9, 'zone de calme · ≈ 400 000 a.-l.', ring(2.6, 0.0049), 'small', { vmin: 2.5e6, vmax: 1.6e7 });
   lab(L9, 'premier niveau d’espace extérieur · plus de 25 millions d’a.-l.', ring(1.9, 0.09), 'violet', { vmin: 4e6, vmax: 1.2e9 });
   lab(L9, 'sens des aiguilles d’une montre', ring(0.65, 0.13), 'small', { vmin: 1.2e7, vmax: 1.5e8 });
   lab(L9, 'grand univers', new V3(0, 0, 0), 'gold small', { vmin: 1.2e7, vmax: 1.2e9, dy: -6 });
@@ -2037,7 +2040,7 @@ const TEX = /*__TEX__*/null;
     const dl = new THREE.Line(new THREE.BufferGeometry().setFromPoints([u7, new V3(0, 0, 0)]), lineMat(L7, 0xcfd6ee, 0.55, true, 0.016, 0.012));
     dl.computeLineDistances();
     L7.group.add(dl);
-    lab(L7, 'plus de 200 000 a.-l.', u7.clone().multiplyScalar(0.5), '');
+    lab(L7, 'plus de 200 000 a.-l.', u7.clone().multiplyScalar(0.5), '');
     ascPath(L7, u7, new V3(0, 0, 0), 'vers Uversa', 0.28);
     const dirP = u7.clone().negate().normalize();
     const a0 = dirP.clone().multiplyScalar(0.1), a1 = dirP.clone().multiplyScalar(1.45);
@@ -2057,7 +2060,7 @@ const TEX = /*__TEX__*/null;
   // 7 : sur l’amas de Norlatiadek, un peu à côté de son centre, de biais par rapport au « tu es ici » (place schématique)
   function effOn7() { const du = L4.P.clone().divideScalar(L4.R).sub(L4.local).setY(0).normalize(); return L4.local.clone().add(new V3(du.z, 0, -du.x).multiplyScalar(0.08)); }
   const EFFM = [null,
-    { L: L4, p: new V3(), s: 'Fils Melchizédek', w: 'sphère Melchizédek, à Salvington', v: 2400, lab: salvLab },
+    { L: L4, p: new V3(), s: 'Fils Melchizédek', w: 'sphère Melchizédek, près de Salvington', v: 2400, lab: salvLab },
     { L: L4, p: EFF_C[37], s: 'Fils Lanonandek', w: 'constellation 37', v: 2400, aura: 1 },
     { L: L4, p: EFF_C[61], s: 'Fils Matériel', w: 'constellation 61', v: 2400, aura: 1 },
     { L: L4, p: EFF_C[3], s: 'Séraphin', w: 'constellation 3', v: 2400, aura: 1 },
@@ -2129,13 +2132,13 @@ const TEX = /*__TEX__*/null;
       ['soleil', 'mercure', 'venus', 'mars', 'jupiter', 'saturne', 'uranus', 'neptune', 'pluton'].map((k) => '<button type="button" class="go-btn" data-go="b:' + k + '">' + BODY[k].n + '</button>').join('') + '</span>Monmatia est le «&nbsp;nom de la famille planétaire de votre soleil&nbsp;»' + REF('57:5.3') + '. Les orbites sont tracées dans leur vrai plan, l’écliptique, incliné d’environ 60° sur celui de la Galaxie, et les planètes sont à leur position du jour (éléments approchés du JPL). Le noyau du système physique de notre soleil est le centre de l’ancienne nébuleuse d’Andronover' + REF('15:3.6') + '. Selon le texte, douze planètes se formèrent' + REF('57:5.7') + ', et la cinquième devint les astéroïdes' + REF('57:6.5') + '. S’y ajoutent, d’après l’astronomie moderne, Pluton, la ceinture de Kuiper et l’orbite de la comète de Halley. Les points ont une taille indicative&nbsp;; chaque astre existe aussi en vrai volume, et son point ou son nom mène jusqu’à lui.' },
     { h: 'Satania', p: 'Système local n°&nbsp;24 de Norlatiadek, capitale Jérusem' + REF('15:14.6') + '. Ses 619 mondes habités sont répartis dans plus de cinq-cents systèmes physiques, si bien que Satania n’est pas un système astronomique simple' + REF('32:2.10') + '. Les points blancs et dorés sont de vraies étoiles, à leur position réelle&nbsp;; les points bleutés figurent les systèmes habités de Satania, que le texte ne situe pas&nbsp;: ils sont placés au hasard. Le centre astronomique de Satania est une énorme ile obscure, non loin de Jérusem' + REF('41:2.2') + '&nbsp;; à une exception près, notre système solaire est le plus éloigné de Jérusem' + REF('41:10.5') + '.' },
     { h: 'Norlatiadek', p: 'Constellation n°&nbsp;70 de Nébadon&nbsp;: cent systèmes locaux, capitale Édentia' + REF('15:14.6') + '. Satania est en or. Les étoiles réelles visibles à l’œil nu restent affichées à leur vraie place.' },
-    { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#8239;840&#8239;101 planètes habitées' + REF('32:2.9') + '. Les pastilles dorées numérotées situent les sept effusions de Micaël' + REF('119:0.7') + '&nbsp;; le texte ne situe pas leurs constellations dans Nébadon&nbsp;: ces places sont schématiques. <button type="button" class="go-btn" data-go="eff">Les parcourir une par une</button>' },
+    { h: 'Nébadon', p: 'Univers local n°&nbsp;84 d’Ensa&nbsp;: cent constellations' + REF('15:14.6') + '. Salvington est au «&nbsp;centre d’énergie massique&nbsp;»' + REF('32:2.4') + ', et Satania se trouve à la périphérie' + REF('32:2.11') + '. On y compte 3&#8239;840&#8239;101 planètes habitées' + REF('32:2.9') + '. Les pastilles dorées numérotées situent les sept effusions de Micaël' + REF('119:0.1 · 119:0.7') + '&nbsp;; le texte ne situe pas leurs constellations dans Nébadon&nbsp;: ces places sont schématiques. <button type="button" class="go-btn" data-go="eff">Les parcourir une par une</button>' },
     { h: 'Ensa', p: 'Secteur mineur n°&nbsp;3 de Splandon&nbsp;: cent univers locaux, capitale Uminor la troisième' + REF('15:14.7') + '. Son centre de rotation se trouve dans le nuage stellaire du Sagittaire' + REF('15:3.5') + '.' },
     { h: 'Splandon', p: 'Secteur majeur, le cinquième d’Orvonton&nbsp;: cent secteurs mineurs, capitale Umajor la cinquième' + REF('15:14.7') + '.' },
-    { h: 'Orvonton', p: 'Le septième superunivers forme «&nbsp;un groupement ovale allongé à profil de montre&nbsp;»' + REF('15:3.1') + '. La Voie lactée en est le noyau central, autour d’Uversa' + REF('15:3.13') + '. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;»' + REF('32:2.11') + '. Le centre est placé ici dans la direction du Sagittaire, celle du cœur dense de la Voie lactée&nbsp;: c’est un choix de représentation. L’aspect de galaxie spirale en est un autre&nbsp;: le texte compte des «&nbsp;nébuleuses spirales&nbsp;» parmi le contenu d’Orvonton, mais ne dit pas que le superunivers lui-même a des bras' + REF('15:3.1') + '. Son Maitre Esprit, le septième, est le portrait, à parts égales, du Père, du Fils et de l’Esprit' + REF('16:3.14–15') + '. La pastille n°&nbsp;5 marque Uversa, où Micaël vécut sa cinquième effusion sous le nom d’Éventod' + REF('119:5.1–2') + '.' },
+    { h: 'Orvonton', p: 'Le septième superunivers forme «&nbsp;un groupement ovale allongé à profil de montre&nbsp;»' + REF('15:3.1') + '. La Voie lactée en est le noyau central, autour d’Uversa' + REF('15:3.1 · 15:3.13') + '. Nébadon est «&nbsp;très excentré et proche de la lisière extérieure d’Orvonton&nbsp;»' + REF('32:2.11') + '. Le centre est placé ici dans la direction du Sagittaire, celle du cœur dense de la Voie lactée&nbsp;: c’est un choix de représentation. L’aspect de galaxie spirale en est un autre&nbsp;: le texte compte des «&nbsp;nébuleuses spirales&nbsp;» parmi le contenu d’Orvonton, mais ne dit pas que le superunivers lui-même a des bras' + REF('15:3.1') + '. Son Maitre Esprit, le septième, est le portrait, à parts égales, du Père, du Fils et de l’Esprit' + REF('16:3.14–15') + '. La pastille n°&nbsp;5 marque Uversa, où Micaël vécut sa cinquième effusion sous le nom d’Éventod' + REF('119:5.1–2') + '.' },
     { h: 'Le grand univers', p: 'Les sept superunivers «&nbsp;parcourent une grande ellipse&nbsp;»' + REF('15:1.2') + ' autour de Havona, l’univers central d’«&nbsp;un milliard de sphères&nbsp;», entouré des corps de gravité obscurs. Au centre se trouve l’Ile du Paradis' + REF('12:1.10') + '. Selon l’orientation d’Urantia, Orvonton a pris «&nbsp;le tournant sud-est du niveau d’espace des superunivers&nbsp;», entre les numéros un et six' + REF('15:1.4–5') + '. Les sept rayons de la roue sont les radiations des Sept Maitres Esprits' + REF('15:0.1') + '. Notre univers local est «&nbsp;près de cette frontière extérieure&nbsp;»' + REF('12:1.13') + '. Les superunivers sont dessinés comme des galaxies spirales&nbsp;: c’est une image, car le texte dit seulement qu’ils sont «&nbsp;à peu près équivalents&nbsp;» en univers locaux et en espace' + REF('12:1.12') + '. Clique sur Havona pour l’explorer de près.' },
     { h: 'Le premier niveau d’espace extérieur', s: '1er niveau extérieur', p: 'Autour des sept superunivers s’étend une zone de calme relatif, large en moyenne de 400&#8239;000 années-lumière. À environ un demi-million d’années-lumière au-delà du grand univers commence «&nbsp;une ceinture continue d’activité cosmique&nbsp;», qui s’étend sur plus de 25 millions d’années-lumière' + REF('12:1.14') + '. D’innombrables univers y sont «&nbsp;en cours de formation&nbsp;»' + REF('11:7.7') + '. Cette ceinture tourne dans le sens des aiguilles d’une montre, à l’inverse des superunivers' + REF('12:4.15') + '.' },
-    { h: 'Le maitre univers', p: 'Le maitre univers forme «&nbsp;six ellipses concentriques&nbsp;» autour de l’Ile centrale&nbsp;: Havona, les sept superunivers et quatre niveaux d’espace extérieur' + REF('12:1.3–9') + '. Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent le deuxième' + REF('12:1.15') + ', qui semble tourner en sens inverse, comme les superunivers. Une «&nbsp;troisième ceinture d’espace immensément lointaine&nbsp;» paraît s’orienter dans le sens des aiguilles d’une montre' + REF('12:4.15') + '. Le texte ne donne pas la distance des deux derniers niveaux.' },
+    { h: 'Le maitre univers', p: 'Le maitre univers forme «&nbsp;six ellipses concentriques&nbsp;» autour de l’Ile centrale&nbsp;: Havona, les sept superunivers et quatre niveaux d’espace extérieur' + REF('12:1.3–9') + '. Des forces ont été détectées à plus de 50 millions d’années-lumière au-delà du premier niveau&nbsp;; elles annoncent le deuxième' + REF('12:1.15') + ', qui semble tourner en sens inverse, comme les superunivers. Une «&nbsp;troisième ceinture d’espace immensément lointaine&nbsp;» parait s’orienter dans le sens des aiguilles d’une montre' + REF('12:4.15') + '. Le texte ne donne pas la distance des deux derniers niveaux.' },
     { h: 'Au-delà du maitre univers', p: 'L’espace pénétré s’étend au-delà de la périphérie du maitre univers, «&nbsp;mais de combien au-delà, nous ne le savons pas&nbsp;»' + REF('11:7.4') + '. Le bouton Déité montre comment le texte situe le Suprême, l’Ultime et les trois Absolus.' }
   ];
   const COUPE = { h: 'Vue en coupe', p: '«&nbsp;Le Paradis est non spatial&nbsp;»' + REF('11:2.11') + '&nbsp;: l’espace ne le touche pas, seules les zones d’espace médian l’atteignent' + REF('11:7.1') + '. En coupe verticale, l’espace total «&nbsp;ressemblerait un peu à une croix de Malte&nbsp;»' + REF('11:7.3') + '. Les bras horizontaux sont l’espace pénétré, où se trouvent les univers&nbsp;; les bras verticaux, l’espace non pénétré, le réservoir. L’espace pénétré s’épaissit à mesure qu’on s’éloigne du Paradis' + REF('11:7.6') + ' et s’étend au-delà du quatrième niveau d’espace extérieur' + REF('11:7.4') + '.' };
@@ -2192,7 +2195,7 @@ const TEX = /*__TEX__*/null;
       { n: 'Dieu l’Ultime', o: 'deite', r: 'il émerge des potentiels du maitre univers', ref: '0:9.1' }] },
     { lvl: 'Paradis et Havona', seat: 'Ile du Paradis', u: 8, focus: true, V: 2.5e5, diag: 'paradis', rulers: [
       { n: 'le Père Universel', o: 'trinite', r: '«&nbsp;d’abord un créateur et ensuite un contrôleur&nbsp;»&nbsp;; il s’est réservé toutes les décisions finales', ref: '6:1.2 · 3:6.1' },
-      { n: 'le Fils Éternel', o: 'trinite', r: 'administrateur divin du gouvernement spirituel de l’univers des univers', ref: '6:1.2' },
+      { n: 'le Fils Éternel', o: 'fils', r: 'administrateur divin du gouvernement spirituel de l’univers des univers', ref: '6:1.2' },
       { n: 'l’Esprit Infini', o: 'esprit', r: 'administrateur universel des domaines du mental et exécutif conjoint du Père et du Fils', ref: '9:1.5 · 7:4.6' },
       { n: 'la Trinité du Paradis', o: 'trinite', r: 'la justice relève de son domaine&nbsp;; elle l’exerce par certains Fils de la Trinité', ref: '10:6.1' },
       { n: 'les Éternels des Jours', o: 'trinite', r: 'un par monde, ils administrent directement le milliard de mondes de Havona', ref: '15:2.9' },
@@ -2229,7 +2232,7 @@ const TEX = /*__TEX__*/null;
       { n: 'un Fidèle des Jours', o: 'obs', r: 'ambassadeur de la Trinité et représentant personnel d’Emmanuel&nbsp;; il n’agit que comme conseiller', ref: '15:2.4 · 43:4.2 · 18:7.2' }],
       note: '«&nbsp;Le régime issu de la Trinité s’arrête aux constellations&nbsp;»' + REF('18:7.5') + '.' },
     { lvl: 'Satania · système local n° 24', seat: 'Jérusem', u: 2, diag: 'jerusem', tk: 'S', rulers: [
-      { n: 'Lanaforge, souverain du système', o: 'createur', r: 'numéro 2 709 de l’ordre primaire, successeur de l’apostat Lucifer&nbsp;; il gouverne depuis Jérusem', ref: '45:3.2 · 15:2.3' },
+      { n: 'Lanaforge, souverain du système', o: 'createur', r: 'numéro 2&nbsp;709 de l’ordre primaire, successeur de l’apostat Lucifer&nbsp;; il gouverne depuis Jérusem', ref: '45:3.2 · 15:2.3' },
       { n: 'une Sentinelle Affectée', o: 'autre', r: 'sous l’autorité directe de l’Agent Exécutif Suprême n° 7, en dehors de l’administration des Anciens des Jours', ref: '24:5.2–4' }],
       note: 'Systèmes et planètes sont placés entièrement sous la juridiction d’êtres natifs de l’univers local' + REF('18:7.5') + '.' },
     { lvl: 'Urantia · planète n° 606', seat: '', u: 0, tk: 'U', rulers: [
@@ -2291,9 +2294,9 @@ const TEX = /*__TEX__*/null;
   const govEl = document.getElementById('gov');
   let govOn = false, govCards = [], shownGovN = -1;
   function renderGov() {
-    const col = { trinite: 'var(--gold)', esprit: 'var(--violet)', createur: 'var(--core)', obs: 'var(--gold)', deite: 'var(--ink)', absonite: 'var(--abs)', autre: 'var(--muted)' };
+    const col = { trinite: 'var(--gold)', fils: 'var(--violet)', esprit: '#8CB4F2', createur: '#86C36F', obs: 'var(--gold)', deite: 'var(--ink)', absonite: 'var(--abs)', autre: 'var(--muted)' };
     let h = '<div class="panel-head"><h2 id="gov-title">Qui gouverne quoi</h2><button type="button" class="bc-x gov-x" aria-label="Fermer « Qui gouverne quoi »" title="Fermer">×</button></div><p class="lead">Deux lignées d’autorité. Les superunivers relèvent de la Trinité du Paradis. «&nbsp;L’administration par des personnes d’origine trinitaire prend fin avec les gouvernements des superunivers.&nbsp;»' + REF('33:5.1') + ' Les univers locaux sont sous «&nbsp;la souveraineté conjointe des Fils Créateurs et des Esprits Créatifs&nbsp;»' + REF('15:0.1') + '&nbsp;: le Fils Créateur en est le père, la Divine Ministre la mère' + REF('33:5.1') + '. Des observateurs de la Trinité y siègent comme conseillers, jusqu’aux constellations' + REF('18:6.1 · 18:7.5') + '.</p>';
-    h += '<p class="legend"><span><i class="sw" style="--c:var(--gold)"></i>Trinité</span><span><i class="sw" style="--c:var(--violet)"></i>Esprit Infini</span><span><i class="sw" style="--c:var(--core)"></i>Fils Créateur et Esprit-Mère</span><span><i class="sw obs"></i>observateurs de la Trinité</span><span><i class="sw" style="--c:var(--ink)"></i>Déités en évolution</span><span><i class="sw" style="--c:var(--abs)"></i>êtres absonites</span><span><i class="sw" style="--c:var(--muted)"></i>autres origines</span></p><ol>';
+    h += '<p class="legend"><span><i class="sw" style="--c:var(--gold)"></i>Trinité, Père</span><span><i class="sw" style="--c:var(--violet)"></i>Fils Éternel</span><span><i class="sw" style="--c:#8CB4F2"></i>Esprit Infini</span><span><i class="sw" style="--c:#86C36F"></i>Fils Créateur et Esprit-Mère</span><span><i class="sw obs"></i>observateurs de la Trinité</span><span><i class="sw" style="--c:var(--ink)"></i>Déités en évolution</span><span><i class="sw" style="--c:var(--abs)"></i>êtres absonites</span><span><i class="sw" style="--c:var(--muted)"></i>autres origines</span></p><ol>';
     GOV.forEach((g, i) => {
       h += '<li class="gv"><button type="button" class="gv-go" data-i="' + i + '"><span class="gv-n">' + g.lvl + '</span><span class="gv-s">' + (g.seat || '') + '</span></button>';
       g.rulers.forEach((r) => { h += '<p class="ru"><i class="sw' + (r.o === 'obs' ? ' obs' : '') + '" style="--c:' + col[r.o] + '"></i><span><b>' + r.n + '</b>, ' + r.r + REF(r.ref) + '</span></p>'; });
@@ -2332,7 +2335,7 @@ const TEX = /*__TEX__*/null;
     l.minor = l.cls.indexOf('star') >= 0 || (l.cls.indexOf('small') >= 0 && l.cls.indexOf('gold') < 0);
     if (!go) l.el.setAttribute('aria-hidden', 'true');
     else if (l.eff) {                              // repère d’une effusion : pastille numérotée ; nom et lieu pour l’effusion en cours
-      const m = EFFM[l.eff], d = ORD[l.eff] + ' effusion de Micaël : ' + m.s + ', ' + m.w + ' (position schématique). Ouvrir sa fiche';
+      const m = EFFM[l.eff], d = ORD[l.eff] + ' effusion de Micaël : ' + m.s + ', ' + m.w + ' (position schématique). Ouvrir sa fiche';
       l.el.type = 'button';
       l.el.classList.add('go');
       l.el.innerHTML = '<span class="eff-n" aria-hidden="true">' + l.eff + '</span><span class="eff-tx" aria-hidden="true"><span class="eff-t">' + m.s + '</span><span class="eff-w">' + m.w + ' · position schématique</span></span>';
@@ -2399,19 +2402,23 @@ const TEX = /*__TEX__*/null;
     let best = 0, bs = Infinity, bl = r0 + 10, prevS = Infinity, prevL = bl;
     DIRS.forEach((d, k) => {
       const ext = extOf(d);
-      let len = r0 + 10;
-      if (sr > 0) for (; len < 170; len += 6) {          // le nom hors de la couronne du Soleil
-        const cx = l.ax + d[0] * (len + ext), cy = l.ay + d[1] * (len + ext);
+      let len0 = r0 + 10;
+      if (sr > 0) for (; len0 < 170; len0 += 6) {        // le nom hors de la couronne du Soleil
+        const cx = l.ax + d[0] * (len0 + ext), cy = l.ay + d[1] * (len0 + ext);
         const nx = clamp(sx, cx - hw, cx + hw), ny = clamp(sy, cy - hh, cy + hh);
         if ((nx - sx) * (nx - sx) + (ny - sy) * (ny - sy) > sr * sr) break;
       }
-      const cx = l.ax + d[0] * (len + ext), cy = l.ay + d[1] * (len + ext), x0 = cx - hw, y0 = cy - hh, x1 = cx + hw, y1 = cy + hh;
-      let sc = len * 0.6 + k * 6;
-      if (x0 < edgeL || x1 > w - edgeR || y0 < 2 || y1 > h - 2) sc += 4000;
-      boxes.forEach((q) => { const o = ovl(x0 - 4, y0 - 4, x1 + 4, y1 + 4, q); if (o > 0) sc += q[4] * (600 + o); });
-      occ.forEach((q) => { sc += ovl(x0, y0, x1, y1, q) * 6; });
-      if (k === l.cdir) { prevS = sc; prevL = len; }
-      if (sc < bs) { bs = sc; best = k; bl = len; }
+      let ks = Infinity, kl = len0;
+      for (let len = len0; len <= len0 + 60; len += 20) {  // trait plus long si un nom important (Orvonton) est sur le chemin
+        const cx = l.ax + d[0] * (len + ext), cy = l.ay + d[1] * (len + ext), x0 = cx - hw, y0 = cy - hh, x1 = cx + hw, y1 = cy + hh;
+        let sc = len * 0.6 + k * 6;
+        if (x0 < edgeL || x1 > w - edgeR || y0 < 2 || y1 > h - 2) sc += 4000;
+        boxes.forEach((q) => { const o = ovl(x0 - 4, y0 - 4, x1 + 4, y1 + 4, q); if (o > 0) sc += q[4] * (600 + o); });
+        occ.forEach((q) => { sc += ovl(x0, y0, x1, y1, q) * 6; });
+        if (sc < ks) { ks = sc; kl = len; }
+      }
+      if (k === l.cdir) { prevS = ks; prevL = kl; }
+      if (ks < bs) { bs = ks; best = k; bl = kl; }
     });
     if (l.cdir != null && prevS < bs * 1.3 + 40) { best = l.cdir; bl = prevL; }   // hystérésis : pas de saut d’une image à l’autre
     l.cdir = best;
@@ -2689,10 +2696,13 @@ const TEX = /*__TEX__*/null;
     if (coupe && uTarget < 7.6) setCoupe(false);
   }
   function setRotate(on) { controls.autoRotate = on; tRot.setAttribute('aria-pressed', String(on)); }
+  let coupeDir = null, coupeRot = false;            // angle de vue et rotation d’avant la coupe, rétablis à la sortie
   function setCoupe(on) {
+    const was = coupe;
     coupe = on;
     tCoupe.setAttribute('aria-pressed', String(on));
-    if (on) { recenter(); if (uTarget < 7.6) uTarget = 8; setRotate(false); startCam(new V3(0, 0.08, 1)); }
+    if (on) { if (!was) { coupeDir = camera.position.clone().sub(controls.target); coupeRot = controls.autoRotate; } recenter(); if (uTarget < 7.6) uTarget = 8; setRotate(false); startCam(new V3(0, 0.08, 1)); }
+    else if (was && coupeDir) { startCam(coupeDir); setRotate(coupeRot); coupeDir = null; }
   }
   setRotate(!reduced);
   ladderBtns.forEach((b) => b.addEventListener('click', () => { recenter(); setU(Number(b.dataset.u)); }));
@@ -2730,21 +2740,21 @@ const TEX = /*__TEX__*/null;
       p: 'Le système solaire fonctionne à peu près comme aujourd’hui&nbsp;; il est inscrit sur le registre physique de Nébadon sous le nom de Monmatia' + REF('57:6.8–9') + '.' },
     { y: 1e9, d: 'il y a un milliard d’années', t: 'Début de l’histoire d’Urantia', tr: 'U', u: 0,
       p: 'C’est la date du commencement effectif de l’histoire d’Urantia' + REF('57:8.1') + '. Micaël prépare alors sa première effusion' + REF('119:0.7') + '.' },
-    { y: 9.9e8, d: 'il y a presque un milliard d’années', t: 'Première effusion : un Fils Melchizédek', tr: 'N', u: 4, eff: 1, who: [['Micaël', 'loy'], ['Emmanuel, l’Union des Jours', 'tri']],
+    { y: 9.9e8, d: 'il y a presque un milliard d’années', t: 'Première effusion : un Fils Melchizédek', tr: 'N', u: 4, eff: 1, who: [['Micaël', 'loy'], ['Emmanuel, l’Union des Jours', 'tri']],
       p: 'Sur Salvington, Micaël annonce qu’Emmanuel, son frère ainé, assumera l’autorité dans Nébadon pendant son absence' + REF('119:1.1') + '. Un étrange Fils Melchizédek apparait alors sur la sphère Melchizédek&nbsp;: c’est la première effusion' + REF('119:1.3') + '.' },
     { y: 9.5e8, d: 'il y a 950 millions d’années', t: 'Urantia rattachée à Satania', tr: 'S', u: 2,
       p: 'Urantia n’a qu’un grand continent, entouré de l’océan Pacifique' + REF('57:8.5') + '. Elle est rattachée au système de Satania pour son administration planétaire et inscrite sur le registre de vie de Norlatiadek' + REF('57:8.6') + '.' },
     { y: 9e8, d: 'il y a 900 millions d’années', t: 'Le premier groupe de reconnaissance', tr: 'S', u: 0,
       p: 'Un groupe de Satania, envoyé de Jérusem, vient examiner la planète comme future station expérimentale de vie' + REF('57:8.7') + '.' },
-    { y: 8.5e8, d: 'près de cent-cinquante-millions d’années après la première (date non précisée)', t: 'Deuxième effusion : un Fils Lanonandek', tr: 'N', u: 4, eff: 2, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Lutentia', 'reb']],
+    { y: 8.5e8, d: 'près de cent-cinquante-millions d’années après la première (date non précisée)', t: 'Deuxième effusion : un Fils Lanonandek', tr: 'N', u: 4, eff: 2, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Lutentia', 'reb']],
       p: 'Lutentia, Souverain Systémique du système 11 de la constellation 37, entraine ses associés dans une rébellion' + REF('119:2.1–2') + '. Micaël apparait comme un Fils Lanonandek inconnu et devient Souverain Systémique en exercice de ce système' + REF('119:2.4') + ', connu alors comme le Souverain Sauveur de Palonia' + REF('119:2.5') + '. Les effusions se succèdent à environ cent-cinquante-millions d’années d’intervalle' + REF('119:0.7') + '.' },
-    { y: 7e8, d: 'après la deuxième effusion (date non précisée)', t: 'Troisième effusion : un Fils Matériel', tr: 'N', u: 4, eff: 3, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
+    { y: 7e8, d: 'après la deuxième effusion (date non précisée)', t: 'Troisième effusion : un Fils Matériel', tr: 'N', u: 4, eff: 3, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
       p: 'Les Porteurs de Vie de la planète 217, dans le système 87 de la constellation 61, demandent un Fils Matériel&nbsp;; ce système connait la deuxième rébellion d’un Souverain Systémique dans Nébadon' + REF('119:3.1') + '. Micaël y devient, comme Fils Matériel, Prince Planétaire faisant fonction du monde 217' + REF('119:3.3') + ', et ramène au repentir le Prince défaillant et tout son état-major' + REF('119:3.4') + '.' },
     { y: 6e8, d: 'il y a 600 millions d’années', t: 'La commission des Porteurs de Vie', tr: 'U', u: 0, who: [['Porteurs de Vie', 'loy']],
       p: 'Envoyée de Jérusem, elle commence l’étude des conditions physiques du monde n°&nbsp;606' + REF('58:1.1') + '.' },
     { y: 5.5e8, d: 'il y a 550 millions d’années', t: 'Le retour des Porteurs de Vie', tr: 'U', u: 0, who: [['Porteurs de Vie', 'loy']],
       p: 'Le corps des Porteurs de Vie revient sur Urantia' + REF('58:4.2') + '&nbsp;; il y a 500 millions d’années, la vie végétale primitive des mers est bien établie' + REF('58:4.3') + '.' },
-    { y: 5e8, d: 'après la troisième effusion (date non précisée)', t: 'Quatrième effusion : un séraphin', tr: 'N', u: 4, eff: 4, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
+    { y: 5e8, d: 'après la troisième effusion (date non précisée)', t: 'Quatrième effusion : un séraphin', tr: 'N', u: 4, eff: 4, who: [['Micaël', 'loy'], ['Emmanuel', 'tri'], ['Gabriel', 'loy']],
       p: 'À la fin d’un appel nominal millénaire d’Uversa, Micaël remet le gouvernement à Emmanuel et à Gabriel' + REF('119:4.1') + '. Le quartier général séraphique de Nébadon annonce l’arrivée d’un séraphin inconnu, de l’ordre suprême, affecté aux conseillers d’enseignement' + REF('119:4.2') + '. Sa dernière affectation le conduit sur le monde 462 du système 84, dans la constellation 3' + REF('119:4.3') + '.' },
     { y: 3.05e8, d: 'il y a un peu plus de 300 millions d’années', t: 'Cinquième effusion, sur Uversa', tr: 'N', u: 7, eff: 5, who: [['Micaël (Éventod)', 'loy'], ['Emmanuel', 'tri']],
       p: 'Nouveau transfert d’autorité à Emmanuel' + REF('119:5.1') + '. Sous le nom d’Éventod, Micaël vit et travaille sur Uversa onze années du temps standard d’Orvonton, semblable à un mortel ascendant au stade d’esprit' + REF('119:5.2') + '.' },
@@ -2761,7 +2771,7 @@ const TEX = /*__TEX__*/null;
       q: ['Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre, […] il y a environ deux-cent-mille ans du temps d’Urantia.', '53:4.1'] },
     { y: 199999.9, d: 'à la même époque', t: 'Caligastia rallie la rébellion', tr: 'U', u: 0, k: 'reb', pin: 'dalamatia', who: [['Caligastia', 'reb'], ['Daligastia', 'reb'], ['Van et les quarante loyaux', 'loy']],
       p: 'Caligastia avait la charge d’Urantia depuis trois-cent-mille ans' + REF('67:1.1') + '. Avec Daligastia, il passe du côté de Lucifer, et la planète est coupée du système' + REF('67:2.1–3') + '. Quarante membres de l’état-major, dont Van, refusent l’insurrection, tandis que 40&#8239;119 médians primaires suivent Caligastia' + REF('67:3.2') + '. La lutte dure plus de sept ans' + REF('67:2.6') + '.',
-      q: ['Entretemps, les circuits du système avaient été coupés ; Urantia était isolée.', '67:2.3'] },
+      q: ['Entretemps, les circuits du système avaient été coupés ; Urantia était isolée.', '67:2.3'] },
     { y: 199999, d: 'plus de deux ans du temps systémique après le début de la «&nbsp;guerre dans le ciel&nbsp;»', t: 'Lanaforge, nouveau souverain de Satania', tr: 'S', u: 2, who: [['Lanaforge', 'loy'], ['Gabriel', 'loy'], ['Lucifer', 'reb'], ['Satan', 'reb']],
       p: 'Le successeur de Lucifer atterrit sur la mer de verre avec son état-major. Son premier message au Père de la Constellation&nbsp;: aucun citoyen de Jérusem n’a été perdu' + REF('53:7.12') + '. Les archirebelles sont détrônés et dépouillés de tout pouvoir de gouvernement, mais restent libres de circuler' + REF('53:7.13') + '. Lanaforge, n°&nbsp;2&#8239;709, est le seul Lanonandek primaire de Nébadon resté loyal devant la défaillance de son supérieur' + REF('45:3.2 · 45:2.3') + '.' },
     { y: 199990, d: 'après la rébellion (date non précisée)', t: 'Les administrateurs provisoires Melchizédeks', tr: 'U', u: 0, who: [['douze Melchizédeks', 'loy'], ['Van', 'loy'], ['le Très Haut Père', 'loy']],
@@ -2782,7 +2792,7 @@ const TEX = /*__TEX__*/null;
       p: 'Adam vécut 530 ans' + REF('76:5.5') + '. Le troisième jour après sa mort, Lanaforge ordonne un appel nominal spécial&nbsp;: Adam et Ève sont repersonnalisés dans la salle de résurrection des mondes des maisons de Satania, avec 1&#8239;316 compagnons du premier jardin' + REF('76:6.2') + '. Adam siège aujourd’hui parmi les vingt-quatre conseillers' + REF('45:4.11') + '.' },
     { y: 3913, d: '1&#8239;973 ans avant la naissance de Jésus', c: 'soit vers 1980 av. J.-C. (déduit)', t: 'Machiventa Melchizédek à Salem', tr: 'U', u: 0, pin: 'salem', who: [['Machiventa Melchizédek', 'loy']],
       p: 'Machiventa s’effuse sur les races humaines' + REF('93:2.1') + ', près du lieu qui deviendra la ville de Salem, en Palestine' + REF('93:1.3') + '. Il vit quatre-vingt-quatorze ans comme être matériel' + REF('93:2.2') + '.' },
-    { y: 1940, d: 'le 21 aout de l’an 7 av. J.-C.', t: 'La septième effusion : Micaël nait sur Urantia', tr: 'U', u: 0, pin: 'bethleem', eff: 7, who: [['Micaël incarné : Jésus', 'loy']],
+    { y: 1940, d: 'le 21 aout de l’an 7 av. J.-C.', t: 'La septième effusion : Micaël nait sur Urantia', tr: 'U', u: 0, pin: 'bethleem', eff: 7, who: [['Micaël incarné : Jésus', 'loy']],
       p: 'Micaël a choisi Urantia pour son effusion finale' + REF('119:7.2') + '&nbsp;; Marie le met au monde à Bethléem' + REF('122:7.4 · 122:8.1') + '. Le récit de sa vie forme la partie IV du livre, qui fera l’objet d’une étape à part.' },
     { y: 1909, d: 'fin de l’été de l’an 25 (dernière semaine sur l’Hermon), puis le 14 janvier de l’an 26', t: 'Micaël acquiert sa pleine souveraineté', tr: 'N', u: 0, pin: 'hermon', who: [['Jésus (Micaël)', 'loy'], ['Satan', 'reb'], ['Caligastia', 'reb'], ['Gabriel', 'loy']],
       p: 'Au mont Hermon, Jésus rencontre Satan, qui représente Lucifer, et Caligastia' + REF('134:8.6') + '&nbsp;; les annales de l’univers enregistrent qu’il est devenu Prince Planétaire d’Urantia' + REF('136:3.1') + '. Gabriel lui fait savoir ensuite que la souveraineté a été atteinte le jour de son baptême' + REF('136:3.4') + '. Deux passages, deux moments&nbsp;: le mont Hermon et le baptême.',
@@ -2793,13 +2803,13 @@ const TEX = /*__TEX__*/null;
       p: 'Le premier gouverneur général résident arrive sur Urantia en même temps que l’effusion de l’Esprit de Vérité, avec douze groupes de séraphins spéciaux' + REF('114:6.1') + '. C’est le régime actuel de la planète&nbsp;: un gouverneur général par siècle' + REF('114:3.1') + ', sous le Très Haut observateur, qui a droit de veto' + REF('114:5.1') + '.' },
     { y: 1903.8, d: 'au retour de Micaël sur Salvington, il y a dix-neuf-cents ans', t: 'Micaël, dirigeant permanent de Nébadon', tr: 'N', u: 4, who: [['Micaël', 'loy'], ['les Anciens des Jours', 'tri'], ['Emmanuel, l’Union des Jours', 'tri']],
       p: 'Micaël est proclamé dirigeant permanent. D’Uversa vient la huitième proclamation de sa souveraineté, et du Paradis une déclaration conjointe qui l’institue seul chef de l’univers&nbsp;; l’Union des Jours est invité à signifier son intention de se retirer au Paradis' + REF('119:8.1') + '.' },
-    { y: 1903.7, d: 'il y a dix-neuf-cents ans', t: 'Lucifer emprisonné ; les vingt-quatre sièges', tr: 'S', u: 2, who: [['Lucifer', 'reb'], ['les agents des Anciens des Jours', 'tri'], ['les vingt-quatre conseillers', 'loy']],
+    { y: 1903.7, d: 'il y a dix-neuf-cents ans', t: 'Lucifer emprisonné ; les vingt-quatre sièges', tr: 'S', u: 2, who: [['Lucifer', 'reb'], ['les agents des Anciens des Jours', 'tri'], ['les vingt-quatre conseillers', 'loy']],
       p: 'Quand Micaël devient le chef confirmé de Nébadon, les agents des Anciens des Jours emprisonnent Lucifer sur le satellite n°&nbsp;1 des sphères transitionnelles du Père, autour de Jérusem' + REF('53:9.2') + '. Les vingt-quatre sièges du conseil d’Urantia sont mis en place sur Jérusem' + REF('45:4.1') + '&nbsp;; les derniers conseillers sont rassemblés lors de l’appel de résurrection de Micaël' + REF('45:4.2') + '.' },
     { y: 900, d: 'il y a moins de mille ans (moment non précisé)', t: 'Machiventa, gouverneur général pendant cent ans', tr: 'U', u: 0, who: [['Machiventa Melchizédek', 'loy']],
       p: 'Machiventa Melchizédek est présent sous forme invisible sur Urantia pendant cent ans, comme gouverneur général résident' + REF('93:10.10') + '.' },
     { y: 495, d: 'il y a 495 ans', c: 'soit vers 1439 (déduit)', t: 'Le monument de Micaël sur Jérusem', tr: 'S', u: 2, who: [['Micaël', 'loy']],
       p: 'Micaël est présent en personne à la consécration de son monument commémoratif, au centre des réserves des Fils&nbsp;; tout Jérusem entend l’histoire de l’effusion' + REF('46:5.19') + '.' },
-    { y: 0, d: 'au moment des présents fascicules (vers 1934–1935)', t: 'Le procès s’ouvre ; Machiventa vice-gérant', tr: 'S', u: 2, who: [['Gabriel', 'loy'], ['Satan', 'reb'], ['Machiventa Melchizédek', 'loy'], ['le vingtième gouverneur général', 'loy']],
+    { y: 0, d: 'au moment des présents fascicules (vers 1934–1935)', t: 'Le procès s’ouvre ; Machiventa vice-gérant', tr: 'S', u: 2, who: [['Gabriel', 'loy'], ['Satan', 'reb'], ['Machiventa Melchizédek', 'loy'], ['le vingtième gouverneur général', 'loy']],
       p: 'Les visites de Satan cessent avec la première audience du procès de Gabriel contre les archirebelles' + REF('53:9.3–4') + '. Machiventa Melchizédek reçoit le titre de Prince Planétaire Vice-gérant d’Urantia' + REF('93:10.5 · 114:1.2') + '. Le vingtième gouverneur général remplace le dix-neuvième' + REF('114:3.1') + '. Urantia reste en quarantaine spirituelle partielle' + REF('28:7.4') + ', et Satania sous une quarantaine de Norlatiadek' + REF('46:8.2') + '.',
       q: ['Satan est maintenant détenu inconditionnellement sur les mondes-prisons de Jérusem.', '53:9.4'] }
   ];
@@ -2842,7 +2852,7 @@ const TEX = /*__TEX__*/null;
       { f: 6e8, h: 'la commission des Porteurs de Vie, envoyée de Jérusem', r: '58:1.1', s: 'Porteurs de Vie' },
       { f: 993408, h: 'une commission mixte de Melchizédeks et de Porteurs de Vie, jusqu’à l’arrivée d’un Prince Planétaire (début non précisé)', r: '114:1.1', s: 'commission de Melchizédeks et de Porteurs de Vie' },
       { f: 5e5, h: 'Caligastia, Prince Planétaire, avec Daligastia, son adjoint', r: '66:1.1 · 66:2.2', s: 'Caligastia, Prince Planétaire' },
-      { f: 199999.9, h: '<span class="reb">Caligastia et Daligastia</span> passent à la rébellion&nbsp;; Van et les quarante loyaux résistent', r: '67:2.3 · 67:3.2', s: 'Caligastia déchu · Van résiste' },
+      { f: 199999.9, h: '<span class="reb">Caligastia et Daligastia</span> passent à la rébellion&nbsp;; Van et les quarante loyaux résistent', r: '67:2.1–3 · 67:3.2', s: 'Caligastia déchu · Van résiste' },
       { f: 199990, h: 'douze Melchizédeks administrateurs provisoires&nbsp;; Van garde l’autorité nominale', r: '67:6.5 · 74:2.6', s: 'douze Melchizédeks' },
       { f: 37848, h: 'Adam et Ève, proclamés dirigeants d’Urantia', r: '74:2.6', s: 'Adam et Ève' },
       { f: 37730.8, h: 'les administrateurs provisoires Melchizédeks, revenus après la défaillance', r: '75:5.8', s: 'administrateurs Melchizédeks' },
@@ -2878,7 +2888,7 @@ const TEX = /*__TEX__*/null;
       s += '<circle cx="' + tsX(i).toFixed(1) + '" cy="22" r="3.6" fill="' + TRC[e.tr] + '"' + (e.k === 'reb' ? ' stroke="var(--reb)" stroke-width="1.8"' : '') + '><title>' + plainTxt(e.t) + '</title></circle>';
     });
     s += '<line x1="' + TS0 + '" y1="44" x2="' + TS1 + '" y2="44" stroke="currentColor" stroke-opacity="0.35"/>';
-    [[12, '1 000 milliards'], [9, '1 milliard'], [6, '1 million'], [3, '1 000 ans'], [0, '1934']].forEach((t) => {
+    [[12, '1 000 milliards'], [9, '1 milliard'], [6, '1 million'], [3, '1 000 ans'], [0, '1934']].forEach((t) => {
       const x = tsL(Math.pow(10, t[0]));
       s += '<line x1="' + x.toFixed(1) + '" y1="41" x2="' + x.toFixed(1) + '" y2="47" stroke="currentColor" stroke-opacity="0.5"/>';
       s += '<text class="ts-lab" x="' + x.toFixed(1) + '" y="58" text-anchor="' + (t[0] === 12 ? 'start' : t[0] === 0 ? 'end' : 'middle') + '">' + t[1] + '</text>';
@@ -2926,8 +2936,8 @@ const TEX = /*__TEX__*/null;
     tlH.innerHTML = ['N', 'C', 'S', 'U'].map((k) => { const h = holder(k, e.y); return '<dt>' + HOLD_LBL[k] + '</dt><dd>' + h.h + (h.r ? REF(h.r) : '') + '</dd>'; }).join('');
     govNow.forEach((el) => { const h = holder(el.dataset.tk, e.y); el.innerHTML = '<b>À la date choisie</b> (' + e.d + ')&nbsp;: ' + h.h + (h.r ? REF(h.r) : ''); el.hidden = !tlOn; });
     const hu = holder('U', e.y), hs = holder('S', e.y);
-    dynU.text = hu.s ? 'gouvernement : ' + hu.s : '';
-    dynS.text = hs.s ? 'souverain : ' + hs.s : '';
+    dynU.text = hu.s ? 'gouvernement : ' + hu.s : '';
+    dynS.text = hs.s ? 'souverain : ' + hs.s : '';
     dynU.el.textContent = dynU.text;
     dynS.el.textContent = dynS.text;
     dynU.w = dynS.w = 0;                      // à remesurer pour le désencombrement
@@ -3168,7 +3178,7 @@ const TEX = /*__TEX__*/null;
     soleil: { n: 'Le Soleil', k: 'Soleil', e: 'L’étoile de Monmatia',
       b: BR('Il naquit il y a 6 milliards d’années, l’un des derniers soleils de la nébuleuse d’Andronover {57:4.8}.') +
         Q("Le soleil de votre système solaire porte le numéro 1&#8239;013&#8239;572.", "57:4.8") +
-        BR('Étoile variable dans sa jeunesse, il pulsait fortement quand le système d’Angona passa près de lui&nbsp;: une vaste masse de matière fut arrachée, d’où naquirent les douze planètes {41:10.1 ; 57:5.7}. Le cycle des taches solaires garde la trace de cette jeunesse {57:5.2}.') +
+        BR('Étoile variable dans sa jeunesse, il pulsait fortement quand le système d’Angona passa près de lui&nbsp;: une vaste masse de matière fut arrachée, d’où naquirent les douze planètes {41:10.1 ; 57:5.7}. Le cycle des taches solaires garde la trace de cette jeunesse {57:5.2}.') +
         Q("Il brillera avec sa présente efficacité pendant plus de vingt-cinq-milliards d’années.", "41:9.5"),
       s: '<p>Une étoile naine jaune, 109 fois plus large que la Terre. Sa lumière met environ 8&nbsp;minutes 20&nbsp;secondes pour nous atteindre.</p>',
       f: [['Diamètre', '1,39 million de km'], ['Distance à Urantia', '1 UA'], ['Rotation', '≈ 25 jours à l’équateur'], ['Cycle des taches', '≈ 11 ans']] },
@@ -3280,9 +3290,9 @@ const TEX = /*__TEX__*/null;
     { t: 'En mortel morontiel',
       f: [['Forme', 'un mortel morontiel de statut ascendant' + REF('119:6.3')], ['Lieu', 'Endantum, au siège de la cinquième constellation' + REF('119:6.1 · 119:6.3')],
         ['Date', 'non donnée'], ['Durée', 'non précisée']],
-      b: BR('Avant de partir, Micaël annonce que sa septième et dernière effusion aura lieu dans la chair mortelle {119:6.1}. Il vit la carrière d’un mortel morontiel auprès des Très Hauts Pères de la cinquième constellation&nbsp;; l’auteur a l’interdiction d’en donner les détails {119:6.1 ; 119:6.3}. À son retour, il répond aux discours de bienvenue&nbsp;:') +
+      b: BR('Avant de partir, Micaël annonce que sa septième et dernière effusion aura lieu dans la chair mortelle {119:6.1}. Il vit la carrière d’un mortel morontiel auprès des Très Hauts Pères de la cinquième constellation&nbsp;; l’auteur a l’interdiction d’en donner les détails {119:6.1 ; 119:6.3}. À son retour, il répond aux discours de bienvenue&nbsp;:') +
         Q('Je me suis simplement occupé des affaires de mon Père.', '119:6.5'),
-      pos: 'Le texte nomme Endantum {119:6.3 ; 119:6.6} mais ne situe pas la cinquième constellation dans Nébadon&nbsp;: sa place est un choix du schéma.' },
+      pos: 'Le texte nomme Endantum {119:6.3 ; 119:6.6} mais ne situe pas la cinquième constellation dans Nébadon&nbsp;: sa place est un choix du schéma.' },
     { t: 'Dans la chair, sur Urantia',
       f: [['Forme', 'un mortel de chair, Joshua ben Joseph, né bébé' + REF('119:7.3 · 119:7.5')], ['Lieu', 'Urantia, monde n°&nbsp;606 de Satania' + REF('15:14.5')],
         ['Date', 'né le 21 aout de l’an 7 av. J.-C.' + REF('122:8.1')], ['Durée', 'un tiers de siècle du temps de la Terre' + REF('119:7.4')]],
@@ -3294,10 +3304,10 @@ const TEX = /*__TEX__*/null;
   function effCardHtml(n) {
     const E = EFF[n], m = EFFM[n];
     const steps = '<ol class="bc-steps" aria-label="Les sept effusions">' + [1, 2, 3, 4, 5, 6, 7].map((k) => '<li><button type="button" data-nav="e:' + k + '" data-role="st' + k + '"' +
-      (k === n ? ' aria-current="step"' : '') + ' title="' + ORD[k] + ' effusion : ' + EFFM[k].s + '" aria-label="' + ORD[k] + ' effusion : ' + EFFM[k].s + '">' + k + '</button></li>').join('') + '</ol>';
+      (k === n ? ' aria-current="step"' : '') + ' title="' + ORD[k] + ' effusion&nbsp;: ' + EFFM[k].s + '" aria-label="' + ORD[k] + ' effusion&nbsp;: ' + EFFM[k].s + '">' + k + '</button></li>').join('') + '</ol>';
     const facts = '<dl class="bc-facts">' + E.f.map((x) => '<div><dt>' + x[0] + '</dt><dd>' + x[1] + '</dd></div>').join('') + '</dl>';
     const diag = E.diag ? '<div class="bc-diag">' + svgDiag('salvington', E.diag) + '<p class="cap">' + E.cap + '</p></div>' : '';
-    const nav = (k, cls, txt) => k >= 1 && k <= 7 ? '<button type="button" data-nav="e:' + k + '" data-role="' + cls + '" title="' + ORD[k] + ' effusion : ' + EFFM[k].s + '">' + txt + '</button>'
+    const nav = (k, cls, txt) => k >= 1 && k <= 7 ? '<button type="button" data-nav="e:' + k + '" data-role="' + cls + '" title="' + ORD[k] + ' effusion&nbsp;: ' + EFFM[k].s + '">' + txt + '</button>'
       : '<button type="button" data-role="' + cls + '" disabled>' + txt + '</button>';
     return '<div class="bc-head"><p class="eyebrow">Les sept effusions · ' + n + ' sur 7</p><h2 id="bc-title" tabindex="-1">' + E.t + '</h2>' +
       '<button type="button" class="bc-x" data-nav="x" aria-label="Fermer la fiche (quitte le mode « Les sept effusions »)">×</button>' + steps + '</div>' +
@@ -3326,9 +3336,9 @@ const TEX = /*__TEX__*/null;
     bcard.innerHTML = '<div class="bc-head"><p class="eyebrow">' + C.e + '</p><h2 id="bc-title" tabindex="-1">' + C.n + '</h2>' +
       '<button type="button" class="bc-x" data-nav="x" aria-label="Fermer la fiche">×</button></div>' +
       '<div class="bc-body">' + facts + '<h3 class="bc-livre">Ce que dit le livre</h3>' + C.b + '<h3 class="bc-astro">Astronomie actuelle</h3>' + C.s + '</div>' +
-      '<div class="bc-nav"><button type="button" data-nav="' + pk + '" title="Astre précédent : ' + CARDS[pk].k + '">‹ ' + CARDS[pk].k + '</button>' +
+      '<div class="bc-nav"><button type="button" data-nav="' + pk + '" title="Astre précédent&nbsp;: ' + CARDS[pk].k + '">‹ ' + CARDS[pk].k + '</button>' +
       '<button type="button" class="bc-go" data-nav="go">Voir de près</button>' +
-      '<button type="button" data-nav="' + nk + '" title="Astre suivant : ' + CARDS[nk].k + '">' + CARDS[nk].k + ' ›</button></div>';
+      '<button type="button" data-nav="' + nk + '" title="Astre suivant&nbsp;: ' + CARDS[nk].k + '">' + CARDS[nk].k + ' ›</button></div>';
     }
     bcard.hidden = false;
     bcard.scrollTop = 0;

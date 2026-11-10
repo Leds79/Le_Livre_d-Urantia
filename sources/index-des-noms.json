@@ -2360,12 +2360,8 @@
     "Joseph d’Arimathie"
    ],
    "n": 19,
-   "atlas": [
-    [
-     "bible-et-livre.html#p-nicodeme",
-     "La Bible et le livre"
-    ]
-   ]
+   "atlas": [],
+   "atlas_fixe": []
   },
   {
    "nom": "Aristote",
@@ -2529,11 +2525,11 @@
     [
      "melchizedek-et-religions.html#r-asie",
      "Melchizédek et les religions"
-    ],
-    [
-     "douze-apotres.html#andre",
-     "Les douze apôtres"
     ]
+   ],
+   "atlas_fixe": [
+    "science-et-histoire.html#s-berceau",
+    "melchizedek-et-religions.html#r-asie"
    ]
   },
   {
@@ -3678,7 +3674,7 @@
   {
    "nom": "Bornéo",
    "cat": "terre",
-   "ident": "Ile dont les indigènes tuent un esclave pour donner au mort un compagnon messager",
+   "ident": "Ile dont les indigènes, selon le livre, tuaient encore un esclave pour donner au mort un compagnon messager",
    "refs": [
     "87:2.8"
    ],
@@ -4396,11 +4392,11 @@
     [
      "science-et-histoire.html#s-pilate",
      "Science et histoire"
-    ],
-    [
-     "bible-et-livre.html#p-confession-pierre",
-     "La Bible et le livre"
     ]
+   ],
+   "atlas_fixe": [
+    "annees-cachees-de-jesus.html#e-cesaree",
+    "science-et-histoire.html#s-pilate"
    ]
   },
   {
@@ -10013,12 +10009,8 @@
     "baie d’Hudson"
    ],
    "n": 3,
-   "atlas": [
-    [
-     "science-et-histoire.html#s-bouclier",
-     "Science et histoire"
-    ]
-   ]
+   "atlas": [],
+   "atlas_fixe": []
   },
   {
    "nom": "Idumée",
@@ -13211,20 +13203,25 @@
      "Melchizédek et les religions"
     ],
     [
-     "bible-et-livre.html#p-abraham",
+     "bible-et-livre.html#p-melchisedech",
      "La Bible et le livre"
     ],
     [
-     "effusions-de-micael.html#ef-1-h",
-     "Les effusions de Micaël"
+     "bible-et-livre.html#p-abraham",
+     "La Bible et le livre"
     ]
    ],
-   "glossaire": "machiventa"
+   "glossaire": "machiventa",
+   "atlas_fixe": [
+    "melchizedek-et-religions.html",
+    "bible-et-livre.html#p-melchisedech",
+    "bible-et-livre.html#p-abraham"
+   ]
   },
   {
    "nom": "Madagascar",
    "cat": "terre",
-   "ident": "Ile qu’Andites et Égyptiens n’atteignirent pas ; certaines tribus y tuent les nouveau-nés des jours néfastes",
+   "ident": "Ile qu’Andites et Égyptiens n’atteignirent pas ; certaines tribus, selon le livre, y tuaient encore les nouveau-nés des jours néfastes",
    "refs": [
     "68:6.10",
     "78:5.5"
@@ -15722,11 +15719,19 @@
    "n": 9,
    "atlas": [
     [
-     "bible-et-livre.html#p-cain",
+     "rebellion-de-lucifer.html#camps",
+     "La rébellion de Lucifer"
+    ],
+    [
+     "bible-et-livre.html#p-babel",
      "La Bible et le livre"
     ]
    ],
-   "glossaire": "nodites"
+   "glossaire": "nodites",
+   "atlas_fixe": [
+    "rebellion-de-lucifer.html#camps",
+    "bible-et-livre.html#p-babel"
+   ]
   },
   {
    "nom": "Nodites",
@@ -16522,7 +16527,7 @@
   {
    "nom": "Patagons",
    "cat": "peuple",
-   "ident": "Peuple qui adore encore les arbres, comme le faisaient les premiers Sémites",
+   "ident": "Peuple qui, selon le livre, adorait encore les arbres, comme les premiers Sémites",
    "refs": [
     "85:2.4"
    ],
@@ -22167,13 +22172,12 @@
     [
      "rebellion-de-lucifer.html#camps",
      "La rébellion de Lucifer"
-    ],
-    [
-     "melchizedek-et-religions.html#r-europe",
-     "Melchizédek et les religions"
     ]
    ],
-   "glossaire": "van-et-amadon"
+   "glossaire": "van-et-amadon",
+   "atlas_fixe": [
+    "rebellion-de-lucifer.html#camps"
+   ]
   },
   {
    "nom": "Vanites",
@@ -22878,7 +22882,7 @@
   {
    "nom": "Zoulous",
    "cat": "peuple",
-   "ident": "Peuple d’Afrique dont la religion, fondée sur le sacrifice et la crainte des fantômes, est en formation",
+   "ident": "Peuple d’Afrique qui, selon le livre, élaborait alors une religion de sacrifices et de peur des fantômes",
    "refs": [
     "92:6.1"
    ],

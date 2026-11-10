@@ -324,7 +324,7 @@
       }
       if (!ok) continue;
       if (phrase && (a.indexOf(phrase) >= 0 || b.indexOf(phrase) >= 0)) sc += 25;
-      if (a === exact) sc += 40;                               // titre identique à la recherche (terme du glossaire, page…)
+      if (a === exact) sc += S[s][3] === 'g' ? 50 : 40;        // titre identique à la recherche ; à égalité, le terme du glossaire d’abord
       if (!S[s][1]) sc += 8;                                   // la page elle-même
       res.push(sc * 65536 + 65535 - s);                        // score, puis ordre du document (s < 65 536)
     }
@@ -747,7 +747,7 @@
       R.etat.textContent = 'Chargement de l’index…';
       chargerIndex().then(function (pret) {
         if (pret && D) { if (R.derniere === q) lancer(q); }
-        else R.etat.textContent = 'La recherche n’est pas disponible' + NB + ': son index n’a pas pu être chargé (hors ligne ?). Réessaie avec une connexion.';
+        else R.etat.textContent = 'La recherche n’est pas disponible' + NB + ': son index n’a pas pu être chargé (hors ligne' + NB + '?). Réessaie avec une connexion.';
       });
       return;
     }
@@ -818,6 +818,14 @@
       var k = e.key;
       if ((k === 'k' || k === 'K') && (e.ctrlKey || e.metaKey) && !e.shiftKey) { e.preventDefault(); ouvrirRecherche(); return; }
       if (k === '/' && !e.ctrlKey && !e.metaKey && !saisie(e.target)) { e.preventDefault(); ouvrirRecherche(); }
+    });
+    // liens externes ouverts dans un nouvel onglet : annoncés aux lecteurs d’écran s’ils ne le disent pas déjà
+    if (!nav) styler();
+    toArray(doc.querySelectorAll('a[target="_blank"]')).forEach(function (a) {
+      var t = (a.getAttribute('aria-label') || '') + ' ' + (a.getAttribute('title') || '') + ' ' + a.textContent;
+      if (/nouvel(le)? (onglet|fenêtre)/i.test(t)) return;
+      if (a.hasAttribute('aria-label')) a.setAttribute('aria-label', a.getAttribute('aria-label') + ', nouvel onglet');
+      else a.appendChild(el('span', 'an-sr', ' (nouvel onglet)'));
     });
     versHorsLigne();
   }

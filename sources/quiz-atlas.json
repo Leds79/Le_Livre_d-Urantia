@@ -24,7 +24,7 @@
      "q": "Selon le livre, environ combien de mondes habités ou habitables compte un système local ?",
      "choix": [
       "Environ mille",
-      "Environ dix mille",
+      "Environ dix-mille",
       "Environ un million",
       "Environ un milliard"
      ],
@@ -91,7 +91,7 @@
      "q": "Selon le livre, combien de sphères compte Havona, l’univers central ?",
      "choix": [
       "Sept",
-      "Cent mille",
+      "Cent-mille",
       "Un milliard",
       "Mille milliards"
      ],
@@ -164,7 +164,7 @@
       "Lanaforge"
      ],
      "bonne": 3,
-     "explication": "Le souverain du système est Lanaforge, « numéro 2 709 de l’ordre primaire et successeur de l’apostat Lucifer ».",
+     "explication": "Le souverain du système est Lanaforge, « numéro 2 709 de l’ordre primaire et successeur de l’apostat Lucifer ».",
      "ref": "45:3.2"
     },
     {
@@ -227,9 +227,9 @@
      "q": "Selon le livre, il y a environ combien de temps Lucifer proclama-t-il son manifeste ?",
      "choix": [
       "Environ un million d’années",
-      "Environ 500 000 ans",
-      "Environ 200 000 ans",
-      "Environ 37 000 ans"
+      "Environ 500 000 ans",
+      "Environ 200 000 ans",
+      "Environ 37 000 ans"
      ],
      "bonne": 2,
      "explication": "Le manifeste de Lucifer fut proclamé au conclave annuel de Satania, sur la mer de verre, « il y a environ deux-cent-mille ans du temps d’Urantia ».",

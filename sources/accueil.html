@@ -61,7 +61,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 /* En-tête */
 .hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 44px; align-items: center; }
 .hero-text { display: grid; gap: 20px; min-width: 0; }
-.sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.35; max-width: 36ch; }
+.sub { font-family: var(--font-display); font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.6rem); line-height: 1.35; max-width: 36ch; text-wrap: balance; }
+.sub i { font-style: normal; }   /* titre d’œuvre en romain dans le sous-titre en italique */
 .disc { font-size: .98rem; color: var(--muted); max-width: 58ch; }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 4px; }
 .btn-main, .btn-alt { display: inline-flex; align-items: center; gap: 10px; padding: 11px 19px; border-radius: 999px; border: 1.5px solid; font: 500 1.02rem/1.2 var(--font-body); text-decoration: none; }
@@ -370,7 +371,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
     <div class="hero-text">
       <p class="eyebrow">Atlas d’étude · 197 fascicules, de 0 à 196</p>
       <h1>Le Livre d’Urantia en images</h1>
-      <p class="sub">L’origine et l’organisation de l’univers selon le Livre d’Urantia, en cartes, en 3D et en schémas</p>
+      <p class="sub">L’origine et l’organisation de l’univers selon le <i>Livre d’Urantia</i>, en cartes, en 3D et en schémas</p>
       <p class="disc">Ces pages sont une aide à l’étude indépendante. Elles n’ont aucun lien officiel avec la Fondation Urantia, éditrice du texte. Les citations sont tirées de sa traduction française, édition 2024 (<a href="#droits">droits</a>).</p>
       <div class="actions">
         <a class="btn-main" href="nebadon-dans-orvonton.html">Commencer le parcours<svg viewBox="0 0 18 18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9h11M10 4.5 14.5 9 10 13.5"/></svg></a>
@@ -650,8 +651,8 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
           <circle class="f-g" cx="70" cy="42" r="2.6"/><circle class="f-g" cx="90" cy="52" r="2.6"/>
         </svg></div>
         <div class="top"><span class="num" aria-hidden="true">13</span><h3>La Bible et le Livre d’Urantia</h3></div>
-        <p>Cent parallèles, de la Création à l’Apocalypse, mettent côte à côte la Bible (traduction Crampon, 1923) et le Livre d’Urantia&nbsp;: ce qui concorde, ce qui diffère, et ce que le livre dit lui-même du récit biblique.</p>
-        <p class="see"><b>Tu y verras</b> la Création et Lucifer, Adam et Ève, les patriarches, Moïse et les prophètes, l’enfance de Jésus, ses miracles et ses paraboles, la Passion, la Pentecôte, et 38&nbsp;versets que le Livre d’Urantia cite lui-même.</p>
+        <p>Cent parallèles, de la Création à l’Apocalypse, mettent côte à côte la Bible (traduction Crampon, 1923) et le <i>Livre d’Urantia</i>&nbsp;: ce qui concorde, ce qui diffère, et ce que le livre dit lui-même du récit biblique.</p>
+        <p class="see"><b>Tu y verras</b> la Création et Lucifer, Adam et Ève, les patriarches, Moïse et les prophètes, l’enfance de Jésus, ses miracles et ses paraboles, la Passion, la Pentecôte, et 38&nbsp;versets que le <i>Livre d’Urantia</i> cite lui-même.</p>
         <a class="go" href="bible-et-livre.html">Ouvrir «&nbsp;La Bible et le Livre d’Urantia&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
       </li>
       <li class="card alt">
@@ -852,7 +853,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
               <circle class="f-g" cx="70" cy="46" r="3.6"/>
             </svg></div>
             <h5><a class="go" href="annees-cachees-de-jesus.html">Les années cachées de Jésus&nbsp;<span class="arr" aria-hidden="true">→</span></a></h5>
-            <p>De quatorze à trente ans, ce que les Évangiles taisent&nbsp;: l’atelier de Nazareth, puis le grand voyage avec Gonod et Ganid.</p>
+            <p>De quatorze à trente-et-un ans, ce que les Évangiles taisent&nbsp;: l’atelier de Nazareth, puis le grand voyage avec Gonod et Ganid.</p>
           </li>
           <li class="card">
             <div class="ill" aria-hidden="true"><svg viewBox="0 0 160 90">
@@ -916,7 +917,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
             </svg></div>
             <h4>D’où vient ce livre&nbsp;?</h4>
             <p>Le livre se dit l’œuvre d’êtres célestes&nbsp;; ses premiers lecteurs racontent l’avoir reçu à Chicago par un homme endormi&nbsp;; des critiques y voient une œuvre humaine. La page fait entendre chaque voix, avec ses sources.</p>
-            <p class="see"><b>Tu y verras</b> une frise de 1911 à 2024 où chaque date porte sa source et son degré de certitude, les deux procès qui ont mené le texte anglais au domaine public, et ce que l’on ne sait toujours pas.</p>
+            <p class="see"><b>Tu y verras</b> une frise de 1911 à 2024 où chaque date porte sa source et son degré de certitude, les deux procès sur son droit d’auteur, dont le second a fait passer le texte anglais dans le domaine public aux États-Unis, et ce que l’on ne sait toujours pas.</p>
             <a class="go" href="histoire-du-livre.html">Ouvrir «&nbsp;D’où vient ce livre&nbsp;?&nbsp;»&nbsp;<span class="arr" aria-hidden="true">→</span></a>
           </li>
           <li class="card">
@@ -1031,7 +1032,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
     </div>
     <ol class="parts">
       <li class="part">
-        <p class="rng"><b>Introduction</b>fascicule 0</p>
+        <p class="rng"><b>Avant les parties</b>fascicule 0</p>
         <div><h3>Introduction</h3><p class="spons">Rédigée par un Conseiller Divin d’Orvonton <span class="ref">0:12.14</span>. Elle précise le sens de termes comme Dieu, divinité et déité, employés dans tout le livre <span class="ref">0:0.1</span>.</p></div>
         <div class="atlas"><ul><li><a href="dieu-et-deite.html">Dieu et la Déité</a>, pour les niveaux de la Déité et les sept Absolus</li></ul></div>
       </li>
@@ -1090,7 +1091,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
         <div class="atlas">
           <ul>
             <li><a href="vie-de-jesus.html">La vie de Jésus</a>, frise et cartes des voyages</li>
-            <li><a href="annees-cachees-de-jesus.html">Les années cachées de Jésus</a>, de quatorze à trente ans, fascicules 126 à 134</li>
+            <li><a href="annees-cachees-de-jesus.html">Les années cachées de Jésus</a>, de quatorze à trente-et-un ans, fascicules 126 à 134</li>
             <li><a href="douze-apotres.html">Les douze apôtres</a>, portraits et destinées, fascicule 139</li>
             <li><a href="enseignements-de-jesus.html">Les enseignements de Jésus</a>, quinze thèmes autour de la paternité de Dieu</li>
             <li><a href="apres-la-pentecote.html">Après la Pentecôte</a>, l’évangile dans l’histoire, fascicule 195</li>
@@ -1111,7 +1112,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
             <li><a href="auteurs-et-chiffres.html">Les auteurs déclarés et le livre en chiffres</a>, fascicule par fascicule</li>
             <li><a href="science-et-histoire.html">La science et l’histoire face au livre</a>, cent-six affirmations confrontées aux connaissances d’aujourd’hui</li>
             <li><a href="parcours-de-lecture.html">Parcours de lecture</a>, cinq itinéraires dans les 197 fascicules</li>
-            <li><a href="index-des-noms.html">Index des noms</a>, 1&nbsp;142 êtres, lieux, peuples et personnages, de A à Z</li>
+            <li><a href="index-des-noms.html">Index des noms</a>, 1&nbsp;142 noms (êtres, ordres, mondes, lieux, peuples, personnages et religions), de A à Z</li>
           </ul>
         </div>
       </li>
@@ -1121,7 +1122,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   <section aria-labelledby="h-read">
     <div class="sec-head">
       <h2 id="h-read">Comment lire ces pages</h2>
-      <p>Chaque page distingue ce que dit le texte de ce qu’on en dit. Trois registres reviennent partout.</p>
+      <p>Chaque page distingue ce que dit le texte de ce qu’on en dit. Les pages thématiques réunissent trois registres&nbsp;; les pages de schémas (la vue 3D, Familles de personnalités, Concepts en schémas, Dieu et la Déité) s’en tiennent au texte et à ce qu’il ne précise pas.</p>
     </div>
     <div class="regs">
       <div class="reg r-text">
@@ -1162,7 +1163,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
   <footer class="foot">
     <p>Données&nbsp;: étoiles du catalogue HYG v4.1 (licence CC BY-SA 4.0)&nbsp;; éléments planétaires du JPL&nbsp;; continents de Natural Earth (domaine public).</p>
     <p>Texte&nbsp;: <i>Le Livre d’Urantia</i>, traduction française de la Fondation Urantia, édition 2024. Citations courtes&nbsp;; le reste est paraphrasé, avec ses références.</p>
-    <p>Mise à jour&nbsp;: 2026-11-08.</p>
+    <p>Mise à jour&nbsp;: 9&nbsp;novembre 2026.</p>
   </footer>
 
 </div>

@@ -472,7 +472,7 @@
 
     var boite = el('div', 'qz-menu');
     boite.setAttribute('data-glossaire', 'non');
-    boite.appendChild(el('h3', '', 'Quiz'));
+    boite.appendChild(el('h2', '', 'Quiz'));
     var b = el('button', 'qz-ouvrir');
     b.type = 'button';
     b.appendChild(document.createTextNode('Teste tes connaissances'));

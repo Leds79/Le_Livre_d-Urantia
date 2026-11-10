@@ -199,6 +199,7 @@ figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule);
 .cmp thead th { border-top: 0; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; }
 .cmp tbody th { font-weight: 500; width: 24%; }
 .cmp-note { margin-top: 12px; font-size: .88rem; color: var(--muted); max-width: 68ch; }
+@media (max-width: 640px) { .cmp { min-width: 0; } .cmp thead { display: none; } .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; } .cmp tbody th { width: auto; padding: 12px 0 6px; } .cmp td { border-top: 0; padding: 0 0 10px; } .cmp td::before { display: block; margin-bottom: 2px; font: 500 .72rem/1.3 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); } .cmp td:nth-of-type(1)::before { content: "Selon le livre"; } .cmp td:nth-of-type(2)::before { content: "Selon l’astronomie actuelle"; } }
 
 /* Suite */
 .more { display: grid; gap: 14px; max-width: 72ch; }
@@ -412,7 +413,7 @@ figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule);
         </tbody>
       </table>
     </div>
-    <p class="cmp-note">Les deux colonnes ne désignent pas forcément le même centre, et c’est tout le débat. Certains lecteurs cherchent à concilier les chiffres&nbsp;; d’autres y voient les limites d’une cosmologie datée.</p>
+    <p class="cmp-note">Le livre et l’astronomie actuelle ne désignent pas forcément le même centre, et c’est tout le débat. Certains lecteurs cherchent à concilier les chiffres&nbsp;; d’autres y voient les limites d’une cosmologie datée.</p>
   </section>
 
   <section class="more" aria-labelledby="h-more">
@@ -427,7 +428,7 @@ figure.fig { margin: 0; background: var(--sheet); border: 1px solid var(--rule);
 
   <footer class="foot">
     <p>Source&nbsp;: <em>Le Livre d’Urantia</em>, traduction française, édition 2024. Références au format fascicule:section.paragraphe.</p>
-    <p>Citations courtes, vérifiées dans le texte. Schémas indicatifs. Page d’étude du 2026-11-07.</p>
+    <p>Citations courtes, vérifiées dans le texte. Schémas indicatifs. Page d’étude du 7&nbsp;novembre 2026.</p>
   </footer>
 </main>
 

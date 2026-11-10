@@ -94,7 +94,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .toc { display: grid; gap: 14px; }
 .toc h2 { font-size: 1.5rem; }
 .toc ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0 24px; }
-.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 9px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+.toc a { display: grid; grid-template-columns: 2rem minmax(0, 1fr); align-items: baseline; padding: 11px 0; border-top: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
 .toc a:hover .tt { color: var(--gold-ink); }
 .toc .nb { font: 500 .8rem/1 var(--font-mono); color: var(--gold-ink); }
 .toc .tt { font-family: var(--font-display); font-weight: 600; font-size: 1.16rem; line-height: 1.2; }
@@ -932,7 +932,7 @@ blockquote.cite.r { border-left-color: var(--reb); }
       e: "Voir leurs fiches à l’échelle de la planète." },
     adam: { c: "neu", n: "Adam", r: "Fils Matériel",
       a: "Fils Matériel envoyé avec Ève pour élever biologiquement les races&nbsp;; ils arrivent 37&nbsp;848 ans avant l’an 1934 {74:0.1}.",
-      b: "Isolé, sans pouvoir consulter Jérusem ni Édentia {75:1.1 ; 75:1.4}, il résiste aux suggestions de Caligastia {75:2.1}. Le lendemain de la faute d’Ève, il commet délibérément la même avec Laotta, une Nodite&nbsp;: il ne fut pas séduit, précise le texte, mais choisit de partager le sort d’Ève {75:5.2}. Il quitte le Jardin sans combattre, avec douze cents partisans {75:6.2}.",
+      b: "Isolé, sans pouvoir consulter Jérusem ni Édentia {75:1.1 ; 75:1.4}, il résiste aux suggestions de Caligastia {75:2.1}. Le lendemain de la faute d’Ève, il commet délibérément la même avec Laotta, une Nodite&nbsp;: il ne fut pas séduit, précise le texte, mais choisit de partager le sort d’Ève {75:5.2}. Il quitte le Jardin sans combattre, avec douze-cents partisans {75:6.2}.",
       e: "Il vit 530 ans {76:5.5}, puis est repersonnalisé avec Ève sur les mondes des maisons {76:6.2}. Le texte refuse d’en faire une source de malédiction pour la race humaine {75:8.3}." },
     eve: { c: "neu", n: "Ève", r: "Fille Matérielle",
       a: "Fille Matérielle, compagne d’Adam {74:0.1}.",
@@ -1040,11 +1040,11 @@ blockquote.cite.r { border-left-color: var(--reb); }
   /* ====================== 2. La frise segmentée ====================== */
   function lg(v, max) { return Math.log(1 + v) / Math.log(1 + max); }
   var SEGS = [
-    { id: "A", t: "Le règne de Caligastia", s: "il y a 500 000 → 200 000 ans", l: "500 000", r: "200 000", sc: "échelle linéaire", f: function (v) { return (500000 - v) / 300000; } },
-    { id: "B", t: "La crise", s: "0 → 162 ans après le manifeste", l: "0", r: "162 ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 162); } },
-    { id: "C", t: "La longue attente", s: "≈ 200 000 → 38 000 ans", l: "≈ 200 000", r: "≈ 38 000", sc: "échelle linéaire", f: function (v) { return (199838 - v) / 161990; } },
-    { id: "D", t: "Le Jardin", s: "530 ans après l’arrivée d’Adam", l: "0", r: "530 ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 530); } },
-    { id: "E", t: "L’effusion de Micaël", s: "an 25 → an 30", l: "an 25", r: "an 30", sc: "échelle linéaire", f: function (v) { return (v - 25) / 5.8; } },
+    { id: "A", t: "Le règne de Caligastia", s: "il y a 500 000 → 200 000 ans", l: "500&nbsp;000", r: "200&nbsp;000", sc: "échelle linéaire", f: function (v) { return (500000 - v) / 300000; } },
+    { id: "B", t: "La crise", s: "0 → 162 ans après le manifeste", l: "0", r: "162&nbsp;ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 162); } },
+    { id: "C", t: "La longue attente", s: "≈ 200 000 → 38 000 ans", l: "≈&nbsp;200&nbsp;000", r: "≈&nbsp;38&nbsp;000", sc: "échelle linéaire", f: function (v) { return (199838 - v) / 161990; } },
+    { id: "D", t: "Le Jardin", s: "530 ans après l’arrivée d’Adam", l: "0", r: "530&nbsp;ans", sc: "échelle logarithmique", f: function (v) { return lg(v, 530); } },
+    { id: "E", t: "L’effusion de Micaël", s: "an 25 → an 30", l: "an&nbsp;25", r: "an&nbsp;30", sc: "échelle linéaire", f: function (v) { return (v - 25) / 5.8; } },
     { id: "F", t: "Le temps des fascicules", s: "vers 1934 (déduit)", l: "", r: "", sc: "un seul repère", f: function () { return 0.5; } }
   ];
   /* g : segment · v : position dans l’échelle du segment · k : camp · d : date (italique = telle qu’écrite) · r : référence de la date */
@@ -1081,7 +1081,7 @@ blockquote.cite.r { border-left-color: var(--reb); }
     { g: "D", v: 117, k: "neu", d: "après <span class=\"f-date\">cent-dix-sept ans</span> dans le Jardin", r: "74:8.14", t: "La défaillance",
       x: "Après plus de cinq ans de plans secrets avec Sérapatatia, Ève rencontre Cano&nbsp;; le lendemain, Adam choisit délibérément la même faute {75:3.7–9 ; 75:5.2}." },
     { g: "D", v: 117.2, k: "loy", d: "<span class=\"f-date\">soixante-dix jours après la défaillance d’Ève</span>", r: "75:5.8", t: "Le retour des administrateurs provisoires",
-      x: "Les Melchizédeks reprennent la juridiction&nbsp;; Adam quitte le Jardin sans combattre, avec douze cents partisans {75:5.8 ; 75:6.2}." },
+      x: "Les Melchizédeks reprennent la juridiction&nbsp;; Adam quitte le Jardin sans combattre, avec douze-cents partisans {75:5.8 ; 75:6.2}." },
     { g: "D", v: 117.4, k: "loy", d: "<span class=\"f-date\">peu après la nouvelle de la défaillance d’Adam et d’Ève</span>", r: "119:7.2", t: "Urantia choisie pour l’effusion finale",
       x: "Micaël annonce qu’Urantia sera le monde de son effusion finale {119:7.2}. Un autre passage date cette annonce d’il y a presque quarante-mille ans {43:1.6}." },
     { g: "D", v: 530, k: "loy", d: "<span class=\"f-date\">Le troisième jour après la mort d’Adam</span>, qui vécut 530 ans <span class=\"ded\">position déduite</span>", r: "76:6.2 ; 76:5.5", t: "Résurrection d’Adam et Ève",
@@ -1136,7 +1136,7 @@ blockquote.cite.r { border-left-color: var(--reb); }
     var sq = "", j;
     for (j = 0; j < 10; j++) sq += "<i" + (j < c[2] ? " class=\"l\"" : "") + "></i>";
     return "<li class=\"wf\"><span class=\"wf-n\">" + (i + 1) + ". " + c[0] + " · <b>" + c[1] + "</b></span><span class=\"sqs\" aria-hidden=\"true\">" + sq +
-      "</span><span class=\"wf-c\"><span aria-hidden=\"true\">" + c[2] + "/10</span><span class=\"sr-only\">" + c[2] + " loyal" + (c[2] > 1 ? "s" : "") + " sur 10</span></span></li>";
+      "</span><span class=\"wf-c\"><span aria-hidden=\"true\">" + c[2] + "/10</span><span class=\"sr-only\">" + c[2] + (c[2] > 1 ? " loyaux" : " loyal") + " sur 10</span></span></li>";
   }).join("");
 
   (function () {                                 /* 607 mondes + 12 mondes peuplés depuis */

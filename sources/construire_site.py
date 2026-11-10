@@ -82,7 +82,7 @@ PAGES = [
     ('pere-fils-esprit.html', 'pere-fils-esprit.html', 'Le Père, le Fils et l’Esprit', 'Père, Fils et Esprit',
      'Le Père, le Fils et l’Esprit selon le Livre d’Urantia : le Père Universel, le Fils Éternel et l’Esprit Infini, les trois personnes de la Déité, avec les références du texte.'),
     ('paradis-et-havona.html', 'paradis-et-havona.html', 'Le Paradis et Havona', 'Le Paradis et Havona',
-     'Le Paradis et Havona selon le Livre d’Urantia : l’ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas.'),
+     'Le Paradis et Havona selon le Livre d’Urantia : l’Ile éternelle au centre de tout et l’univers parfait d’un milliard de mondes qui l’entoure, en schémas.'),
     ('etre-supreme.html', 'etre-supreme.html', 'L’Être Suprême', 'L’Être Suprême',
      'L’Être Suprême selon le Livre d’Urantia : un Dieu qui évolue, qui tient sa personne de la Trinité et grandit avec l’expérience des créateurs et des créatures, en schémas, avec ce que le texte laisse ouvert.'),
     ('effusions-de-micael.html', 'effusions-de-micael.html', 'Les sept effusions de Micaël', 'Les effusions de Micaël',
@@ -102,7 +102,7 @@ PAGES = [
     ('melchizedek-et-religions.html', 'melchizedek-et-religions.html', 'Melchizédek et les religions du monde', 'Melchizédek et les religions',
      'Machiventa Melchizédek et les religions du monde selon le Livre d’Urantia : le sage de Salem, l’idée d’un Dieu unique portée de l’Islande au Japon et sa trace dans les grandes traditions, sur une carte et une frise.'),
     ('annees-cachees-de-jesus.html', 'annees-cachees-de-jesus.html', 'Les années cachées de Jésus', 'Les années cachées',
-     'Les années cachées de Jésus selon le Livre d’Urantia : son enfance, sa jeunesse, son métier et ses voyages, jusqu’au début de son ministère public, avec les références du texte.'),
+     'Les années cachées de Jésus selon le Livre d’Urantia : sa jeunesse, de quatorze ans à son baptême, son métier et ses voyages, jusqu’au début de son ministère public, avec les références du texte.'),
     ('douze-apotres.html', 'douze-apotres.html', 'Les douze apôtres', 'Les douze apôtres',
      'Les douze apôtres selon le Livre d’Urantia : l’âge, le métier, le rôle, les forces et les faiblesses de chacun, et ce qu’il devint après la Pentecôte.'),
     ('enseignements-de-jesus.html', 'enseignements-de-jesus.html', 'Les enseignements de Jésus', 'Enseignements de Jésus',
@@ -167,7 +167,7 @@ SOURCES = [p[0] for p in PAGES if p[0] != 'urantia-paradis-3d.html'] + [
            GLOSSAIRE_JS, GLOSSAIRE_JSON, 'glossaire.py', 'index-des-noms.json', 'index_des_noms.py', QUIZ_JS, QUIZ_JSON, 'assembler.py', 'etoiles.py', 'geo.py',
            'textures.py', 'voie-lactee-lecture-exr.py', 'voie-lactee-conversion.py', 'polices.py', 'fascicules.py', 'smoke3d.js',
            'construire_site.py', 'CONSTRUIRE.md', 'requirements.txt']
-RACINE = ['README.md', 'LICENCES.md', 'LICENSE', 'LICENSE-CONTENU.md', 'CONTRIBUER.md']   # copiés de site/ à la racine du site
+RACINE = ['README.md', 'LICENCES.md', 'LICENSE', 'LICENSE-CONTENU.md', 'CONTRIBUER.md', '.gitignore']   # copiés de site/ à la racine du site
 GITHUB = ['.github/ISSUE_TEMPLATE/erreur.yml', '.github/ISSUE_TEMPLATE/idee.yml', '.github/ISSUE_TEMPLATE/config.yml',
           '.github/pull_request_template.md']                                           # formulaires de tickets, modèle de demande
 # Crédit et dépôt (pied commun de chaque page, sauf la vue 3D qui a son menu)
@@ -186,7 +186,7 @@ MENUS = [
     ('themes', 'Thèmes', 'Thème', [                  # trois sous-groupes : trois colonnes au bureau, intertitres dans le tiroir
         'L’univers',
         ('pere-fils-esprit.html', 'Les trois personnes de la Déité'),
-        ('paradis-et-havona.html', 'L’ile centrale et l’univers parfait'),
+        ('paradis-et-havona.html', 'L’Ile centrale et l’univers parfait'),
         ('etre-supreme.html', 'Un Dieu qui grandit avec l’expérience'),
         ('jerusem-et-edentia.html', 'La capitale de Satania, les mondes des maisons et Édentia'),
         ('les-anges.html', 'Séraphins, chérubins et anges gardiens'),
@@ -367,6 +367,10 @@ html:not(.an-js) .an-etapes{grid-template-columns:minmax(0,1fr);grid-template-ro
 .atlas-droits{margin:0}
 .atlas-droits a{padding-block:12px;color:var(--gold-ink);text-decoration:underline;text-underline-offset:3px}
 a.ref-lien{padding-block:5px}
+.eyebrow{text-wrap:balance}
+main>footer.foot{max-width:37.25rem}
+@media (max-width:640px){.atlas-credit{column-gap:1.1em}.atlas-credit>span[aria-hidden="true"]{display:none}}
+@media (max-width:640px){a.ref-lien{font-size:max(1em,12px)}}
 '''
 NAV_CSS = '<style>' + ''.join(l.strip() for l in NAV_CSS_SRC.strip().splitlines()) + '</style>'
 
@@ -395,7 +399,7 @@ def pied_credit(name, nom, sep):
             f'Code source libre sur GitHub&nbsp;↗</a>{sep}'
             f'<a href="{DEPOT_LICENCES}" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a>{sep}'
             f'<a href="{esc(signaler(name, nom))}" target="_blank" rel="noopener" '
-            'title="Formulaire sur GitHub : un compte GitHub est nécessaire" '
+            'title="Formulaire sur GitHub&nbsp;: un compte GitHub est nécessaire" '
             'aria-label="Signaler une erreur sur cette page, formulaire GitHub (compte nécessaire), nouvel onglet">'
             'Signaler une erreur sur cette page&nbsp;↗</a> <span class="atlas-note">(compte GitHub)</span></p>')
 # Encadré « Lire hors ligne » de l'accueil (posé avant la passe de typographie ; la taille est inscrite en fin de construction)
@@ -449,24 +453,31 @@ def espaces_lisibles(s):
              .replace('&#x202F;', '&#160;').replace('&#x202f;', '&#160;'))
 
 
-def typo(s):
+def typo(s, milliers=True):
     """Espace insécable devant « : » et à l'intérieur des guillemets « », espace fine insécable devant ; ! ?
     Seules les espaces déjà présentes sont remplacées (sauf dans les guillemets) : « 57:6.5 », « a:hover »,
-    « 12:30 » ou une adresse ne contiennent pas d'espace devant le deux-points et restent intacts."""
+    « 12:30 » ou une adresse ne contiennent pas d'espace devant le deux-points et restent intacts. Les milliers (« 200 000 »)
+    et les unités (« 5 km », « 95 % ») prennent l'insécable ; « J.-C. » reçoit un gluon invisible (U+2060) et ne se coupe plus."""
+    s = s.replace('J.-C.', 'J.-\u2060C.')
     s = re.sub(r'[  ](?=:(?:[\s  ]|&nbsp;|$))', NBSP, s)
     s = re.sub(r'(?: | |&nbsp;)(?=[;!?])', NNBSP, s)
     s = re.sub(r'«[  ]', '«' + NBSP, s)
     s = re.sub(r'[  ]»', NBSP + '»', s)
     s = re.sub(r'«(?=[^\s  &<])', '«' + NBSP, s)
     s = re.sub(r'(?<=[^\s  ;>])»', NBSP + '»', s)
+    if milliers:
+        s = re.sub(r'(?<=\d) (?=\d{3}(?!\d))', NBSP, s)                        # 200 000 ans
+        s = re.sub(r'(?<=\d) (?=(?:°C|km/s|km|cm|mm|kg|%)(?!\w))', NBSP, s)   # 5 500 °C, 5 km, 95 %
     return s
 
 
 def typo_js(s):
     """Chaîne d'un script : seules les chaînes de texte sont retouchées (ni adresse, ni CSS, ni nombre)."""
-    if '://' in s or '{' in s or not re.search(r'[A-Za-zÀ-ÿ]', s):
+    if '://' in s or '{' in s or not re.search(r'[A-Za-zÀ-ÿ]|\s[:;!?»]|«\s', s):   # texte, ou séparateur « : », « ; », « » »
         return s
-    return typo(s)
+    # milliers : seulement dans du texte (un mot d’au moins trois lettres), jamais dans du balisage (viewBox="0 0 100 14")
+    # ni dans des données de tracé SVG (« M493 349 503 345… », « zM822.5 0.8 0.7 »)
+    return typo(s, milliers='<' not in s and '=' not in s and bool(re.search(r'[A-Za-zÀ-ÿ]{3}', s)))
 
 
 REGEX_APRES = set('(,=:[!&|?{};+-*%<>~^')
@@ -1248,7 +1259,7 @@ def ecrire_index(construites):
         arbre.feed(page)
         arbre.close()
         main = trouver(arbre.racine, 'main') or trouver(arbre.racine, 'body') or arbre.racine
-        ixr = Indexeur(ix, p, nom, desc, sauter=('liste',) if name in (GLOSSAIRE, 'index-des-noms.html') else ())
+        ixr = Indexeur(ix, p, nom, desc, sauter=('liste',) if name == GLOSSAIRE else ())   # index des noms : chaque nom est une section
         debut = len(ix['T'])
         buf = []
         ixr.marcher(main, buf)
@@ -1278,7 +1289,7 @@ def ecrire_index(construites):
     js = ('/* Index de la recherche de « Le Livre d’Urantia en images », écrit par construire_site.py à chaque construction :\n'
           '   ne pas le modifier à la main. Chargé par assets/navigation.js à la première recherche. */\n'
           'window.ATLAS_RECHERCHE=' + json.dumps(ix, ensure_ascii=False, separators=(',', ':')) + ';\n')
-    js = espaces_lisibles(js)
+    js = espaces_lisibles(js).replace('\u2060', '')         # gluons invisibles de la typographie (« J.-C. ») : hors de l’index
     (OUT / 'assets' / RECHERCHE_JS).write_text(js, encoding='utf-8', newline='\n')
     return len(ix['P']), len(ix['S']), len(ix['T']), len(js.encode('utf-8'))
 
@@ -1482,9 +1493,10 @@ for fichier, name, nom, court, desc in present:
         m = re.search(r'<p class="credit">(.*?)</p>', body, flags=re.S)
         if m and 'issues/new' not in m.group(1):
             lien = (f' · <a href="{esc(signaler(name, nom))}" target="_blank" rel="noopener" '
-                    'title="Formulaire sur GitHub : un compte GitHub est nécessaire">'
+                    'title="Formulaire sur GitHub&nbsp;: un compte GitHub est nécessaire">'
                     'Signaler une erreur<span aria-hidden="true">&nbsp;↗</span></a>'
-                    ' · <a href="index.html#droits" title="Citations du Livre d’Urantia : © 1960 Urantia Foundation">Droits</a>')
+                    f' · <a href="{DEPOT_LICENCES}" target="_blank" rel="noopener" aria-label="Licences, nouvel onglet">Licences</a>'
+                    ' · Citations du <i>Livre d’Urantia</i>&nbsp;: traduction française ©&nbsp;1960 Urantia Foundation · <a href="index.html#droits">droits</a>')
             body = body[:m.end(1)] + lien + body[m.end(1):]
         elif not m:
             problems.append(f'{name} : pas de <p class="credit"> dans le menu, lien « Signaler une erreur » non posé')
@@ -1552,19 +1564,22 @@ p404 = f'''<!doctype html>
 <link rel="icon" href="{BASE}assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="{BASE}assets/apple-touch-icon.png">
 <link rel="manifest" href="{BASE}manifest.webmanifest">
+<link rel="stylesheet" href="{BASE}assets/fonts/fonts.css">
 <meta name="theme-color" content="{THEME['clair']}" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="{THEME['sombre']}" media="(prefers-color-scheme: dark)">
 <script src="{BASE}assets/hors-ligne.js" defer></script>
 <script src="{BASE}assets/musique.js" defer></script>
 <style>
-:root {{ --paper: #EEF1F6; --sheet: #FFFFFF; --ink: #18213B; --muted: #56607D; --rule: #CBD2E0; --gold-ink: #8A5A00; color-scheme: light; }}
+:root {{ --paper: #EEF1F6; --sheet: #FFFFFF; --ink: #18213B; --muted: #56607D; --rule: #CBD2E0; --gold-ink: #8A5A00; color-scheme: light;
+  --font-display: "Cormorant Garamond", Georgia, serif; --font-body: "Alegreya Sans", "Segoe UI", Arial, sans-serif; }}
 @media (prefers-color-scheme: dark) {{ :root {{ --paper: #0C1120; --sheet: #131A2E; --ink: #E6E9F2; --muted: #9AA4C0; --rule: #28314B; --gold-ink: #F4C664; color-scheme: dark; }} }}
-body {{ margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 "Segoe UI", "Helvetica Neue", Arial, sans-serif; }}
+body {{ margin: 0; background: var(--paper); color: var(--ink); font: 17px/1.6 var(--font-body); }}
 main {{ max-width: 640px; margin: 0 auto; padding: 64px 16px; display: grid; gap: 18px; }}
-h1 {{ margin: 0; font: 600 2.2rem/1.1 Georgia, serif; }}
+h1 {{ margin: 0; font: 600 2.4rem/1.1 var(--font-display); }}
 p {{ margin: 0; }}
 a {{ color: var(--gold-ink); text-underline-offset: 3px; }}
-ul {{ margin: 0; padding-left: 20px; display: grid; gap: 6px; }}
+ul {{ margin: 0; padding-left: 20px; columns: 2 15rem; column-gap: 32px; }}
+li {{ margin: 0 0 6px; break-inside: avoid; }}
 .home {{ display: inline-block; padding: 12px 20px; border-radius: 999px; background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 600; }}
 .foot {{ margin-top: 12px; border-top: 1px solid var(--rule); padding-top: 14px; font-size: .84rem; color: var(--muted); }}
 .atlas-credit {{ margin: 0; display: flex; flex-wrap: wrap; align-items: center; column-gap: .45em; }}

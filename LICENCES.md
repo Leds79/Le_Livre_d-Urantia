@@ -8,8 +8,8 @@
 | Polices Alegreya Sans, Cormorant Garamond, IBM Plex Mono (`assets/fonts/`) | Google Fonts | SIL Open Font License 1.1, voir `assets/fonts/OFL-*.txt` |
 | Étoiles de la vue 3D | catalogue HYG v4.1, par David Nash (astronexus), https://codeberg.org/astronexus/hyg (anciennement sur GitHub) | CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/ ; les données d’étoiles intégrées à `atlas-3d.html` et `sources/etoiles.json` en sont une adaptation, sous la même licence |
 | Orbites des planètes | éléments képlériens approchés du JPL (NASA), tableau 1, valables de 1800 à 2050, https://ssd.jpl.nasa.gov/planets/approx_pos.html | données publiques |
-| Terre de jour (vue 3D) | NASA, Blue Marble Next Generation, fichier Wikimedia Commons « Whole world - land and oceans.jpg » | domaine public |
-| Terre de nuit (vue 3D) | NASA, fichier Wikimedia Commons « The earth at night.jpg » | domaine public |
+| Terre de jour (vue 3D) | NASA Earth Observatory (Goddard Space Flight Center), Blue Marble 2002 (« Land Surface, Shallow Water, and Shaded Topography »), fichier Wikimedia Commons « Whole world - land and oceans.jpg » | domaine public |
+| Terre de nuit (vue 3D) | NASA Earth Observatory (données Suomi NPP, 2012), fichier Wikimedia Commons « The earth at night.jpg » | domaine public |
 | Lune (vue 3D) | NASA Scientific Visualization Studio, CGI Moon Kit (LRO), https://svs.gsfc.nasa.gov/4720/ | domaine public |
 | Voie lactée (vue 3D) | NASA/Goddard Space Flight Center Scientific Visualization Studio, Deep Star Maps 2020, carte « milkyway_2020_4k_gal », https://svs.gsfc.nasa.gov/4851 ; données Gaia DR2 : ESA/Gaia/DPAC | domaine public (FAQ du SVS) ; image débruitée et réduite (WebP, 77 Ko) |
 | Jupiter (vue 3D) | Cassini, PIA07782, fichier Commons « Jupiter Cylindrical Map - Dec 2000 PIA07782.jpg » | domaine public ; crédit : NASA/JPL/Space Science Institute |
@@ -20,7 +20,7 @@
 | Nuages (vue 3D) | image générée par `sources/textures.py` (bruit fractal), illustrative | contenu du dépôt, CC BY-SA 4.0 |
 | Continents, lacs et fleuves | Natural Earth, https://www.naturalearthdata.com (GeoJSON du dépôt nvkelso/natural-earth-vector) | domaine public |
 | Citations du livre | *Le Livre d’Urantia*, traduction française, Fondation Urantia, édition 2024 | courtes citations référencées ; le texte appartient à son éditeur et n’est pas couvert par les licences du dépôt |
-| Citations bibliques (page « La Bible et le Livre d’Urantia ») | Bible, traduction Crampon (édition de 1923) | domaine public ; texte numérique de mission-web.com, sous licence CC BY-NC-SA 3.0 ; courtes citations, créditées dans la page |
+| Citations bibliques (La Bible et le Livre d’Urantia, et toutes les pages qui citent la Bible) | Bible, traduction Crampon (édition de 1923) | domaine public ; édition numérique de Jean-Marie Weber pour mission-web.com, sous licence CC BY-NC-SA 3.0 (https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) ; courtes citations, créditées dans chaque page |
 | Musique (bouton de la barre) | composition générée en direct par `musique.js`, œuvre originale du projet | sous la même licence que le code (MIT) |
 | Icônes de l’application (`assets/icone-*.png`, `apple-touch-icon.png`) | rendus de `assets/favicon.svg`, dessin du projet | contenu du dépôt, CC BY-SA 4.0 |
 

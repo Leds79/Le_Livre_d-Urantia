@@ -227,7 +227,9 @@
   function balayer(fin) {
     if (enCours) { encore = true; return; }
     var cherches = Object.create(null), reste = 0;
-    for (var id in TERMES) if (!marques[id] || !marques[id].isConnected) { cherches[id] = true; reste++; delete marques[id]; }
+    var sans = document.querySelector('[data-glossaire-sans]');      // termes à ne pas marquer dans cette page (autre sens : fusion nucléaire, lac de Van…)
+    sans = sans ? ' ' + sans.getAttribute('data-glossaire-sans') + ' ' : '';
+    for (var id in TERMES) if (sans.indexOf(' ' + id + ' ') < 0 && (!marques[id] || !marques[id].isConnected)) { cherches[id] = true; reste++; delete marques[id]; }
     if (!reste) { if (fin) fin(0, 0, 0); return; }
     enCours = true;
     reperer(cherches, reste, function (trouves, travail, tranches) {   // lecture seule : la mise en page n’est calculée qu’une fois
@@ -409,6 +411,7 @@
     ouvert = true;
     s.setAttribute('aria-expanded', 'true');
     placer();
+    requestAnimationFrame(function () { if (ouvert && !tiroir) placer(); });   // références devenues liens (refs-urantia.js) : la bulle a grandi
     if (mqCalme.matches) { bulle.classList.add('gl-ouvert'); voile.classList.add('gl-ouvert'); }
     else {
       void bulle.offsetWidth;                                // départ de la transition

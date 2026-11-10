@@ -19,7 +19,7 @@ Vous pouvez les partager et les adapter, y compris à des fins commerciales, à 
 Ces licences ne s’appliquent pas aux éléments suivants, qui gardent leurs propres conditions :
 
 - **Les citations du *Livre d’Urantia*.** Elles sont extraites de la traduction française publiée par la Fondation Urantia (édition 2024), qui en reste propriétaire. Le site n’en reproduit que de courtes citations, toujours référencées.
-- **Les citations de la Bible** (page « La Bible et le Livre d’Urantia ») : traduction Crampon, édition de 1923, du domaine public, d’après le texte numérique de mission-web.com, sous licence CC BY-NC-SA 3.0 ; courtes citations, créditées dans la page.
+- **Les citations de la Bible** (page « La Bible et le Livre d’Urantia » et toutes les pages qui citent la Bible) : traduction Crampon, édition de 1923, du domaine public, d’après l’édition numérique de Jean-Marie Weber pour mission-web.com, sous licence CC BY-NC-SA 3.0 (https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) ; courtes citations, créditées dans chaque page.
 - **Les données et bibliothèques de tiers**, chacune sous sa propre licence :
   - catalogue d’étoiles HYG : CC BY-SA 4.0 (David Nash) ;
   - contours Natural Earth : domaine public ;

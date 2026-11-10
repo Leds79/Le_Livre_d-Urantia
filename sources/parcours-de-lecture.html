@@ -120,6 +120,7 @@ a { color: var(--gold-ink); text-underline-offset: 3px; }
 .card h3 { font-size: 1.5rem; }
 .card h3 a { color: var(--ink); text-decoration: none; }
 .card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 12px; }   /* toute la carte est cliquable */
+.card .gl-mot, .fx-txt .gl-mot { position: relative; z-index: 2; }   /* mots du glossaire au-dessus des liens « toute la carte » */
 .card h3 a:hover { color: var(--gold-ink); }
 .card h3 a:focus-visible { outline: none; }
 .card h3 a:focus-visible::after { outline: 2px solid var(--gold-ink); outline-offset: 3px; }
@@ -266,7 +267,7 @@ details.groupe > .fxs { padding: 2px 0 14px; }
       <p class="lede">Par où commencer un livre de 197 fascicules&nbsp;? Voici cinq itinéraires, du récit de la vie de Jésus aux grandes descriptions de l’univers. Choisis-en un, lis chaque fascicule sur le site de la <span data-glossaire="non">Fondation Urantia</span>, puis coche-le ici&nbsp;: la page garde ta progression sur cet appareil.</p>
       <div class="actions">
         <button type="button" class="cta" id="reprendre" hidden>Reprendre là où j’en étais <span class="ar" aria-hidden="true">→</span></button>
-        <a class="cta second" href="#choisir">Choisir un parcours <span class="ar" aria-hidden="true">↓</span></a>
+        <a class="cta" href="#choisir">Choisir un parcours <span class="ar" aria-hidden="true">↓</span></a>
       </div>
       <p class="reprise" id="reprise-info" hidden></p>
     </div>
@@ -340,7 +341,7 @@ details.groupe > .fxs { padding: 2px 0 14px; }
       <ul>
         <li><a href="effusions-de-micael.html"><b>Les sept effusions de Micaël</b><span>avant le récit, fascicules 119 et 120</span></a></li>
         <li><a href="vie-de-jesus.html"><b>La vie de Jésus</b><span>frise de 92 étapes et cartes des voyages</span></a></li>
-        <li><a href="annees-cachees-de-jesus.html"><b>Les années cachées de Jésus</b><span>de quatorze à trente ans, fascicules 126 à 134</span></a></li>
+        <li><a href="annees-cachees-de-jesus.html"><b>Les années cachées de Jésus</b><span>de quatorze à trente-et-un ans, fascicules 126 à 134</span></a></li>
         <li><a href="enseignements-de-jesus.html"><b>Les enseignements de Jésus</b><span>quinze thèmes, rangés par idées</span></a></li>
         <li><a href="douze-apotres.html"><b>Les douze apôtres</b><span>portraits et destinées, fascicule 139</span></a></li>
         <li><a href="apres-la-pentecote.html"><b>Après la Pentecôte</b><span>l’évangile dans l’histoire, fascicule 195</span></a></li>
